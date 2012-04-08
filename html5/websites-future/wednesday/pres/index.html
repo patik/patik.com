@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js ie6" lang="en"><![endif]-->
+<!--[if IE 7]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+	<title>Designing for the Future</title>
+	
+	<meta name="description" content="A presentation on the possibilities of HTML5-built web sites in 2011">
+	<meta name="author" content="Craig Patik">
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	<link rel="stylesheet" href="../../../min/?g=html5futurecss">
+	<script src="modernizr.custom.js"></script>
+</head>
+
+<body class="deck-container">
+
+<div class="slide" id="title-slide">
+	<h1>Design Strategy and Possibilities</h1>
+  <h2>Websites of the Future</h2>
+  <div id="my-info">
+  	<ul>
+    	<li><strong>Craig Patik</strong></li>
+      <li>User Interface &amp; Web Development</li>
+      <li>NYS Dept of Taxation &amp; Finance</li>
+    </ul>
+  </div>
+  <p class="float-right bottom">Slides and demo available at <a href="http://patik.com/html5/">patik.com/html5</a></p>
+</div>
+
+<div class="slide" id="now">
+	<h2>What's out there</h2>
+	<ol>
+		<li>
+			<h3>Devices</h3>
+			<ul>
+      	<li>Traditional desktops &amp; laptops
+        	<ul>
+          	<li>Single monitor</li>
+            <li>Multiple monitors</li>
+          </ul>
+        </li>
+        <li>Tablets
+        	<ul>
+          	<li>Big screen, but limited keyboard &amp; no mouse</li>
+          </ul>
+        </li>
+        <li>Phones
+        	<ul>
+          	<li>Smartphones, dumbphones, and in between</li>
+          </ul>
+        </li>
+      </ul>
+		</li>
+		<li class="slide" id="now-connections">
+			<h3>Speed (connection + CPU)</h3>
+			<ul>
+      	<li>Firehoses (desktops with broadband)</li>
+				<li>Garden hoses (smartphones with wifi)</li>
+				<li>Eye droppers (phones with 2G)</li>
+      	<li class="slide">Kinked hoses (flakey wireless)
+        	<ul>
+          	<li>Driving through a tunnel</li>
+            <li>Stadium full of people</li>
+            <li>Emergency situations</li>
+          </ul>
+        </li>
+      </ul>
+		</li>
+	</ol>
+</div>
+
+<div class="slide" id="stats">
+	<h2>Who actually uses that stuff?</h2>
+	<ol>
+		<li class="slide" id="stats-tablets">
+    	<h3>Everyone, basically</h3>
+			<ul>
+      	<li>54% of tablet owners are older than 34</li>
+        <li>19% are age 55+</li>
+      </ul>
+      <div class="source-link">Source: neilsen.com <a href="#source-1">[1]</a></div>
+    </li>
+    <li class="slide" id="stats-wireless">
+      <h3>More <em>wireless</em> than <em>wired</em> internet users in US by 2015</h3>
+      <div class="source-link">Source: idc.com <a href="#source-2">[2]</a></div>
+    </li>
+    <li class="slide" id="stats-desktops">
+      <h3>Don't forget about the desktop</h3>
+      <ul>
+      	<li>More browsers: Internet Explorer's market share is under 50% and dropping</li>
+        <li>More frequent updates: new web technologies can go from 0% to 50%+ of desktops in a matter of months</li>
+      </ul>
+    </li>
+	</ol>
+</div>
+
+<div class="slide" id="future">
+	<h2>What's next?</h2>
+	<p>Who knows?</p>
+  <ul>
+  	<li>The previous slide, times ten?</li>
+    <li>Consolidation down to just a couple major categories?</li>
+  	<li class="slide" id="future-more">
+    	<strong>More likely:</strong> what we have now, plus something we've never considered
+      <p style="text-indent:2em;margin-top:0.5em;">Who foresaw the iPhone, iPad, and the change in user habits?</p>
+    </li>
+  </ul>
+</div>
+
+<div class="slide" id="howto">
+	<h2>How to handle uncertainty</h2>
+  <ol>
+  	<li class="slide">Create a bare-bones, straightforward structure for your site or app</li>
+    <li class="slide">Mobile first</li>
+    <li class="slide">Progressive enhancement</li>
+    <li class="slide">Stick with the standards</li>
+  </ol>
+</div>
+
+<div class="slide" id="mobile-first">
+	<h2>Mobile first</h2>
+	<ul>
+  	<li class="slide" id="mobile-first-important">Focus on the parts of your site that are really important</li>
+    <li class="slide indented">Why are users here?</li>
+		<li class="slide" id="mobile-first-frivolous">Decide what's superfluous or extra to the site's usability</li>
+    <li class="slide indented">Navigation? Banners? Shrink them and tuck them away</li>
+    <li class="slide indented">If it doesn't warrant space on your mobile site, do you <em>really</em> need it at all?</li>
+  </ul>
+</div>
+
+<div class="slide" id="progressive">
+	<h2>Progressive enhancement</h2>
+	<ol>
+  	<li class="slide" id="progressive-base">Create a solid base with all the core features but no frills</li>
+    <li class="slide" id="progressive-enhance">Add non-critical enhancements for browsers that can support them
+      <ul class="slide">
+        <li>Example: "Type in your ZIP code" for older browsers, but use geolocation when available</li>
+      </ul>
+    </li>
+    <li class="slide" id="progressive-responsive">
+    	Responsive design
+      <ul>
+      	<li>Every device gets the same HTML, but CSS &amp; JS adjust the experience</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="slide" id="responsive-design">
+	<h2>Responsive design</h2>
+  <p>Using media queries to serve different style sheets, BostonGlobe.com works on any screen size:</p>
+	<div class="bg-images">
+  	<figure><img src="images/bg_1.png" alt="Large screenshot of bostonglobe.com"><figcaption>Desktop</figcaption></figure>
+  </div>
+ 	<div class="bg-images">
+  	<figure><img src="images/bg_2.png" alt="Medium screenshot of bostonglobe.com"><figcaption>Laptop/tablet</figcaption></figure>
+  	<figure><img src="images/bg_3.png" alt="Small screenshot of bostonglobe.com"><figcaption>Tablet/phone</figcaption></figure>
+  	<figure><img src="images/bg_4.png" alt="Smallest screenshot of bostonglobe.com"><figcaption>Phone</figcaption></figure>
+  </div>
+</div>
+
+<div class="slide" id="howto">
+	<h2>Stick with the standards</h2>
+  <h3>HTML5, CSS3, supported JavaScript</h3>
+  <ul>
+  	<li class="slide">Native app or web app?
+    	<ul>
+      	<li>Depends on your situation</li>
+      	<li>Native has its advantages. But...</li>
+      </ul>
+    </li>
+    <li class="slide">WebAPI, lead by Mozilla
+    	<ul>
+      	<li>Access to device's camera, contacts, files, accelerometer, etc</li>
+      </ul> 
+    </li>
+    <li class="slide">Web-based solutions are more portable
+    	<ul>
+      	<li class="slide">Flash, Silverlight, Air, and other proprietary technologies are problematic and inflexible</li>
+        <li class="slide">There's the iTunes App Store, the Android market... <span class="slide">and 109 others</span></li>
+        <li class="slide">jQuery Mobile</li>
+        <li class="slide">PhoneGap</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="slide" id="demo">
+	<h2>Demo</h2>
+  <ul>
+  	<li class="slide">Reading files</li>
+  	<li class="slide">Geolocation</li>
+  	<li class="slide"><code>&lt;canvas&gt;</code> and SVG</li>
+  	<li class="slide">Web sockets</li>
+  </ul>
+	<p class="bottom float-right"><big><a href="../demo/"><strong>patik.com/html5</strong></a></big></p>
+</div>
+
+<div class="slide" id="sources">
+	<h2>Source links</h2>
+  <p id="source-1">1: Mobile users demographics <a href="http://blog.nielsen.com/nielsenwire/online_mobile/changing-demographics-of-tablet-and-ereader-owners-in-the-us/">http://blog.nielsen.com/nielsenwire/online_mobile/changing-demographics-of-tablet-and-ereader-owners-in-the-us/</a></p>
+  <p id="source-2">2: Wireless usage in the US <a href="http://www.idc.com/getdoc.jsp?containerId=prUS23028711">http://www.idc.com/getdoc.jsp?containerId=prUS23028711</a></p>
+  <p>More about the Boston Globe design: <a href="http://unstoppablerobotninja.com/entry/the-boston-globe/">http://unstoppablerobotninja.com/entry/the-boston-globe/</a></p>
+  <p>Other links from this presentation are at <a href="http://patik.com/html5/websites-future/">patik.com/html5/websites-future/</a></p>
+</div>
+
+<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+<p class="deck-status">
+	<span class="deck-status-current"></span>
+	/
+	<span class="deck-status-total"></span>
+</p>
+
+<form action="." method="get" class="goto-form">
+	<label for="goto-slide">Go to slide:</label>
+	<input type="number" name="slidenum" id="goto-slide">
+	<input type="submit" value="Go">
+</form>
+
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../demo/js/libs/jquery-1.6.2.min.js"><\/script>')</script>
+<script src="../../../min/?g=html5futurejs"></script>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type"	content="text/html;	charset=iso-8859-1" />
+<title>GSA Results Popup</title>
+<script type="text/javascript">
+function ajaxFunction(theURL)
+{
+	var xmlHttp;
+  try
+  {
+    // Firefox, Opera 8.0+, Safari
+    xmlHttp=new XMLHttpRequest();
+  }
+  catch (e)
+  {
+    // Internet Explorer
+    try
+    {
+      xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
+    }
+    catch (e)
+    {
+      try
+      {
+        xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+      }
+      catch (e)
+      {
+        alert("Your browser does not support AJAX!");
+        return false;
+      }
+    }
+  }
+  
+	xmlHttp.onreadystatechange=function()
+	{
+		if(xmlHttp.readyState == 4) {
+			document.getElementById('displayPage').innerHTML = xmlHttp.responseText;
+		}
+	}
+	xmlHttp.open("GET",theURL,true);
+  xmlHttp.send(null);
+}
+</script>
+<script type="text/javascript" src="/cgi-bin/ACD/ACD.js?uri=(http://forumserver.twoplustwo.com/54/poker-beats-brags-variance/first-post-craziest-night-my-life-i-think-beat-variance-330849/)"></script> 
+<script type="text/javascript">
+	//alert(ACD.responseText);
+  setTimeout(function() {document.getElementById('displayPage').innerHTML = ACD.responseText; }, 10000);
+</script>
+<script type="text/javascript">
+function getPage(theURL)
+{
+	var scr = document.createElement('script');
+	//scr.src = '"/cgi-bin/ACD/ACD.js?uri=(' + theURL + ')';
+	scr.setAttribute('type','text/javascript');
+	scr.setAttribute('src','"/cgi-bin/ACD/ACD.js?uri=(' + theURL + ')');
+	document.getElementById('pageFooter').appendChild(scr);
+}
+</script>
+<style type="text/css">
+div#displayPage {
+  border: 2px solid black;
+  width: 95%;
+  margin: 0 auto;
+}
+</style>
+</head>
+<body onload="javascript:document.form1.q.focus();"><!-- onload="ajaxFunction();" -->
+<div><a id="top"></a></div>
+<div id="logo"></div>
+<div id="searchBox">
+   <form name="form1" action="">
+    <input type="text" maxlength="256" size="32" value="http://www.google.com" name="q" />
+    &nbsp;<input type="button" value="Go" name="btnG" onclick="getPage(document.form1.q.value);" />
+  </form>
+</div>
+<div id="pageHeader">&nbsp;</div>
+<div id="displayPage">&nbsp;</div>
+<div id="pageFooter"></div>
+</body>
+</html>

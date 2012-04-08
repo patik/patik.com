@@ -1,0 +1,98 @@
+/*
+ * Edit this file and copy it as userChrome.css into your
+ * profile-directory/chrome/
+ */
+
+/*
+ * This file can be used to customize the look of Mozilla's user interface
+ * You should consider using !important on rules which you want to
+ * override default settings.
+ */
+
+/*
+ * Do not remove the @namespace line -- it's required for correct functioning
+ */
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); /* set default namespace to XUL */
+
+
+
+/* Remove the search-go-button and fix searchbar spacing
+.search-go-button {
+  display: none !important;
+}
+
+#searchbar {
+  margin-right: 2px !important;
+}
+*/
+
+#stop-button[disabled] {
+display: none;
+}
+#stop-button:not([disabled]) + #reload-button {
+display: none;
+}
+
+
+
+/* hide options from context menu */
+#context-sendlink,   /* Send Link... */
+#context-sendimage,   /* Send Image... */
+#context-blockimage,   /* Block Images from... */
+/*#context-back,   Back  */
+/*#context-forward,   Forward */
+/*#context-reload,   Reload */
+/*#context-stop,   Stop */
+/*#context-sep-stop,   Separator after back/forward/reload/stop section */
+#context-bookmarkpage,  /*  Bookmark This Page... */
+#context-savepage,  /* Save Page As... */
+#context-sendpage,  /* Send Page... */
+{
+    display: none !important;
+}
+
+
+/* Remove the Go and Help menus
+   (These are just examples. Try changing "Go" to "Edit" or "Bookmarks")
+menu[label="Edit"], menu[label="History"], menu[label="View"], menu[label="Help"] {
+   display: none !important;
+}*/
+ 
+/*Remove magnifying glass button from search box*/
+.search-go-button-stack > vbox, .search-go-button
+{
+   display: none !important
+}
+
+
+/* Remove Forward button when there's nothing to go Forward to */
+#forward-button[disabled="true"] { display: none; }
+
+/* Remove Stop button when there's nothing to Stop */
+#stop-button[disabled="true"] { display: none; }
+
+/* Remove Home button (never use it)
+#home-button { display: none; }
+*/
+/* Remove Go button from address bar
+#go-button-stack, .search-go-button-stack { display: none !important; }
+*/
+/* Show keyword input box when adding a bookmark */
+#keywordRow { display: -moz-grid-line !important; }
+
+/* Make the active tab wider
+tab[selected="true"] { min-width: 200px !important; }*/
+
+/* Hide For Internet Explorer Users & Release Notes from Help Menu */
+menuitem[label="For Internet Explorer Users"] { display: none; }
+menuitem[label="Release Notes"] { display: none; }
+
+
+/* Slightly rounded address and search bar corners
+#urlbar {
+    -moz-appearance: none !important;
+    -moz-border-radius-bottomleft: 3px !important;
+    -moz-border-radius-topleft: 3px !important;
+    padding-right: 1px !important;
+}
+*/

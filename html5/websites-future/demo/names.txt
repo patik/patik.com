@@ -1,0 +1,5 @@
+Cesc	Fabregas	Barcelona, Spain	300	2	img/avatar-cesc.jpg
+Thierry	Henry	Paris, France	100	1	img/avatar-henry.jpg
+Hope	Solo	Houston, Texas	150	1	img/avatar-solo.jpg
+Robin	Van Persie	Rotterdam, Netherlands	120	3	img/avatar-rvp.jpg
+Leo	Messi	Rosario, Argentina	220	2	img/avatar-messi.jpg

@@ -1,0 +1,33 @@
+acs=’apt-cache search’
+agu=’sudo apt-get update’
+agg=’sudo apt-get upgrade -y’
+agd=’sudo apt-get dist-upgrade’
+agi=’sudo apt-get install -y’
+agr=’sudo apt-get remove’
+agc=’sudo apt-get clean’
+aga=’sudo apt-get autoremove’
+aptsrc='sudo gedit /etc/apt/sources.list' 
+repos='sudo gedit /etc/apt/sources.list'
+ggedit='sudo gedit'
+gedit='sudo bluefish'
+kate='sudo bluefish'
+
+ls='ls -AgGoh --color=auto --file-type'
+dir='ls -AgGoh --color=auto --file-type'
+
+nget='nget -incomplete --delete --autopar'
+
+rm=’rm -i’ #better safe than sorry
+mv=’mv -i’
+cp=’cp -i’
+vi=’vim’
+du=’du -h’
+df=’df -kh’
+un=’tar -zxvf’
+ping=’ping -c 10′
+
+# typos
+exot=’exit’
+..='cd ..'
+...='cd ...'
+cd..='cd ..'
