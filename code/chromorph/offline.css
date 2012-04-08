@@ -70,30 +70,30 @@ span{position:absolute;color:white;font-weight:bold;text-shadow:3px 3px 4px blac
 span{text-shadow:2px 2px 3px black, 0 -1px 0 rgba(0,0,0,0.5)}.travel-block-links.page-links-4
 span{font-size:32px;line-height:36px;text-shadow:0 1px 2px black, 0 -1px 0 rgba(0,0,0,0.5)}.travel-block-links.page-links-4 li:hover
 span{text-shadow:0 1px 1px black, 0 -1px 0 rgba(0,0,0,0.7)}.travel-map{text-align:center;margin-top:6px}.travel-map
-img{border:none;-webkit-box-shadow:0 0 8px rgba(0, 0, 0, 0.4);-moz-box-shadow:0 0 8px rgba(0, 0, 0, 0.4);box-shadow:0 0 8px rgba(0, 0, 0, 0.4);-webkit-transition:all 0.15s ease;-moz-transition:all 0.15s ease;transition:all 0.15s ease}.travel-map img:hover{-webkit-box-shadow:0 0 4px rgba(0, 0, 0, 0.6);-moz-box-shadow:0 0 4px rgba(0, 0, 0, 0.6);box-shadow:0 0 4px rgba(0,0,0,0.6)}a.bg-travel-britain-benelux{background-image:url('/images/travel-britain-benelux.jpg')}a.bg-travel-britain-benelux
-span{left:0;top:0;margin-top:126px;text-align:center;vertical-align:middle;width:100%}a.bg-travel-peru-argentina{background-image:url('/images/travel-peru-argentina.jpg')}a.bg-travel-peru-argentina
-span{position:absolute;bottom:8px;left:6px}a.bg-travel-spain{background-image:url('/images/travel-spain.jpg')}a.bg-travel-spain
-span{position:absolute;bottom:8px;left:6px}a.bg-travel-turkey{background-image:url('/images/travel-turkey.jpg')}a.bg-travel-turkey
-span{position:absolute;bottom:8px;right:12px;text-align:right}a.bg-travel-germany{background-image:url('/images/travel-germany.jpg')}a.bg-travel-germany
-span{position:absolute;top:8px;left:6px}a.bg-travel-greece{background-image:url('/images/travel-greece.jpg')}a.bg-travel-greece
-span{position:absolute;bottom:12px;text-align:center;width:100%}a.bg-travel-paris{background-image:url('/images/travel-paris.jpg')}a.bg-travel-paris
-span{position:absolute;top:6px;right:12px}a.bg-travel-france{background-image:url('/images/travel-france.jpg')}a.bg-travel-france
-span{position:absolute;top:6px;right:12px}a.bg-peru-argentina-amazon{background-image:url('/images/peru-argentina-link-amazon.jpg')}a.bg-peru-argentina-amazon
-span{position:absolute;bottom:6px;left:8px}a.bg-peru-argentina-cusco{background-image:url('/images/peru-argentina-link-cusco.jpg')}a.bg-peru-argentina-cusco
-span{position:absolute;bottom:6px;width:100%;text-align:center}a.bg-peru-argentina-colonia{background-image:url('/images/peru-argentina-link-colonia.jpg')}a.bg-peru-argentina-colonia
-span{position:absolute;bottom:6px;right:6px;text-align:right}a.bg-spain-world-cup{background-image:url('/images/spain-link-world-cup.jpg')}a.bg-spain-world-cup
-span{position:absolute;bottom:6px;left:8px}a.bg-turkey-istanbul{background-image:url('/images/turkey-link-istanbul.jpg')}a.bg-turkey-istanbul
-span{position:absolute;bottom:0;right:8px}a.bg-turkey-cappadocia{background-image:url('/images/turkey-link-cappadocia.jpg')}a.bg-turkey-cappadocia
-span{position:absolute;top:6px;left:6px}a.bg-turkey-cirali{background-image:url('/images/turkey-link-cirali.jpg')}a.bg-turkey-cirali
-span{position:absolute;top:6px;left:6px}a.bg-turkey-ephesus{background-image:url('/images/turkey-link-ephesus.jpg')}a.bg-turkey-ephesus
-span{position:absolute;top:6px;right:8px}a.bg-germany-austria{background-image:url('/images/germany-austria-link.jpg')}a.bg-germany-austria
-span{position:absolute;top:24px;left:8px}a.bg-germany-bavaria{background-image:url('/images/germany-bavaria-link.jpg')}a.bg-germany-bavaria
-span{position:absolute;bottom:16px;text-align:center;width:100%}a.bg-germany-berlin{background-image:url('/images/germany-berlin-link.jpg')}a.bg-germany-berlin
-span{position:absolute;bottom:6px;left:12px}a.bg-greece-athens{background-image:url('/images/greece-athens-link.jpg')}a.bg-greece-athens
-span{position:absolute;bottom:6px;left:8px}a.bg-greece-sifnos{background-image:url('/images/greece-sifnos-link.jpg')}a.bg-greece-sifnos
-span{position:absolute;bottom:6px;text-align:center;width:100%}a.bg-greece-santorini{background-image:url('/images/greece-santorini-link.jpg')}a.bg-greece-santorini
-span{position:absolute;bottom:6px;right:12px}a.bg-france-photos{background-image:url('/images/france-photos-link.jpg')}a.bg-france-photos
-span{position:absolute;bottom:6px;right:12px}a.bg-paris-photos{background-image:url('/images/paris-photos-link.jpg')}a.bg-paris-photos
+img{border:none;-webkit-box-shadow:0 0 8px rgba(0, 0, 0, 0.4);-moz-box-shadow:0 0 8px rgba(0, 0, 0, 0.4);box-shadow:0 0 8px rgba(0, 0, 0, 0.4);-webkit-transition:all 0.15s ease;-moz-transition:all 0.15s ease;transition:all 0.15s ease}.travel-map img:hover{-webkit-box-shadow:0 0 4px rgba(0, 0, 0, 0.6);-moz-box-shadow:0 0 4px rgba(0, 0, 0, 0.6);box-shadow:0 0 4px rgba(0,0,0,0.6)}a.bg-travel-britain-benelux{background-image:url('/img/travel-britain-benelux.jpg')}a.bg-travel-britain-benelux
+span{left:0;top:0;margin-top:126px;text-align:center;vertical-align:middle;width:100%}a.bg-travel-peru-argentina{background-image:url('/img/travel-peru-argentina.jpg')}a.bg-travel-peru-argentina
+span{position:absolute;bottom:8px;left:6px}a.bg-travel-spain{background-image:url('/img/travel-spain.jpg')}a.bg-travel-spain
+span{position:absolute;bottom:8px;left:6px}a.bg-travel-turkey{background-image:url('/img/travel-turkey.jpg')}a.bg-travel-turkey
+span{position:absolute;bottom:8px;right:12px;text-align:right}a.bg-travel-germany{background-image:url('/img/travel-germany.jpg')}a.bg-travel-germany
+span{position:absolute;top:8px;left:6px}a.bg-travel-greece{background-image:url('/img/travel-greece.jpg')}a.bg-travel-greece
+span{position:absolute;bottom:12px;text-align:center;width:100%}a.bg-travel-paris{background-image:url('/img/travel-paris.jpg')}a.bg-travel-paris
+span{position:absolute;top:6px;right:12px}a.bg-travel-france{background-image:url('/img/travel-france.jpg')}a.bg-travel-france
+span{position:absolute;top:6px;right:12px}a.bg-peru-argentina-amazon{background-image:url('/img/peru-argentina-link-amazon.jpg')}a.bg-peru-argentina-amazon
+span{position:absolute;bottom:6px;left:8px}a.bg-peru-argentina-cusco{background-image:url('/img/peru-argentina-link-cusco.jpg')}a.bg-peru-argentina-cusco
+span{position:absolute;bottom:6px;width:100%;text-align:center}a.bg-peru-argentina-colonia{background-image:url('/img/peru-argentina-link-colonia.jpg')}a.bg-peru-argentina-colonia
+span{position:absolute;bottom:6px;right:6px;text-align:right}a.bg-spain-world-cup{background-image:url('/img/spain-link-world-cup.jpg')}a.bg-spain-world-cup
+span{position:absolute;bottom:6px;left:8px}a.bg-turkey-istanbul{background-image:url('/img/turkey-link-istanbul.jpg')}a.bg-turkey-istanbul
+span{position:absolute;bottom:0;right:8px}a.bg-turkey-cappadocia{background-image:url('/img/turkey-link-cappadocia.jpg')}a.bg-turkey-cappadocia
+span{position:absolute;top:6px;left:6px}a.bg-turkey-cirali{background-image:url('/img/turkey-link-cirali.jpg')}a.bg-turkey-cirali
+span{position:absolute;top:6px;left:6px}a.bg-turkey-ephesus{background-image:url('/img/turkey-link-ephesus.jpg')}a.bg-turkey-ephesus
+span{position:absolute;top:6px;right:8px}a.bg-germany-austria{background-image:url('/img/germany-austria-link.jpg')}a.bg-germany-austria
+span{position:absolute;top:24px;left:8px}a.bg-germany-bavaria{background-image:url('/img/germany-bavaria-link.jpg')}a.bg-germany-bavaria
+span{position:absolute;bottom:16px;text-align:center;width:100%}a.bg-germany-berlin{background-image:url('/img/germany-berlin-link.jpg')}a.bg-germany-berlin
+span{position:absolute;bottom:6px;left:12px}a.bg-greece-athens{background-image:url('/img/greece-athens-link.jpg')}a.bg-greece-athens
+span{position:absolute;bottom:6px;left:8px}a.bg-greece-sifnos{background-image:url('/img/greece-sifnos-link.jpg')}a.bg-greece-sifnos
+span{position:absolute;bottom:6px;text-align:center;width:100%}a.bg-greece-santorini{background-image:url('/img/greece-santorini-link.jpg')}a.bg-greece-santorini
+span{position:absolute;bottom:6px;right:12px}a.bg-france-photos{background-image:url('/img/france-photos-link.jpg')}a.bg-france-photos
+span{position:absolute;bottom:6px;right:12px}a.bg-paris-photos{background-image:url('/img/paris-photos-link.jpg')}a.bg-paris-photos
 span{position:absolute;bottom:6px;right:12px}footer
 ul{list-style:none outside none;overflow:hidden;width:50%;padding:0;margin:0
 auto 1em auto}footer

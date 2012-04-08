@@ -89,15 +89,15 @@ $x->pageTitle = 'Travel';
 $x->keywords = 'turkey, istanbul, cappadocia, cirali, selcuk, ephesus, europe, travel';
 $x->dirLevel = 1;
 $x->useragent = $_SERVER['HTTP_USER_AGENT'];
-$x->preload = array('<img src="../images/peru-argentina-link-amazon.jpg">', '<img src="../images/peru-argentina-link-colonia.jpg">',
-                    '<img src="../images/peru-argentina-link-cusco.jpg">', '<img src="../images/spain-itinerary-map.jpg">',
-                    '<img src="../images/spain-link-world-cup.jpg">', '<img src="../images/turkey-link-cappadocia.jpg">',
-                    '<img src="../images/turkey-link-cirali.jpg">', '<img src="../images/turkey-link-ephesus.jpg">',
-                    '<img src="../images/turkey-link-istanbul.jpg">', '<img src="../images/turkey-overview-map.jpg">',
-                    '<img src="../images/germany-austria-link.jpg">', '<img src="../images/germany-bavaria-link.jpg">',
-                    '<img src="../images/germany-berlin-link.jpg">', '<img src="../images/greece-athens-link.jpg">',
-                    '<img src="../images/greece-santorini-link.jpg">', '<img src="../images/greece-sifnos-link.jpg">',
-                    '<img src="../images/paris-photos-link.jpg">', '<img src="../images/france-photos-link.jpg">');
+$x->preload = array('<img src="../img/peru-argentina-link-amazon.jpg">', '<img src="../img/peru-argentina-link-colonia.jpg">',
+                    '<img src="../img/peru-argentina-link-cusco.jpg">', '<img src="../img/spain-itinerary-map.jpg">',
+                    '<img src="../img/spain-link-world-cup.jpg">', '<img src="../img/turkey-link-cappadocia.jpg">',
+                    '<img src="../img/turkey-link-cirali.jpg">', '<img src="../img/turkey-link-ephesus.jpg">',
+                    '<img src="../img/turkey-link-istanbul.jpg">', '<img src="../img/turkey-overview-map.jpg">',
+                    '<img src="../img/germany-austria-link.jpg">', '<img src="../img/germany-bavaria-link.jpg">',
+                    '<img src="../img/germany-berlin-link.jpg">', '<img src="../img/greece-athens-link.jpg">',
+                    '<img src="../img/greece-santorini-link.jpg">', '<img src="../img/greece-sifnos-link.jpg">',
+                    '<img src="../img/paris-photos-link.jpg">', '<img src="../img/france-photos-link.jpg">');
 
 # ajax request
 if ((!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') || !empty($_GET['return'])) {

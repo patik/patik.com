@@ -75,7 +75,7 @@ $x->section = 'travel';
 $x->pageTitle = 'Peru &amp; Argentina';
 $x->keywords = 'peru, argentina, cusco, machu picchu, buenos aires, amazon rainforest, lake titicaca, uruguay, panama canal, south america, travel';
 $x->dirLevel = 2;
-$x->preload = array('<img src="../../images/peru-argentina-map-small.png">');
+$x->preload = array('<img src="../../img/peru-argentina-map-small.png">');
 $x->useragent = $_SERVER['HTTP_USER_AGENT'];
 
 # ajax request

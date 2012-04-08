@@ -132,8 +132,8 @@ $x->name = 'home';
 $x->section = 'home';
 $x->print_full_page();
 $x->useragent = $_SERVER['HTTP_USER_AGENT'];
-// $x->preload = array('<img src="images/travel-peru-argentina.jpg">', '<img src="images/travel-spain.jpg">', '<img src="images/travel-greece.jpg">',
-//                     '<img src="images/travel-turkey.jpg">', '<img src="images/travel-germany.jpg">', '<img src="images/travel-france.jpg">',
-//                     '<img src="images/travel-paris.jpg">', '<img src="images/travel-britain-benelux.jpg">',);
+// $x->preload = array('<img src="img/travel-peru-argentina.jpg">', '<img src="img/travel-spain.jpg">', '<img src="img/travel-greece.jpg">',
+//                     '<img src="img/travel-turkey.jpg">', '<img src="img/travel-germany.jpg">', '<img src="img/travel-france.jpg">',
+//                     '<img src="img/travel-paris.jpg">', '<img src="img/travel-britain-benelux.jpg">',);
 
 ?>

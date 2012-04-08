@@ -1,0 +1,2 @@
+RewriteEngine on
+RewriteRule ^ffram$ ffram.php [L]
