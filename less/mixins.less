@@ -1,0 +1,93 @@
+// .border-radius (@radius) {
+//   -webkit-border-radius: @radius;
+//      -moz-border-radius: @radius;
+//           border-radius: @radius;
+// }
+
+.background-clip {
+  -webkit-background-clip: padding-box;
+     -moz-background-clip: padding;
+          background-clip: padding-box;
+}
+
+.box-shadow-multi(@shadow1, @shadow2: transparent 0 0 0) {
+  -webkit-box-shadow: @shadow1, @shadow2;
+     -moz-box-shadow: @shadow1, @shadow2;
+          box-shadow: @shadow1, @shadow2;
+}
+
+.gradient(@bgcolor: #F5F5F5, @top: #FFF, @bottom: #EEE) {
+  background-color: @color;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(@top), to(@bottom));
+  background-image: -webkit-linear-gradient(top, @top, @bottom);
+  background-image:    -moz-linear-gradient(top, @top, @bottom);
+  background-image:     -ms-linear-gradient(top, @top, @bottom);
+  background-image:      -o-linear-gradient(top, @top, @bottom);
+  background-image:         linear-gradient(top, @top, @bottom);
+}
+
+.border-radius-tl(@radius: 5px) {
+  -webkit-border-top-left-radius: @radius;
+      -moz-border-radius-topleft: @radius;
+          border-top-left-radius: @radius;
+}
+
+.border-radius-tr(@radius: 5px) {
+  -webkit-border-top-right-radius: @radius;
+      -moz-border-radius-topright: @radius;
+          border-top-right-radius: @radius;
+}
+
+.border-radius-br(@radius: 5px) {
+  -webkit-border-bottom-right-radius: @radius;
+      -moz-border-radius-bottomright: @radius;
+          border-bottom-right-radius: @radius;
+}
+
+.border-radius-bl(@radius: 5px) {
+  -webkit-border-bottom-left-radius: @radius;
+      -moz-border-radius-bottomleft: @radius;
+          border-bottom-left-radius: @radius;
+}
+
+// .transition (@prop: all, @duration: 0.2s, @ease: ease) {
+//   -webkit-transition: @prop @duration @ease;
+//      -moz-transition: @prop @duration @ease;
+//       -ms-transition: @prop @duration @ease;
+//        -o-transition: @prop @duration @ease;
+//           transition: @prop @duration @ease;
+// }
+
+
+/*
+
+.border-radius-specific (@topleft: 0, @topright: 0, @bottomright: 0, @bottomleft: 0) {
+  -webkit-border-radius: @topleft @topright @bottomright @bottomleft;
+     -moz-border-radius: @topleft @topright @bottomright @bottomleft;
+          border-radius: @topleft @topright @bottomright @bottomleft;
+}
+
+.gradient-three-stops(@bgcolor: #F5F5F5, @top: #FFF, @middle: #EEE, @stop: 50%, @bottom: #DDD) {
+  background-color: @color;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(@top), color-stop(@stop, @middle), to(@bottom));
+  background-image: -webkit-linear-gradient(top, @top 0%, @middle @stop, @bottom 100%);
+  background-image:    -moz-linear-gradient(top, @top 0%, @middle @stop, @bottom 100%);
+  background-image:     -ms-linear-gradient(top, @top 0%, @middle @stop, @bottom 100%);
+  background-image:      -o-linear-gradient(top, @top 0%, @middle @stop, @bottom 100%);
+  background-image:         linear-gradient(top, @top 0%, @middle @stop, @bottom 100%);
+}
+
+.transition-two (@prop: all, @duration: 0.2s, @ease: ease, @prop2: all, @duration2: 0.2s, @ease2: ease) {
+  -webkit-transition: @prop @duration @ease, @prop2 @duration2 @ease2;
+     -moz-transition: @prop @duration @ease, @prop2 @duration2 @ease2;
+      -ms-transition: @prop @duration @ease, @prop2 @duration2 @ease2;
+       -o-transition: @prop @duration @ease, @prop2 @duration2 @ease2;
+          transition: @prop @duration @ease, @prop2 @duration2 @ease2;
+}
+
+.opacity (@decimal) {
+  filter: alpha(opacity=@decimal*100);
+  -moz-opacity: @decimal;
+       opacity: @decimal;
+}
+*/

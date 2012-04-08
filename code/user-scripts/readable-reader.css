@@ -1,0 +1,92 @@
+
+/* Elements with transitions */
+/*h2.entry-title,*/
+.card.card-common {
+  -webkit-transition: all 0.2s ease;
+     -moz-transition: all 0.2s ease;
+      -ms-transition: all 0.2s ease;
+       -o-transition: all 0.2s ease;
+          transition: all 0.2s ease;
+}
+
+/* Shrink the bar that spans between the search area and the entries */
+#lhn-add-subscription-section, #viewer-header {
+  height: 50px !important;
+}
+
+/* Remove extraneous gray border between the controls and the entries */
+#lhn-add-subscription-section, #viewer-header-container {
+  border-bottom: none !important;
+}
+#entries {
+  border-top: none !important;
+}
+
+/* Make left nav area narrower */
+#nav, #lhn-add-subscription-section, #scrollable-sections-top-shadow, #scrollable-sections-bottom-shadow {
+  width: 224px !important;
+}
+#chrome {
+  margin-left: 224px;
+}
+
+
+/* Hide title bar directly above the entries */
+#title-and-status-holder {
+  display: none !important;
+}
+
+/* Unselected entry title (with link) */
+h2.entry-title a.entry-title-link {
+  color: #333 !important;; /* Same blue as search button */
+  font: 1.5em/1.2 "Book Antiqua", Georgia, serif !important;
+}
+
+/* Unselected entry title (no link) */
+.read h2.entry-title {
+  color: #444 !important;
+  font: 1.5em/1.2 "Book Antiqua", Georgia, serif !important;
+}
+
+/* Unselected entry container */
+.card.card-common {
+  background: #f8f8f8 !important;
+  background: -webkit-linear-gradient(center top , #f8f8f8, #f1f1f1) !important;
+  background:    -moz-linear-gradient(center top , #f8f8f8, #f1f1f1) !important;
+  background:     -ms-linear-gradient(center top , #f8f8f8, #f1f1f1) !important;
+  background:      -o-linear-gradient(center top , #f8f8f8, #f1f1f1) !important;
+  background:         linear-gradient(center top , #f8f8f8, #f1f1f1) !important;
+  border-radius: 0.5em !important;
+}
+
+/* Unselected action buttons */
+.card-common .card-actions {
+  background: transparent;
+}
+
+/* Selected entry container */
+.read .card.card-common {
+  background: #ffffff !important;
+  border-radius: 0 !important;
+}
+
+/* Selected entry title (with link) */
+.read h2.entry-title a.entry-title-link {
+  color: #3A7FED !important;; /* Same blue as search button */
+}
+
+/* Selected entry title (no link) */
+.read h2.entry-title {
+  color: #444 !important;
+  font: 1.5em/1.2 "Book Antiqua", Georgia, serif !important;
+}
+
+/* Main entry body */
+.entry-body {
+  font: 1.1em/1.4 "Segoe UI", "Myriad Pro", Calibri, sans-serif !important;;
+}
+
+/* Entry links */
+.item-body a {
+  color: #3A7FED;
+}

@@ -1,0 +1,77 @@
+/* Overall page */
+.globalNav2011_reset #MAIN,
+#MAIN {
+  width: 980px !important;
+  background-color: #FcFFEe !important;
+}
+
+.globalNav2011_reset #PAGE,
+#PAGE {
+  background-color: white !important;
+}
+
+#HEAD .topLogo {
+  padding: 10px 0 2px 15px !important;
+}
+
+/* Hide junk */
+#LEFTNAV .bx01, /* Left nav */
+#main > .ad, .ad, /* Top ad */
+#SHOW_TOPIC .sidebar, #ALSO_VIEWED_LIST, /* Sidebar */
+.balance /* Hotel search */
+{
+  display: none !important;
+}
+
+/* Keep the footer */
+.col.balance {
+  display: block !important;
+}
+
+/* Posts/thread column */
+.globalNav2011_reset #BODYCON, #BODYCON,
+.firstPostBox .bx01 /* First post */
+{
+  background-color: transparent !important;
+}
+
+/* Post body */
+.post .postBody {
+  font-family: "Myriad Pro", "Helvetica Neue", Helvetica, "Segoe UI", sans-serif !important;
+  font-size: 1.5em !important; /* about 18px */
+}
+
+/* Bigger user names */
+.post .username {
+  font-size: 1.5em !important;
+  margin: 0.75em 0 !important;
+}
+
+/* Highlight original author's name in subsequent posts */
+.original-poster-username {
+  color: green;
+  font-style: italic;
+}
+
+/* Subdued repeated post titles */
+.post .postTitle span.titleText {
+  font-family: "Myriad Pro", "Helvetica Neue", Helvetica, "Segoe UI", sans-serif !important;
+  font-size: 1em !important;
+  color: #999 !important;
+}
+
+/* Subdued post links (spam, save, etc) */
+.postTools_wide {
+  opacity: 0.25 !important;
+}
+.postTools_wide:hover {
+  opacity: 1 !important;
+}
+
+/* First post of the thread, when repeated on after page 1 */
+.subsequent-page-of-thread .firstPostBox .bx01 {
+  opacity: 0.5 !important;
+}
+.subsequent-page-of-thread .firstPostBox .bx01:hover {
+  opacity: 1 !important;
+}

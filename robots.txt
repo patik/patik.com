@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: wu.html
+Disallow: /hp/
+Disallow: /stuff/
+Disallow: /backup/
+Disallow: /trips/
+Disallow: /portfolio/
+Disallow: /tumblrrss/
+Disallow: /n/
+Disallow: /dtf/
+Disallow: /work/

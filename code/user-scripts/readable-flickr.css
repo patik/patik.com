@@ -1,0 +1,20 @@
+p:not(.Do, .Activity), div.photoDescription, .Paginator a, .Paginator span {
+  font-size: 16px !important;
+}
+
+/* page navigation buttons */
+.Paginator a, .Paginator span {
+	padding: 4px 12px !important;
+}
+
+div#main {
+  width: 90% !important;
+}
+
+div.PhotosColumn {
+  width: 70% !important;
+}
+
+div.SetsColumn {
+  width: 30% !important;
+}

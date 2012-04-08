@@ -1,0 +1,18 @@
+/* the humans responsible & colophon */
+/* humanstxt.org */
+
+
+/* TEAM */
+  Lead developer: Craig Patik
+  Site: http://patik.com/
+  Twitter: craigpatik
+  Location: Albany, NY
+
+/* THANKS */
+  Names (& URL): html5boilerplate.com, html5doctor.com, http://joncom.be/code/excanvas-world-map/
+
+/* SITE */
+  Standards: HTML5, CSS3
+  Components: Modernizr, jQuery, Bootstrap
+  Software: ExCanvas World Map
+
