@@ -19,3 +19,5 @@ _private/
 font-face/
 gps_files/
 ophoto/
+js/libs/ajaxify-html5.js
+js/libs/jquery.history.js

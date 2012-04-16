@@ -82,7 +82,7 @@ class Print_html
   <meta name="author" content="Craig Patik">
   <meta name="description" content="Craig Patik's homepage &mdash; travel logs &amp; photos, and web design &amp; development">
 <?php /* for adaptive images */ ?>
-<script>document.cookie='resolution='+Math.max(screen.width,screen.height)+'; path=/';</script><?php /*
+<script>document.cookie='resolution='+Math.max(screen.width,screen.height)+("devicePixelRatio" in window ? ","+devicePixelRatio : ",1")+'; path=/';</script><?php /*
 old version:
   <script>var device_width=screen.width;var device_height=screen.height;if(device_width>device_height){ai_width=device_width;}else{ai_width=device_height;} document.cookie='resolution='+ai_width+'; expires=; path=/';</script>*/ ?>
 <?php
@@ -110,9 +110,6 @@ if (!$this->isMobile || $this->isTablet) {
 <?php
 }
 ?>
-  <?php /*<!--[if lte IE 8]><link rel="stylesheet" href="<?php $this->print_dir_level(); ?>min/?g=cssie"><![endif]-->
-  <!--[if (gte IE 9)|!(IE)]><!--><link rel="stylesheet" href="<?php $this->print_dir_level(); ?>min/?g=css"><!--<![endif]-->*/ ?>
-  <?php /*<link rel="stylesheet" href="<?php $this->print_dir_level(); ?>css/libs/bootstrap.css">*/ ?>
   <link rel="stylesheet" href="<?php $this->print_dir_level(); ?>css/style.css">
   <?php if (!empty($this->styleSheets) && is_array($this->styleSheets)) {
           foreach ($this->styleSheets as $ss) { ?>
