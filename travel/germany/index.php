@@ -16,8 +16,11 @@ function print_page_body()
       src: local('Cloister Black Light'), local('CloisterBlack-Light'), url('/font-face/cloister-black/CloisterBlack.ttf') format('truetype'), url('/font-face/cloister-black/CloisterBlack.woff') format('woff');
     }
     #germany-main h1, h2 { font-family: 'CloisterBlackLight'; }
-  </style>*/
-  ?>
+
+    .font {
+    }
+  </style>
+*/ ?>
   <div id="germany-main" role="main">
 
     <h1>Germany &amp; Austria</h1>

@@ -5453,7 +5453,15 @@ select,
 textarea,
 .navbar,
 .navbar-search .search-query {
-  font-family: ff-masala-web-pro-1, ff-masala-web-pro-2, "Helvetica Neue", Calibri, Arial, sans-serif;
+  font-family: "ff-masala-web-pro-1", "ff-masala-web-pro-2", "chaparral-pro-1", "chaparral-pro-2", "Helvetica Neue", Arial, sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal !important;
 }
 pre,
 code,
@@ -5466,6 +5474,7 @@ samp {
 }
 p,
 li {
+  font-family: "chaparral-pro-1", "chaparral-pro-2", Palatino Linotype, Palatino, serif;
   font-size: 18px;
   line-height: 22px;
 }
@@ -6116,37 +6125,6 @@ img[src^="/gam.php?"] {
 @media (min-width: 1200px) {
   
 }
-body,
-p,
-nav,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-button,
-input,
-select,
-textarea,
-.navbar,
-.navbar-search .search-query {
-  font-family: "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif;
-}
 @media (min-width: 481px) {
-  nav,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  button,
-  input,
-  select,
-  textarea,
-  .navbar,
-  .navbar-search .search-query {
-    font-family: ff-masala-web-pro-1, ff-masala-web-pro-2, "Helvetica Neue", Calibri, Arial, sans-serif;
-  }
+  
 }

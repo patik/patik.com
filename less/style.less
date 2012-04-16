@@ -43,12 +43,12 @@ body, p, nav, h1, h2, h3, h4, h5, h6, button, input, select, textarea,
   font-family: @font-sans; // Includes Typekit (which is only served to tablets and up) but falls back to Helvetica, etc
 }
 
-pre, code, kbd, samp {
-  font-family: @font-fixed;
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal !important;
 }
 
-.navbar .nav > li {
-  //font-size: 16px; // BS override
+pre, code, kbd, samp {
+  font-family: @font-fixed;
 }
 
 .container {
@@ -56,6 +56,7 @@ pre, code, kbd, samp {
 }
 
 p, li {
+  font-family: @font-serif;
   font-size: 18px;
   line-height: 22px;
 }
@@ -685,20 +686,19 @@ img[src^="/gam.php?"] {
 // TESTING ONLY
 // ------------
 // So I can see Helvetica for phone-size and Typekit otherwise (Typekit won't be served to phones)
-body, p, nav, h1, h2, h3, h4, h5, h6, button, input, select, textarea,
-.navbar, .navbar-search .search-query {
-  font-family: @font-helv;
-}
+// body, p, nav, h1, h2, h3, h4, h5, h6, button, input, select, textarea,
+// .navbar, .navbar-search .search-query {
+//   font-family: @font-helv;
+// }
 
 @media (min-width: @bkptPhoneMore) {  // 481px
 
   // Testing only, so I can see Typekit on desktop
-  body, p {
-    //font-family: @font-serif;
-  }
+  // body, nav, p, li {
+  //   font-family: @font-serif;
+  // }
 
-  nav, h1, h2, h3, h4, h5, h6, button, input, select, textarea,
-  .navbar, .navbar-search .search-query {
-    font-family: @font-sans;
-  }
+  // h1, h2, h3, h4, h5, h6, button, input, select, textarea {
+  //   font-family: @font-sans;
+  // }
 }
