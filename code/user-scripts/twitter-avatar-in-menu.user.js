@@ -3,7 +3,7 @@
 // @namespace      http://patik.com/code/user-scripts/
 // @include        https://twitter.com/*
 // @include        http://twitter.com/*
-// @version        0.2
+// @version        v20120702.1
 // ==/UserScript==
 
 (function() {
@@ -12,6 +12,6 @@
       src = avi ? avi.src : "";
 
   if (menuitem && src) {
-    menuitem.style.cssText = "background-image: url('" + src + "');background-position: 0 0;border-radius: 4px;height: 32px;margin: -10px 0 0;width: 32px;";
+    menuitem.style.cssText = "background-image: url('" + src + "') !important;background-position: 0 0;border-radius: 4px;height: 32px;margin: -10px 0 0;width: 32px;";
   }
 })();

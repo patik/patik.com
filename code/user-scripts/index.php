@@ -26,6 +26,12 @@ function print_page_body()
     </section>
 
     <section>
+      <h2>Readable Google+</h2>
+      <p>Cleans up Google+ Post pages. Currently only eliminates the gigantic avatar in the sidebar.</p>
+      <p><a href="readable-google-plus.user.js" class="btn btn-large">Install</a></p>
+    </section>
+
+    <section>
       <h2>Readable Trip Advisor Forums</h2>
       <p>Clean styles for Trip Advisor</p>
       <p><a href="readable-trip-advisor.user.js" class="btn btn-large">Install</a></p>
@@ -50,8 +56,8 @@ function print_page_body()
 $x = new Print_html();
 $x->name = 'userscripts';
 $x->section = 'code';
-$x->pageTitle = 'Readable Reader for Google Reader and Other User Scripts';
-$x->keywords = 'user script, google reader, rss, css, javascript, greasemonkey, browser extension, add-on';
+$x->pageTitle = 'User Scripts - Readable Google Reader, Twitter Avatar, and more';
+$x->keywords = 'user script, google reader, google+, css, javascript, greasemonkey, browser extension, add-on';
 $x->dirLevel = 2;
 
 # ajax request
