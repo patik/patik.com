@@ -19,6 +19,12 @@ function print_page_body()
           </a>
         </div>
         <div>
+          <a href="travel/britain-benelux/">
+            <img src="img/home-britain-benelux.jpg" alt="Big Ben, a black cab, and a red double-decker bus in Parliament Square" title="London, England">
+            <span>Britain &amp; Benelux</span>
+          </a>
+        </div>
+        <div>
           <a href="travel/peru-argentina/">
             <img src="img/home-travel-peru-argentina.jpg" alt="Kim holding a lamb and posing with two Andean women in their traditionl clothing" title="Kim holding a lamb and posing with two Andean women">
             <span>Peru &amp; Argentina</span>
@@ -42,12 +48,14 @@ function print_page_body()
             <span>Germany &amp; Austria</span>
           </a>
         </div>
+      <?php /* Add link to Paris, then uncomment this
         <div>
           <a href="travel/greece/">
             <img src="img/home-travel-greece.jpg" alt="View of the coast of Serifios, Greece from a ferry" title="Serifios, Greece">
             <span>Greece</span>
           </a>
         </div>
+      */ ?>
       </div>
     </section>
 
@@ -86,7 +94,7 @@ function print_page_body()
       <div class="row button-link-list">
         <div>
         	<a href="https://twitter.com/craigpatik">
-        		<img src="img/home-twitter-craigpatik-avatar.jpg" alt="Twitter avatar; photo of my riding on a camel" title="@craigpatik">
+        		<img src="img/home-twitter-craigpatik-avatar.jpg" alt="Twitter avatar; photo of me riding on a camel" title="@craigpatik">
             <span>@craigpatik</span>
           </a>
         </div>
@@ -98,7 +106,7 @@ function print_page_body()
         </div>
         <div>
         	<a href="https://www.facebook.com/craigpatik">
-        		<img src="img/home-twitter-craigpatik-avatar.jpg" alt="Facebook avatar; photo of my riding on a camel" title="Facebook profile">
+        		<img src="img/home-twitter-craigpatik-avatar.jpg" alt="Facebook avatar; photo of me riding on a camel" title="Facebook profile">
             <span>Facebook</span>
           </a>
         </div>
@@ -115,14 +123,21 @@ function print_page_body()
           </a>
         </div>
         <div>
-        	<a href="http://rubeonrails.com">
-        		<img src="img/home-tumblr-rubeonrails-avatar.jpg" alt="S-Bahn station in Marienplatz, Munich, Germany" title="S-Bahn station in Marienplatz, Munich, Germany">
+          <a href="http://rubeonrails.com">
+            <img src="img/home-tumblr-rubeonrails-avatar.jpg" alt="S-Bahn station in Marienplatz, Munich, Germany" title="S-Bahn station in Marienplatz, Munich, Germany">
             <span>Rube On Rails</span>
+          </a>
+        </div>
+        <div>
+        	<a href="https://alpha.app.net/patik" rel="me">
+        		<img src="img/home-twitter-craigpatik-avatar.jpg" alt="App.net avatar; photo of me riding on a camel" title="App.net Profile">
+            <span>@patik on App.net</span>
           </a>
         </div>
       </div>
      </section>
-
+     <div style="position:absolute;top:-9999px;left:-9999px;"><a href='https://alpha.app.net/patik' class='adn-button' rel='me' data-type='follow' data-width='220' data-height='38' data-user-id='@patik'>Follow me on App.net</a><a href='https://alpha.app.net/patik' rel='me'>...</a></div>
+     <script src='https://d2zh9g63fcvyrq.cloudfront.net/adn.js'></script>
   </div>
   <?php
 }

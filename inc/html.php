@@ -136,6 +136,7 @@ if (!$this->isMobile || $this->isTablet) {
               <ul class="dropdown-menu">
                 <li><a href="<?php $this->print_dir_level(); ?>travel/">All Travels</a></li>
                 <li class="divider"></li>
+                <li><a href="<?php $this->print_dir_level(); ?>travel/britain-benelux/">Britian &amp; Benelux</a></li>
                 <li><a href="<?php $this->print_dir_level(); ?>travel/peru-argentina/">Peru &amp; Argentina</a></li>
                 <li><a href="<?php $this->print_dir_level(); ?>travel/spain/">Spain</a></li>
                 <li><a href="<?php $this->print_dir_level(); ?>travel/turkey/">Turkey</a></li>
@@ -143,8 +144,6 @@ if (!$this->isMobile || $this->isTablet) {
                 <li><a href="<?php $this->print_dir_level(); ?>travel/greece/">Greece</a></li>
                 <li><a href="<?php $this->print_dir_level(); ?>travel/paris/">Paris</a></li>
                 <li><a href="<?php $this->print_dir_level(); ?>travel/france/">France</a></li>
-                <li class="divider"></li>
-                <li><a href="<?php $this->print_dir_level(); ?>travel/britain-benelux/">Britian &amp; Benelux</a></li>
               </ul>
             </li>
             <li><a href="<?php $this->print_dir_level(); ?>code/"<?php if ($this->section === 'code') { echo ' class="active"'; } ?>>Code</a></li>

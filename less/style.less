@@ -1,36 +1,32 @@
 @charset "utf-8";
-
 @import "bootstrap/bootstrap.less";
 @import "bootstrap/responsive.less";
 @import "variables.less";
 @import "mixins.less";
 
+// // Displays the current width for testing breakpoints
+// #breakpoint {
+//   position: fixed;
+//   z-index: 1051;
+//   width: 200px;
+//   left: 50%;
+//   top: 2px;
+//   color: black;
+//   margin-left: -100px;
+//   background-color: rgba(255,255,255,0.7);
+//   padding: 4px;
+//   text-align: center;
 
-#breakpoint {
-  position: fixed;
-  z-index: 1051;
-  width: 200px;
-  left: 50%;
-  top: 2px;
-  color: black;
-  margin-left: -100px;
-  background-color: rgba(255,255,255,0.7);
-  padding: 4px;
-  text-align: center;
-
-  span {
-    font-family: @font-fixed;
-    color: red;
-    color: red;
-  }
-}
+//   span {
+//     font-family: @font-fixed;
+//     color: red;
+//     color: red;
+//   }
+// }
 
 // =============================================================================
 //   Basic styles
 // =============================================================================
-
-@import "variables.less";
-@import "mixins.less";
 
 body {
   font-size: 16px;
@@ -46,10 +42,23 @@ body, p, nav, h1, h2, h3, h4, h5, h6, button, input, select, textarea,
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: normal !important;
+  color: #3A87AD; // darken(#08C, 10%);
 }
 
 pre, code, kbd, samp {
   font-family: @font-fixed;
+}
+
+[role="main"] a {
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+[role="main"] .btn {
+  text-decoration: none;
 }
 
 .container {
@@ -70,7 +79,7 @@ section {
 
 figure {
   img {
-    .box-shadow(0 0 2px black);
+    box-shadow: 0 0 2px black;
   }
 }
 
@@ -97,17 +106,18 @@ figure {
     clear: both;
     overflow: hidden;
     padding: 0.5em 0.25em;
-    //.box-shadow-multi(0 1px 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.05) inset);
-    .border-radius(0);
+    //box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.05) inset;
+    border-radius: 0;
     border-top: none;
     width: auto;
     text-align: left;
+    text-decoration: none;
 
     &:active,
     &:hover,
     &:focus {
       text-decoration: none;
-      .box-shadow-multi(0 1px 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.05) inset);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.05) inset;
     }
 
     img {
@@ -142,19 +152,18 @@ figure {
     min-height: 128px;
     max-height: 144px;
     width: auto;
-    max-width: 336px; // Max width of the image files (some at 340px, but whatever)
+    max-width: 336px; // Max width of the image files (some are 340px, but whatever)
 
     position: relative;
-    .border-radius(5px);
-    @shadow: 0 0 6px rgba(0, 0, 0, 0.4);
-    .box-shadow(@shadow);
+    border-radius: 5px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
     text-shadow: 3px 3px 4px black, 0 -1px 0 rgba(0, 0, 0, 0.5);
 
     &:active,
     &:hover,
     &:focus {
       text-decoration: none;
-      //.box-shadow-multi(0 1px 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.05) inset);
+      //box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.05) inset;
     }
 
     span {
@@ -183,6 +192,10 @@ figure {
       .image-cover {
         background-color: rgba(0, 0, 0, 0);
       }
+    }
+
+    img {
+      max-width: 100%;
     }
   }
 
@@ -246,10 +259,9 @@ figure {
 
   .bg-travel-britain-benelux {
     span {
-      top: 25%;
-      left: 0;
-      right: 0;
-      text-align: center;
+      top: @imgPositionOffset + 1;
+      left: @imgPositionOffset + 3;
+      text-align: left;
     }
   }
 
@@ -258,6 +270,56 @@ figure {
    * Britain & Benelux
    * -----------------------------------
    */
+
+  .bg-britain-netherlands {
+    span {
+      position: absolute;
+      bottom: 6px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  .bg-britain-bruges {
+    span {
+      position: absolute;
+      bottom: 6px;
+      right: 16px;
+      width: 100%;
+      text-align: right;
+    }
+  }
+
+  .bg-britain-edinburgh {
+    span {
+      position: absolute;
+      bottom: 6px;
+      right: 8px;
+      width: 100%;
+      text-align: right;
+    }
+  }
+
+  .bg-britain-london {
+     span {
+      position: absolute;
+      top: 20px;
+      left: 0;
+      text-align: center;
+      width: 100%;
+    }
+  }
+
+  .bg-britain-liverpool {
+    span {
+      position: absolute;
+      bottom: 6px;
+      left: 8px;
+      width: 100%;
+      text-align: left;
+    }
+  }
 
 
   /* -----------------------------------
@@ -455,11 +517,11 @@ figure {
   text-align: center;
 
   img {
-    .box-shadow(0 0 8px rgba(0, 0, 0, 0.4));
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
     .transition(all 0.15s ease 0s);
 
     &:hover {
-      .box-shadow(0 0 4px rgba(0, 0, 0, 0.6));
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
     }
   }
 }
@@ -560,7 +622,7 @@ img[src^="/gam.php?"] {
       float: left;
       margin-left: 2%; // Tried @fluidGridGutterWidth but it breaks at some odd-value browser widths
       margin-bottom: 2%;
-      .border-radius(4px);
+      border-radius: 4px;
     }
 
     & > div:nth-child(odd) {
@@ -570,7 +632,7 @@ img[src^="/gam.php?"] {
 
     a {
       border: 1px solid @light-gray;
-      .border-radius(4px);
+      border-radius: 4px;
     }
   }
 
@@ -627,7 +689,7 @@ img[src^="/gam.php?"] {
       float: left;
       margin-left: 2%; // Tried @fluidGridGutterWidth but it breaks at some odd-value browser widths
       margin-bottom: 2%;
-      .border-radius(4px);
+      border-radius: 4px;
     }
 
     & > div:nth-child(odd) {
@@ -653,7 +715,7 @@ img[src^="/gam.php?"] {
       margin-left: 0; // Tried @fluidGridGutterWidth but it breaks at some odd-value browser widths
       margin-right: 2%;
       margin-bottom: 2%;
-      .border-radius(4px);
+      border-radius: 4px;
       clear: none;
     }
 

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>localStorageDB Quota Test</title>
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <h1>localStorageDB Quota Test</h1>
+    </div>
+    <div class="row">
+      <div class="span4">
+        <h2>Actions</h2>
+        <p>Try adding rows until you receive an error (quota exceeded).</p>
+        <div class="row">
+          <div class="span4">
+            <p><button type="button" class="btn btn-primary" id="add">Add 100 rows</button></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span4">
+            <p>Then try truncating the table to removing rows to see if space is actually freed up.</p>
+            <p><button type="button" class="btn btn-warning" id="truncate">Truncate table</button></p>
+            <p><button type="button" class="btn btn-warning" id="delete">Delete all rows</button></p>
+            <p>Go to <a href="chrome://settings/cookies">chrome://settings/cookies</a>, type in patik.com, and expand 'localStorage' to see the amount of space taken up.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span4">
+            <p><button type="button" class="btn btn-info" id="drop">Drop database</button></p>
+            <p><button type="button" class="btn btn-info" id="create">Create database</button></p>
+            <p><button type="button" class="btn" id="serialize">Serialize database</button></p>
+            <p><textarea id="serialize-output"></textarea></p>
+          </div>
+        </div>
+      </div>
+      <div class="span8">
+        <h2>Log</h2>
+        <ol id="output">
+        </ol>
+        <p><button type="button" class="btn" id="clear-log">Clear</button></p>
+      </div>
+    </div>
+  </div>
+  <script src="localstoragedb.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

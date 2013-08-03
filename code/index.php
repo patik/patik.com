@@ -28,7 +28,7 @@ function print_page_body()
           </a>
         </div>
         <div>
-        	<a href="../demos/consolelog/">
+        	<a href="console-log-polyfill">
           	<img src="../img/home-console-blog-logo.png" alt="JavaScript code" title="Cross-browser console logging">
           	<span>Cross-browser console logging</span>
           </a>

@@ -331,6 +331,11 @@ FileETag None
   RewriteRule ^csyes/?(.*)$ http://patik.com/blog/$1 [R=301]
 </IfModule>
 
+<IfModule mod_rewrite.c>
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^demos/consolelog/?(.*)$ http://patik.com/code/console-log-polyfill/$1 [R=301]
+</IfModule>
+
 
 # ----------------------------------------------------------------------
 # Suppress or force the "www." at the beginning of URLs

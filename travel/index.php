@@ -16,6 +16,13 @@ function print_page_body()
       <?php /* <h2>Travel</h2>*/ ?>
       <div class="row travel-link-list">
         <div>
+          <a class="bg-travel-britain-benelux" href="britain-benelux/">
+            <img src="../img/travel-britain-benelux.jpg" alt="Big Ben, a black cab, and a red double-decker bus in Parliament Square">
+            <span>Britain &amp;<br>Benelux</span>
+            <div class="image-cover"></div>
+          </a>
+        </div>
+        <div>
           <a class="bg-travel-peru-argentina" href="peru-argentina/">
             <img src="../img/travel-peru-argentina.jpg" alt="Kim holding a lamb and posing with two Andean women">
             <span>Peru &amp; Argentina</span>
@@ -61,13 +68,6 @@ function print_page_body()
           <a class="bg-travel-france" href="france/">
             <img src="../img/travel-france.jpg" alt="The Seine River">
             <span>France</span>
-            <div class="image-cover"></div>
-          </a>
-        </div>
-        <div>
-          <a class="bg-travel-britain-benelux" href="britain-benelux/">
-            <img src="../img/travel-britain-benelux.jpg" alt="London Tube map">
-            <span>Britain &amp;<br>Benelux</span>
             <div class="image-cover"></div>
           </a>
         </div>

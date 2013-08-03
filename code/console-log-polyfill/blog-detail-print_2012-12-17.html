@@ -1,0 +1,44 @@
+<div class="alert alert-info">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  This is an update to the console.log wrapper; see <a href="http://patik.com/blog/complete-cross-browser-console-log/">this blog post</a> for background and a more detailed discussion of the problems with console logging.
+</div>
+
+<p>While logging the console can be useful during development, some browser consoles do not display logged data in a readable, useful format. These primitive consoles do not expand arrays, do not link DOM elements to the source code, print objects as <code>[object Object]</code> rather than listing their properties, etc.</p>
+
+<p>For example, try logging the following in Internet Explorer 8 through 10:</p>
+
+[js]console.log( "Here's a string",
+             3.14,
+             {"alpha": 5, "bravo": false},
+             document.getElementById('charlie'),
+             new Date()
+            );
+[/js]
+
+<p>It will result in:</p>
+
+<p><img class="size-full aligncenter" src="http://patik.com/code/console-log-polyfill/ie8-without-detail-print.png" alt="IE8 without detailed print"></p>
+
+<p>On the other hand, <a href="http://getfirebug.com/">Firebug</a>, WebKit's <a href="https://developers.google.com/chrome-developer-tools/docs/overview">Developer Tools</a>, and Opera's <a href="http://www.opera.com/dragonfly/">Dragonfly</a> print useful, interactive items to the console. Here's the same code as above, but this time in Firebug:</p>
+
+<p><img class="size-full aligncenter" src="http://patik.com/code/console-log-polyfill/consolelog.firebug.png" alt="Firebug running in Firefox"></p>
+
+<h2>Expanded details</h2>
+
+<p>But it is possible to eke a bit more information out of the data in primitive consoles. I've added a <a href="https://github.com/cpatik/console.log-wrapper">detailed print plugin</a> to my <a href="http://patik.com/blog/complete-cross-browser-console-log/">console.log</a> wrapper.</p>
+
+<p>By including the plugin and sending the data to <code>log()</code>, the same call as above now looks like this:</p>
+
+<p><img class="size-full aligncenter" src="http://patik.com/code/console-log-polyfill/ie8-with-detail-print.png" alt="IE8 with detailed print"></p>
+
+<p>It's still not pretty, nor is it linkable like modern consoles. But now instead of <code>[object Object]</code> you can see that it was an array (along with its length), or a DOM element (along with its selector), and so on. This can be useful in IE 7/8/9/10, iOS 5 and older, and Opera 11 and older, among others.</p>
+
+<h2>Alternatives</h2>
+
+<p>For iOS 5 and older, if you are so inclined you may instead try <a href="http://www.hongkiat.com/blog/installing-firebug-browsers-ios/">installing Firebug</a> or using a remote debugging tool like <a href="http://html.adobe.com/edge/inspect/">Adobe Edge Inspect</a> or <a href="http://people.apache.org/~pmuellr/weinre/docs/latest/">Weinre</a>.</p>
+
+<p>If you're sticking to modern browsers, you can simply ignore the new <code>consolelog.detailprint.js</code> plugin and continue to use <code>log()</code> as usual.</p>
+
+<p>Thanks to <a href="http://www.bittubes.com/">Jörn Berkefeld</a> for pointing out that this was <a href="https://github.com/cpatik/console.log-wrapper/issues/7">needed on iOS 5</a> and for testing.</p>
+
+<p><a class="btn btn-primary" href="http://patik.com/code/console-log-polyfill/">Live Demo</a>&nbsp;<a class="btn" href="https://github.com/cpatik/console.log-wrapper">Github Repo</a></p>

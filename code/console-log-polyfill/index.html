@@ -1,260 +1,64 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="description" content="console.log() polyfill">
-	<meta name="author" content="Craig Patik">
-	<title>Complete cross-browser console.log() wrapper</title>
-	<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  <script src="console.log2.js"></script>
+  <meta charset="utf-8">
+  <title>Complete cross-browser console.log() wrapper</title>
+  <meta name="description" content="console.log() polyfill">
+  <meta name="author" content="Craig Patik">
+  <link rel="canonical" href="http://patik.com/code/console-log-polyfill">
+  <link href="demo.css" rel="stylesheet">
 </head>
 <body>
-  <article>
-    <h1>Complete cross-browser console.log() wrapper demo</h1>
-    <section>
-    <!--
-   		<p>Open your console, then click one of the buttons below.</p>
-    	<p>These examples will write the major JavaScript variable types to the console (string, object, function, etc). Depending on your console, each type will appear either as a plain strings (IE, mostly) or as interactive, explorable items (Firebug, some others). Note that any limitations are likely imposed by the console itself, not the <code>log()</code> function being demoed here.</p>
-      <p>You can see the <code>log()</code> function in <a href="consolelog.js">consolelog.js</a>. For a detailed explanation, see the <a href="http://patik.com/blog/complete-cross-browser-console-log/">blog post</a>.</p>
-			<p>If you're lost, note that this has nothing to do with the mathematical log function. And if you're looking to comfort a grieving cylinder of wood, I <em>really</em> can't help you, sorry!</p>
-      -->
-      <ul id="command-list">
-      </ul>
-    </section>
-  </article>
+  <div class="container">
+    <div class="span12">
+      <h1>Complete cross-browser console.log() wrapper demo</h1>
+      <p>Open your console, then click one of the <strong>log</strong> buttons below.</p>
+      <p>These examples will write the major JavaScript variable types to the console (string, object, function, etc). Depending on your console, each type will appear either as a plain strings (IE, mostly) or as interactive, explorable items (Firebug, some others). Note that any limitations are likely imposed by the console itself, not the <code>log()</code> function being demoed here.</p>
+      <p>You can see the <code>log()</code> function in <a href="consolelog.js">consolelog.js</a>. For a detailed explanation, see the <a href="http://patik.com/blog/complete-cross-browser-console-log/">blog post</a>. You can also <a href="https://github.com/cpatik/console.log-wrapper/">fork the project on GitHub</a>.</p>
+      <p>If you're lost, note that this has nothing to do with the mathematical log function. And if you're looking to comfort a grieving cylinder of wood, I <em>really</em> can't help you, sorry!</p>
+    </div>
+    <div class="span12">
+      <table id="command-list" class="table">
+        <thead>
+          <tr>
+            <th colspan="2">Command</th>
+            <th>Arguments</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="button" class="btn btn-primary" data-method="log" data-command="a" value="log"></td>
+            <td><input type="button" class="btn" data-method="console" data-command="a" value="console.log"></td>
+            <td><pre><code><span class="c-str">"Here's a string"</span>, <span class="c-num">3.14</span>, {<span class="c-str">"alpha"</span>: <span class="c-num">5</span>, <span class="c-str">"bravo"</span>: <span class="c-key">false</span>}, <span class="c-spec">document</span>.getElementById(<span class="c-str">"charlie"</span>), <span class="c-key">new</span> <span class="c-spec">Date()</span></code></pre></td>
+          </tr>
+          <tr>
+            <td><input type="button" class="btn btn-primary" data-method="log" data-command="b" value="log"></td>
+            <td><input type="button" class="btn" data-method="console" data-command="b" value="console.log"></td>
+            <td><pre><code><span class="c-key">function</span> () { alert(<span class="c-str">"hello"</span>); }, (<span class="c-num">2</span>+<span class="c-num">2</span>===<span class="c-num">5</span>), [<span class="c-num">1</span>, <span class="c-str">"2"</span>, <span class="c-num">3</span>, <span class="c-num">4</span>, <span class="c-str">"5"</span>]</code></pre></td>
+          </tr>
+          <tr>
+            <td><input type="button" class="btn btn-primary" data-method="log" data-command="c" value="log"></td>
+            <td><input type="button" class="btn" data-method="console" data-command="c" value="console.log"></td>
+            <td><pre><code>"Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch"</code></pre></td>
+          </tr>
+        </tbody>
+      </table>
+      <p>If your browser has a console, use the <strong>console.log</strong> buttons for comparison to see how the call would be handled normally.</p>
+    </div>
+  </div>
+  <div id="charlie" class="delta echo">This is just for the demo</div>
+  <script src="consolelog.js"></script>
+  <script src="consolelog.detailprint.js"></script>
+  <script src="demo.js"></script>
   <script>
-// The list of sample commands used to demonstrate the log() function
-var commands = {
-  'log-exec1': {
-    'method': function () { console.log( "Here's a string" , 3.14, {"three":false} ); }
-  },
-  'log-exec2': {
-    'method': function () { console.log( function () { alert("hello"); }, (2+2===5), new Date() ); }
-  },
-  'log-exec3': {
-    'method': function () { console.log( "Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch" ); }
-  }
-};
-
-// Setup the demo page for easy consumption
-function setup ()
-{
-  // Create the list of example methods and their buttons based on the object above, 
-  // rather than writing everything twice
-  var ul = document.getElementById('command-list'),
-      i, html, buttonIds = [];
-  for (i in commands) {
-    // Create a list item with a 'Run it' button and the code that it will, er, execute
-    html  = '<li>'
-    html += '<input type="button" id="' + i + '" value="Run it" title="Go ahead, drop that log!"> ';
-    html += '<code>';
-    // Omit the wrapping "function () { }" for display
-    html += commands[i].method.toString().replace(/^function\s\(\)\s\{\s/,'').replace(/\s\}$/,'');
-    html += '</code></li>';
-    
-    // Add the list item to the list
-    ul.innerHTML += html;
-    buttonIds.push(i);
-  }
-  
-  // Listen for button clicks
-  i = buttonIds.length;
-  while (i--) {
-    addEvent(document.getElementById(buttonIds[i]), 'click', function (event) { executeMe(event); });
-  }
-}
-
-// Run the method associated with a button that was clicked
-function executeMe (event)
-{
-  if (!event && window.event) { console.log('ie event'); event = window.event; }
-  var target = event.target || event.srcElement;
-  commands[target.id].method();
-}
-
-// Simple cross-browser addEventListener
-function addEvent (oElem,sEventName,sFunction)
-{
-  if (oElem.addEventListener) {
-    oElem.addEventListener(sEventName,sFunction,false);
-  }
-  else if (oElem.attachEvent) {
-    oElem.attachEvent('on' + sEventName,sFunction);
-  }
-}
-
-// Fill in the page
-addEvent(window,'load',setup);
-	</script>
-<style>
-@charset "utf-8";
-
-/* These styles are strictly for the demo and have nothing to do with the log() function */
-
-
-/* Reset borrowed from html5boilerplate.com (via Eric Meyer and HTML5Doctor), then trimmed */
-html, body, div, span, h1, p, pre, a, code, em, img, strong, ul, li,
-article, section { margin: 0; padding: 0; border: 0; font-size: 100%; vertical-align: baseline; background: transparent; }
-article, section { display:block; }
-::-moz-selection { background: #0069d2; color:#fff; text-shadow: none; }
-::selection { background:#0069d2; color:#fff; text-shadow: none; }
-
-html {
-  height: 100%;
-  min-height: 100%;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
-
-body {
-  line-height: 1.4em;
-	/* Sorry, I'm not familiar enough with standard Mac fonts, feel free to recommend some */
-  font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", Calibri, "Helvetica Neue", Trebuchet, Helvetica, sans-serif;
-  font-smooth: always;
-  font-size: 1.2em;
-  background-color: #f9f9f9;
-  color: #444;
-  background-color: #efefef;
-  background-image: -moz-linear-gradient(top, #efefef 0%, #f9f9f9 100%); /* Firefox */
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#efefef), to(#f9f9f9)); /* Webkit 2010 */
-	background-image: -webkit-linear-gradient(top, #efefef, #f9f9f9); /* Webkit 2011+ */
-	background-image: -ms-linear-gradient(top, #efefef, #f9f9f9); /* IE10 */
-  background-image: -o-linear-gradient(top, #efefef, #f9f9f9); /* Opera 11.10+ */
-	background-image: linear-gradient(top, #efefef, #f9f9f9);
-}
-
-h1 {
-  margin: 0 auto 1em;
-  text-align: center;
-  font-family: "ff-masala-web-pro-1", "ff-masala-web-pro-2", Calibri, "Helvetica Neue", Trebuchet, Helvetica, sans-serif;
-  font-size: 140%;
-}
-
-a:hover {
-  text-decoration: none;
-}
-
-/* Main container. Apologies to people reading this in 2014 -- we didn't know how to use article/section properly back in wee old 2011! */
-article {
-  max-width: 960px;
-  margin: 1em auto;
-  padding: 1em;
-  height: 100%;
-  background-color: #fff;
-  -moz-box-shadow: 0 0 4px rgba(100,100,100,0.4);
-  -webkit-box-shadow: 0 0 4px rgba(100,100,100,0.4);
-  -o-box-shadow: 0 0 4px rgba(100,100,100,0.4);
-  box-shadow: 0 0 4px rgba(100,100,100,0.4);
-	-moz-background-clip: padding;
-	-webkit-background-clip: padding-box;
-	background-clip: padding-box; 
-}
-
-p {
-  margin-bottom: 0.5em;
-}
-
-code {
-  font-family: Menlo, Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
-  color: #555;
-  background-color: #f3f3f3;
-}
-
-#command-list {
-  margin-top: 2em;
-  list-style: none outside none;
-}
-
-#command-list li {
-  padding: 0.5em;
-  line-height: 1.6em;
-  min-height: 1.6em;
-  vertical-align: middle;
-}
-
-#command-list code {
-  display: inline-block;
-  color: #000;
-  border: 1px solid #444;
-  background-color: #eee;
-  padding: 0.2em;
-  margin-left: 0.5em;
-}
-
-/* Button CSS shamelessly copied from http://www.webdesignerwall.com/demo/css-buttons.html because mine always looks a little off */
-#command-list input {
-	font: 1.2em/100% "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", Calibri, "Helvetica Neue", Trebuchet, Helvetica, sans-serif;
-	background-color: #0095cd; /* old browsers */
-	background-image: -moz-linear-gradient(top,  #00adee,  #0078a5); /* firefox */
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5)); /* Webkit 2010 */
-	background-image: -webkit-linear-gradient(top, #00adee, #0078a5); /* Webkit 2011+ */
-	background-image: -ms-linear-gradient(top, #00adee, #0078a5); /* IE10 */
-  background-image: -o-linear-gradient(top, #00adee, #0078a5); /* Opera 11.10+ */
-	background-image: linear-gradient(top, #00adee, #0078a5);
-	/* No IE7-9 filters for the background gradient because No ClearType == Fugly */
-  border: 1px solid #0076A3;
-	-moz-border-radius: 0.5em;
-	-webkit-border-radius: 0.5em;
-	-o-border-radius: 0.5em;
-	border-radius: 0.5em;
-	-moz-background-clip: padding;
-	-webkit-background-clip: padding-box;
-	background-clip: padding-box; 
-	-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-	-o-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  color: #D9EEF7;
-	cursor: pointer;
-	display: inline-block;
-	font: 14px/100% Arial,Helvetica,sans-serif;
-	margin: 0 2px;
-	outline: medium none;
-	padding: 0.5em 1em 0.55em;
-	text-align: center;
-	/*text-decoration: none;*/
-	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
-  -moz-transition: 0.2s all ease-out;
-  -webkit-transition: 0.2s all ease-out;
-  -o-transition: 0.2s all ease-out;
-  transition: 0.2s all ease-out;
-	vertical-align: baseline;
-	/* ie7 hacks for display:inline-block: */
-	*display: inline;
-	zoom: 1; 
-}
-
-#command-list input:hover {
-	background-color: #007ead;
-	background-image: -moz-linear-gradient(top,  #0095cc,  #00678e);
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
-	background-image: -webkit-linear-gradient(top, #0095cc, #00678e);
-	background-image: -ms-linear-gradient(top, #0095cc, #00678e);
-  background-image: -o-linear-gradient(top, #0095cc, #00678e);
-	background-image: linear-gradient(top, #0095cc, #00678e);
-	/* Tighter, darker drop shadow for a sense of immediacy and to build anticipation */
-	-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
-	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
-	-o-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
-	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
-}
-
-#command-list input:active {
-	color: #80bed6;
-	background-color: #0078a5;
-	background-image: -moz-linear-gradient(top,  #0078a5,  #00adee);
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#0078a5), to(#00adee));
-	background-image: -webkit-linear-gradient(top, #0078a5, #00adee);
-	background-image: -ms-linear-gradient(top, #0078a5, #00adee);
-  background-image: -o-linear-gradient(top, #0078a5, #00adee);
-	background-image: linear-gradient(top, #0078a5, #00adee);
-	position: relative;
-	top: 1px;
-	-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
-	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
-	-o-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
-	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
-}
-</style>
+    var _gaq = [['_setAccount', 'UA-12082176-1'], ['_trackPageview']];
+    (function(d, t) {
+     var g = d.createElement(t),
+         s = d.getElementsByTagName(t)[0];
+     g.async = true;
+     g.src = ('https:' == location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+     s.parentNode.insertBefore(g, s);
+    })(document, 'script');
+  </script>
 </body>
 </html>

@@ -24,6 +24,5 @@ js/libs/jquery.history.js
 
 inc/phpminiadmin.php
 
-demos/consolelog/console.log-wrapper.sublime-workspace
-
-demos/consolelog/console.log-wrapper.sublime-project
+*.sublime-*
+fever/
