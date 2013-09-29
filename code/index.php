@@ -42,12 +42,12 @@ function print_page_body()
                 <div class="small-12 medium-6 large-4 columns">
                     <a href="https://github.com/patik">
                         <img src="../img/home-github-logo.png" alt="GitHub text logo" title="GitHub">
-                        <span>GitHub reposi<wbr>tories</span>
+                        <span>GitHub</span>
                     </a>
                 </div>
                 <div class="small-12 medium-6 large-4 columns">
-                    <a href="http://signaltonoi.se/">
-                        <img src="../img/home-snr-logo.png" alt="S:R logo" title="signal:noise">
+                    <a href="http://signaltonoi.se">
+                        <img src="../img/home-snr-logo.png" alt="S:N logo" title="Signal:Noise">
                         <span>signal:<wbr>noise<br>Twitter app</span>
                     </a>
                 </div>
