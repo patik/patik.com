@@ -12,6 +12,11 @@
  **/
 
 return array(
-    'js' => array('//js/libs/bootstrap.min.js', '//js/plugins.js', '//js/script.js')
+    'jslib' => array('//js/vendor/jquery.js',
+                     '//js/vendor/fastclick.js',
+                     '//js/foundation/foundation.js',
+                     '//js/foundation/foundation.dropdown.js',
+                     '//js/foundation/foundation.topbar.js'),
+    'js' => array('//js/plugins.js', '//js/script.js')
     // 'css' => array('//css/style.css'),
 );

@@ -1,52 +1,55 @@
 /* Author: Craig Patik */
 
-var patik = {
-  $body: null,
+var patik = (function() {
+    var $body = null,
+        $preload = null,
+        queue = [];
 
-  init: function() {
-    try {
-      patik.$body = $('body');
-      // Insert any server-generated CSS
-      if (window.insertCss) {
-        patik.css.insert();
-      }
-      setTimeout(function () { patik.preload.add(''); }, 1500);
-    } catch(e) { console.log(e); }
-  },
+    function _init () {
+        try {
+            $body = $('body');
 
-  preload: {
-    $container: null,
-    queue: [],
-
-    add: function(html) {
-      var i;
-      if (!patik.preload.$container) {
-        patik.preload.$container = $('<div/>', {style:'position:absolute;top:-9999em;left:-9999em;display:block;visibility:hidden;'});
-        // Sometimes called before init()
-        if (!patik.$body) { patik.$body = $('body'); }
-        patik.$body.append(patik.preload.$container);
-      }
-
-      patik.preload.$container.append(html);
-
-      if (patik.preload.queue.length) {
-        i = 0;
-        while (i < patik.preload.queue.length) {
-          patik.preload.$container.append(patik.preload.queue[i]);
+            // ????
+            // setTimeout(function() {
+            //     _preload('');
+            // }, 1500);
         }
-        patik.preload.queue = [];
-      }
+        catch (e) {
+            console.log(e);
+        }
     }
-  },
 
-  css: {
-    insert: function(s) {
-      try {
-        var css = s || window.insertCss;
-        if (!css) { return false; }
-        $('<style/>').text(css).appendTo($('head'));
-      } catch(e) { }
+    function _preload(html) {
+        var i;
+
+        if (!$preload) {
+            $preload = $('<div/>', {
+                style: 'position:absolute;top:-9999em;left:-9999em;display:block;visibility:hidden;'
+            });
+
+            // Sometimes called before init()
+            if (!$body) {
+                $body = $('body');
+            }
+
+            $body.append($preload);
+        }
+
+        $preload.append(html);
+
+        if (queue.length) {
+            i = 0;
+
+            while (i < queue.length) {
+                $preload.append(queue[i]);
+            }
+
+            queue = [];
+        }
     }
-  }
-};
 
+    return {
+        init: _init,
+        preload: _preload
+    };
+}());

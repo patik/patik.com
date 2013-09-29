@@ -6,7 +6,7 @@ function shortenURL($url = '')
   $short_url = '';
   $u = "http://api.bit.ly/v3/shorten";
 	$post_string = "longUrl=" . urlencode($url) . "&login=ellsass&apiKey=R_7bfa0b4961592471dfb21849ed30ec98&format=json&history=1";
-	
+
 	# Call the bit.ly API
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $u);
@@ -16,17 +16,17 @@ function shortenURL($url = '')
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $post_string);
 	$json = curl_exec($ch);
 	curl_close($ch);
-	
+
   # Extract the shortened URL (see example at the end of this file)
   $response = json_decode($json);
 	if ($response->status_code === 200) {
 		$short_url = $response->data->url;
 	}
-  
+
   if (empty($short_url)) {
     @mail('cpatik@gmail.com','bitly json',$json);
   }
-  
+
   return $short_url;
 }
 
@@ -57,7 +57,7 @@ if (!empty($callback)) {
     $ajax_response .= '{"okay": true, "short_url":"' . addslashes($short_url) . '", "long_url":"' . addslashes($long_url) . '", "message":"Successfully shortened"}';
     $ajax_response .= '); } catch(e) { }';
   }
-  
+
   # Output result
   echo $ajax_response;
 	exit();
@@ -75,7 +75,7 @@ else {
   <meta name="viewport" content="width=device-width,initial-scale=1">
 	<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   <title>Simple URL Shortener - Patik.com</title>
-  <script src="http://use.typekit.com/xlw2lhp.js"></script>
+  <script src="http://use.typekit.net/tfz6xpv.js"></script>
   <script>try { Typekit.load(); } catch (e) { }</script>
   <style>
     html { font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
@@ -123,14 +123,14 @@ else {
 Example response:
 
 {
-    "status_code": 200, 
+    "status_code": 200,
     "data": {
-        "url": "http://bit.ly/cmeH01", 
-        "hash": "cmeH01", 
-        "global_hash": "1YKMfY", 
-        "long_url": "http://betaworks.com/", 
+        "url": "http://bit.ly/cmeH01",
+        "hash": "cmeH01",
+        "global_hash": "1YKMfY",
+        "long_url": "http://betaworks.com/",
         "new_hash": 0
-    }, 
+    },
     "status_txt": "OK"
 }
 

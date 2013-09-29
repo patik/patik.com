@@ -1,8 +1,8 @@
-/* 
-  HTML5 ✰ Boilerplate 
-  
+/*
+  HTML5 ✰ Boilerplate
+
   style.css contains a reset, font normalization and some base styles.
-  
+
   credit is left where credit is due.
   much inspiration was taken from these projects:
     yui.yahooapis.com/2.8.1/build/base/base.css
@@ -20,7 +20,7 @@ b, i,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, figcaption, figure, 
+article, aside, canvas, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section, summary,
 time, mark, audio, video {
   margin:0;
@@ -30,9 +30,9 @@ time, mark, audio, video {
   font-size:100%;
   vertical-align:baseline;
   background:transparent;
-}                  
+}
 article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section { 
+footer, header, hgroup, menu, nav, section {
     display:block;
 }
 nav ul { list-style:none; }
@@ -51,15 +51,15 @@ input, select { vertical-align:middle; }
 body { font: 18px/1.704 sans-serif; *font-size:small; } /* hack retained to preserve specificity */
 select, input, textarea, button { font: 99% sans-serif; }
 pre, code, kbd, samp { font-family: monospace, sans-serif; }
- 
 
-/* 
- * minimal base styles 
+
+/*
+ * minimal base styles
  */
 
 body, select, input, textarea {
   color: #444;
-  font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", Calibri, Trebuchet, Helvetica, sans-serif;
+  font-family: "Helvetica Neue", Calibri, Trebuchet, Helvetica, sans-serif;
 }
 
 body {
@@ -70,7 +70,7 @@ h1,h2,h3,h4,h5,h6 {
   font-weight: bold;
   font-weight: 700;
   font-size: 150%;
-  font-family: "ff-masala-web-pro-1", "ff-masala-web-pro-2", Calibri, Trebuchet, Helvetica, sans-serif;
+  font-family: "Helvetica Neue", Calibri, Trebuchet, Helvetica, sans-serif;
 }
 
 h1 {
@@ -78,9 +78,9 @@ h1 {
   text-align: center;
 }
 
-/* always force a scrollbar in non-IE */ 
+/* always force a scrollbar in non-IE */
 html { overflow-y: scroll; }
- 
+
 /* Accessible focus treatment: people.opera.com/patrickl/experiments/keyboard/test */
 a:hover, a:active { outline: none; }
 a, a:active, a:visited { color: #607890; }
@@ -89,13 +89,13 @@ a:hover { color: #036; }
 ul, ol { margin-left: 1.8em; }
 ol { list-style-type: decimal; }
 /* Remove margins for navigation lists */
-nav ul, nav li { margin: 0; } 
+nav ul, nav li { margin: 0; }
 small { font-size: 85%; }
 strong, th { font-weight: bold; }
-td, td img { vertical-align: top; } 
+td, td img { vertical-align: top; }
 sub { vertical-align: sub; font-size: smaller; }
 sup { vertical-align: super; font-size: smaller; }
-pre { 
+pre {
   padding: 15px; white-space: pre; /* CSS2 */ white-space: pre-wrap; /* CSS 2.1 */ white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */ word-wrap: break-word; /* IE */
 }
 textarea { overflow: auto; } /* thnx ivannikolic! www.sitepoint.com/blogs/2010/08/20/ie-remove-textarea-scrollbars/ */
@@ -110,35 +110,35 @@ input[type="checkbox"] { vertical-align: bottom; }
 
 /* hand cursor on clickable input elements */
 label, input[type=button], input[type=submit], button { cursor: pointer; }
- 
-/* webkit browsers add a 2px margin outside the chrome of form elements */  
+
+/* webkit browsers add a 2px margin outside the chrome of form elements */
 button, input, select, textarea { margin: 0; }
 
 /* colors for form validity */
 input:valid, textarea:valid   {  }
-input:invalid, textarea:invalid { 
+input:invalid, textarea:invalid {
       border-radius: 1px;
-    -moz-box-shadow: 0px 0px 5px red; 
- -webkit-box-shadow: 0px 0px 5px red; 
+    -moz-box-shadow: 0px 0px 5px red;
+ -webkit-box-shadow: 0px 0px 5px red;
          box-shadow: 0px 0px 5px red;
 }
-.no-boxshadow input:invalid, 
+.no-boxshadow input:invalid,
 .no-boxshadow textarea:invalid { background-color: #f0dddd; }
 ::-moz-selection{ color:#fff; text-shadow: none; }
-::selection { color:#fff; text-shadow: none; } 
-a:link { -webkit-tap-highlight-color: #FF5E99; } 
+::selection { color:#fff; text-shadow: none; }
+a:link { -webkit-tap-highlight-color: #FF5E99; }
 
 /* make buttons play nice in IE */
 button {  width: auto; overflow: visible; }
- 
-/* bicubic resizing for non-native sized IMG: 
+
+/* bicubic resizing for non-native sized IMG:
    code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/ */
 .ie7 img { -ms-interpolation-mode: bicubic; }
 
 
 
-/* 
- * Non-semantic helper classes 
+/*
+ * Non-semantic helper classes
  */
 
 /* for image replacement */
@@ -146,11 +146,11 @@ button {  width: auto; overflow: visible; }
 
 /* Hide for both screenreaders and browsers
    css-discuss.incutio.com/wiki/Screenreader_Visibility */
-.hidden { display: none; visibility: hidden; } 
+.hidden { display: none; visibility: hidden; }
 
-/* Hide only visually, but have it available for screenreaders 
+/* Hide only visually, but have it available for screenreaders
    www.webaim.org/techniques/css/invisiblecontent/  &  j.mp/visuallyhidden  */
-.visuallyhidden { position: absolute !important;    
+.visuallyhidden { position: absolute !important;
   clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
   clip: rect(1px, 1px, 1px, 1px); }
 
@@ -159,8 +159,8 @@ button {  width: auto; overflow: visible; }
 
 /* >> The Magnificent CLEARFIX: Updated to prevent margin-collapsing on child elements << j.mp/bestclearfix */
 .clearfix:before, .clearfix:after {
-  content: "\0020"; display: block; height: 0; visibility: hidden;	
-} 
+  content: "\0020"; display: block; height: 0; visibility: hidden;
+}
 
 .clearfix:after { clear: both; }
 /* Fix clearfix: blueprintcss.lighthouseapp.com/projects/15318/tickets/5-extra-margin-padding-bottom-of-page */
@@ -172,7 +172,7 @@ button {  width: auto; overflow: visible; }
 
 
  /* Primary Styles
-    Author: 
+    Author:
  */
 
 
@@ -208,12 +208,12 @@ ul.taglist a {
 
 /*
  * Media queries for responsive design
- * These follow after primary styles so they will successfully override. 
+ * These follow after primary styles so they will successfully override.
  */
 
-/* 
+/*
  * print styles
- * inlined to avoid required HTTP connection www.phpied.com/delay-loading-your-print-css/ 
+ * inlined to avoid required HTTP connection www.phpied.com/delay-loading-your-print-css/
  */
 @media print {
   * { background: transparent !important; color: #444 !important; text-shadow: none !important; }
@@ -221,7 +221,7 @@ ul.taglist a {
   abbr:after { content: " (" attr(title) ")"; }
   .ir a:after { content: ""; }  /* Don't show links for images */
   pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
-  thead { display: table-header-group; } /* css-discuss.incutio.com/wiki/Printing_Tables */ 
+  thead { display: table-header-group; } /* css-discuss.incutio.com/wiki/Printing_Tables */
   tr, img { page-break-inside: avoid; }
   @page { margin: 0.5cm; }
   p, h2, h3 { orphans: 3; widows: 3; }
