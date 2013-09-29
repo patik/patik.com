@@ -66,9 +66,6 @@ class Print_html
     <script>document.cookie='resolution='+Math.max(screen.width,screen.height)+("devicePixelRatio" in window ? ","+devicePixelRatio : ",1")+'; path=/';</script>
     <script src="http://use.typekit.com/xlw2lhp.js"></script>
     <script>try { Typekit.load(); } catch(e) {}</script>
-  <?php
-    }
-  ?>
     <link rel="stylesheet" href="<?php $this->print_dir_level(); ?>css/style.css">
     <?php if (!empty($this->styleSheets) && is_array($this->styleSheets)) {
             foreach ($this->styleSheets as $ss) { ?>
@@ -80,20 +77,17 @@ class Print_html
 </head>
 <body>
     <nav class="top-bar">
-        <div class="navbar-inner">
-            <div class="container">
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-                <a class="brand" href="/">Patik.com</a>
-                <div class="nav-collapse">
-                  <ul class="nav pull-right">
-                    <!-- <li class="<?php if ($this->section === 'home') { echo 'active'; } ?>"><a href="#">Home</a></li> -->
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle<?php if ($this->section === 'travel') { echo ' active'; } ?>" data-toggle="dropdown">Travel <b class="caret"></b></a>
-                      <ul class="dropdown-menu">
+        <ul class="title-area">
+            <li class="name">
+                <h1><a href="#">Patik.com</a></h1>
+            </li>
+            <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+        </ul>
+        <section class="top-bar-section">
+            <ul class="right">
+                <li class="has-dropdown<?php if ($this->section === 'travel') { echo 'active'; } ?>">
+                    <a href="#">Travel</a>
+                    <ul class="dropdown">
                         <li><a href="<?php $this->print_dir_level(); ?>travel/">All Travels</a></li>
                         <li class="divider"></li>
                         <li><a href="<?php $this->print_dir_level(); ?>travel/britain-benelux/">Britian &amp; Benelux</a></li>
@@ -104,15 +98,13 @@ class Print_html
                         <li><a href="<?php $this->print_dir_level(); ?>travel/greece/">Greece</a></li>
                         <li><a href="<?php $this->print_dir_level(); ?>travel/paris/">Paris</a></li>
                         <li><a href="<?php $this->print_dir_level(); ?>travel/france/">France</a></li>
-                      </ul>
-                    </li>
-                    <li><a href="<?php $this->print_dir_level(); ?>code/"<?php if ($this->section === 'code') { echo ' class="active"'; } ?>>Code</a></li>
-                    <li><a href="http://picasaweb.google.com/cpatik">Photos</a></li>
-                    <li><a href="<?php $this->print_dir_level(); ?>about/"<?php if ($this->section === 'about') { echo ' class="active"'; } ?>>About</a></li>
-                  </ul>
-                </div><!-- /.nav-collapse -->
-            </div>
-        </div><!-- /navbar-inner -->
+                    </ul>
+                </li>
+                <li><a href="<?php $this->print_dir_level(); ?>code/"<?php if ($this->section === 'code') { echo ' class="active"'; } ?>>Code</a></li>
+                <li><a href="http://picasaweb.google.com/cpatik">Photos</a></li>
+                <li><a href="<?php $this->print_dir_level(); ?>about/"<?php if ($this->section === 'about') { echo ' class="active"'; } ?>>About</a></li>
+            </ul>
+        </section>
     </nav>
 
   <div id="main" class="container">
@@ -124,10 +116,12 @@ class Print_html
     ?>
   </div>
 <script src="<?php $this->print_dir_level(); ?>js/vendor/jquery.js"></script>
+<script src="<?php $this->print_dir_level(); ?>js/plugins.js"></script>
 <script src="<?php $this->print_dir_level(); ?>js/vendor/fastclick.js"></script>
 <script src="<?php $this->print_dir_level(); ?>js/foundation/foundation.js"></script>
-<script src="<?php $this->print_dir_level(); ?>js/foundation/topbar.js"></script>
-<script src="<?php $this->print_dir_level(); ?>min?g=js"></script>
+<script src="<?php $this->print_dir_level(); ?>js/foundation/foundation.dropdown.js"></script>
+<script src="<?php $this->print_dir_level(); ?>js/foundation/foundation.topbar.js"></script>
+<script src="<?php $this->print_dir_level(); ?>js/script.js"></script>
 <script>
 <?php
 if (!empty($this->preload)) {

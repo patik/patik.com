@@ -5,9 +5,9 @@ function print_page_body()
 {
     ?>
     <div id="home-main" role="main">
-        <div class="intro">
+        <section>
             <p>I'm a traveler, web designer &amp; developer, and Arsenal fan based in Upstate New York.</p>
-        </div>
+        </section>
 
         <section>
             <h2>Travel</h2>
@@ -72,19 +72,19 @@ function print_page_body()
                 <div class="small-12 medium-6 large-4 columns">
                     <a href="blog/">
                         <img src="img/home-console-blog-logo.png" alt="JavaScript code" title="console.blog()">
-                        <span>console.<wbr>blog()</span>
+                        <span>console.<wbr/>blog()</span>
                     </a>
                 </div>
                 <div class="small-12 medium-6 large-4 columns">
                     <a href="http://signaltonoi.se/">
                         <img src="img/home-snr-logo.png" alt="S:R logo" title="signal:noise">
-                        <span>signal:<wbr>noise Twitter app</span>
+                        <span>signal:<wbr/>noise Twitter app</span>
                     </a>
                 </div>
                 <div class="small-12 medium-6 large-4 columns">
                     <a href="https://github.com/patik">
                        <img src="img/home-github-logo.png" alt="GitHub text logo" title="GitHub">
-                       <span>GitHub reposi<wbr>tories</span>
+                       <span>GitHub reposi<wbr/>tories</span>
                     </a>
                 </div>
             </div>
@@ -138,9 +138,9 @@ function print_page_body()
                 </div>
             </div>
         </section>
-
+        <?php /*
         <div style="position:absolute;top:-9999px;left:-9999px;"><a href='https://alpha.app.net/patik' class='adn-button' rel='me' data-type='follow' data-width='220' data-height='38' data-user-id='@patik'>Follow me on App.net</a><a href='https://alpha.app.net/patik' rel='me'>...</a></div>
-        <script src='https://d2zh9g63fcvyrq.cloudfront.net/adn.js'></script>
+        <script src='https://d2zh9g63fcvyrq.cloudfront.net/adn.js'></script> */ ?>
     </div>
     <?php
 }
