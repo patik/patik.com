@@ -1,8 +1,8 @@
 // Make sure the charset is set appropriately @charset"UTF-8";
-@import"foundation";
-@import"_foundation-overrides";
-@import"_mixins";
-@import"_variables";
+@import "_foundation-overrides";
+@import "foundation";
+@import "_mixins";
+@import "_variables";
 
 //=============================================================================
 // Basic styles
@@ -45,18 +45,20 @@ pre, code, kbd, samp {
         &:last-child {
             margin-bottom: 1em;
         }
-    }
 
-    a {
-        text-decoration: underline;
-
-        &:hover {
-            text-decoration: none;
+        & > ul {
+            margin-left: 2em;
         }
     }
 
     .button {
-        text-decoration: none;
+    }
+}
+
+@media (max-width: #{$medium-screen}) {
+    [role="main"] {
+        padding-left: 0.5em;
+        padding-right: 0.5em;
     }
 }
 
@@ -90,23 +92,46 @@ figure {
     }
 }
 
+//TODO: Make Foundation generate these button styles
+.button {
+    font-family: $font-sans;
+    color: #ffffff;
+    background-color: #428bca;
+    border-color: #357ebd;
+    border-radius: 4px;
+
+    // http://getbootstrap.com/css/#buttons
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-decoration: none;
+    box-shadow: none;
+
+    &:hover {
+        color: #ffffff;
+        background-color: #3276b1;
+        border-color: #285e8e;
+    }
+}
+
 .button-link-list {
     a {
-        // @include button;
         display: block;
-        // clear: both;
-        // overflow: hidden;
         padding: 0.5em 0.25em;
-        //box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.05) inset;
-        // border-radius: 0;
-        // border-top: none;
-        // width: auto;
         text-align: left;
-        // text-decoration: none;
+        text-decoration: none;
 
         &:active, &:hover, &:focus {
-            text-decoration: none;
-            // box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.05) inset;
+            text-decoration: underline;
         }
 
         img {
@@ -125,22 +150,12 @@ figure {
 }
 
 .travel-link-list {
-    // & > div {
-    //     width: 48%;
-    //     float: left;
-    //     margin-left: 2%; // Tried $fluidGridGutterWidth but it's too much at some most odd-value screen widths
-    //     margin-bottom: 4%;
-    // }
-
     a {
         display: block;
         float: none;
         clear: both;
         overflow: hidden;
         background-color: $gray; // In case an image doesn't load, since the text is white
-        min-height: 128px;
-        max-height: 144px;
-        width: auto;
         max-width: 336px; // Max width of the image files (some are 340px, but whatever)
         position: relative;
         border-radius: 5px;
@@ -490,6 +505,12 @@ figure {
     }
 }
 
+@media (max-width: #{$medium-screen}) {
+    .travel-link-list .small-12 {
+        margin-bottom: 1em;
+    }
+}
+
 .travel-map {
     text-align: center;
 
@@ -518,14 +539,11 @@ img[src^="/gam.php?"] {
     }
 
     p, li {
-        font-size: 20px;
-        line-height: 24px;
+        font-size: emCalc(20px);
+        line-height: emCalc(24px);
     }
 
     .travel-link-list {
-        a {
-            max-height: 220px;
-        }
 
         .bg-peru-argentina-amazon {
             span {
@@ -552,12 +570,8 @@ img[src^="/gam.php?"] {
 
 @media #{$small} { // 600px and up
     .travel-link-list {
-        a {
-            height: 224px;
-
-            span {
-                font-size: 3em;
-            }
+        a span {
+            font-size: 3em;
         }
 
         .bg-peru-argentina-amazon {
@@ -577,8 +591,8 @@ img[src^="/gam.php?"] {
 @media (min-width: 740px) {
     // Images look funny (too short) around this size
     .travel-link-list a {
-        height: 284px;
-        max-height: 284px;
+        // height: 284px;
+        // max-height: 284px;
     }
 }
 
@@ -587,18 +601,8 @@ img[src^="/gam.php?"] {
 @media #{$medium} { // 980px and up
     .button-link-list {
         & > div {
-            width: 32%;
-            float: left;
-            margin-left: 2%; // Tried @fluidGridGutterWidth but it breaks at some odd-value browser widths
             margin-bottom: 2%;
             border-radius: 4px;
-        }
-        & > div:nth-child(odd) {
-            clear: none;
-        }
-        & > div:nth-child(3n+1) {
-            margin-left: 0;
-            clear: both;
         }
     }
 
@@ -607,39 +611,9 @@ img[src^="/gam.php?"] {
     }
 
     .travel-link-list {
-        // All
         & > div {
-            width: 32%;
-            float: left;
-            margin-left: 0; // Tried @fluidGridGutterWidth but it breaks at some odd-value browser widths
-            margin-right: 2%;
             margin-bottom: 2%;
             border-radius: 4px;
-            clear: none;
-        }
-
-        // Third (last in row)
-        & > div:nth-child(3n+3) {
-            margin-right: 0;
-        }
-
-        // Fourth (first in new row)
-        & > div:nth-child(4n+4) {
-            margin-right: 2%;
-        }
-
-        img {
-            max-width: none;
-            // BS override
         }
     }
 }
-
-// TESTING ONLY
-// ------------
-// So I can see Helvetica for phone-size and Typekit otherwise (Typekit won't be served to phones)
-// body, p, nav, h1, h2, h3, h4, h5, h6, button, input, select, textarea,
-// .navbar, .navbar-search .search-query {
-    // font-family: $font-helv;
-// }
-

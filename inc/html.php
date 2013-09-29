@@ -117,14 +117,8 @@ class Print_html
     {
     ?>
     </div>
-
-    <script src="<?php echo $this->print_dir_level(); ?>js/vendor/jquery.js"></script>
-    <script src="<?php echo $this->print_dir_level(); ?>js/plugins.js"></script>
-    <script src="<?php echo $this->print_dir_level(); ?>js/vendor/fastclick.js"></script>
-    <script src="<?php echo $this->print_dir_level(); ?>js/foundation/foundation.js"></script>
-    <script src="<?php echo $this->print_dir_level(); ?>js/foundation/foundation.dropdown.js"></script>
-    <script src="<?php echo $this->print_dir_level(); ?>js/foundation/foundation.topbar.js"></script>
-    <script src="<?php echo $this->print_dir_level(); ?>js/script.js"></script>
+    <script src="/min/?g=jslib"></script>
+    <script src="/min/?g=js"></script>
     <script>
     <?php
     if (!empty($this->preload)) {

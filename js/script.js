@@ -9,9 +9,10 @@ var patik = (function() {
         try {
             $body = $('body');
 
-            setTimeout(function() {
-                _preload('');
-            }, 1500);
+            // ????
+            // setTimeout(function() {
+            //     _preload('');
+            // }, 1500);
         }
         catch (e) {
             console.log(e);
