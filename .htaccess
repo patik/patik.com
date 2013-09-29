@@ -26,10 +26,10 @@
 # Use ChromeFrame if it's installed for a better experience for the poor IE folk
 
 <IfModule mod_setenvif.c>
-  <IfModule mod_headers.c>
-    BrowserMatch MSIE ie
-    Header set X-UA-Compatible "IE=Edge,chrome=1" env=ie
-  </IfModule>
+    <IfModule mod_headers.c>
+        BrowserMatch MSIE ie
+        Header set X-UA-Compatible "IE=Edge,chrome=1" env=ie
+    </IfModule>
 </IfModule>
 
 <IfModule mod_headers.c>
@@ -63,9 +63,9 @@
 # subdomains like "sub.domain.com".
 
 <FilesMatch "\.(ttf|otf|eot|woff|font.css)$">
-  <IfModule mod_headers.c>
-    Header set Access-Control-Allow-Origin "*"
-  </IfModule>
+    <IfModule mod_headers.c>
+        Header set Access-Control-Allow-Origin "*"
+    </IfModule>
 </FilesMatch>
 
 
@@ -135,32 +135,32 @@ AddType text/x-vcard                   vcf
 
 # Force deflate for mangled headers developer.yahoo.com/blogs/ydn/posts/2010/12/pushing-beyond-gzipping/
 <IfModule mod_setenvif.c>
-  <IfModule mod_headers.c>
-    SetEnvIfNoCase ^(Accept-EncodXng|X-cept-Encoding|X{15}|~{15}|-{15})$ ^((gzip|deflate)\s,?\s(gzip|deflate)?|X{4,13}|~{4,13}|-{4,13})$ HAVE_Accept-Encoding
-    RequestHeader append Accept-Encoding "gzip,deflate" env=HAVE_Accept-Encoding
-  </IfModule>
+    <IfModule mod_headers.c>
+        SetEnvIfNoCase ^(Accept-EncodXng|X-cept-Encoding|X{15}|~{15}|-{15})$ ^((gzip|deflate)\s,?\s(gzip|deflate)?|X{4,13}|~{4,13}|-{4,13})$ HAVE_Accept-Encoding
+        RequestHeader append Accept-Encoding "gzip,deflate" env=HAVE_Accept-Encoding
+    </IfModule>
 </IfModule>
 
 # HTML, TXT, CSS, JavaScript, JSON, XML, HTC:
 <IfModule filter_module>
-  FilterDeclare   COMPRESS
-  FilterProvider  COMPRESS  DEFLATE resp=Content-Type /text/(html|css|javascript|plain|x(ml|-component))/
-  FilterProvider  COMPRESS  DEFLATE resp=Content-Type /application/(javascript|json|xml|x-javascript)/
-  FilterChain     COMPRESS
-  FilterProtocol  COMPRESS  change=yes;byteranges=no
+    FilterDeclare   COMPRESS
+    FilterProvider  COMPRESS  DEFLATE resp=Content-Type /text/(html|css|javascript|plain|x(ml|-component))/
+    FilterProvider  COMPRESS  DEFLATE resp=Content-Type /application/(javascript|json|xml|x-javascript)/
+    FilterChain     COMPRESS
+    FilterProtocol  COMPRESS  change=yes;byteranges=no
 </IfModule>
 
 <IfModule !mod_filter.c>
-  # Legacy versions of Apache
-  AddOutputFilterByType DEFLATE text/html text/plain text/css application/json
-  AddOutputFilterByType DEFLATE text/javascript application/javascript application/x-javascript
-  AddOutputFilterByType DEFLATE text/xml application/xml text/x-component
+    # Legacy versions of Apache
+    AddOutputFilterByType DEFLATE text/html text/plain text/css application/json
+    AddOutputFilterByType DEFLATE text/javascript application/javascript application/x-javascript
+    AddOutputFilterByType DEFLATE text/xml application/xml text/x-component
 </IfModule>
 
 # Webfonts and SVG:
-  <FilesMatch "\.(ttf|otf|eot|svg)$" >
-    SetOutputFilter DEFLATE
-  </FilesMatch>
+    <FilesMatch "\.(ttf|otf|eot|svg)$" >
+        SetOutputFilter DEFLATE
+    </FilesMatch>
 </IfModule>
 
 
@@ -179,56 +179,56 @@ AddType text/x-vcard                   vcf
 #   "access plus 1 week" or so.
 
 <IfModule mod_expires.c>
-  ExpiresActive on
+    ExpiresActive on
 
 # Perhaps better to whitelist expires rules? Perhaps.
-  ExpiresDefault                          "access plus 1 month"
+    ExpiresDefault                          "access plus 1 month"
 
 # cache.appcache needs re-requests in FF 3.6 (thanks Remy ~Introducing HTML5)
-  ExpiresByType text/cache-manifest       "access plus 0 seconds"
+    ExpiresByType text/cache-manifest       "access plus 0 seconds"
 
 # Your document html
-  ExpiresByType text/html                 "access plus 0 seconds"
+    ExpiresByType text/html                 "access plus 0 seconds"
 
 # Data
-  ExpiresByType text/xml                  "access plus 0 seconds"
-  ExpiresByType application/xml           "access plus 0 seconds"
-  ExpiresByType application/json          "access plus 0 seconds"
+    ExpiresByType text/xml                  "access plus 0 seconds"
+    ExpiresByType application/xml           "access plus 0 seconds"
+    ExpiresByType application/json          "access plus 0 seconds"
 
 # RSS feed
-  ExpiresByType application/rss+xml       "access plus 1 hour"
+    ExpiresByType application/rss+xml       "access plus 1 hour"
 
 # Favicon (cannot be renamed)
-  ExpiresByType image/x-icon              "access plus 1 week"
+    ExpiresByType image/x-icon              "access plus 1 week"
 
 # Media: images, video, audio
-  ExpiresByType image/gif                 "access plus 1 month"
-  ExpiresByType image/png                 "access plus 1 month"
-  ExpiresByType image/jpg                 "access plus 1 month"
-  ExpiresByType image/jpeg                "access plus 1 month"
-  ExpiresByType video/ogg                 "access plus 1 month"
-  ExpiresByType audio/ogg                 "access plus 1 month"
-  ExpiresByType video/mp4                 "access plus 1 month"
-  ExpiresByType video/webm                "access plus 1 month"
+    ExpiresByType image/gif                 "access plus 1 month"
+    ExpiresByType image/png                 "access plus 1 month"
+    ExpiresByType image/jpg                 "access plus 1 month"
+    ExpiresByType image/jpeg                "access plus 1 month"
+    ExpiresByType video/ogg                 "access plus 1 month"
+    ExpiresByType audio/ogg                 "access plus 1 month"
+    ExpiresByType video/mp4                 "access plus 1 month"
+    ExpiresByType video/webm                "access plus 1 month"
 
 # HTC files  (css3pie)
-  ExpiresByType text/x-component          "access plus 1 month"
+    ExpiresByType text/x-component          "access plus 1 month"
 
 # Webfonts
-  ExpiresByType font/truetype             "access plus 1 month"
-  ExpiresByType font/opentype             "access plus 1 month"
-  ExpiresByType application/x-font-woff   "access plus 1 month"
-  ExpiresByType image/svg+xml             "access plus 1 month"
-  ExpiresByType application/vnd.ms-fontobject "access plus 1 month"
+    ExpiresByType font/truetype             "access plus 1 month"
+    ExpiresByType font/opentype             "access plus 1 month"
+    ExpiresByType application/x-font-woff   "access plus 1 month"
+    ExpiresByType image/svg+xml             "access plus 1 month"
+    ExpiresByType application/vnd.ms-fontobject "access plus 1 month"
 
 # CSS and JavaScript
-  ExpiresByType text/css                  "access plus 1 year"
-  ExpiresByType application/javascript    "access plus 1 year"
-  ExpiresByType text/javascript           "access plus 1 year"
+    ExpiresByType text/css                  "access plus 1 year"
+    ExpiresByType application/javascript    "access plus 1 year"
+    ExpiresByType text/javascript           "access plus 1 year"
 
-  <IfModule mod_headers.c>
-    Header append Cache-Control "public"
-  </IfModule>
+    <IfModule mod_headers.c>
+        Header append Cache-Control "public"
+    </IfModule>
 
 </IfModule>
 
@@ -240,7 +240,7 @@ AddType text/x-vcard                   vcf
 
 # FileETag None is not enough for every server.
 <IfModule mod_headers.c>
-  Header unset ETag
+    Header unset ETag
 </IfModule>
 
 # Since we're sending far-future expires, we don't need ETags for
@@ -273,9 +273,9 @@ FileETag None
 # If needed, uncomment and specify a path or regex in the Location directive
 
 # <IfModule mod_headers.c>
-#   <Location />
-#     Header set P3P "policyref=\"/w3c/p3p.xml\", CP=\"IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT\""
-#   </Location>
+#     <Location />
+#         Header set P3P "policyref=\"/w3c/p3p.xml\", CP=\"IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT\""
+#     </Location>
 # </IfModule>
 
 
@@ -288,27 +288,27 @@ FileETag None
 # FollowSymLinks must be enabled for this to work.
 
 <IfModule mod_rewrite.c>
-  Options +FollowSymlinks
-  RewriteEngine On
+    Options +FollowSymlinks
+      RewriteEngine On
 
-  # Adaptive-Images -----------------------------------------------------------------------------------
+      # Adaptive-Images -----------------------------------------------------------------------------------
 
-  # Add any directories you wish to omit from the Adaptive-Images process on a new line, as follows:
-  # RewriteCond %{REQUEST_URI} !ignore-this-directory
-  # RewriteCond %{REQUEST_URI} !and-ignore-this-directory-too
+      # Add any directories you wish to omit from the Adaptive-Images process on a new line, as follows:
+      # RewriteCond %{REQUEST_URI} !ignore-this-directory
+      # RewriteCond %{REQUEST_URI} !and-ignore-this-directory-too
 
-  RewriteCond %{REQUEST_URI} !assets
-  RewriteCond %{REQUEST_URI} !img
+      RewriteCond %{REQUEST_URI} !assets
+      RewriteCond %{REQUEST_URI} !img
 
-  # don't apply the AI behaviour to images inside AI's cache folder:
-  RewriteCond %{REQUEST_URI} !ai-cache
+      # don't apply the AI behaviour to images inside AI's cache folder:
+      RewriteCond %{REQUEST_URI} !ai-cache
 
-  # Send any GIF, JPG, or PNG request that IS NOT stored inside one of the above directories
-  # to adaptive-images.php so we can select appropriately sized versions
+      # Send any GIF, JPG, or PNG request that IS NOT stored inside one of the above directories
+      # to adaptive-images.php so we can select appropriately sized versions
 
-  RewriteRule \.(?:jpe?g|gif|png)$ adaptive-images.php
+      RewriteRule \.(?:jpe?g|gif|png)$ adaptive-images.php
 
-  # END Adaptive-Images -------------------------------------------------------------------------------
+    # END Adaptive-Images -------------------------------------------------------------------------------
 </IfModule>
 
 
@@ -322,18 +322,18 @@ FileETag None
 # Travel pages (before 9/2011 switch to /travel/[country] URL structure)
 
 <IfModule mod_rewrite.c>
-  RewriteCond %{HTTPS} !=on
-  RewriteRule ^(germany|spain|turkey|greece|france|paris)/?$ http://patik.com/travel/$1/ [R=301]
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^(germany|spain|turkey|greece|france|paris)/?$ http://patik.com/travel/$1/ [R=301]
 </IfModule>
 
 <IfModule mod_rewrite.c>
-  RewriteCond %{HTTPS} !=on
-  RewriteRule ^csyes/?(.*)$ http://patik.com/blog/$1 [R=301]
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^csyes/?(.*)$ http://patik.com/blog/$1 [R=301]
 </IfModule>
 
 <IfModule mod_rewrite.c>
-  RewriteCond %{HTTPS} !=on
-  RewriteRule ^demos/consolelog/?(.*)$ http://patik.com/code/console-log-polyfill/$1 [R=301]
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^demos/consolelog/?(.*)$ http://patik.com/code/console-log-polyfill/$1 [R=301]
 </IfModule>
 
 
@@ -358,9 +358,9 @@ FileETag None
 # Rewrite "www.domain.com -> domain.com"
 
 <IfModule mod_rewrite.c>
-  RewriteCond %{HTTPS} !=on
-  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-  RewriteRule ^(.*)$ http://%1/$1 [R=301]
+    RewriteCond %{HTTPS} !=on
+    RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+    RewriteRule ^(.*)$ http://%1/$1 [R=301]
 </IfModule>
 
 # ----------------------------------------------------------------------
@@ -371,10 +371,10 @@ FileETag None
 # use "real" subdomains for certain parts of your website.
 
 # <IfModule mod_rewrite.c>
-#   RewriteCond %{HTTPS} !=on
-#   RewriteCond %{HTTP_HOST} !^www\..+$ [NC]
-#   RewriteCond %{HTTP_HOST} (.+)$ [NC]
-#   RewriteRule ^(.*)$ http://www.%1/$1 [R=301,L]
+#     RewriteCond %{HTTPS} !=on
+#     RewriteCond %{HTTP_HOST} !^www\..+$ [NC]
+#     RewriteCond %{HTTP_HOST} (.+)$ [NC]
+#     RewriteRule ^(.*)$ http://www.%1/$1 [R=301,L]
 # </IfModule>
 
 
@@ -393,9 +393,9 @@ FileETag None
 
 # Uncomment to enable.
 # <IfModule mod_rewrite.c>
-#   RewriteCond %{REQUEST_FILENAME} !-f
-#   RewriteCond %{REQUEST_FILENAME} !-d
-#   RewriteRule ^(.+)\.(\d+)\.(js|css|png|jpg|gif)$ $1.$3 [L]
+#     RewriteCond %{REQUEST_FILENAME} !-f
+#     RewriteCond %{REQUEST_FILENAME} !-d
+#     RewriteRule ^(.+)\.(\d+)\.(js|css|png|jpg|gif)$ $1.$3 [L]
 # </IfModule>
 
 
@@ -409,8 +409,8 @@ FileETag None
 # Uncomment the following lines to use this feature.
 
 # <IfModule mod_rewrite.c>
-#   RewriteCond %{SERVER_PORT} !^443
-#   RewriteRule (.*) https://example-domain-please-change-me.com/$1 [R=301,L]
+#     RewriteCond %{SERVER_PORT} !^443
+#     RewriteRule (.*) https://example-domain-please-change-me.com/$1 [R=301,L]
 # </IfModule>
 
 
@@ -420,7 +420,7 @@ FileETag None
 # ----------------------------------------------------------------------
 
 # without -MultiViews, Apache will give a 404 for a rewrite if a folder of the same name does not exist
-#   e.g. /blog/hello : webmasterworld.com/apache/3808792.htm
+#     e.g. /blog/hello : webmasterworld.com/apache/3808792.htm
 
 Options -MultiViews
 
@@ -470,7 +470,7 @@ Options -Indexes
 # Block access to "hidden" directories whose names begin with a period. This
 # includes directories used by version control systems such as Subversion or Git.
 <IfModule mod_rewrite.c>
-  RewriteRule "(^|/)\." - [F]
+    RewriteRule "(^|/)\." - [F]
 </IfModule>
 
 
@@ -529,6 +529,5 @@ Options -Indexes
 
 # Increase cookie security
 <IfModule php5_module>
-	php_value session.cookie_httponly true
+	  php_value session.cookie_httponly true
 </IfModule>
-
