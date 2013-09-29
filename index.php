@@ -42,14 +42,14 @@ function print_page_body()
                         <span>Turkey</span>
                     </a>
                 </div>
-                <div class="small-12 medium-6 large-4 columns">
+                <div class="small-12 medium-6 large-4 columns left">
                     <a href="travel/germany/">
                         <img src="img/home-travel-germany.jpg" alt="Spanish fans gathering in Vienna's Ststephensplatz" title="Spanish fans in Vienna for Euro 2008">
                         <span>Germany &amp; Austria</span>
                     </a>
                 </div>
-            <?php /* Add link to Paris, then uncomment this
-                <div class="small-12 medium-6 large-4 columns">
+            <?php /* Add link to Paris, then uncomment this and remove class `left` from previous item
+                <div class="small-12 medium-6 large-4 columns left">
                     <a href="travel/greece/">
                         <img src="img/home-travel-greece.jpg" alt="View of the coast of Serifios, Greece from a ferry" title="Serifios, Greece">
                         <span>Greece</span>
@@ -78,13 +78,13 @@ function print_page_body()
                 <div class="small-12 medium-6 large-4 columns">
                     <a href="http://signaltonoi.se/">
                         <img src="img/home-snr-logo.png" alt="S:R logo" title="signal:noise">
-                        <span>signal:<wbr/>noise Twitter app</span>
+                        <span>signal:<wbr/>noise</span>
                     </a>
                 </div>
-                <div class="small-12 medium-6 large-4 columns">
+                <div class="small-12 medium-6 large-4 columns left">
                     <a href="https://github.com/patik">
                        <img src="img/home-github-logo.png" alt="GitHub text logo" title="GitHub">
-                       <span>GitHub reposi<wbr/>tories</span>
+                       <span>GitHub</span>
                     </a>
                 </div>
             </div>
@@ -130,7 +130,7 @@ function print_page_body()
                         <span>Rube On Rails</span>
                     </a>
                 </div>
-                <div class="small-12 medium-6 large-4 columns">
+                <div class="small-12 medium-6 large-4 columns left">
                     <a href="https://alpha.app.net/patik" rel="me">
                         <img src="img/home-twitter-craigpatik-avatar.jpg" alt="App.net avatar; photo of me riding on a camel" title="App.net Profile">
                         <span>@patik on App.net</span>
