@@ -23,7 +23,7 @@
     <h1>Within Viewport</h1>
     <div id="toggler" class="button minus small">Collapse</div>
     <p>Scroll around the page. Boxes completely within the viewport will darken.</p>
-    <p>See the <a href="https://github.com/cpatik/within-viewport">code on GitHub</a> and the <a href="http://patik.com/blog/within-viewport-javascript-and-jquery-plugin/" class="no-ajaxy">blog post</a> for more info.</p>
+    <p>See the <a href="https://github.com/patik/within-viewport">code on GitHub</a> and the <a href="http://patik.com/blog/within-viewport-javascript-and-jquery-plugin/" class="no-ajaxy">blog post</a> for more info.</p>
     <div id="thresholds">
       <p>Set your own thresholds (in pixels):</p>
       <form action="." method="post">

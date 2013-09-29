@@ -81,7 +81,7 @@ function print_page_body()
           </a>
         </div>
         <div>
-        	<a href="https://github.com/cpatik">
+        	<a href="https://github.com/patik">
           	<img src="img/home-github-logo.png" alt="GitHub text logo" title="GitHub">
           	<span>GitHub reposi<wbr>tories</span>
           </a>

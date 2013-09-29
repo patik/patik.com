@@ -6,16 +6,16 @@ function print_page_body()
 {
   ?>
   <div id="color-converter-main" role="main">
-    
+
     <h1>Chromorph</h1>
     <h2>Color Converter</h2>
-    
+
     <section id="features">
       <p style="color:#900;font-style:italic;font-weight:bold;font-size:18px;">Chromorph is currently under development. Not all conversions work properly, particularly with alpha transparency.</p>
     	<p>Chromorph is a color conversion tool for web developers using colors in CSS.</p>
-      <p>It can be used as a standalone function or (coming soon) a jQuery plugin. See <a href="#features">features</a> below. You can also <a href="https://github.com/cpatik/chromorph">fork it on GitHub</a>.</p>
+      <p>It can be used as a standalone function or (coming soon) a jQuery plugin. See <a href="#features">features</a> below. You can also <a href="https://github.com/patik/chromorph">fork it on GitHub</a>.</p>
     </section>
-    
+
     <section>
     	<h2>Quick Converter</h2>
       <form id="colors-form" action="." method="get">
@@ -28,7 +28,7 @@ function print_page_body()
         <input type="checkbox" checked="checked" id="do-round" tabindex="1">
         <br>
         <a id="submit" class="button spark">Convert</a>
-        
+
         <table id="output">
           <thead>
             <tr>
@@ -146,7 +146,7 @@ function print_page_body()
             </tr>
           </tbody>
         </table>
-        
+
         <div id="preview" style="display:none;">
         	<div>Preview:</div>
         	<div id="preview-bg">
@@ -156,11 +156,11 @@ function print_page_body()
             </div>
           </div>
         </div>
-        
+
         <input style="display:none;" type="submit" value="Convert" tabindex="1">
       </form>
     </section>
-    
+
     <section>
     	<table id="examples">
       	<thead>
@@ -184,7 +184,7 @@ function print_page_body()
         </tbody>
       </table>
     </section>
-    
+
     <section id="features">
       <h2>Features</h2>
       <!--<h3>Standard library and jQuery Plugin</h3>-->
