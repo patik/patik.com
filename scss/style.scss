@@ -12,8 +12,7 @@ body {
     text-rendering: optimizelegibility;
 }
 
-body, p, nav, h1, h2, h3, h4, h5, h6, button, input, select, textarea,
-.navbar, .navbar-search .search-query {
+body, p, h1, h2, h3, h4, h5, h6, button, input, select, textarea {
     font-family: $font-serif; // Includes Typekit (which is only served to tablets and up) but falls back to Helvetica, etc
 }
 
@@ -67,6 +66,7 @@ pre, code, kbd, samp {
     -webkit-font-smoothing: antialiased;
 
     &,
+    & h1,
     & li {
         font-family: $font-sans;
     }

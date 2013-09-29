@@ -3080,7 +3080,7 @@ label.error {
 /* line 72, ../scss/foundation/components/_top-bar.scss */
 .contain-to-grid {
   width: 100%;
-  background: #111111;
+  background: #333333;
 }
 /* line 76, ../scss/foundation/components/_top-bar.scss */
 .contain-to-grid .top-bar {
@@ -3120,7 +3120,7 @@ label.error {
   height: 45px;
   line-height: 45px;
   position: relative;
-  background: #111111;
+  background: #333333;
   margin-bottom: 0;
 }
 /* line 115, ../scss/foundation/components/_top-bar.scss */
@@ -3223,7 +3223,7 @@ label.error {
 }
 /* line 212, ../scss/foundation/components/_top-bar.scss */
 .top-bar.expanded .title-area {
-  background: #111111;
+  background: #333333;
 }
 /* line 215, ../scss/foundation/components/_top-bar.scss */
 .top-bar.expanded .toggle-topbar a {
@@ -3256,8 +3256,8 @@ label.error {
 /* line 250, ../scss/foundation/components/_top-bar.scss */
 .top-bar-section .divider,
 .top-bar-section [role="separator"] {
-  border-bottom: solid 1px #2b2b2b;
-  border-top: solid 1px black;
+  border-bottom: solid 1px #4d4d4d;
+  border-top: solid 1px #1a1a1a;
   clear: both;
   height: 1px;
   width: 100%;
@@ -3315,7 +3315,7 @@ label.error {
 }
 /* line 306, ../scss/foundation/components/_top-bar.scss */
 .top-bar-section ul li.active > a {
-  background: #090909;
+  background: #2b2b2b;
   color: white;
 }
 /* line 313, ../scss/foundation/components/_top-bar.scss */
@@ -3405,7 +3405,7 @@ label.error {
 @media only screen and (min-width: 480px) {
   /* line 389, ../scss/foundation/components/_top-bar.scss */
   .top-bar {
-    background: #111111;
+    background: #333333;
     *zoom: 1;
     overflow: visible;
   }
@@ -3442,7 +3442,7 @@ label.error {
   }
   /* line 409, ../scss/foundation/components/_top-bar.scss */
   .top-bar.expanded {
-    background: #111111;
+    background: #333333;
   }
 
   /* line 412, ../scss/foundation/components/_top-bar.scss */
@@ -3482,7 +3482,7 @@ label.error {
   .top-bar-section li a:not(.button) {
     padding: 0 15px;
     line-height: 45px;
-    background: #111111;
+    background: #333333;
   }
   /* line 444, ../scss/foundation/components/_top-bar.scss */
   .top-bar-section li a:not(.button):hover {
@@ -3537,12 +3537,12 @@ label.error {
     line-height: 1;
     white-space: nowrap;
     padding: 7px 15px;
-    background: #1e1e1e;
+    background: #404040;
   }
   /* line 502, ../scss/foundation/components/_top-bar.scss */
   .top-bar-section .dropdown li label {
     white-space: nowrap;
-    background: #1e1e1e;
+    background: #404040;
   }
   /* line 508, ../scss/foundation/components/_top-bar.scss */
   .top-bar-section .dropdown li .dropdown {
@@ -3553,15 +3553,15 @@ label.error {
   .top-bar-section > ul > .divider, .top-bar-section > ul > [role="separator"] {
     border-bottom: none;
     border-top: none;
-    border-right: solid 1px #2b2b2b;
-    border-left: solid 1px black;
+    border-right: solid 1px #4d4d4d;
+    border-left: solid 1px #1a1a1a;
     clear: none;
     height: 45px;
     width: 0;
   }
   /* line 526, ../scss/foundation/components/_top-bar.scss */
   .top-bar-section .has-form {
-    background: #111111;
+    background: #333333;
     padding: 0 15px;
     height: 45px;
   }
@@ -3582,7 +3582,7 @@ label.error {
   }
   /* line 554, ../scss/foundation/components/_top-bar.scss */
   .no-js .top-bar-section ul li:active > a {
-    background: #090909;
+    background: #2b2b2b;
     color: white;
   }
   /* line 562, ../scss/foundation/components/_top-bar.scss */
@@ -3601,71 +3601,70 @@ body {
   text-rendering: optimizelegibility;
 }
 
-/* line 16, ../scss/style.scss */
-body, p, nav, h1, h2, h3, h4, h5, h6, button, input, select, textarea,
-.navbar, .navbar-search .search-query {
-  font-family: "chaparral-pro-1", "chaparral-pro-2", Palatino Linotype, Palatino, serif;
+/* line 15, ../scss/style.scss */
+body, p, h1, h2, h3, h4, h5, h6, button, input, select, textarea {
+  font-family: "chaparral-pro", Palatino Linotype, Palatino, serif;
 }
 
-/* line 20, ../scss/style.scss */
+/* line 19, ../scss/style.scss */
 h1, h2, h3, h4, h5, h6 {
   font-weight: normal !important;
   color: #222222;
 }
 
-/* line 25, ../scss/style.scss */
+/* line 24, ../scss/style.scss */
 pre, code, kbd, samp {
   font-family: Menlo, Consolas, Inconsolata, Monaco, monospace;
 }
 
-/* line 29, ../scss/style.scss */
+/* line 28, ../scss/style.scss */
 [role="main"] {
   margin: 1em auto;
   max-width: 980px;
 }
-/* line 34, ../scss/style.scss */
+/* line 33, ../scss/style.scss */
 [role="main"] > section h2 {
   margin-left: 0.6em;
 }
-/* line 38, ../scss/style.scss */
+/* line 37, ../scss/style.scss */
 [role="main"] > section:nth-child-of-type(1) {
   margin-top: 1em;
 }
-/* line 41, ../scss/style.scss */
+/* line 40, ../scss/style.scss */
 [role="main"] > section:nth-child-of-type(1) p {
   margin-left: 1em;
 }
-/* line 46, ../scss/style.scss */
+/* line 45, ../scss/style.scss */
 [role="main"] > section:last-child {
   margin-bottom: 1em;
 }
-/* line 51, ../scss/style.scss */
+/* line 50, ../scss/style.scss */
 [role="main"] a {
   text-decoration: underline;
 }
-/* line 54, ../scss/style.scss */
+/* line 53, ../scss/style.scss */
 [role="main"] a:hover {
   text-decoration: none;
 }
-/* line 59, ../scss/style.scss */
+/* line 58, ../scss/style.scss */
 [role="main"] .button {
   text-decoration: none;
 }
 
-/* line 64, ../scss/style.scss */
+/* line 63, ../scss/style.scss */
 .top-bar {
   margin: 0 auto;
   max-width: 980px;
   -webkit-font-smoothing: antialiased;
 }
 /* line 70, ../scss/style.scss */
-.top-bar, .top-bar li {
+.top-bar, .top-bar h1, .top-bar li {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 
 /* line 75, ../scss/style.scss */
 p, li {
-  font-family: "chaparral-pro-1", "chaparral-pro-2", Palatino Linotype, Palatino, serif;
+  font-family: "chaparral-pro", Palatino Linotype, Palatino, serif;
   font-size: 18px;
   line-height: 22px;
 }

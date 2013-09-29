@@ -66,7 +66,7 @@ class Print_html
     <meta name="description" content="Craig Patik's homepage &mdash; travel logs &amp; photos, and web design &amp; development">
     <?php /* for adaptive images */ ?>
     <script>document.cookie='resolution='+Math.max(screen.width,screen.height)+("devicePixelRatio" in window ? ","+devicePixelRatio : ",1")+'; path=/';</script>
-    <script src="http://use.typekit.com/xlw2lhp.js"></script>
+    <script src="http://use.typekit.net/tfz6xpv.js"></script>
     <script>try { Typekit.load(); } catch(e) {}</script>
     <link rel="stylesheet" href="<?php echo $this->print_dir_level(); ?>css/style.css">
     <?php if (!empty($this->styleSheets) && is_array($this->styleSheets)) {

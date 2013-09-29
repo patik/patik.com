@@ -20,7 +20,7 @@ if(preg_match('/android.+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|f
   <meta name="author" content="Craig Patik">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <?php if ($isDesktop) { ?>
-  <script src="http://use.typekit.com/xlw2lhp.js"></script>
+  <script src="http://use.typekit.net/tfz6xpv.js"></script>
   <script>try { Typekit.load(); } catch (e) { }</script>
   <?php } ?>
   <link rel="stylesheet" href="../../../min/?g=h5canvasdemocss">
@@ -38,13 +38,13 @@ if(preg_match('/android.+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|f
         <form id="add-person" method="get" action=".">
         	<div>
             <label for="add-first-name"><span class="visuallyhidden">first </span>Name:</label>
-            <input type="text" id="add-first-name" placeholder="First" tabindex="1" pattern="^\w[\w\s\.]+$"> 
+            <input type="text" id="add-first-name" placeholder="First" tabindex="1" pattern="^\w[\w\s\.]+$">
             <label for="add-last-name" class="visuallyhidden">last name</label>
             <input type="text" id="add-last-name" placeholder="Last" tabindex="1" pattern="^\w[\w\s\.]+$">
           </div>
           <div class="add-location-container">
             <label for="add-location">Location:</label>
-            <input type="text" id="add-location" data-placeholder="Address or city" placeholder="Address or City" tabindex="1"> 
+            <input type="text" id="add-location" data-placeholder="Address or city" placeholder="Address or City" tabindex="1">
           </div>
          	<div class="add-distance-container">
             <label for="add-distance">Distance you're willing travel:</label>
@@ -63,13 +63,13 @@ if(preg_match('/android.+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|f
           </p>
         </div>
       </section>
-      
+
       <section id="people" style="display:none;">
       	<h3>Attendees:</h3>
         <div><a class="button next" tabindex="1">Submit Application</a></div>
         <ul id="people-list"></ul>
       </section>
-      
+
       <?php if ($isDesktop) { ?>
       <div id="map-container">
       	<canvas id="worldmap" height="420" width="744">
@@ -79,10 +79,10 @@ if(preg_match('/android.+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|f
       <?php } ?>
     </div>
     <footer>
-			
+
     </footer>
   </div><?php /* end div#container */ ?>
-	
+
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.2.min.js"><\/script>')</script>
   <script src="../../../min/?g=h5canvasdemojs"></script>
@@ -94,7 +94,7 @@ if(preg_match('/android.+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|f
         g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
         s.parentNode.insertBefore(g,s)}(document,'script'));
   </script>
-  
+
   <!--[if lt IE 7 ]>
     <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
     <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
