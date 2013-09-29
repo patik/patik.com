@@ -59,38 +59,38 @@ figure {
     }
 }
 .button-link-list {
-    & > div {
-        width: auto;
-        margin-left: 0;
-    }
+    // & > div {
+    //     // width: auto;
+    //     // margin-left: 0;
+    // }
 
-    & > div:first-child a {
-        border-top-left-radius: 4px;
-        border-top-right-radius: 4px;
-        border-top: 1px solid $light-gray;
-    }
+    // & > div:first-child a {
+    //     border-top-left-radius: 4px;
+    //     border-top-right-radius: 4px;
+    //     border-top: 1px solid $light-gray;
+    // }
 
-    & > div:last-child a {
-        border-bottom-left-radius: 4px;
-        border-bottom-right-radius: 4px;
-    }
+    // & > div:last-child a {
+    //     border-bottom-left-radius: 4px;
+    //     border-bottom-right-radius: 4px;
+    // }
 
     a {
         // @include button;
         display: block;
-        clear: both;
-        overflow: hidden;
+        // clear: both;
+        // overflow: hidden;
         padding: 0.5em 0.25em;
         //box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.05) inset;
-        border-radius: 0;
-        border-top: none;
-        width: auto;
+        // border-radius: 0;
+        // border-top: none;
+        // width: auto;
         text-align: left;
         text-decoration: none;
 
         &:active, &:hover, &:focus {
             text-decoration: none;
-            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.05) inset;
+            // box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.05) inset;
         }
 
         img {
@@ -107,13 +107,14 @@ figure {
         }
     }
 }
+
 .travel-link-list {
-    & > div {
-        width: 48%;
-        float: left;
-        margin-left: 2%; // Tried $fluidGridGutterWidth but it's too much at some most odd-value screen widths
-        margin-bottom: 4%;
-    }
+    // & > div {
+    //     width: 48%;
+    //     float: left;
+    //     margin-left: 2%; // Tried $fluidGridGutterWidth but it's too much at some most odd-value screen widths
+    //     margin-bottom: 4%;
+    // }
 
     a {
         display: block;
@@ -284,9 +285,9 @@ figure {
         }
     }
     /* -----------------------------------
-   * Peru & Argentina
-   * -----------------------------------
-   */
+     * Peru & Argentina
+     * -----------------------------------
+     */
 
     .bg-peru-argentina-amazon {
         span {
@@ -316,10 +317,11 @@ figure {
             text-align: right;
         }
     }
+
     /* -----------------------------------
-   * Spain
-   * -----------------------------------
-   */
+     * Spain
+     * -----------------------------------
+     */
 
     .bg-spain-world-cup {
         span {
@@ -328,10 +330,11 @@ figure {
             left: 8px;
         }
     }
+
     /* -----------------------------------
-   * Turkey
-   * -----------------------------------
-   */
+     * Turkey
+     * -----------------------------------
+     */
 
     .bg-turkey-istanbul {
         span {
@@ -364,10 +367,11 @@ figure {
             right: 8px;
         }
     }
+
     /* -----------------------------------
-   * Germany
-   * -----------------------------------
-   */
+     * Germany
+     * -----------------------------------
+     */
 
     .bg-germany-austria {
         span {
@@ -394,10 +398,11 @@ figure {
             left: 12px;
         }
     }
+
     /* -----------------------------------
-   * Greece
-   * -----------------------------------
-   */
+     * Greece
+     * -----------------------------------
+     */
 
     .bg-greece-athens {
         span {
@@ -424,10 +429,11 @@ figure {
             right: 4px;
         }
     }
+
     /* -----------------------------------
-   * France
-   * -----------------------------------
-   */
+     * France
+     * -----------------------------------
+     */
 
     .bg-france-photos {
         span {
@@ -436,10 +442,11 @@ figure {
             right: 12px;
         }
     }
+
     /* -----------------------------------
-   * Paris
-   * -----------------------------------
-   */
+     * Paris
+     * -----------------------------------
+     */
 
     .bg-paris-photos {
         span {
@@ -449,12 +456,15 @@ figure {
         }
     }
 }
+
 // Invert the image-cover action for touch devices
 .touch .travel-link-list {
     a {
         .image-cover {
             background-color: rgba(0, 0, 0, 0);
+            @include transition("background-color 0.2s ease-in");
         }
+
         &:active, &:hover, &:focus {
             .image-cover {
                 background-color: rgba(0, 0, 0, 0.25);
@@ -465,9 +475,11 @@ figure {
 
 .travel-map {
     text-align: center;
+
     img {
         box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
         @include transition("all 0.15s ease 0s");
+
         &:hover {
             box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
         }
@@ -535,24 +547,21 @@ img[src^="/gam.php?"] {
 @media #{$small} { // 600px and up
     .button-link-list {
         & > div {
-            width: 48%;
-            float: left;
-            margin-left: 2%;
-            // Tried $fluidGridGutterWidth but it breaks at some odd-value browser widths
-            margin-bottom: 2%;
-            border-radius: 4px;
+            // width: 48%;
+            // float: left;
+            // margin-left: 2%; // Tried $fluidGridGutterWidth but it breaks at some odd-value browser widths
+            // margin-bottom: 2%;
+            // border-radius: 4px;
         }
 
         & > div:nth-child(odd) {
-            margin-left: 0;
-            clear: both;
-            // Shouldn't need this...
+            // margin-left: 0;
+        }
 
-        }
-        a {
-            border: 1px solid $light-gray;
-            border-radius: 4px;
-        }
+        // a {
+        //     border: 1px solid $light-gray;
+        //     border-radius: 4px;
+        // }
     }
 
     .travel-link-list {
