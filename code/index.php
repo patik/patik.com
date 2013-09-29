@@ -72,20 +72,6 @@ function print_page_body()
       </div>
     </section>
 
-    <section>
-      <h2>Links</h2>
-      <p>These are some ideas, inspirations, and invaluable tools that I find interesting and relevant to development on the web today.</p>
-      <ul>
-      	<li>Why the most reasonable design strategy today is to think <a href="http://www.lukew.com/ff/entry.asp?933">mobile first</a></li>
-        <li><a href="http://jquerymobile.com/">jQueryMobile</a> to help make your site friendly for all mobile devices, and <a href="http://www.phonegap.com/">PhoneGap</a> to port native apps for many platforms</li>
-        <li>Many demos and explanations of the latest advancements are at <a href="http://www.html5rocks.com/">HTML5 Rocks</a></li>
-      	<li><a href="http://paulirish.com/2011/tiered-adaptive-front-end-experiences/">Why web sites need not look the same on all browsers</a></li>
-      	<li><a href="http://www.google.com/chromeframe?quickenable=true">Google Chrome Frame</a>, for anyone required to use IE6-9 who wants to get the most out of the web (no administrative rights needed!)</li>
-      	<li>CSS generators for <a href="http://www.colorzilla.com/gradient-editor/">gradients</a> and <a href="http://css3please.com/">other styles</a></li>
-      	<li><a href="http://jsfiddle.net/">jsFiddle</a> for writing and sharing code snippets, and <a href="http://jsperf.com/">jsPerf</a> for seeing which one is the fastest</li>
-      </ul>
-     </section>
-
   </div>
   <?php
 }
