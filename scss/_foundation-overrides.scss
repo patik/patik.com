@@ -68,11 +68,14 @@ $global-rounded: 1000px;
 
 // Media Queries
 
+$tiny-screen: 480px;
 $small-screen: 600px;
 $medium-screen: 980px;
+$medium-screen-less: $medium-screen - 1;
 $large-screen: 1280px;
 
 $screen: "only screen";
+$tiny: "only screen and (min-width: #{$tiny-screen})";
 $small: "only screen and (min-width: #{$small-screen})";
 $medium: "only screen and (min-width: #{$medium-screen})";
 $large: "only screen and (min-width: #{$large-screen})";

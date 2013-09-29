@@ -1,6 +1,7 @@
 // Make sure the charset is set appropriately @charset"UTF-8";
  @import"foundation";
  @import"_foundation-overrides";
+ @import"_mixins";
  @import"_variables";
 
  //=============================================================================
@@ -8,13 +9,14 @@
  //=============================================================================
 
  body {
-    font-size: 16px;
+    // font-size: 16px;
     // padding-top: 60px;
     // Only needed for fixed navbar padding-bottom: 40px;
     text-rendering: optimizelegibility;
 }
 
-body, p, nav, h1, h2, h3, h4, h5, h6, button, input, select, textarea, .navbar, .navbar-search .search-query {
+body, p, nav, h1, h2, h3, h4, h5, h6, button, input, select, textarea,
+.navbar, .navbar-search .search-query {
     font-family: $font-sans;
     // Includes Typekit (which is only served to tablets and up) but falls back to Helvetica, etc
 }
@@ -61,15 +63,18 @@ figure {
         width: auto;
         margin-left: 0;
     }
+
     & > div:first-child a {
-        .border-radius-tl(4px);
-        .border-radius-tr(4px);
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
         border-top: 1px solid $light-gray;
     }
+
     & > div:last-child a {
-        .border-radius-bl(4px);
-        .border-radius-br(4px);
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
     }
+
     a {
         // @include button;
         display: block;
@@ -82,15 +87,18 @@ figure {
         width: auto;
         text-align: left;
         text-decoration: none;
+
         &:active, &:hover, &:focus {
             text-decoration: none;
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.05) inset;
         }
+
         img {
             float: left;
             height: $buttonLinkImageWidth / 2;
             width: $buttonLinkImageWidth / 2;
         }
+
         span {
             display: block;
             margin-left: ($buttonLinkImageWidth / 2) + 4;
@@ -143,7 +151,7 @@ figure {
             bottom: 0;
             z-index: 2;
             background-color: rgba(0, 0, 0, 0.1);
-            .transition(all 0.15s ease 0s);
+            @include transition("all 0.15s ease 0s");
         }
 
         &:active, &:hover, &:focus {
@@ -441,7 +449,8 @@ figure {
         }
     }
 }
-// Invert the image-cover action for touch devices .touch .travel-link-list {
+// Invert the image-cover action for touch devices
+.touch .travel-link-list {
     a {
         .image-cover {
             background-color: rgba(0, 0, 0, 0);
@@ -453,34 +462,37 @@ figure {
         }
     }
 }
+
 .travel-map {
     text-align: center;
     img {
         box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
-        .transition(all 0.15s ease 0s);
+        @include transition("all 0.15s ease 0s");
         &:hover {
             box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
         }
     }
 }
+
 // Google analytics image looks ugly when it doesn't load, so move it off-screen
 img[src^="/gam.php?"] {
     position: absolute;
     left: -9999px;
     top: -99999px;
 }
-// Bigger than phone // --------------------- @media (min-width: $bkptPhone) {
-    // 480px body, button, input, select, textarea {
+
+// Bigger than phone
+// ---------------------
+@media #{$tiny} { // 480px and up
+    body, button, input, select, textarea {
         color: $charcoal;
     }
+
     p, li {
         font-size: 20px;
         line-height: 24px;
     }
-    .container {
-        padding: 0 20px;
-        /* Bootstrap default */
-    }
+
     .travel-link-list {
         a {
             max-height: 220px;
@@ -505,29 +517,29 @@ img[src^="/gam.php?"] {
         }
     }
 }
-// PORTRAIT TABLET AND UP // ---------------------------------- @media (min-width: $bkptTablet) and (max-width: $bkptDesktopLess) {
-    // 600px to 979px // BS overrides // ------------ .container {
-        width: auto;
-    }
-    .row {
-        margin-left: 0;
-    }
-    // My styles // --------- .travel-link-list {
-        // These next two styles must be within a media query that has both min and max, otherwise it becomes very difficult to override the values at higher resolutions (i.e., targetting nth-child odd but not multiples of three, or multiples of three but not also multiples of four[ie, 12]) & > div {
+// PORTRAIT TABLET AND UP
+// ----------------------------------
+@media (min-width: $small-screen) and (max-width: $medium-screen-less) { // 600px to 979px
+    .travel-link-list {
+        // These next two styles must be within a media query that has both min and max, otherwise it becomes very difficult to override the values at higher resolutions (i.e., targetting nth-child odd but not multiples of three, or multiples of three but not also multiples of four[ie, 12])
+        & > div {
             margin-left: 0;
         }
+
         & > div:nth-child(odd) {
             margin-right: 4%;
         }
     }
 }
-@media (min-width: $bkptTablet) { // 600px
+
+@media #{$small} { // 600px and up
     .button-link-list {
         & > div {
             width: 48%;
             float: left;
             margin-left: 2%;
-            // Tried $fluidGridGutterWidth but it breaks at some odd-value browser widths margin-bottom: 2%;
+            // Tried $fluidGridGutterWidth but it breaks at some odd-value browser widths
+            margin-bottom: 2%;
             border-radius: 4px;
         }
 
@@ -565,74 +577,71 @@ img[src^="/gam.php?"] {
     }
 }
 @media (min-width: 740px) {
-    // Images look funny (too short) around this size .travel-link-list a {
+    // Images look funny (too short) around this size
+    .travel-link-list a {
         height: 336px;
         max-height: 336px;
     }
 }
-// Up to desktop @media (max-width: $bkptDesktopLess) {
-    // 979px
-}
-// DEFAULT DESKTOP // --------------- @media (min-width: $bkptDesktop) {
-    // 980px .button-link-list {
+
+// DEFAULT DESKTOP
+// ---------------
+@media #{$medium} { // 980px and up
+    .button-link-list {
         & > div {
             width: 32%;
             float: left;
-            margin-left: 2%;
-            // Tried @fluidGridGutterWidth but it breaks at some odd-value browser widths margin-bottom: 2%;
+            margin-left: 2%; // Tried @fluidGridGutterWidth but it breaks at some odd-value browser widths
+            margin-bottom: 2%;
             border-radius: 4px;
         }
         & > div:nth-child(odd) {
-            margin-left: 2%;
-            // Overriding tablet-sized style clear: none;
+            clear: none;
         }
         & > div:nth-child(3n+1) {
             margin-left: 0;
             clear: both;
-            // Shouldn't need this...
-
         }
     }
+
     .row {
         margin-left: 0;
     }
+
     .travel-link-list {
-        // All & > div {
+        // All
+        & > div {
             width: 32%;
             float: left;
-            margin-left: 0;
-            // Tried @fluidGridGutterWidth but it breaks at some odd-value browser widths margin-right: 2%;
+            margin-left: 0; // Tried @fluidGridGutterWidth but it breaks at some odd-value browser widths
+            margin-right: 2%;
             margin-bottom: 2%;
             border-radius: 4px;
             clear: none;
         }
-        // Third (last in row) & > div:nth-child(3n+3) {
+
+        // Third (last in row)
+        & > div:nth-child(3n+3) {
             margin-right: 0;
         }
-        // Fourth (first in new row) & > div:nth-child(4n+4) {
+
+        // Fourth (first in new row)
+        & > div:nth-child(4n+4) {
             margin-right: 2%;
         }
+
         img {
             max-width: none;
             // BS override
         }
     }
 }
-// LARGE DESKTOP & UP // ------------------ @media (min-width: $bkptDesktopWide) {
-    // 1200px
-}
-// TESTING ONLY // ------------ // So I can see Helvetica for phone-size and Typekit otherwise (Typekit won't be served to phones)
-// body, p, nav, h1, h2, h3, h4, h5, h6, button, input, select, textarea, // .navbar, .navbar-search .search-query {
+
+// TESTING ONLY
+// ------------
+// So I can see Helvetica for phone-size and Typekit otherwise (Typekit won't be served to phones)
+// body, p, nav, h1, h2, h3, h4, h5, h6, button, input, select, textarea,
+// .navbar, .navbar-search .search-query {
     // font-family: $font-helv;
-    //
-}
-@media (min-width: $bkptPhoneMore) {
-    // 481px // Testing only, so I can see Typekit on desktop // body, nav, p, li {
-        // font-family: $font-serif;
-        //
-    }
-    // h1, h2, h3, h4, h5, h6, button, input, select, textarea {
-        // font-family: $font-sans;
-        //
-    }
-}
+// }
+
