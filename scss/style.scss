@@ -1,45 +1,75 @@
 // Make sure the charset is set appropriately @charset"UTF-8";
- @import"foundation";
- @import"_foundation-overrides";
- @import"_mixins";
- @import"_variables";
+@import"foundation";
+@import"_foundation-overrides";
+@import"_mixins";
+@import"_variables";
 
- //=============================================================================
- // Basic styles
- //=============================================================================
+//=============================================================================
+// Basic styles
+//=============================================================================
 
- body {
-    // font-size: 16px;
-    // padding-top: 60px;
-    // Only needed for fixed navbar padding-bottom: 40px;
+body {
     text-rendering: optimizelegibility;
 }
 
 body, p, nav, h1, h2, h3, h4, h5, h6, button, input, select, textarea,
 .navbar, .navbar-search .search-query {
-    font-family: $font-sans;
-    // Includes Typekit (which is only served to tablets and up) but falls back to Helvetica, etc
+    font-family: $font-serif; // Includes Typekit (which is only served to tablets and up) but falls back to Helvetica, etc
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: normal !important;
-    color: #3A87AD;
-    // darken(#08C, 10%);
+    color: $dark-charcoal; // #3A87AD;
 }
 
 pre, code, kbd, samp {
     font-family: $font-fixed;
 }
 
-[role="main"] a {
-    text-decoration: underline;
-    &:hover {
+[role="main"] {
+    margin: 1em auto;
+    max-width: 980px;
+
+    & > section {
+        h2 {
+            margin-left: 0.6em;
+        }
+
+        &:nth-child-of-type(1) {
+            margin-top: 1em;
+
+            p {
+                margin-left: 1em;
+            }
+        }
+
+        &:last-child {
+            margin-bottom: 1em;
+        }
+    }
+
+    a {
+        text-decoration: underline;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    .button {
         text-decoration: none;
     }
 }
 
-[role="main"] .button {
-    text-decoration: none;
+.top-bar {
+    margin: 0 auto;
+    max-width: 980px;
+    -webkit-font-smoothing: antialiased;
+
+    &,
+    & li {
+        font-family: $font-sans;
+    }
 }
 
 p, li {
@@ -53,28 +83,14 @@ section {
         margin: 1em 0 0.5em 0;
     }
 }
+
 figure {
     img {
         box-shadow: 0 0 2px black;
     }
 }
+
 .button-link-list {
-    // & > div {
-    //     // width: auto;
-    //     // margin-left: 0;
-    // }
-
-    // & > div:first-child a {
-    //     border-top-left-radius: 4px;
-    //     border-top-right-radius: 4px;
-    //     border-top: 1px solid $light-gray;
-    // }
-
-    // & > div:last-child a {
-    //     border-bottom-left-radius: 4px;
-    //     border-bottom-right-radius: 4px;
-    // }
-
     a {
         // @include button;
         display: block;
@@ -125,7 +141,8 @@ figure {
         min-height: 128px;
         max-height: 144px;
         width: auto;
-        max-width: 336px; // Max width of the image files (some are 340px, but whatever) position: relative;
+        max-width: 336px; // Max width of the image files (some are 340px, but whatever)
+        position: relative;
         border-radius: 5px;
         box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
         text-shadow: 3px 3px 4px black, 0 -1px 0 rgba(0, 0, 0, 0.5);
@@ -529,44 +546,15 @@ img[src^="/gam.php?"] {
         }
     }
 }
+
 // PORTRAIT TABLET AND UP
 // ----------------------------------
-@media (min-width: $small-screen) and (max-width: $medium-screen-less) { // 600px to 979px
-    .travel-link-list {
-        // These next two styles must be within a media query that has both min and max, otherwise it becomes very difficult to override the values at higher resolutions (i.e., targetting nth-child odd but not multiples of three, or multiples of three but not also multiples of four[ie, 12])
-        & > div {
-            margin-left: 0;
-        }
-
-        & > div:nth-child(odd) {
-            margin-right: 4%;
-        }
-    }
-}
 
 @media #{$small} { // 600px and up
-    .button-link-list {
-        & > div {
-            // width: 48%;
-            // float: left;
-            // margin-left: 2%; // Tried $fluidGridGutterWidth but it breaks at some odd-value browser widths
-            // margin-bottom: 2%;
-            // border-radius: 4px;
-        }
-
-        & > div:nth-child(odd) {
-            // margin-left: 0;
-        }
-
-        // a {
-        //     border: 1px solid $light-gray;
-        //     border-radius: 4px;
-        // }
-    }
-
     .travel-link-list {
         a {
             height: 224px;
+
             span {
                 font-size: 3em;
             }
@@ -585,11 +573,12 @@ img[src^="/gam.php?"] {
         }
     }
 }
+
 @media (min-width: 740px) {
     // Images look funny (too short) around this size
     .travel-link-list a {
-        height: 336px;
-        max-height: 336px;
+        height: 284px;
+        max-height: 284px;
     }
 }
 

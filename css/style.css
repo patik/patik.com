@@ -1833,36 +1833,6 @@ h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
   line-height: 0;
 }
 
-/* line 199, ../scss/foundation/components/_type.scss */
-h1 {
-  font-size: 2.125em;
-}
-
-/* line 200, ../scss/foundation/components/_type.scss */
-h2 {
-  font-size: 1.6875em;
-}
-
-/* line 201, ../scss/foundation/components/_type.scss */
-h3 {
-  font-size: 1.375em;
-}
-
-/* line 202, ../scss/foundation/components/_type.scss */
-h4 {
-  font-size: 1.125em;
-}
-
-/* line 203, ../scss/foundation/components/_type.scss */
-h5 {
-  font-size: 1.125em;
-}
-
-/* line 204, ../scss/foundation/components/_type.scss */
-h6 {
-  font-size: 1em;
-}
-
 /* line 208, ../scss/foundation/components/_type.scss */
 hr {
   border: solid #dddddd;
@@ -2056,17 +2026,17 @@ blockquote p {
 
   /* line 369, ../scss/foundation/components/_type.scss */
   h1 {
-    font-size: 2.75em;
+    font-size: 2em;
   }
 
   /* line 370, ../scss/foundation/components/_type.scss */
   h2 {
-    font-size: 2.3125em;
+    font-size: 1.75em;
   }
 
   /* line 371, ../scss/foundation/components/_type.scss */
   h3 {
-    font-size: 1.6875em;
+    font-size: 1.5em;
   }
 
   /* line 372, ../scss/foundation/components/_type.scss */
@@ -3300,7 +3270,7 @@ label.error {
   padding: 12px 0 12px 0;
   padding-left: 15px;
   font-size: 0.8125em;
-  font-weight: bold;
+  font-weight: normal;
   background: #222222;
 }
 /* line 269, ../scss/foundation/components/_top-bar.scss */
@@ -3399,7 +3369,7 @@ label.error {
 }
 /* line 354, ../scss/foundation/components/_top-bar.scss */
 .top-bar-section .dropdown li a.parent-link {
-  font-weight: bold;
+  font-weight: normal;
 }
 /* line 359, ../scss/foundation/components/_top-bar.scss */
 .top-bar-section .dropdown li.title h5 {
@@ -3423,7 +3393,7 @@ label.error {
 
 /* line 380, ../scss/foundation/components/_top-bar.scss */
 .top-bar-js-breakpoint {
-  width: 940px !important;
+  width: 480px !important;
   visibility: hidden;
 }
 
@@ -3432,7 +3402,7 @@ label.error {
   display: block;
 }
 
-@media only screen and (min-width: 940px) {
+@media only screen and (min-width: 480px) {
   /* line 389, ../scss/foundation/components/_top-bar.scss */
   .top-bar {
     background: #111111;
@@ -3631,72 +3601,103 @@ body {
   text-rendering: optimizelegibility;
 }
 
-/* line 19, ../scss/style.scss */
+/* line 16, ../scss/style.scss */
 body, p, nav, h1, h2, h3, h4, h5, h6, button, input, select, textarea,
 .navbar, .navbar-search .search-query {
-  font-family: "chaparral-pro-1", "chaparral-pro-2", "Helvetica Neue", Arial, sans-serif;
+  font-family: "chaparral-pro-1", "chaparral-pro-2", Palatino Linotype, Palatino, serif;
 }
 
-/* line 24, ../scss/style.scss */
+/* line 20, ../scss/style.scss */
 h1, h2, h3, h4, h5, h6 {
   font-weight: normal !important;
-  color: #3A87AD;
+  color: #222222;
 }
 
-/* line 30, ../scss/style.scss */
+/* line 25, ../scss/style.scss */
 pre, code, kbd, samp {
   font-family: Menlo, Consolas, Inconsolata, Monaco, monospace;
 }
 
+/* line 29, ../scss/style.scss */
+[role="main"] {
+  margin: 1em auto;
+  max-width: 980px;
+}
 /* line 34, ../scss/style.scss */
+[role="main"] > section h2 {
+  margin-left: 0.6em;
+}
+/* line 38, ../scss/style.scss */
+[role="main"] > section:nth-child-of-type(1) {
+  margin-top: 1em;
+}
+/* line 41, ../scss/style.scss */
+[role="main"] > section:nth-child-of-type(1) p {
+  margin-left: 1em;
+}
+/* line 46, ../scss/style.scss */
+[role="main"] > section:last-child {
+  margin-bottom: 1em;
+}
+/* line 51, ../scss/style.scss */
 [role="main"] a {
   text-decoration: underline;
 }
-/* line 36, ../scss/style.scss */
+/* line 54, ../scss/style.scss */
 [role="main"] a:hover {
   text-decoration: none;
 }
-
-/* line 41, ../scss/style.scss */
+/* line 59, ../scss/style.scss */
 [role="main"] .button {
   text-decoration: none;
 }
 
-/* line 45, ../scss/style.scss */
+/* line 64, ../scss/style.scss */
+.top-bar {
+  margin: 0 auto;
+  max-width: 980px;
+  -webkit-font-smoothing: antialiased;
+}
+/* line 70, ../scss/style.scss */
+.top-bar, .top-bar li {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+
+/* line 75, ../scss/style.scss */
 p, li {
   font-family: "chaparral-pro-1", "chaparral-pro-2", Palatino Linotype, Palatino, serif;
   font-size: 18px;
   line-height: 22px;
 }
 
-/* line 52, ../scss/style.scss */
+/* line 82, ../scss/style.scss */
 section h2 {
   margin: 1em 0 0.5em 0;
 }
 
-/* line 57, ../scss/style.scss */
+/* line 88, ../scss/style.scss */
 figure img {
   box-shadow: 0 0 2px black;
 }
 
-/* line 78, ../scss/style.scss */
+/* line 94, ../scss/style.scss */
 .button-link-list a {
   display: block;
   padding: 0.5em 0.25em;
   text-align: left;
   text-decoration: none;
 }
-/* line 91, ../scss/style.scss */
+/* line 107, ../scss/style.scss */
 .button-link-list a:active, .button-link-list a:hover, .button-link-list a:focus {
   text-decoration: none;
 }
-/* line 96, ../scss/style.scss */
+/* line 112, ../scss/style.scss */
 .button-link-list a img {
   float: left;
   height: 48px;
   width: 48px;
 }
-/* line 102, ../scss/style.scss */
+/* line 118, ../scss/style.scss */
 .button-link-list a span {
   display: block;
   margin-left: 52px;
@@ -3704,7 +3705,7 @@ figure img {
   line-height: 1.1em;
 }
 
-/* line 111, ../scss/style.scss */
+/* line 127, ../scss/style.scss */
 .travel-link-list {
   /* -----------------------------------
    * Travel main page
@@ -3743,7 +3744,7 @@ figure img {
    * -----------------------------------
    */
 }
-/* line 119, ../scss/style.scss */
+/* line 135, ../scss/style.scss */
 .travel-link-list a {
   display: block;
   float: none;
@@ -3754,15 +3755,16 @@ figure img {
   max-height: 144px;
   width: auto;
   max-width: 336px;
+  position: relative;
   border-radius: 5px;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
   text-shadow: 3px 3px 4px black, 0 -1px 0 rgba(0, 0, 0, 0.5);
 }
-/* line 133, ../scss/style.scss */
+/* line 150, ../scss/style.scss */
 .travel-link-list a:active, .travel-link-list a:hover, .travel-link-list a:focus {
   text-decoration: none;
 }
-/* line 138, ../scss/style.scss */
+/* line 155, ../scss/style.scss */
 .travel-link-list a span {
   color: white;
   font-size: 2em;
@@ -3771,7 +3773,7 @@ figure img {
   position: absolute;
   z-index: 3;
 }
-/* line 147, ../scss/style.scss */
+/* line 164, ../scss/style.scss */
 .travel-link-list a .image-cover {
   position: absolute;
   top: 0;
@@ -3783,58 +3785,58 @@ figure img {
   -webkit-transition: all 0.15s ease 0s;
   transition: all 0.15s ease 0s;
 }
-/* line 159, ../scss/style.scss */
+/* line 176, ../scss/style.scss */
 .travel-link-list a:active .image-cover, .travel-link-list a:hover .image-cover, .travel-link-list a:focus .image-cover {
   background-color: rgba(0, 0, 0, 0);
 }
-/* line 164, ../scss/style.scss */
+/* line 181, ../scss/style.scss */
 .travel-link-list a img {
   max-width: 100%;
 }
-/* line 175, ../scss/style.scss */
+/* line 192, ../scss/style.scss */
 .travel-link-list .bg-travel-peru-argentina span {
   bottom: 10px;
   left: 5px;
 }
-/* line 182, ../scss/style.scss */
+/* line 199, ../scss/style.scss */
 .travel-link-list .bg-travel-spain span {
   bottom: 5px;
   left: 5px;
 }
-/* line 189, ../scss/style.scss */
+/* line 206, ../scss/style.scss */
 .travel-link-list .bg-travel-turkey span {
   top: 70%;
   right: 5px;
 }
-/* line 196, ../scss/style.scss */
+/* line 213, ../scss/style.scss */
 .travel-link-list .bg-travel-germany span {
   top: 5px;
   left: 5px;
 }
-/* line 203, ../scss/style.scss */
+/* line 220, ../scss/style.scss */
 .travel-link-list .bg-travel-greece span {
   bottom: 5px;
   left: 0;
   right: 0;
   text-align: center;
 }
-/* line 212, ../scss/style.scss */
+/* line 229, ../scss/style.scss */
 .travel-link-list .bg-travel-paris span {
   top: 5px;
   right: 10px;
 }
-/* line 219, ../scss/style.scss */
+/* line 236, ../scss/style.scss */
 .travel-link-list .bg-travel-france span {
   top: 5px;
   left: 5px;
 }
-/* line 226, ../scss/style.scss */
+/* line 243, ../scss/style.scss */
 .travel-link-list .bg-travel-britain-benelux span {
   top: 6px;
   left: 8px;
   text-align: left;
 }
-/* line 239, ../scss/style.scss */
+/* line 256, ../scss/style.scss */
 .travel-link-list .bg-britain-netherlands span {
   position: absolute;
   bottom: 6px;
@@ -3842,7 +3844,7 @@ figure img {
   width: 100%;
   text-align: center;
 }
-/* line 249, ../scss/style.scss */
+/* line 266, ../scss/style.scss */
 .travel-link-list .bg-britain-bruges span {
   position: absolute;
   bottom: 6px;
@@ -3850,7 +3852,7 @@ figure img {
   width: 100%;
   text-align: right;
 }
-/* line 259, ../scss/style.scss */
+/* line 276, ../scss/style.scss */
 .travel-link-list .bg-britain-edinburgh span {
   position: absolute;
   bottom: 6px;
@@ -3858,7 +3860,7 @@ figure img {
   width: 100%;
   text-align: right;
 }
-/* line 269, ../scss/style.scss */
+/* line 286, ../scss/style.scss */
 .travel-link-list .bg-britain-london span {
   position: absolute;
   top: 20px;
@@ -3866,7 +3868,7 @@ figure img {
   text-align: center;
   width: 100%;
 }
-/* line 279, ../scss/style.scss */
+/* line 296, ../scss/style.scss */
 .travel-link-list .bg-britain-liverpool span {
   position: absolute;
   bottom: 6px;
@@ -3874,14 +3876,14 @@ figure img {
   width: 100%;
   text-align: left;
 }
-/* line 293, ../scss/style.scss */
+/* line 310, ../scss/style.scss */
 .travel-link-list .bg-peru-argentina-amazon span {
   font-size: 1.5em;
   position: absolute;
   bottom: 6px;
   left: 8px;
 }
-/* line 302, ../scss/style.scss */
+/* line 319, ../scss/style.scss */
 .travel-link-list .bg-peru-argentina-cusco span {
   position: absolute;
   bottom: 6px;
@@ -3889,7 +3891,7 @@ figure img {
   width: 100%;
   text-align: center;
 }
-/* line 312, ../scss/style.scss */
+/* line 329, ../scss/style.scss */
 .travel-link-list .bg-peru-argentina-colonia span {
   font-size: 1.5em;
   position: absolute;
@@ -3897,43 +3899,43 @@ figure img {
   right: 6px;
   text-align: right;
 }
-/* line 327, ../scss/style.scss */
+/* line 344, ../scss/style.scss */
 .travel-link-list .bg-spain-world-cup span {
   position: absolute;
   bottom: 6px;
   left: 8px;
 }
-/* line 340, ../scss/style.scss */
+/* line 357, ../scss/style.scss */
 .travel-link-list .bg-turkey-istanbul span {
   position: absolute;
   bottom: 0;
   right: 8px;
 }
-/* line 348, ../scss/style.scss */
+/* line 365, ../scss/style.scss */
 .travel-link-list .bg-turkey-cappadocia span {
   position: absolute;
   top: 6px;
   left: 6px;
 }
-/* line 356, ../scss/style.scss */
+/* line 373, ../scss/style.scss */
 .travel-link-list .bg-turkey-cirali span {
   position: absolute;
   top: 6px;
   left: 6px;
 }
-/* line 364, ../scss/style.scss */
+/* line 381, ../scss/style.scss */
 .travel-link-list .bg-turkey-ephesus span {
   position: absolute;
   top: 6px;
   right: 8px;
 }
-/* line 377, ../scss/style.scss */
+/* line 394, ../scss/style.scss */
 .travel-link-list .bg-germany-austria span {
   position: absolute;
   top: 24px;
   left: 8px;
 }
-/* line 385, ../scss/style.scss */
+/* line 402, ../scss/style.scss */
 .travel-link-list .bg-germany-bavaria span {
   position: absolute;
   bottom: 16px;
@@ -3941,19 +3943,19 @@ figure img {
   text-align: center;
   width: 100%;
 }
-/* line 395, ../scss/style.scss */
+/* line 412, ../scss/style.scss */
 .travel-link-list .bg-germany-berlin span {
   position: absolute;
   bottom: 6px;
   left: 12px;
 }
-/* line 408, ../scss/style.scss */
+/* line 425, ../scss/style.scss */
 .travel-link-list .bg-greece-athens span {
   position: absolute;
   bottom: 6px;
   left: 8px;
 }
-/* line 416, ../scss/style.scss */
+/* line 433, ../scss/style.scss */
 .travel-link-list .bg-greece-sifnos span {
   position: absolute;
   bottom: 6px;
@@ -3961,52 +3963,52 @@ figure img {
   text-align: center;
   width: 100%;
 }
-/* line 426, ../scss/style.scss */
+/* line 443, ../scss/style.scss */
 .travel-link-list .bg-greece-santorini span {
   position: absolute;
   bottom: 6px;
   right: 4px;
 }
-/* line 439, ../scss/style.scss */
+/* line 456, ../scss/style.scss */
 .travel-link-list .bg-france-photos span {
   position: absolute;
   bottom: 6px;
   right: 12px;
 }
-/* line 452, ../scss/style.scss */
+/* line 469, ../scss/style.scss */
 .travel-link-list .bg-paris-photos span {
   position: absolute;
   bottom: 6px;
   right: 12px;
 }
 
-/* line 463, ../scss/style.scss */
+/* line 480, ../scss/style.scss */
 .touch .travel-link-list a .image-cover {
   background-color: rgba(0, 0, 0, 0);
   -webkit-transition: background-color 0.2s ease-in;
   transition: background-color 0.2s ease-in;
 }
-/* line 469, ../scss/style.scss */
+/* line 486, ../scss/style.scss */
 .touch .travel-link-list a:active .image-cover, .touch .travel-link-list a:hover .image-cover, .touch .travel-link-list a:focus .image-cover {
   background-color: rgba(0, 0, 0, 0.25);
 }
 
-/* line 476, ../scss/style.scss */
+/* line 493, ../scss/style.scss */
 .travel-map {
   text-align: center;
 }
-/* line 479, ../scss/style.scss */
+/* line 496, ../scss/style.scss */
 .travel-map img {
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
   -webkit-transition: all 0.15s ease 0s;
   transition: all 0.15s ease 0s;
 }
-/* line 483, ../scss/style.scss */
+/* line 500, ../scss/style.scss */
 .travel-map img:hover {
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
 }
 
-/* line 490, ../scss/style.scss */
+/* line 507, ../scss/style.scss */
 img[src^="/gam.php?"] {
   position: absolute;
   left: -9999px;
@@ -4014,71 +4016,61 @@ img[src^="/gam.php?"] {
 }
 
 @media only screen and (min-width: 480px) {
-  /* line 499, ../scss/style.scss */
+  /* line 516, ../scss/style.scss */
   body, button, input, select, textarea {
     color: #444444;
   }
 
-  /* line 503, ../scss/style.scss */
+  /* line 520, ../scss/style.scss */
   p, li {
     font-size: 20px;
     line-height: 24px;
   }
 
-  /* line 509, ../scss/style.scss */
+  /* line 526, ../scss/style.scss */
   .travel-link-list a {
     max-height: 220px;
   }
-  /* line 514, ../scss/style.scss */
+  /* line 531, ../scss/style.scss */
   .travel-link-list .bg-peru-argentina-amazon span {
     font-size: 2em;
   }
-  /* line 520, ../scss/style.scss */
+  /* line 537, ../scss/style.scss */
   .travel-link-list .bg-peru-argentina-colonia span {
     font-size: 2em;
   }
-  /* line 526, ../scss/style.scss */
+  /* line 543, ../scss/style.scss */
   .travel-link-list .bg-greece-santorini span {
     right: 12px;
   }
 }
-@media (min-width: 600px) and (max-width: 979px) {
-  /* line 537, ../scss/style.scss */
-  .travel-link-list > div {
-    margin-left: 0;
-  }
-  /* line 541, ../scss/style.scss */
-  .travel-link-list > div:nth-child(odd) {
-    margin-right: 4%;
-  }
-}
 @media only screen and (min-width: 600px) {
-  /* line 568, ../scss/style.scss */
+  /* line 555, ../scss/style.scss */
   .travel-link-list a {
     height: 224px;
   }
-  /* line 570, ../scss/style.scss */
+  /* line 558, ../scss/style.scss */
   .travel-link-list a span {
     font-size: 3em;
   }
-  /* line 576, ../scss/style.scss */
+  /* line 564, ../scss/style.scss */
   .travel-link-list .bg-peru-argentina-amazon span {
     font-size: 3em;
   }
-  /* line 582, ../scss/style.scss */
+  /* line 570, ../scss/style.scss */
   .travel-link-list .bg-peru-argentina-colonia span {
     font-size: 2.8em;
   }
 }
 @media (min-width: 740px) {
-  /* line 590, ../scss/style.scss */
+  /* line 579, ../scss/style.scss */
   .travel-link-list a {
-    height: 336px;
-    max-height: 336px;
+    height: 284px;
+    max-height: 284px;
   }
 }
 @media only screen and (min-width: 980px) {
-  /* line 600, ../scss/style.scss */
+  /* line 589, ../scss/style.scss */
   .button-link-list > div {
     width: 32%;
     float: left;
@@ -4086,22 +4078,22 @@ img[src^="/gam.php?"] {
     margin-bottom: 2%;
     border-radius: 4px;
   }
-  /* line 607, ../scss/style.scss */
+  /* line 596, ../scss/style.scss */
   .button-link-list > div:nth-child(odd) {
     clear: none;
   }
-  /* line 610, ../scss/style.scss */
+  /* line 599, ../scss/style.scss */
   .button-link-list > div:nth-child(3n+1) {
     margin-left: 0;
     clear: both;
   }
 
-  /* line 616, ../scss/style.scss */
+  /* line 605, ../scss/style.scss */
   .row {
     margin-left: 0;
   }
 
-  /* line 622, ../scss/style.scss */
+  /* line 611, ../scss/style.scss */
   .travel-link-list > div {
     width: 32%;
     float: left;
@@ -4111,15 +4103,15 @@ img[src^="/gam.php?"] {
     border-radius: 4px;
     clear: none;
   }
-  /* line 633, ../scss/style.scss */
+  /* line 622, ../scss/style.scss */
   .travel-link-list > div:nth-child(3n+3) {
     margin-right: 0;
   }
-  /* line 638, ../scss/style.scss */
+  /* line 627, ../scss/style.scss */
   .travel-link-list > div:nth-child(4n+4) {
     margin-right: 2%;
   }
-  /* line 642, ../scss/style.scss */
+  /* line 631, ../scss/style.scss */
   .travel-link-list img {
     max-width: none;
   }

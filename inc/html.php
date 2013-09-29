@@ -33,7 +33,7 @@ class Print_html
     public function print_dir_level()
     {
         if ($this->section === 'error') {
-            echo '/';
+            return '/';
         }
         else {
             $lev = $this->dirLevel;
@@ -44,8 +44,10 @@ class Print_html
                 $lev--;
             }
 
-            echo strlen($path) > 0 ? $path : '';
+            return strlen($path) > 0 ? $path : '';
         }
+
+        return '';
     }
 
     public function print_page_begin()
@@ -66,85 +68,86 @@ class Print_html
     <script>document.cookie='resolution='+Math.max(screen.width,screen.height)+("devicePixelRatio" in window ? ","+devicePixelRatio : ",1")+'; path=/';</script>
     <script src="http://use.typekit.com/xlw2lhp.js"></script>
     <script>try { Typekit.load(); } catch(e) {}</script>
-    <link rel="stylesheet" href="<?php $this->print_dir_level(); ?>css/style.css">
+    <link rel="stylesheet" href="<?php echo $this->print_dir_level(); ?>css/style.css">
     <?php if (!empty($this->styleSheets) && is_array($this->styleSheets)) {
             foreach ($this->styleSheets as $ss) { ?>
     <link rel="stylesheet" media="all" href="<?php echo $ss; ?>">
     <?php }
           }
     ?>
-    <script src="<?php $this->print_dir_level(); ?>js/vendor/custom.modernizr.js"></script>
+    <script src="<?php echo $this->print_dir_level(); ?>js/vendor/custom.modernizr.js"></script>
 </head>
 <body>
     <nav class="top-bar">
         <ul class="title-area">
             <li class="name">
-                <h1><a href="#">Patik.com</a></h1>
+                <h1><a href="/">Patik.com</a></h1>
             </li>
             <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
         </ul>
         <section class="top-bar-section">
             <ul class="right">
-                <li class="has-dropdown<?php if ($this->section === 'travel') { echo 'active'; } ?>">
-                    <a href="#">Travel</a>
+                <li class="has-dropdown<?php if ($this->section === 'travel') { echo ' active'; } ?>">
+                    <a href="<?php echo $this->print_dir_level(); ?>travel/">Travel</a>
                     <ul class="dropdown">
-                        <li><a href="<?php $this->print_dir_level(); ?>travel/">All Travels</a></li>
+                        <li><a href="<?php echo $this->print_dir_level(); ?>travel/">All Travels</a></li>
                         <li class="divider"></li>
-                        <li><a href="<?php $this->print_dir_level(); ?>travel/britain-benelux/">Britian &amp; Benelux</a></li>
-                        <li><a href="<?php $this->print_dir_level(); ?>travel/peru-argentina/">Peru &amp; Argentina</a></li>
-                        <li><a href="<?php $this->print_dir_level(); ?>travel/spain/">Spain</a></li>
-                        <li><a href="<?php $this->print_dir_level(); ?>travel/turkey/">Turkey</a></li>
-                        <li><a href="<?php $this->print_dir_level(); ?>travel/germany/">Germany &amp; Austria</a></li>
-                        <li><a href="<?php $this->print_dir_level(); ?>travel/greece/">Greece</a></li>
-                        <li><a href="<?php $this->print_dir_level(); ?>travel/paris/">Paris</a></li>
-                        <li><a href="<?php $this->print_dir_level(); ?>travel/france/">France</a></li>
+                        <li><a href="<?php echo $this->print_dir_level(); ?>travel/britain-benelux/">Britian &amp; Benelux</a></li>
+                        <li><a href="<?php echo $this->print_dir_level(); ?>travel/peru-argentina/">Peru &amp; Argentina</a></li>
+                        <li><a href="<?php echo $this->print_dir_level(); ?>travel/spain/">Spain</a></li>
+                        <li><a href="<?php echo $this->print_dir_level(); ?>travel/turkey/">Turkey</a></li>
+                        <li><a href="<?php echo $this->print_dir_level(); ?>travel/germany/">Germany &amp; Austria</a></li>
+                        <li><a href="<?php echo $this->print_dir_level(); ?>travel/greece/">Greece</a></li>
+                        <li><a href="<?php echo $this->print_dir_level(); ?>travel/paris/">Paris</a></li>
+                        <li><a href="<?php echo $this->print_dir_level(); ?>travel/france/">France</a></li>
                     </ul>
                 </li>
-                <li><a href="<?php $this->print_dir_level(); ?>code/"<?php if ($this->section === 'code') { echo ' class="active"'; } ?>>Code</a></li>
+                <li><a href="<?php echo $this->print_dir_level(); ?>code/"<?php if ($this->section === 'code') { echo ' class="active"'; } ?>>Code</a></li>
                 <li><a href="http://picasaweb.google.com/cpatik">Photos</a></li>
-                <li><a href="<?php $this->print_dir_level(); ?>about/"<?php if ($this->section === 'about') { echo ' class="active"'; } ?>>About</a></li>
+                <li><a href="<?php echo $this->print_dir_level(); ?>about/"<?php if ($this->section === 'about') { echo ' class="active"'; } ?>>About</a></li>
             </ul>
         </section>
     </nav>
 
-  <div id="main" class="container">
+    <div id="main">
     <?php
-  }
-
-  public function print_page_end()
-  {
-    ?>
-  </div>
-<script src="<?php $this->print_dir_level(); ?>js/vendor/jquery.js"></script>
-<script src="<?php $this->print_dir_level(); ?>js/plugins.js"></script>
-<script src="<?php $this->print_dir_level(); ?>js/vendor/fastclick.js"></script>
-<script src="<?php $this->print_dir_level(); ?>js/foundation/foundation.js"></script>
-<script src="<?php $this->print_dir_level(); ?>js/foundation/foundation.dropdown.js"></script>
-<script src="<?php $this->print_dir_level(); ?>js/foundation/foundation.topbar.js"></script>
-<script src="<?php $this->print_dir_level(); ?>js/script.js"></script>
-<script>
-<?php
-if (!empty($this->preload)) {
-    foreach ($this->preload as $html) {
-        echo "patik.preload('$html');\n";
     }
-}
-?>
-    $(document).foundation();
-    $(document).ready(function() { patik.init(); });
-</script>
-<?php
-    if (!empty($this->scriptFiles) && is_array($this->scriptFiles)) {
-        foreach ($this->scriptFiles as $ss) {
-            echo '<script src="$ss;"></script>';
+
+    public function print_page_end()
+    {
+    ?>
+    </div>
+
+    <script src="<?php echo $this->print_dir_level(); ?>js/vendor/jquery.js"></script>
+    <script src="<?php echo $this->print_dir_level(); ?>js/plugins.js"></script>
+    <script src="<?php echo $this->print_dir_level(); ?>js/vendor/fastclick.js"></script>
+    <script src="<?php echo $this->print_dir_level(); ?>js/foundation/foundation.js"></script>
+    <script src="<?php echo $this->print_dir_level(); ?>js/foundation/foundation.dropdown.js"></script>
+    <script src="<?php echo $this->print_dir_level(); ?>js/foundation/foundation.topbar.js"></script>
+    <script src="<?php echo $this->print_dir_level(); ?>js/script.js"></script>
+    <script>
+    <?php
+    if (!empty($this->preload)) {
+        foreach ($this->preload as $html) {
+            echo "patik.preload('$html');\n";
         }
     }
+    ?>
+        $(document).foundation();
+        $(document).ready(function() { patik.init(); });
+    </script>
+    <?php
+        if (!empty($this->scriptFiles) && is_array($this->scriptFiles)) {
+            foreach ($this->scriptFiles as $ss) {
+                echo '<script src="$ss;"></script>';
+            }
+        }
 
-    # Pages with specalized analytics code (e.g., error pages), for desktop only
-    if (!$this->noAnalytics) {
-        echo '<script src="' . $this->print_dir_level() . 'js/ga.js"></script>';
-    }
-?>
+        # Pages with specalized analytics code (e.g., error pages), for desktop only
+        if (!$this->noAnalytics) {
+            echo '<script src="' . $this->print_dir_level() . 'js/ga.js"></script>';
+        }
+    ?>
 </body>
 </html>
     <?php

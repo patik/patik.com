@@ -196,12 +196,12 @@ $microformat-abbr-font-decoration: none !default;
     }
   }
 
-  h1 { font-size: $h1-font-size - em-calc(10); }
-  h2 { font-size: $h2-font-size - em-calc(10); }
-  h3 { font-size: $h3-font-size - em-calc(5); }
-  h4 { font-size: $h4-font-size - em-calc(5); }
-  h5 { font-size: $h5-font-size; }
-  h6 { font-size: $h6-font-size; }
+  // h1 { font-size: $h1-font-size - em-calc(10); }
+  // h2 { font-size: $h2-font-size - em-calc(10); }
+  // h3 { font-size: $h3-font-size - em-calc(5); }
+  // h4 { font-size: $h4-font-size - em-calc(5); }
+  // h5 { font-size: $h5-font-size; }
+  // h6 { font-size: $h6-font-size; }
 
   .subheader { @extend %subheader; }
 

@@ -120,9 +120,9 @@ $portrait: "only screen and (orientation: portrait)";
 
 // Control header font sizes
 
-// $h1-font-size: em-calc(44);
-// $h2-font-size: em-calc(37);
-// $h3-font-size: em-calc(27);
+$h1-font-size: em-calc(32);
+$h2-font-size: em-calc(28);
+$h3-font-size: em-calc(24);
 // $h4-font-size: em-calc(23);
 // $h5-font-size: em-calc(18);
 // $h6-font-size: 1em;
@@ -402,7 +402,7 @@ $anchor-font-color-hover: darken($anchor-font-color, 5%);
 // $topbar-link-color: #fff;
 // $topbar-link-color-hover: #fff;
 // $topbar-link-color-active: #fff;
-// $topbar-link-weight: bold;
+$topbar-link-weight: normal;
 // $topbar-link-font-size: em-calc(13);
 // $topbar-link-hover-lightness: -30%; // Darken by 30%
 // $topbar-link-bg-hover: darken($topbar-bg-color, 3%);
@@ -427,13 +427,13 @@ $anchor-font-color-hover: darken($anchor-font-color, 5%);
 // Transitions and breakpoint styles
 
 // $topbar-transition-speed: 300ms;
-// $topbar-breakpoint: 940 !default; // Change to 9999px for always mobile layout
+$topbar-breakpoint: 480px !default; // Change to 9999px for always mobile layout
 // $topbar-media-query: "only screen and (min-width: #{$topbar-breakpoint})";
 
 // Divider Styles
 
 // $topbar-divider-border-bottom: solid 1px lighten($topbar-bg-color, 10%);
-//  $topbar-divider-border-top: solid 1px darken($topbar-bg-color, 10%);
+// $topbar-divider-border-top: solid 1px darken($topbar-bg-color, 10%);
 
 // Sticky Class
 
