@@ -6,10 +6,11 @@
 // @version        1.0.0.20140112
 // ==/UserScript==
 
-(function _magenet_links() {
-    var linkList = null,
-        magnetAnchors = [],
+(function _magnet_links() {
+    var linkList = null,    // Display list that holds the links
+        magnetAnchors = [], // List of all found P2P anchors
 
+        // Run the plugin
         init = function _init() {
             findAnchors();
 
@@ -19,8 +20,11 @@
             }
         },
 
+        /**
+         * Find anchor elements that point to P2P links
+         */
         findAnchors = function _findAnchors() {
-            var magSelector = 'a[href^="magnet:"]',
+            var magSelector = 'a[href^="magnet:"], a[href^="ed2k://"], a[href^="thunder://"], a[href^="flashget://"], a[href^="qqdl://"]',
                 hostURL = window.location.host;
             // For some sites we know which link to keep and which to disregard (e.g. keep the link for a file set, but disregard links for individual files)
 
@@ -39,6 +43,9 @@
             }
         },
 
+        /**
+         * Add all found anchors to the display
+         */
         displayAnchors = function displayAnchors() {
             magnetAnchors.forEach(function (magnet) {
                 var listItem = document.createElement('li'),
@@ -61,6 +68,9 @@
             });
         },
 
+        /**
+         * Create a display area to hold the links
+         */
         createDisplay = function _createDisplay() {
             var container = document.createElement('div'),
                 cssRules = '',
@@ -127,5 +137,6 @@
             document.body.appendChild(container);
         };
 
+    // Run
     init();
 }());
