@@ -24,9 +24,9 @@ function print_page_body()
 
         <section>
             <h2>Magnet Link Display</h2>
-            <p>Displays <code>magnet</code> links and other P2P URLs prominently. Great for sites that hide the real links between obnoxious "download" ad banners or open pop ups when you click on them.</p>
+            <p>Displays <code>magnet://</code> links and other P2P URLs prominently. Great for sites that hide the real links between obnoxious "download" ad banners or open pop ups when you click on them.</p>
             <figure>
-                <img src="../../img/magnet-links.png" alt="screenshot example">
+                <a href="../../img/magnet-links.png"><img src="../../img/magnet-links-preview.png" alt="screenshot example"></a>
             </figure>
             <p>
                 <a href="magent-links.user.js" class="button button-primary">Install</a>

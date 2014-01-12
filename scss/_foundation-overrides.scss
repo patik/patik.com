@@ -154,9 +154,9 @@ $h3-font-size: em-calc(24);
 
 // Style <code> tags
 
-// $code-color: darken($alert-color, 15%);
+$code-color: darken($alert-color, 25%);
 // $code-font-family: Consolas, 'Liberation Mono', Courier, monospace;
-// $code-font-weight: bold;
+$code-font-weight: normal;
 
 // Style anchors
 

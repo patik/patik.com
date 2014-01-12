@@ -26,6 +26,10 @@ pre, code, kbd, samp {
     font-family: $font-fixed;
 }
 
+code {
+    font-size: 90%;
+}
+
 [role="main"] {
     margin: 1em auto;
     max-width: 980px;
@@ -88,6 +92,8 @@ section {
 }
 
 figure {
+    margin-bottom: 1em;
+
     img {
         box-shadow: 0 0 2px black;
     }
