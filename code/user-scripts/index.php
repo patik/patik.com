@@ -23,6 +23,18 @@ function print_page_body()
         </section>
 
         <section>
+            <h2>Magnet Link Display</h2>
+            <p>Displays <code>magnet</code> links and other P2P URLs prominently. Great for sites that hide the real links between obnoxious "download" ad banners or open pop ups when you click on them.</p>
+            <figure>
+                <img src="../../img/magent-links.png" alt="screenshot example">
+            </figure>
+            <p>
+                <a href="magent-links.user.js" class="button button-primary">Install</a>
+                <a href="https://gist.github.com/patik/8388768" class="button">Gist</a>
+            </p>
+        </section>
+
+        <section>
             <h2>Alpha.App.Net Enhanced</h2>
             <p>Enhance App.net by adding useful features to the Alpha web app.</p>
             <ul>

@@ -86,6 +86,8 @@
             cssRules +=     'width: 20em;';
             cssRules +=     'minHeight: 4em;';
             cssRules +=     'padding: 0.75em;';
+            cssRules +=     'background-color: #fff;';
+            cssRules +=     'z-index: 10001;';
             cssRules +=     'border: 1px solid #777;';
             cssRules +=     'box-shadow: 1px 1px 6px #aaa;';
             cssRules +=     'font: 16px/1.4 "Open Sans", "Helvetica Neue", sans-serif;';

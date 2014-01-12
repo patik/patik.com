@@ -26,3 +26,4 @@ inc/phpminiadmin.php
 
 *.sublime-*
 fever/
+*.sketch
