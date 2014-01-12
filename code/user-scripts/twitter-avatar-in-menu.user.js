@@ -3,15 +3,16 @@
 // @namespace      http://patik.com/code/user-scripts/
 // @include        https://twitter.com/*
 // @include        http://twitter.com/*
-// @version        v20120702.1
+// @version        2.1.20131118
 // ==/UserScript==
 
-(function() {
-  var menuitem = document.querySelector("span.new-wrapper i.nav-me") || null,
-      avi = document.querySelector('img.avatar.size32') || null,
-      src = avi ? avi.src : "";
+(function _twitter_avatar_in_menu() {
+        // Find the generic 'person' outline in the nav bar, which will be replaced
+    var menuitem = document.querySelector('.nav-me') || null,
+        // Get avatar from the user menu (gear icon) to ensure we don't grab some other avatar
+        avi = document.querySelector('.global-nav .current-user .avatar[src]');
 
-  if (menuitem && src) {
-    menuitem.style.cssText = "background-image: url('" + src + "') !important;background-position: 0 0;border-radius: 4px;height: 32px;margin: -10px 0 0;width: 32px;";
-  }
-})();
+    if (menuitem && avi.src) {
+        menuitem.style.cssText = 'background-image: url("' + avi.src + '") !important;background-position: 0 0;border-radius: 4px;background-size: 21px 22px;';
+    }
+}());

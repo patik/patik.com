@@ -336,6 +336,12 @@ FileETag None
     RewriteRule ^demos/consolelog/?(.*)$ http://patik.com/code/console-log-polyfill/$1 [R=301]
 </IfModule>
 
+# Temp, for work (Jan 2014)
+<IfModule mod_rewrite.c>
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^pit/?$ http://www8dm.nystax.gov/prototypes/PIT/ [R=301]
+</IfModule>
+
 
 # ----------------------------------------------------------------------
 # Suppress or force the "www." at the beginning of URLs
