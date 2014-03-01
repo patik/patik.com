@@ -14,6 +14,7 @@ blurb/
 ai-cache/
 admin/
 _private/
+depth-of-field # Handled by another repo
 
 
 font-face/

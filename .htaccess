@@ -336,10 +336,20 @@ FileETag None
     RewriteRule ^demos/consolelog/?(.*)$ http://patik.com/code/console-log-polyfill/$1 [R=301]
 </IfModule>
 
+<IfModule mod_rewrite.c>
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^dof/?(.*)$ http://patik.com/depth-of-field/$1 [R=301]
+</IfModule>
+
 # Temp, for work (Jan 2014)
 <IfModule mod_rewrite.c>
     RewriteCond %{HTTPS} !=on
-    RewriteRule ^pit/?$ http://www8dm.nystax.gov/prototypes/PIT/ [R=301]
+    RewriteRule ^pit2/?$ http://www8dm.nystax.gov/prototypes/PITRWD/ [R=307]
+</IfModule>
+# Temp, for work (Jan 2014)
+<IfModule mod_rewrite.c>
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^pit/?$ http://www8dm.nystax.gov/prototypes/PIT/ [R=307]
 </IfModule>
 
 
