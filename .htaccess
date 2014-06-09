@@ -338,7 +338,7 @@ FileETag None
 
 <IfModule mod_rewrite.c>
     RewriteCond %{HTTPS} !=on
-    RewriteRule ^dof/?(.*)$ http://patik.com/depth-of-field/$1 [R=301]
+    RewriteRule ^depth-of-field/?(.*)$ http://patik.com/dof/$1 [R=301]
 </IfModule>
 
 # Temp, for work (Jan 2014)

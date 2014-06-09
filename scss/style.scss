@@ -30,6 +30,10 @@ code {
     font-size: 90%;
 }
 
+.clearfix {
+    @include clearfix;
+}
+
 [role="main"] {
     margin: 1em auto;
     max-width: 980px;
@@ -622,5 +626,14 @@ img[src^="/gam.php?"] {
             margin-bottom: 2%;
             border-radius: 4px;
         }
+    }
+}
+
+/* Ugh. */
+#profolio-main section a {
+    text-decoration: underline;
+
+    &:hover {
+        text-decoration: none;
     }
 }
