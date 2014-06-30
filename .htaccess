@@ -341,15 +341,30 @@ FileETag None
     RewriteRule ^depth-of-field/?(.*)$ http://patik.com/dof/$1 [R=301]
 </IfModule>
 
-# Temp, for work (Jan 2014)
+# Temp, for work (DTF, Jan 2014)
 <IfModule mod_rewrite.c>
     RewriteCond %{HTTPS} !=on
     RewriteRule ^pit2/?$ http://www8dm.nystax.gov/prototypes/PITRWD/ [R=307]
 </IfModule>
-# Temp, for work (Jan 2014)
+
+# Temp, for work (DTF, Jan 2014)
 <IfModule mod_rewrite.c>
     RewriteCond %{HTTPS} !=on
     RewriteRule ^pit/?$ http://www8dm.nystax.gov/prototypes/PIT/ [R=307]
+</IfModule>
+
+# Temp-ish, for work (DTF, June 2014)
+<IfModule mod_rewrite.c>
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^dvm/?$ http://www8dm.nystax.gov/OTCT/IFLOWMobileLaunch.jsp [R=307]
+</IfModule>
+<IfModule mod_rewrite.c>
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^dvm/(\w+)$ http://patik.com/dvm.php?app=$1 [R=307]
+</IfModule>
+<IfModule mod_rewrite.c>
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^iepc/?$ http://www8dm.nystax.gov/IEPC/iepcStart [R=307]
 </IfModule>
 
 
