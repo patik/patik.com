@@ -323,48 +323,48 @@ FileETag None
 
 <IfModule mod_rewrite.c>
     RewriteCond %{HTTPS} !=on
-    RewriteRule ^(germany|spain|turkey|greece|france|paris)/?$ http://patik.com/travel/$1/ [R=301,L]
+    RewriteRule ^(germany|spain|turkey|greece|france|paris)/?$ http://patik.com/travel/$1/ [R=301]
 </IfModule>
 
 <IfModule mod_rewrite.c>
     RewriteCond %{HTTPS} !=on
-    RewriteRule ^csyes/?(.*)$ http://patik.com/blog/$1 [R=301,L]
+    RewriteRule ^csyes/?(.*)$ http://patik.com/blog/$1 [R=301]
 </IfModule>
 
 <IfModule mod_rewrite.c>
     RewriteCond %{HTTPS} !=on
-    RewriteRule ^demos/consolelog/?(.*)$ http://patik.com/code/console-log-polyfill/$1 [R=301,L]
+    RewriteRule ^demos/consolelog/?(.*)$ http://patik.com/code/console-log-polyfill/$1 [R=301]
 </IfModule>
 
 <IfModule mod_rewrite.c>
     RewriteCond %{HTTPS} !=on
-    RewriteRule ^depth-of-field/?(.*)$ http://patik.com/dof/$1 [R=301,L]
-</IfModule>
-
-# Temp, for work (DTF, Jan 2014)
-<IfModule mod_rewrite.c>
-    RewriteCond %{HTTPS} !=on
-    RewriteRule ^pit2/?$ http://www8dm.nystax.gov/prototypes/PITRWD/ [R=307,L]
+    RewriteRule ^depth-of-field/?(.*)$ http://patik.com/dof/$1 [R=301]
 </IfModule>
 
 # Temp, for work (DTF, Jan 2014)
 <IfModule mod_rewrite.c>
     RewriteCond %{HTTPS} !=on
-    RewriteRule ^pit/?$ http://www8dm.nystax.gov/prototypes/PIT/ [R=307,L]
+    RewriteRule ^pit2/?$ http://www8dm.nystax.gov/prototypes/PITRWD/ [R=307]
+</IfModule>
+
+# Temp, for work (DTF, Jan 2014)
+<IfModule mod_rewrite.c>
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^pit/?$ http://www8dm.nystax.gov/prototypes/PIT/ [R=307]
 </IfModule>
 
 # Temp-ish, for work (DTF, June 2014)
 <IfModule mod_rewrite.c>
     RewriteCond %{HTTPS} !=on
-    RewriteRule ^dvm/?$ http://www8dm.nystax.gov/OTCT/IFLOWMobileLaunch.jsp [R=307,L]
+    RewriteRule ^dvm/?$ http://www8dm.nystax.gov/OTCT/IFLOWMobileLaunch.jsp [R=307]
 </IfModule>
 <IfModule mod_rewrite.c>
     RewriteCond %{HTTPS} !=on
-    RewriteRule ^dvm/(\w+)$ http://patik.com/dvm.php?app=$1 [R=307,L]
+    RewriteRule ^dvm/(\w+)$ http://patik.com/dvm.php?app=$1 [R=307]
 </IfModule>
 <IfModule mod_rewrite.c>
     RewriteCond %{HTTPS} !=on
-    RewriteRule ^iepc/?$ http://www8dm.nystax.gov/IEPC/iepcStart [R=307,L]
+    RewriteRule ^iepc/?$ http://www8dm.nystax.gov/IEPC/iepcStart [R=307]
 </IfModule>
 
 
@@ -562,15 +562,3 @@ Options -Indexes
 <IfModule php5_module>
 	  php_value session.cookie_httponly true
 </IfModule>
-
-# BEGIN WordPress
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteBase /
-    RewriteRule ^index\.php$ - [L]
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule . /blog/index.php [L]
-</IfModule>
-
-# END WordPress
