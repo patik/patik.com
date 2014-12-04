@@ -15,22 +15,30 @@ function print_page_body()
         <section>
             <h2>Blog &amp; Demos</h2>
             <div class="row button-link-list">
-                <div class="small-12 medium-6 large-4 columns">
+                <div class="small-12 medium-6 columns">
                     <a href="../blog/">
                         <img src="../img/home-console-blog-logo.png" alt="JavaScript code" title="console.blog()">
                         <span>console.<wbr>blog()</span>
                     </a>
                 </div>
-                <div class="small-12 medium-6 large-4 columns">
+                <div class="small-12 medium-6 columns">
                     <a href="../html5/">
                         <img src="../img/home-twitter-craigpatik-avatar.jpg" alt="HTML code" title="HTML5">
                         <span>HTML5 Presentations</span>
                     </a>
                 </div>
-                <div class="small-12 medium-6 large-4 columns left">
+            </div>
+            <div class="row button-link-list">
+                <div class="small-12 medium-6 columns">
                     <a href="console-log-polyfill">
                         <img src="../img/home-console-blog-logo.png" alt="JavaScript code" title="Cross-browser console logging">
                         <span>Cross-browser console logging</span>
+                    </a>
+                </div>
+                <div class="small-12 medium-6 columns">
+                    <a href="https://github.com/patik/kind/">
+                        <img src="../img/home-console-blog-logo.png" alt="JavaScript code" title="Kind type-check for JavaScript">
+                        <span>Kind.js precise type-checker</span>
                     </a>
                 </div>
             </div>
@@ -57,6 +65,8 @@ function print_page_body()
                         <span>Picnic<wbr>Newark<wbr>.com</span>
                     </a>
                 </div>
+            </div>
+            <div class="row button-link-list">
                 <div class="small-12 medium-6 large-4 columns">
                     <a href="within-viewport/">
                         <img src="../img/home-console-blog-logo.png" alt="JavaScript code" title="Within Viewport">
