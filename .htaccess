@@ -497,6 +497,8 @@ AddCharset utf-8 .html .css .js .xml .json .rss
 # every folder on your server (which includes rather private places like CMS system folders).
 Options -Indexes
 
+# Needed for OS X Yosemite
+DirectoryIndex index.php
 
 # Block access to "hidden" directories whose names begin with a period. This
 # includes directories used by version control systems such as Subversion or Git.
