@@ -12,7 +12,7 @@ function print_page_body()
       <li>My <span style="text-decoration:line-through;">boring <a href="HTML5_CSS3_Today.ppt">PPT</a>/<a href="HTML5_CSS3_Today.pdf">PDF</a> slides</span> <a href="https://docs.google.com/present/view?id=dfg9wgw_344dpffx9mp&amp;revision=_latest&amp;start=0&amp;amp;theme=city&amp;cwj=true">super fun Google Docs presentation</a></li>
       <li>HTML5:
         <ul>
-          <li>Tag list: <a href="http://www.w3schools.com/html5/html5_reference.asp">www.w3schools.com/html5/html5_reference.asp</a></li>
+          <li>Tag list at <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">Mozilla Developer Network</a></li>
           <li>Demos: <a href="http://html5rocks.com">html5rocks.com</a> (sandbox: <a href="http://playground.html5rocks.com">playground.html5rocks.com</a>), <a href="http://html5demos.com/">html5demos.com</a></li>
           <li>Detailed default page structure: <a href="http://html5boilerplate.com">html5boilerplate.com</a></li>
           <li>(Most of) the new <code>&lt;input&gt;</code> types: <a href="http://miketaylr.com/code/input-type-attr.html">miketaylr.com/code/input-type-attr.html</a></li>
@@ -67,7 +67,7 @@ $x->name = 'html5-css3';
 $x->section = 'html5';
 $x->pageTitle = 'HTML5 &amp; CSS3';
 $x->keywords = 'html5, css3';
-$x->dirLevel = 2;
+$x->dirLevel = 3;
 # $x->styleSheets = array('style.css', 'lib/css/smoothness/jquery-ui-1.8.7.custom.css');
 
 # ajax request
