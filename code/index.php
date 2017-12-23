@@ -53,26 +53,26 @@ function print_page_body()
                         <span>GitHub</span>
                     </a>
                 </div>
-                <div class="small-12 medium-6 large-4 columns">
+                <!-- <div class="small-12 medium-6 large-4 columns">
                     <a href="http://signaltonoi.se">
                         <img src="../img/home-snr-logo.png" alt="S:N logo" title="Signal:Noise">
                         <span>signal:<wbr>noise<br>Twitter app</span>
                     </a>
-                </div>
+                </div> -->
                 <div class="small-12 medium-6 large-4 columns">
                     <a href="http://picnicnewark.com/">
                         <img src="../img/code-picnic-logo.jpg" alt="PicNic Newark restaurant logo" title="Pic-Nic, Newark, NJ">
                         <span>Picnic<wbr>Newark<wbr>.com</span>
                     </a>
                 </div>
-            </div>
-            <div class="row button-link-list">
                 <div class="small-12 medium-6 large-4 columns">
                     <a href="within-viewport/">
                         <img src="../img/home-console-blog-logo.png" alt="JavaScript code" title="Within Viewport">
                         <span>Within Viewport</span>
                     </a>
                 </div>
+            </div>
+            <div class="row button-link-list">
                 <div class="small-12 medium-6 large-4 columns left">
                     <a href="user-scripts/">
                         <img src="../img/home-console-blog-logo.png" alt="JavaScript code" title="User Scripts">

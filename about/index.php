@@ -6,14 +6,15 @@ function print_page_body()
 {
   ?>
   <div id="turkey-main" role="main">
-    
+
     <h1>About Me</h1>
-    
+
     <section>
-      <h2>Background</h2>
-      <p>I'm a web applications developer and graduate of <a href="http://www.ecse.rpi.edu/">Computer &amp; Systems Engineering</a> at <a href="http://www.rpi.edu/">RPI</a>. I love to travel, but my home is permanently in Upstate, NY. I'm a big fan of football (soccer) worldwide, especially <a href="http://www.arsenal.com/">Arsenal</a>, <a href="http://www.fcbarcelona.com/web/english/">Barcelona</a>, and <a href="http://www.fcbayern.t-com.de/en/">Bayern Munich</a>.</p>
+      <p>I'm a software engineer with a focus on front-end web development and UI design. I'm a graduate of <a href="http://www.ecse.rpi.edu/">Computer &amp; Systems Engineering</a> at <a href="http://www.rpi.edu/">RPI</a>.</p>
+      <p>I love to <a href="/travel">travel</a>, but my home is permanently in <a href="https://www.google.com/maps/place/Munich,+Germany">Munich</a>. Previously I spent much of my life in <a href="https://www.google.com/maps/place/Albany+County,+NY">Upstate, NY</a>.</p>
+      <p>I'm a big fan of football (soccer) worldwide, especially <a href="http://www.arsenal.com/">Arsenal</a> and <a href="http://www.fcbayern.t-com.de/en/">Bayern Munich</a>. My two dogs get most of my wife's and my attention.</p>
     </section>
-    
+
     <section>
       <h2>Contact</h2>
       <ul>

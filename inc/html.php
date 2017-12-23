@@ -103,7 +103,7 @@ class Print_html
                     </ul>
                 </li>
                 <li><a href="<?php echo $this->print_dir_level(); ?>code/"<?php if ($this->section === 'code') { echo ' class="active"'; } ?>>Code</a></li>
-                <li><a href="http://picasaweb.google.com/cpatik">Photos</a></li>
+                <li><a href="https://plus.google.com/u/0/+CraigPatik">Photos</a></li>
                 <li><a href="<?php echo $this->print_dir_level(); ?>about/"<?php if ($this->section === 'about') { echo ' class="active"'; } ?>>About</a></li>
             </ul>
         </section>

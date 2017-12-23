@@ -9,6 +9,10 @@ function print_page_body()
         <h1>Travel</h1>
 
         <section>
+            <p><em>Not shown below are notable trips to Vietnam, Thailand, Cambodia, and much more of Germany.</em></p>
+        </section>
+
+        <section>
             <div class="row travel-link-list">
                 <div class="small-12 medium-6 large-4 columns">
                     <a class="bg-travel-britain-benelux" href="britain-benelux/">

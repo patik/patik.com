@@ -36,7 +36,7 @@ function print_page_body()
                 </div>
                 <div class="small-12 medium-6 columns">
                     <h3>Signal:Noise Twitter app</h3>
-                    <p>A complete Twitter client with a novel take on filtering. Users, phrases, and more can be scored on a sliding scale. The view can be adjusted in real time to show more or fewer tweets based on their score. Currently in private beta.</p>
+                    <p>A complete Twitter client with a novel take on filtering. Users, phrases, and more can be scored on a sliding scale. The timeline view can be adjusted in real time to show more or fewer tweets based on their score. Currently in private beta.</p>
                     <p><a href="http://signaltonoi.se">Web app</a></p>
                 </div>
             </div>
@@ -54,8 +54,8 @@ function print_page_body()
                 <div class="small-12 columns">
                     <p>I've made notable contributions to the following sites and projects for the New York State Office of Information Technology Services:</p>
                     <ul>
-                        <li><a href="https://github.com/nys-its/excelsior">Excelsior Web Framework</a> &mdash; a responsive web framework used to bootstrap a dozen NYS sites</li>
-                        <li><a href="https://github.com/nys-its/go-responsive">Go Responsive</a> &mdash; a showpiece stemming from a <a href="https://github.com/nys-its/2013-03-RWD-code-sprint">RWD code sprint</a></li>
+                        <li><a href="https://github.com/ny/coreui">Core UI</a> &mdash; a component-based framework designed for web apps. This is the conceptual successor to the <a href="https://github.com/ny/excelsior">Excelsior Web Framework</a>, to which I was also a core contributor, and which is used by dozens of NYS sites.</li>
+                        <li><a href="https://github.com/ny/go-responsive">Go Responsive</a> &mdash; a showpiece stemming from a <a href="https://github.com/ny/2013-03-RWD-code-sprint">RWD code sprint</a></li>
                         <li><a href="https://transact.dmv.ny.gov/RegistrationRenew/">DMV Registration Renewal</a> &mdash; a responsive redesign of a high-profile app on the Department of Motor Vehicles' site</li>
                     </ul>
                 </div>
@@ -67,9 +67,9 @@ function print_page_body()
             <div class="row">
                 <div class="small-12 medium-6 columns">
                     <ul>
-                        <li><a href="../html5/">HTML5 Presentations</a></li>
-                        <li>I gave an <a href="http://igniteshow.com/">Ignite talk</a> at <a href="http://nys-its.github.io/ny-innovates/">NYS DevCon 2013</a></li>
                         <li>My blog, <a href="/blog/">console.blog()</a></li>
+                        <li>I gave an <a href="http://igniteshow.com/">Ignite talk</a> at <a href="http://nys-its.github.io/ny-innovates/">NYS DevCon 2013</a></li>
+                        <li><a href="../html5/">HTML5 Presentations</a></li>
                     </ul>
                 </div>
             </div>

@@ -75,13 +75,13 @@ function print_page_body()
                         <span>console.<wbr/>blog()</span>
                     </a>
                 </div>
-                <div class="small-12 medium-6 large-4 columns">
+                <!-- <div class="small-12 medium-6 large-4 columns">
                     <a href="http://signaltonoi.se/">
                         <img src="img/home-snr-logo.png" alt="S:R logo" title="signal:noise">
                         <span>signal:<wbr/>noise</span>
                     </a>
-                </div>
-                <div class="small-12 medium-6 large-4 columns left">
+                </div> -->
+                <div class="small-12 medium-6 large-4 columns">
                     <a href="https://github.com/patik">
                        <img src="img/home-github-logo.png" alt="GitHub text logo" title="GitHub">
                        <span>GitHub</span>
@@ -113,7 +113,7 @@ function print_page_body()
                     </a>
                 </div>
                 <div class="small-12 medium-6 large-4 columns">
-                    <a href="https://picasaweb.google.com/cpatik">
+                    <a href="https://plus.google.com/u/0/+CraigPatik">
                         <img src="img/home-photos.jpg" alt="Sitting in a boat and feeding a banana to a wooley monkey" title="Feeding a monkey in the Amazon rainforest">
                         <span>Photos</span>
                   </a>
@@ -128,12 +128,6 @@ function print_page_body()
                     <a href="http://rubeonrails.com">
                         <img src="img/home-tumblr-rubeonrails-avatar.jpg" alt="S-Bahn station in Marienplatz, Munich, Germany" title="S-Bahn station in Marienplatz, Munich, Germany">
                         <span>Rube On Rails</span>
-                    </a>
-                </div>
-                <div class="small-12 medium-6 large-4 columns left">
-                    <a href="https://alpha.app.net/patik" rel="me">
-                        <img src="img/home-twitter-craigpatik-avatar.jpg" alt="App.net avatar; photo of me riding on a camel" title="App.net Profile">
-                        <span>@patik on App.net</span>
                     </a>
                 </div>
             </div>
