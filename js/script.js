@@ -1,21 +1,14 @@
-/* Author: Craig Patik */
-
-var patik = (function() {
-    var $body = null,
-        $preload = null,
-        queue = [];
+var patik = (function() { // jshint ignore:line
+    var $body = null;
+    var $preload = null;
+    var queue = [];
 
     function _init () {
         try {
             $body = $('body');
-
-            // ????
-            // setTimeout(function() {
-            //     _preload('');
-            // }, 1500);
         }
         catch (e) {
-            console.log(e);
+            console.error(e);
         }
     }
 

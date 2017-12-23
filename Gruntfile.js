@@ -1,23 +1,11 @@
 module.exports = function (grunt) {
-    grunt.initConfig({
-        // Remove temporary development files
-        // https://github.com/gruntjs/grunt-contrib-clean
-        clean: {
-            options: {
-                force: true
-            },
-            dist: [
-                'dist',
-                'docs',
-                'tests',
-            ],
-            test: [
-                'node_modules/path'
-            ],
-        },
+    const scriptFiles = [
+        'js/script.js',
+        'js/dev.js',
+    ];
 
+    grunt.initConfig({
         // Local server at http://localhost:8888
-        // https://github.com/gruntjs/grunt-contrib-connect
         connect: {
             server: {
                 options: {
@@ -28,7 +16,6 @@ module.exports = function (grunt) {
             },
         },
 
-        // https://github.com/gruntjs/grunt-contrib-jshint
         // Supported options: http://jshint.com/docs/
         // Help with debugging common error messages: http://jslinterrors.com/
         jshint: {
@@ -41,15 +28,13 @@ module.exports = function (grunt) {
                     unused: true,
                     strict: false,
                     globals: {
+                        $: false,
                         jQuery: false,
-                        define: false,
-                        require: false,
-                        cui: false,
+                        console: false,
+                        patik: true,
                     },
                 },
-                src: [
-                    'js/**/*.js',
-                ],
+                src: scriptFiles,
             },
         },
 
@@ -61,7 +46,7 @@ module.exports = function (grunt) {
                     outputStyle: 'compressed', // Options: 'nested', 'compressed' (i.e. minified)
                 },
                 files: {
-                    'css/main.css': 'scss/style.scss',
+                    'css/style.css': 'scss/style.scss',
                 },
             },
         },
@@ -73,20 +58,16 @@ module.exports = function (grunt) {
                 spawn: false
             },
 
-            // Project styles
             styles: {
                 files: [
                     'scss/**/*.scss',
                 ],
-                tasks: ['sass:main'],
+                tasks: ['sass'],
             },
 
-            // Project HTML
-            html: {
-                files: [
-                    '**/*.html',
-                ],
-                tasks: ['copy:html'],
+            scripts: {
+                files: scriptFiles,
+                tasks: ['jshint'],
             },
         },
     });
@@ -98,7 +79,7 @@ module.exports = function (grunt) {
     grunt.registerTask('dev', 'Development', function (args) {
         // Run the development build process
         grunt.task.run([
-            // 'clean',
+            'jshint',
             'sass',
             'connect',
             'watch',

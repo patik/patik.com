@@ -1,6 +1,5 @@
 node_modules/
-Patik.com.sublime-project
-Patik.com.sublime-workspace
+*.map
 sftp-config.json
 sftp-settings.json
 .DS_Store

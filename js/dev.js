@@ -24,7 +24,7 @@ var patikdev = {
   events: {
     init: function() {
       try {
-        patikdev.$window.on('resize', function(evt) {
+        patikdev.$window.on('resize', function(/* evt */) {
           patikdev.events.showWindowSize();
         });
       } catch(e) { console.log(e); }
