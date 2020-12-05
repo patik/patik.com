@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 function Author() {
     return (
@@ -10,7 +10,7 @@ function Author() {
                 then quickly started coding as well.
             </p>
         </>
-    );
+    )
 }
 
-export default Author;
+export default Author
