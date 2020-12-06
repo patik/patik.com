@@ -12,6 +12,7 @@ categories:
 tags:
     - france
     - Travel
+published: true
 ---
 
 This is a collection of every mundane detail of our trip to Paris on March 13/14-18, 2005, for future reference. There will not be any mention of what we did in Paris or anything fun at all.

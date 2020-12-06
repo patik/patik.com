@@ -9,6 +9,7 @@ dsq_thread_id:
     - '438751217'
 categories:
     - Uncategorized
+published: true
 ---
 
 [](http://patik.com/blog/wp-content/uploads/2010/01/copypasta-adblock2.png)Many news sites, from [Wired](http://www.wired.com/) to my [local newspaper](http://www.timesunion.com/), have taken to adding a &#8216;feature&#8217; to their articles &mdash; any text you copy and paste is [silently broadcast to another site](http://yro.slashdot.org/story/10/01/14/1818222/Tynt-Insight-Is-Watching-You-Cut-and-Paste). That other site, [Tynt](http://www1.tynt.com/see-whats-copied), keeps track of what you copy and paste to your friends in an effort to track demographics.

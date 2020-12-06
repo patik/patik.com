@@ -10,6 +10,7 @@ dsq_thread_id:
 categories:
     - Javascript
     - Web
+published: true
 ---
 
 _Update: I&#8217;ve made a significant update to this project which is targeted at primitive consoles (IE, Opera 11 and older, iOS 5 and older, and more). A separate blog post has [more details](http://patik.com/blog/detailed-console-logging/) or you can jump right to the [updated Github repo](https://github.com/patik/console.log-wrapper). The original post below still applies._

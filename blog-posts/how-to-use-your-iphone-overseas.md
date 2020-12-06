@@ -14,6 +14,7 @@ tags:
     - europe
     - tech
     - Travel
+published: true
 ---
 
 If you&#8217;re preparing to travel overseas and you&#8217;ve had an iPhone for any amount of time you&#8217;re probably excited about its usefulness as a travel aid. In particular, you&#8217;ll be keen to make use of its always-on Internet connection.

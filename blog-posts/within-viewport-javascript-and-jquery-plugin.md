@@ -17,6 +17,7 @@ tags:
     - jquery
     - ui
     - viewport
+published: true
 ---
 
 Within Viewport indicates whether an element is _entirely_ within the viewport. It also allows you to specify your site&#8217;s effective viewport (eg, to account for fixed header and navigation bars) and provides a few handy shortcut notations.

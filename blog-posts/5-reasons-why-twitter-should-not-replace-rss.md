@@ -9,6 +9,7 @@ dsq_thread_id:
     - '752544237'
 categories:
     - Uncategorized
+published: true
 ---
 
 Recently, many blogs have gotten into the habit of putting links to all of their posts on Twitter. Sure, this lets their followers find out about new posts in real time, but it&#8217;s really stepping into the territory of [RSS](http://www.whatisrss.com/) feeds. While at first a blogger might think they&#8217;re getting their posts out to two sets of readers &#8212; RSS subscribers and Twitter followers &#8212; I think in the long run it hurts their readership. Here are just five reasons why:

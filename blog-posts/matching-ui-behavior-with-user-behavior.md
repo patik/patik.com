@@ -15,6 +15,7 @@ categories:
 tags:
     - ui
     - user interface
+published: true
 ---
 
 The viewport is a direct window into what the user sees, and a lot can be learned by watching it. In my previous post I introduced [Within Viewport](http://patik.com/code/within-viewport/) and I want to discuss how, particularly through my Twitter app [Signal~Noise](http://signaltonoi.se), I&#8217;ve found it useful in making interfaces respond sensibly to user behavior.

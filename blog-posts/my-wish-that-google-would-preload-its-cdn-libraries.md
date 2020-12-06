@@ -13,6 +13,7 @@ categories:
     - jQuery
     - performance
     - Web
+published: true
 ---
 
 The idea behind using a common CDN such as [Google&#8217;s](http://code.google.com/apis/libraries/), as opposed to your own CDN (or none at all), is that by the time a person reaches your site there&#8217;s a chance they already have your JavaScript libraries cached. While it&#8217;s likely that an übergeek with fifty opened tabs will have jQuery cached before hitting one of your pages, the same isn&#8217;t so true for every Joe Facebook.

@@ -14,6 +14,7 @@ tags:
     - culture
     - Travel
     - Turkey
+published: true
 ---
 
 Women wore all sorts of different styles of headscarves in Istanbul. Some tightly circled their faces, some covered all but their eyes, others loosely draped them over their heads. I think the variety might have been a result of there being tourists from all over the Middle East.

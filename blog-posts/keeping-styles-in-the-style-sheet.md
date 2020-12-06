@@ -10,6 +10,7 @@ dsq_thread_id:
 categories:
     - Javascript
     - Web
+published: true
 ---
 
 Even as browsers progress and add more support for CSS-based animation, we still find ourselves relying on JavaScript to get the job done. But that doesn&#8217;t mean we need to define our styles in our scripts.

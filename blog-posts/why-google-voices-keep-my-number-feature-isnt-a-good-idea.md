@@ -9,6 +9,7 @@ dsq_thread_id:
     - '426232914'
 categories:
     - Web
+published: true
 ---
 
 [Google Voice](https://www.google.com/voice), the service that gives you a universal phone number, free SMS, and text transcripts of your voicemail, is now letting new users [keep their current phone number](http://googlevoiceblog.blogspot.com/2009/10/google-voice-with-your-existing-number.html) when signing up. On the surface this sounds like a great new addition that will entice users who were scared off by the idea of giving up their current number. But in reality, this is actually a stripped down version of the service that not only removes functionality but actually restricts how users can use their phones. (This new option is **not** the same as [porting your number](http://www.fcc.gov/cib/consumerfacts/numbport.html), something Google expects to roll out in the future.) <img class="alignright size-full wp-image-106" title="Google Voice" src="http://patik.com/blog/wp-content/uploads/2009/10/Google-Voice-2561.png" alt="Google Voice" width="176" height="176" srcset="http://patik.com/blog/wp-content/uploads/2009/10/Google-Voice-2561.png 256w, http://patik.com/blog/wp-content/uploads/2009/10/Google-Voice-2561-150x150.png 150w" sizes="(max-width: 176px) 100vw, 176px" />

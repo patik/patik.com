@@ -15,6 +15,7 @@ tags:
     - nyc
     - transportation
     - Travel
+published: true
 ---
 
 Over the years I&#8217;ve fine-tuned my routine of getting from the Capital District to JFK to embark on a [number](http://picasaweb.google.com/cpatik/Paris2005# 'France') of [great](http://picasaweb.google.com/cpatik/GreeceRoughDraftSantorini# 'Greece') [journeys](http://picasaweb.google.com/cpatik/GermanyAustriaPart1ViennaAndSalzburg# 'Germany and Austria'). There are many ways to go about it, each one ranging in price, reliability, and speed, but this one is my tried and tested favorite.

@@ -10,6 +10,7 @@ dsq_thread_id:
 categories:
     - Javascript
     - Web
+published: true
 ---
 
 Twitter recently unveiled a [new interface for their mobile site](http://mashable.com/2009/12/03/twitter-mobile-3/) located at [mobile.twitter.com](http://mobile.twitter.com) loaded with the features you&#8217;re accustomed to having on the desktop version of the site. However, when you browse to Twitter or follow a link from an email on your mobile phone you&#8217;re still shown the older, far less useful interface by default.

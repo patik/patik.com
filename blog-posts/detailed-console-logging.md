@@ -10,6 +10,7 @@ dsq_thread_id:
 categories:
     - Javascript
     - Web
+published: true
 ---
 
 _This is an update to the console.log wrapper; see [this blog post](http://patik.com/blog/complete-cross-browser-console-log/) for background and a more detailed discussion of the problems with console logging._

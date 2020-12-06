@@ -19,7 +19,7 @@ function PostTemplate({ content, data }: { content: string; data: BlogPostData }
 
 PostTemplate.getInitialProps = async (context: NextPageContext) => {
     const { slug } = context.query
-    const content = await import(`./content/${slug}.md`)
+    const content = await import(`../../blog-posts/${slug}.md`)
     const data = matter(content.default)
 
     return { ...data }

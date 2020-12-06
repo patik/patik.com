@@ -13,6 +13,7 @@ categories:
 tags:
     - Travel
     - Turkey
+published: true
 ---
 
 My trip to Turkey in July, in a numerical sense:
