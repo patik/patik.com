@@ -2,21 +2,21 @@
 id: 194
 title: Matching UI Behavior with User Behavior
 date: 2011-11-07T07:36:00+00:00
-author: Craig
+author: Craig Patik
 layout: post
-guid: http://patik.com/blog/?p=194
-permalink: /?p=194
+guid: matching-ui-behavior-with-user-behavior
 dsq_thread_id:
-  - "464103177"
+    - '464103177'
 categories:
-  - Javascript
-  - performance
-  - User Interface
-  - Web
+    - Javascript
+    - performance
+    - User Interface
+    - Web
 tags:
-  - ui
-  - user interface
+    - ui
+    - user interface
 ---
+
 The viewport is a direct window into what the user sees, and a lot can be learned by watching it. In my previous post I introduced [Within Viewport](http://patik.com/code/within-viewport/) and I want to discuss how, particularly through my Twitter app [Signal~Noise](http://signaltonoi.se), I&#8217;ve found it useful in making interfaces respond sensibly to user behavior.
 
 A common solution for developers looking to increase their site&#8217;s performance is to load data on demand, for example using [Infinite Scroll](http://www.infinite-scroll.com/). But sometimes the scroll position isn&#8217;t enough &mdash; you need to know about _the content_ on screen.
@@ -35,7 +35,7 @@ The obvious thing to do when a user reaches the boundary of their timeline is to
 
 The app also tracks each user&#8217;s reading position so the can resume reading at the same place in future sessions. When determining which tweets have been read, it only makes sense to consider ones that are fully in view. The app has a fixed header that shrinks the viewport by about 60 pixels, so I need to make sure a tweet is not covered by that.<figure> <figcaption>
 
-<a href="http://patik.com/code/within-viewport/example_diagram.svg" target="_blank">Larger version</a></figcaption></figure> 
+<a href="http://patik.com/code/within-viewport/example_diagram.svg" target="_blank">Larger version</a></figcaption></figure>
 
 #### Live updates
 

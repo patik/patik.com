@@ -2,16 +2,16 @@
 id: 216
 title: Detailed console logging
 date: 2012-12-17T11:22:24+00:00
-author: Craig
+author: Craig Patik
 layout: post
-guid: http://patik.com/blog/?p=216
-permalink: /?p=216
+guid: detailed-console-logging
 dsq_thread_id:
-  - "979228403"
+    - '979228403'
 categories:
-  - Javascript
-  - Web
+    - Javascript
+    - Web
 ---
+
 _This is an update to the console.log wrapper; see [this blog post](http://patik.com/blog/complete-cross-browser-console-log/) for background and a more detailed discussion of the problems with console logging._
 
 While logging the console can be useful during development, some browser consoles do not display logged data in a readable, useful format. These primitive consoles do not expand arrays, do not link DOM elements to the source code, print objects as `[object Object]` rather than listing their properties, etc.

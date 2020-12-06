@@ -2,15 +2,15 @@
 id: 156
 title: 5 Reasons why Twitter should not replace your RSS feed
 date: 2009-04-30T14:16:19+00:00
-author: Craig
+author: Craig Patik
 layout: post
-guid: http://www.patik.com/blog/?p=25
-permalink: /?p=156
+guid: 5-reasons-why-twitter-should-not-replace-your-rss-feed
 dsq_thread_id:
-  - "752544237"
+    - '752544237'
 categories:
-  - Uncategorized
+    - Uncategorized
 ---
+
 Recently, many blogs have gotten into the habit of putting links to all of their posts on Twitter. Sure, this lets their followers find out about new posts in real time, but it&#8217;s really stepping into the territory of [RSS](http://www.whatisrss.com/) feeds. While at first a blogger might think they&#8217;re getting their posts out to two sets of readers &#8212; RSS subscribers and Twitter followers &#8212; I think in the long run it hurts their readership. Here are just five reasons why:
 
 #### 1. Tweets &#8220;expire&#8221;

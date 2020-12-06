@@ -2,23 +2,23 @@
 id: 192
 title: 'Within Viewport: JavaScript and jQuery Plugin'
 date: 2011-11-07T07:29:07+00:00
-author: Craig
+author: Craig Patik
 excerpt: "Within Viewport indicates whether an element is <em>entirely</em> within the viewport. It also allows you to specify your site's effective viewport, and includes an optional jQuery plugin."
 layout: post
-guid: http://patik.com/blog/?p=192
-permalink: /?p=192
+guid: within-viewport-javascript-and-jquery-plugin
 dsq_thread_id:
-  - "464099192"
+    - '464099192'
 categories:
-  - Javascript
-  - jQuery
-  - Web
+    - Javascript
+    - jQuery
+    - Web
 tags:
-  - javascript
-  - jquery
-  - ui
-  - viewport
+    - javascript
+    - jquery
+    - ui
+    - viewport
 ---
+
 Within Viewport indicates whether an element is _entirely_ within the viewport. It also allows you to specify your site&#8217;s effective viewport (eg, to account for fixed header and navigation bars) and provides a few handy shortcut notations.
 
 It&#8217;s quite simply to use:
@@ -47,38 +47,41 @@ While useful, these utilities only detect whether elements are partially in view
 
 A lot can be learned from monitoring the viewport, especially on a site with content that spans well outside of the user&#8217;s view. I will discuss how I use Within Viewport in much more detail in my [next post](http://patik.com/blog/matching-ui-behavior-with-user-behavior/). But here&#8217;s a quick overview of what you can do.
 
-  * #### Dynamic content loading
-    
+-   #### Dynamic content loading
+
     A site&#8217;s performance can be increased effectively by loading data on demand, for example when the user scrolls near the bottom of the page. But perhaps _the content_ on screen is more pertinent than the scroll position. For example, you may want to load the entire structure of your site during the initial page load, but then populate that structure with heavier media as it nears the user&#8217;s field of view.
 
-  * #### Responding to user behavior
-    
-    You may also want to tailor when that content is loaded based on how rapidly the user moves about the page. If you are relying on a third party API for content, you may want to start the process sooner than you would begin requested content from your own server.
-    
-    For example, the script below would find and load items with local content that is merely just beyond the viewport, but also load third-party content that appears much further down the page.
-    
-    <pre class="brush:js">// Image placeholders at most 100px below the fold
-$('img:not([data-src^="http://"]')
+-   #### Responding to user behavior
+
+        You may also want to tailor when that content is loaded based on how rapidly the user moves about the page. If you are relying on a third party API for content, you may want to start the process sooner than you would begin requested content from your own server.
+
+        For example, the script below would find and load items with local content that is merely just beyond the viewport, but also load third-party content that appears much further down the page.
+
+        <pre class="brush:js">// Image placeholders at most 100px below the fold
+
+    $('img:not([data-src^="http://"]')
     .withinViewport({bottom:-100})
-        .loadTheseImages();
+    .loadTheseImages();
 
 // Image placeholders as far as 500px below the fold
 $('img[data-src^="http://"]')
-    .withinViewport({bottom:-500})
-        .loadTheseImages();
+.withinViewport({bottom:-500})
+.loadTheseImages();
+
 </pre>
 
-  * #### Making appropriate measurements
-    
+-   #### Making appropriate measurements
+
     If you want to know what your user has seen, for example to remember their reading position in a feed, you can only consider ones that are fully in view. You also need to take into account the actual viewport, avoiding things like fixed header bars that cover parts of the page.<figure style="margin-left:-1em;"> <figcaption>
-    
-    <a href="http://patik.com/code/within-viewport/example_diagram.svg" target="_blank">Larger version</a></figcaption></figure> 
-  * #### Live updates
-    
+
+    <a href="http://patik.com/code/within-viewport/example_diagram.svg" target="_blank">Larger version</a></figcaption></figure>
+
+-   #### Live updates
+
     If you implement keyboard navigation between items, similar to [Google Reader](http://www.google.com/support/reader/bin/answer.py?answer=69973), you need to make sure a newly-selected item is actually visible.
 
-  * #### Tracking how your app is used
-    
+-   #### Tracking how your app is used
+
     You can tap into Google Analytics&#8217; [Event Tracking](http://code.google.com/apis/analytics/docs/tracking/eventTrackerGuide.html) to find out how often items enter your visitor&#8217;s field of view.
 
 I built Within Viewport to accomodate those needs, but I made it generic enough that any site or web app could benefit from it. There are configurable defaults and several shorthand notations described with examples in the [documentation](https://github.com/patik/within-viewport/blob/master/README.md).

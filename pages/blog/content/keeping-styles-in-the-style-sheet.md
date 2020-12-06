@@ -2,16 +2,16 @@
 id: 251
 title: Keeping styles in the style sheet
 date: 2013-09-09T13:56:32+00:00
-author: Craig
+author: Craig Patik
 layout: post
-guid: http://patik.com/blog/?p=251
-permalink: /?p=251
+guid: keeping-styles-in-the-style-sheet
 dsq_thread_id:
-  - "1741403952"
+    - '1741403952'
 categories:
-  - Javascript
-  - Web
+    - Javascript
+    - Web
 ---
+
 Even as browsers progress and add more support for CSS-based animation, we still find ourselves relying on JavaScript to get the job done. But that doesn&#8217;t mean we need to define our styles in our scripts.
 
 <!--more-->

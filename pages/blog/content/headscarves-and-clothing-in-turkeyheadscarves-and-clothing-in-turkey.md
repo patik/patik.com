@@ -2,22 +2,20 @@
 id: 44
 title: Headscarves and clothing in Turkey
 date: 2009-08-28T10:50:51+00:00
-author: Craig
+author: Craig Patik
 layout: post
-guid: http://www.patik.com/blog/?p=44
-permalink: /?p=44
-postie:
-  - postie
+guid: headscarves-and-clothing-in-turkey
 dsq_thread_id:
-  - "678587825"
+    - '678587825'
 categories:
-  - Travel
-  - Turkey
+    - Travel
+    - Turkey
 tags:
-  - culture
-  - Travel
-  - Turkey
+    - culture
+    - Travel
+    - Turkey
 ---
+
 Women wore all sorts of different styles of headscarves in Istanbul. Some tightly circled their faces, some covered all but their eyes, others loosely draped them over their heads. I think the variety might have been a result of there being tourists from all over the Middle East.
 
 Most women were covered from neck to wrist to ankle. Younger, trendier women wore Western-style fashions but with a skin-tight covering underneath. Often the covering was black while the clothes, especially tank tops and skirts, were brightly colored. Oddly enough this contrast drew as much attention as a Westerner without the under- cover. These women did not mind showing off their figure.

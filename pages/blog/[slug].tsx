@@ -1,32 +1,28 @@
 import React from 'react'
-import ReactMarkdown from 'react-markdown'
+import { NextPageContext } from 'next'
 import matter from 'gray-matter'
+import ReactMarkdown from 'react-markdown'
+import dayjs from 'dayjs'
 
-function PostTemplate({ content, data }) {
-    // This holds the data between `---` from the .md file
-    const frontmatter = data
+function PostTemplate({ content, data }: { content: string; data: BlogPostData }) {
+    const date = dayjs(data.date).format('DD MMMM YYYY')
 
     return (
         <>
-            <h1>{frontmatter.title}</h1>
+            <h1>{data.title}</h1>
+            <h2>{date}</h2>
             <ReactMarkdown source={content} />
+            <code>{JSON.stringify(data)}</code>
         </>
     )
 }
 
-PostTemplate.getInitialProps = async (context) => {
+PostTemplate.getInitialProps = async (context: NextPageContext) => {
     const { slug } = context.query
-
-    // Import our .md file using the `slug` from the URL
     const content = await import(`./content/${slug}.md`)
-
-    // Parse .md data through `matter`
     const data = matter(content.default)
 
-    // Pass data to our component props
     return { ...data }
-
-    return { slug }
 }
 
 export default PostTemplate

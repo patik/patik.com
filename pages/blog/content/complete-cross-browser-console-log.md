@@ -2,16 +2,16 @@
 id: 153
 title: Complete cross-browser console.log()
 date: 2011-04-12T12:55:28+00:00
-author: Craig
+author: Craig Patik
 layout: post
-guid: http://patik.com/blog/?p=153
-permalink: /?p=153
+guid: complete-cross-browser-console-log
 dsq_thread_id:
-  - "426178294"
+    - '426178294'
 categories:
-  - Javascript
-  - Web
+    - Javascript
+    - Web
 ---
+
 _Update: I&#8217;ve made a significant update to this project which is targeted at primitive consoles (IE, Opera 11 and older, iOS 5 and older, and more). A separate blog post has [more details](http://patik.com/blog/detailed-console-logging/) or you can jump right to the [updated Github repo](https://github.com/patik/console.log-wrapper). The original post below still applies._
 
 Many front-end web developers make use of the wonderful browser consoles that have matured in the past few years. While the tried-and-true `console.log()` often does the trick, its lack of support (particularly in IE) has led to the use of proxy functions, such as [Paul Irish&#8217;s console.log wrapper](http://paulirish.com/2009/log-a-lightweight-wrapper-for-consolelog/) and [Ben Alman&#8217;s Debug()](http://benalman.com/code/projects/javascript-debug/docs/files/ba-debug-js.html) which prevent unsupportive browsers from throwing errors.
@@ -30,11 +30,11 @@ Like Paul&#8217;s implementation, we&#8217;re simply going to create a function 
 
 First, let&#8217;s review console support in today&#8217;s browsers:
 
-  * Chrome, Safari, Opera: native `console.log()`
-  * Firefox: native `console.log()` with Firebug
-  * IE9: native `console.log()`, but it needs a little nudge to turn on
-  * IE8: While `console.log()` exists, it&#8217;s an object rather than a function — But we can still write to the console with a clever trick.
-  * Others: We can inject [Firebug Lite](http://getfirebug.com/firebuglite) which will define `console.log()` as a function
+-   Chrome, Safari, Opera: native `console.log()`
+-   Firefox: native `console.log()` with Firebug
+-   IE9: native `console.log()`, but it needs a little nudge to turn on
+-   IE8: While `console.log()` exists, it&#8217;s an object rather than a function — But we can still write to the console with a clever trick.
+-   Others: We can inject [Firebug Lite](http://getfirebug.com/firebuglite) which will define `console.log()` as a function
 
 Note that when I talk about IE I&#8217;m referring to the native versions — &#8220;IE8&#8221; means IE8, _not_ IE9 switched to IE8 mode with the Developer Tools.
 
