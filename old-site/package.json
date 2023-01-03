@@ -1,0 +1,22 @@
+{
+    "name": "patik.com",
+    "version": "1.0.0",
+    "description": "Personal web site",
+    "main": "index.php",
+    "repository": "https://github.com/patik/patik.com.git",
+    "author": {
+        "name": "Craig Patik",
+        "email": "craig@patik.com"
+    },
+    "license": "MIT",
+    "private": true,
+    "dependencies": {
+        "grunt": "^1.0.1",
+        "grunt-cli": "^1.2.0",
+        "grunt-contrib-connect": "^1.0.2",
+        "grunt-contrib-jshint": "^1.1.0",
+        "grunt-contrib-watch": "^1.0.0",
+        "grunt-sass": "^2.0.0",
+        "load-grunt-tasks": "^3.5.2"
+    }
+}
