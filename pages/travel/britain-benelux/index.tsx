@@ -1,0 +1,144 @@
+import Image from 'next/image'
+import Link from 'next/link'
+import Layout from '../../../src/layout/Layout'
+
+export default function Page() {
+    return (
+        <Layout
+            title="Britain &amp; Benelux"
+            keywords={[
+                'england',
+                'scotland',
+                'netherlands',
+                'bruges',
+                'london',
+                'amsterdam',
+                'edinburgh',
+                'liverpool',
+                'united kingdom',
+                'europe',
+                'travel',
+            ]}
+        >
+            <div id="britain-main" role="main">
+                <h1>London, Amsterdam, &amp; Bruges</h1>
+
+                <section className="intro">
+                    <p>August 2012</p>
+                </section>
+
+                <section>
+                    <h2>Photos and Video</h2>
+
+                    <div className="row travel-link-list">
+                        <div className="small-12 medium-6 large-4 columns">
+                            <a
+                                className="bg-britain-netherlands"
+                                href="https://picasaweb.google.com/116513687533678150554/Amsterdam2012"
+                                title="Netherlands photo album"
+                            >
+                                <Image
+                                    src="/images/britain-benelux-netherlands-link.jpg"
+                                    alt="Westerkerk overlooking an Amsterdam canal"
+                                />
+                                <span>Netherlands</span>
+                                <div className="image-cover"></div>
+                            </a>
+                        </div>
+                        <div className="small-12 medium-6 large-4 columns">
+                            <a
+                                className="bg-britain-bruges"
+                                href="https://picasaweb.google.com/116513687533678150554/Bruges"
+                                title="Bruges photo album"
+                            >
+                                <Image src="/images/britain-benelux-bruges-link.jpg" alt="" />
+                                <span>Bruges</span>
+                                <div className="image-cover"></div>
+                            </a>
+                        </div>
+                        <div className="small-12 medium-6 large-4 columns">
+                            <a
+                                className="bg-britain-edinburgh"
+                                href="https://picasaweb.google.com/116513687533678150554/Edinburgh"
+                                title="Edinburgh photo album"
+                            >
+                                <Image src="/images/britain-benelux-edinburgh-link.jpg" alt="" />
+                                <span>Edinburgh</span>
+                                <div className="image-cover"></div>
+                            </a>
+                        </div>
+                        <div className="small-12 medium-6 large-4 columns">
+                            <a
+                                className="bg-britain-london"
+                                href="https://picasaweb.google.com/116513687533678150554/London2012"
+                                title="London photo album"
+                            >
+                                <Image
+                                    src="/images/britain-benelux-london-link.jpg"
+                                    alt="View over Westminster from the London Eye"
+                                />
+                                <span>London</span>
+                                <div className="image-cover"></div>
+                            </a>
+                        </div>
+                        <div className="small-12 medium-6 large-4 columns left">
+                            <a
+                                className="bg-britain-liverpool"
+                                href="https://picasaweb.google.com/116513687533678150554/Liverpool"
+                                title="Liverpool photo album"
+                            >
+                                <Image
+                                    src="/images/britain-benelux-liverpool-link.jpg"
+                                    alt="Pitch-level view of the Kop at Anfield"
+                                />
+                                <span>Liverpool</span>
+                                <div className="image-cover"></div>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h2>Itinerary</h2>
+                    <ul>
+                        <li>
+                            Netherlands
+                            <ul>
+                                <li>Amsterdam</li>
+                                <li>Haarlem</li>
+                                <li>Leiden</li>
+                                <li>Edam</li>
+                            </ul>
+                        </li>
+                        <li>Bruges</li>
+                        <li>Eurostar train to London, via Paris</li>
+                        <li>Edinburgh, Scotland</li>
+                        <li>
+                            London
+                            <ul>
+                                <li>Highclere Castle</li>
+                                <li>Arsenal vs Sunderland football match</li>
+                                <li>Harry Potter film studios</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Liverpool
+                            <ul>
+                                <li>Beatles Weekend</li>
+                                <li>Liverpool vs Manchester City football match</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div className="travel-map">
+                        <Link href="/images/britain-benelux-overview-map.png">
+                            <Image
+                                src="/images/britain-benelux-overview-map-small.jpg"
+                                alt="Map of trip locations"
+                                title="Click for a larger version"
+                            />
+                        </Link>
+                    </div>
+                </section>
+            </div>
+        </Layout>
+    )
+}
