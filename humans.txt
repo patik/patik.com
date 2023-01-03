@@ -6,7 +6,7 @@
   Lead developer: Craig Patik
   Site: http://patik.com/
   Twitter: craigpatik
-  Location: Albany, NY
+  Location: Munich, Germany
 
 /* THANKS */
   Names (& URL): html5boilerplate.com, html5doctor.com, http://joncom.be/code/excanvas-world-map/

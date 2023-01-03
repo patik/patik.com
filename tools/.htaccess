@@ -1,6 +1,0 @@
-RewriteEngine on
-
-RewriteRule ^computer$ computer\index.php [L]
-RewriteRule ^usenet$ usenet.php [L]
-
-RewriteRule ^index.html$ index.php [L]
