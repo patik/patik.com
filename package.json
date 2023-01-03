@@ -1,10 +1,26 @@
 {
     "name": "patik.com",
-    "version": "1.0.0",
+    "version": "0.1.0",
     "description": "Personal web site of Craig Patik",
-    "main": "index.js",
+    "private": true,
     "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint",
         "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+        "@next/font": "13.1.1",
+        "@types/node": "18.11.18",
+        "@types/react": "18.0.26",
+        "@types/react-dom": "18.0.10",
+        "eslint": "8.31.0",
+        "eslint-config-next": "13.1.1",
+        "next": "13.1.1",
+        "react": "18.2.0",
+        "react-dom": "18.2.0",
+        "typescript": "4.9.4"
     },
     "repository": {
         "type": "git",
@@ -15,5 +31,5 @@
     "bugs": {
         "url": "https://github.com/patik/patik.com/issues"
     },
-    "homepage": "https://github.com/patik/patik.com#readme"
+    "homepage": "https://patik.com"
 }
