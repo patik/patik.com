@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import photosLink from '../../../public/images/france-photos-link.jpg'
 import Layout from '../../../src/layout/Layout'
 
 export default function Page() {
@@ -22,10 +23,7 @@ export default function Page() {
                                 className="bg-france-photos"
                                 href="https://picasaweb.google.com/116513687533678150554/France2000#slideshow/5294684171488622482"
                             >
-                                <Image
-                                    src="/images/france-photos-link.jpg"
-                                    alt="The Eiffel Tower was lit up for the new millenium"
-                                />
+                                <Image src={photosLink} alt="The Eiffel Tower was lit up for the new millenium" />
                                 <span>France</span>
                                 <div className="image-cover"></div>
                             </a>

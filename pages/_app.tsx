@@ -21,48 +21,42 @@ export default function App({ Component, pageProps }: AppProps) {
                 <section className="top-bar-section">
                     <ul className="right">
                         <li className="has-dropdown<?php if ($this->section === 'travel') { echo ' active'; } ?>">
-                            <a href="<?php echo $this->print_dir_level(); ?>travel/">Travel</a>
+                            <Link href="/travel/">Travel</Link>
                             <ul className="dropdown">
                                 <li>
-                                    <a href="<?php echo $this->print_dir_level(); ?>travel/">All Travels</a>
+                                    <Link href="/travel/">All Travels</Link>
                                 </li>
                                 <li className="divider"></li>
                                 <li>
-                                    <a href="<?php echo $this->print_dir_level(); ?>travel/britain-benelux/">
-                                        Britian &amp; Benelux
-                                    </a>
+                                    <Link href="/travel/britain-benelux/">Britian &amp; Benelux</Link>
                                 </li>
                                 <li>
-                                    <a href="<?php echo $this->print_dir_level(); ?>travel/peru-argentina/">
-                                        Peru &amp; Argentina
-                                    </a>
+                                    <Link href="/travel/peru-argentina/">Peru &amp; Argentina</Link>
                                 </li>
                                 <li>
-                                    <a href="<?php echo $this->print_dir_level(); ?>travel/spain/">Spain</a>
+                                    <Link href="/travel/spain/">Spain</Link>
                                 </li>
                                 <li>
-                                    <a href="<?php echo $this->print_dir_level(); ?>travel/turkey/">Turkey</a>
+                                    <Link href="/travel/turkey/">Turkey</Link>
                                 </li>
                                 <li>
-                                    <a href="<?php echo $this->print_dir_level(); ?>travel/germany/">
-                                        Germany &amp; Austria
-                                    </a>
+                                    <Link href="/travel/germany/">Germany &amp; Austria</Link>
                                 </li>
                                 <li>
-                                    <a href="<?php echo $this->print_dir_level(); ?>travel/greece/">Greece</a>
+                                    <Link href="/travel/greece/">Greece</Link>
                                 </li>
                                 <li>
-                                    <a href="<?php echo $this->print_dir_level(); ?>travel/paris/">Paris</a>
+                                    <Link href="/travel/paris/">Paris</Link>
                                 </li>
                                 <li>
-                                    <a href="<?php echo $this->print_dir_level(); ?>travel/france/">France</a>
+                                    <Link href="/travel/france/">France</Link>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="/code/" className="active">
+                            <Link href="/code/" className="active">
                                 Code
-                            </a>
+                            </Link>
                         </li>
                         <li>
                             <a href="https://plus.google.com/u/0/+CraigPatik">Photos</a>

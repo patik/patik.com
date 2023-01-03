@@ -1,4 +1,8 @@
 import Image from 'next/image'
+import imgLinkAmazon from '../../../public/images/peru-argentina-link-amazon.jpg'
+import imgLinkColonia from '../../../public/images/peru-argentina-link-colonia.jpg'
+import imgLinkCusco from '../../../public/images/peru-argentina-link-cusco.jpg'
+import imgMapSmall from '../../../public/images/peru-argentina-map-small.png'
 import Layout from '../../../src/layout/Layout'
 
 export default function Page() {
@@ -27,7 +31,7 @@ export default function Page() {
                                 className="bg-peru-argentina-amazon"
                                 href="https://picasaweb.google.com/116513687533678150554/AmazonRainforest#slideshow/5638173949189577330"
                             >
-                                <Image src="/images/peru-argentina-link-amazon.jpg" alt="Wooley monkey" />
+                                <Image src={imgLinkAmazon} alt="Wooley monkey" />
                                 <span>Amazon Rainforest</span>
                                 <div className="image-cover"></div>
                             </a>
@@ -37,10 +41,7 @@ export default function Page() {
                                 className="bg-peru-argentina-cusco"
                                 href="https://picasaweb.google.com/116513687533678150554/Cusco#slideshow/5637849631486614658"
                             >
-                                <Image
-                                    src="/images/peru-argentina-link-cusco.jpg"
-                                    alt="Kim holding a lamb and posing with Andean women"
-                                />
+                                <Image src={imgLinkCusco} alt="Kim holding a lamb and posing with Andean women" />
                                 <span>Cusco</span>
                                 <div className="image-cover"></div>
                             </a>
@@ -50,10 +51,7 @@ export default function Page() {
                                 className="bg-peru-argentina-colonia"
                                 href="https://picasaweb.google.com/116513687533678150554/ColoniaDelSacramento#slideshow/5637820814953351506"
                             >
-                                <Image
-                                    src="/images/peru-argentina-link-colonia.jpg"
-                                    alt="Old train in Colonia del Sacremento, Uruguay"
-                                />
+                                <Image src={imgLinkColonia} alt="Old train in Colonia del Sacremento, Uruguay" />
                                 <span>Colonia del Sacramento</span>
                                 <div className="image-cover"></div>
                             </a>
@@ -103,7 +101,7 @@ export default function Page() {
                     <div className="travel-map">
                         <a href="/images/peru-argentina-map.png">
                             <Image
-                                src="/images/peru-argentina-map-small.png"
+                                src={imgMapSmall}
                                 alt="Map of South America with each location noted and annotated with a photo"
                                 title="Click for a larger version"
                             />

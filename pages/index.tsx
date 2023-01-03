@@ -1,6 +1,22 @@
 import Image from 'next/image'
 import Layout from '../src/layout/Layout'
 
+import imgHomeTravelAll from '../public/images/home-travel-all.jpg'
+import imgHomeBritainBenelux from '../public/images/home-britain-benelux.jpg'
+import imgHomeTravelPeruArgentina from '../public/images/home-travel-peru-argentina.jpg'
+import imgHomeTravelSpain from '../public/images/home-travel-spain.jpg'
+import imgHomeTravelTurkey from '../public/images/home-travel-turkey.jpg'
+import imgHomeTravelGermany from '../public/images/home-travel-germany.jpg'
+import imgHomeTravelGreece from '../public/images/home-travel-greece.jpg'
+import imgTravelParis from '../../public/images/travel-paris.jpg'
+import imgHomeConsoleBlogLogo from '../public/images/home-console-blog-logo.png'
+import imgHomeGithubLogo from '../public/images/home-github-logo.png'
+import imgHomeTwitterCraigpatikAvatar from '../public/images/home-twitter-craigpatik-avatar.jpg'
+import imgHomeTwitterSoccertorteAvatar from '../public/images/home-twitter-soccertorte-avatar.png'
+import imgHomePhotos from '../public/images/home-photos.jpg'
+import imgHomeTumblrEllsassAvatar from '../public/images/home-tumblr-ellsass-avatar.jpg'
+import imgHomeTumblrRubeonrailsAvatar from '../public/images/home-tumblr-rubeonrails-avatar.jpg'
+
 export default function Home() {
     return (
         <Layout>
@@ -18,7 +34,7 @@ export default function Home() {
                         <div className="small-12 medium-6 large-4 columns">
                             <a href="travel/">
                                 <Image
-                                    src="/images/home-travel-all.jpg"
+                                    src={imgHomeTravelAll}
                                     alt="Standing aside the Andean Explorer train"
                                     title="Andean Explorer, Peru"
                                 />
@@ -28,7 +44,7 @@ export default function Home() {
                         <div className="small-12 medium-6 large-4 columns">
                             <a href="travel/britain-benelux/">
                                 <Image
-                                    src="/images/home-britain-benelux.jpg"
+                                    src={imgHomeBritainBenelux}
                                     alt="Big Ben, a black cab, and a red double-decker bus in Parliament Square"
                                     title="London, England"
                                 />
@@ -38,7 +54,7 @@ export default function Home() {
                         <div className="small-12 medium-6 large-4 columns">
                             <a href="travel/peru-argentina/">
                                 <Image
-                                    src="/images/home-travel-peru-argentina.jpg"
+                                    src={imgHomeTravelPeruArgentina}
                                     alt="Kim holding a lamb and posing with two Andean women in their traditionl clothing"
                                     title="Kim holding a lamb and posing with two Andean women"
                                 />
@@ -48,7 +64,7 @@ export default function Home() {
                         <div className="small-12 medium-6 large-4 columns">
                             <a href="travel/spain/">
                                 <Image
-                                    src="/images/home-travel-spain.jpg"
+                                    src={imgHomeTravelSpain}
                                     alt="Celebrating Spain's World Cup victory in Madrid"
                                     title="Celebrating Spain's World Cup victory in Madrid"
                                 />
@@ -58,7 +74,7 @@ export default function Home() {
                         <div className="small-12 medium-6 large-4 columns">
                             <a href="travel/turkey/">
                                 <Image
-                                    src="/images/home-travel-turkey.jpg"
+                                    src={imgHomeTravelTurkey}
                                     alt="The Blue Mosque (Sultanahmet Camii), Istanbul, Turkey"
                                     title="The Blue Mosque (Sultanahmet Camii), Istanbul, Turkey"
                                 />
@@ -68,7 +84,7 @@ export default function Home() {
                         <div className="small-12 medium-6 large-4 columns left">
                             <a href="travel/germany/">
                                 <Image
-                                    src="/images/home-travel-germany.jpg"
+                                    src={imgHomeTravelGermany}
                                     alt="Spanish fans gathering in Vienna's Ststephensplatz"
                                     title="Spanish fans in Vienna for Euro 2008"
                                 />
@@ -79,7 +95,7 @@ export default function Home() {
                         <div className="small-12 medium-6 large-4 columns">
                             <a href="travel/greece/">
                                 <Image
-                                    src="/images/home-travel-greece.jpg"
+                                    src={imgHomeTravelGreece}
                                     alt="View of the coast of Serifios, Greece from a ferry"
                                     title="Serifios, Greece"
                                 />
@@ -89,7 +105,11 @@ export default function Home() {
 
                         <div className="small-12 medium-6 large-4 columns ">
                             <a href="travel/paris/">
-                                <Image src="/images/home-travel-paris.jpg" alt="" title="Serifios, Greece" />
+                                <Image
+                                    src={imgTravelParis}
+                                    alt="Kim and I in front of the Eiffel Tower"
+                                    title="Paris, France"
+                                />
                                 <span>Paris</span>
                             </a>
                         </div>
@@ -102,21 +122,13 @@ export default function Home() {
                     <div className="row button-link-list">
                         <div className="small-12 medium-6 large-4 columns">
                             <a href="code/">
-                                <Image
-                                    src="/images/home-console-blog-logo.png"
-                                    alt="JavaScript code"
-                                    title="Code &amp; projects"
-                                />
+                                <Image src={imgHomeConsoleBlogLogo} alt="JavaScript code" title="Code &amp; projects" />
                                 <span>Code &amp; projects</span>
                             </a>
                         </div>
                         <div className="small-12 medium-6 large-4 columns">
                             <a href="blog/">
-                                <Image
-                                    src="/images/home-console-blog-logo.png"
-                                    alt="JavaScript code"
-                                    title="console.blog()"
-                                />
+                                <Image src={imgHomeConsoleBlogLogo} alt="JavaScript code" title="console.blog()" />
                                 <span>
                                     console.
                                     <wbr />
@@ -126,7 +138,7 @@ export default function Home() {
                         </div>
                         <div className="small-12 medium-6 large-4 columns">
                             <a href="https://github.com/patik">
-                                <Image src="/images/home-github-logo.png" alt="GitHub text logo" title="GitHub" />
+                                <Image src={imgHomeGithubLogo} alt="GitHub text logo" title="GitHub" />
                                 <span>GitHub</span>
                             </a>
                         </div>
@@ -140,7 +152,7 @@ export default function Home() {
                         <div className="small-12 medium-6 large-4 columns">
                             <a href="https://twitter.com/craigpatik">
                                 <Image
-                                    src="/images/home-twitter-craigpatik-avatar.jpg"
+                                    src={imgHomeTwitterCraigpatikAvatar}
                                     alt="Twitter avatar; photo of me riding on a camel"
                                     title="@craigpatik"
                                 />
@@ -150,7 +162,7 @@ export default function Home() {
                         <div className="small-12 medium-6 large-4 columns">
                             <a href="https://twitter.com/SoccerTorte">
                                 <Image
-                                    src="/images/home-twitter-soccertorte-avatar.png"
+                                    src={imgHomeTwitterSoccertorteAvatar}
                                     alt="Twitter avatar; photo of a slice of sachertorte cake"
                                     title="@SoccerTorte"
                                 />
@@ -160,7 +172,7 @@ export default function Home() {
                         <div className="small-12 medium-6 large-4 columns">
                             <a href="https://www.facebook.com/craigpatik">
                                 <Image
-                                    src="/images/home-twitter-craigpatik-avatar.jpg"
+                                    src={imgHomeTwitterCraigpatikAvatar}
                                     alt="Facebook avatar; photo of me riding on a camel"
                                     title="Facebook profile"
                                 />
@@ -170,7 +182,7 @@ export default function Home() {
                         <div className="small-12 medium-6 large-4 columns">
                             <a href="https://plus.google.com/u/0/+CraigPatik">
                                 <Image
-                                    src="/images/home-photos.jpg"
+                                    src={imgHomePhotos}
                                     alt="Sitting in a boat and feeding a banana to a wooley monkey"
                                     title="Feeding a monkey in the Amazon rainforest"
                                 />
@@ -180,7 +192,7 @@ export default function Home() {
                         <div className="small-12 medium-6 large-4 columns">
                             <a href="http://ellsass.com">
                                 <Image
-                                    src="/images/home-tumblr-ellsass-avatar.jpg"
+                                    src={imgHomeTumblrEllsassAvatar}
                                     alt="Tumblr avatar; photo of me in front of the Alcazar gardens, Sevilla, Spain"
                                     title="Alcazar gardens, Sevilla, Spain"
                                 />
@@ -190,7 +202,7 @@ export default function Home() {
                         <div className="small-12 medium-6 large-4 columns">
                             <a href="http://rubeonrails.com">
                                 <Image
-                                    src="/images/home-tumblr-rubeonrails-avatar.jpg"
+                                    src={imgHomeTumblrRubeonrailsAvatar}
                                     alt="S-Bahn station in Marienplatz, Munich, Germany"
                                     title="S-Bahn station in Marienplatz, Munich, Germany"
                                 />

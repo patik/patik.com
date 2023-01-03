@@ -1,5 +1,14 @@
 import Image from 'next/image'
 import Layout from '../../src/layout/Layout'
+import imgTravelBritainbenelux from '../../public/images/travel-britain-benelux.jpg'
+import imgTravelFrance from '../../public/images/travel-france.jpg'
+import imgTravelGermany from '../../public/images/travel-germany.jpg'
+import imgTravelGreece from '../../public/images/travel-greece.jpg'
+import imgTravelParis from '../../public/images/travel-paris.jpg'
+import imgTravelPeruargentina from '../../public/images/travel-peru-argentina.jpg'
+import imgTravelSpain from '../../public/images/travel-spain.jpg'
+import imgTravelTurkey from '../../public/images/travel-turkey.jpg'
+import Link from 'next/link'
 
 export default function Page() {
     return (
@@ -21,9 +30,9 @@ export default function Page() {
                 <section>
                     <div className="row travel-link-list">
                         <div className="small-12 medium-6 large-4 columns">
-                            <a className="bg-travel-britain-benelux" href="britain-benelux/">
+                            <Link className="bg-travel-britain-benelux" href="/travel/britain-benelux/">
                                 <Image
-                                    src="../img/travel-britain-benelux.jpg"
+                                    src={imgTravelBritainbenelux}
                                     alt="Big Ben, a black cab, and a red double-decker bus in Parliament Square"
                                 />
                                 <span>
@@ -32,24 +41,21 @@ export default function Page() {
                                     Benelux
                                 </span>
                                 <div className="image-cover"></div>
-                            </a>
+                            </Link>
                         </div>
                         <div className="small-12 medium-6 large-4 columns">
-                            <a className="bg-travel-peru-argentina" href="peru-argentina/">
+                            <Link className="bg-travel-peru-argentina" href="/travel/peru-argentina/">
                                 <Image
-                                    src="../img/travel-peru-argentina.jpg"
+                                    src={imgTravelPeruargentina}
                                     alt="Kim holding a lamb and posing with two Andean women"
                                 />
                                 <span>Peru &amp; Argentina</span>
                                 <div className="image-cover"></div>
-                            </a>
+                            </Link>
                         </div>
                         <div className="small-12 medium-6 large-4 columns">
-                            <a className="bg-travel-spain" href="spain/">
-                                <Image
-                                    src="../img/travel-spain.jpg"
-                                    alt="Celebrating Spain's World Cup victory in Madrid"
-                                />
+                            <Link className="bg-travel-spain" href="/travel/spain/">
+                                <Image src={imgTravelSpain} alt="Celebrating Spain's World Cup victory in Madrid" />
                                 <span>
                                     Spain,
                                     <br />
@@ -58,56 +64,57 @@ export default function Page() {
                                     &amp; Morocco
                                 </span>
                                 <div className="image-cover"></div>
-                            </a>
+                            </Link>
                         </div>
                         <div className="small-12 medium-6 large-4 columns">
-                            <a className="bg-travel-turkey" href="turkey/">
+                            <Link className="bg-travel-turkey" href="/travel/turkey/">
                                 <Image
-                                    src="../img/travel-turkey.jpg"
+                                    src={imgTravelTurkey}
                                     alt="The Blue Mosque (Sultanahmet Camii), Istanbul, Turkey"
                                 />
                                 <span>Turkey</span>
                                 <div className="image-cover"></div>
-                            </a>
+                            </Link>
                         </div>
                         <div className="small-12 medium-6 large-4 columns">
-                            <a className="bg-travel-germany" href="germany/">
-                                <Image src="../img/travel-germany.jpg" alt="Spanish fans in Vienna for Euro 2008" />
+                            <Link className="bg-travel-germany" href="/travel/germany/">
+                                <Image src={imgTravelGermany} alt="Spanish fans in Vienna for Euro 2008" />
                                 <span>
                                     Germany
                                     <br />
                                     &amp; Austria
                                 </span>
                                 <div className="image-cover"></div>
-                            </a>
+                            </Link>
                         </div>
                         <div className="small-12 medium-6 large-4 columns">
-                            <a className="bg-travel-greece" href="greece/">
-                                <Image src="../img/travel-greece.jpg" alt="Serifios, Greece" />
+                            <Link className="bg-travel-greece" href="/travel/greece/">
+                                <Image src={imgTravelGreece} alt="Serifios, Greece" />
                                 <span>Greece</span>
                                 <div className="image-cover"></div>
-                            </a>
+                            </Link>
                         </div>
                         <div className="small-12 medium-6 large-4 columns">
-                            <a className="bg-travel-paris" href="paris/">
-                                <Image src="../img/travel-paris.jpg" alt="Eiffel Tower" />
+                            <Link className="bg-travel-paris" href="/travel/paris/">
+                                <Image src={imgTravelParis} alt="Eiffel Tower" />
                                 <span>Paris</span>
                                 <div className="image-cover"></div>
-                            </a>
+                            </Link>
                         </div>
                         <div className="small-12 medium-6 large-4 columns left">
-                            <a className="bg-travel-france" href="france/">
-                                <Image src="../img/travel-france.jpg" alt="The Seine River" />
+                            <Link className="bg-travel-france" href="/travel/france/">
+                                <Image src={imgTravelFrance} alt="The Seine River" />
                                 <span>France</span>
                                 <div className="image-cover"></div>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </section>
 
                 <section>
                     <div className="travel-map">
-                        <Image
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
                             src="http://chart.apis.google.com/chart?cht=t&chs=440x220&chd=s:_&chtm=world&chco=FFFFFF,FF0000,FFFF00,00FF00&chld=PE|AR|FR|GR|DE|AT|TR|PT|ES|MA&chd=t:0,10,40,40,60,80,80,80,80,80&chf=bg,s,EAF7FE"
                             alt="Map with countries that I've been to highlighted"
                             title="Countries that I've visited"

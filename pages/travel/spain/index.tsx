@@ -1,4 +1,6 @@
 import Image from 'next/image'
+import itineraryMapSmall from '../../../public/images/spain-itinerary-map-small.jpg'
+import linkWorlCup from '../../../public/images/spain-link-world-cup.jpg'
 import Layout from '../../../src/layout/Layout'
 
 export default function Page() {
@@ -42,10 +44,7 @@ export default function Page() {
                                 className="bg-spain-world-cup"
                                 href="https://picasaweb.google.com/116513687533678150554/WorldCup2010InMadrid"
                             >
-                                <Image
-                                    src="/images/spain-link-world-cup.jpg"
-                                    alt="Celebrating Spain's victory in Madrid"
-                                />
+                                <Image src={linkWorlCup} alt="Celebrating Spain's victory in Madrid" />
                                 <span>
                                     2010
                                     <br />
@@ -106,7 +105,7 @@ export default function Page() {
                     <div className="travel-map">
                         <a href="/images/spain-itinerary-map.jpg">
                             <Image
-                                src="/images/spain-itinerary-map-small.jpg"
+                                src={itineraryMapSmall}
                                 alt="Map of Western Europe with each location noted and annotated with a photo"
                                 title="Click for a larger version"
                             />

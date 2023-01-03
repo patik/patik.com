@@ -1,4 +1,6 @@
 import Image from 'next/image'
+import imgGermanyBavariaLink from '../../../public/images/germany-bavaria-link.jpg'
+import imgGermanyBerlinLink from '../../../public/images/germany-berlin-link.jpg'
 import Layout from '../../../src/layout/Layout'
 
 export default function Page() {
@@ -33,7 +35,7 @@ export default function Page() {
                     </p>
                     <p>
                         On to <a href="http://wikitravel.org/en/Bavaria">Bavaria</a> and Germany, we mixed munchies and{' '}
-                        <a href="http://en.wikipedia.org/wiki/Beer_stein">mass</a> in Munich, toured through Nuremberg,
+                        <a href="http://en.wikipedia.org/wiki/Beer_stein">Maß</a> in Munich, toured through Nuremberg,
                         walked the wall around{' '}
                         <a href="http://wikitravel.org/en/Rothenburg_ob_der_Tauber">Rothenburg</a>, cruised up the
                         castle-studded <a href="http://wikitravel.org/en/Rhine_Valley">Rhine</a>, and reveled in the
@@ -62,7 +64,7 @@ export default function Page() {
                                 className="bg-germany-bavaria"
                                 href="https://picasaweb.google.com/116513687533678150554/GermanyAustriaPart2MunichAndBavaria#slideshow/5225143647143416210"
                             >
-                                <Image src="/images/germany-bavaria-link.jpg" alt="Enjoying a liter at Hofbrauhaus" />
+                                <Image src={imgGermanyBavariaLink} alt="Enjoying a liter at Hofbräuhaus" />
                                 <span>Bavaria</span>
                                 <div className="image-cover"></div>
                             </a>
@@ -72,7 +74,7 @@ export default function Page() {
                                 className="bg-germany-berlin"
                                 href="https://picasaweb.google.com/116513687533678150554/GermanyAustriaPart3TheRhineAndBerlin#slideshow/5225644361457979586"
                             >
-                                <Image src="/images/germany-berlin-link.jpg" alt="Brandenberg Gate, Berlin" />
+                                <Image src={imgGermanyBerlinLink} alt="Brandenberg Gate, Berlin" />
                                 <span>
                                     Berlin &amp;
                                     <br />

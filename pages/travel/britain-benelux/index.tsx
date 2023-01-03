@@ -1,5 +1,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import imgBrugesLink from '../../../public/images/britain-benelux-bruges-link.jpg'
+import imgEdinburghLink from '../../../public/images/britain-benelux-edinburgh-link.jpg'
+import imgLiverpoolLink from '../../../public/images/britain-benelux-liverpool-link.jpg'
+import imgLondonLink from '../../../public/images/britain-benelux-london-link.jpg'
+import imgNetherlandsLink from '../../../public/images/britain-benelux-netherlands-link.jpg'
+import imgOverviewMap from '../../../public/images/britain-benelux-overview-map-small.jpg'
 import Layout from '../../../src/layout/Layout'
 
 export default function Page() {
@@ -37,10 +43,7 @@ export default function Page() {
                                 href="https://picasaweb.google.com/116513687533678150554/Amsterdam2012"
                                 title="Netherlands photo album"
                             >
-                                <Image
-                                    src="/images/britain-benelux-netherlands-link.jpg"
-                                    alt="Westerkerk overlooking an Amsterdam canal"
-                                />
+                                <Image src={imgNetherlandsLink} alt="Westerkerk overlooking an Amsterdam canal" />
                                 <span>Netherlands</span>
                                 <div className="image-cover"></div>
                             </a>
@@ -51,7 +54,7 @@ export default function Page() {
                                 href="https://picasaweb.google.com/116513687533678150554/Bruges"
                                 title="Bruges photo album"
                             >
-                                <Image src="/images/britain-benelux-bruges-link.jpg" alt="" />
+                                <Image src={imgBrugesLink} alt="" />
                                 <span>Bruges</span>
                                 <div className="image-cover"></div>
                             </a>
@@ -62,7 +65,7 @@ export default function Page() {
                                 href="https://picasaweb.google.com/116513687533678150554/Edinburgh"
                                 title="Edinburgh photo album"
                             >
-                                <Image src="/images/britain-benelux-edinburgh-link.jpg" alt="" />
+                                <Image src={imgEdinburghLink} alt="" />
                                 <span>Edinburgh</span>
                                 <div className="image-cover"></div>
                             </a>
@@ -73,10 +76,7 @@ export default function Page() {
                                 href="https://picasaweb.google.com/116513687533678150554/London2012"
                                 title="London photo album"
                             >
-                                <Image
-                                    src="/images/britain-benelux-london-link.jpg"
-                                    alt="View over Westminster from the London Eye"
-                                />
+                                <Image src={imgLondonLink} alt="View over Westminster from the London Eye" />
                                 <span>London</span>
                                 <div className="image-cover"></div>
                             </a>
@@ -87,10 +87,7 @@ export default function Page() {
                                 href="https://picasaweb.google.com/116513687533678150554/Liverpool"
                                 title="Liverpool photo album"
                             >
-                                <Image
-                                    src="/images/britain-benelux-liverpool-link.jpg"
-                                    alt="Pitch-level view of the Kop at Anfield"
-                                />
+                                <Image src={imgLiverpoolLink} alt="Pitch-level view of the Kop at Anfield" />
                                 <span>Liverpool</span>
                                 <div className="image-cover"></div>
                             </a>
@@ -131,7 +128,7 @@ export default function Page() {
                     <div className="travel-map">
                         <Link href="/images/britain-benelux-overview-map.png">
                             <Image
-                                src="/images/britain-benelux-overview-map-small.jpg"
+                                src={imgOverviewMap}
                                 alt="Map of trip locations"
                                 title="Click for a larger version"
                             />

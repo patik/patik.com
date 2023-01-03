@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Layout from '../../../src/layout/Layout'
+import parisImg from '../../../public/images/paris-photos-link.jpg'
 
 export default function Page() {
     return (
@@ -28,10 +29,7 @@ export default function Page() {
                                 className="bg-paris-photos"
                                 href="https://picasaweb.google.com/116513687533678150554/Paris2005#slideshow/5294679176651465778"
                             >
-                                <Image
-                                    src="/images/paris-photos-link.jpg"
-                                    alt="The Eiffel Tower as seen from Trocadero"
-                                />
+                                <Image src={parisImg} alt="The Eiffel Tower as seen from Trocadero" />
                                 <span>Paris</span>
                                 <div className="image-cover"></div>
                             </a>
