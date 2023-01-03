@@ -1,8 +1,7 @@
-import { ErrorBoundary } from 'react-error-boundary'
-import Footer from './Footer'
 import Head from 'next/head'
-import { PropsWithChildren, ReactElement } from 'react'
 import Link from 'next/link'
+import { PropsWithChildren, ReactElement } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
 
 function FallbackComponent() {
     return <></>
@@ -21,7 +20,10 @@ export default function Layout({ title, keywords = [], children }: Props): React
                 {keywords.length > 0 ? <meta name="keywords" content={keywords.join(',')} /> : null}
             </Head>
 
-            <main style={{ width: '100%', maxWidth: '1020px', alignSelf: 'center', flexGrow: 1 }}>
+            <main
+                id="main"
+                style={{ width: '100%', maxWidth: '1020px', alignSelf: 'center', flexGrow: 1, marginBottom: '2rem' }}
+            >
                 <div>
                     <h4>
                         <Link href="/">Depth of Field Calculator &amp; Lens Comparison Tool</Link>
@@ -30,12 +32,6 @@ export default function Layout({ title, keywords = [], children }: Props): React
                 </div>
 
                 <ErrorBoundary FallbackComponent={FallbackComponent}>{children}</ErrorBoundary>
-
-                <hr />
-
-                <ErrorBoundary FallbackComponent={FallbackComponent}>
-                    <Footer />
-                </ErrorBoundary>
             </main>
         </div>
     )
