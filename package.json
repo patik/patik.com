@@ -32,5 +32,8 @@
     "bugs": {
         "url": "https://github.com/patik/patik.com/issues"
     },
-    "homepage": "https://patik.com"
+    "homepage": "https://patik.com",
+    "devDependencies": {
+        "sass": "^1.57.1"
+    }
 }

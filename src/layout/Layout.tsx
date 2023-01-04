@@ -24,13 +24,6 @@ export default function Layout({ title, keywords = [], children }: Props): React
                 id="main"
                 style={{ width: '100%', maxWidth: '1020px', alignSelf: 'center', flexGrow: 1, marginBottom: '2rem' }}
             >
-                <div>
-                    <h4>
-                        <Link href="/">Depth of Field Calculator &amp; Lens Comparison Tool</Link>
-                    </h4>
-                    <p>Compare multiple camera lenses side-by-side</p>
-                </div>
-
                 <ErrorBoundary FallbackComponent={FallbackComponent}>{children}</ErrorBoundary>
             </main>
         </div>
