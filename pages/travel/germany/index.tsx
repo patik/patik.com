@@ -49,7 +49,7 @@ export default function Page() {
                         <div className="small-12 medium-6 large-4 columns">
                             <a
                                 className="bg-germany-austria"
-                                href="https://picasaweb.google.com/116513687533678150554/GermanyAustriaPart1ViennaAndSalzburg#slideshow/5225133977418641458"
+                                href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipNE-TmD-UPWM7uIBh_08MWJsSCELd4Huol4UokA#slideshow/5225133977418641458"
                             >
                                 <Image
                                     src="/images/germany-austria-link.jpg"
@@ -62,7 +62,7 @@ export default function Page() {
                         <div className="small-12 medium-6 large-4 columns">
                             <a
                                 className="bg-germany-bavaria"
-                                href="https://picasaweb.google.com/116513687533678150554/GermanyAustriaPart2MunichAndBavaria#slideshow/5225143647143416210"
+                                href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipMvUQMar4-AhAVp56ZeyzQDvIf_gSzYsSDLRcRZ#slideshow/5225143647143416210"
                             >
                                 <Image src={imgGermanyBavariaLink} alt="Enjoying a liter at Hofbräuhaus" />
                                 <span>Bavaria</span>
@@ -72,7 +72,7 @@ export default function Page() {
                         <div className="small-12 medium-6 large-4 columns left">
                             <a
                                 className="bg-germany-berlin"
-                                href="https://picasaweb.google.com/116513687533678150554/GermanyAustriaPart3TheRhineAndBerlin#slideshow/5225644361457979586"
+                                href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipNFxJeLnNx3fFuW7oM4SOTiZo_zx5G9rr3THx2v#slideshow/5225644361457979586"
                             >
                                 <Image src={imgGermanyBerlinLink} alt="Brandenberg Gate, Berlin" />
                                 <span>

@@ -29,7 +29,7 @@ export default function Page() {
                         Like <a href="http://en.wikipedia.org/wiki/Paul_the_Octopus">Pulpo Paul</a>, Kim and I had an
                         inkling that Spain would win the 2010 World Cup. We booked a trip for what would be the
                         experience of a lifetime &mdash; being enveloped in a{' '}
-                        <a href="http://picasaweb.google.com/cpatik/WorldCup2010InMadrid">
+                        <a href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipPNxvXhMsdwQtb6jmK0uP9zCBw7p9uCfDAu7udO">
                             massive celebration in Madrid
                         </a>
                         .

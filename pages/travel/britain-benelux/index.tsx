@@ -40,7 +40,7 @@ export default function Page() {
                         <div className="small-12 medium-6 large-4 columns">
                             <a
                                 className="bg-britain-netherlands"
-                                href="https://picasaweb.google.com/116513687533678150554/Amsterdam2012"
+                                href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipOD5tTxPTmr3KjxeR-K-k6xu6YhjuasQDyd9naX"
                                 title="Netherlands photo album"
                             >
                                 <Image src={imgNetherlandsLink} alt="Westerkerk overlooking an Amsterdam canal" />
@@ -51,7 +51,7 @@ export default function Page() {
                         <div className="small-12 medium-6 large-4 columns">
                             <a
                                 className="bg-britain-bruges"
-                                href="https://picasaweb.google.com/116513687533678150554/Bruges"
+                                href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipN-4ZhzSVdq3x0O8opTTZA3hYiuMZIMA_mtpD1D"
                                 title="Bruges photo album"
                             >
                                 <Image src={imgBrugesLink} alt="" />
@@ -62,7 +62,7 @@ export default function Page() {
                         <div className="small-12 medium-6 large-4 columns">
                             <a
                                 className="bg-britain-edinburgh"
-                                href="https://picasaweb.google.com/116513687533678150554/Edinburgh"
+                                href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipN4M-SohIflzfVFqExd1XNwUYweZdXE57yip92N"
                                 title="Edinburgh photo album"
                             >
                                 <Image src={imgEdinburghLink} alt="" />
@@ -73,7 +73,7 @@ export default function Page() {
                         <div className="small-12 medium-6 large-4 columns">
                             <a
                                 className="bg-britain-london"
-                                href="https://picasaweb.google.com/116513687533678150554/London2012"
+                                href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipNeippcH1y8F4Qi53L2bHTZ1anxLJBmeLpysv2J"
                                 title="London photo album"
                             >
                                 <Image src={imgLondonLink} alt="View over Westminster from the London Eye" />
@@ -84,7 +84,7 @@ export default function Page() {
                         <div className="small-12 medium-6 large-4 columns left">
                             <a
                                 className="bg-britain-liverpool"
-                                href="https://picasaweb.google.com/116513687533678150554/Liverpool"
+                                href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipOziMId6ap-bMSgbiNJ2hGoCPbgiFMHzTOk6t4r"
                                 title="Liverpool photo album"
                             >
                                 <Image src={imgLiverpoolLink} alt="Pitch-level view of the Kop at Anfield" />

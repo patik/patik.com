@@ -26,8 +26,11 @@ export default function Page() {
                     <h2>Photos and Video</h2>
                     <div className="row travel-link-list">
                         <div className="small-12 medium-6 large-4 columns">
-                            <a className="bg-turkey-istanbul" href="http://picasaweb.google.com/cpatik/TurkeyIstanbul">
-                                <Image src={imgLinkIstanbul} alt="Photo of the Blue Mosque at night" />
+                            <a
+                                className="bg-turkey-istanbul"
+                                href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipPDOR3feuEb6n_QeSIZr3K-Q2pyyQI6Vgzw6hoD"
+                            >
+                                <Image src={imgLinkIstanbul} alt="The Blue Mosque at night" />
                                 <span>Istanbul</span>
                                 <div className="image-cover"></div>
                             </a>
@@ -35,7 +38,7 @@ export default function Page() {
                         <div className="small-12 medium-6 large-4 columns">
                             <a
                                 className="bg-turkey-cappadocia"
-                                href="http://picasaweb.google.com/cpatik/TurkeyCappadocia"
+                                href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipPaF_nDoQ4dpmjyBkPiBEGr6EDZjX_n0FPlD0_n"
                             >
                                 <Image
                                     src={imgLinkCappadocia}
@@ -46,14 +49,20 @@ export default function Page() {
                             </a>
                         </div>
                         <div className="small-12 medium-6 large-4 columns">
-                            <a className="bg-turkey-cirali" href="http://picasaweb.google.com/cpatik/TurkeyCirali">
+                            <a
+                                className="bg-turkey-cirali"
+                                href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipNFtSt5fXOCWi7L5slPU9fNVTQHOGN2tTZDj5sY"
+                            >
                                 <Image src={imgLinkCirali} alt="Kim standing along the beach in Çirali" />
                                 <span>&Ccedil;&#305;ral&#305; &amp; Olympos</span>
                                 <div className="image-cover"></div>
                             </a>
                         </div>
                         <div className="small-12 medium-6 large-4 columns left">
-                            <a className="bg-turkey-ephesus" href="http://picasaweb.google.com/cpatik/TurkeyEphesus">
+                            <a
+                                className="bg-turkey-ephesus"
+                                href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipN3eMKjoyrn18oYgrwvukSKO4F3Mr7Lnm-t-e4W"
+                            >
                                 <Image src={imgLinkEphesus} alt="Ephesus" />
                                 <span>Ephesus</span>
                                 <div className="image-cover"></div>

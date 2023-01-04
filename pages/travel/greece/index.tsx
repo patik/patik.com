@@ -35,7 +35,7 @@ export default function Page() {
                         <div className="small-12 medium-6 large-4 columns">
                             <a
                                 className="bg-greece-sifnos"
-                                href="https://picasaweb.google.com/116513687533678150554/GreeceRoughDraftSifnos?authkey=Gv1sRgCKLAtbqu1MfPcg#slideshow/5093324333099698226"
+                                href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipPkzhN5b1360Nu7gUc22vsA5dTxMK-P7AKFyDI3?authKey=CJL96rLSzuGOuAE"
                             >
                                 <Image src={sifnosLink} alt="Coast of Serifios island" />
                                 <span>Sifnos</span>
@@ -45,7 +45,7 @@ export default function Page() {
                         <div className="small-12 medium-6 large-4 columns left">
                             <a
                                 className="bg-greece-santorini"
-                                href="https://picasaweb.google.com/116513687533678150554/GreeceRoughDraftSantorini?authkey=Gv1sRgCK_Nlp3Z5IeGWg#slideshow/5093325445496228338"
+                                href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipPkzhN5b1360Nu7gUc22vsA5dTxMK-P7AKFyDI3?authKey=CJL96rLSzuGOuAE"
                             >
                                 <Image src={santoriniLink} alt="Sunset over Oia" />
                                 <span>Santorini</span>

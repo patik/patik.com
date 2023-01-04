@@ -22,7 +22,7 @@ export default function Home() {
             <div id="home-main" role="main">
                 <section>
                     <p>
-                        I&quot;m a traveler, web designer &amp; developer, and Arsenal fan based in Munich, Germany, and
+                        I’m Craig Patik, a traveler, web developer, and Arsenal fan based in Munich, Germany, and
                         originally from Upstate New York.
                     </p>
                 </section>
@@ -102,7 +102,7 @@ export default function Home() {
                             </a>
                         </div>
 
-                        <div className="small-12 medium-6 large-4 columns ">
+                        <div className="small-12 medium-6 large-4 columns left">
                             <a href="travel/paris/">
                                 <Image
                                     src={imgTravelParis}

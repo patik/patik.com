@@ -29,7 +29,7 @@ export default function Page() {
                         <div className="small-12 medium-6 large-4 columns">
                             <a
                                 className="bg-peru-argentina-amazon"
-                                href="https://picasaweb.google.com/116513687533678150554/AmazonRainforest#slideshow/5638173949189577330"
+                                href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipMcY0rCP6w1qbjKoNj3c5slFu52e5_F4LrTWOKD#slideshow/5638173949189577330"
                             >
                                 <Image src={imgLinkAmazon} alt="Wooley monkey" />
                                 <span>Amazon Rainforest</span>
@@ -39,7 +39,7 @@ export default function Page() {
                         <div className="small-12 medium-6 large-4 columns">
                             <a
                                 className="bg-peru-argentina-cusco"
-                                href="https://picasaweb.google.com/116513687533678150554/Cusco#slideshow/5637849631486614658"
+                                href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipOJhD-DjF1QnnGf_hTfF7cw9u0h-p4WzlJZMmYC#slideshow/5637849631486614658"
                             >
                                 <Image src={imgLinkCusco} alt="Kim holding a lamb and posing with Andean women" />
                                 <span>Cusco</span>
@@ -49,7 +49,7 @@ export default function Page() {
                         <div className="small-12 medium-6 large-4 columns left">
                             <a
                                 className="bg-peru-argentina-colonia"
-                                href="https://picasaweb.google.com/116513687533678150554/ColoniaDelSacramento#slideshow/5637820814953351506"
+                                href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipN0oaxdmD0r2Oe4Wf3Sh5iOMfbTjH1bicnpbUUd#slideshow/5637820814953351506"
                             >
                                 <Image src={imgLinkColonia} alt="Old train in Colonia del Sacremento, Uruguay" />
                                 <span>Colonia del Sacramento</span>
