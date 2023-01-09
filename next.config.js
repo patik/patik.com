@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const packagejson = require('./package.json')
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
@@ -5,6 +8,7 @@ const nextConfig = {
     images: {
         unoptimized: true,
     },
+    basePath: packagejson.basePath,
 }
 
 module.exports = nextConfig

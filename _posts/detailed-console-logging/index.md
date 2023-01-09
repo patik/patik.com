@@ -11,7 +11,7 @@ ogImage: 'cover.jpg'
 coverImage: 'cover.jpg'
 ---
 
-_This is an update to the console.log wrapper; see [this blog post](http://patik.com/blog/complete-cross-browser-console-log/) for background and a more detailed discussion of the problems with console logging._
+_This is an update to the console.log wrapper; see [this blog post](complete-cross-browser-console-log) for background and a more detailed discussion of the problems with console logging._
 
 While logging the console can be useful during development, some browser consoles do not display logged data in a readable, useful format. These primitive consoles do not expand arrays, do not link DOM elements to the source code, print objects as `[object Object]` rather than listing their properties, etc.
 
@@ -37,7 +37,7 @@ On the other hand, [Firebug](http://getfirebug.com/), WebKit’s [Developer Tool
 
 ## Expanded details
 
-But it is possible to eke a bit more information out of the data in primitive consoles. I’ve added a [detailed print plugin](https://github.com/patik/console.log-wrapper) to my [console.log](http://patik.com/blog/complete-cross-browser-console-log/) wrapper.
+But it is possible to eke a bit more information out of the data in primitive consoles. I’ve added a [detailed print plugin](https://github.com/patik/console.log-wrapper) to my [console.log](complete-cross-browser-console-log) wrapper.
 
 By including the plugin and sending the data to `log()`, the same call as above now looks like this:
 
@@ -53,4 +53,4 @@ If you’re sticking to modern browsers, you can simply ignore the new `consolel
 
 Thanks to [Jörn Berkefeld](http://www.bittubes.com/) for pointing out that this was [needed on iOS 5](https://github.com/patik/console.log-wrapper/issues/7) and for testing.
 
-[Live Demo](http://patik.com/code/console-log-polyfill/)&nbsp;&bull;&nbsp;[Github Repo](https://github.com/patik/console.log-wrapper)
+[Live Demo](https://patik.github.io/console.log-wrapper/)&nbsp;&bull;&nbsp;[Github Repo](https://github.com/patik/console.log-wrapper)

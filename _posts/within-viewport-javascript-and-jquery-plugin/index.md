@@ -31,7 +31,7 @@ $(elem).is(":within-viewport");
 $("div").withinviewport().myFunction();
 ```
 
-**[Live Demo](http://patik.com/code/within-viewport/)**&nbsp;&bull;&nbsp;[Source Code at Github](https://github.com/patik/within-viewport)
+**[Live Demo](https://patik.github.io/within-viewport/)**&nbsp;&bull;&nbsp;[Source Code at Github](https://github.com/patik/within-viewport)
 
 There are a few “in view” scripts out there&mdash;namely, Mika Tuupola’s [Viewport Selectors for jQuery](http://www.appelsiini.net/projects/viewport) provides some convenient selectors that can be tested against elements, and Remy Sharp’s [Element ‘in view’ Event Plugin](http://remysharp.com/2009/01/26/element-in-view-event-plugin/) fires events when elements pass in and out of the viewport.
 
@@ -39,7 +39,7 @@ While useful, these utilities only detect whether elements are partially in view
 
 ## Use Cases
 
-A lot can be learned from monitoring the viewport, especially on a site with content that spans well outside of the user’s view. I will discuss how I use Within Viewport in much more detail in my [next post](http://patik.com/blog/matching-ui-behavior-with-user-behavior/). But here’s a quick overview of what you can do.
+A lot can be learned from monitoring the viewport, especially on a site with content that spans well outside of the user’s view. I will discuss how I use Within Viewport in much more detail in my [next post](matching-ui-behavior-with-user-behavior). But here’s a quick overview of what you can do.
 
 - ### Dynamic content loading
 
@@ -68,10 +68,10 @@ A lot can be learned from monitoring the viewport, especially on a site with con
     If you want to know what your user has seen, for example to remember their reading position in a feed, you can only consider ones that are fully in view. You also need to take into account the actual viewport, avoiding things like fixed header bars that cover parts of the page.
 
     <figure>
-        <object data="http://patik.com/code/within-viewport/example_diagram_sm.svg" type="image/svg+xml" width="617" height="626">
+        <object data="https://patik.github.io/within-viewport/example_diagram_sm.svg" type="image/svg+xml" width="617" height="626">
             <img src="example_diagram_sm.png" alt="Diagram showing elements of a Twitter feed being in and out of view" />
         </object>
-        <figcaption><a href="http://patik.com/code/within-viewport/example_diagram.svg" target="_blank">Larger version</a></figcaption>
+        <figcaption><a href="https://patik.github.io/within-viewport/example_diagram.svg" target="_blank">Larger version</a></figcaption>
     </figure>
 
 - ### Live updates
@@ -88,4 +88,4 @@ I built Within Viewport to accomodate those needs, but I made it generic enough 
 
 I wanted to write a tool that was independent of jQuery so it could be dropped into any project. Of course jQuery does offer some useful mechanisms such as filtering and custom selectors, so I added an optional plugin to provide that functionality.
 
-[Live Demo](http://patik.com/code/within-viewport/)&nbsp;&bull;&nbsp;[Source Code at Github](https://github.com/patik/within-viewport)
+[Live Demo](https://patik.github.io/within-viewport/)&nbsp;&bull;&nbsp;[Source Code at Github](https://github.com/patik/within-viewport)

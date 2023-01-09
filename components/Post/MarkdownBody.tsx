@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import ReactMarkdown from 'react-markdown'
 import { SpecialComponents } from 'react-markdown/lib/ast-to-react'
 import { NormalComponents } from 'react-markdown/lib/complex-types'
@@ -25,6 +26,21 @@ function getMarkdownComponents({
     const syntaxTheme = oneDark
 
     return {
+        a({ href, children, ...props }) {
+            if (href && !/^https?:\/\//.test(href) && !/^javascript?:\/\//.test(href)) {
+                return (
+                    <Link href={href} {...props}>
+                        {children}
+                    </Link>
+                )
+            }
+
+            return (
+                <a href={href} {...props}>
+                    {children}
+                </a>
+            )
+        },
         code({ className, children, inline }) {
             if (inline) {
                 return <code className="inline-code">{children}</code>
@@ -77,7 +93,7 @@ function getMarkdownComponents({
 
             const { width, height } = imagesMetadata[src]
 
-            return <Image src={`/images/${slug}/${src}`} alt={alt} width={width} height={height} />
+            return <Image src={`images/${slug}/${src}`} alt={alt} width={width} height={height} />
         },
     }
 }

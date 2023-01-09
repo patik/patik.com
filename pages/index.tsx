@@ -37,7 +37,7 @@ export default function Index({ allPosts }: Props) {
                 <Head>
                     <Meta
                         siteName="Craig Patik"
-                        image={`${homepage}/public/cover.jpg`}
+                        image={`${homepage}/cover.jpg`}
                         description={description}
                         title={description}
                         url={homepage}

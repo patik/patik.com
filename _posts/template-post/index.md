@@ -65,7 +65,7 @@ bar()
 
 A bookmarklet: <a href="javascript:if(window.location.href.indexOf('twitter.com')<0){window.location.href='http://mobile.twitter.com/'} else if(window.location.href.indexOf('mobile.twitter.com')<0){window.location.href=window.location.href.replace(/(\w+\.)?twitter\.com/,'mobile.twitter.com');}">**Mobile Twitter**</a>
 
-Link: <a href="http://patik.com/blog/mobile-twitter-bookmarklet-displays-the-new-updated-twitter-on-your-smartphone/#___javascript:if(window.location.href.indexOf('twitter.com')<0){window.location.href='http://mobile.twitter.com/'} else if(window.location.href.indexOf('mobile.twitter.com')<0){window.location.href=window.location.href.replace(/(\w+\.)?twitter\.com/,'mobile.twitter.com');}">Click here</a>.
+Link: <a href="/blog/mobile-twitter-bookmarklet-displays-the-new-updated-twitter-on-your-smartphone/#___javascript:if(window.location.href.indexOf('twitter.com')<0){window.location.href='http://mobile.twitter.com/'} else if(window.location.href.indexOf('mobile.twitter.com')<0){window.location.href=window.location.href.replace(/(\w+\.)?twitter\.com/,'mobile.twitter.com');}">Click here</a>.
 
 Abbreviation: <abbr title="'Oh my god. Becky, look at her butt.'">“It is so big”</abbr>
 
@@ -81,7 +81,7 @@ Standard MD, with a title:
 
 <figure>
     <img src="svg_background.png" alt="Diagram showing elements of a Twitter feed being in and out of view" />
-    <figcaption><a href="http://patik.com/code/within-viewport/example_diagram.svg" target="_blank">Larger version</a></figcaption>
+    <figcaption><a href="https://patik.github.io/within-viewport/example_diagram.svg" target="_blank">Larger version</a></figcaption>
 </figure>
 
 ### SVG in an IMG tag
@@ -90,15 +90,15 @@ Here: <img src="test.svg" alt="testing an SVG" />
 
 ### SVG with Object
 
-<object data="http://patik.com/code/within-viewport/example_diagram_sm.svg" type="image/svg+xml" width="617" height="626">
+<object data="https://patik.github.io/within-viewport/example_diagram_sm.svg" type="image/svg+xml" width="617" height="626">
     <img src="svg_background.png" alt="Diagram showing elements of a Twitter feed being in and out of view" />
 </object>
 
 ### SVG in Figure with FigCaption
 
 <figure>
-    <object data="http://patik.com/code/within-viewport/example_diagram_sm.svg" type="image/svg+xml" width="617" height="626">
+    <object data="https://patik.github.io/within-viewport/example_diagram_sm.svg" type="image/svg+xml" width="617" height="626">
         <img src="svg_background.png" alt="Diagram showing elements of a Twitter feed being in and out of view" />
     </object>
-    <figcaption><a href="http://patik.com/code/within-viewport/example_diagram.svg" target="_blank">Larger version</a></figcaption>
+    <figcaption><a href="https://patik.github.io/within-viewport/example_diagram.svg" target="_blank">Larger version</a></figcaption>
 </figure>

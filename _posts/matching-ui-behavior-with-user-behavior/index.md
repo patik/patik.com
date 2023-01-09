@@ -1,7 +1,7 @@
 ---
 id: 194
 title: 'Matching UI Behavior with User Behavior'
-excerpt: 'The viewport is a direct window into what the user sees, and a lot can be learned by watching it. I want to discuss how I’ve found [Within Viewport](http://patik.com/code/within-viewport/) useful in making interfaces respond sensibly to user behavior.'
+excerpt: 'The viewport is a direct window into what the user sees, and a lot can be learned by watching it. I want to discuss how I’ve found [Within Viewport](https://patik.github.io/within-viewport/) useful in making interfaces respond sensibly to user behavior.'
 date: '2011-11-07T07:36:00+00:00'
 dsq_thread_id: '464103177'
 categories:
@@ -13,7 +13,7 @@ ogImage: 'cover.jpg'
 coverImage: 'cover.jpg'
 ---
 
-The viewport is a direct window into what the user sees, and a lot can be learned by watching it. In my previous post I introduced [Within Viewport](http://patik.com/code/within-viewport/) and I want to discuss how, particularly through my Twitter app [Signal~Noise](http://signaltonoi.se), I’ve found it useful in making interfaces respond sensibly to user behavior.
+The viewport is a direct window into what the user sees, and a lot can be learned by watching it. In my previous post I introduced [Within Viewport](https://patik.github.io/within-viewport/) and I want to discuss how, particularly through my Twitter app [Signal~Noise](http://signaltonoi.se), I’ve found it useful in making interfaces respond sensibly to user behavior.
 
 A common solution for developers looking to increase their site’s performance is to load data on demand, for example using [Infinite Scroll](http://www.infinite-scroll.com/). But sometimes the scroll position isn’t enough&mdash;you need to know about _the content_ on screen.
 
@@ -30,10 +30,10 @@ The obvious thing to do when a user reaches the boundary of their timeline is to
 The app also tracks each user’s reading position so the can resume reading at the same place in future sessions. When determining which tweets have been read, it only makes sense to consider ones that are fully in view. The app has a fixed header that shrinks the viewport by about 60 pixels, so I need to make sure a tweet is not covered by that.
 
 <figure>
-  <object data="http://patik.com/code/within-viewport/example_diagram_sm.svg" type="image/svg+xml" width="617" height="626">
+  <object data="https://patik.github.io/within-viewport/example_diagram_sm.svg" type="image/svg+xml" width="617" height="626">
     <img src="example_diagram_sm.png" alt="Diagram showing elements of a Twitter feed being in and out of view">
   </object>
-  <figcaption><a href="http://patik.com/code/within-viewport/example_diagram.svg" target="_blank">Larger version</a></figcaption>
+  <figcaption><a href="https://patik.github.io/within-viewport/example_diagram.svg" target="_blank">Larger version</a></figcaption>
 </figure>
 
 ## Live updates

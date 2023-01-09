@@ -11,7 +11,7 @@ ogImage: 'cover.jpg'
 coverImage: 'cover.jpg'
 ---
 
-_Update: I’ve made a significant update to this project which is targeted at primitive consoles (IE, Opera 11 and older, iOS 5 and older, and more). A separate blog post has [more details](http://patik.com/blog/detailed-console-logging/) or you can jump right to the [updated Github repo](https://github.com/patik/console.log-wrapper). The original post below still applies._
+_Update: I’ve made a significant update to this project which is targeted at primitive consoles (IE, Opera 11 and older, iOS 5 and older, and more). A separate blog post has [more details](detailed-console-logging) or you can jump right to the [updated Github repo](https://github.com/patik/console.log-wrapper). The original post below still applies._
 
 Many front-end web developers make use of the wonderful browser consoles that have matured in the past few years. While the tried-and-true `console.log()` often does the trick, its lack of support (particularly in IE) has led to the use of proxy functions, such as [Paul Irish’s console.log wrapper](http://paulirish.com/2009/log-a-lightweight-wrapper-for-consolelog/) and [Ben Alman’s Debug()](http://benalman.com/code/projects/javascript-debug/docs/files/ba-debug-js.html) which prevent unsupportive browsers from throwing errors.
 
@@ -19,7 +19,7 @@ I had a need for logging data in _every_ browser, not just ones that natively su
 
 This will be exhaustive, so you may want to jump directly to:
 
-**[Live Demo](http://patik.com/code/console-log-polyfill/)**&nbsp;&bull;&nbsp;[Github Repo](https://github.com/patik/console.log-wrapper)&nbsp;&bull;&nbsp;[Source Code](http://patik.com/code/console-log-polyfill/consolelog.js)&nbsp;&bull;&nbsp;[Minified Source Code](http://patik.com/code/console-log-polyfill/consolelog.min.js)
+**[Live Demo](https://patik.github.io/console.log-wrapper/)**&nbsp;&bull;&nbsp;[Github Repo](https://github.com/patik/console.log-wrapper)
 
 ## Current state of the console
 
@@ -166,4 +166,4 @@ Yeah, it is. Compared to Paul’s 6 lines, this version is a beast. But consider
 
 I look forward to any suggestions or improvements you may have.
 
-[Live Demo](http://patik.com/code/console-log-polyfill/)&nbsp;&bull;&nbsp;[Github Repo](https://github.com/patik/console.log-wrapper)&nbsp;&bull;&nbsp;[Source Code](http://patik.com/code/console-log-polyfill/consolelog.js)&nbsp;&bull;&nbsp;[Minified Source Code](http://patik.com/code/console-log-polyfill/consolelog.min.js)
+[Live Demo](https://patik.github.io/console.log-wrapper/)&nbsp;&bull;&nbsp;[Github Repo](https://github.com/patik/console.log-wrapper)
