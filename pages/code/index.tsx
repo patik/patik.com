@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import imgConsoleBlogLogo from '../../public/images/home-console-blog-logo.png'
 import imgGithubLogo from '../../public/images/home-github-logo.png'
 import imgTwitterCraigpatikAvatar from '../../public/images/home-twitter-craigpatik-avatar.jpg'
@@ -18,7 +19,7 @@ export default function Page() {
                     <h2>Blog &amp; Demos</h2>
                     <div className="row button-link-list">
                         <div className="small-12 medium-6 columns">
-                            <a href="../blog/">
+                            <a href="/blog/">
                                 <Image src={imgConsoleBlogLogo} alt="JavaScript code" title="console.blog()" />
                                 <span>
                                     console.
@@ -28,15 +29,15 @@ export default function Page() {
                             </a>
                         </div>
                         <div className="small-12 medium-6 columns">
-                            <a href="../html5/">
+                            <Link href="html5/">
                                 <Image src={imgTwitterCraigpatikAvatar} alt="HTML code" title="HTML5" />
                                 <span>HTML5 Presentations</span>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <div className="row button-link-list">
                         <div className="small-12 medium-6 columns">
-                            <a href="console-log-polyfill">
+                            <a href="https://patik.github.io/console.log-wrapper/">
                                 <Image
                                     src={imgConsoleBlogLogo}
                                     alt="JavaScript code"
@@ -68,7 +69,7 @@ export default function Page() {
                             </a>
                         </div>
                         <div className="small-12 medium-6 columns">
-                            <a href="within-viewport/">
+                            <a href="https://patik.github.io/within-viewport/">
                                 <Image src={imgConsoleBlogLogo} alt="JavaScript code" title="Within Viewport" />
                                 <span>Within Viewport</span>
                             </a>
@@ -76,7 +77,7 @@ export default function Page() {
                     </div>
                     <div className="row button-link-list">
                         <div className="small-12 medium-6 large-4 columns left">
-                            <a href="user-scripts/">
+                            <a href="code/user-scripts/">
                                 <Image src={imgConsoleBlogLogo} alt="JavaScript code" title="User Scripts" />
                                 <span>User Scripts</span>
                             </a>

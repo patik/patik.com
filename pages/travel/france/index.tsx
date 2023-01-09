@@ -21,7 +21,7 @@ export default function Page() {
                         <div className="small-12 medium-6 large-4 columns">
                             <a
                                 className="bg-france-photos"
-                                href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipMU0Jocw4DYeAwWODW-vqqi2pW8eul5MhKCiwSj#slideshow/5294684171488622482"
+                                href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipMU0Jocw4DYeAwWODW-vqqi2pW8eul5MhKCiwSj"
                             >
                                 <Image src={photosLink} alt="The Eiffel Tower was lit up for the new millenium" />
                                 <span>France</span>

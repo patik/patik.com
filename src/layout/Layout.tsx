@@ -22,25 +22,6 @@ export default function Layout({ title, keywords = [], children }: Props): React
         }
     }, [scripts.length])
 
-    useEffect(() => {
-        if (scripts.length === 1) {
-            setScripts([
-                ...scripts,
-                <Script
-                    src="/js/foundation.js"
-                    key="foundation"
-                    onLoad={() => {
-                        setScripts([...scripts, <Script src="/js/foundation.topbar.js" key="foundation.topbar" />])
-                    }}
-                />,
-            ])
-        }
-    }, [scripts])
-    // useEffect(() => {
-    //     if (scripts.length === 2) {
-    //     }
-    // }, [scripts])
-
     return (
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100%' }}>
             <Head>
@@ -110,7 +91,7 @@ export default function Layout({ title, keywords = [], children }: Props): React
                                     <a href="https://plus.google.com/u/0/+CraigPatik">Photos</a>
                                 </li>
                                 <li>
-                                    <a href="/about/">About</a>
+                                    <Link href="/about/">About</Link>
                                 </li>
                             </ul>
                         </section>

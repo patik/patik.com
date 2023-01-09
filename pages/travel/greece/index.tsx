@@ -25,7 +25,7 @@ export default function Page() {
                         <div className="small-12 medium-6 large-4 columns">
                             <a
                                 className="bg-greece-athens"
-                                href="https://picasaweb.google.com/116513687533678150554/GreeceRoughDraftAthens?authkey=Gv1sRgCJL96rLSzuGOuAE#slideshow/5093210112739426114"
+                                href="https://picasaweb.google.com/116513687533678150554/GreeceRoughDraftAthens?authkey=Gv1sRgCJL96rLSzuGOuAE"
                             >
                                 <Image src={athensLink} alt="Temple of Zeus in Athens" />
                                 <span>Athens</span>

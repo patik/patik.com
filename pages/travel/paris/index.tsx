@@ -27,7 +27,7 @@ export default function Page() {
                         <div className="small-12 medium-6 large-4 columns">
                             <a
                                 className="bg-paris-photos"
-                                href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipOLCedXTngEcwxcwNUHhlb1LeEZaONHfhTYdov0#slideshow/5294679176651465778"
+                                href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipOLCedXTngEcwxcwNUHhlb1LeEZaONHfhTYdov0"
                             >
                                 <Image src={parisImg} alt="The Eiffel Tower as seen from Trocadero" />
                                 <span>Paris</span>

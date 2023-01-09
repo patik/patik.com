@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import Layout from '../../src/layout/Layout'
 
 export default function Page() {
@@ -13,7 +14,7 @@ export default function Page() {
                         <a href="http://www.rpi.edu/">RPI</a>.
                     </p>
                     <p>
-                        I love to <a href="/travel">travel</a>, but my home is permanently in{' '}
+                        I love to <Link href="/travel">travel</Link>, but my home is permanently in{' '}
                         <a href="https://www.google.com/maps/place/Munich,+Germany">Munich</a>. Previously I spent much
                         of my life in <a href="https://www.google.com/maps/place/Albany+County,+NY">Upstate, NY</a>.
                     </p>
