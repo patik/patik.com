@@ -20,18 +20,7 @@ export default function Document() {
                     name="description"
                     content="Craig Patik's homepage &mdash; travel logs &amp; photos, and web design &amp; development"
                 />
-                <Script
-                    strategy="afterInteractive"
-                    src="https://use.typekit.net/tfz6xpv.js"
-                    onLoad={() => {
-                        try {
-                            // @ts-ignore No types for this old Typekit script
-                            Typekit.load()
-                        } catch (e) {
-                            console.log('Typekit did not load ', e)
-                        }
-                    }}
-                />
+                <link rel="stylesheet" href="https://use.typekit.net/tfz6xpv.css" />
             </Head>
             <body>
                 <Main />
