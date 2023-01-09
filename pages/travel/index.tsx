@@ -115,7 +115,7 @@ export default function Page() {
                     <div className="travel-map">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
-                            src="http://chart.apis.google.com/chart?cht=t&chs=440x220&chd=s:_&chtm=world&chco=FFFFFF,FF0000,FFFF00,00FF00&chld=PE|AR|FR|GR|DE|AT|TR|PT|ES|MA&chd=t:0,10,40,40,60,80,80,80,80,80&chf=bg,s,EAF7FE"
+                            src="https://chart.apis.google.com/chart?cht=t&chs=440x220&chd=s:_&chtm=world&chco=FFFFFF,FF0000,FFFF00,00FF00&chld=PE|AR|FR|GR|DE|AT|TR|PT|ES|MA&chd=t:0,10,40,40,60,80,80,80,80,80&chf=bg,s,EAF7FE"
                             alt="Map with countries that I've been to highlighted"
                             title="Countries that I've visited"
                         />

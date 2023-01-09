@@ -1,11 +1,20 @@
-import { Html, Head, Main, NextScript } from 'next/document'
+import { Head, Html, Main, NextScript } from 'next/document'
+import Script from 'next/script'
+import { ReactNode, useEffect, useState } from 'react'
 
 export default function Document() {
+    const [scripts, setScripts] = useState<ReactNode[]>([])
+
+    useEffect(() => {
+        if (scripts.length === 0) {
+            setScripts([<Script src="/js/jquery.min.js" key="jquery" />])
+        }
+    }, [scripts.length])
+
     return (
         <Html lang="en">
             <Head>
                 <meta charSet="utf-8" />
-                <meta name="viewport" content="width=device-width,initial-scale=1" />
                 <meta name="author" content="Craig Patik" />
                 <meta
                     name="description"
@@ -13,7 +22,7 @@ export default function Document() {
                 />
                 <script
                     async
-                    src="http://use.typekit.net/tfz6xpv.js"
+                    src="https://use.typekit.net/tfz6xpv.js"
                     onLoad={() => {
                         try {
                             // @ts-ignore No types for this old Typekit script
@@ -25,6 +34,7 @@ export default function Document() {
             <body>
                 <Main />
                 <NextScript />
+                {scripts}
             </body>
         </Html>
     )
