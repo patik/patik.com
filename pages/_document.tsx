@@ -22,7 +22,7 @@ export default function Document() {
                 />
                 <script
                     async
-                    src="http://use.typekit.net/tfz6xpv.js"
+                    src="https://use.typekit.net/tfz6xpv.js"
                     onLoad={() => {
                         try {
                             // @ts-ignore No types for this old Typekit script
