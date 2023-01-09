@@ -1,13 +1,16 @@
-type BlogPostData = {
-    id: number
+declare module 'remark-change-image-paths'
+
+type Post = {
+    id?: number
+    slug: string
     title: string
     date: string
-    author: string
-    layout: string
-    published: boolean
-    guid: string
-    dsq_thread_id: string[]
-    excerpt?: string // Can contain unescaped HTML
-    categories?: string[]
-    tags?: string[]
+    coverImage: string
+    excerpt?: string
+    ogImage: string
+    content: string
+    categories: string[]
+    dsq_thread_id: string
+    unpublished?: boolean
+    imagesMetadata: Record<string, import('image-size/dist/types/interface').ISizeCalculationResult> | null
 }

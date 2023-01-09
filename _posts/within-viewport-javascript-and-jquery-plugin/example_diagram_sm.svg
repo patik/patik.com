@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   version="1.1"
+   width="616.83069"
+   height="625.66138"
+   id="svg2">
+  <defs
+     id="defs4" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(-226.80705,-220.94327)"
+     id="layer1">
+    <image
+       xlink:href="example_diagram_screenshot_sm.png"
+       id="image2993"
+       height="515"
+       width="500"
+       y="230.94327"
+       x="267.01483" />
+  </g>
+  <g
+     transform="translate(-226.80705,-220.94109)"
+     id="layer2">
+    <rect
+       width="425.07385"
+       height="57.695724"
+       x="303.50113"
+       y="289.63702"
+       id="rect2996"
+       style="fill:none;stroke:#993300;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:18, 18;stroke-dashoffset:0" />
+    <rect
+       width="425.07385"
+       height="57.695724"
+       x="303.07047"
+       y="718.84241"
+       id="rect2996-17"
+       style="fill:none;stroke:#993300;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:18, 18;stroke-dashoffset:0" />
+    <rect
+       width="425.07385"
+       height="57.695724"
+       x="303.07043"
+       y="778.15674"
+       id="rect2996-17-4"
+       style="fill:none;stroke:#003399;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+  </g>
+  <g
+     transform="translate(-226.80705,-220.94109)"
+     id="layer3">
+    <text
+       x="250.42326"
+       y="335.33426"
+       id="text3850-4"
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-weight:normal;line-height:89.99999762%;letter-spacing:0px;word-spacing:0px;fill:#993300;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"><tspan
+         x="250.42326"
+         y="335.33426"
+         id="tspan3852-8">Partially</tspan><tspan
+         x="250.42326"
+         y="347.93427"
+         id="tspan3809">in view</tspan></text>
+    <path
+       d="m 676.81785,322.37957 156.26973,0"
+       id="path3823-4"
+       style="fill:none;stroke:#009933;stroke-width:0.85453641px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <text
+       x="833.73346"
+       y="292.5842"
+       id="text3850"
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-weight:normal;text-align:end;line-height:89.99999762%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#009933;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"><tspan
+         x="833.73346"
+         y="292.5842"
+         id="tspan3852">Actual</tspan><tspan
+         x="833.73346"
+         y="305.1842"
+         id="tspan3807">viewport</tspan></text>
+    <text
+       x="833.61053"
+       y="334.26373"
+       id="text3850-0"
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-weight:normal;text-align:end;line-height:89.99999762%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#009933;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"><tspan
+         x="833.61053"
+         y="334.26373"
+         id="tspan3852-9">Effective</tspan><tspan
+         x="833.61053"
+         y="346.86374"
+         id="tspan3805">viewport</tspan></text>
+    <text
+       x="250.42326"
+       y="744.31653"
+       id="text3850-4-8"
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-weight:normal;line-height:89.99999762%;letter-spacing:0px;word-spacing:0px;fill:#993300;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"><tspan
+         x="250.42326"
+         y="744.31653"
+         id="tspan3852-8-2">Partially</tspan><tspan
+         x="250.42326"
+         y="756.9165"
+         id="tspan3811">in view</tspan></text>
+    <text
+       x="245.87737"
+       y="805.6333"
+       id="text3850-4-8-4"
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-weight:normal;line-height:89.99999762%;letter-spacing:0px;word-spacing:0px;fill:#003399;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"><tspan
+         x="245.87737"
+         y="805.6333"
+         id="tspan3852-8-2-5">Not at all</tspan><tspan
+         x="245.87737"
+         y="818.23328"
+         id="tspan3813">in view</tspan></text>
+    <path
+       d="m 676.94075,280.60247 156.26973,0"
+       id="path3823-4-0"
+       style="fill:none;stroke:#009933;stroke-width:0.85453641px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+  </g>
+</svg>

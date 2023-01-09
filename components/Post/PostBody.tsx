@@ -1,0 +1,20 @@
+import markdownStyles from '../../styles/markdown-styles.module.css'
+import MarkdownBody from './MarkdownBody'
+
+type Props = {
+    slug: string
+    content: string
+    imagesMetadata: Post['imagesMetadata']
+}
+
+const PostBody = ({ slug, content, imagesMetadata }: Props) => {
+    return (
+        <div className="max-w-3xl mx-auto">
+            <div className={`post-body ${markdownStyles['markdown']}`}>
+                <MarkdownBody slug={slug} content={content} imagesMetadata={imagesMetadata} />
+            </div>
+        </div>
+    )
+}
+
+export default PostBody
