@@ -4,6 +4,7 @@
 @import "foundation";
 @import "_mixins";
 @import "_variables";
+@import "_dark-mode";
 
 //=============================================================================
 // Basic styles
@@ -14,12 +15,16 @@ body {
 }
 
 body, p, h1, h2, h3, h4, h5, h6, button, input, select, textarea {
-    font-family: $font-serif; // Includes Typekit (which is only served to tablets and up) but falls back to Helvetica, etc
+    font-family: $font-serif; // Includes Typekit but falls back to Helvetica, etc
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: normal !important;
     color: $dark-charcoal; // #3A87AD;
+
+    @media (prefers-color-scheme: dark) {
+        color: white;
+    }
 }
 
 pre, code, kbd, samp {
@@ -547,6 +552,10 @@ img[src^="/gam.php?"] {
 @media #{$tiny} { // 480px and up
     body, button, input, select, textarea {
         color: $charcoal;
+
+        @media (prefers-color-scheme: dark) {
+            color: white;
+        }
     }
 
     p, li {

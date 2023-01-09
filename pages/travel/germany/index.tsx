@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import imgGermanyBavariaLink from '../../../public/images/germany-bavaria-link.jpg'
 import imgGermanyBerlinLink from '../../../public/images/germany-berlin-link.jpg'
+import imgGermanyAustriaLink from '../../../public/images/germany-austria-link.jpg'
 import Layout from '../../../src/layout/Layout'
 
 export default function Page() {
@@ -52,7 +53,7 @@ export default function Page() {
                                 href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipNE-TmD-UPWM7uIBh_08MWJsSCELd4Huol4UokA"
                             >
                                 <Image
-                                    src="/images/germany-austria-link.jpg"
+                                    src={imgGermanyAustriaLink}
                                     alt="Spanish fans gathering in Vienna for Euro 2008"
                                 />
                                 <span>Austria</span>
