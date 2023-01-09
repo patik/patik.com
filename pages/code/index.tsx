@@ -28,12 +28,6 @@ export default function Page() {
                                 </span>
                             </a>
                         </div>
-                        <div className="small-12 medium-6 columns">
-                            <Link href="html5/">
-                                <Image src={imgTwitterCraigpatikAvatar} alt="HTML code" title="HTML5" />
-                                <span>HTML5 Presentations</span>
-                            </Link>
-                        </div>
                     </div>
                     <div className="row button-link-list">
                         <div className="small-12 medium-6 columns">

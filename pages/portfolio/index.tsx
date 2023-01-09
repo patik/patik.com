@@ -58,23 +58,10 @@ export default function Page() {
                             </p>
                         </div>
                         <div className="small-12 medium-6 columns">
-                            <h3>Signal:Noise Twitter app</h3>
-                            <p>
-                                A complete Twitter client with a novel take on filtering. Users, phrases, and more can
-                                be scored on a sliding scale. The timeline view can be adjusted in real time to show
-                                more or fewer tweets based on their score. Currently in private beta.
-                            </p>
-                            <p>
-                                <a href="http://signaltonoi.se">Web app</a>
-                            </p>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="small-12 columns">
                             <h3>Other projects</h3>
                             <p>
                                 <a href="https://github.com/patik">GitHub repositories</a> and{' '}
-                                <a href="/code/user-scripts/">user-scripts and browser extensions</a>
+                                <Link href="/code/user-scripts/">user-scripts and browser extensions</Link>
                             </p>
                         </div>
                     </div>
@@ -125,9 +112,6 @@ export default function Page() {
                                 <li>
                                     I gave an <a href="http://igniteshow.com/">Ignite talk</a> at{' '}
                                     <a href="http://nys-its.github.io/ny-innovates/">NYS DevCon 2013</a>
-                                </li>
-                                <li>
-                                    <a href="../html5/">HTML5 Presentations</a>
                                 </li>
                             </ul>
                         </div>
