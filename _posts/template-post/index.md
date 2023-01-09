@@ -8,6 +8,7 @@ categories:
     - web
 ogImage: 'cover.jpg'
 coverImage: 'cover.jpg'
+unpublished: true
 ---
 
 ## Code fences
