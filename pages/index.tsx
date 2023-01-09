@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import imgTravelParis from '../public/images/travel-paris.jpg'
+import Link from 'next/link'
 import imgHomeBritainBenelux from '../public/images/home-britain-benelux.jpg'
 import imgHomeConsoleBlogLogo from '../public/images/home-console-blog-logo.png'
 import imgHomeGithubLogo from '../public/images/home-github-logo.png'
@@ -14,6 +14,7 @@ import imgHomeTumblrEllsassAvatar from '../public/images/home-tumblr-ellsass-ava
 import imgHomeTumblrRubeonrailsAvatar from '../public/images/home-tumblr-rubeonrails-avatar.jpg'
 import imgHomeTwitterCraigpatikAvatar from '../public/images/home-twitter-craigpatik-avatar.jpg'
 import imgHomeTwitterSoccertorteAvatar from '../public/images/home-twitter-soccertorte-avatar.png'
+import imgTravelParis from '../public/images/travel-paris.jpg'
 import Layout from '../src/layout/Layout'
 
 export default function Home() {
@@ -31,86 +32,86 @@ export default function Home() {
                     <h2>Travel</h2>
                     <div className="row button-link-list">
                         <div className="small-12 medium-6 large-4 columns">
-                            <a href="travel/">
+                            <Link href="/travel/">
                                 <Image
                                     src={imgHomeTravelAll}
                                     alt="Standing aside the Andean Explorer train"
                                     title="Andean Explorer, Peru"
                                 />
                                 <span>All Travel</span>
-                            </a>
+                            </Link>
                         </div>
                         <div className="small-12 medium-6 large-4 columns">
-                            <a href="travel/britain-benelux/">
+                            <Link href="/travel/britain-benelux/">
                                 <Image
                                     src={imgHomeBritainBenelux}
                                     alt="Big Ben, a black cab, and a red double-decker bus in Parliament Square"
                                     title="London, England"
                                 />
                                 <span>Britain &amp; Benelux</span>
-                            </a>
+                            </Link>
                         </div>
                         <div className="small-12 medium-6 large-4 columns">
-                            <a href="travel/peru-argentina/">
+                            <Link href="/travel/peru-argentina/">
                                 <Image
                                     src={imgHomeTravelPeruArgentina}
                                     alt="Kim holding a lamb and posing with two Andean women in their traditionl clothing"
                                     title="Kim holding a lamb and posing with two Andean women"
                                 />
                                 <span>Peru &amp; Argentina</span>
-                            </a>
+                            </Link>
                         </div>
                         <div className="small-12 medium-6 large-4 columns">
-                            <a href="travel/spain/">
+                            <Link href="/travel/spain/">
                                 <Image
                                     src={imgHomeTravelSpain}
                                     alt="Celebrating Spain's World Cup victory in Madrid"
                                     title="Celebrating Spain's World Cup victory in Madrid"
                                 />
                                 <span>Spain, Portugal, &amp; Morocco</span>
-                            </a>
+                            </Link>
                         </div>
                         <div className="small-12 medium-6 large-4 columns">
-                            <a href="travel/turkey/">
+                            <Link href="/travel/turkey/">
                                 <Image
                                     src={imgHomeTravelTurkey}
                                     alt="The Blue Mosque (Sultanahmet Camii), Istanbul, Turkey"
                                     title="The Blue Mosque (Sultanahmet Camii), Istanbul, Turkey"
                                 />
                                 <span>Turkey</span>
-                            </a>
+                            </Link>
                         </div>
                         <div className="small-12 medium-6 large-4 columns left">
-                            <a href="travel/germany/">
+                            <Link href="/travel/germany/">
                                 <Image
                                     src={imgHomeTravelGermany}
                                     alt="Spanish fans gathering in Vienna's Ststephensplatz"
                                     title="Spanish fans in Vienna for Euro 2008"
                                 />
                                 <span>Germany &amp; Austria</span>
-                            </a>
+                            </Link>
                         </div>
 
                         <div className="small-12 medium-6 large-4 columns">
-                            <a href="travel/greece/">
+                            <Link href="/travel/greece/">
                                 <Image
                                     src={imgHomeTravelGreece}
                                     alt="View of the coast of Serifios, Greece from a ferry"
                                     title="Serifios, Greece"
                                 />
                                 <span>Greece</span>
-                            </a>
+                            </Link>
                         </div>
 
                         <div className="small-12 medium-6 large-4 columns left">
-                            <a href="travel/paris/">
+                            <Link href="/travel/paris/">
                                 <Image
                                     src={imgTravelParis}
                                     alt="Kim and I in front of the Eiffel Tower"
                                     title="Paris, France"
                                 />
                                 <span>Paris</span>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </section>
@@ -120,13 +121,13 @@ export default function Home() {
 
                     <div className="row button-link-list">
                         <div className="small-12 medium-6 large-4 columns">
-                            <a href="code/">
+                            <Link href="/code/">
                                 <Image src={imgHomeConsoleBlogLogo} alt="JavaScript code" title="Code &amp; projects" />
                                 <span>Code &amp; projects</span>
-                            </a>
+                            </Link>
                         </div>
                         <div className="small-12 medium-6 large-4 columns">
-                            <a href="blog/">
+                            <a href="/blog/">
                                 <Image src={imgHomeConsoleBlogLogo} alt="JavaScript code" title="console.blog()" />
                                 <span>
                                     console.

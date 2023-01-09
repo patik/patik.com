@@ -2,7 +2,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import imgConsoleBlogLogo from '../../public/images/home-console-blog-logo.png'
 import imgGithubLogo from '../../public/images/home-github-logo.png'
-import imgTwitterCraigpatikAvatar from '../../public/images/home-twitter-craigpatik-avatar.jpg'
 import Layout from '../../src/layout/Layout'
 
 export default function Page() {
@@ -71,10 +70,10 @@ export default function Page() {
                     </div>
                     <div className="row button-link-list">
                         <div className="small-12 medium-6 large-4 columns left">
-                            <a href="code/user-scripts/">
+                            <Link href="/code/user-scripts/">
                                 <Image src={imgConsoleBlogLogo} alt="JavaScript code" title="User Scripts" />
                                 <span>User Scripts</span>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </section>
