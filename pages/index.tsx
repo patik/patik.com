@@ -22,7 +22,7 @@ export default function Home() {
                 <link rel="me" href="https://mastodon.online/@craigpatik" key="mastodon" />
             </Head>
             <div id="home-main" role="main">
-                <section>
+                <section className="columns">
                     <p>
                         I’m Craig Patik, a traveler, web developer, and Arsenal fan based in Munich, Germany, and
                         originally from Upstate New York.
