@@ -91,7 +91,6 @@ export default function Home() {
                                 <span>Germany &amp; Austria</span>
                             </Link>
                         </div>
-
                         <div className="small-12 medium-6 large-4 columns">
                             <Link href="/travel/greece/">
                                 <Image
@@ -102,7 +101,6 @@ export default function Home() {
                                 <span>Greece</span>
                             </Link>
                         </div>
-
                         <div className="small-12 medium-6 large-4 columns left">
                             <Link href="/travel/paris/">
                                 <Image
@@ -121,6 +119,12 @@ export default function Home() {
 
                     <div className="row button-link-list">
                         <div className="small-12 medium-6 large-4 columns">
+                            <a href="https://github.com/patik">
+                                <Image src={imgHomeGithubLogo} alt="GitHub text logo" title="GitHub" />
+                                <span>GitHub</span>
+                            </a>
+                        </div>
+                        <div className="small-12 medium-6 large-4 columns">
                             <Link href="/code/">
                                 <Image src={imgHomeConsoleBlogLogo} alt="JavaScript code" title="Code &amp; projects" />
                                 <span>Code &amp; projects</span>
@@ -136,10 +140,14 @@ export default function Home() {
                                 </span>
                             </a>
                         </div>
-                        <div className="small-12 medium-6 large-4 columns">
-                            <a href="https://github.com/patik">
-                                <Image src={imgHomeGithubLogo} alt="GitHub text logo" title="GitHub" />
-                                <span>GitHub</span>
+                        <div className="small-12 medium-6 large-4 columns left">
+                            <a href="/dof/">
+                                <Image
+                                    src={imgHomeConsoleBlogLogo}
+                                    alt="JavaScript code"
+                                    title="Depth of Field Calculator"
+                                />
+                                <span>Depth of Field Calculator</span>
                             </a>
                         </div>
                     </div>
