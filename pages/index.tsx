@@ -1,25 +1,26 @@
+import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import imgHomeBritainBenelux from '../public/images/home-britain-benelux.jpg'
 import imgHomeConsoleBlogLogo from '../public/images/home-console-blog-logo.png'
 import imgHomeGithubLogo from '../public/images/home-github-logo.png'
-import imgHomePhotos from '../public/images/home-photos.jpg'
+import imgHomeMastodonAvatar from '../public/images/home-mastodon-avatar.png'
 import imgHomeTravelAll from '../public/images/home-travel-all.jpg'
 import imgHomeTravelGermany from '../public/images/home-travel-germany.jpg'
 import imgHomeTravelGreece from '../public/images/home-travel-greece.jpg'
 import imgHomeTravelPeruArgentina from '../public/images/home-travel-peru-argentina.jpg'
 import imgHomeTravelSpain from '../public/images/home-travel-spain.jpg'
 import imgHomeTravelTurkey from '../public/images/home-travel-turkey.jpg'
-import imgHomeTumblrEllsassAvatar from '../public/images/home-tumblr-ellsass-avatar.jpg'
-import imgHomeTumblrRubeonrailsAvatar from '../public/images/home-tumblr-rubeonrails-avatar.jpg'
 import imgHomeTwitterCraigpatikAvatar from '../public/images/home-twitter-craigpatik-avatar.jpg'
-import imgHomeTwitterSoccertorteAvatar from '../public/images/home-twitter-soccertorte-avatar.png'
 import imgTravelParis from '../public/images/travel-paris.jpg'
 import Layout from '../src/layout/Layout'
 
 export default function Home() {
     return (
         <Layout>
+            <Head>
+                <link rel="me" href="https://mastodon.online/@craigpatik" key="mastodon" />
+            </Head>
             <div id="home-main" role="main">
                 <section>
                     <p>
@@ -153,60 +154,30 @@ export default function Home() {
                             <a href="https://twitter.com/craigpatik">
                                 <Image
                                     src={imgHomeTwitterCraigpatikAvatar}
-                                    alt="Twitter avatar; photo of me riding on a camel"
+                                    alt="Twitter avatar; Craig riding on a camel"
                                     title="@craigpatik"
                                 />
-                                <span>@craigpatik</span>
+                                <span>Twitter</span>
                             </a>
                         </div>
                         <div className="small-12 medium-6 large-4 columns">
-                            <a href="https://twitter.com/SoccerTorte">
+                            <a rel="me" href="https://mastodon.online/@craigpatik">
                                 <Image
-                                    src={imgHomeTwitterSoccertorteAvatar}
-                                    alt="Twitter avatar; photo of a slice of sachertorte cake"
-                                    title="@SoccerTorte"
+                                    src={imgHomeMastodonAvatar}
+                                    alt="Mastodon avatar; Craig in front of a street mural in Northern Ireland"
+                                    title="@craigpatik@mastodon.online"
                                 />
-                                <span>@SoccerTorte</span>
+                                <span>Mastodon</span>
                             </a>
                         </div>
                         <div className="small-12 medium-6 large-4 columns">
                             <a href="https://www.facebook.com/craigpatik">
                                 <Image
                                     src={imgHomeTwitterCraigpatikAvatar}
-                                    alt="Facebook avatar; photo of me riding on a camel"
+                                    alt="Facebook avatar; Craig riding on a camel"
                                     title="Facebook profile"
                                 />
                                 <span>Facebook</span>
-                            </a>
-                        </div>
-                        <div className="small-12 medium-6 large-4 columns">
-                            <a href="https://plus.google.com/u/0/+CraigPatik">
-                                <Image
-                                    src={imgHomePhotos}
-                                    alt="Sitting in a boat and feeding a banana to a wooley monkey"
-                                    title="Feeding a monkey in the Amazon rainforest"
-                                />
-                                <span>Photos</span>
-                            </a>
-                        </div>
-                        <div className="small-12 medium-6 large-4 columns">
-                            <a href="http://ellsass.com">
-                                <Image
-                                    src={imgHomeTumblrEllsassAvatar}
-                                    alt="Tumblr avatar; photo of me in front of the Alcazar gardens, Sevilla, Spain"
-                                    title="Alcazar gardens, Sevilla, Spain"
-                                />
-                                <span>Personal blog</span>
-                            </a>
-                        </div>
-                        <div className="small-12 medium-6 large-4 columns">
-                            <a href="http://rubeonrails.com">
-                                <Image
-                                    src={imgHomeTumblrRubeonrailsAvatar}
-                                    alt="S-Bahn station in Marienplatz, Munich, Germany"
-                                    title="S-Bahn station in Marienplatz, Munich, Germany"
-                                />
-                                <span>Rube On Rails</span>
                             </a>
                         </div>
                     </div>
