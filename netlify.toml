@@ -1,0 +1,5 @@
+[[redirects]]
+from = "/blog/*"
+to = "https://patik-blog.netlify.app/:splat"
+status = 200
+force = false
