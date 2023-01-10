@@ -24,8 +24,8 @@ export default function Home() {
             <div id="home-main" role="main">
                 <section className="columns">
                     <p>
-                        I’m Craig Patik, a traveler, web developer, and Arsenal fan based in Munich, Germany, and
-                        originally from Upstate New York.
+                        I’m <Link href="/about">Craig Patik</Link>, a traveler, web developer, and Arsenal fan based in
+                        Munich, Germany.{' '}
                     </p>
                 </section>
 
