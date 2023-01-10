@@ -11,46 +11,15 @@ import imgTravelPeruargentina from '../../public/images/travel-peru-argentina.jp
 import imgTravelSpain from '../../public/images/travel-spain.jpg'
 import imgTravelTurkey from '../../public/images/travel-turkey.jpg'
 import Layout from '../../src/layout/Layout'
+import countryVisits from '../../src/country-visits.json'
 
 const currentYear = new Date().getFullYear()
 
-// Last updated: Jan 2023
-const countryData = [
-    ['Country', 'Years since last visit'],
-    ['Argentina', currentYear - 2011],
-    ['Austria', currentYear - 2022],
-    ['Belgium', currentYear - 2012],
-    ['Bulgaria', currentYear - 2021],
-    ['Cambodia', currentYear - 2013],
-    ['Canada', currentYear - 2017],
-    ['China', currentYear - 2017],
-    ['Croatia', currentYear - 2022],
-    ['Czech Republic', currentYear - 2015],
-    ['France', currentYear - 2014],
-    ['Germany', currentYear - 2023],
-    ['Greece', currentYear - 2022],
-    ['Hungary', currentYear - 2015],
-    ['Ireland', currentYear - 2022],
-    ['Italy', currentYear - 2018],
-    ['Monaco', currentYear - 2000],
-    ['Morocco', currentYear - 2010],
-    ['Myanmar', currentYear - 2013],
-    ['Netherlands', currentYear - 2012],
-    ['Panama', currentYear - 2011],
-    ['Peru', currentYear - 2011],
-    ['Poland', currentYear - 2019],
-    ['Portugal', currentYear - 2010],
-    ['Romania', currentYear - 2022],
-    ['Slovakia', currentYear - 2015],
-    ['Slovenia', currentYear - 2019],
-    ['Spain', currentYear - 2020],
-    ['Thailand', currentYear - 2013],
-    ['Turkey', currentYear - 2009],
-    ['United Kingdom', currentYear - 2019],
-    ['United States', currentYear - 2022],
-    ['Uruguay', currentYear - 2011],
-    ['Vietnam', currentYear - 2017],
-]
+const countryData: Array<[string, string | number]> = [['Country', 'Years since last visit']]
+
+countryVisits.visited.forEach((country) => {
+    countryData.push([country.name, currentYear - Math.max(...country.yearsVisited)])
+})
 
 export default function Page() {
     const [mapWidth, setMapWidth] = useState(300)
