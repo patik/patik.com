@@ -31,8 +31,8 @@ export default function Home() {
 
                 <section>
                     <h2>Travel</h2>
-                    <div className="row button-link-list">
-                        <div className="small-12 medium-6 large-4 columns">
+                    <div className="cp-row button-link-list">
+                        <div className="cp-item">
                             <Link href="/travel/">
                                 <Image
                                     src={imgHomeTravelAll}
@@ -42,7 +42,7 @@ export default function Home() {
                                 <span>All Travel</span>
                             </Link>
                         </div>
-                        <div className="small-12 medium-6 large-4 columns">
+                        <div className="cp-item">
                             <Link href="/travel/britain-benelux/">
                                 <Image
                                     src={imgHomeBritainBenelux}
@@ -52,7 +52,7 @@ export default function Home() {
                                 <span>Britain &amp; Benelux</span>
                             </Link>
                         </div>
-                        <div className="small-12 medium-6 large-4 columns">
+                        <div className="cp-item">
                             <Link href="/travel/peru-argentina/">
                                 <Image
                                     src={imgHomeTravelPeruArgentina}
@@ -62,7 +62,7 @@ export default function Home() {
                                 <span>Peru &amp; Argentina</span>
                             </Link>
                         </div>
-                        <div className="small-12 medium-6 large-4 columns">
+                        <div className="cp-item">
                             <Link href="/travel/spain/">
                                 <Image
                                     src={imgHomeTravelSpain}
@@ -72,7 +72,7 @@ export default function Home() {
                                 <span>Spain, Portugal, &amp; Morocco</span>
                             </Link>
                         </div>
-                        <div className="small-12 medium-6 large-4 columns">
+                        <div className="cp-item">
                             <Link href="/travel/turkey/">
                                 <Image
                                     src={imgHomeTravelTurkey}
@@ -82,7 +82,7 @@ export default function Home() {
                                 <span>Turkey</span>
                             </Link>
                         </div>
-                        <div className="small-12 medium-6 large-4 columns">
+                        <div className="cp-item">
                             <Link href="/travel/germany/">
                                 <Image
                                     src={imgHomeTravelGermany}
@@ -92,7 +92,7 @@ export default function Home() {
                                 <span>Germany &amp; Austria</span>
                             </Link>
                         </div>
-                        <div className="small-12 medium-6 large-4 columns left">
+                        <div className="cp-item">
                             <Link href="/travel/greece/">
                                 <Image
                                     src={imgHomeTravelGreece}
@@ -102,7 +102,7 @@ export default function Home() {
                                 <span>Greece</span>
                             </Link>
                         </div>
-                        <div className="small-12 medium-6 large-4 columns left">
+                        <div className="cp-item">
                             <Link href="/travel/paris/">
                                 <Image
                                     src={imgTravelParis}
@@ -118,20 +118,20 @@ export default function Home() {
                 <section>
                     <h2>Web design &amp; development</h2>
 
-                    <div className="row button-link-list">
-                        <div className="small-12 medium-6 large-4 columns">
+                    <div className="cp-row button-link-list">
+                        <div className="cp-item">
                             <a href="https://github.com/patik">
                                 <Image src={imgHomeGithubLogo} alt="GitHub text logo" title="GitHub" />
                                 <span>GitHub</span>
                             </a>
                         </div>
-                        <div className="small-12 medium-6 large-4 columns">
+                        <div className="cp-item">
                             <Link href="/code/">
                                 <Image src={imgHomeConsoleBlogLogo} alt="JavaScript code" title="Code &amp; projects" />
                                 <span>Code &amp; projects</span>
                             </Link>
                         </div>
-                        <div className="small-12 medium-6 large-4 columns">
+                        <div className="cp-item">
                             <a href="/blog/">
                                 <Image src={imgHomeConsoleBlogLogo} alt="JavaScript code" title="console.blog()" />
                                 <span>
@@ -141,7 +141,7 @@ export default function Home() {
                                 </span>
                             </a>
                         </div>
-                        <div className="small-12 medium-6 large-4 columns left">
+                        <div className="cp-item">
                             <a href="/dof/">
                                 <Image
                                     src={imgHomeConsoleBlogLogo}
@@ -157,9 +157,9 @@ export default function Home() {
                 <section>
                     <h2>Outlets</h2>
 
-                    <div className="row button-link-list">
-                        <div className="small-12 medium-6 large-4 columns">
-                            <a href="https://twitter.com/craigpatik">
+                    <div className="cp-row button-link-list">
+                        <div className="cp-item">
+                            <a rel="me" href="https://twitter.com/craigpatik">
                                 <Image
                                     src={imgHomeTwitterCraigpatikAvatar}
                                     alt="Twitter avatar; Craig riding on a camel"
@@ -168,7 +168,7 @@ export default function Home() {
                                 <span>Twitter</span>
                             </a>
                         </div>
-                        <div className="small-12 medium-6 large-4 columns">
+                        <div className="cp-item">
                             <a rel="me" href="https://mastodon.online/@craigpatik">
                                 <Image
                                     src={imgHomeMastodonAvatar}
@@ -178,8 +178,8 @@ export default function Home() {
                                 <span>Mastodon</span>
                             </a>
                         </div>
-                        <div className="small-12 medium-6 large-4 columns">
-                            <a href="https://www.facebook.com/craigpatik">
+                        <div className="cp-item">
+                            <a rel="me" href="https://www.facebook.com/craigpatik">
                                 <Image
                                     src={imgHomeTwitterCraigpatikAvatar}
                                     alt="Facebook avatar; Craig riding on a camel"

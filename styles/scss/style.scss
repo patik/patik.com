@@ -679,3 +679,25 @@ img[src^='/gam.php?'] {
         text-decoration: none;
     }
 }
+
+.cp-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 1rem;
+    margin-right: 1rem;
+
+    .cp-item {
+        flex-basis: 33%;
+        max-width: 33%;
+
+        @media (max-width: #{$medium-screen}) {
+            flex-basis: 50%;
+            max-width: 50%;
+        }
+
+        @media (max-width: #{$small-screen}) {
+            flex-basis: 100%;
+            max-width: 100%;
+        }
+    }
+}
