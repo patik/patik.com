@@ -178,6 +178,11 @@
   dependencies:
     tslib "^2.4.0"
 
+"@types/google.visualization@^0.0.68":
+  version "0.0.68"
+  resolved "https://registry.yarnpkg.com/@types/google.visualization/-/google.visualization-0.0.68.tgz#773e908c02e08dffe689844f0972dd481516e704"
+  integrity sha512-LkLniL1TYykhz+ZdRof3Bi8cp1OhqoK11Tj1RM2bPtGVBNexQ0eRnOrOWcWTdi80Sz9DzJ4JIG2rTlSJBVV58w==
+
 "@types/json5@^0.0.29":
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"

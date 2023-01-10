@@ -33,11 +33,17 @@ export default function Page() {
                             e-mail: cra<span>i</span>g<span>@pat</span>ik.<span>com</span>
                         </li>
                         <li>
-                            <a href="http://www.facebook.com/craigpatik">Facebook</a>
-                        </li>
-                        <li>
                             Twitter: <a href="http://twitter.com/craigpatik">@craigpatik</a> and{' '}
                             <a href="http://twitter.com/SoccerTorte">@SoccerTorte</a>
+                        </li>
+                        <li>
+                            Mastodon:{' '}
+                            <a rel="me" href="https://mastodon.online/@craigpatik">
+                                @craigpatik@mastodon.online
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://www.facebook.com/craigpatik">Facebook</a>
                         </li>
                     </ul>
                 </section>

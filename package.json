@@ -34,6 +34,7 @@
     },
     "homepage": "https://patik.com",
     "devDependencies": {
+        "@types/google.visualization": "^0.0.68",
         "sass": "^1.57.1"
     }
 }

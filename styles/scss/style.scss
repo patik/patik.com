@@ -1,9 +1,10 @@
 // Make sure the charset is set appropriately @charset"UTF-8";
-@import "_normalize";
-@import "_foundation-overrides";
-@import "foundation";
-@import "_mixins";
-@import "_variables";
+@import '_normalize';
+@import '_foundation-overrides';
+@import 'foundation';
+@import '_mixins';
+@import '_variables';
+@import '_dark-mode';
 
 //=============================================================================
 // Basic styles
@@ -13,16 +14,39 @@ body {
     text-rendering: optimizelegibility;
 }
 
-body, p, h1, h2, h3, h4, h5, h6, button, input, select, textarea {
-    font-family: $font-serif; // Includes Typekit (which is only served to tablets and up) but falls back to Helvetica, etc
+body,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+input,
+select,
+textarea {
+    font-family: $font-serif; // Includes Typekit but falls back to Helvetica, etc
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: normal !important;
     color: $dark-charcoal; // #3A87AD;
+
+    @media (prefers-color-scheme: dark) {
+        color: white;
+    }
 }
 
-pre, code, kbd, samp {
+pre,
+code,
+kbd,
+samp {
     font-family: $font-fixed;
 }
 
@@ -34,7 +58,7 @@ code {
     @include clearfix;
 }
 
-[role="main"] {
+[role='main'] {
     margin: 1em auto;
     max-width: 980px;
 
@@ -59,13 +83,10 @@ code {
             margin-left: 2em;
         }
     }
-
-    .button {
-    }
 }
 
 @media (max-width: #{$medium-screen}) {
-    [role="main"] {
+    [role='main'] {
         padding-left: 0.5em;
         padding-right: 0.5em;
     }
@@ -83,7 +104,8 @@ code {
     }
 }
 
-p, li {
+p,
+li {
     font-family: $font-serif;
     font-size: 18px;
     line-height: 22px;
@@ -141,7 +163,9 @@ figure {
         text-align: left;
         text-decoration: none;
 
-        &:active, &:hover, &:focus {
+        &:active,
+        &:hover,
+        &:focus {
             text-decoration: underline;
         }
 
@@ -173,7 +197,9 @@ figure {
         box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
         text-shadow: 3px 3px 4px black, 0 -1px 0 rgba(0, 0, 0, 0.5);
 
-        &:active, &:hover, &:focus {
+        &:active,
+        &:hover,
+        &:focus {
             text-decoration: none;
             //box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.05) inset;
         }
@@ -195,10 +221,12 @@ figure {
             bottom: 0;
             z-index: 2;
             background-color: rgba(0, 0, 0, 0.1);
-            @include transition("all 0.15s ease 0s");
+            @include transition('all 0.15s ease 0s');
         }
 
-        &:active, &:hover, &:focus {
+        &:active,
+        &:hover,
+        &:focus {
             .image-cover {
                 background-color: rgba(0, 0, 0, 0);
             }
@@ -327,6 +355,7 @@ figure {
             text-align: left;
         }
     }
+
     /* -----------------------------------
      * Peru & Argentina
      * -----------------------------------
@@ -505,10 +534,12 @@ figure {
     a {
         .image-cover {
             background-color: rgba(0, 0, 0, 0);
-            @include transition("background-color 0.2s ease-in");
+            @include transition('background-color 0.2s ease-in');
         }
 
-        &:active, &:hover, &:focus {
+        &:active,
+        &:hover,
+        &:focus {
             .image-cover {
                 background-color: rgba(0, 0, 0, 0.25);
             }
@@ -527,7 +558,7 @@ figure {
 
     img {
         box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
-        @include transition("all 0.15s ease 0s");
+        @include transition('all 0.15s ease 0s');
 
         &:hover {
             box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
@@ -536,7 +567,7 @@ figure {
 }
 
 // Google analytics image looks ugly when it doesn't load, so move it off-screen
-img[src^="/gam.php?"] {
+img[src^='/gam.php?'] {
     position: absolute;
     left: -9999px;
     top: -99999px;
@@ -544,18 +575,27 @@ img[src^="/gam.php?"] {
 
 // Bigger than phone
 // ---------------------
-@media #{$tiny} { // 480px and up
-    body, button, input, select, textarea {
+@media #{$tiny} {
+    // 480px and up
+    body,
+    button,
+    input,
+    select,
+    textarea {
         color: $charcoal;
+
+        @media (prefers-color-scheme: dark) {
+            color: white;
+        }
     }
 
-    p, li {
+    p,
+    li {
         font-size: emCalc(20px);
         line-height: emCalc(24px);
     }
 
     .travel-link-list {
-
         .bg-peru-argentina-amazon {
             span {
                 font-size: 2em;
@@ -579,7 +619,8 @@ img[src^="/gam.php?"] {
 // PORTRAIT TABLET AND UP
 // ----------------------------------
 
-@media #{$small} { // 600px and up
+@media #{$small} {
+    // 600px and up
     .travel-link-list {
         a span {
             font-size: 3em;
@@ -609,7 +650,8 @@ img[src^="/gam.php?"] {
 
 // DEFAULT DESKTOP
 // ---------------
-@media #{$medium} { // 980px and up
+@media #{$medium} {
+    // 980px and up
     .button-link-list {
         & > div {
             margin-bottom: 2%;
@@ -635,5 +677,27 @@ img[src^="/gam.php?"] {
 
     &:hover {
         text-decoration: none;
+    }
+}
+
+.cp-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 1rem;
+    margin-right: 1rem;
+
+    .cp-item {
+        flex-basis: 33%;
+        max-width: 33%;
+
+        @media (max-width: #{$medium-screen}) {
+            flex-basis: 50%;
+            max-width: 50%;
+        }
+
+        @media (max-width: #{$small-screen}) {
+            flex-basis: 100%;
+            max-width: 100%;
+        }
     }
 }

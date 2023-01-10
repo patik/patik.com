@@ -10,14 +10,12 @@ export default function Header(): ReactElement {
                         <Link href="/">Craig Patik</Link>
                     </h1>
                 </li>
-                <li className="toggle-topbar menu-icon">
-                    <a href="#">
-                        <span></span>
-                    </a>
-                </li>
             </ul>
             <section className="top-bar-section">
                 <ul className="right">
+                    <li>
+                        <Link href="/">Home</Link>
+                    </li>
                     <li>
                         <Link href="/travel/">Travel</Link>
                     </li>
