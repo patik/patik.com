@@ -67,12 +67,7 @@ A lot can be learned from monitoring the viewport, especially on a site with con
 
     If you want to know what your user has seen, for example to remember their reading position in a feed, you can only consider ones that are fully in view. You also need to take into account the actual viewport, avoiding things like fixed header bars that cover parts of the page.
 
-    <figure>
-        <object data="https://patik.github.io/within-viewport/example_diagram_sm.svg" type="image/svg+xml" width="617" height="626">
-            <img src="example_diagram_sm.png" alt="Diagram showing elements of a Twitter feed being in and out of view" />
-        </object>
-        <figcaption><a href="https://patik.github.io/within-viewport/example_diagram.svg" target="_blank">Larger version</a></figcaption>
-    </figure>
+    ![Diagram showing elements of a Twitter feed being in and out of view](example_diagram_sm.png)
 
 - ### Live updates
 

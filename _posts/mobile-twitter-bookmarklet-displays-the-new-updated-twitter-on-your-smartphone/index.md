@@ -14,7 +14,7 @@ Twitter recently unveiled a [new interface for their mobile site](http://mashabl
 
 To automatically view any page in the new interface, just use the [bookmarklet](http://en.wikipedia.org/wiki/Bookmarklet) below. If you’re currently on a Twitter page you’ll be redirected to the same page on mobile.twitter.com; or, if you’re anywhere else at all, you’ll simply go to the mobile home page.
 
-The bookmarklet: <a href="javascript:if(window.location.href.indexOf('twitter.com')<0){window.location.href='http://mobile.twitter.com/'} else if(window.location.href.indexOf('mobile.twitter.com')<0){window.location.href=window.location.href.replace(/(\w+\.)?twitter\.com/,'mobile.twitter.com');}">**Mobile Twitter**</a>
+The bookmarklet: <a href="javascript:if(window.location.href.indexOf('twitter.com')<0){window.location.host='mobile.twitter.com'} else if(window.location.host!=='mobile.twitter.com'){window.location.host='mobile.twitter.com';}">**Mobile Twitter**</a>
 
 which links to:
 
@@ -24,7 +24,7 @@ javascript:if(window.location.href.indexOf('twitter.com')<0){window.location.hre
 
 Or, to install it on an iPhone, follow these steps.
 
-1. <a href="#___javascript:if(window.location.href.indexOf('twitter.com')<0){window.location.href='http://mobile.twitter.com/'} else if(window.location.href.indexOf('mobile.twitter.com')<0){window.location.href=window.location.href.replace(/(\w+\.)?twitter\.com/,'mobile.twitter.com');}">Click here</a>, and bookmark the resulting page once it loads by clicking the + icon at the bottom of Mobile Safari. (It will look just like the page you’re on.) Call it something like “Mobile Safari”.
+1. <a href="#___javascript:if(window.location.href.indexOf('twitter.com')<0){window.location.host='mobile.twitter.com'} else if(window.location.host!=='mobile.twitter.com'){window.location.host='mobile.twitter.com';}">Click here</a>, and bookmark the resulting page once it loads by clicking the + icon at the bottom of Mobile Safari. (It will look just like the page you’re on.) Call it something like “Mobile Safari”.
 2. Tap the bookmarks icon to open your bookmarks, then click Edit
 3. Tap on the bookmark you just made. Then tap on the second line, containing the URL, to edit it.
 4. Hold your finger down on the URL until the magnifying glass appears. Slide your finger to the left until you see “#\_\_javascript”. Put the cursor just before “javascript”, then hit Backspace to clear out everything that comes before it.

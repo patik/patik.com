@@ -29,12 +29,8 @@ The obvious thing to do when a user reaches the boundary of their timeline is to
 
 The app also tracks each user’s reading position so the can resume reading at the same place in future sessions. When determining which tweets have been read, it only makes sense to consider ones that are fully in view. The app has a fixed header that shrinks the viewport by about 60 pixels, so I need to make sure a tweet is not covered by that.
 
-<figure>
-  <object data="https://patik.github.io/within-viewport/example_diagram_sm.svg" type="image/svg+xml" width="617" height="626">
-    <img src="example_diagram_sm.png" alt="Diagram showing elements of a Twitter feed being in and out of view">
-  </object>
-  <figcaption><a href="https://patik.github.io/within-viewport/example_diagram.svg" target="_blank">Larger version</a></figcaption>
-</figure>
+
+![Diagram showing elements of a Twitter feed being in and out of view](example_diagram_sm.png)
 
 ## Live updates
 
