@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import Script from 'next/script'
-import { ReactNode, useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
+import { Chart } from 'react-google-charts'
 import imgTravelBritainbenelux from '../../public/images/travel-britain-benelux.jpg'
 import imgTravelFrance from '../../public/images/travel-france.jpg'
 import imgTravelGermany from '../../public/images/travel-germany.jpg'
@@ -14,89 +14,64 @@ import Layout from '../../src/layout/Layout'
 
 const currentYear = new Date().getFullYear()
 
+// Last updated: Jan 2023
+const countryData = [
+    ['Country', 'Years since last visit'],
+    ['Argentina', currentYear - 2011],
+    ['Austria', currentYear - 2022],
+    ['Belgium', currentYear - 2012],
+    ['Bulgaria', currentYear - 2021],
+    ['Cambodia', currentYear - 2013],
+    ['Canada', currentYear - 2017],
+    ['China', currentYear - 2017],
+    ['Croatia', currentYear - 2022],
+    ['Czech Republic', currentYear - 2015],
+    ['France', currentYear - 2014],
+    ['Germany', currentYear - 2023],
+    ['Greece', currentYear - 2022],
+    ['Hungary', currentYear - 2015],
+    ['Ireland', currentYear - 2022],
+    ['Italy', currentYear - 2018],
+    ['Monaco', currentYear - 2000],
+    ['Morocco', currentYear - 2010],
+    ['Myanmar', currentYear - 2013],
+    ['Netherlands', currentYear - 2012],
+    ['Panama', currentYear - 2011],
+    ['Peru', currentYear - 2011],
+    ['Poland', currentYear - 2019],
+    ['Portugal', currentYear - 2010],
+    ['Romania', currentYear - 2022],
+    ['Slovakia', currentYear - 2015],
+    ['Slovenia', currentYear - 2019],
+    ['Spain', currentYear - 2020],
+    ['Thailand', currentYear - 2013],
+    ['Turkey', currentYear - 2009],
+    ['United Kingdom', currentYear - 2019],
+    ['United States', currentYear - 2022],
+    ['Uruguay', currentYear - 2011],
+    ['Vietnam', currentYear - 2017],
+]
+
 export default function Page() {
-    const [mapScript, setMapScript] = useState<ReactNode>()
-    const mapElement = useRef(null)
+    const [mapWidth, setMapWidth] = useState(300)
+    const [isDarkMode, setIsDarkMode] = useState(true)
+
     useEffect(() => {
-        if (mapScript) {
-            return
+        const checkWidth = () => {
+            setMapWidth(Math.min(960, window.innerWidth * 0.9))
         }
 
-        setMapScript(
-            <Script
-                src="https://www.gstatic.com/charts/loader.js"
-                onLoad={() => {
-                    google.charts.load('current', {
-                        packages: ['geochart'],
-                    })
-                    google.charts.setOnLoadCallback(drawRegionsMap)
+        checkWidth()
 
-                    function drawRegionsMap() {
-                        if (mapElement.current === null) {
-                            return
-                        }
+        window.addEventListener('resize', checkWidth)
 
-                        const data = google.visualization.arrayToDataTable([
-                            // Last updated: Jan 2023
-                            ['Country', 'Years since last visit'],
-                            ['Argentina', currentYear - 2011],
-                            ['Austria', currentYear - 2022],
-                            ['Belgium', currentYear - 2012],
-                            ['Bulgaria', currentYear - 2021],
-                            ['Cambodia', currentYear - 2013],
-                            ['Canada', currentYear - 2017],
-                            ['China', currentYear - 2017],
-                            ['Croatia', currentYear - 2022],
-                            ['Czech Republic', currentYear - 2015],
-                            ['France', currentYear - 2014],
-                            ['Germany', currentYear - 2023],
-                            ['Greece', currentYear - 2022],
-                            ['Hungary', currentYear - 2015],
-                            ['Ireland', currentYear - 2022],
-                            ['Italy', currentYear - 2018],
-                            ['Monaco', currentYear - 2000],
-                            ['Morocco', currentYear - 2010],
-                            ['Myanmar', currentYear - 2013],
-                            ['Netherlands', currentYear - 2012],
-                            ['Panama', currentYear - 2011],
-                            ['Peru', currentYear - 2011],
-                            ['Poland', currentYear - 2019],
-                            ['Portugal', currentYear - 2010],
-                            ['Romania', currentYear - 2022],
-                            ['Slovakia', currentYear - 2015],
-                            ['Slovenia', currentYear - 2019],
-                            ['Spain', currentYear - 2020],
-                            ['Thailand', currentYear - 2013],
-                            ['Turkey', currentYear - 2009],
-                            ['United Kingdom', currentYear - 2019],
-                            ['United States', currentYear - 2022],
-                            ['Uruguay', currentYear - 2011],
-                            ['Vietnam', currentYear - 2017],
-                        ])
+        return () => window.removeEventListener('resize', checkWidth)
+    }, [])
 
-                        const isDarkMode =
-                            window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+    useEffect(() => {
+        setIsDarkMode(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    }, [])
 
-                        // https://developers-dot-devsite-v2-prod.appspot.com/chart/interactive/docs/gallery/geochart
-                        const options: google.visualization.GeoChartOptions = {
-                            colorAxis: {
-                                colors: ['#990000', '#ff0000'],
-                            },
-                            backgroundColor: isDarkMode ? '#222222' : '#ffffff',
-                            datalessRegionColor: '#666666',
-                            defaultColor: '#f5f5f5',
-                            keepAspectRatio: true,
-                            width: window.innerWidth * 0.9,
-                        }
-
-                        const chart = new google.visualization.GeoChart(mapElement.current)
-
-                        chart.draw(data, options)
-                    }
-                }}
-            />
-        )
-    }, [mapScript])
     return (
         <Layout
             title="Travel"
@@ -110,7 +85,24 @@ export default function Page() {
                     <p style={{ marginLeft: '1rem' }}>
                         Color-coded based on how many years it’s been since I’ve been to each one
                     </p>
-                    <div className="row travel-map" ref={mapElement} />
+                    <div className="row travel-map">
+                        <Chart
+                            chartType="GeoChart"
+                            data={countryData}
+                            legendToggle
+                            options={{
+                                // https://developers-dot-devsite-v2-prod.appspot.com/chart/interactive/docs/gallery/geochart
+                                colorAxis: {
+                                    colors: ['#990000', '#ff0000'],
+                                },
+                                backgroundColor: isDarkMode ? '#222222' : '#ffffff',
+                                datalessRegionColor: '#666666',
+                                defaultColor: '#f5f5f5',
+                                keepAspectRatio: true,
+                                width: mapWidth,
+                            }}
+                        />
+                    </div>
                 </section>
 
                 <section>
@@ -204,7 +196,6 @@ export default function Page() {
                     </div>
                 </section>
             </div>
-            {mapScript}
         </Layout>
     )
 }
