@@ -82,7 +82,7 @@ export default function Home() {
                                 <span>Turkey</span>
                             </Link>
                         </div>
-                        <div className="small-12 medium-6 large-4 columns left">
+                        <div className="small-12 medium-6 large-4 columns">
                             <Link href="/travel/germany/">
                                 <Image
                                     src={imgHomeTravelGermany}
@@ -92,7 +92,7 @@ export default function Home() {
                                 <span>Germany &amp; Austria</span>
                             </Link>
                         </div>
-                        <div className="small-12 medium-6 large-4 columns">
+                        <div className="small-12 medium-6 large-4 columns left">
                             <Link href="/travel/greece/">
                                 <Image
                                     src={imgHomeTravelGreece}

@@ -1,16 +1,6 @@
 import { Head, Html, Main, NextScript } from 'next/document'
-import Script from 'next/script'
-import { ReactNode, useEffect, useState } from 'react'
 
 export default function Document() {
-    const [scripts, setScripts] = useState<ReactNode[]>([])
-
-    useEffect(() => {
-        if (scripts.length === 0) {
-            setScripts([<Script src="/js/jquery.min.js" key="jquery" />])
-        }
-    }, [scripts.length])
-
     return (
         <Html lang="en">
             <Head>
@@ -25,7 +15,6 @@ export default function Document() {
             <body>
                 <Main />
                 <NextScript />
-                {scripts}
             </body>
         </Html>
     )
