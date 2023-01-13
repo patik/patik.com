@@ -83,6 +83,14 @@ code {
             margin-left: 2em;
         }
     }
+
+    & > h1 {
+        margin-left: 0.5em;
+    }
+
+    .intro {
+        margin-left: 1em;
+    }
 }
 
 @media (max-width: #{$medium-screen}) {

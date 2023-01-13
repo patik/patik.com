@@ -10,14 +10,14 @@ import imgTravelParis from '../../public/images/travel-paris.jpg'
 import imgTravelPeruargentina from '../../public/images/travel-peru-argentina.jpg'
 import imgTravelSpain from '../../public/images/travel-spain.jpg'
 import imgTravelTurkey from '../../public/images/travel-turkey.jpg'
-import countryVisits from '../../src/countries.json'
+import countries from '../../src/countries.json'
 import Layout from '../../src/layout/Layout'
 
 const currentYear = new Date().getFullYear()
 
 const countryData: Array<[string, string | number]> = [['Country', 'Years since last visit']]
 
-countryVisits.visited.forEach((country) => {
+countries.visited.forEach((country) => {
     countryData.push([country.name, currentYear - Math.max(...country.yearsVisited)])
 })
 
@@ -50,7 +50,7 @@ export default function Page() {
                 <h1>Travel</h1>
 
                 <section style={{ marginBottom: '6rem' }}>
-                    <h2>Countries Visited</h2>
+                    <h2>Countries I’ve been to</h2>
                     <p style={{ marginLeft: '1rem' }}>
                         Color-coded based on how many years it’s been since I’ve been to each one
                     </p>
@@ -62,7 +62,7 @@ export default function Page() {
                             options={{
                                 // https://developers-dot-devsite-v2-prod.appspot.com/chart/interactive/docs/gallery/geochart
                                 colorAxis: {
-                                    colors: ['#990000', '#ff0000'],
+                                    colors: ['#ff0000', '#0000ff'],
                                 },
                                 backgroundColor: isDarkMode ? '#222222' : '#ffffff',
                                 datalessRegionColor: '#666666',
@@ -78,8 +78,8 @@ export default function Page() {
                     <h2>Photos</h2>
                     <p style={{ marginLeft: '1rem' }}>
                         <em>
-                            Not shown are notable trips since 2012 to Southeast Asia, Eastern Europe, and much more of
-                            Europe
+                            Not shown: many notable trips since 2012, including Southeast Asia, Eastern Europe, and much
+                            more of Europe
                         </em>
                     </p>
                     <div className="row travel-link-list">
