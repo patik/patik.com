@@ -10,8 +10,8 @@ import imgTravelParis from '../../public/images/travel-paris.jpg'
 import imgTravelPeruargentina from '../../public/images/travel-peru-argentina.jpg'
 import imgTravelSpain from '../../public/images/travel-spain.jpg'
 import imgTravelTurkey from '../../public/images/travel-turkey.jpg'
+import countryVisits from '../../src/countries.json'
 import Layout from '../../src/layout/Layout'
-import countryVisits from '../../src/country-visits.json'
 
 const currentYear = new Date().getFullYear()
 
