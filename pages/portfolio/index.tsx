@@ -21,7 +21,7 @@ export default function Page() {
                                 A utility for printing readable data to all browser consoles, including legacy browsers.
                             </p>
                             <p>
-                                <a href="http://patik.github.io/console.log-wrapper/">Demo</a> &bull;{' '}
+                                <a href="https://patik.github.io/console.log-wrapper/">Demo</a> &bull;{' '}
                                 <a href="https://github.com/patik/console.log-wrapper">GitHub</a>
                             </p>
                         </div>
@@ -32,9 +32,9 @@ export default function Page() {
                                 Includes both vanilla JavaScript and jQuery plugins.
                             </p>
                             <p>
-                                <a href="http://patik.github.io/within-viewport/">Demo</a> &bull;{' '}
+                                <a href="https://patik.github.io/within-viewport/">Demo</a> &bull;{' '}
                                 <a href="https://github.com/patik/within-viewport">GitHub</a> &bull;{' '}
-                                <a href="http://patik.com/blog/within-viewport-javascript-and-jquery-plugin/">
+                                <a href="https://patik.com/blog/within-viewport-javascript-and-jquery-plugin/">
                                     Blog post
                                 </a>
                             </p>
@@ -110,8 +110,8 @@ export default function Page() {
                                     My blog, <a href="/blog/">console.blog()</a>
                                 </li>
                                 <li>
-                                    I gave an <a href="http://igniteshow.com/">Ignite talk</a> at{' '}
-                                    <a href="http://nys-its.github.io/ny-innovates/">NYS DevCon 2013</a>
+                                    I gave an <a href="https://igniteshow.com/">Ignite talk</a> at{' '}
+                                    <a href="https://nys-its.github.io/ny-innovates/">NYS DevCon 2013</a>
                                 </li>
                             </ul>
                         </div>

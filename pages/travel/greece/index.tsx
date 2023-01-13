@@ -18,14 +18,16 @@ export default function Page() {
                     <h2>Photos</h2>
 
                     <p>
-                        <a href="http://picasaweb.google.com/cpatik/Greece2007">Condensed photo album</a>
+                        <a href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipPkzhN5b1360Nu7gUc22vsA5dTxMK-P7AKFyDI3?authKey=CJL96rLSzuGOuAE">
+                            Combined photo album
+                        </a>
                     </p>
 
                     <div className="row travel-link-list">
                         <div className="small-12 medium-6 large-4 columns">
                             <a
                                 className="bg-greece-athens"
-                                href="https://picasaweb.google.com/116513687533678150554/GreeceRoughDraftAthens?authkey=Gv1sRgCJL96rLSzuGOuAE"
+                                href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipPkzhN5b1360Nu7gUc22vsA5dTxMK-P7AKFyDI3?authKey=CJL96rLSzuGOuAE"
                             >
                                 <Image src={athensLink} alt="Temple of Zeus in Athens" />
                                 <span>Athens</span>

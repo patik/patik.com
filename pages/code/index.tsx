@@ -68,14 +68,6 @@ export default function Page() {
                             </a>
                         </div>
                     </div>
-                    <div className="row button-link-list">
-                        <div className="small-12 medium-6 large-4 columns left">
-                            <Link href="/code/user-scripts/">
-                                <Image src={imgConsoleBlogLogo} alt="JavaScript code" title="User Scripts" />
-                                <span>User Scripts</span>
-                            </Link>
-                        </div>
-                    </div>
                 </section>
             </div>
         </Layout>

@@ -63,37 +63,39 @@ export default function Page() {
                     <h2>Itinerary</h2>
                     <ul>
                         <li>
-                            The pristine <a href="http://www.perujungle.com/">Amazon Rainforest</a> near Iquitos, Peru
+                            The pristine <a href="https://www.perujungle.com/">Amazon Rainforest</a> near Iquitos, Peru
                         </li>
                         <li>
-                            High-altitude <a href="http://wikitravel.org/en/Cuzco">Cusco</a> with its many nearby Incan
+                            High-altitude <a href="https://wikitravel.org/en/Cuzco">Cusco</a> with its many nearby Incan
                             ruins
                         </li>
                         <li>
-                            The incomparable <a href="http://wikitravel.org/en/Machu_Picchu">Machu Picchu</a>, an
+                            The incomparable <a href="https://wikitravel.org/en/Machu_Picchu">Machu Picchu</a>, an
                             untouched ancient Incan city high in the Andes mountains
                         </li>
                         <li>
                             An unforgettable, leisurely ride on the{' '}
-                            <a href="http://www.go2peru.com/andean_explorer.htm">Andean Explorer</a>, winding through
-                            the Andes from Cuzco to Lake Titicaca
+                            <a href="https://www.belmond.com/trains/south-america/peru/belmond-andean-explorer/">
+                                Andean Explorer
+                            </a>
+                            , winding through the Andes from Cuzco to Lake Titicaca
                         </li>
                         <li>
-                            <a href="http://en.wikipedia.org/wiki/Lake_Titicaca">Lake Titicaca</a>, the world’s highest
+                            <a href="httpw://en.wikipedia.org/wiki/Lake_Titicaca">Lake Titicaca</a>, the world’s highest
                             navigable lake and home to{' '}
-                            <a href="http://en.wikipedia.org/wiki/Uru_people">floating islands</a> and{' '}
-                            <a href="http://en.wikipedia.org/wiki/Taquile">centuries-old cultures</a>
+                            <a href="https://en.wikipedia.org/wiki/Uru_people">floating islands</a> and{' '}
+                            <a href="https://en.wikipedia.org/wiki/Taquile">centuries-old cultures</a>
                         </li>
                         <li>
-                            Beautiful <a href="http://wikitravel.org/en/Buenos_Aires">Buenos Aires</a>, a wonderful
+                            Beautiful <a href="https://wikitravel.org/en/Buenos_Aires">Buenos Aires</a>, a wonderful
                             blend of Barcelona and Italy
                         </li>
                         <li>
-                            A rural <a href="http://en.wikipedia.org/wiki/Estancia">Estancia</a>, with horseback riding
-                            and the famed Argentine beef <a href="http://en.wikipedia.org/wiki/Asado">asado</a>
+                            A rural <a href="https://en.wikipedia.org/wiki/Estancia">Estancia</a>, with horseback riding
+                            and the famed Argentine beef <a href="https://en.wikipedia.org/wiki/Asado">asado</a>
                         </li>
                         <li>
-                            Quaint <a href="http://wikitravel.org/en/Colonia">Colonia del Sacramento</a>, the oldest
+                            Quaint <a href="https://wikitravel.org/en/Colonia">Colonia del Sacramento</a>, the oldest
                             town in Uruguay and just a short ferry ride across the Rio de la Plata from Buenos Aires
                         </li>
                     </ul>

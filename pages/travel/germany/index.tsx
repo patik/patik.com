@@ -35,11 +35,11 @@ export default function Page() {
                         Mauthausen-Gusen concentration camp.
                     </p>
                     <p>
-                        On to <a href="http://wikitravel.org/en/Bavaria">Bavaria</a> and Germany, we mixed munchies and{' '}
-                        <a href="http://en.wikipedia.org/wiki/Beer_stein">Maß</a> in Munich, toured through Nuremberg,
+                        On to <a href="https://wikitravel.org/en/Bavaria">Bavaria</a> and Germany, we mixed munchies and{' '}
+                        <a href="https://en.wikipedia.org/wiki/Beer_stein">Maß</a> in Munich, toured through Nuremberg,
                         walked the wall around{' '}
-                        <a href="http://wikitravel.org/en/Rothenburg_ob_der_Tauber">Rothenburg</a>, cruised up the
-                        castle-studded <a href="http://wikitravel.org/en/Rhine_Valley">Rhine</a>, and reveled in the
+                        <a href="https://wikitravel.org/en/Rothenburg_ob_der_Tauber">Rothenburg</a>, cruised up the
+                        castle-studded <a href="https://wikitravel.org/en/Rhine_Valley">Rhine</a>, and reveled in the
                         20th Century history of Berlin.
                     </p>
                 </section>

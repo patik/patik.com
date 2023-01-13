@@ -10,47 +10,16 @@ import imgTravelParis from '../../public/images/travel-paris.jpg'
 import imgTravelPeruargentina from '../../public/images/travel-peru-argentina.jpg'
 import imgTravelSpain from '../../public/images/travel-spain.jpg'
 import imgTravelTurkey from '../../public/images/travel-turkey.jpg'
+import countries from '../../src/countries.json'
 import Layout from '../../src/layout/Layout'
 
 const currentYear = new Date().getFullYear()
 
-// Last updated: Jan 2023
-const countryData = [
-    ['Country', 'Years since last visit'],
-    ['Argentina', currentYear - 2011],
-    ['Austria', currentYear - 2022],
-    ['Belgium', currentYear - 2012],
-    ['Bulgaria', currentYear - 2021],
-    ['Cambodia', currentYear - 2013],
-    ['Canada', currentYear - 2017],
-    ['China', currentYear - 2017],
-    ['Croatia', currentYear - 2022],
-    ['Czech Republic', currentYear - 2015],
-    ['France', currentYear - 2014],
-    ['Germany', currentYear - 2023],
-    ['Greece', currentYear - 2022],
-    ['Hungary', currentYear - 2015],
-    ['Ireland', currentYear - 2022],
-    ['Italy', currentYear - 2018],
-    ['Monaco', currentYear - 2000],
-    ['Morocco', currentYear - 2010],
-    ['Myanmar', currentYear - 2013],
-    ['Netherlands', currentYear - 2012],
-    ['Panama', currentYear - 2011],
-    ['Peru', currentYear - 2011],
-    ['Poland', currentYear - 2019],
-    ['Portugal', currentYear - 2010],
-    ['Romania', currentYear - 2022],
-    ['Slovakia', currentYear - 2015],
-    ['Slovenia', currentYear - 2019],
-    ['Spain', currentYear - 2020],
-    ['Thailand', currentYear - 2013],
-    ['Turkey', currentYear - 2009],
-    ['United Kingdom', currentYear - 2019],
-    ['United States', currentYear - 2022],
-    ['Uruguay', currentYear - 2011],
-    ['Vietnam', currentYear - 2017],
-]
+const countryData: Array<[string, string | number]> = [['Country', 'Years since last visit']]
+
+countries.visited.forEach((country) => {
+    countryData.push([country.name, currentYear - Math.max(...country.yearsVisited)])
+})
 
 export default function Page() {
     const [mapWidth, setMapWidth] = useState(300)
@@ -81,7 +50,7 @@ export default function Page() {
                 <h1>Travel</h1>
 
                 <section style={{ marginBottom: '6rem' }}>
-                    <h2>Countries Visited</h2>
+                    <h2>Countries I’ve been to</h2>
                     <p style={{ marginLeft: '1rem' }}>
                         Color-coded based on how many years it’s been since I’ve been to each one
                     </p>
@@ -93,7 +62,7 @@ export default function Page() {
                             options={{
                                 // https://developers-dot-devsite-v2-prod.appspot.com/chart/interactive/docs/gallery/geochart
                                 colorAxis: {
-                                    colors: ['#990000', '#ff0000'],
+                                    colors: ['#ff0000', '#0000ff'],
                                 },
                                 backgroundColor: isDarkMode ? '#222222' : '#ffffff',
                                 datalessRegionColor: '#666666',
@@ -109,8 +78,8 @@ export default function Page() {
                     <h2>Photos</h2>
                     <p style={{ marginLeft: '1rem' }}>
                         <em>
-                            Not shown are notable trips since 2012 to Southeast Asia, Eastern Europe, and much more of
-                            Europe
+                            Not shown: many notable trips since 2012, including Southeast Asia, Eastern Europe, and much
+                            more of Europe
                         </em>
                     </p>
                     <div className="row travel-link-list">

@@ -83,6 +83,14 @@ code {
             margin-left: 2em;
         }
     }
+
+    & > h1 {
+        margin-left: 0.5em;
+    }
+
+    .intro {
+        margin-left: 1em;
+    }
 }
 
 @media (max-width: #{$medium-screen}) {
@@ -133,7 +141,7 @@ figure {
     border-color: #357ebd;
     border-radius: 4px;
 
-    // http://getbootstrap.com/css/#buttons
+    // https://getbootstrap.com/css/#buttons
     display: inline-block;
     padding: 6px 12px;
     font-size: 14px;

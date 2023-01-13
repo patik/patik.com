@@ -4,7 +4,7 @@ These are the files for my personal web site. There isn't much useful here to an
 
 Some of the directories contain files from many years ago, when I didn't even know why inline styles or standards-compliant JavaScript was important. Please don't laugh :)
 
-[patik.com](http://patik.com/)<br>
+[patik.com](https://patik.com/)<br>
 [@craigpatik](https://twitter.com/craigpatik)
 
 ---

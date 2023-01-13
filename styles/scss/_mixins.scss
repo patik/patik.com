@@ -1,9 +1,9 @@
-@mixin transition($transition: "", $prefixes: "") {
+@mixin transition($transition: '', $prefixes: '') {
     // Do not enable GPU here otherwise it inconsistently adds gaps between some items (e.g. vertical menu items)
-    // http://caniuse.com/css-transitions
+    // https://caniuse.com/css-transitions
 
     // In some browser/property combinations the value needs to be prefixed as well
-    @if $prefixes != "" {
+    @if $prefixes != '' {
         @each $prefix in $prefixes {
             -#{$prefix}-transition: -#{$prefix}-#{$transition};
         }

@@ -4,12 +4,12 @@
 
 /* TEAM */
   Lead developer: Craig Patik
-  Site: http://patik.com/
+  Site: https://patik.com/
   Twitter: craigpatik
   Location: Munich, Germany
 
 /* THANKS */
-  Names (& URL): html5boilerplate.com, html5doctor.com, http://joncom.be/code/excanvas-world-map/
+  Names (& URL): html5boilerplate.com, html5doctor.com, https://joncom.be/code/excanvas-world-map/
 
 /* SITE */
   Standards: HTML5, CSS3
