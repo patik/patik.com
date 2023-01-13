@@ -18,7 +18,7 @@ export default function Page() {
                         amazing, we were most fond of the delicious food and wonderful people.
                     </p>
                     <p>
-                        I wrote a few <a href="http://patik.com/blog/category/turkey/">blog posts</a> about the trip.
+                        I wrote a few <a href="https://patik.com/blog/category/turkey/">blog posts</a> about the trip.
                     </p>
                 </div>
 
@@ -79,41 +79,41 @@ export default function Page() {
                             <strong>Istanbul</strong>
                             <ul>
                                 <li>
-                                    Sultanahmet: <a href="http://en.wikipedia.org/wiki/Hagia_Sophia">Hagia Sophia</a>,{' '}
-                                    <a href="http://en.wikipedia.org/wiki/Sultan_Ahmed_Mosque">Blue Mosque</a>,{' '}
-                                    <a href="http://www.cemberlitashamami.com.tr/html/en">
+                                    Sultanahmet: <a href="https://en.wikipedia.org/wiki/Hagia_Sophia">Hagia Sophia</a>,{' '}
+                                    <a href="https://en.wikipedia.org/wiki/Sultan_Ahmed_Mosque">Blue Mosque</a>,{' '}
+                                    <a href="https://www.cemberlitashamami.com/cemberlitas-bath-historical-turkish-bath/">
                                         &Ccedil;emberlita&#351; Hamami
                                     </a>
                                     , Grand Bazaar, and the{' '}
-                                    <a href="http://en.wikipedia.org/wiki/Rock'n_Coke">Rock’n Coke Festival</a>
+                                    <a href="https://en.wikipedia.org/wiki/Rock'n_Coke">Rock’n Coke Festival</a>
                                 </li>
                                 <li>Beyo&#287;lu: Taksim Square, Istiklal Caddesi, Galata Bridge, Galata Tower</li>
                                 <li>
                                     Kad&#305;k&ouml;y: open markets,{' '}
-                                    <a href="http://en.wikipedia.org/wiki/%C5%9E%C3%BCkr%C3%BC_Saraco%C4%9Flu_Stadium">
+                                    <a href="https://en.wikipedia.org/wiki/%C5%9E%C3%BCkr%C3%BC_Saraco%C4%9Flu_Stadium">
                                         Fenerbah&ccedil;e stadium
                                     </a>
                                 </li>
                                 <li>
                                     Bosphorus Strait and{' '}
-                                    <a href="http://en.wikipedia.org/wiki/Yoros_Castle">Anadolu Kava&#287;&#305;</a>
+                                    <a href="https://en.wikipedia.org/wiki/Yoros_Castle">Anadolu Kava&#287;&#305;</a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="http://en.wikipedia.org/wiki/Cappadocia">
+                            <a href="https://en.wikipedia.org/wiki/Cappadocia">
                                 <strong>Cappadocia</strong>
                             </a>
-                            : <a href="http://en.wikipedia.org/wiki/G%C3%B6reme">G&ouml;reme</a>, Fairy Chimneys
+                            : <a href="https://en.wikipedia.org/wiki/G%C3%B6reme">G&ouml;reme</a>, Fairy Chimneys
                         </li>
                         <li>
-                            <a href="http://en.wikipedia.org/wiki/%C3%87%C4%B1ral%C4%B1">
+                            <a href="https://en.wikipedia.org/wiki/%C3%87%C4%B1ral%C4%B1">
                                 <strong>&Ccedil;&#305;ral&#305;</strong>
                             </a>
                             : the unspoiled beach, the ruins of Olympos, and the fiery Chimeras
                         </li>
                         <li>
-                            <a href="http://en.wikipedia.org/wiki/Ephesus">
+                            <a href="https://en.wikipedia.org/wiki/Ephesus">
                                 <strong>Ephesus</strong>
                             </a>{' '}
                             and the town of Sel&ccedil;uk

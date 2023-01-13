@@ -323,48 +323,27 @@ FileETag None
 
 <IfModule mod_rewrite.c>
     RewriteCond %{HTTPS} !=on
-    RewriteRule ^(germany|spain|turkey|greece|france|paris)/?$ http://patik.com/travel/$1/ [R=301,L]
+    RewriteRule ^(germany|spain|turkey|greece|france|paris)/?$ https://patik.com/travel/$1/ [R=301,L]
 </IfModule>
 
 <IfModule mod_rewrite.c>
     RewriteCond %{HTTPS} !=on
-    RewriteRule ^csyes/?(.*)$ http://patik.com/blog/$1 [R=301,L]
+    RewriteRule ^csyes/?(.*)$ https://patik.com/blog/$1 [R=301,L]
 </IfModule>
 
 <IfModule mod_rewrite.c>
     RewriteCond %{HTTPS} !=on
-    RewriteRule ^demos/consolelog/?(.*)$ http://patik.com/code/console-log-polyfill/$1 [R=301,L]
+    RewriteRule ^demos/consolelog/?(.*)$ https://patik.com/code/console-log-polyfill/$1 [R=301,L]
 </IfModule>
 
 <IfModule mod_rewrite.c>
     RewriteCond %{HTTPS} !=on
-    RewriteRule ^depth-of-field/?(.*)$ http://patik.com/dof/$1 [R=301,L]
+    RewriteRule ^depth-of-field/?(.*)$ https://patik.com/dof/$1 [R=301,L]
 </IfModule>
 
-# Temp, for work (DTF, Jan 2014)
 <IfModule mod_rewrite.c>
     RewriteCond %{HTTPS} !=on
-    RewriteRule ^pit2/?$ http://www8dm.nystax.gov/prototypes/PITRWD/ [R=307,L]
-</IfModule>
-
-# Temp, for work (DTF, Jan 2014)
-<IfModule mod_rewrite.c>
-    RewriteCond %{HTTPS} !=on
-    RewriteRule ^pit/?$ http://www8dm.nystax.gov/prototypes/PIT/ [R=307,L]
-</IfModule>
-
-# Temp-ish, for work (DTF, June 2014)
-<IfModule mod_rewrite.c>
-    RewriteCond %{HTTPS} !=on
-    RewriteRule ^dvm/?$ http://www8dm.nystax.gov/OTCT/IFLOWMobileLaunch.jsp [R=307,L]
-</IfModule>
-<IfModule mod_rewrite.c>
-    RewriteCond %{HTTPS} !=on
-    RewriteRule ^dvm/(\w+)$ http://patik.com/dvm.php?app=$1 [R=307,L]
-</IfModule>
-<IfModule mod_rewrite.c>
-    RewriteCond %{HTTPS} !=on
-    RewriteRule ^iepc/?$ http://www8dm.nystax.gov/IEPC/iepcStart [R=307,L]
+    RewriteRule ^dvm/(\w+)$ https://patik.com/dvm.php?app=$1 [R=307,L]
 </IfModule>
 
 
@@ -391,7 +370,7 @@ FileETag None
 <IfModule mod_rewrite.c>
     RewriteCond %{HTTPS} !=on
     RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-    RewriteRule ^(.*)$ http://%1/$1 [R=301]
+    RewriteRule ^(.*)$ https://%1/$1 [R=301]
 </IfModule>
 
 # ----------------------------------------------------------------------
@@ -405,7 +384,7 @@ FileETag None
 #     RewriteCond %{HTTPS} !=on
 #     RewriteCond %{HTTP_HOST} !^www\..+$ [NC]
 #     RewriteCond %{HTTP_HOST} (.+)$ [NC]
-#     RewriteRule ^(.*)$ http://www.%1/$1 [R=301,L]
+#     RewriteRule ^(.*)$ https://www.%1/$1 [R=301,L]
 # </IfModule>
 
 
@@ -510,7 +489,7 @@ DirectoryIndex index.php
 # If your server is not already configured as such, the following directive
 # should be uncommented in order to set PHP's register_globals option to OFF.
 # This closes a major security hole that is abused by most XSS (cross-site
-# scripting) attacks. For more information: http://php.net/register_globals
+# scripting) attacks. For more information: https://php.net/register_globals
 #
 # IF REGISTER_GLOBALS DIRECTIVE CAUSES 500 INTERNAL SERVER ERRORS :
 #

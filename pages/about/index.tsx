@@ -10,8 +10,8 @@ export default function Page() {
                 <section>
                     <p>
                         I’m a software engineer with a focus on front-end web development and UI design. I’m a graduate
-                        of <a href="http://www.ecse.rpi.edu/">Computer &amp; Systems Engineering</a> at{' '}
-                        <a href="http://www.rpi.edu/">RPI</a>.
+                        of <a href="https://ecse.rpi.edu/">Computer &amp; Systems Engineering</a> at{' '}
+                        <a href="https://rpi.edu/">RPI</a>.
                     </p>
                     <p>
                         I love to <Link href="/travel">travel</Link>, but my home is permanently in{' '}
@@ -20,9 +20,9 @@ export default function Page() {
                     </p>
                     <p>
                         I’m a big fan of football (soccer) worldwide, especially{' '}
-                        <a href="http://www.arsenal.com/">Arsenal</a> and{' '}
-                        <a href="http://www.fcbayern.t-com.de/en/">Bayern Munich</a>. My dog gets much of my wife’s and
-                        my attention.
+                        <a href="https://www.arsenal.com/">Arsenal</a> and{' '}
+                        <a href="https://fcbayern.com/en">Bayern Munich</a>. My dog gets much of my wife’s and my
+                        attention.
                     </p>
                 </section>
 
@@ -33,8 +33,8 @@ export default function Page() {
                             e-mail: cra<span>i</span>g<span>@pat</span>ik.<span>com</span>
                         </li>
                         <li>
-                            Twitter: <a href="http://twitter.com/craigpatik">@craigpatik</a> and{' '}
-                            <a href="http://twitter.com/SoccerTorte">@SoccerTorte</a>
+                            Twitter: <a href="https://twitter.com/craigpatik">@craigpatik</a> and{' '}
+                            <a href="https://twitter.com/SoccerTorte">@SoccerTorte</a>
                         </li>
                         <li>
                             Mastodon:{' '}
@@ -43,7 +43,7 @@ export default function Page() {
                             </a>
                         </li>
                         <li>
-                            <a href="http://www.facebook.com/craigpatik">Facebook</a>
+                            <a href="https://www.facebook.com/craigpatik">Facebook</a>
                         </li>
                     </ul>
                 </section>

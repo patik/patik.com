@@ -81,8 +81,8 @@ export default function Page() {
                         <li>Image previews &mdash; See images from posts without having to open them</li>
                         <li>
                             Twitter character count &mdash; Ensure your post will fit within Twitter’s 140-character
-                            limit when you crosspost to both networks using <a href="http://twapp.phuu.net/">twapp</a>,{' '}
-                            <a href="http://ifttt.com/">ifttt</a> or other services.
+                            limit when you crosspost to both networks using <a href="https://twapp.phuu.net/">twapp</a>,{' '}
+                            <a href="https://ifttt.com/">ifttt</a> or other services.
                         </li>
                     </ul>
                     <p>
@@ -126,7 +126,7 @@ export default function Page() {
                     </p>
                     <p>
                         This{' '}
-                        <a href="http://en.wikipedia.org/wiki/Wikitravel#Community_fork_in_2012">brief description</a>{' '}
+                        <a href="https://en.wikipedia.org/wiki/Wikitravel#Community_fork_in_2012">brief description</a>{' '}
                         of WikiVoyage’s creation reflects my reasons for preferring it. Despite updating my own
                         bookmarks and shortcuts, this script is still necessary because links to WikiTravel often show
                         up in search results, blogs, etc.
