@@ -28,6 +28,7 @@ export default function Page() {
     useEffect(() => {
         const checkWidth = () => {
             setMapWidth(Math.min(960, window.innerWidth * 0.9))
+            console.log('new mapWidth ', Math.min(960, window.innerWidth * 0.9))
         }
 
         checkWidth()
@@ -40,6 +41,7 @@ export default function Page() {
     useEffect(() => {
         setIsDarkMode(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
     }, [])
+    console.log('mapWidth ', mapWidth)
 
     return (
         <Layout
@@ -52,9 +54,9 @@ export default function Page() {
                 <section style={{ marginBottom: '6rem' }}>
                     <h2>Countries I’ve been to</h2>
                     <p style={{ marginLeft: '1rem' }}>
-                        Color-coded based on how many years it’s been since I’ve been to each one
+                        Color-coded based on how many years it’s been since I’ve traveled to each one
                     </p>
-                    <div className="row travel-map">
+                    <div className="row" style={{ minHeight: `${mapWidth / 1.7}px` }}>
                         <Chart
                             chartType="GeoChart"
                             data={countryData}
