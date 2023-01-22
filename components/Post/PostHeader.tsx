@@ -3,7 +3,7 @@ import PostTitle from './PostTitle'
 
 type Props = {
     title: string
-    coverImage: string
+    coverImage?: string
     date: string
 }
 

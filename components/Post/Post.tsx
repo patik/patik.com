@@ -17,8 +17,7 @@ type Props = {
 }
 
 export default function Post({ post, isFallback }: Props) {
-    const { title, coverImage, date, content, slug, ogImage, excerpt, unpublished, imagesMetadata, dsq_thread_id } =
-        post
+    const { title, date, content, slug, ogImage, excerpt, unpublished, imagesMetadata, dsq_thread_id } = post
 
     console.log('dsq_thread_id ', dsq_thread_id)
 
@@ -29,25 +28,21 @@ export default function Post({ post, isFallback }: Props) {
                 {isFallback ? (
                     <PostTitle>Loading…</PostTitle>
                 ) : (
-                    <>
-                        <article className="mb-32">
-                            <Head>
-                                <title>{`${title} | ${description}`}</title>
-                                <Meta
-                                    siteName={description}
-                                    image={ogImage}
-                                    description={excerpt ?? ''}
-                                    title={title}
-                                    url={`${homepage}/${slug}`}
-                                />
-                            </Head>
-                            <PostHeader title={title} coverImage={coverImage} date={date} />
-                            <PostBody content={content} slug={slug} imagesMetadata={imagesMetadata} />
-                            {dsq_thread_id ? (
-                                <Discussion dsqThreadId={dsq_thread_id} slug={slug} title={title} />
-                            ) : null}
-                        </article>
-                    </>
+                    <article className="mb-32 max-w-3xl">
+                        <Head>
+                            <title>{`${title} | ${description}`}</title>
+                            <Meta
+                                siteName={description}
+                                image={ogImage}
+                                description={excerpt ?? ''}
+                                title={title}
+                                url={`${homepage}/${slug}`}
+                            />
+                        </Head>
+                        <PostHeader title={title} date={date} />
+                        <PostBody content={content} slug={slug} imagesMetadata={imagesMetadata} />
+                        {dsq_thread_id ? <Discussion dsqThreadId={dsq_thread_id} slug={slug} title={title} /> : null}
+                    </article>
                 )}
             </Container>
         </Layout>
