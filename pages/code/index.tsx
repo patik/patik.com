@@ -1,6 +1,9 @@
 import Image from 'next/image'
-import Link from 'next/link'
-import imgConsoleBlogLogo from '../../public/images/home-console-blog-logo.png'
+import imgCodeLogo from '../../public/images/home-console-blog-logo.png'
+import imgHomeConsoleBlogLogo from '../../public/images/icons/blog/ios/AppIcon@3x.png'
+import imgKindjsLogo from '../../public/images/icons/kindjs/ios/AppIcon@3x.png'
+import imgWithinViewportFLogo from '../../public/images/icons/within-viewport/ios/AppIcon@3x.png'
+import imgDoFLogo from '../../public/images/icons/depth-of-field/ios/AppIcon@3x.png'
 import imgGithubLogo from '../../public/images/home-github-logo.png'
 import Layout from '../../src/layout/Layout'
 
@@ -15,56 +18,47 @@ export default function Page() {
                 </div>
 
                 <section>
-                    <h2>Blog &amp; Demos</h2>
                     <div className="row button-link-list">
                         <div className="small-12 medium-6 columns">
-                            <a href="/blog/">
-                                <Image src={imgConsoleBlogLogo} alt="JavaScript code" title="console.blog()" />
-                                <span>
-                                    console.
-                                    <wbr />
-                                    blog()
-                                </span>
+                            <a href="https://patik.github.io/within-viewport/">
+                                <Image src={imgWithinViewportFLogo} alt="" />
+                                <span>Within Viewport</span>
+                            </a>
+                        </div>
+                        <div className="small-12 medium-6 columns">
+                            <a href="/dof/">
+                                <Image src={imgDoFLogo} alt="" />
+                                <span>Depth-of-Field Calculator</span>
                             </a>
                         </div>
                     </div>
+
                     <div className="row button-link-list">
                         <div className="small-12 medium-6 columns">
-                            <a href="https://patik.github.io/console.log-wrapper/">
-                                <Image
-                                    src={imgConsoleBlogLogo}
-                                    alt="JavaScript code"
-                                    title="Cross-browser console logging"
-                                />
-                                <span>Cross-browser console logging</span>
-                            </a>
-                        </div>
-                        <div className="small-12 medium-6 columns">
                             <a href="https://github.com/patik/kind/">
-                                <Image
-                                    src={imgConsoleBlogLogo}
-                                    alt="JavaScript code"
-                                    title="Kind type-check for JavaScript"
-                                />
+                                <Image src={imgKindjsLogo} alt="" />
                                 <span>Kind.js precise type-checker</span>
                             </a>
                         </div>
+                        <div className="small-12 medium-6 columns">
+                            <a href="https://patik.github.io/console.log-wrapper/">
+                                <Image src={imgCodeLogo} alt="" />
+                                <span>Cross-browser console logging</span>
+                            </a>
+                        </div>
                     </div>
-                </section>
 
-                <section>
-                    <h2>Creations</h2>
                     <div className="row button-link-list">
                         <div className="small-12 medium-6 columns">
                             <a href="https://github.com/patik">
-                                <Image src={imgGithubLogo} alt="GitHub text logo" title="GitHub" />
+                                <Image src={imgGithubLogo} alt="" />
                                 <span>GitHub</span>
                             </a>
                         </div>
                         <div className="small-12 medium-6 columns">
-                            <a href="https://patik.github.io/within-viewport/">
-                                <Image src={imgConsoleBlogLogo} alt="JavaScript code" title="Within Viewport" />
-                                <span>Within Viewport</span>
+                            <a href="/blog/">
+                                <Image src={imgHomeConsoleBlogLogo} alt="" />
+                                <span>Blog</span>
                             </a>
                         </div>
                     </div>

@@ -107,7 +107,7 @@ export default function Page() {
                         <div className="small-12 medium-6 columns">
                             <ul>
                                 <li>
-                                    My blog, <a href="/blog/">console.blog()</a>
+                                    My <a href="/blog/">blog</a>
                                 </li>
                                 <li>
                                     I gave an <a href="https://igniteshow.com/">Ignite talk</a> at{' '}

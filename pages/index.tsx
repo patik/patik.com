@@ -2,7 +2,9 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import imgHomeBritainBenelux from '../public/images/home-britain-benelux.jpg'
-import imgHomeConsoleBlogLogo from '../public/images/home-console-blog-logo.png'
+import imgHomeCodeLogo from '../public/images/home-console-blog-logo.png'
+import imgHomeConsoleBlogLogo from '../public/images/icons/blog/ios/AppIcon@3x.png'
+import imgHomeDoFLogo from '../public/images/icons/depth-of-field/ios/AppIcon@3x.png'
 import imgHomeGithubLogo from '../public/images/home-github-logo.png'
 import imgHomeMastodonAvatar from '../public/images/home-mastodon-avatar.png'
 import imgHomeTravelAll from '../public/images/home-travel-all.jpg'
@@ -121,33 +123,25 @@ export default function Home() {
                     <div className="cp-row button-link-list">
                         <div className="cp-item">
                             <a href="https://github.com/patik">
-                                <Image src={imgHomeGithubLogo} alt="GitHub text logo" title="GitHub" />
+                                <Image src={imgHomeGithubLogo} alt="" title="GitHub" />
                                 <span>GitHub</span>
                             </a>
                         </div>
                         <div className="cp-item">
                             <Link href="/code/">
-                                <Image src={imgHomeConsoleBlogLogo} alt="JavaScript code" title="Code &amp; projects" />
+                                <Image src={imgHomeCodeLogo} alt="" title="Code &amp; projects" />
                                 <span>Code &amp; projects</span>
                             </Link>
                         </div>
                         <div className="cp-item">
                             <a href="/blog/">
-                                <Image src={imgHomeConsoleBlogLogo} alt="JavaScript code" title="console.blog()" />
-                                <span>
-                                    console.
-                                    <wbr />
-                                    blog()
-                                </span>
+                                <Image src={imgHomeConsoleBlogLogo} alt="" title="Blog" />
+                                <span>Blog</span>
                             </a>
                         </div>
                         <div className="cp-item">
                             <a href="/dof/">
-                                <Image
-                                    src={imgHomeConsoleBlogLogo}
-                                    alt="JavaScript code"
-                                    title="Depth of Field Calculator"
-                                />
+                                <Image src={imgHomeDoFLogo} alt="" title="Depth of Field Calculator" />
                                 <span>Depth of Field Calculator</span>
                             </a>
                         </div>

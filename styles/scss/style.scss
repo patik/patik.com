@@ -709,3 +709,48 @@ img[src^='/gam.php?'] {
         }
     }
 }
+
+nav.main-nav {
+    display: flex;
+    background-color: #333;
+    margin: 0 auto;
+    max-width: 980px;
+
+    h1 {
+        // font-family: $font-sans;
+        flex-grow: 1;
+        margin: 4px 0 4px 16px;
+
+        @media (max-width: 980px) {
+            margin-left: 24px;
+        }
+
+        a {
+            color: #fff;
+            font-size: 1em;
+
+            @media (max-width: 400px) {
+                font-size: 0.6em;
+            }
+        }
+    }
+
+    ul {
+        display: flex;
+        flex-shrink: 1;
+        margin-bottom: 0;
+        margin-right: 16px;
+
+        li {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            list-style: none;
+            margin-left: 16px;
+
+            a {
+                color: #fff;
+            }
+        }
+    }
+}

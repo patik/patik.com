@@ -4,9 +4,9 @@
     "description": "Personal web site of Craig Patik",
     "private": true,
     "scripts": {
-        "dev": "next dev",
         "build": "next build && next export",
-        "start": "next build && next start",
+        "start": "next dev",
+        "start:prod": "next build && next start",
         "lint": "next lint && yarn tsc --noEmit",
         "test": "echo \"Error: no test specified\" && exit 1",
         "clean": "git clean -fdx"
