@@ -1,9 +1,9 @@
 import Image from 'next/image'
-import imgCodeLogo from '../../public/images/home-console-blog-logo.png'
-import imgHomeConsoleBlogLogo from '../../public/images/icons/blog/ios/AppIcon@3x.png'
+import imgBlogLogo from '../../public/images/icons/blog/ios/AppIcon@3x.png'
 import imgKindjsLogo from '../../public/images/icons/kindjs/ios/AppIcon@3x.png'
 import imgWithinViewportFLogo from '../../public/images/icons/within-viewport/ios/AppIcon@3x.png'
 import imgDoFLogo from '../../public/images/icons/depth-of-field/ios/AppIcon@3x.png'
+import imgConsoleLogLogo from '../../public/images/icons/console-log/ios/AppIcon@3x.png'
 import imgGithubLogo from '../../public/images/home-github-logo.png'
 import Layout from '../../src/layout/Layout'
 
@@ -18,46 +18,42 @@ export default function Page() {
                 </div>
 
                 <section>
-                    <div className="row button-link-list">
-                        <div className="small-12 medium-6 columns">
+                    <div className="cp-row button-link-list">
+                        <div className="cp-item-half">
                             <a href="https://patik.github.io/within-viewport/">
-                                <Image src={imgWithinViewportFLogo} alt="" />
+                                <Image src={imgWithinViewportFLogo} width={96} height={96} alt="" />
                                 <span>Within Viewport</span>
                             </a>
                         </div>
-                        <div className="small-12 medium-6 columns">
+                        <div className="cp-item-half">
                             <a href="/dof/">
-                                <Image src={imgDoFLogo} alt="" />
+                                <Image src={imgDoFLogo} width={96} height={96} alt="" />
                                 <span>Depth-of-Field Calculator</span>
                             </a>
                         </div>
-                    </div>
 
-                    <div className="row button-link-list">
-                        <div className="small-12 medium-6 columns">
+                        <div className="cp-item-half">
                             <a href="https://github.com/patik/kind/">
-                                <Image src={imgKindjsLogo} alt="" />
+                                <Image src={imgKindjsLogo} width={96} height={96} alt="" />
                                 <span>Kind.js precise type-checker</span>
                             </a>
                         </div>
-                        <div className="small-12 medium-6 columns">
+                        <div className="cp-item-half">
                             <a href="https://patik.github.io/console.log-wrapper/">
-                                <Image src={imgCodeLogo} alt="" />
+                                <Image src={imgConsoleLogLogo} width={96} height={96} alt="" />
                                 <span>Cross-browser console logging</span>
                             </a>
                         </div>
-                    </div>
 
-                    <div className="row button-link-list">
-                        <div className="small-12 medium-6 columns">
+                        <div className="cp-item-half">
                             <a href="https://github.com/patik">
-                                <Image src={imgGithubLogo} alt="" />
+                                <Image src={imgGithubLogo} width={96} height={96} alt="" />
                                 <span>GitHub</span>
                             </a>
                         </div>
-                        <div className="small-12 medium-6 columns">
+                        <div className="cp-item-half">
                             <a href="/blog/">
-                                <Image src={imgHomeConsoleBlogLogo} alt="" />
+                                <Image src={imgBlogLogo} width={96} height={96} alt="" />
                                 <span>Blog</span>
                             </a>
                         </div>

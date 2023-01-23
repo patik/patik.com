@@ -100,18 +100,6 @@ code {
     }
 }
 
-.top-bar {
-    margin: 0 auto;
-    max-width: 980px;
-    -webkit-font-smoothing: antialiased;
-
-    &,
-    & h1,
-    & li {
-        font-family: $font-sans;
-    }
-}
-
 p,
 li {
     font-family: $font-serif;
@@ -648,13 +636,13 @@ img[src^='/gam.php?'] {
     }
 }
 
-@media (min-width: 740px) {
-    // Images look funny (too short) around this size
-    .travel-link-list a {
-        // height: 284px;
-        // max-height: 284px;
-    }
-}
+// @media (min-width: 740px) {
+//     // Images look funny (too short) around this size
+//     .travel-link-list a {
+//         // height: 284px;
+//         // max-height: 284px;
+//     }
+// }
 
 // DEFAULT DESKTOP
 // ---------------
@@ -694,7 +682,7 @@ img[src^='/gam.php?'] {
     margin-left: 1rem;
     margin-right: 1rem;
 
-    .cp-item {
+    .cp-item-third {
         flex-basis: 33%;
         max-width: 33%;
 
@@ -707,14 +695,55 @@ img[src^='/gam.php?'] {
             flex-basis: 100%;
             max-width: 100%;
         }
+
+        a img {
+            border-radius: 3px;
+        }
+    }
+
+    .cp-item-half {
+        flex-basis: 50%;
+        max-width: 50%;
+
+        img {
+            width: 96px;
+            height: 96px;
+        }
+
+        @media (max-width: #{$small-screen}) {
+            flex-basis: 100%;
+            max-width: 100%;
+        }
+    }
+
+    &.button-link-list {
+        .cp-item-half,
+        .cp-item-third {
+            margin-bottom: 1em;
+
+            a {
+                display: flex;
+                align-items: center;
+
+                img {
+                    border-radius: 3px;
+                }
+
+                span {
+                    flex-grow: 1;
+                    margin-left: 16px;
+                }
+            }
+        }
     }
 }
 
-nav.main-nav {
+.main-nav {
     display: flex;
     background-color: #333;
     margin: 0 auto;
     max-width: 980px;
+    -webkit-font-smoothing: antialiased;
 
     h1 {
         // font-family: $font-sans;
