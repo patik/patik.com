@@ -3,7 +3,7 @@ import imgLinkAmazon from '../../../public/images/peru-argentina-link-amazon.jpg
 import imgLinkColonia from '../../../public/images/peru-argentina-link-colonia.jpg'
 import imgLinkCusco from '../../../public/images/peru-argentina-link-cusco.jpg'
 import imgMapSmall from '../../../public/images/peru-argentina-map-small.png'
-import Layout from '../../../src/layout/Layout'
+import Layout from '../../../src/components/Layout'
 
 export default function Page() {
     return (

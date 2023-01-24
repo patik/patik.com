@@ -6,7 +6,7 @@ import imgLiverpoolLink from '../../../public/images/britain-benelux-liverpool-l
 import imgLondonLink from '../../../public/images/britain-benelux-london-link.jpg'
 import imgNetherlandsLink from '../../../public/images/britain-benelux-netherlands-link.jpg'
 import imgOverviewMap from '../../../public/images/britain-benelux-overview-map-small.jpg'
-import Layout from '../../../src/layout/Layout'
+import Layout from '../../../src/components/Layout'
 
 export default function Page() {
     return (

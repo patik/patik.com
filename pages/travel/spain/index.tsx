@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import itineraryMapSmall from '../../../public/images/spain-itinerary-map-small.jpg'
 import linkWorlCup from '../../../public/images/spain-link-world-cup.jpg'
-import Layout from '../../../src/layout/Layout'
+import Layout from '../../../src/components/Layout'
 
 export default function Page() {
     return (

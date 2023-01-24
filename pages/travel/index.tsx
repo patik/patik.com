@@ -1,7 +1,5 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
-import { Chart } from 'react-google-charts'
 import imgTravelBritainbenelux from '../../public/images/travel-britain-benelux.jpg'
 import imgTravelFrance from '../../public/images/travel-france.jpg'
 import imgTravelGermany from '../../public/images/travel-germany.jpg'
@@ -10,8 +8,9 @@ import imgTravelParis from '../../public/images/travel-paris.jpg'
 import imgTravelPeruargentina from '../../public/images/travel-peru-argentina.jpg'
 import imgTravelSpain from '../../public/images/travel-spain.jpg'
 import imgTravelTurkey from '../../public/images/travel-turkey.jpg'
+import Layout from '../../src/components/Layout'
+import WorldMap from '../../src/components/WorldMap'
 import countries from '../../src/countries.json'
-import Layout from '../../src/layout/Layout'
 
 const currentYear = new Date().getFullYear()
 
@@ -22,27 +21,6 @@ countries.visited.forEach((country) => {
 })
 
 export default function Page() {
-    const [mapWidth, setMapWidth] = useState(300)
-    const [isDarkMode, setIsDarkMode] = useState(true)
-
-    useEffect(() => {
-        const checkWidth = () => {
-            setMapWidth(Math.min(960, window.innerWidth * 0.9))
-            console.log('new mapWidth ', Math.min(960, window.innerWidth * 0.9))
-        }
-
-        checkWidth()
-
-        window.addEventListener('resize', checkWidth)
-
-        return () => window.removeEventListener('resize', checkWidth)
-    }, [])
-
-    useEffect(() => {
-        setIsDarkMode(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
-    }, [])
-    console.log('mapWidth ', mapWidth)
-
     return (
         <Layout
             title="Travel"
@@ -56,24 +34,7 @@ export default function Page() {
                     <p style={{ marginLeft: '1rem' }}>
                         Color-coded based on how many years it’s been since I’ve traveled to each one
                     </p>
-                    <div className="row" style={{ minHeight: `${mapWidth / 1.7}px` }}>
-                        <Chart
-                            chartType="GeoChart"
-                            data={countryData}
-                            legendToggle
-                            options={{
-                                // https://developers-dot-devsite-v2-prod.appspot.com/chart/interactive/docs/gallery/geochart
-                                colorAxis: {
-                                    colors: ['#ff0000', '#0000ff'],
-                                },
-                                backgroundColor: isDarkMode ? '#222222' : '#ffffff',
-                                datalessRegionColor: '#666666',
-                                defaultColor: '#f5f5f5',
-                                keepAspectRatio: true,
-                                width: mapWidth,
-                            }}
-                        />
-                    </div>
+                    <WorldMap className="row" />
                 </section>
 
                 <section>

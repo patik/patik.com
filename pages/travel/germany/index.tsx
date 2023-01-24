@@ -2,7 +2,7 @@ import Image from 'next/image'
 import imgGermanyBavariaLink from '../../../public/images/germany-bavaria-link.jpg'
 import imgGermanyBerlinLink from '../../../public/images/germany-berlin-link.jpg'
 import imgGermanyAustriaLink from '../../../public/images/germany-austria-link.jpg'
-import Layout from '../../../src/layout/Layout'
+import Layout from '../../../src/components/Layout'
 
 export default function Page() {
     return (

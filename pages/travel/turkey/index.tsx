@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import Layout from '../../../src/layout/Layout'
+import Layout from '../../../src/components/Layout'
 import imgLinkCappadocia from '../../../public/images/turkey-link-cappadocia.jpg'
 import imgLinkCirali from '../../../public/images/turkey-link-cirali.jpg'
 import imgLinkEphesus from '../../../public/images/turkey-link-ephesus.jpg'

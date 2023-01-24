@@ -1,4 +1,4 @@
-import Layout from '../../../src/layout/Layout'
+import Layout from '../../../src/components/Layout'
 import Image from 'next/image'
 import athensLink from '../../../public/images/greece-athens-link.jpg'
 import santoriniLink from '../../../public/images/greece-santorini-link.jpg'

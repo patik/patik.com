@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Layout from '../../src/layout/Layout'
+import Layout from '../../src/components/Layout'
 
 export default function Page() {
     return (

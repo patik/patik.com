@@ -5,7 +5,7 @@ import imgWithinViewportFLogo from '../../public/images/icons/within-viewport/io
 import imgDoFLogo from '../../public/images/icons/depth-of-field/ios/AppIcon@3x.png'
 import imgConsoleLogLogo from '../../public/images/icons/console-log/ios/AppIcon@3x.png'
 import imgGithubLogo from '../../public/images/home-github-logo.png'
-import Layout from '../../src/layout/Layout'
+import Layout from '../../src/components/Layout'
 
 export default function Page() {
     return (

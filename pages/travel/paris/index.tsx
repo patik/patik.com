@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import Layout from '../../../src/layout/Layout'
+import Layout from '../../../src/components/Layout'
 import parisImg from '../../../public/images/paris-photos-link.jpg'
 
 export default function Page() {

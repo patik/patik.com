@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import photosLink from '../../../public/images/france-photos-link.jpg'
-import Layout from '../../../src/layout/Layout'
+import Layout from '../../../src/components/Layout'
 
 export default function Page() {
     return (

@@ -783,3 +783,25 @@ img[src^='/gam.php?'] {
         }
     }
 }
+
+// Large world map on the Travel index page
+
+$MY_MAX_WIDTH: 960;
+$GOOGLE_DEFAULT_WIDTH: 556;
+$GOOGLE_DEFAULT_HEIGHT: 347;
+
+@function map-height($width) {
+    @return (($width * $GOOGLE_DEFAULT_HEIGHT) / $GOOGLE_DEFAULT_WIDTH);
+}
+
+.world-map-container {
+    width: 90vw;
+    min-width: 90vw;
+    height: #{map-height(90)}vw;
+    min-height: #{map-height(90)}vw;
+
+    @media (min-width: 960px) {
+        max-width: #{$MY_MAX_WIDTH}px;
+        max-height: #{((960 * 347) / 556)}px;
+    }
+}

@@ -3,8 +3,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import imgHomeBritainBenelux from '../public/images/home-britain-benelux.jpg'
 import imgHomeCodeLogo from '../public/images/home-console-blog-logo.png'
-import imgHomeConsoleBlogLogo from '../public/images/icons/blog/ios/AppIcon@3x.png'
-import imgHomeDoFLogo from '../public/images/icons/depth-of-field/ios/AppIcon@3x.png'
 import imgHomeGithubLogo from '../public/images/home-github-logo.png'
 import imgHomeMastodonAvatar from '../public/images/home-mastodon-avatar.png'
 import imgHomeTravelAll from '../public/images/home-travel-all.jpg'
@@ -14,9 +12,11 @@ import imgHomeTravelPeruArgentina from '../public/images/home-travel-peru-argent
 import imgHomeTravelSpain from '../public/images/home-travel-spain.jpg'
 import imgHomeTravelTurkey from '../public/images/home-travel-turkey.jpg'
 import imgHomeTwitterCraigpatikAvatar from '../public/images/home-twitter-craigpatik-avatar.jpg'
-import imgTravelParis from '../public/images/travel-paris.jpg'
-import Layout from '../src/layout/Layout'
+import imgHomeConsoleBlogLogo from '../public/images/icons/blog/ios/AppIcon@3x.png'
+import imgHomeDoFLogo from '../public/images/icons/depth-of-field/ios/AppIcon@3x.png'
 import imgWithinViewportFLogo from '../public/images/icons/within-viewport/ios/AppIcon@3x.png'
+import imgTravelParis from '../public/images/travel-paris.jpg'
+import Layout from '../src/components/Layout'
 
 export default function Home() {
     return (
@@ -191,7 +191,7 @@ export default function Home() {
                             <a rel="me" href="https://twitter.com/craigpatik">
                                 <Image
                                     src={imgHomeTwitterCraigpatikAvatar}
-                                    alt="Twitter avatar; Craig riding on a camel"
+                                    alt="Craig riding on a camel"
                                     title="@craigpatik"
                                     width={48}
                                     height={48}
@@ -203,7 +203,7 @@ export default function Home() {
                             <a rel="me" href="https://mastodon.online/@craigpatik">
                                 <Image
                                     src={imgHomeMastodonAvatar}
-                                    alt="Mastodon avatar; Craig in front of a street mural in Northern Ireland"
+                                    alt="Craig in front of a street mural in Northern Ireland"
                                     title="@craigpatik@mastodon.online"
                                     width={48}
                                     height={48}
@@ -215,7 +215,7 @@ export default function Home() {
                             <a rel="me" href="https://www.facebook.com/craigpatik">
                                 <Image
                                     src={imgHomeTwitterCraigpatikAvatar}
-                                    alt="Facebook avatar; Craig riding on a camel"
+                                    alt="Craig riding on a camel"
                                     title="Facebook profile"
                                     width={48}
                                     height={48}
