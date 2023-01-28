@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import NetherlandsImage from '../../../public/images/britain-benelux-netherlands-link.jpg'
 import OverviewMap from '../../../public/images/britain-benelux-overview-map-small.jpg'
-import IntroFormatted from '../../../src/components/IntroFormatted'
+import IntroText from '../../../src/components/IntroText'
 import Layout from '../../../src/components/Layout'
 import TravelLinkList from '../../../src/components/TravelLinkList'
 
@@ -11,7 +11,7 @@ export default function Page() {
         <Layout title="Netherlands" keywords={['Netherlands', 'Amsterdam', 'Europe', 'travel']}>
             <h1>The Netherlands</h1>
 
-            <IntroFormatted>August 2012</IntroFormatted>
+            <IntroText>August 2012</IntroText>
 
             <section>
                 <h2>Photos and Video</h2>

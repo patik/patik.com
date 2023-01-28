@@ -6,13 +6,8 @@
 @import '_foundation-overrides';
 
 // Foundation Components
-@import 'foundation/components/global',
-    //
-    'foundation/components/grid-5',
-    //
-    'foundation/components/visibility',
-    //
-    'foundation/components/block-grid',
-    //
-    'foundation/components/type',
-    'foundation/components/buttons';
+@import 'foundation/components/global';
+@import 'foundation/components/grid-5';
+@import 'foundation/components/visibility';
+@import 'foundation/components/type';
+@import 'foundation/components/buttons';

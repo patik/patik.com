@@ -27,8 +27,10 @@ export default function Home() {
             </Head>
             <div role="main">
                 <IntroFormatted>
-                    I’m <Link href="/about">Craig Patik</Link>, a traveler, web developer, and Arsenal fan based in
-                    Munich, Germany.
+                    <p>
+                        I’m <Link href="/about">Craig Patik</Link>, a traveler, web developer, and Arsenal fan based in
+                        Munich, Germany.
+                    </p>
                 </IntroFormatted>
 
                 <section>
