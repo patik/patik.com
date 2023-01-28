@@ -1,18 +1,17 @@
-import BrugesImage from '../../public/images/britain-benelux-bruges-link.jpg'
-import NetherlandsImage from '../../public/images/britain-benelux-netherlands-link.jpg'
-import BritainbeneluxImage from '../../public/images/travel-britain-benelux.jpg'
-import FranceImage from '../../public/images/travel-france.jpg'
-import GermanyImage from '../../public/images/travel-germany.jpg'
-import GreeceImage from '../../public/images/travel-greece.jpg'
-import ParisImage from '../../public/images/travel-paris.jpg'
-import PeruArgentinaImage from '../../public/images/travel-peru-argentina.jpg'
-import SpainImage from '../../public/images/travel-spain.jpg'
-import TurkeyImage from '../../public/images/travel-turkey.jpg'
-import IntroText from '../../src/components/IntroText'
-import Layout from '../../src/components/Layout'
-import TravelLinkList from '../../src/components/TravelLinkList'
-import WorldMap from '../../src/components/WorldMap'
-import countries from '../../src/countries.json'
+import BrugesImage from '../public/images/britain-benelux-bruges-link.jpg'
+import NetherlandsImage from '../public/images/britain-benelux-netherlands-link.jpg'
+import BritainbeneluxImage from '../public/images/travel-britain-benelux.jpg'
+import FranceImage from '../public/images/travel-france.jpg'
+import GermanyImage from '../public/images/travel-germany.jpg'
+import GreeceImage from '../public/images/travel-greece.jpg'
+import ParisImage from '../public/images/travel-paris.jpg'
+import PeruArgentinaImage from '../public/images/travel-peru-argentina.jpg'
+import SpainImage from '../public/images/travel-spain.jpg'
+import TurkeyImage from '../public/images/travel-turkey.jpg'
+import Layout from '../src/components/Layout'
+import TravelLinkList from '../src/components/TravelLinkList'
+import WorldMap from '../src/components/WorldMap'
+import countries from '../src/countries.json'
 
 const currentYear = new Date().getFullYear()
 
@@ -35,17 +34,17 @@ export default function Page() {
                 <p style={{ marginLeft: '1rem' }}>
                     Color-coded based on how many years it’s been since I’ve traveled to each one
                 </p>
-                <WorldMap className="row" />
+                <WorldMap />
             </section>
 
             <section>
                 <h2>Photos</h2>
-                <IntroText>
+                <p>
                     <em>
                         Not shown: many notable trips since 2012, including Southeast Asia, Eastern Europe, and much
                         more of Europe
                     </em>
-                </IntroText>
+                </p>
 
                 <TravelLinkList
                     items={[

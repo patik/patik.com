@@ -1,19 +1,18 @@
 import Image from 'next/image'
-import imgGithubLogo from '../../public/images/home-github-logo.png'
-import imgBlogLogo from '../../public/images/icons/blog/ios/AppIcon@3x.png'
-import imgConsoleLogLogo from '../../public/images/icons/console-log/ios/AppIcon@3x.png'
-import imgDoFLogo from '../../public/images/icons/depth-of-field/ios/AppIcon@3x.png'
-import imgKindjsLogo from '../../public/images/icons/kindjs/ios/AppIcon@3x.png'
-import imgWithinViewportFLogo from '../../public/images/icons/within-viewport/ios/AppIcon@3x.png'
-import IntroFormatted from '../../src/components/IntroFormatted'
-import Layout from '../../src/components/Layout'
+import imgGithubLogo from '../public/images/home-github-logo.png'
+import imgBlogLogo from '../public/images/icons/blog/ios/AppIcon@3x.png'
+import imgConsoleLogLogo from '../public/images/icons/console-log/ios/AppIcon@3x.png'
+import imgDoFLogo from '../public/images/icons/depth-of-field/ios/AppIcon@3x.png'
+import imgKindjsLogo from '../public/images/icons/kindjs/ios/AppIcon@3x.png'
+import imgWithinViewportFLogo from '../public/images/icons/within-viewport/ios/AppIcon@3x.png'
+import Layout from '../src/components/Layout'
 
 export default function Page() {
     return (
         <Layout title="Code &amp; Projects">
             <h1>Code &amp; Projects</h1>
 
-            <IntroFormatted>I work mostly in JavaScript and user interfaces</IntroFormatted>
+            <p>I work mostly in JavaScript and user interfaces</p>
 
             <section>
                 <div className="cp-row button-link-list">

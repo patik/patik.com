@@ -1,12 +1,13 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import EdinburghImage from '../../../public/images/britain-benelux-edinburgh-link.jpg'
-import LiverpoolImage from '../../../public/images/britain-benelux-liverpool-link.jpg'
-import LondonImage from '../../../public/images/britain-benelux-london-link.jpg'
-import OverviewMap from '../../../public/images/britain-benelux-overview-map-small.jpg'
-import IntroFormatted from '../../../src/components/IntroFormatted'
-import Layout from '../../../src/components/Layout'
-import TravelLinkList from '../../../src/components/TravelLinkList'
+import BrugesImage from '../../public/images/britain-benelux-bruges-link.jpg'
+import EdinburghImage from '../../public/images/britain-benelux-edinburgh-link.jpg'
+import LiverpoolImage from '../../public/images/britain-benelux-liverpool-link.jpg'
+import LondonImage from '../../public/images/britain-benelux-london-link.jpg'
+import NetherlandsImage from '../../public/images/britain-benelux-netherlands-link.jpg'
+import OverviewMap from '../../public/images/britain-benelux-overview-map-small.jpg'
+import Layout from '../../src/components/Layout'
+import TravelLinkList from '../../src/components/TravelLinkList'
 
 export default function Page() {
     return (
@@ -29,13 +30,27 @@ export default function Page() {
         >
             <h1>London, Amsterdam, &amp; Bruges</h1>
 
-            <IntroFormatted>August 2012</IntroFormatted>
+            <p>August 2012</p>
 
             <section>
                 <h2>Photos and Video</h2>
 
                 <TravelLinkList
                     items={[
+                        {
+                            title: 'Netherlands',
+                            className: 'bg-netherlands-amsterdam',
+                            url: 'https://get.google.com/albumarchive/116513687533678150554/album/AF1QipOD5tTxPTmr3KjxeR-K-k6xu6YhjuasQDyd9naX',
+                            imageSrc: NetherlandsImage,
+                            imageAlt: 'Westerkerk overlooking an Amsterdam canal',
+                        },
+                        {
+                            title: 'Bruges',
+                            className: 'bg-belgium-bruges',
+                            url: 'https://get.google.com/albumarchive/116513687533678150554/album/AF1QipN-4ZhzSVdq3x0O8opTTZA3hYiuMZIMA_mtpD1D',
+                            imageSrc: BrugesImage,
+                            imageAlt: 'Windmill in the Belgian countryside',
+                        },
                         {
                             title: 'Edinburgh',
                             className: 'bg-britain-edinburgh',
@@ -65,17 +80,19 @@ export default function Page() {
                 <h2>Itinerary</h2>
                 <ul>
                     <li>
-                        <Link href="/travel/netherlands/">Netherlands</Link>
+                        Netherlands
+                        <ul>
+                            <li>Amsterdam</li>
+                            <li>Haarlem</li>
+                            <li>Leiden</li>
+                            <li>Edam</li>
+                        </ul>
                     </li>
-                    <li>
-                        <Link href="/travel/belgium/">Bruges</Link>
-                    </li>
+                    <li>Bruges</li>
                     <li>Eurostar train to London, via Paris</li>
+                    <li>Edinburgh, Scotland</li>
                     <li>
-                        <strong>Edinburgh, Scotland</strong>
-                    </li>
-                    <li>
-                        <strong>London</strong>
+                        London
                         <ul>
                             <li>Highclere Castle</li>
                             <li>
@@ -90,7 +107,7 @@ export default function Page() {
                         </ul>
                     </li>
                     <li>
-                        <strong>Liverpool</strong>
+                        Liverpool
                         <ul>
                             <li>Beatles Weekend</li>
                             <li>Liverpool vs Manchester City football match</li>

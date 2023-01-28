@@ -1,11 +1,10 @@
 import Image from 'next/image'
-import AmazonImage from '../../../public/images/peru-argentina-link-amazon.jpg'
-import ColoniaImage from '../../../public/images/peru-argentina-link-colonia.jpg'
-import CuscoImage from '../../../public/images/peru-argentina-link-cusco.jpg'
-import MapSmall from '../../../public/images/peru-argentina-map-small.png'
-import IntroFormatted from '../../../src/components/IntroFormatted'
-import Layout from '../../../src/components/Layout'
-import TravelLinkList from '../../../src/components/TravelLinkList'
+import AmazonImage from '../../public/images/peru-argentina-link-amazon.jpg'
+import ColoniaImage from '../../public/images/peru-argentina-link-colonia.jpg'
+import CuscoImage from '../../public/images/peru-argentina-link-cusco.jpg'
+import MapSmall from '../../public/images/peru-argentina-map-small.png'
+import Layout from '../../src/components/Layout'
+import TravelLinkList from '../../src/components/TravelLinkList'
 
 export default function Page() {
     return (
@@ -17,10 +16,10 @@ export default function Page() {
         >
             <h1>Peru &amp; Argentina</h1>
 
-            <IntroFormatted>
+            <p>
                 Our first forage into the southern hemisphere brought us everywhere from the Amazon rainforest and Machu
                 Picchu to Europe-esque Buenos Aires and a quiet estancia.
-            </IntroFormatted>
+            </p>
 
             <section>
                 <h2>Photos and Video</h2>

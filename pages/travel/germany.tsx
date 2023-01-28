@@ -1,9 +1,8 @@
-import imgGermanyAustriaLink from '../../../public/images/germany-austria-link.jpg'
-import imgGermanyBavariaLink from '../../../public/images/germany-bavaria-link.jpg'
-import imgGermanyBerlinLink from '../../../public/images/germany-berlin-link.jpg'
-import IntroFormatted from '../../../src/components/IntroFormatted'
-import Layout from '../../../src/components/Layout'
-import TravelLinkList from '../../../src/components/TravelLinkList'
+import imgGermanyAustriaLink from '../../public/images/germany-austria-link.jpg'
+import imgGermanyBavariaLink from '../../public/images/germany-bavaria-link.jpg'
+import imgGermanyBerlinLink from '../../public/images/germany-berlin-link.jpg'
+import Layout from '../../src/components/Layout'
+import TravelLinkList from '../../src/components/TravelLinkList'
 
 export default function Page() {
     return (
@@ -30,20 +29,18 @@ export default function Page() {
         >
             <h1>Germany &amp; Austria</h1>
 
-            <IntroFormatted>
-                <p>
-                    In June/July 2008, we took a trip around Austria and Germany. Along the way we saw the Euro 2008
-                    final come to Vienna, soaked up the Sound of Music in Salzburg, and took in the solemnity of the
-                    Mauthausen-Gusen concentration camp.
-                </p>
-                <p>
-                    On to <a href="https://wikitravel.org/en/Bavaria">Bavaria</a> and Germany, we mixed munchies and{' '}
-                    <a href="https://en.wikipedia.org/wiki/Beer_stein">Maß</a> in Munich, toured through Nuremberg,
-                    walked the wall around <a href="https://wikitravel.org/en/Rothenburg_ob_der_Tauber">Rothenburg</a>,
-                    cruised up the castle-studded <a href="https://wikitravel.org/en/Rhine_Valley">Rhine</a>, and
-                    reveled in the 20th Century history of Berlin.
-                </p>
-            </IntroFormatted>
+            <p>
+                In June/July 2008, we took a trip around Austria and Germany. Along the way we saw the Euro 2008 final
+                come to Vienna, soaked up the Sound of Music in Salzburg, and took in the solemnity of the
+                Mauthausen-Gusen concentration camp.
+            </p>
+            <p>
+                On to <a href="https://wikitravel.org/en/Bavaria">Bavaria</a> and Germany, we mixed munchies and{' '}
+                <a href="https://en.wikipedia.org/wiki/Beer_stein">Maß</a> in Munich, toured through Nuremberg, walked
+                the wall around <a href="https://wikitravel.org/en/Rothenburg_ob_der_Tauber">Rothenburg</a>, cruised up
+                the castle-studded <a href="https://wikitravel.org/en/Rhine_Valley">Rhine</a>, and reveled in the 20th
+                Century history of Berlin.
+            </p>
 
             <section>
                 <h2>Photos and Video</h2>

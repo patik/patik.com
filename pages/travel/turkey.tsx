@@ -1,28 +1,25 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import CappadociaImage from '../../../public/images/turkey-link-cappadocia.jpg'
-import CiraliImage from '../../../public/images/turkey-link-cirali.jpg'
-import EphesusImage from '../../../public/images/turkey-link-ephesus.jpg'
-import IstanbulImage from '../../../public/images/turkey-link-istanbul.jpg'
-import OverviewMap from '../../../public/images/turkey-overview-map-small.jpg'
-import IntroFormatted from '../../../src/components/IntroFormatted'
-import Layout from '../../../src/components/Layout'
-import TravelLinkList from '../../../src/components/TravelLinkList'
+import CappadociaImage from '../../public/images/turkey-link-cappadocia.jpg'
+import CiraliImage from '../../public/images/turkey-link-cirali.jpg'
+import EphesusImage from '../../public/images/turkey-link-ephesus.jpg'
+import IstanbulImage from '../../public/images/turkey-link-istanbul.jpg'
+import OverviewMap from '../../public/images/turkey-overview-map-small.jpg'
+import Layout from '../../src/components/Layout'
+import TravelLinkList from '../../src/components/TravelLinkList'
 
 export default function Page() {
     return (
         <Layout title="Turkey">
             <h1>Turkey</h1>
 
-            <IntroFormatted>
-                <p>
-                    We visited Turkey in mid-July 2009 for 14 days. While the sights ranged from beautiful to amazing,
-                    we were most fond of the delicious food and wonderful people.
-                </p>
-                <p>
-                    I wrote a few <a href="https://patik.com/blog/category/turkey/">blog posts</a> about the trip.
-                </p>
-            </IntroFormatted>
+            <p>
+                We visited Turkey in mid-July 2009 for 14 days. While the sights ranged from beautiful to amazing, we
+                were most fond of the delicious food and wonderful people.
+            </p>
+            <p>
+                I wrote a few <a href="https://patik.com/blog/category/turkey/">blog posts</a> about the trip.
+            </p>
 
             <section>
                 <h2>Photos and Video</h2>

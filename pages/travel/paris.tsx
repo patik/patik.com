@@ -1,7 +1,6 @@
-import imageSrc from '../../../public/images/paris-photos-link.jpg'
-import IntroFormatted from '../../../src/components/IntroFormatted'
-import Layout from '../../../src/components/Layout'
-import TravelLinkList from '../../../src/components/TravelLinkList'
+import imageSrc from '../../public/images/paris-photos-link.jpg'
+import Layout from '../../src/components/Layout'
+import TravelLinkList from '../../src/components/TravelLinkList'
 
 export default function Page() {
     return (
@@ -13,10 +12,10 @@ export default function Page() {
         >
             <h1>Paris</h1>
 
-            <IntroFormatted>
+            <p>
                 In March 2005, we took a short trip to Paris, France. Our first self-planned and self-executed trip, we
                 revisited our first foray into Europe, got engaged, and took side trips to Chantilly and Mont St Michel.
-            </IntroFormatted>
+            </p>
 
             <section>
                 <h2>Photos</h2>

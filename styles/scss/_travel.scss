@@ -1,0 +1,492 @@
+// Make sure the charset is set appropriately @charset"UTF-8";
+@import '_foundation-overrides';
+@import 'foundation';
+@import '_mixins';
+@import '_variables';
+@import '_dark-mode';
+
+.travel-link-list {
+    a {
+        display: block;
+        float: none;
+        clear: both;
+        overflow: hidden;
+        background-color: $gray; // In case an image doesn't load, since the text is white
+        max-width: 336px; // Max width of the image files (some are 340px, but whatever)
+        position: relative;
+        border-radius: 5px;
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+        text-shadow: 3px 3px 4px black, 0 -1px 0 rgba(0, 0, 0, 0.5);
+
+        &:active,
+        &:hover,
+        &:focus {
+            text-decoration: none;
+            //box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.05) inset;
+        }
+
+        span {
+            color: white;
+            font-size: 2em;
+            font-weight: bold;
+            line-height: 1em;
+            position: absolute;
+            z-index: 3;
+        }
+
+        .image-cover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2;
+            background-color: rgba(0, 0, 0, 0.1);
+            @include transition('all 0.15s ease 0s');
+        }
+
+        &:active,
+        &:hover,
+        &:focus {
+            .image-cover {
+                background-color: rgba(0, 0, 0, 0);
+            }
+        }
+
+        img {
+            max-width: 100%;
+        }
+    }
+
+    /* -----------------------------------
+     * Travel main page
+     * -----------------------------------
+     */
+
+    .bg-travel-peru-argentina {
+        span {
+            bottom: $imgPositionOffset * 2;
+            left: $imgPositionOffset;
+        }
+    }
+
+    .bg-travel-spain {
+        span {
+            bottom: $imgPositionOffset;
+            left: $imgPositionOffset;
+        }
+    }
+
+    .bg-travel-turkey {
+        span {
+            top: 70%;
+            right: $imgPositionOffset;
+        }
+    }
+
+    .bg-travel-germany {
+        span {
+            top: $imgPositionOffset;
+            left: $imgPositionOffset;
+        }
+    }
+
+    .bg-travel-greece {
+        span {
+            bottom: $imgPositionOffset;
+            left: 0;
+            right: 0;
+            text-align: center;
+        }
+    }
+
+    .bg-travel-paris {
+        span {
+            top: $imgPositionOffset;
+            right: $imgPositionOffset * 2;
+        }
+    }
+
+    .bg-travel-france {
+        span {
+            top: $imgPositionOffset;
+            left: $imgPositionOffset;
+        }
+    }
+
+    .bg-travel-britain-benelux {
+        span {
+            top: $imgPositionOffset + 1;
+            left: $imgPositionOffset + 3;
+            text-align: left;
+        }
+    }
+
+    /* -----------------------------------
+     * Britain & Benelux
+     * -----------------------------------
+     */
+
+    .bg-netherlands-amsterdam {
+        span {
+            position: absolute;
+            bottom: 6px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    .bg-belgium-bruges {
+        span {
+            position: absolute;
+            bottom: 6px;
+            right: 16px;
+            width: 100%;
+            text-align: right;
+        }
+    }
+
+    .bg-britain-edinburgh {
+        span {
+            position: absolute;
+            bottom: 6px;
+            right: 8px;
+            width: 100%;
+            text-align: right;
+        }
+    }
+
+    .bg-britain-london {
+        span {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            text-align: center;
+            width: 100%;
+        }
+    }
+
+    .bg-britain-liverpool {
+        span {
+            position: absolute;
+            bottom: 6px;
+            left: 8px;
+            width: 100%;
+            text-align: left;
+        }
+    }
+
+    /* -----------------------------------
+     * Peru & Argentina
+     * -----------------------------------
+     */
+
+    .bg-peru-argentina-amazon {
+        span {
+            font-size: 1.5em;
+            position: absolute;
+            bottom: 6px;
+            left: 8px;
+        }
+    }
+
+    .bg-peru-argentina-cusco {
+        span {
+            position: absolute;
+            bottom: 6px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    .bg-peru-argentina-colonia {
+        span {
+            font-size: 1.5em;
+            position: absolute;
+            bottom: 6px;
+            right: 6px;
+            text-align: right;
+        }
+    }
+
+    /* -----------------------------------
+     * Spain
+     * -----------------------------------
+     */
+
+    .bg-spain-world-cup {
+        span {
+            position: absolute;
+            bottom: 6px;
+            left: 8px;
+        }
+    }
+
+    /* -----------------------------------
+     * Turkey
+     * -----------------------------------
+     */
+
+    .bg-turkey-istanbul {
+        span {
+            position: absolute;
+            bottom: 0;
+            right: 8px;
+        }
+    }
+
+    .bg-turkey-cappadocia {
+        span {
+            position: absolute;
+            top: 6px;
+            left: 6px;
+        }
+    }
+
+    .bg-turkey-cirali {
+        span {
+            position: absolute;
+            top: 6px;
+            left: 6px;
+        }
+    }
+
+    .bg-turkey-ephesus {
+        span {
+            position: absolute;
+            top: 6px;
+            right: 8px;
+        }
+    }
+
+    /* -----------------------------------
+     * Germany
+     * -----------------------------------
+     */
+
+    .bg-germany-austria {
+        span {
+            position: absolute;
+            top: 24px;
+            left: 8px;
+        }
+    }
+
+    .bg-germany-bavaria {
+        span {
+            position: absolute;
+            bottom: 16px;
+            left: 0;
+            text-align: center;
+            width: 100%;
+        }
+    }
+
+    .bg-germany-berlin {
+        span {
+            position: absolute;
+            bottom: 6px;
+            left: 12px;
+        }
+    }
+
+    /* -----------------------------------
+     * Greece
+     * -----------------------------------
+     */
+
+    .bg-greece-athens {
+        span {
+            position: absolute;
+            bottom: 6px;
+            left: 8px;
+        }
+    }
+
+    .bg-greece-sifnos {
+        span {
+            position: absolute;
+            bottom: 6px;
+            left: 0;
+            text-align: center;
+            width: 100%;
+        }
+    }
+
+    .bg-greece-santorini {
+        span {
+            position: absolute;
+            bottom: 6px;
+            right: 4px;
+        }
+    }
+
+    /* -----------------------------------
+     * France
+     * -----------------------------------
+     */
+
+    .bg-france-photos {
+        span {
+            position: absolute;
+            bottom: 6px;
+            right: 12px;
+        }
+    }
+
+    /* -----------------------------------
+     * Paris
+     * -----------------------------------
+     */
+
+    .bg-paris-photos {
+        span {
+            position: absolute;
+            bottom: 6px;
+            right: 12px;
+        }
+    }
+}
+
+// Invert the image-cover action for touch devices
+.touch .travel-link-list {
+    a {
+        .image-cover {
+            background-color: rgba(0, 0, 0, 0);
+            @include transition('background-color 0.2s ease-in');
+        }
+
+        &:active,
+        &:hover,
+        &:focus {
+            .image-cover {
+                background-color: rgba(0, 0, 0, 0.25);
+            }
+        }
+    }
+}
+
+@media (max-width: #{$medium-screen}) {
+    .travel-link-list .small-12 {
+        margin-bottom: 1em;
+    }
+}
+
+.travel-map {
+    text-align: center;
+
+    img {
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+        @include transition('all 0.15s ease 0s');
+
+        &:hover {
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+        }
+    }
+}
+
+// Bigger than phone
+// ---------------------
+@media #{$tiny} {
+    .travel-link-list {
+        .bg-peru-argentina-amazon {
+            span {
+                font-size: 2em;
+            }
+        }
+
+        .bg-peru-argentina-colonia {
+            span {
+                font-size: 2em;
+            }
+        }
+
+        .bg-greece-santorini {
+            span {
+                right: 12px;
+            }
+        }
+    }
+}
+
+// PORTRAIT TABLET AND UP
+// ----------------------------------
+
+@media #{$small} {
+    // 600px and up
+    .travel-link-list {
+        a span {
+            font-size: 3em;
+        }
+
+        .bg-peru-argentina-amazon {
+            span {
+                font-size: 3em;
+            }
+        }
+
+        .bg-peru-argentina-colonia {
+            span {
+                font-size: 2.8em;
+            }
+        }
+    }
+}
+
+// @media (min-width: 740px) {
+//     // Images look funny (too short) around this size
+//     .travel-link-list a {
+//         // height: 284px;
+//         // max-height: 284px;
+//     }
+// }
+
+// DEFAULT DESKTOP
+// ---------------
+@media #{$medium} {
+    .travel-link-list {
+        & > div {
+            margin-bottom: 2%;
+            border-radius: 4px;
+        }
+    }
+}
+
+.cp-row {
+    &.travel-link-list {
+        .cp-item-third {
+            flex-basis: calc(33% - 1.16rem);
+            max-width: calc(33% - 1.16rem);
+            margin-right: 2rem;
+            margin-bottom: 2rem;
+
+            &:nth-child(3n) {
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+// Large world map on the Travel index page
+
+$MY_MAX_WIDTH: 960;
+$GOOGLE_DEFAULT_WIDTH: 556;
+$GOOGLE_DEFAULT_HEIGHT: 347;
+
+@function map-height($width) {
+    @return (($width * $GOOGLE_DEFAULT_HEIGHT) / $GOOGLE_DEFAULT_WIDTH);
+}
+
+.world-map-container {
+    width: 90vw;
+    min-width: 90vw;
+    height: #{map-height(90)}vw;
+    min-height: #{map-height(90)}vw;
+
+    @media (min-width: 960px) {
+        max-width: #{$MY_MAX_WIDTH}px;
+        max-height: #{((960 * 347) / 556)}px;
+    }
+}

@@ -1,17 +1,16 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import BrugesImage from '../../../public/images/britain-benelux-bruges-link.jpg'
-import OverviewMap from '../../../public/images/britain-benelux-overview-map-small.jpg'
-import IntroFormatted from '../../../src/components/IntroFormatted'
-import Layout from '../../../src/components/Layout'
-import TravelLinkList from '../../../src/components/TravelLinkList'
+import NetherlandsImage from '../../public/images/britain-benelux-netherlands-link.jpg'
+import OverviewMap from '../../public/images/britain-benelux-overview-map-small.jpg'
+import Layout from '../../src/components/Layout'
+import TravelLinkList from '../../src/components/TravelLinkList'
 
 export default function Page() {
     return (
-        <Layout title="Belgium" keywords={['Belgium', 'Bruges', 'Europe', 'travel']}>
-            <h1>Belgium</h1>
+        <Layout title="Netherlands" keywords={['Netherlands', 'Amsterdam', 'Europe', 'travel']}>
+            <h1>The Netherlands</h1>
 
-            <IntroFormatted>August 2012</IntroFormatted>
+            <p>August 2012</p>
 
             <section>
                 <h2>Photos and Video</h2>
@@ -19,11 +18,11 @@ export default function Page() {
                 <TravelLinkList
                     items={[
                         {
-                            title: 'Bruges',
-                            className: 'bg-belgium-bruges',
-                            url: 'https://get.google.com/albumarchive/116513687533678150554/album/AF1QipN-4ZhzSVdq3x0O8opTTZA3hYiuMZIMA_mtpD1D',
-                            imageSrc: BrugesImage,
-                            imageAlt: 'Windmill in the Belgian countryside',
+                            title: 'Netherlands',
+                            className: 'bg-netherlands-amsterdam',
+                            url: 'https://get.google.com/albumarchive/116513687533678150554/album/AF1QipOD5tTxPTmr3KjxeR-K-k6xu6YhjuasQDyd9naX',
+                            imageSrc: NetherlandsImage,
+                            imageAlt: 'Westerkerk overlooking an Amsterdam canal',
                         },
                     ]}
                 />
@@ -33,10 +32,16 @@ export default function Page() {
                 <h2>Itinerary</h2>
                 <ul>
                     <li>
-                        <Link href="/travel/netherlands/">Netherlands</Link>
+                        <strong>Netherlands</strong>
+                        <ul>
+                            <li>Amsterdam</li>
+                            <li>Haarlem</li>
+                            <li>Leiden</li>
+                            <li>Edam</li>
+                        </ul>
                     </li>
                     <li>
-                        <strong>Bruges, Belgium</strong>
+                        <Link href="/travel/belgium/">Bruges</Link>
                     </li>
                     <li>Eurostar train to London, via Paris</li>
                     <li>

@@ -1,16 +1,15 @@
-import athensLink from '../../../public/images/greece-athens-link.jpg'
-import santoriniLink from '../../../public/images/greece-santorini-link.jpg'
-import sifnosLink from '../../../public/images/greece-sifnos-link.jpg'
-import IntroFormatted from '../../../src/components/IntroFormatted'
-import Layout from '../../../src/components/Layout'
-import TravelLinkList from '../../../src/components/TravelLinkList'
+import athensLink from '../../public/images/greece-athens-link.jpg'
+import santoriniLink from '../../public/images/greece-santorini-link.jpg'
+import sifnosLink from '../../public/images/greece-sifnos-link.jpg'
+import Layout from '../../src/components/Layout'
+import TravelLinkList from '../../src/components/TravelLinkList'
 
 export default function Page() {
     return (
         <Layout title="Greece" keywords={['Greece, Athens, Santorini, Sifnos, Europe, Travel']}>
             <h1>Greece</h1>
 
-            <IntroFormatted>In July 2007 we spent our honeymoon in Greece.</IntroFormatted>
+            <p>In July 2007 we spent our honeymoon in Greece.</p>
 
             <section>
                 <h2>Photos</h2>

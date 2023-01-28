@@ -1,17 +1,16 @@
-import imageSrc from '../../../public/images/france-photos-link.jpg'
-import IntroFormatted from '../../../src/components/IntroFormatted'
-import Layout from '../../../src/components/Layout'
-import TravelLinkList from '../../../src/components/TravelLinkList'
+import imageSrc from '../../public/images/france-photos-link.jpg'
+import Layout from '../../src/components/Layout'
+import TravelLinkList from '../../src/components/TravelLinkList'
 
 export default function Page() {
     return (
         <Layout title="France" keywords={['france', 'paris', 'nice', 'avignon', 'arles', 'monaco', 'europe', 'travel']}>
             <h1>France</h1>
 
-            <IntroFormatted>
+            <p>
                 In April 2000, we took a short trip France with our high school French class. Our tour included Paris,
                 Nice, Avignon, Arles, and Monaco.
-            </IntroFormatted>
+            </p>
 
             <section>
                 <h2>Photos</h2>

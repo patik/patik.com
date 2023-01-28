@@ -1,10 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import appNetPng from '../../../public/images/app-net-twitter-char-count.png'
-import magnetPng from '../../../public/images/magnet-links-preview.png'
-import twitterAvatarPng from '../../../public/images/twitter-avatar-in-menu.png'
-import IntroFormatted from '../../../src/components/IntroFormatted'
-import Layout from '../../../src/components/Layout'
+import appNetPng from '../../public/images/app-net-twitter-char-count.png'
+import magnetPng from '../../public/images/magnet-links-preview.png'
+import twitterAvatarPng from '../../public/images/twitter-avatar-in-menu.png'
+import Layout from '../../src/components/Layout'
 
 function UserScriptLink({ fileName }: { fileName: string }) {
     return (
@@ -35,10 +34,10 @@ export default function Page() {
         >
             <h1>User Scripts</h1>
 
-            <IntroFormatted>
+            <p>
                 Install these in Chrome, Safari, or Firefox with{' '}
                 <a href="https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/">Greasemonkey</a>.
-            </IntroFormatted>
+            </p>
 
             <section>
                 <h2>Twitter avatar in menu</h2>

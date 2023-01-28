@@ -1,10 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import itineraryMapSmall from '../../../public/images/spain-itinerary-map-small.jpg'
-import linkWorlCup from '../../../public/images/spain-link-world-cup.jpg'
-import IntroText from '../../../src/components/IntroText'
-import Layout from '../../../src/components/Layout'
-import TravelLinkList from '../../../src/components/TravelLinkList'
+import itineraryMapSmall from '../../public/images/spain-itinerary-map-small.jpg'
+import linkWorlCup from '../../public/images/spain-link-world-cup.jpg'
+import Layout from '../../src/components/Layout'
+import TravelLinkList from '../../src/components/TravelLinkList'
 
 export default function Page() {
     return (
@@ -26,7 +25,7 @@ export default function Page() {
         >
             <h1>Spain, Portugal, &amp; Morocco</h1>
 
-            <IntroText>
+            <p>
                 Like <a href="https://en.wikipedia.org/wiki/Paul_the_Octopus">Pulpo Paul</a>, Kim and I had an inkling
                 that Spain would win the 2010 World Cup. We booked a trip for what would be the experience of a lifetime
                 &mdash; being enveloped in a{' '}
@@ -34,7 +33,7 @@ export default function Page() {
                     massive celebration in Madrid
                 </a>
                 .
-            </IntroText>
+            </p>
 
             <section>
                 <h2>Photos and Video</h2>
