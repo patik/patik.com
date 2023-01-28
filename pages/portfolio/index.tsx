@@ -4,7 +4,7 @@ import Layout from '../../src/components/Layout'
 export default function Page() {
     return (
         <Layout title="Portfolio">
-            <div id="profolio-main" role="main">
+            <div className="portfolio-main">
                 <h1>Portfolio</h1>
                 <h4>Craig Patik</h4>
 

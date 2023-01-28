@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { ReactElement } from 'react'
 
-export default function Header(): ReactElement {
+export default function HeaderNav(): ReactElement {
     return (
         <nav className="main-nav">
             <h1>

@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { PropsWithChildren, ReactElement } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
-import Header from './Header'
+import HeaderNav from './HeaderNav'
 
 function FallbackComponent() {
     return <p>Something went wrong</p>
@@ -21,15 +21,12 @@ export default function Layout({ title, keywords = [], children }: Props): React
                 <meta name="viewport" content="width=device-width,initial-scale=1" />
             </Head>
 
-            <main
-                id="main"
-                style={{ width: '100%', maxWidth: '1020px', alignSelf: 'center', flexGrow: 1, marginBottom: '2rem' }}
-            >
+            <div style={{ width: '100%', maxWidth: '1020px', alignSelf: 'center', flexGrow: 1, marginBottom: '2rem' }}>
                 <ErrorBoundary FallbackComponent={FallbackComponent}>
-                    <Header />
-                    <div id="main">{children} </div>
+                    <HeaderNav />
+                    <main>{children}</main>
                 </ErrorBoundary>
-            </main>
+            </div>
         </div>
     )
 }

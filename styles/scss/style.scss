@@ -58,6 +58,7 @@ code {
     @include clearfix;
 }
 
+main,
 [role='main'] {
     margin: 1em auto;
     max-width: 980px;
@@ -668,7 +669,7 @@ img[src^='/gam.php?'] {
 }
 
 /* Ugh. */
-#profolio-main section a {
+.portfolio-main section a {
     text-decoration: underline;
 
     &:hover {
@@ -683,6 +684,7 @@ img[src^='/gam.php?'] {
     margin-right: 1rem;
 
     .cp-item-third {
+        display: block;
         flex-basis: 33%;
         max-width: 33%;
 
@@ -698,6 +700,19 @@ img[src^='/gam.php?'] {
 
         a img {
             border-radius: 3px;
+        }
+    }
+
+    &.travel-link-list {
+        .cp-item-third {
+            margin-right: 2rem;
+            flex-basis: calc(33% - 1.16rem);
+            max-width: calc(33% - 1.16rem);
+            margin-bottom: 2rem;
+
+            &:nth-child(3n) {
+                margin-right: 0;
+            }
         }
     }
 

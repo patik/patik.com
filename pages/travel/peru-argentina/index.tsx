@@ -3,6 +3,7 @@ import imgLinkAmazon from '../../../public/images/peru-argentina-link-amazon.jpg
 import imgLinkColonia from '../../../public/images/peru-argentina-link-colonia.jpg'
 import imgLinkCusco from '../../../public/images/peru-argentina-link-cusco.jpg'
 import imgMapSmall from '../../../public/images/peru-argentina-map-small.png'
+import IntroFormatted from '../../../src/components/IntroFormatted'
 import Layout from '../../../src/components/Layout'
 
 export default function Page() {
@@ -13,104 +14,100 @@ export default function Page() {
                 'peru, argentina, cusco, machu picchu, buenos aires, amazon rainforest, lake titicaca, uruguay, panama canal, south america, travel',
             ]}
         >
-            <div id="peru-argentina-main" role="main">
-                <h1>Peru &amp; Argentina</h1>
+            <h1>Peru &amp; Argentina</h1>
 
-                <section className="intro">
-                    <p>
-                        Our first forage into the southern hemisphere brought us everywhere from the Amazon rainforest
-                        and Machu Picchu to Europe-esque Buenos Aires and a quiet estancia.
-                    </p>
-                </section>
+            <IntroFormatted>
+                Our first forage into the southern hemisphere brought us everywhere from the Amazon rainforest and Machu
+                Picchu to Europe-esque Buenos Aires and a quiet estancia.
+            </IntroFormatted>
 
-                <section>
-                    <h2>Photos and Video</h2>
-                    <div className="row travel-link-list">
-                        <div className="small-12 medium-6 large-4 columns">
-                            <a
-                                className="bg-peru-argentina-amazon"
-                                href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipMcY0rCP6w1qbjKoNj3c5slFu52e5_F4LrTWOKD"
-                            >
-                                <Image src={imgLinkAmazon} alt="Wooley monkey" />
-                                <span>Amazon Rainforest</span>
-                                <div className="image-cover"></div>
-                            </a>
-                        </div>
-                        <div className="small-12 medium-6 large-4 columns">
-                            <a
-                                className="bg-peru-argentina-cusco"
-                                href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipOJhD-DjF1QnnGf_hTfF7cw9u0h-p4WzlJZMmYC"
-                            >
-                                <Image src={imgLinkCusco} alt="Kim holding a lamb and posing with Andean women" />
-                                <span>Cusco</span>
-                                <div className="image-cover"></div>
-                            </a>
-                        </div>
-                        <div className="small-12 medium-6 large-4 columns left">
-                            <a
-                                className="bg-peru-argentina-colonia"
-                                href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipN0oaxdmD0r2Oe4Wf3Sh5iOMfbTjH1bicnpbUUd"
-                            >
-                                <Image src={imgLinkColonia} alt="Old train in Colonia del Sacremento, Uruguay" />
-                                <span>Colonia del Sacramento</span>
-                                <div className="image-cover"></div>
-                            </a>
-                        </div>
-                    </div>
-                </section>
-
-                <section>
-                    <h2>Itinerary</h2>
-                    <ul>
-                        <li>
-                            The pristine <a href="https://www.perujungle.com/">Amazon Rainforest</a> near Iquitos, Peru
-                        </li>
-                        <li>
-                            High-altitude <a href="https://wikitravel.org/en/Cuzco">Cusco</a> with its many nearby Incan
-                            ruins
-                        </li>
-                        <li>
-                            The incomparable <a href="https://wikitravel.org/en/Machu_Picchu">Machu Picchu</a>, an
-                            untouched ancient Incan city high in the Andes mountains
-                        </li>
-                        <li>
-                            An unforgettable, leisurely ride on the{' '}
-                            <a href="https://www.belmond.com/trains/south-america/peru/belmond-andean-explorer/">
-                                Andean Explorer
-                            </a>
-                            , winding through the Andes from Cuzco to Lake Titicaca
-                        </li>
-                        <li>
-                            <a href="httpw://en.wikipedia.org/wiki/Lake_Titicaca">Lake Titicaca</a>, the world’s highest
-                            navigable lake and home to{' '}
-                            <a href="https://en.wikipedia.org/wiki/Uru_people">floating islands</a> and{' '}
-                            <a href="https://en.wikipedia.org/wiki/Taquile">centuries-old cultures</a>
-                        </li>
-                        <li>
-                            Beautiful <a href="https://wikitravel.org/en/Buenos_Aires">Buenos Aires</a>, a wonderful
-                            blend of Barcelona and Italy
-                        </li>
-                        <li>
-                            A rural <a href="https://en.wikipedia.org/wiki/Estancia">Estancia</a>, with horseback riding
-                            and the famed Argentine beef <a href="https://en.wikipedia.org/wiki/Asado">asado</a>
-                        </li>
-                        <li>
-                            Quaint <a href="https://wikitravel.org/en/Colonia">Colonia del Sacramento</a>, the oldest
-                            town in Uruguay and just a short ferry ride across the Rio de la Plata from Buenos Aires
-                        </li>
-                    </ul>
-
-                    <div className="travel-map">
-                        <a href="/images/peru-argentina-map.png">
-                            <Image
-                                src={imgMapSmall}
-                                alt="Map of South America with each location noted and annotated with a photo"
-                                title="Click for a larger version"
-                            />
+            <section>
+                <h2>Photos and Video</h2>
+                <div className="row travel-link-list">
+                    <div className="small-12 medium-6 large-4 columns">
+                        <a
+                            className="bg-peru-argentina-amazon"
+                            href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipMcY0rCP6w1qbjKoNj3c5slFu52e5_F4LrTWOKD"
+                        >
+                            <Image src={imgLinkAmazon} alt="Wooley monkey" />
+                            <span>Amazon Rainforest</span>
+                            <div className="image-cover"></div>
                         </a>
                     </div>
-                </section>
-            </div>
+                    <div className="small-12 medium-6 large-4 columns">
+                        <a
+                            className="bg-peru-argentina-cusco"
+                            href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipOJhD-DjF1QnnGf_hTfF7cw9u0h-p4WzlJZMmYC"
+                        >
+                            <Image src={imgLinkCusco} alt="Kim holding a lamb and posing with Andean women" />
+                            <span>Cusco</span>
+                            <div className="image-cover"></div>
+                        </a>
+                    </div>
+                    <div className="small-12 medium-6 large-4 columns left">
+                        <a
+                            className="bg-peru-argentina-colonia"
+                            href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipN0oaxdmD0r2Oe4Wf3Sh5iOMfbTjH1bicnpbUUd"
+                        >
+                            <Image src={imgLinkColonia} alt="Old train in Colonia del Sacremento, Uruguay" />
+                            <span>Colonia del Sacramento</span>
+                            <div className="image-cover"></div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Itinerary</h2>
+                <ul>
+                    <li>
+                        The pristine <a href="https://www.perujungle.com/">Amazon Rainforest</a> near Iquitos, Peru
+                    </li>
+                    <li>
+                        High-altitude <a href="https://wikitravel.org/en/Cuzco">Cusco</a> with its many nearby Incan
+                        ruins
+                    </li>
+                    <li>
+                        The incomparable <a href="https://wikitravel.org/en/Machu_Picchu">Machu Picchu</a>, an untouched
+                        ancient Incan city high in the Andes mountains
+                    </li>
+                    <li>
+                        An unforgettable, leisurely ride on the{' '}
+                        <a href="https://www.belmond.com/trains/south-america/peru/belmond-andean-explorer/">
+                            Andean Explorer
+                        </a>
+                        , winding through the Andes from Cuzco to Lake Titicaca
+                    </li>
+                    <li>
+                        <a href="httpw://en.wikipedia.org/wiki/Lake_Titicaca">Lake Titicaca</a>, the world’s highest
+                        navigable lake and home to{' '}
+                        <a href="https://en.wikipedia.org/wiki/Uru_people">floating islands</a> and{' '}
+                        <a href="https://en.wikipedia.org/wiki/Taquile">centuries-old cultures</a>
+                    </li>
+                    <li>
+                        Beautiful <a href="https://wikitravel.org/en/Buenos_Aires">Buenos Aires</a>, a wonderful blend
+                        of Barcelona and Italy
+                    </li>
+                    <li>
+                        A rural <a href="https://en.wikipedia.org/wiki/Estancia">Estancia</a>, with horseback riding and
+                        the famed Argentine beef <a href="https://en.wikipedia.org/wiki/Asado">asado</a>
+                    </li>
+                    <li>
+                        Quaint <a href="https://wikitravel.org/en/Colonia">Colonia del Sacramento</a>, the oldest town
+                        in Uruguay and just a short ferry ride across the Rio de la Plata from Buenos Aires
+                    </li>
+                </ul>
+
+                <div className="travel-map">
+                    <a href="/images/peru-argentina-map.png">
+                        <Image
+                            src={imgMapSmall}
+                            alt="Map of South America with each location noted and annotated with a photo"
+                            title="Click for a larger version"
+                        />
+                    </a>
+                </div>
+            </section>
         </Layout>
     )
 }
