@@ -1,11 +1,13 @@
-import imgTravelBritainbenelux from '../../public/images/travel-britain-benelux.jpg'
-import imgTravelFrance from '../../public/images/travel-france.jpg'
-import imgTravelGermany from '../../public/images/travel-germany.jpg'
-import imgTravelGreece from '../../public/images/travel-greece.jpg'
-import imgTravelParis from '../../public/images/travel-paris.jpg'
-import imgTravelPeruargentina from '../../public/images/travel-peru-argentina.jpg'
-import imgTravelSpain from '../../public/images/travel-spain.jpg'
-import imgTravelTurkey from '../../public/images/travel-turkey.jpg'
+import BrugesImage from '../../public/images/britain-benelux-bruges-link.jpg'
+import NetherlandsImage from '../../public/images/britain-benelux-netherlands-link.jpg'
+import BritainbeneluxImage from '../../public/images/travel-britain-benelux.jpg'
+import FranceImage from '../../public/images/travel-france.jpg'
+import GermanyImage from '../../public/images/travel-germany.jpg'
+import GreeceImage from '../../public/images/travel-greece.jpg'
+import ParisImage from '../../public/images/travel-paris.jpg'
+import PeruArgentinaImage from '../../public/images/travel-peru-argentina.jpg'
+import SpainImage from '../../public/images/travel-spain.jpg'
+import TurkeyImage from '../../public/images/travel-turkey.jpg'
 import IntroText from '../../src/components/IntroText'
 import Layout from '../../src/components/Layout'
 import TravelLinkList from '../../src/components/TravelLinkList'
@@ -48,23 +50,25 @@ export default function Page() {
                 <TravelLinkList
                     items={[
                         {
-                            title: (
-                                <>
-                                    Britain &amp;
-                                    <br />
-                                    Benelux
-                                </>
-                            ),
+                            title: 'Britain',
+
                             className: 'bg-travel-britain-benelux',
-                            url: '/travel/britain-benelux/',
-                            imageSrc: imgTravelBritainbenelux,
+                            url: '/travel/britain/',
+                            imageSrc: BritainbeneluxImage,
                             imageAlt: 'Big Ben, a black cab, and a red double-decker bus in Parliament Square',
+                        },
+                        {
+                            title: 'Netherlands',
+                            className: 'bg-netherlands-amsterdam',
+                            url: '/travel/netherlands/',
+                            imageSrc: NetherlandsImage,
+                            imageAlt: 'Westerkerk overlooking an Amsterdam canal',
                         },
                         {
                             title: <>Peru &amp; Argentina</>,
                             className: 'bg-travel-peru-argentina',
                             url: '/travel/peru-argentina/',
-                            imageSrc: imgTravelPeruargentina,
+                            imageSrc: PeruArgentinaImage,
                             imageAlt: 'Kim holding a lamb and posing with two Andean women',
                         },
                         {
@@ -79,15 +83,22 @@ export default function Page() {
                             ),
                             className: 'bg-travel-spain',
                             url: '/travel/spain/',
-                            imageSrc: imgTravelSpain,
+                            imageSrc: SpainImage,
                             imageAlt: "Celebrating Spain's World Cup victory in Madrid",
                         },
                         {
                             title: 'Turkey',
                             className: 'bg-travel-turkey',
                             url: '/travel/turkey/',
-                            imageSrc: imgTravelTurkey,
+                            imageSrc: TurkeyImage,
                             imageAlt: 'The Blue Mosque (Sultanahmet Camii), Istanbul, Turkey',
+                        },
+                        {
+                            title: 'Belgium',
+                            className: 'bg-belgium-bruges',
+                            url: '/travel/belgium/',
+                            imageSrc: BrugesImage,
+                            imageAlt: 'Windmill in the Belgian countryside',
                         },
                         {
                             title: (
@@ -99,28 +110,28 @@ export default function Page() {
                             ),
                             className: 'bg-travel-germany',
                             url: '/travel/germany/',
-                            imageSrc: imgTravelGermany,
+                            imageSrc: GermanyImage,
                             imageAlt: 'Spanish fans in Vienna for Euro 2008',
                         },
                         {
                             title: 'Greece',
                             className: 'bg-travel-greece',
                             url: '/travel/greece/',
-                            imageSrc: imgTravelGreece,
+                            imageSrc: GreeceImage,
                             imageAlt: 'Serifios, Greece',
                         },
                         {
                             title: 'Paris',
                             className: 'bg-travel-paris',
                             url: '/travel/paris/',
-                            imageSrc: imgTravelParis,
+                            imageSrc: ParisImage,
                             imageAlt: 'Eiffel Tower',
                         },
                         {
                             title: 'France',
                             className: 'bg-travel-france',
                             url: '/travel/france/',
-                            imageSrc: imgTravelFrance,
+                            imageSrc: FranceImage,
                             imageAlt: 'The Seine River',
                         },
                     ]}

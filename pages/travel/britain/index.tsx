@@ -1,10 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import BrugesImage from '../../../public/images/britain-benelux-bruges-link.jpg'
 import EdinburghImage from '../../../public/images/britain-benelux-edinburgh-link.jpg'
 import LiverpoolImage from '../../../public/images/britain-benelux-liverpool-link.jpg'
 import LondonImage from '../../../public/images/britain-benelux-london-link.jpg'
-import NetherlandsImage from '../../../public/images/britain-benelux-netherlands-link.jpg'
 import OverviewMap from '../../../public/images/britain-benelux-overview-map-small.jpg'
 import IntroFormatted from '../../../src/components/IntroFormatted'
 import Layout from '../../../src/components/Layout'
@@ -39,20 +37,6 @@ export default function Page() {
                 <TravelLinkList
                     items={[
                         {
-                            title: 'Netherlands',
-                            className: 'bg-netherlands-amsterdam',
-                            url: 'https://get.google.com/albumarchive/116513687533678150554/album/AF1QipOD5tTxPTmr3KjxeR-K-k6xu6YhjuasQDyd9naX',
-                            imageSrc: NetherlandsImage,
-                            imageAlt: 'Westerkerk overlooking an Amsterdam canal',
-                        },
-                        {
-                            title: 'Bruges',
-                            className: 'bg-belgium-bruges',
-                            url: 'https://get.google.com/albumarchive/116513687533678150554/album/AF1QipN-4ZhzSVdq3x0O8opTTZA3hYiuMZIMA_mtpD1D',
-                            imageSrc: BrugesImage,
-                            imageAlt: 'Windmill in the Belgian countryside',
-                        },
-                        {
                             title: 'Edinburgh',
                             className: 'bg-britain-edinburgh',
                             url: 'https://get.google.com/albumarchive/116513687533678150554/album/AF1QipN4M-SohIflzfVFqExd1XNwUYweZdXE57yip92N',
@@ -81,19 +65,17 @@ export default function Page() {
                 <h2>Itinerary</h2>
                 <ul>
                     <li>
-                        Netherlands
-                        <ul>
-                            <li>Amsterdam</li>
-                            <li>Haarlem</li>
-                            <li>Leiden</li>
-                            <li>Edam</li>
-                        </ul>
+                        <Link href="/travel/netherlands/">Netherlands</Link>
                     </li>
-                    <li>Bruges</li>
-                    <li>Eurostar train to London, via Paris</li>
-                    <li>Edinburgh, Scotland</li>
                     <li>
-                        London
+                        <Link href="/travel/belgium/">Bruges</Link>
+                    </li>
+                    <li>Eurostar train to London, via Paris</li>
+                    <li>
+                        <strong>Edinburgh, Scotland</strong>
+                    </li>
+                    <li>
+                        <strong>London</strong>
                         <ul>
                             <li>Highclere Castle</li>
                             <li>
@@ -108,7 +90,7 @@ export default function Page() {
                         </ul>
                     </li>
                     <li>
-                        Liverpool
+                        <strong>Liverpool</strong>
                         <ul>
                             <li>Beatles Weekend</li>
                             <li>Liverpool vs Manchester City football match</li>

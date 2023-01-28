@@ -11,16 +11,16 @@ export default function Page() {
         <Layout
             title="Spain"
             keywords={[
-                'spain',
-                'portugal',
-                'madrid',
-                'barcelona',
-                'sevilla',
-                '2010 world cup',
-                'lisbon',
-                'tangier',
-                'tanger',
-                'europe',
+                'Spain',
+                'Portugal',
+                'Lisbon',
+                'Madrid',
+                'Sevilla',
+                '2010 World Cup',
+                'Tangier',
+                'Tanger',
+                'Barcelona',
+                'Europe',
                 'travel',
             ]}
         >

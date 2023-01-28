@@ -1,8 +1,8 @@
 import Image from 'next/image'
-import imgLinkAmazon from '../../../public/images/peru-argentina-link-amazon.jpg'
-import imgLinkColonia from '../../../public/images/peru-argentina-link-colonia.jpg'
-import imgLinkCusco from '../../../public/images/peru-argentina-link-cusco.jpg'
-import imgMapSmall from '../../../public/images/peru-argentina-map-small.png'
+import AmazonImage from '../../../public/images/peru-argentina-link-amazon.jpg'
+import ColoniaImage from '../../../public/images/peru-argentina-link-colonia.jpg'
+import CuscoImage from '../../../public/images/peru-argentina-link-cusco.jpg'
+import MapSmall from '../../../public/images/peru-argentina-map-small.png'
 import IntroFormatted from '../../../src/components/IntroFormatted'
 import Layout from '../../../src/components/Layout'
 import TravelLinkList from '../../../src/components/TravelLinkList'
@@ -31,21 +31,21 @@ export default function Page() {
                             title: 'Amazon Rainforest',
                             className: 'bg-peru-argentina-amazon',
                             url: 'https://get.google.com/albumarchive/116513687533678150554/album/AF1QipMcY0rCP6w1qbjKoNj3c5slFu52e5_F4LrTWOKD',
-                            imageSrc: imgLinkAmazon,
+                            imageSrc: AmazonImage,
                             imageAlt: 'Wooley monkey',
                         },
                         {
                             title: 'Cusco',
                             className: 'bg-peru-argentina-cusco',
                             url: 'https://get.google.com/albumarchive/116513687533678150554/album/AF1QipOJhD-DjF1QnnGf_hTfF7cw9u0h-p4WzlJZMmYC',
-                            imageSrc: imgLinkCusco,
+                            imageSrc: CuscoImage,
                             imageAlt: 'Kim holding a lamb and posing with Andean women',
                         },
                         {
                             title: 'Colonia del Sacramento',
                             className: 'bg-peru-argentina-colonia',
                             url: 'https://get.google.com/albumarchive/116513687533678150554/album/AF1QipN0oaxdmD0r2Oe4Wf3Sh5iOMfbTjH1bicnpbUUd',
-                            imageSrc: imgLinkColonia,
+                            imageSrc: ColoniaImage,
                             imageAlt: 'Old train in Colonia del Sacremento, Uruguay',
                         },
                     ]}
@@ -96,7 +96,7 @@ export default function Page() {
                 <div className="travel-map">
                     <a href="/images/peru-argentina-map.png">
                         <Image
-                            src={imgMapSmall}
+                            src={MapSmall}
                             alt="Map of South America with each location noted and annotated with a photo"
                             title="Click for a larger version"
                         />

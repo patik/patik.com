@@ -7,7 +7,7 @@ import TravelLinkList from '../../../src/components/TravelLinkList'
 
 export default function Page() {
     return (
-        <Layout title="Greece" keywords={['greece, athens, santorini, sifnos, europe, travel']}>
+        <Layout title="Greece" keywords={['Greece, Athens, Santorini, Sifnos, Europe, Travel']}>
             <h1>Greece</h1>
 
             <IntroFormatted>In July 2007 we spent our honeymoon in Greece.</IntroFormatted>
