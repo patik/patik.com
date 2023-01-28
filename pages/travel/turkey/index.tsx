@@ -1,11 +1,13 @@
 import Image from 'next/image'
-import Layout from '../../../src/components/Layout'
+import Link from 'next/link'
 import imgLinkCappadocia from '../../../public/images/turkey-link-cappadocia.jpg'
 import imgLinkCirali from '../../../public/images/turkey-link-cirali.jpg'
 import imgLinkEphesus from '../../../public/images/turkey-link-ephesus.jpg'
 import imgLinkIstanbul from '../../../public/images/turkey-link-istanbul.jpg'
 import imgOverviewMap from '../../../public/images/turkey-overview-map-small.jpg'
 import IntroFormatted from '../../../src/components/IntroFormatted'
+import Layout from '../../../src/components/Layout'
+import TravelLinkList from '../../../src/components/TravelLinkList'
 
 export default function Page() {
     return (
@@ -24,58 +26,45 @@ export default function Page() {
 
             <section>
                 <h2>Photos and Video</h2>
-                <div className="row travel-link-list">
-                    <div className="small-12 medium-6 large-4 columns">
-                        <a
-                            className="bg-turkey-istanbul"
-                            href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipPDOR3feuEb6n_QeSIZr3K-Q2pyyQI6Vgzw6hoD"
-                        >
-                            <Image src={imgLinkIstanbul} alt="The Blue Mosque at night" />
-                            <span>Istanbul</span>
-                            <div className="image-cover"></div>
-                        </a>
-                    </div>
-                    <div className="small-12 medium-6 large-4 columns">
-                        <a
-                            className="bg-turkey-cappadocia"
-                            href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipPaF_nDoQ4dpmjyBkPiBEGr6EDZjX_n0FPlD0_n"
-                        >
-                            <Image
-                                src={imgLinkCappadocia}
-                                alt="Hot air balloon over the rock formations in the Cappadocia region"
-                            />
-                            <span>Cappadocia</span>
-                            <div className="image-cover"></div>
-                        </a>
-                    </div>
-                    <div className="small-12 medium-6 large-4 columns">
-                        <a
-                            className="bg-turkey-cirali"
-                            href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipNFtSt5fXOCWi7L5slPU9fNVTQHOGN2tTZDj5sY"
-                        >
-                            <Image src={imgLinkCirali} alt="Kim standing along the beach in Çirali" />
-                            <span>&Ccedil;&#305;ral&#305; &amp; Olympos</span>
-                            <div className="image-cover"></div>
-                        </a>
-                    </div>
-                    <div className="small-12 medium-6 large-4 columns left">
-                        <a
-                            className="bg-turkey-ephesus"
-                            href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipN3eMKjoyrn18oYgrwvukSKO4F3Mr7Lnm-t-e4W"
-                        >
-                            <Image src={imgLinkEphesus} alt="Ephesus" />
-                            <span>Ephesus</span>
-                            <div className="image-cover"></div>
-                        </a>
-                    </div>
-                </div>
+
+                <TravelLinkList
+                    items={[
+                        {
+                            title: 'Istanbul',
+                            className: 'bg-turkey-istanbul',
+                            url: 'https://get.google.com/albumarchive/116513687533678150554/album/AF1QipPDOR3feuEb6n_QeSIZr3K-Q2pyyQI6Vgzw6hoD',
+                            imageSrc: imgLinkIstanbul,
+                            imageAlt: 'The Blue Mosque at night',
+                        },
+                        {
+                            title: 'Cappadocia',
+                            className: 'bg-turkey-cappadocia',
+                            url: 'https://get.google.com/albumarchive/116513687533678150554/album/AF1QipPaF_nDoQ4dpmjyBkPiBEGr6EDZjX_n0FPlD0_n',
+                            imageSrc: imgLinkCappadocia,
+                            imageAlt: 'Hot air balloon over the rock formations in the Cappadocia region',
+                        },
+                        {
+                            title: <>&Ccedil;&#305;ral&#305; &amp; Olympos</>,
+                            className: 'bg-turkey-cirali',
+                            url: 'https://get.google.com/albumarchive/116513687533678150554/album/AF1QipNFtSt5fXOCWi7L5slPU9fNVTQHOGN2tTZDj5sY',
+                            imageSrc: imgLinkCirali,
+                            imageAlt: 'Kim standing along the beach in Çirali',
+                        },
+                        {
+                            title: 'Ephesus',
+                            className: 'bg-turkey-ephesus',
+                            url: 'https://get.google.com/albumarchive/116513687533678150554/album/AF1QipN3eMKjoyrn18oYgrwvukSKO4F3Mr7Lnm-t-e4W',
+                            imageSrc: imgLinkEphesus,
+                            imageAlt: 'Storks nesting on top of tall but old stone columns',
+                        },
+                    ]}
+                />
             </section>
 
             <section>
                 <h2>Itinerary</h2>
                 <ul>
                     <li>
-                        {' '}
                         <strong>Istanbul</strong>
                         <ul>
                             <li>
@@ -121,13 +110,13 @@ export default function Page() {
                 </ul>
 
                 <div className="travel-map">
-                    <a href="../../img/turkey-overview-map.jpg">
+                    <Link href="/images/turkey-overview-map.jpg">
                         <Image
                             src={imgOverviewMap}
                             alt="Photos of the places we visited superimposed on a map."
                             title="Click for a larger version"
                         />
-                    </a>
+                    </Link>
                 </div>
             </section>
         </Layout>

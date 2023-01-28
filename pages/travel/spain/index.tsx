@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import itineraryMapSmall from '../../../public/images/spain-itinerary-map-small.jpg'
 import linkWorlCup from '../../../public/images/spain-link-world-cup.jpg'
 import IntroText from '../../../src/components/IntroText'
@@ -102,13 +103,13 @@ export default function Page() {
                 </ul>
 
                 <div className="travel-map">
-                    <a href="/images/spain-itinerary-map.jpg">
+                    <Link href="/images/spain-itinerary-map.jpg">
                         <Image
                             src={itineraryMapSmall}
                             alt="Map of Western Europe with each location noted and annotated with a photo"
                             title="Click for a larger version"
                         />
-                    </a>
+                    </Link>
                 </div>
             </section>
         </Layout>

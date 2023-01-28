@@ -5,6 +5,7 @@ import imgLinkCusco from '../../../public/images/peru-argentina-link-cusco.jpg'
 import imgMapSmall from '../../../public/images/peru-argentina-map-small.png'
 import IntroFormatted from '../../../src/components/IntroFormatted'
 import Layout from '../../../src/components/Layout'
+import TravelLinkList from '../../../src/components/TravelLinkList'
 
 export default function Page() {
     return (
@@ -23,38 +24,32 @@ export default function Page() {
 
             <section>
                 <h2>Photos and Video</h2>
-                <div className="row travel-link-list">
-                    <div className="small-12 medium-6 large-4 columns">
-                        <a
-                            className="bg-peru-argentina-amazon"
-                            href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipMcY0rCP6w1qbjKoNj3c5slFu52e5_F4LrTWOKD"
-                        >
-                            <Image src={imgLinkAmazon} alt="Wooley monkey" />
-                            <span>Amazon Rainforest</span>
-                            <div className="image-cover"></div>
-                        </a>
-                    </div>
-                    <div className="small-12 medium-6 large-4 columns">
-                        <a
-                            className="bg-peru-argentina-cusco"
-                            href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipOJhD-DjF1QnnGf_hTfF7cw9u0h-p4WzlJZMmYC"
-                        >
-                            <Image src={imgLinkCusco} alt="Kim holding a lamb and posing with Andean women" />
-                            <span>Cusco</span>
-                            <div className="image-cover"></div>
-                        </a>
-                    </div>
-                    <div className="small-12 medium-6 large-4 columns left">
-                        <a
-                            className="bg-peru-argentina-colonia"
-                            href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipN0oaxdmD0r2Oe4Wf3Sh5iOMfbTjH1bicnpbUUd"
-                        >
-                            <Image src={imgLinkColonia} alt="Old train in Colonia del Sacremento, Uruguay" />
-                            <span>Colonia del Sacramento</span>
-                            <div className="image-cover"></div>
-                        </a>
-                    </div>
-                </div>
+
+                <TravelLinkList
+                    items={[
+                        {
+                            title: 'Amazon Rainforest',
+                            className: 'bg-peru-argentina-amazon',
+                            url: 'https://get.google.com/albumarchive/116513687533678150554/album/AF1QipMcY0rCP6w1qbjKoNj3c5slFu52e5_F4LrTWOKD',
+                            imageSrc: imgLinkAmazon,
+                            imageAlt: 'Wooley monkey',
+                        },
+                        {
+                            title: 'Cusco',
+                            className: 'bg-peru-argentina-cusco',
+                            url: 'https://get.google.com/albumarchive/116513687533678150554/album/AF1QipOJhD-DjF1QnnGf_hTfF7cw9u0h-p4WzlJZMmYC',
+                            imageSrc: imgLinkCusco,
+                            imageAlt: 'Kim holding a lamb and posing with Andean women',
+                        },
+                        {
+                            title: 'Colonia del Sacramento',
+                            className: 'bg-peru-argentina-colonia',
+                            url: 'https://get.google.com/albumarchive/116513687533678150554/album/AF1QipN0oaxdmD0r2Oe4Wf3Sh5iOMfbTjH1bicnpbUUd',
+                            imageSrc: imgLinkColonia,
+                            imageAlt: 'Old train in Colonia del Sacremento, Uruguay',
+                        },
+                    ]}
+                />
             </section>
 
             <section>

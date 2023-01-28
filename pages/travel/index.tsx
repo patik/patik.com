@@ -6,6 +6,7 @@ import imgTravelParis from '../../public/images/travel-paris.jpg'
 import imgTravelPeruargentina from '../../public/images/travel-peru-argentina.jpg'
 import imgTravelSpain from '../../public/images/travel-spain.jpg'
 import imgTravelTurkey from '../../public/images/travel-turkey.jpg'
+import IntroText from '../../src/components/IntroText'
 import Layout from '../../src/components/Layout'
 import TravelLinkList from '../../src/components/TravelLinkList'
 import WorldMap from '../../src/components/WorldMap'
@@ -37,12 +38,12 @@ export default function Page() {
 
             <section>
                 <h2>Photos</h2>
-                <p style={{ marginLeft: '1rem' }}>
+                <IntroText>
                     <em>
                         Not shown: many notable trips since 2012, including Southeast Asia, Eastern Europe, and much
                         more of Europe
                     </em>
-                </p>
+                </IntroText>
 
                 <TravelLinkList
                     items={[
