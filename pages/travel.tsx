@@ -29,9 +29,7 @@ export default function Page() {
 
             <section style={{ marginBottom: '6rem' }}>
                 <h2>Countries I’ve been to</h2>
-                <p style={{ marginLeft: '1rem' }}>
-                    Color-coded based on how many years it’s been since I’ve traveled to each one
-                </p>
+                <p>Color-coded based on how many years it’s been since I’ve traveled to each one</p>
                 <WorldMap />
             </section>
 

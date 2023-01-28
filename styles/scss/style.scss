@@ -64,38 +64,16 @@ main,
 [role='main'] {
     margin: 1rem auto;
     max-width: 980px;
+    padding: 0 1rem;
 
     & > section {
-        h2 {
-            margin-left: 1rem;
-        }
-
         &:nth-child-of-type(1) {
             margin-top: 1rem;
-
-            p {
-                margin-left: 1rem;
-            }
         }
 
         &:last-child {
             margin-bottom: 1rem;
         }
-
-        & > ul {
-            margin-left: 3rem;
-        }
-    }
-
-    & > h1,
-    & > h2 {
-        margin-left: 1rem;
-    }
-
-    & > section > p,
-    & > p,
-    .intro {
-        margin-left: 1rem;
     }
 }
 
@@ -239,8 +217,6 @@ figure {
 .cp-row {
     display: flex;
     flex-wrap: wrap;
-    margin-left: 1rem;
-    margin-right: 1rem;
 
     .cp-item-third {
         display: block;

@@ -9,12 +9,20 @@ export default function Page() {
         <Layout title="Greece" keywords={['Greece, Athens, Santorini, Sifnos, Europe, Travel']}>
             <h1>Greece</h1>
 
-            <p>In July 2007 we spent our honeymoon in Greece.</p>
+            <p>
+                This country keeps drawing us back year after year. After our initial visit, we took a brief hiatus, but
+                have since enjoyed Greece on a year basis.
+            </p>
+
+            <hr />
 
             <section>
-                <h2>Photos</h2>
+                <h2>2007</h2>
+                <p>In July 2007 we spent our honeymoon in Greece.</p>
 
-                <p style={{ marginLeft: '1em' }}>
+                <h3>Photos</h3>
+
+                <p>
                     <a href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipPkzhN5b1360Nu7gUc22vsA5dTxMK-P7AKFyDI3?authKey=CJL96rLSzuGOuAE">
                         Combined photo album
                     </a>
