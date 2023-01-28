@@ -486,7 +486,12 @@ $GOOGLE_DEFAULT_HEIGHT: 347;
     min-height: #{map-height(90)}vw;
 
     @media (min-width: 960px) {
+        width: #{$MY_MAX_WIDTH}px;
+        min-width: 0;
         max-width: #{$MY_MAX_WIDTH}px;
-        max-height: #{((960 * 347) / 556)}px;
+
+        height: #{map-height($MY_MAX_WIDTH)}px;
+        min-height: 0;
+        max-height: #{map-height($MY_MAX_WIDTH)}px;
     }
 }
