@@ -3,6 +3,7 @@ import itineraryMapSmall from '../../../public/images/spain-itinerary-map-small.
 import linkWorlCup from '../../../public/images/spain-link-world-cup.jpg'
 import IntroText from '../../../src/components/IntroText'
 import Layout from '../../../src/components/Layout'
+import TravelLinkList from '../../../src/components/TravelLinkList'
 
 export default function Page() {
     return (
@@ -36,22 +37,25 @@ export default function Page() {
 
             <section>
                 <h2>Photos and Video</h2>
-                <div className="row travel-link-list">
-                    <div className="small-12 medium-6 large-4 columns">
-                        <a
-                            className="bg-spain-world-cup"
-                            href="https://picasaweb.google.com/116513687533678150554/WorldCup2010InMadrid"
-                        >
-                            <Image src={linkWorlCup} alt="Celebrating Spain's victory in Madrid" />
-                            <span>
-                                2010
-                                <br />
-                                World Cup
-                            </span>
-                            <div className="image-cover"></div>
-                        </a>
-                    </div>
-                </div>
+
+                <TravelLinkList
+                    items={[
+                        {
+                            title: (
+                                <>
+                                    {' '}
+                                    2010
+                                    <br />
+                                    World Cup
+                                </>
+                            ),
+                            className: 'bg-spain-world-cup',
+                            url: 'https://picasaweb.google.com/116513687533678150554/WorldCup2010InMadrid',
+                            imageSrc: linkWorlCup,
+                            imageAlt: "Celebrating Spain's victory in Madrid",
+                        },
+                    ]}
+                />
             </section>
 
             <section>

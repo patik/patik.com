@@ -588,8 +588,12 @@ img[src^='/gam.php?'] {
 
     p,
     li {
-        font-size: emCalc(20px);
-        line-height: emCalc(24px);
+        font-size: remCalc(20px);
+        line-height: remCalc(28px);
+    }
+
+    li {
+        margin-bottom: 0.5rem;
     }
 
     .travel-link-list {

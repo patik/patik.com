@@ -1,28 +1,30 @@
-import Image from 'next/image'
 import imgGermanyAustriaLink from '../../../public/images/germany-austria-link.jpg'
 import imgGermanyBavariaLink from '../../../public/images/germany-bavaria-link.jpg'
 import imgGermanyBerlinLink from '../../../public/images/germany-berlin-link.jpg'
 import IntroFormatted from '../../../src/components/IntroFormatted'
 import Layout from '../../../src/components/Layout'
+import TravelLinkList from '../../../src/components/TravelLinkList'
 
 export default function Page() {
     return (
         <Layout
             title="Germany &amp; Austria"
             keywords={[
-                'germany',
-                'austria',
-                'euro 2008',
-                'munich',
-                'bavaria',
-                'rothenburg ob der tauber',
-                'vienna',
-                'salzburg',
-                'mauthausen',
-                'berlin',
-                'rhine river',
-                'bacharach',
-                'europe',
+                'Germany',
+                'Austria',
+                'Euro 2008',
+                '2008 European Championship',
+                'Munich',
+                'Bavaria',
+                'Rothenburg ob der Tauber',
+                'Vienna',
+                'Salzburg',
+                'Mauthausen',
+                'Berlin',
+                'Rhine River',
+                'Rhein',
+                'Bacharach',
+                'Europe',
                 'travel',
             ]}
         >
@@ -45,42 +47,38 @@ export default function Page() {
 
             <section>
                 <h2>Photos and Video</h2>
-                <div className="row travel-link-list">
-                    <div className="small-12 medium-6 large-4 columns">
-                        <a
-                            className="bg-germany-austria"
-                            href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipNE-TmD-UPWM7uIBh_08MWJsSCELd4Huol4UokA"
-                        >
-                            <Image src={imgGermanyAustriaLink} alt="Spanish fans gathering in Vienna for Euro 2008" />
-                            <span>Austria</span>
-                            <div className="image-cover"></div>
-                        </a>
-                    </div>
-                    <div className="small-12 medium-6 large-4 columns">
-                        <a
-                            className="bg-germany-bavaria"
-                            href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipMvUQMar4-AhAVp56ZeyzQDvIf_gSzYsSDLRcRZ"
-                        >
-                            <Image src={imgGermanyBavariaLink} alt="Enjoying a liter at Hofbräuhaus" />
-                            <span>Bavaria</span>
-                            <div className="image-cover"></div>
-                        </a>
-                    </div>
-                    <div className="small-12 medium-6 large-4 columns left">
-                        <a
-                            className="bg-germany-berlin"
-                            href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipNFxJeLnNx3fFuW7oM4SOTiZo_zx5G9rr3THx2v"
-                        >
-                            <Image src={imgGermanyBerlinLink} alt="Brandenberg Gate, Berlin" />
-                            <span>
-                                Berlin &amp;
-                                <br />
-                                The Rhine
-                            </span>
-                            <div className="image-cover"></div>
-                        </a>
-                    </div>
-                </div>
+
+                <TravelLinkList
+                    items={[
+                        {
+                            title: 'Austria',
+                            className: 'bg-germany-austria',
+                            url: 'https://get.google.com/albumarchive/116513687533678150554/album/AF1QipNE-TmD-UPWM7uIBh_08MWJsSCELd4Huol4UokA',
+                            imageSrc: imgGermanyAustriaLink,
+                            imageAlt: 'Spanish fans gathering in Vienna for Euro 2008',
+                        },
+                        {
+                            title: 'Bavaria',
+                            className: 'bg-germany-bavaria',
+                            url: 'https://get.google.com/albumarchive/116513687533678150554/album/AF1QipMvUQMar4-AhAVp56ZeyzQDvIf_gSzYsSDLRcRZ',
+                            imageSrc: imgGermanyBavariaLink,
+                            imageAlt: 'Enjoying a liter at Hofbräuhaus',
+                        },
+                        {
+                            title: (
+                                <>
+                                    Berlin &amp;
+                                    <br />
+                                    The Rhine
+                                </>
+                            ),
+                            className: 'bg-germany-berlin',
+                            url: 'https://get.google.com/albumarchive/116513687533678150554/album/AF1QipNFxJeLnNx3fFuW7oM4SOTiZo_zx5G9rr3THx2v',
+                            imageSrc: imgGermanyBerlinLink,
+                            imageAlt: 'Brandenberg Gate, Berlin',
+                        },
+                    ]}
+                />
             </section>
         </Layout>
     )
