@@ -24,13 +24,11 @@ export default function Home() {
             <Head>
                 <link rel="me" href="https://mastodon.online/@craigpatik" key="mastodon" />
             </Head>
-            <div id="home-main" role="main">
-                <section className="columns">
-                    <p>
-                        I’m <Link href="/about">Craig Patik</Link>, a traveler, web developer, and Arsenal fan based in
-                        Munich, Germany.{' '}
-                    </p>
-                </section>
+            <div role="main">
+                <p>
+                    I’m <Link href="/about">Craig Patik</Link>, a traveler, web developer, and Arsenal fan based in
+                    Munich, Germany.
+                </p>
 
                 <section>
                     <h2>Travel</h2>

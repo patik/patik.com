@@ -24,6 +24,8 @@ export default function WorldMap({ className = '' }: { className?: string }) {
     const [isDarkMode, setIsDarkMode] = useState(true)
 
     useEffect(() => {
+        setIsDarkMode(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+
         const checkWidth = () => {
             const newWidth = Math.min(MY_MAX_WIDTH, window.innerWidth * 0.9)
             setMapWidth(newWidth)
@@ -35,10 +37,6 @@ export default function WorldMap({ className = '' }: { className?: string }) {
         window.addEventListener('resize', checkWidth)
 
         return () => window.removeEventListener('resize', checkWidth)
-    }, [])
-
-    useEffect(() => {
-        setIsDarkMode(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
     }, [])
 
     return (

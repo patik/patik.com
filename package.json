@@ -7,7 +7,7 @@
         "build": "next build && next export",
         "start": "next dev",
         "start:prod": "next build && next start",
-        "lint": "next lint && yarn tsc --noEmit",
+        "lint": "next lint && yarn tsc --noEmit && yarn find-unused-sass-variables styles",
         "test": "echo \"Error: no test specified\" && exit 1",
         "clean": "git clean -fdx"
     },
@@ -37,6 +37,7 @@
     "homepage": "https://patik.com",
     "devDependencies": {
         "@types/google.visualization": "^0.0.68",
+        "find-unused-sass-variables": "^4.0.5",
         "sass": "^1.57.1"
     }
 }
