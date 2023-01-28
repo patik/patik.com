@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import IntroText from '../src/components/IntroText'
 import Layout from '../src/components/Layout'
 
 export default function Page() {
@@ -60,10 +59,10 @@ export default function Page() {
 
             <section>
                 <h2>Contributions</h2>
-                <IntroText>
+                <p>
                     I’ve made notable contributions to the following sites and projects for the New York State Office of
                     Information Technology Services:
-                </IntroText>
+                </p>
                 <ul>
                     <li>
                         <a href="https://github.com/ny/coreui">Core UI</a> &mdash; a component-based framework designed
