@@ -1,34 +1,19 @@
 import Image from 'next/image'
-import AmazonImage from '../../public/images/peru-argentina-link-amazon.jpg'
+import Link from 'next/link'
 import ColoniaImage from '../../public/images/peru-argentina-link-colonia.jpg'
-import CuscoImage from '../../public/images/peru-argentina-link-cusco.jpg'
 import MapSmall from '../../public/images/peru-argentina-map-small.png'
 import Layout from '../../src/components/Layout'
 import TravelLinkList from '../../src/components/TravelLinkList'
 
 export default function Page() {
     return (
-        <Layout
-            title="Peru &amp; Argentina"
-            keywords={[
-                'peru',
-                'argentina',
-                'cusco',
-                'machu picchu',
-                'buenos aires',
-                'amazon rainforest',
-                'lake titicaca',
-                'uruguay',
-                'panama canal',
-                'south america',
-                'travel',
-            ]}
-        >
-            <h1>Peru &amp; Argentina</h1>
+        <Layout title="Argentina" keywords={['argentina', 'buenos aires', 'uruguay', 'south america', 'travel']}>
+            <h1>Argentina &amp; Uruguay</h1>
 
             <p>
-                Our first forage into the southern hemisphere brought us everywhere from the Amazon rainforest and Machu
-                Picchu to Europe-esque Buenos Aires and a quiet estancia.
+                Our first forage into the southern hemisphere brought us everywhere from the{' '}
+                <Link href="/travel/peru/">Amazon rainforest and Machu Picchu</Link> to Europe-esque Buenos Aires and a
+                quiet estancia.
             </p>
 
             <section>
@@ -36,20 +21,6 @@ export default function Page() {
 
                 <TravelLinkList
                     items={[
-                        {
-                            title: 'Amazon Rainforest',
-                            className: 'bg-peru-argentina-amazon',
-                            url: 'https://get.google.com/albumarchive/116513687533678150554/album/AF1QipMcY0rCP6w1qbjKoNj3c5slFu52e5_F4LrTWOKD',
-                            imageSrc: AmazonImage,
-                            imageAlt: 'Wooley monkey',
-                        },
-                        {
-                            title: 'Cusco',
-                            className: 'bg-peru-argentina-cusco',
-                            url: 'https://get.google.com/albumarchive/116513687533678150554/album/AF1QipOJhD-DjF1QnnGf_hTfF7cw9u0h-p4WzlJZMmYC',
-                            imageSrc: CuscoImage,
-                            imageAlt: 'Kim holding a lamb and posing with Andean women',
-                        },
                         {
                             title: 'Colonia del Sacramento',
                             className: 'bg-peru-argentina-colonia',

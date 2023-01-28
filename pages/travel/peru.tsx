@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import AmazonImage from '../../public/images/peru-argentina-link-amazon.jpg'
 import ColoniaImage from '../../public/images/peru-argentina-link-colonia.jpg'
 import CuscoImage from '../../public/images/peru-argentina-link-cusco.jpg'
@@ -12,23 +13,19 @@ export default function Page() {
             title="Peru &amp; Argentina"
             keywords={[
                 'peru',
-                'argentina',
                 'cusco',
                 'machu picchu',
-                'buenos aires',
                 'amazon rainforest',
                 'lake titicaca',
-                'uruguay',
-                'panama canal',
                 'south america',
                 'travel',
             ]}
         >
-            <h1>Peru &amp; Argentina</h1>
+            <h1>Peru</h1>
 
             <p>
                 Our first forage into the southern hemisphere brought us everywhere from the Amazon rainforest and Machu
-                Picchu to Europe-esque Buenos Aires and a quiet estancia.
+                Picchu to Europe-esque <Link href="/travel/argentina">Buenos Aires</Link> and a quiet estancia.
             </p>
 
             <section>
@@ -49,13 +46,6 @@ export default function Page() {
                             url: 'https://get.google.com/albumarchive/116513687533678150554/album/AF1QipOJhD-DjF1QnnGf_hTfF7cw9u0h-p4WzlJZMmYC',
                             imageSrc: CuscoImage,
                             imageAlt: 'Kim holding a lamb and posing with Andean women',
-                        },
-                        {
-                            title: 'Colonia del Sacramento',
-                            className: 'bg-peru-argentina-colonia',
-                            url: 'https://get.google.com/albumarchive/116513687533678150554/album/AF1QipN0oaxdmD0r2Oe4Wf3Sh5iOMfbTjH1bicnpbUUd',
-                            imageSrc: ColoniaImage,
-                            imageAlt: 'Old train in Colonia del Sacremento, Uruguay',
                         },
                     ]}
                 />

@@ -1,11 +1,12 @@
 import BrugesImage from '../public/images/britain-benelux-bruges-link.jpg'
 import NetherlandsImage from '../public/images/britain-benelux-netherlands-link.jpg'
+import ArgentinaImage from '../public/images/peru-argentina-link-colonia.jpg'
 import BritainbeneluxImage from '../public/images/travel-britain-benelux.jpg'
 import FranceImage from '../public/images/travel-france.jpg'
 import GermanyImage from '../public/images/travel-germany.jpg'
 import GreeceImage from '../public/images/travel-greece.jpg'
 import ParisImage from '../public/images/travel-paris.jpg'
-import PeruArgentinaImage from '../public/images/travel-peru-argentina.jpg'
+import PeruImage from '../public/images/travel-peru-argentina.jpg'
 import SpainImage from '../public/images/travel-spain.jpg'
 import TurkeyImage from '../public/images/travel-turkey.jpg'
 import Layout from '../src/components/Layout'
@@ -23,10 +24,7 @@ countries.visited.forEach((country) => {
 
 export default function Page() {
     return (
-        <Layout
-            title="Travel"
-            keywords={['turkey', 'istanbul', 'cappadocia', 'cirali', 'selcuk', 'ephesus', 'europe', 'travel']}
-        >
+        <Layout title="Travel" keywords={['turkey', 'peru', 'argentina', 'europe', 'travel']}>
             <h1>Travel</h1>
 
             <section style={{ marginBottom: '6rem' }}>
@@ -64,10 +62,10 @@ export default function Page() {
                             imageAlt: 'Westerkerk overlooking an Amsterdam canal',
                         },
                         {
-                            title: <>Peru &amp; Argentina</>,
+                            title: 'Peru',
                             className: 'bg-travel-peru-argentina',
-                            url: '/travel/peru-argentina/',
-                            imageSrc: PeruArgentinaImage,
+                            url: '/travel/peru/',
+                            imageSrc: PeruImage,
                             imageAlt: 'Kim holding a lamb and posing with two Andean women',
                         },
                         {
@@ -132,6 +130,13 @@ export default function Page() {
                             url: '/travel/france/',
                             imageSrc: FranceImage,
                             imageAlt: 'The Seine River',
+                        },
+                        {
+                            title: 'Argentina',
+                            className: 'bg-peru-argentina-colonia',
+                            url: 'https://get.google.com/albumarchive/116513687533678150554/album/AF1QipN0oaxdmD0r2Oe4Wf3Sh5iOMfbTjH1bicnpbUUd',
+                            imageSrc: ArgentinaImage,
+                            imageAlt: 'Old train in Colonia del Sacremento, Uruguay',
                         },
                     ]}
                 />
