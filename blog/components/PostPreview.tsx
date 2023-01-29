@@ -1,8 +1,5 @@
 import Link from 'next/link'
-import packagejson from '../../package.json'
 import DateFormatter from './DateFormatter'
-
-const { basePath } = packagejson
 
 type Props = {
     title: string
@@ -19,7 +16,7 @@ const PostPreview = ({ title, date, excerpt, slug }: Props) => {
                 <CoverImage slug={slug} title={title} src={coverImage} />
             </div> */}
             <h3 className="text-3xl mb-3 leading-snug">
-                <Link as={`${basePath}/${slug}`} href={`${basePath}/[slug]`} className="hover:underline">
+                <Link as={`${slug}`} href={`/[slug]`} className="hover:underline">
                     {title}
                 </Link>
             </h3>

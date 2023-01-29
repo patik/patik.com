@@ -1,14 +1,14 @@
 import Head from 'next/head'
-import Container from '../../blog/components/Container'
-import HeroPost from '../../blog/components/HeroPost'
-import Intro from '../../blog/components/Intro'
-import Layout from '../../blog/components/Layout'
-import Meta from '../../blog/components/Meta'
-import MoreStories from '../../blog/components/MoreStories'
-import { getAllPosts, toCompletePost } from '../../blog/lib/getPosts'
-import { generateSiteMap } from '../../blog/lib/generateSiteMap'
-import packagejson from '../../package.json'
 import { useRouter } from 'next/router'
+import Container from '../blog/components/Container'
+import HeroPost from '../blog/components/HeroPost'
+import Intro from '../blog/components/Intro'
+import Layout from '../blog/components/Layout'
+import Meta from '../blog/components/Meta'
+import MoreStories from '../blog/components/MoreStories'
+import { generateSiteMap } from '../blog/lib/generateSiteMap'
+import { getAllPosts, toCompletePost } from '../blog/lib/getPosts'
+import packagejson from '../package.json'
 
 const { description, homepage } = packagejson
 
