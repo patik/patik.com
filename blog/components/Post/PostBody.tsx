@@ -4,7 +4,7 @@ import MarkdownBody from './MarkdownBody'
 type Props = {
     slug: string
     content: string
-    imagesMetadata: Post['imagesMetadata']
+    imagesMetadata: BlogPost['imagesMetadata']
 }
 
 const PostBody = ({ slug, content, imagesMetadata }: Props) => {

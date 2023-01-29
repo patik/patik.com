@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
-import packagejson from '../package.json'
+import packagejson from '../../package.json'
 
 const { basePath } = packagejson
 
@@ -28,7 +28,7 @@ const CoverImage = ({ title, src, slug }: Props) => {
     return (
         <div className="sm:mx-0">
             {slug ? (
-                <Link as={`/${slug}`} href="/[slug]" aria-label={title}>
+                <Link as={`${basePath}/${slug}`} href={`${basePath}/[slug]`} aria-label={title}>
                     {image}
                 </Link>
             ) : (

@@ -1,6 +1,6 @@
 declare module 'remark-change-image-paths'
 
-type Post = {
+type BlogPost = {
     id?: number
     slug: string
     title: string

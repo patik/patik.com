@@ -1,15 +1,17 @@
 {
     "name": "blog",
     "private": true,
+    "basePath": "/blog",
+    "homepage": "https://patik.com/blog",
+    "description": "Craig Patik's personal blog",
     "scripts": {
-        "copyimages": "node ./bin/copy-images.mjs",
+        "copyimages": "node ./blog/bin/copy-images.mjs",
         "prebuild": "yarn copyimages",
-        "dev": "yarn copyimages && next",
         "lint": "next lint && yarn typecheck",
         "build": "next build && next export",
-        "start": "yarn build && next start",
+        "start": "yarn copyimages && next dev",
         "typecheck": "tsc",
-        "test": "jest",
+        "test:blog": "jest --config ./blog/jest.config.js",
         "clean": "git clean -fdx"
     },
     "dependencies": {
@@ -47,18 +49,16 @@
         "tailwindcss": "^3.1.4",
         "ts-jest": "^29.0.3"
     },
-    "description": "Craig Patik's personal blog",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/patik/blog.git"
     },
     "author": {
         "name": "Craig Patik",
-        "email": "craig@patik.com"
+        "email": "craig@patik.com",
+        "url": "https://patik.com"
     },
-    "basePath": "/blog",
     "bugs": {
         "url": "https://github.com/patik/blog/issues"
-    },
-    "homepage": "https://patik.com/blog"
+    }
 }

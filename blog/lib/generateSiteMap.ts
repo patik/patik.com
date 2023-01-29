@@ -1,12 +1,12 @@
 import fs from 'fs'
 
-export function generateSiteMap({ baseUrl, links }: { baseUrl: string; links: { url: string; date: string }[] }) {
+export function generateSiteMap({ links }: { links: { url: string; date: string }[] }) {
     const [today] = new Date().toISOString().split('T')
 
     // console.log(links)
     // Push articles to sitemap
     const sitemap = links.map((metaObj) => {
-        return `<url><loc>${baseUrl}/${metaObj.url || ''}</loc><lastmod>${metaObj.date || today}</lastmod></url>`
+        return `<url><loc>${metaObj.url || ''}</loc><lastmod>${metaObj.date || today}</lastmod></url>`
     })
 
     // console.log(sitemap)

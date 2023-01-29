@@ -1,12 +1,12 @@
 import { DiscussionEmbed } from 'disqus-react'
-import packagejson from '../package.json'
+import packagejson from '../../package.json'
 
 const { homepage } = packagejson
 
 type Props = {
-    dsqThreadId: Post['dsq_thread_id']
-    slug: Post['slug']
-    title: Post['title']
+    dsqThreadId: BlogPost['dsq_thread_id']
+    slug: BlogPost['slug']
+    title: BlogPost['title']
 }
 
 const Discussion = ({ dsqThreadId, slug, title }: Props) => {

@@ -1,10 +1,10 @@
 import ErrorPage from 'next/error'
 import { useRouter } from 'next/router'
-import Post from '../components/Post/Post'
-import { getAllPosts, getPostBySlug, toCompletePost } from '../lib/getPosts'
+import Post from '../../blog/components/Post/Post'
+import { getAllPosts, getPostBySlug, toCompletePost } from '../../blog/lib/getPosts'
 
 type Props = {
-    post: Post
+    post: BlogPost
 }
 
 export default function SlugPage({ post }: Props) {

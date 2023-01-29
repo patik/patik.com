@@ -21,7 +21,7 @@ function getMarkdownComponents({
     imagesMetadata,
 }: {
     slug: string
-    imagesMetadata: Post['imagesMetadata']
+    imagesMetadata: BlogPost['imagesMetadata']
 }): Partial<Omit<NormalComponents, keyof SpecialComponents> & SpecialComponents> {
     const syntaxTheme = oneDark
 
@@ -101,7 +101,7 @@ function getMarkdownComponents({
 type Props = {
     slug: string
     content: string
-    imagesMetadata: Post['imagesMetadata']
+    imagesMetadata: BlogPost['imagesMetadata']
 }
 
 const MarkdownBody = ({ slug, content, imagesMetadata }: Props) => {

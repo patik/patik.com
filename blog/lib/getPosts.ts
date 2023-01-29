@@ -4,7 +4,7 @@ import { defaults, omit } from 'lodash'
 import { join } from 'path'
 import { withImageDimensions } from './withImageDimensions'
 
-const postsDirectory = join(process.cwd(), '_posts')
+const postsDirectory = join(process.cwd(), 'blog/_posts')
 
 export function getPostSlugs() {
     return fs.readdirSync(postsDirectory)
@@ -69,7 +69,7 @@ export async function getAllPosts(fields: string[] = []) {
     return partialPosts.map(hideUnpublishedValue(fields))
 }
 
-export function toCompletePost(items: PartialPost): Post {
+export function toCompletePost(items: PartialPost): BlogPost {
     return defaults(
         {},
         {

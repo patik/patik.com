@@ -7,8 +7,8 @@ import path from 'path'
 import fsExtra from 'fs-extra'
 
 const fsPromises = fs.promises
-const targetDir = './public/images'
-const postsDir = './_posts'
+const targetDir = './public/blog/images'
+const postsDir = './blog/_posts'
 
 async function copyImagesToPublic(images, slug) {
     for (const image of images) {

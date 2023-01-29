@@ -1,19 +1,19 @@
 import Head from 'next/head'
-import Container from '../components/Container'
-import HeroPost from '../components/HeroPost'
-import Intro from '../components/Intro'
-import Layout from '../components/Layout'
-import Meta from '../components/Meta'
-import MoreStories from '../components/MoreStories'
-import { getAllPosts, toCompletePost } from '../lib/getPosts'
-import { generateSiteMap } from '../lib/generateSiteMap'
-import packagejson from '../package.json'
+import Container from '../../blog/components/Container'
+import HeroPost from '../../blog/components/HeroPost'
+import Intro from '../../blog/components/Intro'
+import Layout from '../../blog/components/Layout'
+import Meta from '../../blog/components/Meta'
+import MoreStories from '../../blog/components/MoreStories'
+import { getAllPosts, toCompletePost } from '../../blog/lib/getPosts'
+import { generateSiteMap } from '../../blog/lib/generateSiteMap'
+import packagejson from '../../package.json'
 import { useRouter } from 'next/router'
 
 const { description, homepage } = packagejson
 
 type Props = {
-    allPosts: Post[]
+    allPosts: BlogPost[]
 }
 
 export default function Index({ allPosts }: Props) {
@@ -35,6 +35,7 @@ export default function Index({ allPosts }: Props) {
         <>
             <Layout>
                 <Head>
+                    <title>{description}</title>
                     <Meta
                         siteName="Craig Patik"
                         image={`${homepage}/cover.jpg`}
@@ -65,7 +66,6 @@ export const getStaticProps = async () => {
     const allPosts = await getAllPosts(['title', 'date', 'slug', 'coverImage', 'excerpt', 'id', 'unpublished'])
 
     generateSiteMap({
-        baseUrl: homepage,
         links: allPosts.map(({ slug, date }) => ({
             date,
             url: `${homepage}/${slug}`,
