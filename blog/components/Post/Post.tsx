@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import packagejson from '../../../package.json'
+import packagejson from '../../../oldblogrepo/package.json'
 import Container from '../Container'
 import Discussion from '../Discussion'
 import Layout from '../Layout'

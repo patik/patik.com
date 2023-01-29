@@ -1,5 +1,5 @@
 import { DiscussionEmbed } from 'disqus-react'
-import packagejson from '../../package.json'
+import packagejson from '../../oldblogrepo/package.json'
 
 const { homepage } = packagejson
 
