@@ -1,21 +1,22 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import imgHomeBritainBenelux from '../public/images/home-britain-benelux.jpg'
-import imgHomeCodeLogo from '../public/images/home-console-blog-logo.png'
-import imgHomeGithubLogo from '../public/images/home-github-logo.png'
-import imgHomeMastodonAvatar from '../public/images/home-mastodon-avatar.png'
-import imgHomeTravelAll from '../public/images/home-travel-all.jpg'
-import imgHomeTravelGermany from '../public/images/home-travel-germany.jpg'
-import imgHomeTravelGreece from '../public/images/home-travel-greece.jpg'
-import imgHomeTravelPeruArgentina from '../public/images/home-travel-peru-argentina.jpg'
-import imgHomeTravelSpain from '../public/images/home-travel-spain.jpg'
-import imgHomeTravelTurkey from '../public/images/home-travel-turkey.jpg'
+import NetherlandsImage from '../public/images/britain-benelux-netherlands-link.jpg'
+import BritainBeneluxImage from '../public/images/home-britain-benelux.jpg'
+import CodeLogo from '../public/images/home-console-blog-logo.png'
+import GithubLogo from '../public/images/home-github-logo.png'
+import MastodonAvatar from '../public/images/home-mastodon-avatar.png'
+import TravelImageAll from '../public/images/home-travel-all.jpg'
+import TravelImageGermany from '../public/images/home-travel-germany.jpg'
+import TravelImageGreece from '../public/images/home-travel-greece.jpg'
+import TravelImagePeruArgentina from '../public/images/home-travel-peru-argentina.jpg'
+import TravelImageSpain from '../public/images/home-travel-spain.jpg'
+import TravelImageTurkey from '../public/images/home-travel-turkey.jpg'
 import imgHomeTwitterCraigpatikAvatar from '../public/images/home-twitter-craigpatik-avatar.jpg'
 import imgHomeConsoleBlogLogo from '../public/images/icons/blog/ios/AppIcon@3x.png'
 import imgHomeDoFLogo from '../public/images/icons/depth-of-field/ios/AppIcon@3x.png'
 import imgWithinViewportFLogo from '../public/images/icons/within-viewport/ios/AppIcon@3x.png'
-import imgTravelParis from '../public/images/travel-paris.jpg'
+import TravelImageParis from '../public/images/travel-paris.jpg'
 import Layout from '../src/components/site/Layout'
 
 export default function Home() {
@@ -36,55 +37,55 @@ export default function Home() {
                         <div className="cp-item-third">
                             <Link href="/travel/">
                                 <Image
-                                    src={imgHomeTravelAll}
+                                    src={TravelImageAll}
                                     alt="Standing aside the Andean Explorer train"
                                     title="Andean Explorer, Peru"
                                     width={48}
                                     height={48}
                                 />
-                                <span>All Travel</span>
+                                <span>All Trips</span>
                             </Link>
                         </div>
                         <div className="cp-item-third">
-                            <Link href="/travel/britain-benelux/">
+                            <Link href="/travel/britain/">
                                 <Image
-                                    src={imgHomeBritainBenelux}
+                                    src={BritainBeneluxImage}
                                     alt="Big Ben, a black cab, and a red double-decker bus in Parliament Square"
                                     title="London, England"
                                     width={48}
                                     height={48}
                                 />
-                                <span>Britain &amp; Benelux</span>
+                                <span>Britain</span>
                             </Link>
                         </div>
                         <div className="cp-item-third">
-                            <Link href="/travel/peru-argentina/">
+                            <Link href="/travel/peru/">
                                 <Image
-                                    src={imgHomeTravelPeruArgentina}
+                                    src={TravelImagePeruArgentina}
                                     alt="Kim holding a lamb and posing with two Andean women in their traditionl clothing"
-                                    title="Kim holding a lamb and posing with two Andean women"
+                                    title="Kim holding a lamb in Cusco, Peru"
                                     width={48}
                                     height={48}
                                 />
-                                <span>Peru &amp; Argentina</span>
+                                <span>Peru</span>
                             </Link>
                         </div>
                         <div className="cp-item-third">
                             <Link href="/travel/spain/">
                                 <Image
-                                    src={imgHomeTravelSpain}
+                                    src={TravelImageSpain}
                                     alt="Celebrating Spain's World Cup victory in Madrid"
                                     title="Celebrating Spain's World Cup victory in Madrid"
                                     width={48}
                                     height={48}
                                 />
-                                <span>Spain, Portugal, &amp; Morocco</span>
+                                <span>Spain</span>
                             </Link>
                         </div>
                         <div className="cp-item-third">
                             <Link href="/travel/turkey/">
                                 <Image
-                                    src={imgHomeTravelTurkey}
+                                    src={TravelImageTurkey}
                                     alt="The Blue Mosque (Sultanahmet Camii), Istanbul, Turkey"
                                     title="The Blue Mosque (Sultanahmet Camii), Istanbul, Turkey"
                                     width={48}
@@ -96,19 +97,19 @@ export default function Home() {
                         <div className="cp-item-third">
                             <Link href="/travel/germany/">
                                 <Image
-                                    src={imgHomeTravelGermany}
+                                    src={TravelImageGermany}
                                     alt="Spanish fans gathering in Vienna's Ststephensplatz"
                                     title="Spanish fans in Vienna for Euro 2008"
                                     width={48}
                                     height={48}
                                 />
-                                <span>Germany &amp; Austria</span>
+                                <span>Germany</span>
                             </Link>
                         </div>
                         <div className="cp-item-third">
                             <Link href="/travel/greece/">
                                 <Image
-                                    src={imgHomeTravelGreece}
+                                    src={TravelImageGreece}
                                     alt="View of the coast of Serifios, Greece from a ferry"
                                     title="Serifios, Greece"
                                     width={48}
@@ -118,15 +119,27 @@ export default function Home() {
                             </Link>
                         </div>
                         <div className="cp-item-third">
-                            <Link href="/travel/paris/">
+                            <Link href="/travel/france/">
                                 <Image
-                                    src={imgTravelParis}
+                                    src={TravelImageParis}
                                     alt="Kim and I in front of the Eiffel Tower"
                                     title="Paris, France"
                                     width={48}
                                     height={48}
                                 />
-                                <span>Paris</span>
+                                <span>France</span>
+                            </Link>
+                        </div>
+                        <div className="cp-item-third">
+                            <Link href="/travel/netherlands/">
+                                <Image
+                                    src={NetherlandsImage}
+                                    alt="Westerkerk overlooking an Amsterdam canal"
+                                    title="Amsterdam, Netherlands"
+                                    width={48}
+                                    height={48}
+                                />
+                                <span>Netherlands</span>
                             </Link>
                         </div>
                     </div>
@@ -138,21 +151,21 @@ export default function Home() {
                     <div className="cp-row button-link-list">
                         <div className="cp-item-third">
                             <a href="https://github.com/patik">
-                                <Image src={imgHomeGithubLogo} alt="" title="GitHub" width={48} height={48} />
+                                <Image src={GithubLogo} alt="" title="GitHub" width={48} height={48} />
                                 <span>GitHub</span>
                             </a>
                         </div>
                         <div className="cp-item-third">
                             <Link href="/code/">
-                                <Image
-                                    src={imgHomeCodeLogo}
-                                    alt=""
-                                    title="Code &amp; projects"
-                                    width={48}
-                                    height={48}
-                                />
+                                <Image src={CodeLogo} alt="" title="Code &amp; projects" width={48} height={48} />
                                 <span>Code &amp; projects</span>
                             </Link>
+                        </div>
+                        <div className="cp-item-third">
+                            <a href="/blog/">
+                                <Image src={imgHomeConsoleBlogLogo} alt="" title="Blog" width={48} height={48} />
+                                <span>Blog</span>
+                            </a>
                         </div>
                         <div className="cp-item-third">
                             <a href="https://patik.github.io/within-viewport/">
@@ -170,12 +183,6 @@ export default function Home() {
                                     height={48}
                                 />
                                 <span>Depth of Field Calculator</span>
-                            </a>
-                        </div>
-                        <div className="cp-item-third">
-                            <a href="/blog/">
-                                <Image src={imgHomeConsoleBlogLogo} alt="" title="Blog" width={48} height={48} />
-                                <span>Blog</span>
                             </a>
                         </div>
                     </div>
@@ -200,7 +207,7 @@ export default function Home() {
                         <div className="cp-item-third">
                             <a rel="me" href="https://mastodon.online/@craigpatik">
                                 <Image
-                                    src={imgHomeMastodonAvatar}
+                                    src={MastodonAvatar}
                                     alt="Craig in front of a street mural in Northern Ireland"
                                     title="@craigpatik@mastodon.online"
                                     width={48}
