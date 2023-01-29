@@ -8,9 +8,9 @@ import Meta from '../../blog/components/Meta'
 import MoreStories from '../../blog/components/MoreStories'
 import { generateSiteMap } from '../../blog/lib/generateSiteMap'
 import { getAllPosts, toCompletePost } from '../../blog/lib/getPosts'
-import packagejson from '../package.json'
+import config from '../../blog/config.json'
 
-const { description, homepage } = packagejson
+const { description, homepage } = config
 
 type Props = {
     allPosts: BlogPost[]
