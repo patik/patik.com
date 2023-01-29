@@ -4,16 +4,7 @@
     "basePath": "/blog",
     "homepage": "https://patik.com/blog",
     "description": "Craig Patik's personal blog",
-    "scripts": {
-        "copyimages": "node ./blog/bin/copy-images.mjs",
-        "prebuild": "yarn copyimages",
-        "lint": "next lint && yarn typecheck",
-        "build": "next build && next export",
-        "start": "yarn copyimages && next dev",
-        "typecheck": "tsc",
-        "test:blog": "jest --config ./blog/jest.config.js",
-        "clean": "git clean -fdx"
-    },
+    "scripts": {},
     "dependencies": {
         "classnames": "^2.3.1",
         "date-fns": "^2.28.0",
