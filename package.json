@@ -1,7 +1,8 @@
 {
     "name": "patik.com",
     "version": "0.1.0",
-    "description": "Personal web site of Craig Patik",
+    "description": "Craig Patik’s personal web site",
+    "homepage": "https://patik.com",
     "private": true,
     "scripts": {
         "build": "next build && next export",
@@ -25,19 +26,22 @@
         "react-google-charts": "^4.0.0",
         "typescript": "^4.9.4"
     },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/patik/patik.com.git"
-    },
-    "author": "Craig Patik",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/patik/patik.com/issues"
-    },
-    "homepage": "https://patik.com",
     "devDependencies": {
         "@types/google.visualization": "^0.0.68",
         "find-unused-sass-variables": "^4.0.5",
         "sass": "^1.57.1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/patik/patik.com.git"
+    },
+    "author": {
+        "name": "Craig Patik",
+        "email": "craig@patik.com",
+        "url": "https://patik.com"
+    },
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/patik/patik.com/issues"
     }
 }
