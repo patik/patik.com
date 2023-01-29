@@ -1,7 +1,7 @@
 import franceImage from '../../public/images/france-photos-link.jpg'
 import parisImage from '../../public/images/paris-photos-link.jpg'
-import Layout from '../../src/components/Layout'
-import TravelLinkList from '../../src/components/TravelLinkList'
+import Layout from '../../src/components/site/Layout'
+import TravelLinkList from '../../src/components/site/TravelLinkList'
 
 export default function Page() {
     return (

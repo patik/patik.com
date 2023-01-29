@@ -5,8 +5,8 @@ import CiraliImage from '../../public/images/turkey-link-cirali.jpg'
 import EphesusImage from '../../public/images/turkey-link-ephesus.jpg'
 import IstanbulImage from '../../public/images/turkey-link-istanbul.jpg'
 import OverviewMap from '../../public/images/turkey-overview-map-small.jpg'
-import Layout from '../../src/components/Layout'
-import TravelLinkList from '../../src/components/TravelLinkList'
+import Layout from '../../src/components/site/Layout'
+import TravelLinkList from '../../src/components/site/TravelLinkList'
 
 export default function Page() {
     return (

@@ -16,7 +16,7 @@ import imgHomeConsoleBlogLogo from '../public/images/icons/blog/ios/AppIcon@3x.p
 import imgHomeDoFLogo from '../public/images/icons/depth-of-field/ios/AppIcon@3x.png'
 import imgWithinViewportFLogo from '../public/images/icons/within-viewport/ios/AppIcon@3x.png'
 import imgTravelParis from '../public/images/travel-paris.jpg'
-import Layout from '../src/components/Layout'
+import Layout from '../src/components/site/Layout'
 
 export default function Home() {
     return (

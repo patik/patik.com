@@ -1,8 +1,8 @@
 import imgGermanyAustriaLink from '../../public/images/germany-austria-link.jpg'
 import imgGermanyBavariaLink from '../../public/images/germany-bavaria-link.jpg'
 import imgGermanyBerlinLink from '../../public/images/germany-berlin-link.jpg'
-import Layout from '../../src/components/Layout'
-import TravelLinkList from '../../src/components/TravelLinkList'
+import Layout from '../../src/components/site/Layout'
+import TravelLinkList from '../../src/components/site/TravelLinkList'
 
 export default function Page() {
     return (

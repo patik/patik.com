@@ -1,8 +1,8 @@
 import athensLink from '../../public/images/greece-athens-link.jpg'
 import santoriniLink from '../../public/images/greece-santorini-link.jpg'
 import sifnosLink from '../../public/images/greece-sifnos-link.jpg'
-import Layout from '../../src/components/Layout'
-import TravelLinkList from '../../src/components/TravelLinkList'
+import Layout from '../../src/components/site/Layout'
+import TravelLinkList from '../../src/components/site/TravelLinkList'
 
 export default function Page() {
     return (

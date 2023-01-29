@@ -9,9 +9,9 @@ import ParisImage from '../public/images/travel-paris.jpg'
 import PeruImage from '../public/images/travel-peru-argentina.jpg'
 import SpainImage from '../public/images/travel-spain.jpg'
 import TurkeyImage from '../public/images/travel-turkey.jpg'
-import Layout from '../src/components/Layout'
-import TravelLinkList from '../src/components/TravelLinkList'
-import WorldMap from '../src/components/WorldMap'
+import Layout from '../src/components/site/Layout'
+import TravelLinkList from '../src/components/site/TravelLinkList'
+import WorldMap from '../src/components/site/WorldMap'
 import countries from '../src/countries.json'
 
 const currentYear = new Date().getFullYear()

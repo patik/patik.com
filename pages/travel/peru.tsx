@@ -4,8 +4,8 @@ import AmazonImage from '../../public/images/peru-argentina-link-amazon.jpg'
 import ColoniaImage from '../../public/images/peru-argentina-link-colonia.jpg'
 import CuscoImage from '../../public/images/peru-argentina-link-cusco.jpg'
 import MapSmall from '../../public/images/peru-argentina-map-small.png'
-import Layout from '../../src/components/Layout'
-import TravelLinkList from '../../src/components/TravelLinkList'
+import Layout from '../../src/components/site/Layout'
+import TravelLinkList from '../../src/components/site/TravelLinkList'
 
 export default function Page() {
     return (
