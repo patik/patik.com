@@ -3,7 +3,7 @@ import Link from 'next/link'
 import appNetPng from '../../public/images/app-net-twitter-char-count.png'
 import magnetPng from '../../public/images/magnet-links-preview.png'
 import twitterAvatarPng from '../../public/images/twitter-avatar-in-menu.png'
-import Layout from '../../src/components/Layout'
+import Layout from '../../src/components/site/Layout'
 
 function UserScriptLink({ fileName }: { fileName: string }) {
     return (

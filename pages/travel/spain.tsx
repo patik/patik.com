@@ -2,28 +2,16 @@ import Image from 'next/image'
 import Link from 'next/link'
 import itineraryMapSmall from '../../public/images/spain-itinerary-map-small.jpg'
 import linkWorlCup from '../../public/images/spain-link-world-cup.jpg'
-import Layout from '../../src/components/Layout'
-import TravelLinkList from '../../src/components/TravelLinkList'
+import Layout from '../../src/components/site/Layout'
+import TravelLinkList from '../../src/components/site/TravelLinkList'
 
 export default function Page() {
     return (
         <Layout
             title="Spain"
-            keywords={[
-                'Spain',
-                'Portugal',
-                'Lisbon',
-                'Madrid',
-                'Sevilla',
-                '2010 World Cup',
-                'Tangier',
-                'Tanger',
-                'Barcelona',
-                'Europe',
-                'travel',
-            ]}
+            keywords={['Spain', 'Madrid', 'Sevilla', '2010 World Cup', 'Barcelona', 'Europe', 'travel']}
         >
-            <h1>Spain, Portugal, &amp; Morocco</h1>
+            <h1>Spain</h1>
 
             <p>
                 Like <a href="https://en.wikipedia.org/wiki/Paul_the_Octopus">Pulpo Paul</a>, Kim and I had an inkling

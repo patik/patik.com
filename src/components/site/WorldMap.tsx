@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Chart } from 'react-google-charts'
-import countries from '../countries.json'
+import countries from '../../countries.json'
 
 const currentYear = new Date().getFullYear()
 

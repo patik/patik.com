@@ -4,8 +4,8 @@ import EdinburghImage from '../../public/images/britain-benelux-edinburgh-link.j
 import LiverpoolImage from '../../public/images/britain-benelux-liverpool-link.jpg'
 import LondonImage from '../../public/images/britain-benelux-london-link.jpg'
 import OverviewMap from '../../public/images/britain-benelux-overview-map-small.jpg'
-import Layout from '../../src/components/Layout'
-import TravelLinkList from '../../src/components/TravelLinkList'
+import Layout from '../../src/components/site/Layout'
+import TravelLinkList from '../../src/components/site/TravelLinkList'
 
 export default function Page() {
     return (
