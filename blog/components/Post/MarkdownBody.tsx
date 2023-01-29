@@ -93,7 +93,7 @@ function getMarkdownComponents({
 
             const { width, height } = imagesMetadata[src]
 
-            return <Image src={`blog/images/${slug}/${src}`} alt={alt} width={width} height={height} />
+            return <Image src={`blog/blog/images/${slug}/${src}`} alt={alt} width={width} height={height} />
         },
     }
 }
