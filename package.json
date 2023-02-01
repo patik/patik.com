@@ -29,7 +29,7 @@
     "devDependencies": {
         "@types/google.visualization": "^0.0.68",
         "find-unused-sass-variables": "^4.0.5",
-        "sass": "^1.57.1"
+        "sass": "^1.58.0"
     },
     "repository": {
         "type": "git",
