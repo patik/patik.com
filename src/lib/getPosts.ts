@@ -4,7 +4,7 @@ import { defaults, omit } from 'lodash'
 import { join } from 'path'
 import { withImageDimensions } from './withImageDimensions'
 
-const postsDirectory = join(process.cwd(), 'blog/_posts')
+const postsDirectory = join(process.cwd(), '_posts')
 
 export function getPostSlugs() {
     return fs.readdirSync(postsDirectory)

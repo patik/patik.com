@@ -1,6 +1,6 @@
 import { PropsWithChildren, ReactElement } from 'react'
-import UnpublishedAlert from '../../../blog/components/UnpublishedAlert'
 import CommonLayout from '../common/Layout'
+import UnpublishedAlert from './UnpublishedAlert'
 
 type Props = PropsWithChildren<{
     title?: string

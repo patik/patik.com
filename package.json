@@ -5,7 +5,7 @@
     "homepage": "https://patik.com",
     "private": true,
     "scripts": {
-        "copyimages": "node ./blog/bin/copy-images.mjs",
+        "copyimages": "node ./bin/copy-images.mjs",
         "prebuild": "yarn copyimages",
         "build": "next build && next export",
         "start": "yarn copyimages && next dev",

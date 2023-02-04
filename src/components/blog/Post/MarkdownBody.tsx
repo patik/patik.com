@@ -7,7 +7,7 @@ import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter'
 import javascript from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript'
 import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import rehypeRaw from 'rehype-raw'
-import { getCodeFenceConfig } from '../../lib/getCodeFenceConfig'
+import { getCodeFenceConfig } from '../../../lib/getCodeFenceConfig'
 
 SyntaxHighlighter.registerLanguage('javascript', javascript)
 
@@ -93,7 +93,7 @@ function getMarkdownComponents({
 
             const { width, height } = imagesMetadata[src]
 
-            return <Image src={`/blog/blog/images/${slug}/${src}`} alt={alt} width={width} height={height} />
+            return <Image src={`/blog/images/${slug}/${src}`} alt={alt} width={width} height={height} />
         },
     }
 }

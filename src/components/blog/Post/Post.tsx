@@ -1,17 +1,16 @@
 import Head from 'next/head'
-import packagejson from '../../config.json'
+import config from '../../../config.json'
 import Container from '../Container'
 import Discussion from '../Discussion'
-import Layout from '../../../src/components/blog/Layout'
+import Layout from '../Layout'
 import Meta from '../Meta'
-import PageHeader from './PageHeader'
 import PostBody from './PostBody'
 import PostHeader from './PostHeader'
 import PostTitle from './PostTitle'
 
-const { description: packageJsonDescription } = packagejson
+const { description: configDescription } = config
 
-const { homepage, description } = packagejson
+const { homepage, description } = config
 
 type Props = {
     post: BlogPost
@@ -26,13 +25,12 @@ export default function Post({ post, isFallback }: Props) {
     return (
         <Layout unpublished={unpublished}>
             <Container>
-                <PageHeader />
                 {isFallback ? (
                     <PostTitle>Loading…</PostTitle>
                 ) : (
                     <article className="mb-32 max-w-3xl">
                         <Head>
-                            <title>{title && description ? `${title} | ${description}` : packageJsonDescription}</title>
+                            <title>{title && description ? `${title} | ${description}` : configDescription}</title>
                             <Meta
                                 siteName={description}
                                 image={ogImage}

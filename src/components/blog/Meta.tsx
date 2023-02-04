@@ -1,4 +1,4 @@
-import packagejson from '../../package.json'
+import packagejson from '../../../package.json'
 
 const siteRoot = packagejson.author.url
 

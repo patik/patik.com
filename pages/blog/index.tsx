@@ -1,14 +1,14 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import Container from '../../blog/components/Container'
-import HeroPost from '../../blog/components/HeroPost'
-import Intro from '../../blog/components/Intro'
+import config from '../../src/config.json'
+import { generateSiteMap } from '../../src/lib/generateSiteMap'
+import { getAllPosts, toCompletePost } from '../../src/lib/getPosts'
+import Container from '../../src/components/blog/Container'
+import HeroPost from '../../src/components/blog/HeroPost'
+import Intro from '../../src/components/blog/Intro'
 import Layout from '../../src/components/blog/Layout'
-import Meta from '../../blog/components/Meta'
-import MoreStories from '../../blog/components/MoreStories'
-import { generateSiteMap } from '../../blog/lib/generateSiteMap'
-import { getAllPosts, toCompletePost } from '../../blog/lib/getPosts'
-import config from '../../blog/config.json'
+import Meta from '../../src/components/blog/Meta'
+import MoreStories from '../../src/components/blog/MoreStories'
 
 const { description, homepage } = config
 

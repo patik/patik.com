@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
-import packagejson from '../config.json'
+import packagejson from '../../config.json'
 
 const { basePath } = packagejson
 

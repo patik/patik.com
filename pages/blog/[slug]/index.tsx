@@ -1,7 +1,7 @@
 import ErrorPage from 'next/error'
 import { useRouter } from 'next/router'
-import Post from '../../../blog/components/Post/Post'
-import { getAllPosts, getPostBySlug, toCompletePost } from '../../../blog/lib/getPosts'
+import Post from '../../../src/components/blog/Post/Post'
+import { getAllPosts, getPostBySlug, toCompletePost } from '../../../src/lib/getPosts'
 
 type Props = {
     post: BlogPost

@@ -1,6 +1,6 @@
 import type { AppProps } from 'next/app'
 import NextHead from 'next/head'
-import config from '../blog/config.json'
+import config from '../src/config.json'
 import '../styles/site/globals.css'
 import '../styles/site/scss/style.scss'
 

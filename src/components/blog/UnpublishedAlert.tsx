@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import Container from './Container'
 
-const UnpublishedAlert = () => {
+export default function UnpublishedAlert() {
     return (
         <div
             className={cn('border-b', {
@@ -16,5 +16,3 @@ const UnpublishedAlert = () => {
         </div>
     )
 }
-
-export default UnpublishedAlert
