@@ -3,32 +3,27 @@ import { useRouter } from 'next/router'
 import Post from '../../../blog/components/Post/Post'
 import { getAllPosts, getPostBySlug, toCompletePost } from '../../../blog/lib/getPosts'
 
-type Params = {
-    params: {
-        slug: string
-    }
+type Props = {
+    post: BlogPost
 }
 
-type Props = {
-    post?: BlogPost
-} & Params
-
-// https://beta.nextjs.org/docs/upgrade-guide#replacing-fallback
-export const dynamicParams = true
-
-export default async function SlugPage({ params }: Props) {
+export default function SlugPage({ post }: Props) {
     const router = useRouter()
-    const post = await getPost(params)
 
-    if (!router.isFallback) {
+    if (!router.isFallback && !post?.slug) {
         return <ErrorPage statusCode={404} />
     }
 
     return <Post post={post} isFallback={router.isFallback} />
 }
 
-async function getPost(params: Params['params']) {
-    console.log('params ', params)
+type Params = {
+    params: {
+        slug: string
+    }
+}
+
+export async function getStaticProps({ params }: Params) {
     const post = await getPostBySlug(params.slug, [
         'title',
         'date',
@@ -41,13 +36,24 @@ async function getPost(params: Params['params']) {
         'unpublished',
     ])
 
-    return toCompletePost(post)
+    return {
+        props: {
+            post: toCompletePost(post),
+        },
+    }
 }
 
-export async function generateStaticParams() {
+export async function getStaticPaths() {
     const posts = await getAllPosts(['slug'])
 
-    return posts.map((post) => ({
-        slug: post.slug,
-    }))
+    return {
+        paths: posts.map((post) => {
+            return {
+                params: {
+                    slug: post.slug,
+                },
+            }
+        }),
+        fallback: false,
+    }
 }

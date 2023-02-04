@@ -32,33 +32,31 @@ export default function Index({ allPosts }: Props) {
     }
 
     return (
-        <>
-            <Layout>
-                <Head>
-                    <title>{description}</title>
-                    <Meta
-                        siteName="Craig Patik"
-                        image={`${homepage}/cover.jpg`}
-                        description={description}
-                        title={description}
-                        url={homepage}
+        <Layout>
+            <Head>
+                <title>{description}</title>
+                <Meta
+                    siteName="Craig Patik"
+                    image={`${homepage}/cover.jpg`}
+                    description={description}
+                    title={description}
+                    url={homepage}
+                />
+            </Head>
+            <Container>
+                <Intro />
+                {heroPost && (
+                    <HeroPost
+                        title={heroPost.title}
+                        coverImage={heroPost.coverImage}
+                        date={heroPost.date}
+                        slug={heroPost.slug}
+                        excerpt={heroPost.excerpt ?? ''}
                     />
-                </Head>
-                <Container>
-                    <Intro />
-                    {heroPost && (
-                        <HeroPost
-                            title={heroPost.title}
-                            coverImage={heroPost.coverImage}
-                            date={heroPost.date}
-                            slug={heroPost.slug}
-                            excerpt={heroPost.excerpt ?? ''}
-                        />
-                    )}
-                    {morePosts.length > 0 && <MoreStories posts={morePosts} />}
-                </Container>
-            </Layout>
-        </>
+                )}
+                {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+            </Container>
+        </Layout>
     )
 }
 
