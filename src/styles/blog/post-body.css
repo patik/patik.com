@@ -7,6 +7,7 @@
 .inline-code {
     font-family: Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace;
     background-color: rgba(0, 0, 0, 0.1);
+    color: white;
 }
 
 .codeFence code > span[data='highlight'] {

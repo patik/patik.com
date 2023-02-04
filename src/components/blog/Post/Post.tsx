@@ -4,6 +4,7 @@ import Container from '../Container'
 import Discussion from '../Discussion'
 import Layout from '../Layout'
 import Meta from '../Meta'
+import PageHeader from './PageHeader'
 import PostBody from './PostBody'
 import PostHeader from './PostHeader'
 import PostTitle from './PostTitle'
@@ -25,6 +26,7 @@ export default function Post({ post, isFallback }: Props) {
     return (
         <Layout unpublished={unpublished}>
             <Container>
+                <PageHeader />
                 {isFallback ? (
                     <PostTitle>Loading…</PostTitle>
                 ) : (

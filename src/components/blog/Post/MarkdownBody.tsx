@@ -9,6 +9,25 @@ import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import rehypeRaw from 'rehype-raw'
 import { getCodeFenceConfig } from '../../../lib/getCodeFenceConfig'
 
+type MarkdownComponents = Partial<Omit<NormalComponents, keyof SpecialComponents> & SpecialComponents>
+
+// We don't want to render images for this piece of content. Otherwise, `imagesMetadata` would be required.
+type NoImages = {
+    slug: string
+    noImages: true
+}
+
+type WithImages = {
+    slug: string
+    imagesMetadata: ImagesMetadata
+}
+
+type Overloaded = {
+    slug: string
+    noImages?: true
+    imagesMetadata?: ImagesMetadata
+}
+
 SyntaxHighlighter.registerLanguage('javascript', javascript)
 
 /**
@@ -16,23 +35,21 @@ SyntaxHighlighter.registerLanguage('javascript', javascript)
  *
  * With help from https://amirardalan.com/blog/syntax-highlight-code-in-markdown
  */
-function getMarkdownComponents({
-    slug,
-    imagesMetadata,
-}: {
-    slug: string
-    imagesMetadata: BlogPost['imagesMetadata']
-}): Partial<Omit<NormalComponents, keyof SpecialComponents> & SpecialComponents> {
+export function getMarkdownComponents({ slug, noImages }: NoImages): MarkdownComponents
+export function getMarkdownComponents({ slug, imagesMetadata }: WithImages): MarkdownComponents
+export function getMarkdownComponents({ slug, noImages, imagesMetadata }: Overloaded): MarkdownComponents {
     const syntaxTheme = oneDark
 
     return {
         a({ href, children, ...props }) {
-            if (href && !/^https?:\/\//.test(href) && !/^javascript?:\/\//.test(href)) {
+            if (href) {
+                // if (href && !/^https?:\/\//.test(href) && !/^javascript?:\/\//.test(href)) {
                 return (
                     <Link href={href} {...props}>
                         {children}
                     </Link>
                 )
+                // }
             }
 
             return (
@@ -67,6 +84,11 @@ function getMarkdownComponents({
             )
         },
         img({ src, alt }) {
+            // We don't want to render images for this piece of content
+            if (noImages) {
+                return <></>
+            }
+
             if (!alt) {
                 throw new Error(`No alt text for ${src}`)
             }
@@ -101,7 +123,7 @@ function getMarkdownComponents({
 type Props = {
     slug: string
     content: string
-    imagesMetadata: BlogPost['imagesMetadata']
+    imagesMetadata: ImagesMetadata
 }
 
 const MarkdownBody = ({ slug, content, imagesMetadata }: Props) => {

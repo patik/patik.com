@@ -29,7 +29,6 @@ The obvious thing to do when a user reaches the boundary of their timeline is to
 
 The app also tracks each user’s reading position so the can resume reading at the same place in future sessions. When determining which tweets have been read, it only makes sense to consider ones that are fully in view. The app has a fixed header that shrinks the viewport by about 60 pixels, so I need to make sure a tweet is not covered by that.
 
-
 ![Diagram showing elements of a Twitter feed being in and out of view](example_diagram_sm.png)
 
 ## Live updates

@@ -6,6 +6,8 @@ interface Window {
     }
 }
 
+type ImagesMetadata = Record<string, import('image-size/dist/types/interface').ISizeCalculationResult> | null
+
 type BlogPost = {
     id?: number
     slug: string
@@ -18,5 +20,5 @@ type BlogPost = {
     categories: string[]
     dsq_thread_id: string
     unpublished?: boolean
-    imagesMetadata: Record<string, import('image-size/dist/types/interface').ISizeCalculationResult> | null
+    imagesMetadata: ImagesMetadata
 }

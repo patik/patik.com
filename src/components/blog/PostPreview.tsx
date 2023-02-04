@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import DateFormatter from './DateFormatter'
+import MarkdownExcerpt from './MarkdownExcerpt'
 
 type Props = {
     title: string
@@ -23,7 +24,9 @@ const PostPreview = ({ title, date, excerpt, slug }: Props) => {
             <div className="text-lg mb-4 font-bold">
                 <DateFormatter dateString={date} />
             </div>
-            <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
+            <p className="text-lg leading-relaxed mb-4">
+                <MarkdownExcerpt excerpt={excerpt} slug={slug} />
+            </p>
         </div>
     )
 }
