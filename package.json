@@ -11,8 +11,8 @@
         "start": "yarn copyimages && next dev",
         "start:prod": "next build && next start",
         "lint": "next lint && yarn tsc --noEmit && yarn find-unused-sass-variables styles",
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "test:blog": "jest --config ./blog/jest.config.js",
+        "test": "yarn test:blog",
+        "test:blog": "jest --config ./jest.config.js",
         "clean": "git clean -fdx"
     },
     "dependencies": {
