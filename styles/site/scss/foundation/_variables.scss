@@ -67,8 +67,14 @@ $em-base: 16px !default;
 
 $default-float: left;
 
-// $body-bg: #fff;
-// $body-font-color: #222;
+$body-bg: #fff;
+$body-font-color: #222;
+
+@media (prefers-color-scheme: dark) {
+    $body-bg: #222;
+    $body-font-color: white;
+}
+
 // $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $body-font-weight: normal;
 // $body-font-style: normal;

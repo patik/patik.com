@@ -5,28 +5,32 @@ import { NormalComponents } from 'react-markdown/lib/complex-types'
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import { getCodeFenceConfig } from './getCodeFenceConfig'
+import postBodyStyles from '../../src/styles/blog/post-body.module.scss'
 
 type MarkdownComponents = Partial<Omit<NormalComponents, keyof SpecialComponents> & SpecialComponents>
+
 // We don't want to render images for this piece of content. Otherwise, `imagesMetadata` would be required.
 type NoImages = {
     slug: string
     noImages: true
 }
+
 type WithImages = {
     slug: string
     imagesMetadata: ImagesMetadata
 }
+
 type Overloaded = {
     slug: string
     noImages?: true
     imagesMetadata?: ImagesMetadata
 }
+
 /**
  * Specifies which React components to use for certain HTML elements
  *
  * With help from https://amirardalan.com/blog/syntax-highlight-code-in-markdown
  */
-
 export function getMarkdownComponents({ slug, noImages }: NoImages): MarkdownComponents
 export function getMarkdownComponents({ slug, imagesMetadata }: WithImages): MarkdownComponents
 export function getMarkdownComponents({ slug, noImages, imagesMetadata }: Overloaded): MarkdownComponents {
@@ -34,14 +38,12 @@ export function getMarkdownComponents({ slug, noImages, imagesMetadata }: Overlo
 
     return {
         a({ href, children, ...props }) {
-            if (href) {
-                // if (href && !/^https?:\/\//.test(href) && !/^javascript?:\/\//.test(href)) {
+            if (href && !/^javascript?:\/\//.test(href)) {
                 return (
                     <Link href={href} {...props}>
                         {children}
                     </Link>
                 )
-                // }
             }
 
             return (
@@ -52,7 +54,7 @@ export function getMarkdownComponents({ slug, noImages, imagesMetadata }: Overlo
         },
         code({ className, children, inline }) {
             if (inline) {
-                return <code className="inline-code">{children}</code>
+                return <code className={postBodyStyles['inline-code']}>{children}</code>
             }
 
             // Parse my custom string to determine the language, line highlighting, and starting line for this code block
@@ -62,7 +64,7 @@ export function getMarkdownComponents({ slug, noImages, imagesMetadata }: Overlo
                 <SyntaxHighlighter
                     style={syntaxTheme}
                     PreTag="div"
-                    className={`${className} codeFence`}
+                    className={`${className} ${postBodyStyles['codeFence']}`}
                     showLineNumbers
                     wrapLines
                     useInlineStyles

@@ -4,6 +4,8 @@ body {
 }
 
 @media (prefers-color-scheme: dark) {
+    $body-font-color: white;
+
     body {
         background-color: $dark-charcoal;
         color: white;

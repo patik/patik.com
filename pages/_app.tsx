@@ -3,6 +3,7 @@ import NextHead from 'next/head'
 import config from '../src/config.json'
 import '../styles/site/globals.css'
 import '../styles/site/scss/style.scss'
+import '../src/styles/blog/index.css'
 
 const { description } = config
 
