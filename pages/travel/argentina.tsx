@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import ColoniaImage from '../../public/images/peru-argentina-link-colonia.jpg'
 import MapSmall from '../../public/images/peru-argentina-map-small.png'
-import Layout from '../../src/components/site/Layout'
+import Layout from '../../src/components/common/Layout'
 import TravelLinkList from '../../src/components/site/TravelLinkList'
 
 export default function Page() {

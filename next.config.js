@@ -6,9 +6,6 @@ const nextConfig = {
         unoptimized: true,
     },
     trailingSlash: true,
-    experimental: {
-        appDir: true,
-    },
     async redirects() {
         // Create return objects, both with and without a trailing slash
         return [
@@ -30,6 +27,20 @@ const nextConfig = {
                 },
             ])
             .flat()
+    },
+    webpack: (config, { isServer }) => {
+        // Fixes npm packages that depend on `fs` module
+        if (!isServer) {
+            config.resolve = {
+                ...config.resolve,
+                fallback: {
+                    ...config.resolve.fallback,
+                    fs: false,
+                },
+            }
+        }
+
+        return config
     },
 }
 

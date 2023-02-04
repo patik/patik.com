@@ -5,7 +5,7 @@ import imgConsoleLogLogo from '../public/images/icons/console-log/ios/AppIcon@3x
 import imgDoFLogo from '../public/images/icons/depth-of-field/ios/AppIcon@3x.png'
 import imgKindjsLogo from '../public/images/icons/kindjs/ios/AppIcon@3x.png'
 import imgWithinViewportFLogo from '../public/images/icons/within-viewport/ios/AppIcon@3x.png'
-import Layout from '../src/components/site/Layout'
+import Layout from '../src/components/common/Layout'
 
 export default function Page() {
     return (

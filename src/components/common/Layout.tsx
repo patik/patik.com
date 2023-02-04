@@ -18,7 +18,6 @@ export default function Layout({ title, keywords = [], children }: Props): React
             <Head>
                 <title>{`${title ? `${title} - ` : ''}Craig Patik`}</title>
                 {keywords.length > 0 ? <meta name="keywords" content={keywords.join(',')} /> : null}
-                <meta name="viewport" content="width=device-width,initial-scale=1" />
             </Head>
 
             <div style={{ width: '100%', maxWidth: '1020px', alignSelf: 'center', flexGrow: 1, marginBottom: '2rem' }}>

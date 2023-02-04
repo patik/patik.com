@@ -18,7 +18,6 @@ export const dynamicParams = true
 
 export default async function SlugPage({ params }: Props) {
     const router = useRouter()
-
     const post = await getPost(params)
 
     if (!router.isFallback) {
@@ -29,6 +28,7 @@ export default async function SlugPage({ params }: Props) {
 }
 
 async function getPost(params: Params['params']) {
+    console.log('params ', params)
     const post = await getPostBySlug(params.slug, [
         'title',
         'date',

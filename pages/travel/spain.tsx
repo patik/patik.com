@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import itineraryMapSmall from '../../public/images/spain-itinerary-map-small.jpg'
 import linkWorlCup from '../../public/images/spain-link-world-cup.jpg'
-import Layout from '../../src/components/site/Layout'
+import Layout from '../../src/components/common/Layout'
 import TravelLinkList from '../../src/components/site/TravelLinkList'
 
 export default function Page() {
