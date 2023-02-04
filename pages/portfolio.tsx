@@ -86,7 +86,7 @@ export default function Page() {
                 <h2>Writings &amp; Presentations</h2>
                 <ul>
                     <li>
-                        My <a href="/blog/">blog</a>
+                        My <Link href="/blog/">blog</Link>
                     </li>
                     <li>
                         I gave an <a href="https://igniteshow.com/">Ignite talk</a> at{' '}

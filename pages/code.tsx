@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import imgGithubLogo from '../public/images/home-github-logo.png'
 import imgBlogLogo from '../public/images/icons/blog/ios/AppIcon@3x.png'
 import imgConsoleLogLogo from '../public/images/icons/console-log/ios/AppIcon@3x.png'
@@ -49,10 +50,10 @@ export default function Page() {
                         </a>
                     </div>
                     <div className="cp-item-half">
-                        <a href="/blog/">
+                        <Link href="/blog/">
                             <Image src={imgBlogLogo} width={96} height={96} alt="" />
                             <span>Blog</span>
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </section>
