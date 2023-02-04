@@ -10,7 +10,6 @@ import PostHeader from './PostHeader'
 import PostTitle from './PostTitle'
 
 const { description: configDescription } = config
-
 const { homepage, description } = config
 
 type Props = {

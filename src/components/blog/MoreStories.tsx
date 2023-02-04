@@ -4,7 +4,7 @@ type Props = {
     posts: BlogPost[]
 }
 
-const MoreStories = ({ posts }: Props) => {
+export default function MoreStories({ posts }: Props) {
     return (
         <section>
             <h2 className="mb-8 text-3xl md:text-5xl font-bold tracking-tighter leading-tight">More Posts</h2>
@@ -23,5 +23,3 @@ const MoreStories = ({ posts }: Props) => {
         </section>
     )
 }
-
-export default MoreStories

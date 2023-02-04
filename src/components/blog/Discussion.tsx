@@ -9,7 +9,7 @@ type Props = {
     title: BlogPost['title']
 }
 
-const Discussion = ({ dsqThreadId, slug, title }: Props) => {
+export default function Discussion({ dsqThreadId, slug, title }: Props) {
     return (
         <div>
             <hr className="my-12" />
@@ -28,5 +28,3 @@ const Discussion = ({ dsqThreadId, slug, title }: Props) => {
         </div>
     )
 }
-
-export default Discussion

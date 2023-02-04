@@ -9,7 +9,7 @@ type Props = {
     slug: string
 }
 
-const HeroPost = ({ title, date, excerpt, slug }: Props) => {
+export default function HeroPost({ title, date, excerpt, slug }: Props) {
     return (
         <section>
             {/*  <div className="mb-8 md:mb-16">
@@ -26,12 +26,8 @@ const HeroPost = ({ title, date, excerpt, slug }: Props) => {
                         <DateFormatter dateString={date} />
                     </div>
                 </div>
-                <div>
-                    <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
-                </div>
+                <div>{excerpt}</div>
             </div>
         </section>
     )
 }
-
-export default HeroPost
