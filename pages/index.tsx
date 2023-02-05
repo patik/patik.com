@@ -17,7 +17,7 @@ import imgHomeConsoleBlogLogo from '../public/images/icons/blog/ios/AppIcon@3x.p
 import imgHomeDoFLogo from '../public/images/icons/depth-of-field/ios/AppIcon@3x.png'
 import imgWithinViewportFLogo from '../public/images/icons/within-viewport/ios/AppIcon@3x.png'
 import TravelImageParis from '../public/images/travel-paris.jpg'
-import Layout from '../src/components/site/Layout'
+import Layout from '../src/components/common/Layout'
 
 export default function Home() {
     return (
@@ -162,10 +162,10 @@ export default function Home() {
                             </Link>
                         </div>
                         <div className="cp-item-third">
-                            <a href="/blog/">
+                            <Link href="/blog/">
                                 <Image src={imgHomeConsoleBlogLogo} alt="" title="Blog" width={48} height={48} />
                                 <span>Blog</span>
-                            </a>
+                            </Link>
                         </div>
                         <div className="cp-item-third">
                             <a href="https://patik.github.io/within-viewport/">

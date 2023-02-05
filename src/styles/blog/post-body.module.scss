@@ -1,0 +1,61 @@
+.post-body {
+    object,
+    figure,
+    img {
+        margin: 0 auto;
+    }
+
+    // Standalone images
+    p:has(> img) img {
+        display: block;
+        margin: 0 auto;
+    }
+
+    a {
+        text-decoration: underline;
+    }
+
+    @media (min-width: 768px) {
+        p,
+        li {
+            font-size: 1.5rem;
+            line-height: 1.5;
+        }
+    }
+}
+
+.inline-code {
+    font-family: Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace;
+    font-size: 1rem;
+    color: #666;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 3px;
+    border-radius: 3px;
+
+    @media (prefers-color-scheme: dark) {
+        background-color: rgba(255, 255, 255, 0.05);
+        color: #ccc;
+    }
+}
+
+.codeFence {
+    code {
+        min-width: 100%;
+        transform: translateZ(0);
+        // float: left;
+
+        & > span[data='highlight'] {
+            display: block;
+        }
+
+        & > span {
+            display: block;
+        }
+    }
+
+    [data='highlight'] {
+        background: rgba(255, 255, 255, 0.1);
+        margin: 0 -1.5rem;
+        padding: 0 1.5rem;
+    }
+}
