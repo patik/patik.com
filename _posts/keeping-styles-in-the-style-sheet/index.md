@@ -9,6 +9,7 @@ categories:
     - web
 ogImage: 'cover.jpg'
 coverImage: 'cover.jpg'
+syntaxHighlightSSRHack: true
 ---
 
 Even as browsers progress and add more support for CSS-based animation, we still find ourselves relying on JavaScript to get the job done. But that doesn’t mean we need to define our styles in our scripts.

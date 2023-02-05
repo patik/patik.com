@@ -6,13 +6,19 @@ type Props = {
     slug: string
     content: string
     imagesMetadata: BlogPost['imagesMetadata']
+    syntaxHighlightSSRHack?: boolean
 }
 
-export default function PostBody({ slug, content, imagesMetadata }: Props) {
+export default function PostBody({ slug, content, imagesMetadata, syntaxHighlightSSRHack }: Props) {
     return (
         <div className="mx-auto">
             <div className={`${postBodyStyles['post-body']} ${markdownStyles['markdown']}`}>
-                <MarkdownBody slug={slug} content={content} imagesMetadata={imagesMetadata} />
+                <MarkdownBody
+                    slug={slug}
+                    content={content}
+                    imagesMetadata={imagesMetadata}
+                    syntaxHighlightSSRHack={syntaxHighlightSSRHack}
+                />
             </div>
         </div>
     )

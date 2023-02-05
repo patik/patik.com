@@ -9,6 +9,7 @@ categories:
     - web
 ogImage: 'cover.jpg'
 coverImage: 'cover.jpg'
+syntaxHighlightSSRHack: true
 ---
 
 _This is an update to the console.log wrapper; see [this blog post](complete-cross-browser-console-log) for background and a more detailed discussion of the problems with console logging._

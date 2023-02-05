@@ -21,4 +21,5 @@ type BlogPost = {
     dsq_thread_id: string
     unpublished?: boolean
     imagesMetadata: ImagesMetadata
+    syntaxHighlightSSRHack?: boolean
 }

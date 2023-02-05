@@ -25,7 +25,7 @@ const languagePattern = /\blanguage-(\w+)\b/
 const highlightPattern = /\bhighlight-([\d,-]+)\b/
 const startPattern = /\bstart-(\d+)\b/
 
-type CodeFenceConfig = {
+export type CodeFenceConfig = {
     language?: string // Should match a language name known to the markdown interpreter
     startingLineNumber?: number
     lineProps?: (lineNum: number) => HTMLProps<HTMLElement>

@@ -17,7 +17,18 @@ type Props = {
 }
 
 export default function Post({ post, isFallback }: Props) {
-    const { title, date, content, slug, ogImage, excerpt, unpublished, imagesMetadata, dsq_thread_id } = post
+    const {
+        title,
+        date,
+        content,
+        slug,
+        ogImage,
+        excerpt,
+        unpublished,
+        imagesMetadata,
+        dsq_thread_id,
+        syntaxHighlightSSRHack,
+    } = post
 
     // console.log('dsq_thread_id ', dsq_thread_id)
 
@@ -41,7 +52,12 @@ export default function Post({ post, isFallback }: Props) {
                         </Head>
                         <article className="mb-32">
                             <PostHeader title={title} date={date} />
-                            <PostBody content={content} slug={slug} imagesMetadata={imagesMetadata} />
+                            <PostBody
+                                content={content}
+                                slug={slug}
+                                imagesMetadata={imagesMetadata}
+                                syntaxHighlightSSRHack={syntaxHighlightSSRHack}
+                            />
                             {dsq_thread_id ? (
                                 <Discussion dsqThreadId={dsq_thread_id} slug={slug} title={title} />
                             ) : null}

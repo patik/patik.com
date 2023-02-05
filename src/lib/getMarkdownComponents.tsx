@@ -2,29 +2,29 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { SpecialComponents } from 'react-markdown/lib/ast-to-react'
 import { NormalComponents } from 'react-markdown/lib/complex-types'
-import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import config from '../../src/config.json'
 import postBodyStyles from '../../src/styles/blog/post-body.module.scss'
-import { getCodeFenceConfig } from './getCodeFenceConfig'
+import { SyntaxHighlighter } from './SyntaxHighlighter'
 
 const { blogPath } = config
 
 type MarkdownComponents = Partial<Omit<NormalComponents, keyof SpecialComponents> & SpecialComponents>
 
-// We don't want to render images for this piece of content. Otherwise, `imagesMetadata` would be required.
-type NoImages = {
+type BaseProps = {
     slug: string
+    syntaxHighlightSSRHack?: boolean
+}
+
+// We don't want to render images for this piece of content. Otherwise, `imagesMetadata` would be required.
+type NoImages = BaseProps & {
     noImages: true
 }
 
-type WithImages = {
-    slug: string
+type WithImages = BaseProps & {
     imagesMetadata: ImagesMetadata
 }
 
-type Overloaded = {
-    slug: string
+type Overloaded = BaseProps & {
     noImages?: true
     imagesMetadata?: ImagesMetadata
 }
@@ -34,11 +34,14 @@ type Overloaded = {
  *
  * With help from https://amirardalan.com/blog/syntax-highlight-code-in-markdown
  */
-export function getMarkdownComponents({ slug, noImages }: NoImages): MarkdownComponents
-export function getMarkdownComponents({ slug, imagesMetadata }: WithImages): MarkdownComponents
-export function getMarkdownComponents({ slug, noImages, imagesMetadata }: Overloaded): MarkdownComponents {
-    const syntaxTheme = oneDark
-
+export function getMarkdownComponents({ slug, syntaxHighlightSSRHack, noImages }: NoImages): MarkdownComponents
+export function getMarkdownComponents({ slug, syntaxHighlightSSRHack, imagesMetadata }: WithImages): MarkdownComponents
+export function getMarkdownComponents({
+    slug,
+    syntaxHighlightSSRHack,
+    noImages,
+    imagesMetadata,
+}: Overloaded): MarkdownComponents {
     return {
         a({ href, children, ...props }) {
             if (href && !/^javascript?:\/\//.test(href)) {
@@ -60,24 +63,13 @@ export function getMarkdownComponents({ slug, noImages, imagesMetadata }: Overlo
                 return <code className={postBodyStyles['inline-code']}>{children}</code>
             }
 
-            // Parse my custom string to determine the language, line highlighting, and starting line for this code block
-            const config = getCodeFenceConfig(className)
-
             return (
                 <SyntaxHighlighter
-                    style={syntaxTheme}
-                    PreTag="div"
                     className={`${className} ${postBodyStyles['codeFence']}`}
-                    showLineNumbers
-                    wrapLines
-                    useInlineStyles
-                    {...config}
-                >
-                    {
-                        // Strip the extra new line that seems to be added to the end of code blocks by the markdown-to-html process; appears to be a standard issue because it's in react-markdown's docs examples
-                        String(children).replace(/\n$/, '')
-                    }
-                </SyntaxHighlighter>
+                    // Strip the extra new line that seems to be added to the end of code blocks by the markdown-to-html process; appears to be a standard issue because it's in react-markdown's docs examples
+                    code={String(children).replace(/\n$/, '')}
+                    syntaxHighlightSSRHack={syntaxHighlightSSRHack}
+                />
             )
         },
         img({ src, alt }) {

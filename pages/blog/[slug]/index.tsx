@@ -34,6 +34,7 @@ export async function getStaticProps({ params }: Params) {
         'categories',
         'dsq_thread_id',
         'unpublished',
+        'syntaxHighlightSSRHack',
     ])
 
     return {

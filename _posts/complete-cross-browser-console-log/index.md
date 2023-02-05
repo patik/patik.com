@@ -9,6 +9,7 @@ categories:
     - web
 ogImage: 'cover.jpg'
 coverImage: 'cover.jpg'
+syntaxHighlightSSRHack: true
 ---
 
 _Update: I’ve made a significant update to this project which is targeted at primitive consoles (IE, Opera 11 and older, iOS 5 and older, and more). A separate blog post has [more details](detailed-console-logging) or you can jump right to the [updated Github repo](https://github.com/patik/console.log-wrapper). The original post below still applies._
