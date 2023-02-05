@@ -7,7 +7,7 @@
     "scripts": {
         "copyimages": "node ./bin/copy-images.mjs",
         "prebuild": "yarn copyimages",
-        "build": "yarn next build && yarn next export",
+        "build": "yarn copyimages && yarn next build && yarn next export",
         "start": "yarn copyimages && next dev",
         "start:prod": "next build && next start",
         "lint": "yarn next lint && yarn tsc --noEmit && yarn find-unused-sass-variables src/styles",
