@@ -24,8 +24,44 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          # cache: 'yarn'
+          cache: 'yarn'
       - run: yarn install
-      - run: yarn build
+      - run: echo "ls /home/runner/work/patik.com/patik.com" >> $GITHUB_OUTPUT
+      - run: ls /home/runner/work/patik.com/patik.com
+      - run: yarn copyimages
+      - run: echo "before build"
+      - run: echo "ls /home/runner/work/patik.com/patik.com/.next" >> $GITHUB_OUTPUT
+      - run: ls /home/runner/work/patik.com/patik.com/.next
+      - run: du -sh /home/runner/work/patik.com/patik.com/.next
+      - run: yarn next build
+      - run: echo "after build"
+      - run: echo "ls /home/runner/work/patik.com/patik.com/.next" >> $GITHUB_OUTPUT
+      - run: ls /home/runner/work/patik.com/patik.com/.next
+      - run: du -sh /home/runner/work/patik.com/patik.com/.next
+      - run: yarn next export
       - run: yarn lint
       - run: yarn test
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v3
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Cache Next.js build
+          uses: actions/cache@v3
+          with:
+            # See here for caching with `yarn` https://github.com/actions/cache/blob/main/examples.md#node---yarn or you can leverage caching with actions/setup-node https://github.com/actions/setup-node
+            path: |
+              ~/.npm
+              ${{ github.workspace }}/.next/cache
+            # Generate a new cache whenever packages or source files change.
+            key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+            # If source files changed but packages didn't, rebuild from a prior cache.
+            restore-keys: |
+              ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
