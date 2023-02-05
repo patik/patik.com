@@ -29,22 +29,22 @@ jobs:
       - run: echo "(ls /home/runner/work/patik.com/patik.com)" >> $GITHUB_STEP_SUMMARY
       - run: yarn copyimages
       - run: |
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "before build" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "(ls /home/runner/work/patik.com/patik.com/.next)" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "(du -sh /home/runner/work/patik.com/patik.com/.next)" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "before build" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "(ls /home/runner/work/patik.com/patik.com/.next)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "(du -sh /home/runner/work/patik.com/patik.com/.next)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
       - run: yarn next build
       - run: |
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "after build" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "ls /home/runner/work/patik.com/patik.com/.next" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "du -sh /home/runner/work/patik.com/patik.com/.next" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "after build" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "ls /home/runner/work/patik.com/patik.com/.next" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "du -sh /home/runner/work/patik.com/patik.com/.next" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
       - run: yarn next export
       - run: yarn lint
       - run: yarn test
