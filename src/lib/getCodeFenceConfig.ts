@@ -36,7 +36,9 @@ export function getCodeFenceConfig(className?: string): CodeFenceConfig {
         return {}
     }
 
-    let language, highlight, startingLine
+    let language = 'js',
+        highlight,
+        startingLine
 
     className.split('::').forEach((piece) => {
         if (languagePattern.test(piece)) {
