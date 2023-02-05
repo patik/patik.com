@@ -1,5 +1,8 @@
 import Link from 'next/link'
+import config from '../../../src/config.json'
 import DateFormatter from './DateFormatter'
+
+const { blogPath } = config
 
 type Props = {
     title: string
@@ -18,7 +21,7 @@ export default function HeroPost({ title, date, excerpt, slug }: Props) {
             <div className="md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8 mb-20 md:mb-28">
                 <div>
                     <h3 className="mb-4 text-4xl lg:text-5xl leading-tight">
-                        <Link as={`${slug}`} href={`[slug]`} className="hover:underline">
+                        <Link as={`${blogPath}/${slug}`} href={`${blogPath}/[slug]`} className="hover:underline">
                             {title}
                         </Link>
                     </h3>

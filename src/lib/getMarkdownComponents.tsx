@@ -4,8 +4,11 @@ import { SpecialComponents } from 'react-markdown/lib/ast-to-react'
 import { NormalComponents } from 'react-markdown/lib/complex-types'
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
-import { getCodeFenceConfig } from './getCodeFenceConfig'
+import config from '../../src/config.json'
 import postBodyStyles from '../../src/styles/blog/post-body.module.scss'
+import { getCodeFenceConfig } from './getCodeFenceConfig'
+
+const { blogPath } = config
 
 type MarkdownComponents = Partial<Omit<NormalComponents, keyof SpecialComponents> & SpecialComponents>
 
@@ -109,7 +112,7 @@ export function getMarkdownComponents({ slug, noImages, imagesMetadata }: Overlo
 
             const { width, height } = imagesMetadata[src]
 
-            return <Image src={`/blog/images/${slug}/${src}`} alt={alt} width={width} height={height} />
+            return <Image src={`${blogPath}/images/${slug}/${src}`} alt={alt} width={width} height={height} />
         },
     }
 }

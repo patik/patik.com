@@ -1,5 +1,5 @@
-import postBodyStyles from '../../../styles/blog/post-body.module.scss'
 import markdownStyles from '../../../styles/blog/markdown-styles.module.css'
+import postBodyStyles from '../../../styles/blog/post-body.module.scss'
 import MarkdownBody from './MarkdownBody'
 
 type Props = {

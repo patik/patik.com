@@ -1,5 +1,5 @@
 {
-    "basePath": "/blog",
+    "blogPath": "/blog",
     "blogUrl": "https://patik.com/blog",
     "homepage": "https://patik.com",
     "description": "Craig Patik",

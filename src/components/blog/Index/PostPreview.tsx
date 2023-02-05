@@ -1,6 +1,9 @@
 import Link from 'next/link'
-import DateFormatter from './DateFormatter'
+import config from '../../../config.json'
+import DateFormatter from '../DateFormatter'
 import Excerpt from './Excerpt'
+
+const { blogPath } = config
 
 type Props = {
     title: string
@@ -17,7 +20,7 @@ export default function PostPreview({ title, date, excerpt, slug }: Props) {
                 <CoverImage slug={slug} title={title} src={coverImage} />
             </div> */}
             <h3 className="text-3xl mb-3 leading-snug">
-                <Link as={`blog/${slug}`} href={`blog/[slug]`} className="hover:underline">
+                <Link as={`${blogPath}/${slug}`} href={`${blogPath}/[slug]`} className="hover:underline">
                     {title}
                 </Link>
             </h3>
