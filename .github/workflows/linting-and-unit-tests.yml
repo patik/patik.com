@@ -26,19 +26,27 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
       - run: yarn install
-      - run: echo "ls /home/runner/work/patik.com/patik.com" >> $GITHUB_OUTPUT
-      - run: ls /home/runner/work/patik.com/patik.com
+      - run: echo "ls /home/runner/work/patik.com/patik.com" >> $GITHUB_STEP_SUMMARY
       - run: yarn copyimages
-      - run: echo "before build"
-      - run: echo "ls /home/runner/work/patik.com/patik.com/.next" >> $GITHUB_OUTPUT
+      - run: |
+        echo "" >> $GITHUB_STEP_SUMMARY # this is a blank line
+        echo "before build" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY # this is a blank line
+        echo "ls /home/runner/work/patik.com/patik.com/.next" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY # this is a blank line
       # - run: ls /home/runner/work/patik.com/patik.com/.next
       # - run: du -sh /home/runner/work/patik.com/patik.com/.next
-      - run: echo "du -sh /home/runner/work/patik.com/patik.com/.next" >> $GITHUB_OUTPUT
+      - run: echo "du -sh /home/runner/work/patik.com/patik.com/.next" >> $GITHUB_STEP_SUMMARY
       - run: yarn next build
-      - run: echo "after build"
-      - run: echo "ls /home/runner/work/patik.com/patik.com/.next" >> $GITHUB_OUTPUT
+      - run: |
+        echo "" >> $GITHUB_STEP_SUMMARY # this is a blank line
+        echo "after build" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY # this is a blank line
+        echo "ls /home/runner/work/patik.com/patik.com/.next" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY # this is a blank line
       # - run: ls /home/runner/work/patik.com/patik.com/.next
-      - run: echo "du -sh /home/runner/work/patik.com/patik.com/.next" >> $GITHUB_OUTPUT
+        echo "du -sh /home/runner/work/patik.com/patik.com/.next" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY # this is a blank line
       # - run: du -sh /home/runner/work/patik.com/patik.com/.next
       - run: yarn next export
       - run: yarn lint
