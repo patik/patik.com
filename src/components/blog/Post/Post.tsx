@@ -9,8 +9,7 @@ import PostBody from './PostBody'
 import PostHeader from './PostHeader'
 import PostTitle from './PostTitle'
 
-const { description: configDescription } = config
-const { homepage, description } = config
+const { blogUrl, blogDescription } = config
 
 type Props = {
     post: BlogPost
@@ -31,13 +30,13 @@ export default function Post({ post, isFallback }: Props) {
                 ) : (
                     <article className="mb-32 max-w-3xl">
                         <Head>
-                            <title>{title && description ? `${title} | ${description}` : configDescription}</title>
+                            <title>{`${title} | ${blogDescription}`}</title>
                             <Meta
-                                siteName={description}
+                                siteName={blogDescription}
                                 image={ogImage}
                                 description={excerpt ?? ''}
                                 title={title}
-                                url={`${homepage}/${slug}`}
+                                url={`${blogUrl}/${slug}`}
                             />
                         </Head>
                         <PostHeader title={title} date={date} />

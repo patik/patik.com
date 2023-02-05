@@ -1,6 +1,6 @@
-import packagejson from '../../../package.json'
+import config from '../../config.json'
 
-const siteRoot = packagejson.author.url
+const { homepage } = config
 
 export default function Meta({
     description,
@@ -18,16 +18,16 @@ export default function Meta({
     return (
         <>
             <meta charSet="UTF-8" />
-            <link rel="apple-touch-icon" sizes="180x180" href={`${siteRoot}/favicon/apple-touch-icon.png`} />
-            <link rel="icon" type="image/png" sizes="32x32" href={`${siteRoot}/favicon/favicon-32x32.png`} />
-            <link rel="icon" type="image/png" sizes="16x16" href={`${siteRoot}/favicon/favicon-16x16.png`} />
-            <link rel="manifest" href={`${siteRoot}/favicon/site.webmanifest`} />
-            <link rel="mask-icon" href={`${siteRoot}/favicon/safari-pinned-tab.svg`} color="#000000" />
-            <link rel="shortcut icon" href={`${siteRoot}"/favicon/favicon.ico`} />
+            <link rel="apple-touch-icon" sizes="180x180" href={`${homepage}/favicon/apple-touch-icon.png`} />
+            <link rel="icon" type="image/png" sizes="32x32" href={`${homepage}/favicon/favicon-32x32.png`} />
+            <link rel="icon" type="image/png" sizes="16x16" href={`${homepage}/favicon/favicon-16x16.png`} />
+            <link rel="manifest" href={`${homepage}/favicon/site.webmanifest`} />
+            <link rel="mask-icon" href={`${homepage}/favicon/safari-pinned-tab.svg`} color="#000000" />
+            <link rel="shortcut icon" href={`${homepage}"/favicon/favicon.ico`} />
             <meta name="msapplication-TileColor" content="#000000" />
-            <meta name="msapplication-config" content={`${siteRoot}/favicon/browserconfig.xml`} />
+            <meta name="msapplication-config" content={`${homepage}/favicon/browserconfig.xml`} />
             <meta name="theme-color" content="#000" />
-            <link rel="alternate" type="application/rss+xml" href={`${siteRoot}/feed.xml`} />
+            <link rel="alternate" type="application/rss+xml" href={`${homepage}/feed.xml`} />
 
             <meta name="description" content={description} />
             <meta name="language" content="english" />

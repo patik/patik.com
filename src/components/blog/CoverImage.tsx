@@ -1,9 +1,9 @@
 import cn from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
-import packagejson from '../../config.json'
+import config from '../../config.json'
 
-const { basePath } = packagejson
+const { blogUrl } = config
 
 type Props = {
     title: string
@@ -14,7 +14,7 @@ type Props = {
 export default function CoverImage({ title, src, slug }: Props) {
     const image = (
         <Image
-            src={`${basePath}/${src}`}
+            src={`${blogUrl}/${src}`}
             alt={`Cover Image for ${title}`}
             className={cn('shadow-sm w-full', {
                 'hover:shadow-lg transition-shadow duration-200': slug,

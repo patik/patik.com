@@ -1,16 +1,16 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import config from '../../src/config.json'
-import { generateSiteMap } from '../../src/lib/generateSiteMap'
-import { getAllPosts, toCompletePost } from '../../src/lib/getPosts'
 import Container from '../../src/components/blog/Container'
 import HeroPost from '../../src/components/blog/HeroPost'
 import Intro from '../../src/components/blog/Intro'
 import Layout from '../../src/components/blog/Layout'
 import Meta from '../../src/components/blog/Meta'
 import MoreStories from '../../src/components/blog/MoreStories'
+import config from '../../src/config.json'
+import { generateSiteMap } from '../../src/lib/generateSiteMap'
+import { getAllPosts, toCompletePost } from '../../src/lib/getPosts'
 
-const { description, homepage } = config
+const { blogDescription, blogUrl } = config
 
 type Props = {
     allPosts: BlogPost[]
@@ -34,13 +34,13 @@ export default function Index({ allPosts }: Props) {
     return (
         <Layout>
             <Head>
-                <title>{description}</title>
+                <title>{blogDescription}</title>
                 <Meta
                     siteName="Craig Patik"
-                    image={`${homepage}/cover.jpg`}
-                    description={description}
-                    title={description}
-                    url={homepage}
+                    image={`${blogUrl}/cover.jpg`}
+                    description={blogDescription}
+                    title={blogDescription}
+                    url={blogUrl}
                 />
             </Head>
             <Container>
@@ -66,7 +66,7 @@ export const getStaticProps = async () => {
     generateSiteMap({
         links: allPosts.map(({ slug, date }) => ({
             date,
-            url: `${homepage}/${slug}`,
+            url: `${blogUrl}/${slug}`,
         })),
     })
 

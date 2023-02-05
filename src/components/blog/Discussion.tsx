@@ -1,7 +1,7 @@
 import { DiscussionEmbed } from 'disqus-react'
-import packagejson from '../../config.json'
+import config from '../../config.json'
 
-const { homepage } = packagejson
+const { blogUrl } = config
 
 type Props = {
     dsqThreadId: BlogPost['dsq_thread_id']
@@ -19,7 +19,7 @@ export default function Discussion({ dsqThreadId, slug, title }: Props) {
             <DiscussionEmbed
                 shortname="example"
                 config={{
-                    url: `${homepage}/${slug}`,
+                    url: `${blogUrl}/${slug}`,
                     identifier: dsqThreadId,
                     title: title,
                     language: 'en_US',
