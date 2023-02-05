@@ -15,17 +15,27 @@
         text-decoration: underline;
     }
 
-    p,
-    li {
-        font-size: 1.5rem;
-        line-height: 1.5;
+    @media (min-width: 768px) {
+        p,
+        li {
+            font-size: 1.5rem;
+            line-height: 1.5;
+        }
     }
 }
 
 .inline-code {
     font-family: Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace;
+    font-size: 1rem;
+    color: #666;
     background-color: rgba(0, 0, 0, 0.1);
-    color: white;
+    padding: 3px;
+    border-radius: 3px;
+
+    @media (prefers-color-scheme: dark) {
+        background-color: rgba(255, 255, 255, 0.05);
+        color: #ccc;
+    }
 }
 
 .codeFence {

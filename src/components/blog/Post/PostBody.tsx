@@ -10,7 +10,7 @@ type Props = {
 
 export default function PostBody({ slug, content, imagesMetadata }: Props) {
     return (
-        <div className="max-w-3xl mx-auto">
+        <div className="mx-auto">
             <div className={`${postBodyStyles['post-body']} ${markdownStyles['markdown']}`}>
                 <MarkdownBody slug={slug} content={content} imagesMetadata={imagesMetadata} />
             </div>

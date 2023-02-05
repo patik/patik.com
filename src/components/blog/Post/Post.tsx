@@ -28,7 +28,7 @@ export default function Post({ post, isFallback }: Props) {
                 {isFallback ? (
                     <PostTitle>Loading…</PostTitle>
                 ) : (
-                    <article className="mb-32 max-w-3xl">
+                    <>
                         <Head>
                             <title>{`${title} | ${blogDescription}`}</title>
                             <Meta
@@ -39,10 +39,14 @@ export default function Post({ post, isFallback }: Props) {
                                 url={`${blogUrl}/${slug}`}
                             />
                         </Head>
-                        <PostHeader title={title} date={date} />
-                        <PostBody content={content} slug={slug} imagesMetadata={imagesMetadata} />
-                        {dsq_thread_id ? <Discussion dsqThreadId={dsq_thread_id} slug={slug} title={title} /> : null}
-                    </article>
+                        <article className="mb-32">
+                            <PostHeader title={title} date={date} />
+                            <PostBody content={content} slug={slug} imagesMetadata={imagesMetadata} />
+                            {dsq_thread_id ? (
+                                <Discussion dsqThreadId={dsq_thread_id} slug={slug} title={title} />
+                            ) : null}
+                        </article>
+                    </>
                 )}
             </Container>
         </Layout>
