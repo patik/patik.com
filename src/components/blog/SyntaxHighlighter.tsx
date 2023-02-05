@@ -3,8 +3,8 @@ import { useEffect, useMemo, useState } from 'react'
 import { PrismLight } from 'react-syntax-highlighter'
 import javascript from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript'
 import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
-import postBodyStyles from '../../src/styles/blog/post-body.module.scss'
-import { CodeFenceConfig, getCodeFenceConfig } from './getCodeFenceConfig'
+import postBodyStyles from '../../styles/blog/post-body.module.scss'
+import { CodeFenceConfig, getCodeFenceConfig } from '../../lib/getCodeFenceConfig'
 
 PrismLight.registerLanguage('javascript', javascript)
 
@@ -21,6 +21,7 @@ const syntaxTheme = oneDark
  * that other files don't need this hack and don't need to suffer from extra re-renders.
  *
  * The effect is that the syntax is not highlighted for the very first render, but this is very hard to notice.
+
  */
 export function SyntaxHighlighter({
     className,
