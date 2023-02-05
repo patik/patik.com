@@ -6,6 +6,7 @@ const nextConfig = {
         unoptimized: true,
     },
     trailingSlash: true,
+    basePath: '',
     async redirects() {
         // Create return objects, both with and without a trailing slash
         return [
