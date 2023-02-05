@@ -31,13 +31,15 @@ jobs:
       - run: yarn copyimages
       - run: echo "before build"
       - run: echo "ls /home/runner/work/patik.com/patik.com/.next" >> $GITHUB_OUTPUT
-      - run: ls /home/runner/work/patik.com/patik.com/.next
-      - run: du -sh /home/runner/work/patik.com/patik.com/.next
+      # - run: ls /home/runner/work/patik.com/patik.com/.next
+      # - run: du -sh /home/runner/work/patik.com/patik.com/.next
+      - run: echo "du -sh /home/runner/work/patik.com/patik.com/.next" >> $GITHUB_OUTPUT
       - run: yarn next build
       - run: echo "after build"
       - run: echo "ls /home/runner/work/patik.com/patik.com/.next" >> $GITHUB_OUTPUT
-      - run: ls /home/runner/work/patik.com/patik.com/.next
-      - run: du -sh /home/runner/work/patik.com/patik.com/.next
+      # - run: ls /home/runner/work/patik.com/patik.com/.next
+      - run: echo "du -sh /home/runner/work/patik.com/patik.com/.next" >> $GITHUB_OUTPUT
+      # - run: du -sh /home/runner/work/patik.com/patik.com/.next
       - run: yarn next export
       - run: yarn lint
       - run: yarn test
