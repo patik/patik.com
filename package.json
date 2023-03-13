@@ -16,7 +16,7 @@
         "clean": "git clean -fdx"
     },
     "dependencies": {
-        "@next/font": "^13.1.6",
+        "@next/font": "^13.2.4",
         "classnames": "^2.3.2",
         "date-fns": "^2.29.3",
         "disqus-react": "^1.1.5",
