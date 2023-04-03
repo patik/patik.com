@@ -1,22 +1,34 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import itineraryMapSmall from '../../public/images/spain-itinerary-map-small.jpg'
-import linkWorlCup from '../../public/images/spain-link-world-cup.jpg'
+import linkWorldCup from '../../public/images/spain-link-world-cup.jpg'
 import Layout from '../../src/components/common/Layout'
+import Space from '../../src/components/common/Space'
 import TravelLinkList from '../../src/components/site/TravelLinkList'
 
 export default function Page() {
     return (
         <Layout
             title="Spain"
-            keywords={['Spain', 'Madrid', 'Sevilla', '2010 World Cup', 'Barcelona', 'Europe', 'travel']}
+            keywords={[
+                'Spain',
+                'Madrid',
+                'Sevilla',
+                '2010 World Cup',
+                'Barcelona',
+                'Portugal',
+                'Lisbon',
+                'Sintra',
+                'Europe',
+                'travel',
+            ]}
         >
             <h1>Spain</h1>
 
             <p>
                 Like <a href="https://en.wikipedia.org/wiki/Paul_the_Octopus">Pulpo Paul</a>, Kim and I had an inkling
                 that Spain would win the 2010 World Cup. We booked a trip for what would be the experience of a lifetime
-                &mdash; being enveloped in a{' '}
+                &mdash; being enveloped in a<Space />
                 <a href="https://get.google.com/albumarchive/116513687533678150554/album/AF1QipPNxvXhMsdwQtb6jmK0uP9zCBw7p9uCfDAu7udO">
                     massive celebration in Madrid
                 </a>
@@ -31,15 +43,14 @@ export default function Page() {
                         {
                             title: (
                                 <>
-                                    {' '}
                                     2010
                                     <br />
                                     World Cup
                                 </>
                             ),
                             className: 'bg-spain-world-cup',
-                            url: 'https://picasaweb.google.com/116513687533678150554/WorldCup2010InMadrid',
-                            imageSrc: linkWorlCup,
+                            url: 'https://get.google.com/albumarchive/pwa/116513687533678150554/WorldCup2010InMadrid',
+                            imageSrc: linkWorldCup,
                             imageAlt: "Celebrating Spain's victory in Madrid",
                         },
                     ]}
@@ -50,7 +61,8 @@ export default function Page() {
                 <h2>Itinerary</h2>
                 <ul>
                     <li>
-                        Coastal <a href="https://wikitravel.org/en/Lisbon">Lisbon</a>, Portugal, home of{' '}
+                        Coastal <a href="https://wikitravel.org/en/Lisbon">Lisbon</a>, Portugal, home of
+                        <Space />
                         <a href="https://en.wikipedia.org/wiki/Fado">fado</a> and its history of world discovery
                     </li>
                     <li>
@@ -58,7 +70,8 @@ export default function Page() {
                         <ul>
                             <li>Santiago Bernabeu, home of Real Madrid</li>
                             <li>
-                                Coinciding with the{' '}
+                                Coinciding with the
+                                <Space />
                                 <a href="https://en.wikipedia.org/wiki/2010_FIFA_World_Cup">World Cup</a> final
                             </li>
                         </ul>

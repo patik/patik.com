@@ -2,6 +2,7 @@ import imgGermanyAustriaLink from '../../public/images/germany-austria-link.jpg'
 import imgGermanyBavariaLink from '../../public/images/germany-bavaria-link.jpg'
 import imgGermanyBerlinLink from '../../public/images/germany-berlin-link.jpg'
 import Layout from '../../src/components/common/Layout'
+import Space from '../../src/components/common/Space'
 import TravelLinkList from '../../src/components/site/TravelLinkList'
 
 export default function Page() {
@@ -35,7 +36,8 @@ export default function Page() {
                 Mauthausen-Gusen concentration camp.
             </p>
             <p>
-                On to <a href="https://wikitravel.org/en/Bavaria">Bavaria</a> and Germany, we mixed munchies and{' '}
+                On to <a href="https://wikitravel.org/en/Bavaria">Bavaria</a> and Germany, we mixed munchies and
+                <Space />
                 <a href="https://en.wikipedia.org/wiki/Beer_stein">Maß</a> in Munich, toured through Nuremberg, walked
                 the wall around <a href="https://wikitravel.org/en/Rothenburg_ob_der_Tauber">Rothenburg</a>, cruised up
                 the castle-studded <a href="https://wikitravel.org/en/Rhine_Valley">Rhine</a>, and reveled in the 20th

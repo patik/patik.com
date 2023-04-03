@@ -6,6 +6,7 @@ import EphesusImage from '../../public/images/turkey-link-ephesus.jpg'
 import IstanbulImage from '../../public/images/turkey-link-istanbul.jpg'
 import OverviewMap from '../../public/images/turkey-overview-map-small.jpg'
 import Layout from '../../src/components/common/Layout'
+import Space from '../../src/components/common/Space'
 import TravelLinkList from '../../src/components/site/TravelLinkList'
 
 export default function Page() {
@@ -65,23 +66,27 @@ export default function Page() {
                         <strong>Istanbul</strong>
                         <ul>
                             <li>
-                                Sultanahmet: <a href="https://en.wikipedia.org/wiki/Hagia_Sophia">Hagia Sophia</a>,{' '}
-                                <a href="https://en.wikipedia.org/wiki/Sultan_Ahmed_Mosque">Blue Mosque</a>,{' '}
+                                Sultanahmet: <a href="https://en.wikipedia.org/wiki/Hagia_Sophia">Hagia Sophia</a>,
+                                <Space />
+                                <a href="https://en.wikipedia.org/wiki/Sultan_Ahmed_Mosque">Blue Mosque</a>,<Space />
                                 <a href="https://www.cemberlitashamami.com/cemberlitas-bath-historical-turkish-bath/">
                                     &Ccedil;emberlita&#351; Hamami
                                 </a>
-                                , Grand Bazaar, and the{' '}
+                                , Grand Bazaar, and the
+                                <Space />
                                 <a href="https://en.wikipedia.org/wiki/Rock'n_Coke">Rock’n Coke Festival</a>
                             </li>
                             <li>Beyo&#287;lu: Taksim Square, Istiklal Caddesi, Galata Bridge, Galata Tower</li>
                             <li>
-                                Kad&#305;k&ouml;y: open markets,{' '}
+                                Kad&#305;k&ouml;y: open markets,
+                                <Space />
                                 <a href="https://en.wikipedia.org/wiki/%C5%9E%C3%BCkr%C3%BC_Saraco%C4%9Flu_Stadium">
                                     Fenerbah&ccedil;e stadium
                                 </a>
                             </li>
                             <li>
-                                Bosphorus Strait and{' '}
+                                Bosphorus Strait and
+                                <Space />
                                 <a href="https://en.wikipedia.org/wiki/Yoros_Castle">Anadolu Kava&#287;&#305;</a>
                             </li>
                         </ul>
@@ -101,7 +106,8 @@ export default function Page() {
                     <li>
                         <a href="https://en.wikipedia.org/wiki/Ephesus">
                             <strong>Ephesus</strong>
-                        </a>{' '}
+                        </a>
+                        <Space />
                         and the town of Sel&ccedil;uk
                     </li>
                 </ul>

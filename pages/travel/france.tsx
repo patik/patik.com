@@ -9,9 +9,19 @@ export default function Page() {
             <h1>France</h1>
 
             <p>
-                This country holds a special place for Kim and I, being the place where we got to know each other,
+                This country holds a special place for Kim and I. It’s the place where we got to know each other,
                 (later) got engaged, and (much later) celebrated our tenth wedding anniversary.
             </p>
+
+            <hr />
+
+            <section>
+                <h2>2017</h2>
+                <p>
+                    We celebrated 10th wedding anniversary by watching the Fête Nationale fireworks on the Champs de
+                    Mars
+                </p>
+            </section>
 
             <hr />
 

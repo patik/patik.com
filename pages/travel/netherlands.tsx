@@ -19,7 +19,7 @@ export default function Page() {
                     items={[
                         {
                             title: 'Netherlands',
-                            className: 'bg-netherlands-amsterdam',
+                            className: 'bg-travel-bottom-middle',
                             url: 'https://get.google.com/albumarchive/116513687533678150554/album/AF1QipOD5tTxPTmr3KjxeR-K-k6xu6YhjuasQDyd9naX',
                             imageSrc: NetherlandsImage,
                             imageAlt: 'Westerkerk overlooking an Amsterdam canal',

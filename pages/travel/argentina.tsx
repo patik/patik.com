@@ -3,6 +3,7 @@ import Link from 'next/link'
 import ColoniaImage from '../../public/images/peru-argentina-link-colonia.jpg'
 import MapSmall from '../../public/images/peru-argentina-map-small.png'
 import Layout from '../../src/components/common/Layout'
+import Space from '../../src/components/common/Space'
 import TravelLinkList from '../../src/components/site/TravelLinkList'
 
 export default function Page() {
@@ -11,7 +12,8 @@ export default function Page() {
             <h1>Argentina &amp; Uruguay</h1>
 
             <p>
-                Our first forage into the southern hemisphere brought us everywhere from the{' '}
+                Our first forage into the southern hemisphere brought us everywhere from the
+                <Space />
                 <Link href="/travel/peru/">Amazon rainforest and Machu Picchu</Link> to Europe-esque Buenos Aires and a
                 quiet estancia.
             </p>
@@ -47,7 +49,8 @@ export default function Page() {
                         ancient Incan city high in the Andes mountains
                     </li>
                     <li>
-                        An unforgettable, leisurely ride on the{' '}
+                        An unforgettable, leisurely ride on the
+                        <Space />
                         <a href="https://www.belmond.com/trains/south-america/peru/belmond-andean-explorer/">
                             Andean Explorer
                         </a>
@@ -55,8 +58,10 @@ export default function Page() {
                     </li>
                     <li>
                         <a href="httpw://en.wikipedia.org/wiki/Lake_Titicaca">Lake Titicaca</a>, the world’s highest
-                        navigable lake and home to{' '}
-                        <a href="https://en.wikipedia.org/wiki/Uru_people">floating islands</a> and{' '}
+                        navigable lake and home to
+                        <Space />
+                        <a href="https://en.wikipedia.org/wiki/Uru_people">floating islands</a> and
+                        <Space />
                         <a href="https://en.wikipedia.org/wiki/Taquile">centuries-old cultures</a>
                     </li>
                     <li>

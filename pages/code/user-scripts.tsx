@@ -4,6 +4,7 @@ import appNetPng from '../../public/images/app-net-twitter-char-count.png'
 import magnetPng from '../../public/images/magnet-links-preview.png'
 import twitterAvatarPng from '../../public/images/twitter-avatar-in-menu.png'
 import Layout from '../../src/components/common/Layout'
+import Space from '../../src/components/common/Space'
 
 function UserScriptLink({ fileName }: { fileName: string }) {
     return (
@@ -35,7 +36,8 @@ export default function Page() {
             <h1>User Scripts</h1>
 
             <p>
-                Install these in Chrome, Safari, or Firefox with{' '}
+                Install these in Chrome, Safari, or Firefox with
+                <Space />
                 <a href="https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/">Greasemonkey</a>.
             </p>
 
@@ -81,8 +83,10 @@ export default function Page() {
                     <li>Image previews &mdash; See images from posts without having to open them</li>
                     <li>
                         Twitter character count &mdash; Ensure your post will fit within Twitter’s 140-character limit
-                        when you crosspost to both networks using <a href="https://twapp.phuu.net/">twapp</a>,{' '}
-                        <a href="https://ifttt.com/">ifttt</a> or other services.
+                        when you crosspost to both networks using <a href="https://twapp.phuu.net/">twapp</a>,<Space />
+                        <a href="https://ifttt.com/">ifttt</a>
+                        <Space />
+                        or other services.
                     </li>
                 </ul>
                 <p>
@@ -91,8 +95,10 @@ export default function Page() {
                         className="button button-primary"
                     >
                         Chrome Extension
-                    </a>{' '}
-                    <UserScriptLink fileName="/user-scripts/alpha-app-net-enhanced.user.js" />{' '}
+                    </a>
+                    <Space />
+                    <UserScriptLink fileName="/user-scripts/alpha-app-net-enhanced.user.js" />
+                    <Space />
                     <a href="https://gist.github.com/3542903" className="button">
                         Gist
                     </a>
@@ -125,7 +131,8 @@ export default function Page() {
                     article on WikiVoyage.org.
                 </p>
                 <p>
-                    This <a href="https://en.wikipedia.org/wiki/Wikitravel#Community_fork_in_2012">brief description</a>{' '}
+                    This <a href="https://en.wikipedia.org/wiki/Wikitravel#Community_fork_in_2012">brief description</a>
+                    <Space />
                     of WikiVoyage’s creation reflects my reasons for preferring it. Despite updating my own bookmarks
                     and shortcuts, this script is still necessary because links to WikiTravel often show up in search
                     results, blogs, etc.

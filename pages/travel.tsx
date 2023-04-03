@@ -5,14 +5,15 @@ import BritainbeneluxImage from '../public/images/travel-britain-benelux.jpg'
 import FranceImage from '../public/images/travel-france.jpg'
 import GermanyImage from '../public/images/travel-germany.jpg'
 import GreeceImage from '../public/images/travel-greece.jpg'
-import ParisImage from '../public/images/travel-paris.jpg'
 import PeruImage from '../public/images/travel-peru-argentina.jpg'
 import SpainImage from '../public/images/travel-spain.jpg'
 import TurkeyImage from '../public/images/travel-turkey.jpg'
 import Layout from '../src/components/common/Layout'
+import Space from '../src/components/common/Space'
 import TravelLinkList from '../src/components/site/TravelLinkList'
 import WorldMap from '../src/components/site/WorldMap'
 import countries from '../src/countries.json'
+import TravelImageUzbekistan from '../public/images/uzbekistan-khiva-night.jpg'
 
 const currentYear = new Date().getFullYear()
 
@@ -22,14 +23,23 @@ countries.visited.forEach((country) => {
     countryData.push([country.name, currentYear - Math.max(...country.yearsVisited)])
 })
 
+const numCountriesVisitedExceptBirthplace = countries.visited.length - 1
+
 export default function Page() {
     return (
-        <Layout title="Travel" keywords={['turkey', 'peru', 'argentina', 'europe', 'travel']}>
+        <Layout
+            title="Travel"
+            keywords={[...countries.visited.map((country) => country.name), 'Europe', 'Asia', 'travel']}
+        >
             <h1>Travel</h1>
 
             <section style={{ marginBottom: '6rem' }}>
                 <h2>Countries I’ve been to</h2>
-                <p>Color-coded based on how many years it’s been since I’ve traveled to each one</p>
+                <p>
+                    The colors indicate how many years it’s been since I’ve traveled to each of these
+                    <Space />
+                    {numCountriesVisitedExceptBirthplace} countries
+                </p>
                 <WorldMap />
             </section>
 
@@ -45,8 +55,14 @@ export default function Page() {
                 <TravelLinkList
                     items={[
                         {
+                            title: 'Uzbekistan',
+                            className: 'bg-travel-bottom-middle',
+                            url: '/travel/uzbekistan/',
+                            imageSrc: TravelImageUzbekistan,
+                            imageAlt: 'The façade of a mausoleum in Khiva',
+                        },
+                        {
                             title: 'Britain',
-
                             className: 'bg-travel-britain-benelux',
                             url: '/travel/britain/',
                             imageSrc: BritainbeneluxImage,
@@ -54,17 +70,17 @@ export default function Page() {
                         },
                         {
                             title: 'Netherlands',
-                            className: 'bg-netherlands-amsterdam',
+                            className: 'bg-travel-bottom-middle',
                             url: '/travel/netherlands/',
                             imageSrc: NetherlandsImage,
-                            imageAlt: 'Westerkerk overlooking an Amsterdam canal',
+                            imageAlt: 'Westerkerk, overlooking an Amsterdam canal',
                         },
                         {
                             title: 'Peru',
                             className: 'bg-travel-peru-argentina',
                             url: '/travel/peru/',
                             imageSrc: PeruImage,
-                            imageAlt: 'Kim holding a lamb and posing with two Andean women',
+                            imageAlt: 'Kim holding a lamb and posing with two women in traditional Andean clothes',
                         },
                         {
                             title: (
@@ -114,13 +130,6 @@ export default function Page() {
                             url: '/travel/greece/',
                             imageSrc: GreeceImage,
                             imageAlt: 'Serifios, Greece',
-                        },
-                        {
-                            title: 'Paris',
-                            className: 'bg-travel-paris',
-                            url: '/travel/paris/',
-                            imageSrc: ParisImage,
-                            imageAlt: 'Eiffel Tower',
                         },
                         {
                             title: 'France',

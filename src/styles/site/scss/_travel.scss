@@ -122,12 +122,17 @@
         }
     }
 
-    /* -----------------------------------
-     * Britain & Benelux
-     * -----------------------------------
-     */
+    .bg-travel-top-middle {
+        span {
+            position: absolute;
+            top: 6px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+        }
+    }
 
-    .bg-netherlands-amsterdam {
+    .bg-travel-bottom-middle {
         span {
             position: absolute;
             bottom: 6px;
@@ -136,6 +141,11 @@
             text-align: center;
         }
     }
+
+    /* -----------------------------------
+     * Britain & Benelux
+     * -----------------------------------
+     */
 
     .bg-belgium-bruges {
         span {

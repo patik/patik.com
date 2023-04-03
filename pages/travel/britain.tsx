@@ -5,6 +5,7 @@ import LiverpoolImage from '../../public/images/britain-benelux-liverpool-link.j
 import LondonImage from '../../public/images/britain-benelux-london-link.jpg'
 import OverviewMap from '../../public/images/britain-benelux-overview-map-small.jpg'
 import Layout from '../../src/components/common/Layout'
+import Space from '../../src/components/common/Space'
 import TravelLinkList from '../../src/components/site/TravelLinkList'
 
 export default function Page() {
@@ -80,7 +81,8 @@ export default function Page() {
                             <li>
                                 <a href="https://int.soccerway.com/matches/2012/08/18/england/premier-league/arsenal-fc/sunderland-association-football-club/1293681/">
                                     Arsenal vs Sunderland
-                                </a>{' '}
+                                </a>
+                                <Space />
                                 football match
                             </li>
                             <li>

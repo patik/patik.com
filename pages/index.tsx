@@ -17,6 +17,7 @@ import imgHomeConsoleBlogLogo from '../public/images/icons/blog/ios/AppIcon@3x.p
 import imgHomeDoFLogo from '../public/images/icons/depth-of-field/ios/AppIcon@3x.png'
 import imgWithinViewportFLogo from '../public/images/icons/within-viewport/ios/AppIcon@3x.png'
 import TravelImageParis from '../public/images/travel-paris.jpg'
+import TravelImageUzbekistan from '../public/images/uzbekistan-khiva-night.jpg'
 import Layout from '../src/components/common/Layout'
 
 export default function Home() {
@@ -44,6 +45,18 @@ export default function Home() {
                                     height={48}
                                 />
                                 <span>All Trips</span>
+                            </Link>
+                        </div>
+                        <div className="cp-item-third">
+                            <Link href="/travel/uzbekistan/">
+                                <Image
+                                    src={TravelImageUzbekistan}
+                                    alt="The façade of a mausoleum at night"
+                                    title="Mausoleum in Khiva"
+                                    width={48}
+                                    height={48}
+                                />
+                                <span>Uzbekistan</span>
                             </Link>
                         </div>
                         <div className="cp-item-third">
