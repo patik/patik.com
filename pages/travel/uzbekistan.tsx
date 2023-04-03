@@ -1,7 +1,8 @@
-import Layout from '../../src/components/common/Layout'
-import TravelLinkList from '../../src/components/site/TravelLinkList'
+import BukharaImage from '../../public/images/uzbekistan-bukhara-minaret.jpg'
 import KhivaImage from '../../public/images/uzbekistan-khiva-night.jpg'
 import SamarkandImage from '../../public/images/uzbekistan-samarkand-dome.jpg'
+import Layout from '../../src/components/common/Layout'
+import TravelLinkList from '../../src/components/site/TravelLinkList'
 
 export default function Page() {
     return (
@@ -41,6 +42,13 @@ export default function Page() {
                             url: 'https://www.icloud.com/sharedalbum/#B0x5n8hH43fN8G',
                             imageSrc: SamarkandImage,
                             imageAlt: 'The gold and blue interior of a mausoleum dome',
+                        },
+                        {
+                            title: 'Bukhara',
+                            className: 'bg-travel-top-middle',
+                            url: 'https://www.icloud.com/sharedalbum/#B0x5yeZFhd056g',
+                            imageSrc: BukharaImage,
+                            imageAlt: 'The top of a minaret lit up at night',
                         },
                     ]}
                 />
