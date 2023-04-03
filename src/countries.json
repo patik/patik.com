@@ -40,7 +40,7 @@
         },
         {
             "name": "France",
-            "yearsVisited": [2000, 2005, 2014]
+            "yearsVisited": [2000, 2005, 2017]
         },
         {
             "name": "Germany",
@@ -129,6 +129,10 @@
         {
             "name": "Uruguay",
             "yearsVisited": [2011]
+        },
+        {
+            "name": "Uzbekistan",
+            "yearsVisited": [2023]
         },
         {
             "name": "Vietnam",

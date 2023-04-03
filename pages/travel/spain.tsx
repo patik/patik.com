@@ -10,7 +10,18 @@ export default function Page() {
     return (
         <Layout
             title="Spain"
-            keywords={['Spain', 'Madrid', 'Sevilla', '2010 World Cup', 'Barcelona', 'Europe', 'travel']}
+            keywords={[
+                'Spain',
+                'Madrid',
+                'Sevilla',
+                '2010 World Cup',
+                'Barcelona',
+                'Portugal',
+                'Lisbon',
+                'Sintra',
+                'Europe',
+                'travel',
+            ]}
         >
             <h1>Spain</h1>
 
@@ -38,7 +49,7 @@ export default function Page() {
                                 </>
                             ),
                             className: 'bg-spain-world-cup',
-                            url: 'https://picasaweb.google.com/116513687533678150554/WorldCup2010InMadrid',
+                            url: 'https://get.google.com/albumarchive/pwa/116513687533678150554/WorldCup2010InMadrid',
                             imageSrc: linkWorlCup,
                             imageAlt: "Celebrating Spain's victory in Madrid",
                         },

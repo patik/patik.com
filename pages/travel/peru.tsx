@@ -45,7 +45,7 @@ export default function Page() {
                             className: 'bg-peru-argentina-cusco',
                             url: 'https://get.google.com/albumarchive/116513687533678150554/album/AF1QipOJhD-DjF1QnnGf_hTfF7cw9u0h-p4WzlJZMmYC',
                             imageSrc: CuscoImage,
-                            imageAlt: 'Kim holding a lamb and posing with Andean women',
+                            imageAlt: 'Kim holding a lamb and posing with women in traditional Andean clothes',
                         },
                     ]}
                 />
