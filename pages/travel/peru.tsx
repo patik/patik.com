@@ -4,6 +4,7 @@ import AmazonImage from '../../public/images/peru-argentina-link-amazon.jpg'
 import CuscoImage from '../../public/images/peru-argentina-link-cusco.jpg'
 import MapSmall from '../../public/images/peru-argentina-map-small.png'
 import Layout from '../../src/components/common/Layout'
+import Space from '../../src/components/common/Space'
 import TravelLinkList from '../../src/components/site/TravelLinkList'
 
 export default function Page() {
@@ -65,7 +66,8 @@ export default function Page() {
                         ancient Incan city high in the Andes mountains
                     </li>
                     <li>
-                        An unforgettable, leisurely ride on the{' '}
+                        An unforgettable, leisurely ride on the
+                        <Space />
                         <a href="https://www.belmond.com/trains/south-america/peru/belmond-andean-explorer/">
                             Andean Explorer
                         </a>
@@ -73,8 +75,10 @@ export default function Page() {
                     </li>
                     <li>
                         <a href="httpw://en.wikipedia.org/wiki/Lake_Titicaca">Lake Titicaca</a>, the world’s highest
-                        navigable lake and home to{' '}
-                        <a href="https://en.wikipedia.org/wiki/Uru_people">floating islands</a> and{' '}
+                        navigable lake and home to
+                        <Space />
+                        <a href="https://en.wikipedia.org/wiki/Uru_people">floating islands</a> and
+                        <Space />
                         <a href="https://en.wikipedia.org/wiki/Taquile">centuries-old cultures</a>
                     </li>
                     <li>
