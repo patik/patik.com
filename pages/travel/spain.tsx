@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import itineraryMapSmall from '../../public/images/spain-itinerary-map-small.jpg'
-import linkWorlCup from '../../public/images/spain-link-world-cup.jpg'
+import linkWorldCup from '../../public/images/spain-link-world-cup.jpg'
 import Layout from '../../src/components/common/Layout'
 import Space from '../../src/components/common/Space'
 import TravelLinkList from '../../src/components/site/TravelLinkList'
@@ -50,7 +50,7 @@ export default function Page() {
                             ),
                             className: 'bg-spain-world-cup',
                             url: 'https://get.google.com/albumarchive/pwa/116513687533678150554/WorldCup2010InMadrid',
-                            imageSrc: linkWorlCup,
+                            imageSrc: linkWorldCup,
                             imageAlt: "Celebrating Spain's victory in Madrid",
                         },
                     ]}

@@ -1,10 +1,7 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import itineraryMapSmall from '../../public/images/spain-itinerary-map-small.jpg'
-import linkWorlCup from '../../public/images/spain-link-world-cup.jpg'
 import Layout from '../../src/components/common/Layout'
-import Space from '../../src/components/common/Space'
 import TravelLinkList from '../../src/components/site/TravelLinkList'
+import KhivaImage from '../../public/images/uzbekistan-khiva-night.jpg'
+import SamarkandImage from '../../public/images/uzbekistan-samarkand-dome.jpg'
 
 export default function Page() {
     return (
@@ -24,7 +21,7 @@ export default function Page() {
         >
             <h1>Uzbekistan</h1>
 
-            <p>intro text</p>
+            <p>A beautiful country full of Islamic architecture that had only just opened up to mass tourism</p>
 
             <section>
                 <h2>Photos and Video</h2>
@@ -32,17 +29,18 @@ export default function Page() {
                 <TravelLinkList
                     items={[
                         {
-                            title: (
-                                <>
-                                    2010
-                                    <br />
-                                    World Cup
-                                </>
-                            ),
-                            className: 'bg-spain-world-cup',
-                            url: 'https://picasaweb.google.com/116513687533678150554/WorldCup2010InMadrid',
-                            imageSrc: linkWorlCup,
-                            imageAlt: "Celebrating Spain's victory in Madrid",
+                            title: 'Khiva',
+                            className: 'bg-travel-bottom-middle',
+                            url: 'https://www.icloud.com/sharedalbum/#B0x59UlCqxnTB5',
+                            imageSrc: KhivaImage,
+                            imageAlt: 'The façade of a mausoleum at night',
+                        },
+                        {
+                            title: 'Samarkand',
+                            className: 'bg-travel-bottom-middle',
+                            url: 'https://www.icloud.com/sharedalbum/#B0x5n8hH43fN8G',
+                            imageSrc: SamarkandImage,
+                            imageAlt: 'The gold and blue interior of a mausoleum dome',
                         },
                     ]}
                 />
@@ -52,56 +50,19 @@ export default function Page() {
                 <h2>Itinerary</h2>
                 <ul>
                     <li>
-                        Coastal <a href="https://wikitravel.org/en/Lisbon">Lisbon</a>, Portugal, home of
-                        <Space />
-                        <a href="https://en.wikipedia.org/wiki/Fado">fado</a> and its history of world discovery
+                        The capital city, <a href="https://en.wikipedia.org/wiki/Tashkent">Tashkent</a>
                     </li>
                     <li>
-                        Many <a href="https://wikitravel.org/en/Madrid">Madrid</a> tapas crawls
-                        <ul>
-                            <li>Santiago Bernabeu, home of Real Madrid</li>
-                            <li>
-                                Coinciding with the
-                                <Space />
-                                <a href="https://en.wikipedia.org/wiki/2010_FIFA_World_Cup">World Cup</a> final
-                            </li>
-                        </ul>
+                        The walled city of <a href="https://en.wikipedia.org/wiki/Khiva">Khiva</a>
                     </li>
                     <li>
-                        Medieval <a href="https://wikitravel.org/en/Toledo_%28Spain%29">Toledo</a>, the opulent former
-                        capital
+                        <a href="https://en.wikipedia.org/wiki/Bukhara">Bukhara</a>
                     </li>
+                    <li>Overnight at a yurt camp in the desert</li>
                     <li>
-                        <a href="https://wikitravel.org/en/Sevilla">Sevilla</a>, our base for Andalusia. Once ruled by
-                        the Muslim Moors, it&rsquo;s now the bullfight-and-flamenco hotspot that is the most
-                        traditionally Spanish region in Spain. Think Don Juan and Carmen.
-                    </li>
-                    <li>
-                        <a href="https://wikitravel.org/en/Tangier">Tangier</a>, Morocco, a quick ferry ride but a world
-                        away from the southern tip of Spain
-                    </li>
-                    <li>
-                        Bustling <a href="https://wikitravel.org/en/Barcelona">Barcelona</a>, capital of Catalunya and
-                        countless confectionaries
-                        <ul>
-                            <li>Camp Nou, the legendary home of FC Barcelona</li>
-                            <li>
-                                <a href="https://en.wikipedia.org/wiki/Sagrada_Fam%C3%ADlia">Segrada Fam&iacute;lia</a>,
-                                a still-in-the-works Gaud&iacute; masterpiece
-                            </li>
-                        </ul>
+                        <a href="https://en.wikipedia.org/wiki/Samarkand">Samarkand</a>
                     </li>
                 </ul>
-
-                <div className="travel-map">
-                    <Link href="/images/spain-itinerary-map.jpg">
-                        <Image
-                            src={itineraryMapSmall}
-                            alt="Map of Western Europe with each location noted and annotated with a photo"
-                            title="Click for a larger version"
-                        />
-                    </Link>
-                </div>
             </section>
         </Layout>
     )
