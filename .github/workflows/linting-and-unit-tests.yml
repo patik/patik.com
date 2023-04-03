@@ -27,8 +27,7 @@ jobs:
           cache: 'yarn'
       - run: yarn install
       - run: yarn copyimages
-      - run: yarn next build
-      - run: yarn next export
+      - run: yarn build
       - run: yarn lint
       - run: yarn test
       - name: Get yarn cache directory path
