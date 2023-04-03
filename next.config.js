@@ -1,3 +1,5 @@
+import path from 'path'
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
@@ -42,6 +44,12 @@ const nextConfig = {
         }
 
         return config
+    },
+    // Fix sass-loader for Node versions older than 16
+    // See https://github.com/vercel/next.js/issues/45052#issuecomment-1468754780
+    sassOptions: {
+        fiber: false,
+        includePaths: [path.join(__dirname, 'styles')],
     },
 }
 
