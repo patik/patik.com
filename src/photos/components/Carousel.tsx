@@ -11,7 +11,8 @@ export default function Carousel({ index, currentPhoto }: { index: number; curre
 
     function closeModal() {
         setLastViewedPhoto(currentPhoto.id)
-        router.push('/', undefined, { shallow: true })
+        // router.push('/', undefined, { shallow: true })
+        router.back()
     }
 
     function changePhotoId(newVal: number) {
