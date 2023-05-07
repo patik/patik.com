@@ -6,9 +6,10 @@ import getResults from '../../../photo-gallery/utils/cachedImages'
 import cloudinary from '../../../photo-gallery/utils/cloudinary'
 import getBase64ImageUrl from '../../../photo-gallery/utils/generateBlurPlaceholder'
 import type { ImageProps } from '../../../photo-gallery/utils/types'
-import '../../photo-gallery/styles/index.css'
 
-const Home: NextPage = ({ currentPhoto }: { currentPhoto: ImageProps }) => {
+type Props = { currentPhoto: ImageProps }
+
+const Home: NextPage<Props> = ({ currentPhoto }: Props) => {
     const router = useRouter()
     const { photoId } = router.query
     const index = Number(photoId)

@@ -4,16 +4,15 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useRef } from 'react'
-import Bridge from '../../photo-gallery/components/Icons/Bridge'
-import Logo from '../../photo-gallery/components/Icons/Logo'
 import Modal from '../../photo-gallery/components/Modal'
 import cloudinary from '../../photo-gallery/utils/cloudinary'
 import getBase64ImageUrl from '../../photo-gallery/utils/generateBlurPlaceholder'
 import type { ImageProps } from '../../photo-gallery/utils/types'
 import { useLastViewedPhoto } from '../../photo-gallery/utils/useLastViewedPhoto'
-import '../../photo-gallery/styles/index.css'
 
-const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
+type Props = { images: ImageProps[] }
+
+const Home: NextPage<Props> = ({ images }: Props) => {
     const router = useRouter()
     const { photoId } = router.query
     const [lastViewedPhoto, setLastViewedPhoto] = useLastViewedPhoto()
@@ -27,25 +26,28 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
             setLastViewedPhoto(null)
         }
     }, [photoId, lastViewedPhoto, setLastViewedPhoto])
+    console.log('images ', images)
 
     return (
         <>
             <Head>
                 <title>Next.js Conf 2022 Photos</title>
-                <meta property="og:image" content="https://nextjsconf-pics.vercel.app/og-image.png" />
-                <meta name="twitter:image" content="https://nextjsconf-pics.vercel.app/og-image.png" />
+                {/* <meta property="og:image" content="https://nextjsconf-pics.vercel.app/og-image.png" />
+                <meta name="twitter:image" content="https://nextjsconf-pics.vercel.app/og-image.png" /> */}
             </Head>
             <main className="mx-auto max-w-[1960px] p-4">
                 {photoId && (
                     <Modal
                         images={images}
                         onClose={() => {
+                            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                            // @ts-ignore
                             setLastViewedPhoto(photoId)
                         }}
                     />
                 )}
                 <div className="columns-1 gap-4 sm:columns-2 xl:columns-3 2xl:columns-4">
-                    <div className="after:content relative mb-5 flex h-[629px] flex-col items-center justify-end gap-4 overflow-hidden rounded-lg bg-white/10 px-6 pb-16 pt-64 text-center text-white shadow-highlight after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight lg:pt-0">
+                    {/* <div className="after:content relative mb-5 flex h-[629px] flex-col items-center justify-end gap-4 overflow-hidden rounded-lg bg-white/10 px-6 pb-16 pt-64 text-center text-white shadow-highlight after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight lg:pt-0">
                         <div className="absolute inset-0 flex items-center justify-center opacity-20">
                             <span className="flex max-h-full max-w-full items-center justify-center">
                                 <Bridge />
@@ -66,7 +68,7 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
                         >
                             Clone and Deploy
                         </a>
-                    </div>
+                    </div> */}
                     {images.map(({ id, public_id, format, blurDataUrl }) => (
                         <Link
                             key={id}
@@ -107,6 +109,8 @@ export async function getStaticProps() {
         .max_results(400)
         .execute()
     const reducedResults: ImageProps[] = []
+    console.log('results ', `folder:${process.env.CLOUDINARY_FOLDER}/*`, results)
+    // console.log('folders ', await cloudinary.v2.search.expression(''))
 
     let i = 0
     for (const result of results.resources) {
