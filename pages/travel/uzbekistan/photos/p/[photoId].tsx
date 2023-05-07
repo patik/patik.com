@@ -1,6 +1,6 @@
-import { createGetStaticPaths } from '@src/photos/PhotoPageGetStaticPaths'
-import { createGetStaticProps } from '@src/photos/PhotoPageGetStaticProps'
-import { PhotoPage } from '@src/photos/PhotoPage'
+import { PhotoPage } from '@src/photos/pages/photo/PhotoPage'
+import { PhotoPageGetStaticPaths } from '@src/photos/pages/photo/PhotoPageGetStaticPaths'
+import { PhotoPageGetStaticProps } from '@src/photos/pages/photo/PhotoPageGetStaticProps'
 import type { ImageProps } from '@src/photos/utils/types'
 import type { GetStaticProps } from 'next'
 import { folderName } from '..'
@@ -12,9 +12,9 @@ export default function Page({ currentPhoto }: Props) {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-    return createGetStaticProps(folderName, context)
+    return PhotoPageGetStaticProps(folderName, context)
 }
 
 export async function getStaticPaths() {
-    return createGetStaticPaths(folderName)
+    return PhotoPageGetStaticPaths(folderName)
 }

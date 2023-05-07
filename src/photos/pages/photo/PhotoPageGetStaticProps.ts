@@ -1,9 +1,9 @@
 import { ImageProps } from '@src/photos/utils/types'
 import { GetStaticPropsContext, GetStaticPropsResult } from 'next'
-import getResults from './utils/cachedImages'
-import getBase64ImageUrl from './utils/generateBlurPlaceholder'
+import getResults from '../../utils/cachedImages'
+import getBase64ImageUrl from '../../utils/generateBlurPlaceholder'
 
-export async function createGetStaticProps(
+export async function PhotoPageGetStaticProps(
     folderName: string,
     context: GetStaticPropsContext
 ): Promise<GetStaticPropsResult<{ currentPhoto: ImageProps }>> {
@@ -26,7 +26,7 @@ export async function createGetStaticProps(
     if (currentPhoto) {
         currentPhoto.blurDataUrl = await getBase64ImageUrl(currentPhoto)
     } else {
-        throw new Error('could find find photo in createGetStaticProps')
+        throw new Error('could find find photo in PhotoPageGetStaticProps')
     }
 
     return {

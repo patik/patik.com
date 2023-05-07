@@ -1,7 +1,7 @@
 import { GetStaticPathsResult } from 'next'
-import cloudinary from './utils/cloudinary'
+import cloudinary from '../../utils/cloudinary'
 
-export async function createGetStaticPaths(folderName: string): Promise<GetStaticPathsResult> {
+export async function PhotoPageGetStaticPaths(folderName: string): Promise<GetStaticPathsResult> {
     // return async function getStaticPaths() {
     const results = await cloudinary.v2.search
         .expression(`folder:${folderName}/*`)
