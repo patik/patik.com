@@ -1,11 +1,12 @@
 import cloudinary from './cloudinary'
+import { CloudinaryResult } from './types'
 
-let cachedResults
+let cachedResults: CloudinaryResult
 
-export default async function getResults() {
+export default async function getResults(folderName: string) {
     if (!cachedResults) {
         const fetchedResults = await cloudinary.v2.search
-            .expression(`folder:${process.env.CLOUDINARY_FOLDER}/*`)
+            .expression(`folder:${folderName}/*`)
             .sort_by('public_id', 'desc')
             .max_results(400)
             .execute()

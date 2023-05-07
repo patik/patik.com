@@ -26,7 +26,7 @@ export default function Carousel({ index, currentPhoto }: { index: number; curre
         <div className="fixed inset-0 flex items-center justify-center">
             <button className="absolute inset-0 z-30 cursor-default bg-black backdrop-blur-2xl" onClick={closeModal}>
                 <Image
-                    src={currentPhoto.blurDataUrl}
+                    src={currentPhoto.blurDataUrl ?? ''}
                     className="pointer-events-none h-full w-full"
                     alt="blurred background"
                     fill

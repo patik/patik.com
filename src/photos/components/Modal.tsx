@@ -7,7 +7,7 @@ import type { ImageProps } from '../utils/types'
 import SharedModal from './SharedModal'
 
 export default function Modal({ images, onClose }: { images: ImageProps[]; onClose?: () => void }) {
-    const overlayRef = useRef()
+    const overlayRef = useRef<HTMLDivElement>(null)
     const router = useRouter()
 
     const { photoId } = router.query
@@ -18,7 +18,9 @@ export default function Modal({ images, onClose }: { images: ImageProps[]; onClo
 
     function handleClose() {
         router.push('/', undefined, { shallow: true })
-        onClose()
+        if (onClose) {
+            onClose()
+        }
     }
 
     function changePhotoId(newVal: number) {

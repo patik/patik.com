@@ -3,10 +3,12 @@ export default function escapeCloudinaryString(str: string): string {
     // https://cloudinary.com/documentation/search_api#expressions
     const specialChars = ['!', '(', ')', '{', '}', '[', ']', '*', '^', '~', '?', ':', '\\', '=', '&', '>', '<', '']
 
-    return str
-        .split('')
-        .map((char) => {
-            if (specialChars.includes(char)) {
+    const chars = str.split('')
+
+    return chars
+        .map((char, index) => {
+            // Make sure previous char wasn't already a backslash
+            if (specialChars.includes(char) && chars[index - 1] !== '\\') {
                 return `\\${char}`
             }
 

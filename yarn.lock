@@ -853,6 +853,20 @@
   dependencies:
     "@types/unist" "*"
 
+"@types/imagemin-jpegtran@^5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@types/imagemin-jpegtran/-/imagemin-jpegtran-5.0.1.tgz#798b2a66cd49b7ec6550fb733c05a5b8755f211f"
+  integrity sha512-Ps8kbm+DUFte/Eln/tUdEvpMWHKFCsQKlV8n+RN50zqWqL/7QhfLxR0ymitP9wa90P6+rkbJlintBNPkVR+B/Q==
+  dependencies:
+    "@types/imagemin" "*"
+
+"@types/imagemin@*", "@types/imagemin@^8.0.1":
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/@types/imagemin/-/imagemin-8.0.1.tgz#83795a10cdbe31a42ab304a7f8425588212c6a81"
+  integrity sha512-DSpM//dRPzme7doePGkmR1uoquHi0h0ElaA5qFnxHECfFcB8z/jhMI8eqmxWNpHn9ZG18p4PC918sZLhR0cr5A==
+  dependencies:
+    "@types/node" "*"
+
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0", "@types/istanbul-lib-coverage@^2.0.1":
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/@types/istanbul-lib-coverage/-/istanbul-lib-coverage-2.0.4.tgz#8467d4b3c087805d63580480890791277ce35c44"

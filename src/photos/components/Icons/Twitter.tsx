@@ -1,4 +1,4 @@
-export default function Twitter(props: any) {
+export default function Twitter(props: { className?: string }) {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"

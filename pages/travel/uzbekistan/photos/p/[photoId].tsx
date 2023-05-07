@@ -6,6 +6,7 @@ import getResults from '@src/photos/utils/cachedImages'
 import cloudinary from '@src/photos/utils/cloudinary'
 import getBase64ImageUrl from '@src/photos/utils/generateBlurPlaceholder'
 import type { ImageProps } from '@src/photos/utils/types'
+import { folderName } from '..'
 
 type Props = { currentPhoto: ImageProps }
 
@@ -13,7 +14,6 @@ const Home: NextPage<Props> = ({ currentPhoto }: Props) => {
     const router = useRouter()
     const { photoId } = router.query
     const index = Number(photoId)
-
     const currentPhotoUrl = `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_2560/${currentPhoto.public_id}.${currentPhoto.format}`
 
     return (
@@ -33,15 +33,16 @@ const Home: NextPage<Props> = ({ currentPhoto }: Props) => {
 export default Home
 
 export const getStaticProps: GetStaticProps = async (context) => {
-    const results = await getResults()
-
+    const results = await getResults(folderName)
     const reducedResults: ImageProps[] = []
     let i = 0
+    console.log('results ', results)
+    console.log('results.resources ', results.resources)
     for (const result of results.resources) {
         reducedResults.push({
             id: i,
-            height: result.height,
-            width: result.width,
+            height: String(result.height),
+            width: String(result.width),
             public_id: result.public_id,
             format: result.format,
         })
@@ -62,7 +63,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 export async function getStaticPaths() {
     const results = await cloudinary.v2.search
-        .expression(`folder:Uzbekistan\\ 2023/*`)
+        .expression(`folder:${folderName}/*`)
         .sort_by('public_id', 'desc')
         .max_results(400)
         .execute()

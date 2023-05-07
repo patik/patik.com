@@ -14,7 +14,7 @@ const nextConfig = {
     },
     trailingSlash: true,
     basePath: '',
-    typescript: { ignoreBuildErrors: true },
+    // typescript: { ignoreBuildErrors: true },
     async redirects() {
         // Create return objects, both with and without a trailing slash
         return [
