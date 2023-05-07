@@ -4,12 +4,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useRef } from 'react'
-import Modal from '../../../../photo-gallery/components/Modal'
-import cloudinary from '../../../../photo-gallery/utils/cloudinary'
-import escapeCloudinaryString from '../../../../photo-gallery/utils/escapeCloudinaryString'
-import getBase64ImageUrl from '../../../../photo-gallery/utils/generateBlurPlaceholder'
-import type { ImageProps } from '../../../../photo-gallery/utils/types'
-import { useLastViewedPhoto } from '../../../../photo-gallery/utils/useLastViewedPhoto'
+import Modal from '@src/photos/components/Modal'
+import cloudinary from '@src/photos/utils/cloudinary'
+import escapeCloudinaryString from '@src/photos/utils/escapeCloudinaryString'
+import getBase64ImageUrl from '@src/photos/utils/generateBlurPlaceholder'
+import type { ImageProps } from '@src/photos/utils/types'
+import { useLastViewedPhoto } from '@src/photos/utils/useLastViewedPhoto'
 
 type Props = { images: ImageProps[] }
 
