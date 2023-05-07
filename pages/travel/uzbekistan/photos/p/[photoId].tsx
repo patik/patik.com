@@ -1,11 +1,11 @@
 import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import Carousel from '../../../photo-gallery/components/Carousel'
-import getResults from '../../../photo-gallery/utils/cachedImages'
-import cloudinary from '../../../photo-gallery/utils/cloudinary'
-import getBase64ImageUrl from '../../../photo-gallery/utils/generateBlurPlaceholder'
-import type { ImageProps } from '../../../photo-gallery/utils/types'
+import Carousel from '../../../../../photo-gallery/components/Carousel'
+import getResults from '../../../../../photo-gallery/utils/cachedImages'
+import cloudinary from '../../../../../photo-gallery/utils/cloudinary'
+import getBase64ImageUrl from '../../../../../photo-gallery/utils/generateBlurPlaceholder'
+import type { ImageProps } from '../../../../../photo-gallery/utils/types'
 
 type Props = { currentPhoto: ImageProps }
 
@@ -62,7 +62,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 export async function getStaticPaths() {
     const results = await cloudinary.v2.search
-        .expression(`folder:${process.env.CLOUDINARY_FOLDER}/*`)
+        .expression(`folder:Uzbekistan\\ 2023/*`)
         .sort_by('public_id', 'desc')
         .max_results(400)
         .execute()

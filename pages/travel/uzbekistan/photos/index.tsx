@@ -4,11 +4,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useRef } from 'react'
-import Modal from '../../photo-gallery/components/Modal'
-import cloudinary from '../../photo-gallery/utils/cloudinary'
-import getBase64ImageUrl from '../../photo-gallery/utils/generateBlurPlaceholder'
-import type { ImageProps } from '../../photo-gallery/utils/types'
-import { useLastViewedPhoto } from '../../photo-gallery/utils/useLastViewedPhoto'
+import Modal from '../../../../photo-gallery/components/Modal'
+import cloudinary from '../../../../photo-gallery/utils/cloudinary'
+import escapeCloudinaryString from '../../../../photo-gallery/utils/escapeCloudinaryString'
+import getBase64ImageUrl from '../../../../photo-gallery/utils/generateBlurPlaceholder'
+import type { ImageProps } from '../../../../photo-gallery/utils/types'
+import { useLastViewedPhoto } from '../../../../photo-gallery/utils/useLastViewedPhoto'
 
 type Props = { images: ImageProps[] }
 
@@ -72,8 +73,8 @@ const Home: NextPage<Props> = ({ images }: Props) => {
                     {images.map(({ id, public_id, format, blurDataUrl }) => (
                         <Link
                             key={id}
-                            href={`/?photoId=${id}`}
-                            as={`/p/${id}`}
+                            href={`/travel/uzbekistan/photos/?photoId=${id}`}
+                            as={`/travel/uzbekistan/photos/p/${id}`}
                             ref={id === Number(lastViewedPhoto) ? lastViewedPhotoRef : null}
                             shallow
                             className="after:content group relative mb-5 block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight"
@@ -84,7 +85,9 @@ const Home: NextPage<Props> = ({ images }: Props) => {
                                 style={{ transform: 'translate3d(0, 0, 0)' }}
                                 placeholder="blur"
                                 blurDataURL={blurDataUrl}
-                                src={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_720/${public_id}.${format}`}
+                                src={`https://res.cloudinary.com/${
+                                    process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
+                                }/image/upload/c_scale,w_720/${escapeCloudinaryString(public_id)}.${format}`}
                                 width={720}
                                 height={480}
                                 sizes="(max-width: 640px) 100vw,
@@ -104,13 +107,12 @@ export default Home
 
 export async function getStaticProps() {
     const results = await cloudinary.v2.search
-        .expression(`folder:${process.env.CLOUDINARY_FOLDER}/*`)
+        .expression(`folder:Uzbekistan\\ 2023/*`)
         .sort_by('public_id', 'desc')
         .max_results(400)
         .execute()
     const reducedResults: ImageProps[] = []
-    console.log('results ', `folder:${process.env.CLOUDINARY_FOLDER}/*`, results)
-    // console.log('folders ', await cloudinary.v2.search.expression(''))
+    console.log('results ', results)
 
     let i = 0
     for (const result of results.resources) {

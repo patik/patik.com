@@ -27,7 +27,7 @@ export default function TravelLinkList({ items }: { items: Item[] }) {
     return (
         <div className="cp-row travel-link-list">
             {items.map((item) => (
-                <div className="cp-item-third" key={item.className}>
+                <div className="cp-item-third" key={item.imageSrc.src}>
                     <TravelLinkItem item={item} />
                 </div>
             ))}
