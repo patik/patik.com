@@ -7,6 +7,10 @@ const nextConfig = {
     swcMinify: true,
     images: {
         unoptimized: true,
+        // For photo gallery
+        formats: ['image/avif', 'image/webp'],
+        // For photo gallery
+        domains: ['res.cloudinary.com'],
     },
     trailingSlash: true,
     basePath: '',

@@ -29,7 +29,17 @@ module.exports = {
                 sm: '0 5px 10px rgba(0, 0, 0, 0.12)',
                 md: '0 8px 30px rgba(0, 0, 0, 0.12)',
             },
+            // For photo gallery
+            screens: {
+                narrow: { raw: '(max-aspect-ratio: 3 / 2)' },
+                wide: { raw: '(min-aspect-ratio: 3 / 2)' },
+                'taller-than-854': { raw: '(min-height: 854px)' },
+            },
         },
     },
     plugins: [],
+    future: {
+        // For photo gallery
+        hoverOnlyWhenSupported: true,
+    },
 }
