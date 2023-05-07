@@ -1,20 +1,20 @@
+import Modal from '@src/photos/components/Modal'
+import escapeCloudinaryString from '@src/photos/utils/escapeCloudinaryString'
+import type { GalleryMeta, ImageProps } from '@src/photos/utils/types'
+import { useLastViewedPhoto } from '@src/photos/utils/useLastViewedPhoto'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useRef } from 'react'
-import Modal from '@src/photos/components/Modal'
-import escapeCloudinaryString from '@src/photos/utils/escapeCloudinaryString'
-import type { ImageProps } from '@src/photos/utils/types'
-import { useLastViewedPhoto } from '@src/photos/utils/useLastViewedPhoto'
 
 type Props = {
-    folderName: string
+    galleryMeta: GalleryMeta
     images: ImageProps[]
 }
 
-export const PhotoIndexPage: NextPage<Props> = ({ folderName, images }: Props) => {
+export const PhotoIndexPage: NextPage<Props> = ({ galleryMeta: { folderName }, images }: Props) => {
     const router = useRouter()
     const { photoId } = router.query
     const [lastViewedPhoto, setLastViewedPhoto] = useLastViewedPhoto()

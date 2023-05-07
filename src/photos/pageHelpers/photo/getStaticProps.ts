@@ -1,10 +1,10 @@
-import { ImageProps } from '@src/photos/utils/types'
+import { GalleryMeta, ImageProps } from '@src/photos/utils/types'
 import { GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import getResults from '../../utils/cachedImages'
 import getBase64ImageUrl from '../../utils/generateBlurPlaceholder'
 
-export async function PhotoPageGetStaticProps(
-    folderName: string,
+export default async function photoPageGetStaticProps(
+    { folderName }: GalleryMeta,
     context: GetStaticPropsContext
 ): Promise<GetStaticPropsResult<{ currentPhoto: ImageProps }>> {
     const results = await getResults(folderName)

@@ -53,3 +53,8 @@ export type CloudinaryResult = {
     time: number
     resources: Array<CloundinaryResource>
 }
+
+export type GalleryMeta = {
+    folderName: string
+    rootPath: string
+}

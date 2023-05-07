@@ -1,18 +1,25 @@
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import useKeypress from 'react-use-keypress'
-import type { ImageProps } from '../utils/types'
+import type { GalleryMeta, ImageProps } from '../utils/types'
 import { useLastViewedPhoto } from '../utils/useLastViewedPhoto'
 import SharedModal from './SharedModal'
 
-export default function Carousel({ index, currentPhoto }: { index: number; currentPhoto: ImageProps }) {
+export default function Carousel({
+    index,
+    currentPhoto,
+    rootPath,
+}: {
+    index: number
+    currentPhoto: ImageProps
+    rootPath: GalleryMeta['rootPath']
+}) {
     const router = useRouter()
     const [, setLastViewedPhoto] = useLastViewedPhoto()
 
     function closeModal() {
         setLastViewedPhoto(currentPhoto.id)
-        // router.push('/', undefined, { shallow: true })
-        router.back()
+        router.push(rootPath, undefined, { shallow: true })
     }
 
     function changePhotoId(newVal: number) {

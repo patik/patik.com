@@ -1,8 +1,8 @@
+import { GalleryMeta } from '@src/photos/utils/types'
 import { GetStaticPathsResult } from 'next'
 import cloudinary from '../../utils/cloudinary'
 
-export async function PhotoPageGetStaticPaths(folderName: string): Promise<GetStaticPathsResult> {
-    // return async function getStaticPaths() {
+export default async function photoPageGetStaticPaths({ folderName }: GalleryMeta): Promise<GetStaticPathsResult> {
     const results = await cloudinary.v2.search
         .expression(`folder:${folderName}/*`)
         .sort_by('public_id', 'desc')
@@ -18,5 +18,4 @@ export async function PhotoPageGetStaticPaths(folderName: string): Promise<GetSt
         paths: fullPaths,
         fallback: false,
     }
-    // }
 }

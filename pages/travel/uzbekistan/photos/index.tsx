@@ -1,15 +1,18 @@
-import { PhotoIndexPage } from '@src/photos/pages/index/PhotoIndexPage'
-import { PhotoIndexPageGetStaticProps } from '@src/photos/pages/index/PhotoIndexPageGetStaticProps'
-import type { ImageProps } from '@src/photos/utils/types'
+import photoIndexPageGetStaticProps from '@src/photos/pageHelpers/index/getStaticProps'
+import { PhotoIndexPage } from '@src/photos/pageHelpers/index/pages'
+import type { GalleryMeta, ImageProps } from '@src/photos/utils/types'
 
 type Props = { images: ImageProps[] }
 
-export const folderName = 'Uzbekistan\\ 2023'
+export const galleryMeta: GalleryMeta = {
+    folderName: 'Uzbekistan\\ 2023',
+    rootPath: '/travel/uzbekistan/photos',
+}
 
 export default function Page({ images }: Props) {
-    return <PhotoIndexPage folderName={folderName} images={images} />
+    return <PhotoIndexPage galleryMeta={galleryMeta} images={images} />
 }
 
 export async function getStaticProps() {
-    return PhotoIndexPageGetStaticProps(folderName)
+    return photoIndexPageGetStaticProps(galleryMeta)
 }
