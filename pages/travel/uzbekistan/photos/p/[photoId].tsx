@@ -1,3 +1,4 @@
+import { createGetStaticPaths } from '@src/photos/createGetStaticPaths'
 import { PhotoPage } from '@src/photos/PhotoPage'
 import getResults from '@src/photos/utils/cachedImages'
 import cloudinary from '@src/photos/utils/cloudinary'
@@ -9,11 +10,11 @@ import { folderName } from '..'
 
 type Props = { currentPhoto: ImageProps }
 
-const Home: FC<Props> = ({ currentPhoto }: Props) => {
+const Page: FC<Props> = ({ currentPhoto }: Props) => {
     return <PhotoPage folderName={folderName} currentPhoto={currentPhoto} />
 }
 
-export default Home
+export default Page
 
 export const getStaticProps: GetStaticProps = async (context) => {
     const results = await getResults(folderName)
@@ -44,19 +45,5 @@ export const getStaticProps: GetStaticProps = async (context) => {
 }
 
 export async function getStaticPaths() {
-    const results = await cloudinary.v2.search
-        .expression(`folder:${folderName}/*`)
-        .sort_by('public_id', 'desc')
-        .max_results(400)
-        .execute()
-
-    const fullPaths = []
-    for (let i = 0; i < results.resources.length; i++) {
-        fullPaths.push({ params: { photoId: i.toString() } })
-    }
-
-    return {
-        paths: fullPaths,
-        fallback: false,
-    }
+    return await createGetStaticPaths(folderName)
 }
