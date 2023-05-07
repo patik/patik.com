@@ -1,7 +1,7 @@
 export default function escapeCloudinaryString(str: string): string {
     // Special chars that must be backslashed for Cloudinary
     // https://cloudinary.com/documentation/search_api#expressions
-    const specialChars = ['!', '(', ')', '{', '}', '[', ']', '*', '^', '~', '?', ':', '\\', '=', '&', '>', '<', '']
+    const specialChars = ['!', '(', ')', '{', '}', '[', ']', '*', '^', '~', '?', ':', '\\', '=', '&', '>', '<']
 
     const chars = str.split('')
 

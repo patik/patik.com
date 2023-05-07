@@ -33,7 +33,7 @@ const Home: NextPage<Props> = ({ images }: Props) => {
     return (
         <>
             <Head>
-                <title>Next.js Conf 2022 Photos</title>
+                <title>{folderName}</title>
                 {/* <meta property="og:image" content="https://nextjsconf-pics.vercel.app/og-image.png" />
                 <meta name="twitter:image" content="https://nextjsconf-pics.vercel.app/og-image.png" /> */}
             </Head>
