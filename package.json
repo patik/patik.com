@@ -45,7 +45,7 @@
         "@typescript-eslint/eslint-plugin": "^5.59.1",
         "@typescript-eslint/parser": "^5.59.2",
         "autoprefixer": "^10.4.14",
-        "eslint": "^8.36.0",
+        "eslint": "^8.40.0",
         "eslint-config-next": "^13.2.4",
         "eslint-plugin-jsx-a11y": "^6.7.1",
         "find-unused-sass-variables": "^4.0.5",
