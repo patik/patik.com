@@ -1,5 +1,5 @@
 import photoIndexPageGetStaticProps from '@src/photos/pageHelpers/index/getStaticProps'
-import { PhotoIndexPage } from '@src/photos/pageHelpers/index/pages'
+import { PhotoIndexPage } from '@src/photos/pageHelpers/index/page'
 import type { GalleryMeta, ImageProps } from '@src/photos/utils/types'
 
 type Props = { images: ImageProps[] }

@@ -4,6 +4,7 @@ import config from '../src/config.json'
 import '../src/styles/site/globals.css'
 import '../src/styles/site/scss/style.scss'
 import '../src/styles/blog/index.css'
+import '../src/styles/photos.css'
 
 const { description } = config
 

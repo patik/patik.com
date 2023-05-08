@@ -14,9 +14,9 @@ type Props = {
     images: ImageProps[]
 }
 
-export const PhotoIndexPage: NextPage<Props> = ({ galleryMeta: { folderName }, images }: Props) => {
+export const PhotoIndexPage: NextPage<Props> = ({ galleryMeta: { folderName, rootPath }, images }: Props) => {
     const router = useRouter()
-    const { photoId } = router.query
+    const photoId = Number(router.query.photoId)
     const [lastViewedPhoto, setLastViewedPhoto] = useLastViewedPhoto()
     const lastViewedPhotoRef = useRef<HTMLAnchorElement>(null)
 
@@ -36,17 +36,16 @@ export const PhotoIndexPage: NextPage<Props> = ({ galleryMeta: { folderName }, i
                 <meta name="twitter:image" content="https://nextjsconf-pics.vercel.app/og-image.png" />
             </Head>
             <main className="mx-auto max-w-[1960px] p-4">
-                {photoId && (
+                {photoId ? (
                     <Modal
                         images={images}
                         onClose={() => {
-                            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                            // @ts-ignore
                             setLastViewedPhoto(photoId)
                         }}
+                        rootPath={rootPath}
                     />
-                )}
-                <div className="columns-1 gap-4 sm:columns-2 xl:columns-3 2xl:columns-4">
+                ) : null}
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
                     {images.map(({ id, public_id, format, blurDataUrl }) => (
                         <Link
                             key={id}
@@ -54,7 +53,7 @@ export const PhotoIndexPage: NextPage<Props> = ({ galleryMeta: { folderName }, i
                             as={`/travel/uzbekistan/photos/p/${id}`}
                             ref={id === Number(lastViewedPhoto) ? lastViewedPhotoRef : null}
                             shallow
-                            className="after:content group relative mb-5 block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight"
+                            className="after:content group relative cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight"
                         >
                             <Image
                                 alt="Next.js Conf photo"

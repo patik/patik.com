@@ -89,7 +89,7 @@ export default function SharedModal({
                 {/* Buttons + bottom nav bar */}
                 <div className="absolute inset-0 mx-auto flex max-w-7xl items-center justify-center">
                     {/* Buttons */}
-                    {loaded && (
+                    {loaded ? (
                         <div className="relative aspect-[3/2] max-h-full w-full">
                             {navigation && (
                                 <>
@@ -161,9 +161,9 @@ export default function SharedModal({
                                 </button>
                             </div>
                         </div>
-                    )}
+                    ) : null}
                     {/* Bottom Nav bar */}
-                    {navigation && (
+                    {navigation ? (
                         <div className="fixed inset-x-0 bottom-0 z-40 overflow-hidden bg-gradient-to-b from-black/0 to-black/60">
                             <motion.div initial={false} className="mx-auto mt-6 mb-6 flex aspect-[3/2] h-14">
                                 <AnimatePresence initial={false}>
@@ -205,7 +205,7 @@ export default function SharedModal({
                                 </AnimatePresence>
                             </motion.div>
                         </div>
-                    )}
+                    ) : null}
                 </div>
             </div>
         </MotionConfig>

@@ -13,7 +13,7 @@ class MyDocument extends Document {
                     />
                     <link rel="stylesheet" href="https://use.typekit.net/tfz6xpv.css" />
                 </Head>
-                <body>
+                <body className="antialiased">
                     <Main />
                     <NextScript />
                 </body>

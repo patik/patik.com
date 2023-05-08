@@ -3,10 +3,18 @@ import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 import { useRef, useState } from 'react'
 import useKeypress from 'react-use-keypress'
-import type { ImageProps } from '../utils/types'
+import type { GalleryMeta, ImageProps } from '../utils/types'
 import SharedModal from './SharedModal'
 
-export default function Modal({ images, onClose }: { images: ImageProps[]; onClose?: () => void }) {
+export default function Modal({
+    images,
+    onClose,
+    rootPath,
+}: {
+    images: ImageProps[]
+    onClose?: () => void
+    rootPath: GalleryMeta['rootPath']
+}) {
     const overlayRef = useRef<HTMLDivElement>(null)
     const router = useRouter()
 
@@ -17,7 +25,7 @@ export default function Modal({ images, onClose }: { images: ImageProps[]; onClo
     const [curIndex, setCurIndex] = useState(index)
 
     function handleClose() {
-        router.push('/', undefined, { shallow: true })
+        router.push(rootPath, undefined, { shallow: true })
         if (onClose) {
             onClose()
         }
