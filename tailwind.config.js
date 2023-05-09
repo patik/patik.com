@@ -36,26 +36,11 @@ module.exports = {
                 // For photo gallery
                 highlight: 'inset 0 0 0 1px rgba(255, 255, 255, 0.05)',
             },
-            // For photo gallery
             screens: {
+                // For photo gallery
                 narrow: { raw: '(max-aspect-ratio: 3 / 2)' },
                 wide: { raw: '(min-aspect-ratio: 3 / 2)' },
                 'taller-than-854': { raw: '(min-height: 854px)' },
-                // xs: '0px',
-                // sm: '480px',
-                // // => @media (min-width: 640px) { ... }
-
-                // md: '768px',
-                // // => @media (min-width: 768px) { ... }
-
-                // lg: '1024px',
-                // // => @media (min-width: 1024px) { ... }
-
-                // xl: '1280px',
-                // // => @media (min-width: 1280px) { ... }
-
-                // '2xl': '1536px',
-                // // => @media (min-width: 1536px) { ... }
             },
         },
     },

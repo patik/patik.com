@@ -19,10 +19,8 @@ export default function Modal({
 }) {
     const overlayRef = useRef<HTMLDivElement>(null)
     const router = useRouter()
-
     const { photoId } = router.query
     const index = Number(photoId)
-
     const [direction, setDirection] = useState(0)
     const [curIndex, setCurIndex] = useState(index)
 

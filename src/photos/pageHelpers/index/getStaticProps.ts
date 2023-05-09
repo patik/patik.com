@@ -2,7 +2,7 @@ import cloudinary from '@src/photos/utils/cloudinary'
 import getBase64ImageUrl from '@src/photos/utils/generateBlurPlaceholder'
 import { GalleryMeta, ImageProps } from '@src/photos/utils/types'
 
-export default async function photoIndexPageGetStaticProps({ folderName }: GalleryMeta) {
+export default async function galleryIndexPageGetStaticProps({ folderName }: GalleryMeta) {
     const results = await cloudinary.v2.search
         .expression(`folder:${folderName}/*`)
         .sort_by('public_id', 'desc')

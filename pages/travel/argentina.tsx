@@ -14,8 +14,9 @@ export default function Page() {
             <p>
                 Our first forage into the southern hemisphere brought us everywhere from the
                 <Space />
-                <Link href="/travel/peru/">Amazon rainforest and Machu Picchu</Link> to Europe-esque Buenos Aires and a
-                quiet estancia.
+                <Link href="/travel/peru/">Amazon rainforest and Machu Picchu</Link>
+                <Space />
+                to Europe-esque Buenos Aires and a quiet estancia.
             </p>
 
             <section>

@@ -3,7 +3,7 @@ import { GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import getResults from '../../utils/cachedImages'
 import getBase64ImageUrl from '../../utils/generateBlurPlaceholder'
 
-export default async function photoPageGetStaticProps(
+export default async function singlePhotoPageGetStaticProps(
     { folderName }: GalleryMeta,
     context: GetStaticPropsContext
 ): Promise<GetStaticPropsResult<{ currentPhoto: ImageProps }>> {

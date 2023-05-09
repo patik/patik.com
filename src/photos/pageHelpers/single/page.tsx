@@ -9,8 +9,10 @@ type Props = {
     currentPhoto: ImageProps
 }
 
-export const PhotoPage: FC<Props> = ({ galleryMeta, currentPhoto }: Props) => {
-    const { folderName, rootPath } = galleryMeta
+export const SinglePhotoPage: FC<Props> = ({
+    galleryMeta: { folderName, rootPath, galleryTitle },
+    currentPhoto,
+}: Props) => {
     const router = useRouter()
     const { photoId } = router.query
     const index = Number(photoId)
@@ -24,7 +26,7 @@ export const PhotoPage: FC<Props> = ({ galleryMeta, currentPhoto }: Props) => {
                 <meta name="twitter:image" content={currentPhotoUrl} />
             </Head>
             <main className="mx-auto max-w-[1960px] p-4">
-                <Carousel currentPhoto={currentPhoto} index={index} rootPath={rootPath} />
+                <Carousel currentPhoto={currentPhoto} index={index} rootPath={rootPath} galleryTitle={galleryTitle} />
             </main>
         </>
     )

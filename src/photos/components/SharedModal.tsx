@@ -14,7 +14,6 @@ import { variants } from '../utils/animationVariants'
 import downloadPhoto from '../utils/downloadPhoto'
 import { range } from '../utils/range'
 import type { ImageProps, SharedModalProps } from '../utils/types'
-import Twitter from './Icons/Twitter'
 
 export default function SharedModal({
     index,
@@ -27,9 +26,7 @@ export default function SharedModal({
     galleryTitle,
 }: SharedModalProps) {
     const [loaded, setLoaded] = useState(false)
-
     const filteredImages = images?.filter((img: ImageProps) => range(index - 15, index + 15).includes(img.id))
-
     const handlers = useSwipeable({
         onSwipedLeft: () => {
             if (images?.length && images?.length > 0 && index < images.length - 1) {
@@ -43,7 +40,6 @@ export default function SharedModal({
         },
         trackMouse: true,
     })
-
     const currentImage = images ? images[index] : currentPhoto
 
     return (
@@ -92,7 +88,7 @@ export default function SharedModal({
                     {/* Buttons */}
                     {loaded ? (
                         <div className="relative aspect-[3/2] max-h-full w-full">
-                            {navigation && (
+                            {navigation ? (
                                 <>
                                     {index > 0 && (
                                         <button
@@ -113,7 +109,7 @@ export default function SharedModal({
                                         </button>
                                     )}
                                 </>
-                            )}
+                            ) : null}
                             <div className="absolute top-0 right-0 flex items-center gap-2 p-3 text-white">
                                 {navigation ? (
                                     <a
@@ -125,17 +121,7 @@ export default function SharedModal({
                                     >
                                         <ArrowTopRightOnSquareIcon className="h-5 w-5" />
                                     </a>
-                                ) : (
-                                    <a
-                                        href={`https://twitter.com/intent/tweet?text=Check%20out%20this%20pic%20from%20Next.js%20Conf!%0A%0Ahttps://nextjsconf-pics.vercel.app/p/${index}`}
-                                        className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
-                                        target="_blank"
-                                        title="Open fullsize version"
-                                        rel="noreferrer"
-                                    >
-                                        <Twitter className="h-5 w-5" />
-                                    </a>
-                                )}
+                                ) : null}
                                 <button
                                     onClick={() =>
                                         downloadPhoto(

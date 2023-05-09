@@ -14,7 +14,7 @@ type Props = {
     images: ImageProps[]
 }
 
-export const PhotoIndexPage: NextPage<Props> = ({
+export const GalleryIndexPage: NextPage<Props> = ({
     galleryMeta: { folderName, rootPath, galleryTitle },
     images,
 }: Props) => {
@@ -49,7 +49,7 @@ export const PhotoIndexPage: NextPage<Props> = ({
                         galleryTitle={galleryTitle}
                     />
                 ) : null}
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6">
                     {images.map(({ id, public_id, format, blurDataUrl }) => (
                         <Link
                             key={id}
