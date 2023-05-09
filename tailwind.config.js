@@ -4,7 +4,7 @@ module.exports = {
         './src/components/blog/**/*.tsx',
         './app/**/*.{js,ts,jsx,tsx}',
         './pages/**/*.{js,ts,jsx,tsx}',
-        './src/photos/components/**/*.{js,ts,jsx,tsx}',
+        './src/photos/**/*.{js,ts,jsx,tsx}',
     ],
     theme: {
         extend: {
@@ -41,6 +41,21 @@ module.exports = {
                 narrow: { raw: '(max-aspect-ratio: 3 / 2)' },
                 wide: { raw: '(min-aspect-ratio: 3 / 2)' },
                 'taller-than-854': { raw: '(min-height: 854px)' },
+                // xs: '0px',
+                // sm: '480px',
+                // // => @media (min-width: 640px) { ... }
+
+                // md: '768px',
+                // // => @media (min-width: 768px) { ... }
+
+                // lg: '1024px',
+                // // => @media (min-width: 1024px) { ... }
+
+                // xl: '1280px',
+                // // => @media (min-width: 1280px) { ... }
+
+                // '2xl': '1536px',
+                // // => @media (min-width: 1536px) { ... }
             },
         },
     },

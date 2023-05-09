@@ -1,6 +1,7 @@
+/* Also needs these, but the blog styles should include them */
 /* @tailwind base; */
 /* @tailwind components; */
-@tailwind utilities;
+/* @tailwind utilities; */
 
 @supports (font: -apple-system-body) and (-webkit-appearance: none) {
     img[loading='lazy'] {
