@@ -14,7 +14,10 @@ type Props = {
     images: ImageProps[]
 }
 
-export const PhotoIndexPage: NextPage<Props> = ({ galleryMeta: { folderName, rootPath }, images }: Props) => {
+export const PhotoIndexPage: NextPage<Props> = ({
+    galleryMeta: { folderName, rootPath, galleryTitle },
+    images,
+}: Props) => {
     const router = useRouter()
     const photoId = Number(router.query.photoId)
     const [lastViewedPhoto, setLastViewedPhoto] = useLastViewedPhoto()
@@ -36,27 +39,28 @@ export const PhotoIndexPage: NextPage<Props> = ({ galleryMeta: { folderName, roo
                 <meta name="twitter:image" content="https://nextjsconf-pics.vercel.app/og-image.png" />
             </Head>
             <main className="mx-auto max-w-[1960px] p-4">
-                {photoId ? (
+                {photoId >= 0 ? (
                     <Modal
                         images={images}
                         onClose={() => {
                             setLastViewedPhoto(photoId)
                         }}
                         rootPath={rootPath}
+                        galleryTitle={galleryTitle}
                     />
                 ) : null}
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
                     {images.map(({ id, public_id, format, blurDataUrl }) => (
                         <Link
                             key={id}
-                            href={`/travel/uzbekistan/photos/?photoId=${id}`}
-                            as={`/travel/uzbekistan/photos/p/${id}`}
+                            href={`${rootPath}/?photoId=${id}`}
+                            as={`${rootPath}/p/${id}`}
                             ref={id === Number(lastViewedPhoto) ? lastViewedPhotoRef : null}
                             shallow
                             className="after:content group relative cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight"
                         >
                             <Image
-                                alt="Next.js Conf photo"
+                                alt={`${galleryTitle} photo`}
                                 className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
                                 style={{ transform: 'translate3d(0, 0, 0)' }}
                                 placeholder="blur"

@@ -15,6 +15,7 @@ export interface SharedModalProps {
     closeModal: () => void
     navigation: boolean
     direction?: number
+    galleryTitle: GalleryMeta['galleryTitle']
 }
 
 export type CloundinaryResource = {
@@ -57,4 +58,5 @@ export type CloudinaryResult = {
 export type GalleryMeta = {
     folderName: string
     rootPath: string
+    galleryTitle: string
 }

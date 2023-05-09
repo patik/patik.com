@@ -24,6 +24,7 @@ export default function SharedModal({
     navigation,
     currentPhoto,
     direction,
+    galleryTitle,
 }: SharedModalProps) {
     const [loaded, setLoaded] = useState(false)
 
@@ -78,7 +79,7 @@ export default function SharedModal({
                                     width={navigation ? 1280 : 1920}
                                     height={navigation ? 853 : 1280}
                                     priority
-                                    alt="Next.js Conf image"
+                                    alt={`${galleryTitle} image`}
                                     onLoadingComplete={() => setLoaded(true)}
                                 />
                             </motion.div>

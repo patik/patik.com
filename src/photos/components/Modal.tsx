@@ -10,10 +10,12 @@ export default function Modal({
     images,
     onClose,
     rootPath,
+    galleryTitle,
 }: {
     images: ImageProps[]
     onClose?: () => void
     rootPath: GalleryMeta['rootPath']
+    galleryTitle: GalleryMeta['galleryTitle']
 }) {
     const overlayRef = useRef<HTMLDivElement>(null)
     const router = useRouter()
@@ -42,7 +44,7 @@ export default function Modal({
             {
                 query: { photoId: newVal },
             },
-            `/p/${newVal}`,
+            `${rootPath}/p/${newVal}`,
             { shallow: true }
         )
     }
@@ -82,6 +84,7 @@ export default function Modal({
                 changePhotoId={changePhotoId}
                 closeModal={handleClose}
                 navigation={true}
+                galleryTitle={galleryTitle}
             />
         </Dialog>
     )

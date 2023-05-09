@@ -6,6 +6,7 @@ type Props = { images: ImageProps[] }
 
 export const galleryMeta: GalleryMeta = {
     folderName: 'Uzbekistan\\ 2023',
+    galleryTitle: 'Uzbekistan 2023',
     rootPath: '/travel/uzbekistan/photos',
 }
 

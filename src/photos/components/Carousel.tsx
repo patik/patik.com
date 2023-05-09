@@ -9,10 +9,12 @@ export default function Carousel({
     index,
     currentPhoto,
     rootPath,
+    galleryTitle,
 }: {
     index: number
     currentPhoto: ImageProps
     rootPath: GalleryMeta['rootPath']
+    galleryTitle: GalleryMeta['galleryTitle']
 }) {
     const router = useRouter()
     const [, setLastViewedPhoto] = useLastViewedPhoto()
@@ -49,6 +51,7 @@ export default function Carousel({
                 currentPhoto={currentPhoto}
                 closeModal={closeModal}
                 navigation={false}
+                galleryTitle={galleryTitle}
             />
         </div>
     )
