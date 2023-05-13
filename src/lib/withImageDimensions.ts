@@ -33,7 +33,7 @@ export async function withImageDimensions(post: PartialPost): Promise<PartialPos
     const imagesMetadata: Record<string, ISizeCalculationResult> = {}
 
     for (const imagePath of imageFiles) {
-        console.log(`getting image for path ${postImagesPath}/${imagePath}`)
+        // console.log(`getting image for path ${postImagesPath}/${imagePath}`)
         imagesMetadata[imagePath] = await getDimensions(`${postImagesPath}/${imagePath}`)
     }
 

@@ -56,7 +56,8 @@ export type CloudinaryResult = {
 }
 
 export type GalleryMeta = {
-    folderName: string
+    pathSegment: string
+    cloudinaryFolder: string
     rootPath: string
     galleryTitle: string
 }

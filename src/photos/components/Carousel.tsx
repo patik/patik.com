@@ -21,7 +21,6 @@ export default function Carousel({
 
     function closeModal() {
         setLastViewedPhoto(currentPhoto.id)
-        console.log('closeModal going to rootPath ', rootPath)
         router.push(rootPath, undefined, { shallow: true })
     }
 
@@ -30,7 +29,6 @@ export default function Carousel({
     }
 
     useKeypress('Escape', () => {
-        console.log('useKeypress escape')
         closeModal()
     })
 

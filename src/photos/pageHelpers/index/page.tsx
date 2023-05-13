@@ -15,7 +15,7 @@ type Props = {
 }
 
 export const GalleryIndexPage: NextPage<Props> = ({
-    galleryMeta: { folderName, rootPath, galleryTitle },
+    galleryMeta: { cloudinaryFolder: folderName, rootPath, galleryTitle },
     images,
 }: Props) => {
     const router = useRouter()
@@ -53,8 +53,7 @@ export const GalleryIndexPage: NextPage<Props> = ({
                     {images.map(({ id, public_id, format, blurDataUrl }) => (
                         <Link
                             key={id}
-                            href={`${rootPath}/?photoId=${id}`}
-                            as={`${rootPath}/p/${id}`}
+                            href={`${rootPath}/${id}`}
                             ref={id === Number(lastViewedPhoto) ? lastViewedPhotoRef : null}
                             shallow
                             className="after:content group relative cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight"
