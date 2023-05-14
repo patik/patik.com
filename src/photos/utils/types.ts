@@ -15,7 +15,7 @@ export interface SharedModalProps {
     closeModal: () => void
     navigation: boolean
     direction?: number
-    galleryTitle: GalleryMeta['galleryTitle']
+    gallery: CountryGallery | CityGallery
 }
 
 export type CloundinaryResource = {
@@ -55,9 +55,14 @@ export type CloudinaryResult = {
     resources: Array<CloundinaryResource>
 }
 
-export type GalleryMeta = {
-    pathSegment: string
+export type CountryGallery = {
+    country: string
     cloudinaryFolder: string
-    rootPath: string
-    galleryTitle: string
+    title: string
 }
+
+export type CityGallery = CountryGallery & {
+    city: string
+}
+
+export type CityGalleryMap = Record<string, CityGallery>

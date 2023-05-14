@@ -1,23 +1,21 @@
 import cloudinary from '@src/photos/utils/cloudinary'
-import { GalleryMeta } from '@src/photos/utils/types'
+import { CityGallery } from '@src/photos/utils/types'
 import { GetStaticPathsContext, GetStaticPathsResult } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 
 /**
  * /travel/country/photos/
- * /travel/country/photos/1234
- * /travel/country/photos/5678
  * /travel/country/photos/city1/
  * /travel/country/photos/city1/1234
  * /travel/country/photos/city2/
  * /travel/country/photos/city2/5678
  */
 
-export default async function singlePhotoPageGetStaticPaths(
-    galleries: GalleryMeta[],
+export default async function getGalleryStaticPaths(
+    galleries: CityGallery[],
     context: GetStaticPathsContext
 ): Promise<GetStaticPathsResult> {
-    console.log('context ', context)
+    console.log('[paths] context ', context)
     const fullPaths: (
         | string
         | {
@@ -33,12 +31,12 @@ export default async function singlePhotoPageGetStaticPaths(
     })
 
     await Promise.all(
-        galleries.map(async ({ cloudinaryFolder, pathSegment }) => {
+        galleries.map(async ({ cloudinaryFolder, city }) => {
             // City index page
             // /travel/country/photos/city1/
             fullPaths.push({
                 params: {
-                    photos: [pathSegment],
+                    photos: [city],
                 },
             })
 
@@ -48,14 +46,17 @@ export default async function singlePhotoPageGetStaticPaths(
                 .max_results(400)
                 .execute()
 
-            console.log(`cloudinaryFolder ${cloudinaryFolder} returned ${results.resources.length} items`)
+            console.log(`[paths] cloudinaryFolder ${cloudinaryFolder} returned ${results.resources.length} items`)
             for (let i = 0; i < results.resources.length; i++) {
-                fullPaths.push({ params: { photos: [pathSegment, i.toString()] } })
+                fullPaths.push({ params: { photos: [city, i.toString()] } })
             }
         })
     )
 
-    console.log('fullPaths: \n', fullPaths.map((x) => (x ? JSON.stringify(x, null, 2) : '(no JSON)')).join('\n'))
+    console.log(
+        '[paths] fullPaths: \n',
+        fullPaths.map((x) => (x ? JSON.stringify(x, null, 2) : '(no JSON)')).join('\n')
+    )
 
     return {
         paths: fullPaths,

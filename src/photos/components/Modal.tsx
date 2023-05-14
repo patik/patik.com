@@ -3,19 +3,17 @@ import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 import { useRef, useState } from 'react'
 import useKeypress from 'react-use-keypress'
-import type { GalleryMeta, ImageProps } from '../utils/types'
+import type { CityGallery, CountryGallery, ImageProps } from '../utils/types'
 import SharedModal from './SharedModal'
 
 export default function Modal({
     images,
     onClose,
-    rootPath,
-    galleryTitle,
+    gallery,
 }: {
     images: ImageProps[]
     onClose?: () => void
-    rootPath: GalleryMeta['rootPath']
-    galleryTitle: GalleryMeta['galleryTitle']
+    gallery: CountryGallery | CityGallery
 }) {
     const overlayRef = useRef<HTMLDivElement>(null)
     const router = useRouter()
@@ -23,9 +21,10 @@ export default function Modal({
     const index = Number(photoId)
     const [direction, setDirection] = useState(0)
     const [curIndex, setCurIndex] = useState(index)
+    const { country } = gallery
 
     function handleClose() {
-        router.push(rootPath, undefined, { shallow: true })
+        router.push(`/travel/${country}/photos/`, undefined, { shallow: true })
         if (onClose) {
             onClose()
         }
@@ -42,7 +41,7 @@ export default function Modal({
             {
                 query: { photoId: newVal },
             },
-            `${rootPath}/${newVal}`,
+            `/travel/${country}/photos/${newVal}`,
             { shallow: true }
         )
     }
@@ -82,7 +81,7 @@ export default function Modal({
                 changePhotoId={changePhotoId}
                 closeModal={handleClose}
                 navigation={true}
-                galleryTitle={galleryTitle}
+                gallery={gallery}
             />
         </Dialog>
     )

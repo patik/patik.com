@@ -1,9 +1,9 @@
 import Layout from '@src/components/common/Layout'
-import galleryIndexPageGetStaticProps from '@src/photos/pageHelpers/index/getStaticProps'
-import { GalleryIndexPage } from '@src/photos/pageHelpers/index/page'
-import singlePhotoPageGetStaticPaths from '@src/photos/pageHelpers/single/getStaticPaths'
-import { SinglePhotoPage } from '@src/photos/pageHelpers/single/page'
-import type { GalleryMeta, ImageProps } from '@src/photos/utils/types'
+import { GalleryIndexPage } from '@src/photos/pageHelpers/GalleryIndexPage'
+import getGalleryStaticPaths from '@src/photos/pageHelpers/getGalleryStaticPaths'
+import getGalleryStaticProps from '@src/photos/pageHelpers/getGalleryStaticProps'
+import { SinglePhotoPage } from '@src/photos/pageHelpers/SinglePhotoPage'
+import type { CityGalleryMap, CountryGallery, ImageProps } from '@src/photos/utils/types'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 
@@ -12,66 +12,70 @@ export type PageProps = {
     currentPhoto?: ImageProps | null
 }
 
-const defaultGalleryMeta: GalleryMeta = {
-    pathSegment: 'samarkand',
+const countryGallery: CountryGallery = {
+    country: 'uzbekistan',
     cloudinaryFolder: 'Uzbekistan\\ 2023/Samarkand',
-    galleryTitle: 'Samarkand, Uzbekistan',
-    rootPath: '/travel/uzbekistan/photos',
+    title: 'Uzbekistan',
 }
 
-export const galleryMetas: Record<string, GalleryMeta> = {
-    // index: {
-    //     pathSegment: '',
-    //     cloudinaryFolder: 'Uzbekistan\\ 2023',
-    //     galleryTitle: 'Uzbekistan 2023',
-    //     rootPath: '/travel/uzbekistan/photos',
-    // },
+const cityGalleryMap: CityGalleryMap = {
     samarkand: {
-        pathSegment: 'samarkand',
+        country: 'uzbekistan',
+        city: 'samarkand',
         cloudinaryFolder: 'Uzbekistan\\ 2023/Samarkand',
-        galleryTitle: 'Samarkand, Uzbekistan',
-        rootPath: '/travel/uzbekistan/photos',
+        title: 'Samarkand, Uzbekistan',
     },
 }
 
-/**
- * /travel/uzbekistan/photos/
- * /travel/uzbekistan/photos/samarkand/
- * /travel/uzbekistan/photos/samarkand/1234
- * /travel/uzbekistan/photos/bukara/
- * /travel/uzbekistan/photos/bukara/5678
- */
-
 export default function Page({ images, currentPhoto }: PageProps) {
     const router = useRouter()
-    console.log('=====================')
-    console.log('router.query ', router.query)
+    console.log('[jsx] =====================')
+    console.log('[jsx] router.query ', router.query)
     const photosParam = router.query.photos
     const segments: string[] = Array.isArray(photosParam) ? photosParam : photosParam ? [photosParam] : []
-    console.log('segments ', segments.length, segments.join(', '))
+    console.log('[jsx] segments ', segments.length, segments.join(', '))
 
-    let galleryMeta: GalleryMeta
-
-    // Index page for all of the country's photos
-    if (!segments || segments.length === 0) {
-        console.log('index for the whole country')
-        galleryMeta = galleryMetas.index
-    } else {
+    if (segments && segments.length > 0) {
         const cityName = segments[0]
 
-        if (!cityName || !(cityName in galleryMetas)) {
+        if (!cityName || !(cityName in cityGalleryMap)) {
             throw new Error(`invalid city name in query params: ${cityName}`)
         }
 
-        galleryMeta = galleryMetas[cityName]
+        const cityGallery = cityGalleryMap[cityName]
 
         // Index page for a specific city
         if (segments.length === 1) {
-            console.log('Index page for a specific city')
+            console.log('[jsx] Index page for a specific city')
+
+            return (
+                <Layout
+                    title={cityGallery.title}
+                    keywords={[
+                        'Uzbekistan',
+                        'Tashkent',
+                        'Bukhara',
+                        'Samarkand',
+                        'Khiva',
+                        'Asia',
+                        'Central Asia',
+                        'Silk road',
+                        'travel',
+                    ]}
+                >
+                    <h1>{cityGallery.title}</h1>
+
+                    <section>
+                        <h2>Photos and Video</h2>
+
+                        <GalleryIndexPage gallery={cityGallery} cityGalleryMap={cityGalleryMap} images={images} />
+                    </section>
+                </Layout>
+            )
         }
         // Page for a specific photo
         else if (segments.length === 2) {
-            console.log('page for a specific photo ', segments.join(', '))
+            console.log('[jsx] page for a specific photo ', segments.join(', '))
             if (!currentPhoto) {
                 throw new Error('missing the currentPhoto prop')
             }
@@ -92,7 +96,7 @@ export default function Page({ images, currentPhoto }: PageProps) {
                     ]}
                 >
                     <h1>Uzbekistan</h1>
-                    <SinglePhotoPage galleryMeta={galleryMeta} currentPhoto={currentPhoto} />
+                    <SinglePhotoPage cityGallery={cityGallery} currentPhoto={currentPhoto} />
                 </Layout>
             )
         } else {
@@ -100,11 +104,13 @@ export default function Page({ images, currentPhoto }: PageProps) {
         }
     }
 
-    galleryMeta = defaultGalleryMeta
+    console.log('[jsx] index for the whole country')
+    // Index page for all of the country's photos
+    const galleryMeta = countryGallery
 
     return (
         <Layout
-            title={galleryMeta.galleryTitle}
+            title={galleryMeta.title}
             keywords={[
                 'Uzbekistan',
                 'Tashkent',
@@ -117,23 +123,23 @@ export default function Page({ images, currentPhoto }: PageProps) {
                 'travel',
             ]}
         >
-            <h1>{galleryMeta.galleryTitle}</h1>
+            <h1>{galleryMeta.title}</h1>
 
             <p>A beautiful country full of Islamic architecture that had only just opened up to mass tourism</p>
 
             <section>
                 <h2>Photos and Video</h2>
 
-                <GalleryIndexPage galleryMeta={galleryMeta} images={images} />
+                <GalleryIndexPage gallery={countryGallery} cityGalleryMap={cityGalleryMap} images={images} />
             </section>
         </Layout>
     )
 }
 
 export const getStaticProps: GetStaticProps = async function (context) {
-    return galleryIndexPageGetStaticProps(Object.values(galleryMetas), context)
+    return getGalleryStaticProps(Object.values(cityGalleryMap), context)
 }
 
 export const getStaticPaths: GetStaticPaths = async function (context) {
-    return singlePhotoPageGetStaticPaths(Object.values(galleryMetas), context)
+    return getGalleryStaticPaths(Object.values(cityGalleryMap), context)
 }

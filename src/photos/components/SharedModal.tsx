@@ -23,7 +23,7 @@ export default function SharedModal({
     navigation,
     currentPhoto,
     direction,
-    galleryTitle,
+    gallery,
 }: SharedModalProps) {
     const [loaded, setLoaded] = useState(false)
     const filteredImages = images?.filter((img: ImageProps) => range(index - 15, index + 15).includes(img.id))
@@ -41,6 +41,7 @@ export default function SharedModal({
         trackMouse: true,
     })
     const currentImage = images ? images[index] : currentPhoto
+    const { title } = gallery
 
     return (
         <MotionConfig
@@ -75,7 +76,7 @@ export default function SharedModal({
                                     width={navigation ? 1280 : 1920}
                                     height={navigation ? 853 : 1280}
                                     priority
-                                    alt={`${galleryTitle} image`}
+                                    alt={`${title} image`}
                                     onLoadingComplete={() => setLoaded(true)}
                                 />
                             </motion.div>

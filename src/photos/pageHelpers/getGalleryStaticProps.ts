@@ -1,17 +1,17 @@
 import cloudinary from '@src/photos/utils/cloudinary'
 import getBase64ImageUrl from '@src/photos/utils/generateBlurPlaceholder'
-import { GalleryMeta, ImageProps } from '@src/photos/utils/types'
+import { CityGallery, ImageProps } from '@src/photos/utils/types'
 import { GetStaticPropsContext } from 'next'
-import { PageProps } from '../../../../pages/travel/uzbekistan/photos/[[...photos]]'
+import { PageProps } from '../../../pages/travel/uzbekistan/photos/[[...photos]]'
 
-export default async function galleryIndexPageGetStaticProps(
-    galleries: GalleryMeta[],
+export default async function getGalleryStaticProps(
+    galleries: CityGallery[],
     context: GetStaticPropsContext
 ): Promise<{ props: PageProps }> {
-    console.log('context.params ', context.params)
+    console.log('[props] context.params ', context.params)
     const photoIdFromProps =
         context.params?.photos && context.params.photos.length > 1 ? Number(context.params.photos[1]) : undefined
-    console.log('photoIdFromProps ', photoIdFromProps)
+    console.log('[props] photoIdFromProps ', photoIdFromProps)
     let images: ImageProps[] = []
 
     await Promise.all(
@@ -51,7 +51,7 @@ export default async function galleryIndexPageGetStaticProps(
     if (images.length === 0) {
         console.error('no images found')
     }
-    console.log(`images: ${images.length}`)
+    console.log(`[props] images: ${images.length}`)
 
     let currentPhoto = null
 
@@ -62,7 +62,7 @@ export default async function galleryIndexPageGetStaticProps(
             currentPhoto.blurDataUrl = await getBase64ImageUrl(currentPhoto)
         } else {
             // throw new Error('could not find photo in PhotoPageGetStaticProps')
-            console.log('could not find blur data in getStaticProps')
+            console.log('[props] could not find blur data in getStaticProps')
         }
     }
 

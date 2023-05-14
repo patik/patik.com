@@ -1,18 +1,16 @@
 import Carousel from '@src/photos/components/Carousel'
-import type { GalleryMeta, ImageProps } from '@src/photos/utils/types'
+import type { CityGallery, ImageProps } from '@src/photos/utils/types'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
 
 type Props = {
-    galleryMeta: GalleryMeta
+    cityGallery: CityGallery
     currentPhoto: ImageProps
 }
 
-export const SinglePhotoPage: FC<Props> = ({
-    galleryMeta: { cloudinaryFolder, rootPath, galleryTitle },
-    currentPhoto,
-}: Props) => {
+export const SinglePhotoPage: FC<Props> = ({ cityGallery, currentPhoto }: Props) => {
+    const { cloudinaryFolder } = cityGallery
     const router = useRouter()
     const { photoId } = router.query
     const index = Number(photoId)
@@ -26,7 +24,7 @@ export const SinglePhotoPage: FC<Props> = ({
                 <meta name="twitter:image" content={currentPhotoUrl} />
             </Head>
             <main className="mx-auto max-w-[1960px] p-4">
-                <Carousel currentPhoto={currentPhoto} index={index} rootPath={rootPath} galleryTitle={galleryTitle} />
+                <Carousel currentPhoto={currentPhoto} index={index} cityGallery={cityGallery} />
             </main>
         </>
     )
