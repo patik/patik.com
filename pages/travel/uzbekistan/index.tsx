@@ -3,7 +3,6 @@ import KhivaImage from '../../../public/images/uzbekistan-khiva-night.jpg'
 import SamarkandImage from '../../../public/images/uzbekistan-samarkand-dome.jpg'
 import Layout from '../../../src/components/common/Layout'
 import TravelLinkList from '../../../src/components/site/TravelLinkList'
-import Link from 'next/link'
 
 export default function Page() {
     return (
@@ -28,10 +27,6 @@ export default function Page() {
             <section>
                 <h2>Photos and Video</h2>
 
-                <p>
-                    <Link href="/travel/uzbekistan/photos/">New photo gallery</Link>
-                </p>
-
                 <TravelLinkList
                     items={[
                         {
@@ -44,7 +39,8 @@ export default function Page() {
                         {
                             title: 'Samarkand',
                             className: 'bg-travel-bottom-middle',
-                            url: 'https://www.icloud.com/sharedalbum/#B0x5n8hH43fN8G',
+                            // url: 'https://www.icloud.com/sharedalbum/#B0x5n8hH43fN8G',
+                            url: '/travel/uzbekistan/photos/samarkand/',
                             imageSrc: SamarkandImage,
                             imageAlt: 'The gold and blue interior of a mausoleum dome',
                         },

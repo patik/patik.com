@@ -5,6 +5,8 @@ export interface ImageProps {
     public_id: string
     format: string
     blurDataUrl?: string
+    secure_url: string
+    resource_type: CloundinaryResource['resource_type']
 }
 
 export interface SharedModalProps {
@@ -23,9 +25,9 @@ export type CloundinaryResource = {
     public_id: string
     folder: string
     filename: string
-    format: string // e.g. 'jpg'
+    format: string // e.g. 'jpg', 'mov'
     version: number
-    resource_type: string
+    resource_type: 'image' | 'video'
     type: string
     created_at: string
     uploaded_at: string

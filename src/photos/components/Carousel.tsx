@@ -47,7 +47,7 @@ export default function Carousel({
                 changePhotoId={changePhotoId}
                 currentPhoto={currentPhoto}
                 closeModal={closeModal}
-                navigation={false}
+                navigation // ={false}
                 gallery={cityGallery}
             />
         </div>

@@ -2,6 +2,7 @@ import Layout from '@src/components/common/Layout'
 import { GalleryIndexPage } from '@src/photos/pageHelpers/GalleryIndexPage'
 import getGalleryStaticPaths from '@src/photos/pageHelpers/getGalleryStaticPaths'
 import getGalleryStaticProps from '@src/photos/pageHelpers/getGalleryStaticProps'
+import { getPhotoIdFromRouter } from '@src/photos/pageHelpers/getPhotoIdFromRouter'
 import { SinglePhotoPage } from '@src/photos/pageHelpers/SinglePhotoPage'
 import type { CityGalleryMap, CountryGallery, ImageProps } from '@src/photos/utils/types'
 import { GetStaticPaths, GetStaticProps } from 'next'
@@ -68,7 +69,12 @@ export default function Page({ images, currentPhoto }: PageProps) {
                     <section>
                         <h2>Photos and Video</h2>
 
-                        <GalleryIndexPage gallery={cityGallery} cityGalleryMap={cityGalleryMap} images={images} />
+                        <GalleryIndexPage
+                            gallery={cityGallery}
+                            city={cityGallery.city}
+                            cityGalleryMap={cityGalleryMap}
+                            images={images}
+                        />
                     </section>
                 </Layout>
             )
@@ -79,8 +85,8 @@ export default function Page({ images, currentPhoto }: PageProps) {
 
             if (!currentPhoto) {
                 // This will happen when loading an index page and then clicking on a photo
-                console.error('[jsx] have to manually look up the currentPhoto prop')
-                const photoIdFromProps = Number(segments[1])
+                // console.error('[jsx] have to manually look up the currentPhoto prop')
+                const photoIdFromProps = getPhotoIdFromRouter(router.query)
                 currentPhoto = images.find((img) => img.id === photoIdFromProps)
             }
 
@@ -131,13 +137,9 @@ export default function Page({ images, currentPhoto }: PageProps) {
                 'travel',
             ]}
         >
-            <h1>{galleryMeta.title}</h1>
-
-            <p>A beautiful country full of Islamic architecture that had only just opened up to mass tourism</p>
+            <h1>{galleryMeta.title} photos</h1>
 
             <section>
-                <h2>Photos and Video</h2>
-
                 <GalleryIndexPage gallery={countryGallery} cityGalleryMap={cityGalleryMap} images={images} />
             </section>
         </Layout>

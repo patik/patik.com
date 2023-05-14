@@ -1,4 +1,5 @@
 import Carousel from '@src/photos/components/Carousel'
+import { getPhotoIdFromRouter } from '@src/photos/pageHelpers/getPhotoIdFromRouter'
 import type { CityGallery, ImageProps } from '@src/photos/utils/types'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
@@ -12,9 +13,12 @@ type Props = {
 export const SinglePhotoPage: FC<Props> = ({ cityGallery, currentPhoto }: Props) => {
     const { cloudinaryFolder } = cityGallery
     const router = useRouter()
-    const { photoId } = router.query
-    const index = Number(photoId)
+    const index = getPhotoIdFromRouter(router.query)
     const currentPhotoUrl = `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_2560/${currentPhoto.public_id}.${currentPhoto.format}`
+
+    if (index === undefined) {
+        return null
+    }
 
     return (
         <>

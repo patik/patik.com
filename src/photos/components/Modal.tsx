@@ -1,10 +1,10 @@
 import { Dialog } from '@headlessui/react'
+import SharedModal from '@src/photos/components/SharedModal'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 import { useRef, useState } from 'react'
 import useKeypress from 'react-use-keypress'
-import type { CityGallery, CountryGallery, ImageProps } from '../utils/types'
-import SharedModal from './SharedModal'
+import type { CityGallery, ImageProps } from '../utils/types'
 
 export default function Modal({
     images,
@@ -13,7 +13,7 @@ export default function Modal({
 }: {
     images: ImageProps[]
     onClose?: () => void
-    gallery: CountryGallery | CityGallery
+    gallery: CityGallery
 }) {
     const overlayRef = useRef<HTMLDivElement>(null)
     const router = useRouter()
@@ -21,7 +21,7 @@ export default function Modal({
     const index = Number(photoId)
     const [direction, setDirection] = useState(0)
     const [curIndex, setCurIndex] = useState(index)
-    const { country } = gallery
+    const { country, city } = gallery
 
     function handleClose() {
         router.push(`/travel/${country}/photos/`, undefined, { shallow: true })
@@ -31,6 +31,7 @@ export default function Modal({
     }
 
     function changePhotoId(newVal: number) {
+        console.log('changePhotoId ', newVal)
         if (newVal > index) {
             setDirection(1)
         } else {
@@ -41,7 +42,7 @@ export default function Modal({
             {
                 query: { photoId: newVal },
             },
-            `/travel/${country}/photos/${newVal}`,
+            `/travel/${country}/photos/${city}/${newVal}`,
             { shallow: true }
         )
     }
@@ -80,7 +81,7 @@ export default function Modal({
                 images={images}
                 changePhotoId={changePhotoId}
                 closeModal={handleClose}
-                navigation={true}
+                navigation
                 gallery={gallery}
             />
         </Dialog>
