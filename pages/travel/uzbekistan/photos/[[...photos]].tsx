@@ -13,12 +13,12 @@ type Props = {
 }
 
 export const galleryMetas: Record<string, GalleryMeta> = {
-    index: {
-        pathSegment: '',
-        cloudinaryFolder: 'Uzbekistan\\ 2023',
-        galleryTitle: 'Uzbekistan 2023',
-        rootPath: '/travel/uzbekistan/photos',
-    },
+    // index: {
+    //     pathSegment: '',
+    //     cloudinaryFolder: 'Uzbekistan\\ 2023',
+    //     galleryTitle: 'Uzbekistan 2023',
+    //     rootPath: '/travel/uzbekistan/photos',
+    // },
     samarkand: {
         pathSegment: 'samarkand',
         cloudinaryFolder: 'Uzbekistan\\ 2023/Samarkand',
@@ -120,8 +120,8 @@ export default function Page({ images, currentPhoto }: Props) {
     )
 }
 
-export const getStaticProps: GetStaticProps = async function () {
-    return galleryIndexPageGetStaticProps(galleryMetas.index)
+export const getStaticProps: GetStaticProps = async function (context) {
+    return galleryIndexPageGetStaticProps(galleryMetas.samarkand, context)
 }
 
 export const getStaticPaths: GetStaticPaths = async function (context) {

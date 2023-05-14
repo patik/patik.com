@@ -4,10 +4,10 @@ import getResults from '../../utils/cachedImages'
 import getBase64ImageUrl from '../../utils/generateBlurPlaceholder'
 
 export default async function singlePhotoPageGetStaticProps(
-    { cloudinaryFolder: folderName }: GalleryMeta,
+    { cloudinaryFolder }: GalleryMeta,
     context: GetStaticPropsContext
 ): Promise<GetStaticPropsResult<{ currentPhoto: ImageProps }>> {
-    const results = await getResults(folderName)
+    const results = await getResults(cloudinaryFolder)
     const reducedResults: ImageProps[] = []
     let i = 0
 

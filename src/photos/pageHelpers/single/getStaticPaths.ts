@@ -32,28 +32,30 @@ export default async function singlePhotoPageGetStaticPaths(
         params: { photos: undefined },
     })
 
-    galleries.forEach(async ({ cloudinaryFolder, pathSegment }) => {
-        // City index page
-        // /travel/country/photos/city1/
-        fullPaths.push({
-            params: {
-                photos: [pathSegment],
-            },
+    await Promise.all(
+        galleries.map(async ({ cloudinaryFolder, pathSegment }) => {
+            // City index page
+            // /travel/country/photos/city1/
+            fullPaths.push({
+                params: {
+                    photos: [pathSegment],
+                },
+            })
+
+            const results = await cloudinary.v2.search
+                .expression(`folder:${cloudinaryFolder}/*`)
+                .sort_by('public_id', 'desc')
+                .max_results(400)
+                .execute()
+
+            console.log(`cloudinaryFolder ${cloudinaryFolder} returned ${results.resources.length} items`)
+            for (let i = 0; i < results.resources.length; i++) {
+                fullPaths.push({ params: { photos: [pathSegment, i.toString()] } })
+            }
         })
+    )
 
-        const results = await cloudinary.v2.search
-            .expression(`folder:${cloudinaryFolder}/*`)
-            .sort_by('public_id', 'desc')
-            .max_results(400)
-            .execute()
-
-        console.log(`cloudinaryFolder ${cloudinaryFolder} returned ${results.resources.length} items`)
-        for (let i = 0; i < results.resources.length; i++) {
-            fullPaths.push({ params: { photos: [pathSegment, i.toString()] } })
-        }
-    })
-
-    console.log('fullPaths: \n', fullPaths.map((x) => JSON.stringify(x, null, 4)).join('\n'))
+    console.log('fullPaths: \n', fullPaths.map((x) => JSON.stringify(x ?? null, null, 4)).join('\n'))
 
     return {
         paths: fullPaths,

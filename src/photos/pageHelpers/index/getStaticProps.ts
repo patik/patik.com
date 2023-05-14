@@ -1,14 +1,22 @@
 import cloudinary from '@src/photos/utils/cloudinary'
 import getBase64ImageUrl from '@src/photos/utils/generateBlurPlaceholder'
 import { GalleryMeta, ImageProps } from '@src/photos/utils/types'
+import { GetStaticPropsContext } from 'next'
 
-export default async function galleryIndexPageGetStaticProps({ cloudinaryFolder: folderName }: GalleryMeta) {
+export default async function galleryIndexPageGetStaticProps(
+    { cloudinaryFolder }: GalleryMeta,
+    context: GetStaticPropsContext
+) {
+    console.log('context.params ', context.params)
     const results = await cloudinary.v2.search
-        .expression(`folder:${folderName}/*`)
+        .expression(`folder:${cloudinaryFolder}/*`)
         .sort_by('public_id', 'desc')
         .max_results(400)
         .execute()
     const reducedResults: ImageProps[] = []
+
+    const photoIdFromProps =
+        context.params?.photos && context.params.photos.length > 1 ? Number(context.params.photos[1]) : undefined
 
     let i = 0
     for (const result of results.resources) {
@@ -31,9 +39,21 @@ export default async function galleryIndexPageGetStaticProps({ cloudinaryFolder:
         reducedResults[i].blurDataUrl = imagesWithBlurDataUrls[i]
     }
 
+    let currentPhoto
+
+    if (photoIdFromProps) {
+        currentPhoto = reducedResults.find((img) => img.id === photoIdFromProps)
+        if (currentPhoto) {
+            currentPhoto.blurDataUrl = await getBase64ImageUrl(currentPhoto)
+        } else {
+            throw new Error('could find find photo in PhotoPageGetStaticProps')
+        }
+    }
+
     return {
         props: {
             images: reducedResults,
+            currentPhoto,
         },
     }
 }
