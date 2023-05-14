@@ -53,10 +53,10 @@ export default async function getGalleryStaticPaths(
         })
     )
 
-    console.log(
-        '[paths] fullPaths: \n',
-        fullPaths.map((x) => (x ? JSON.stringify(x, null, 2) : '(no JSON)')).join('\n')
-    )
+    // console.log(
+    //     '[paths] fullPaths: \n',
+    //     fullPaths.map((x) => (x ? JSON.stringify(x, null, 2) : '(no JSON)')).join('\n')
+    // )
 
     return {
         paths: fullPaths,

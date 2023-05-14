@@ -76,8 +76,16 @@ export default function Page({ images, currentPhoto }: PageProps) {
         // Page for a specific photo
         else if (segments.length === 2) {
             console.log('[jsx] page for a specific photo ', segments.join(', '))
+
             if (!currentPhoto) {
-                throw new Error('missing the currentPhoto prop')
+                // This will happen when loading an index page and then clicking on a photo
+                console.error('[jsx] have to manually look up the currentPhoto prop')
+                const photoIdFromProps = Number(segments[1])
+                currentPhoto = images.find((img) => img.id === photoIdFromProps)
+            }
+
+            if (!currentPhoto) {
+                throw new Error('[jsx] missing the currentPhoto prop')
             }
 
             return (
