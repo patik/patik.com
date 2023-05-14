@@ -7,9 +7,16 @@ import type { GalleryMeta, ImageProps } from '@src/photos/utils/types'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 
-type Props = {
+export type PageProps = {
     images: ImageProps[]
-    currentPhoto: ImageProps
+    currentPhoto?: ImageProps | null
+}
+
+const defaultGalleryMeta: GalleryMeta = {
+    pathSegment: 'samarkand',
+    cloudinaryFolder: 'Uzbekistan\\ 2023/Samarkand',
+    galleryTitle: 'Samarkand, Uzbekistan',
+    rootPath: '/travel/uzbekistan/photos',
 }
 
 export const galleryMetas: Record<string, GalleryMeta> = {
@@ -29,18 +36,19 @@ export const galleryMetas: Record<string, GalleryMeta> = {
 
 /**
  * /travel/uzbekistan/photos/
- * /travel/uzbekistan/photos/1234
- * /travel/uzbekistan/photos/5678
  * /travel/uzbekistan/photos/samarkand/
  * /travel/uzbekistan/photos/samarkand/1234
  * /travel/uzbekistan/photos/bukara/
  * /travel/uzbekistan/photos/bukara/5678
  */
 
-export default function Page({ images, currentPhoto }: Props) {
+export default function Page({ images, currentPhoto }: PageProps) {
     const router = useRouter()
+    console.log('=====================')
     console.log('router.query ', router.query)
-    const segments = router.query.photos
+    const photosParam = router.query.photos
+    const segments: string[] = Array.isArray(photosParam) ? photosParam : photosParam ? [photosParam] : []
+    console.log('segments ', segments.length, segments.join(', '))
 
     let galleryMeta: GalleryMeta
 
@@ -51,7 +59,7 @@ export default function Page({ images, currentPhoto }: Props) {
     } else {
         const cityName = segments[0]
 
-        if (!(cityName in galleryMetas)) {
+        if (!cityName || !(cityName in galleryMetas)) {
             throw new Error(`invalid city name in query params: ${cityName}`)
         }
 
@@ -63,7 +71,7 @@ export default function Page({ images, currentPhoto }: Props) {
         }
         // Page for a specific photo
         else if (segments.length === 2) {
-            console.log('page for a specific photo')
+            console.log('page for a specific photo ', segments.join(', '))
             if (!currentPhoto) {
                 throw new Error('missing the currentPhoto prop')
             }
@@ -91,6 +99,8 @@ export default function Page({ images, currentPhoto }: Props) {
             throw new Error('cannot figure out where to go')
         }
     }
+
+    galleryMeta = defaultGalleryMeta
 
     return (
         <Layout
@@ -121,7 +131,7 @@ export default function Page({ images, currentPhoto }: Props) {
 }
 
 export const getStaticProps: GetStaticProps = async function (context) {
-    return galleryIndexPageGetStaticProps(galleryMetas.samarkand, context)
+    return galleryIndexPageGetStaticProps(Object.values(galleryMetas), context)
 }
 
 export const getStaticPaths: GetStaticPaths = async function (context) {

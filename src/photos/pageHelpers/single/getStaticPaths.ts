@@ -55,7 +55,7 @@ export default async function singlePhotoPageGetStaticPaths(
         })
     )
 
-    console.log('fullPaths: \n', fullPaths.map((x) => JSON.stringify(x ?? null, null, 4)).join('\n'))
+    console.log('fullPaths: \n', fullPaths.map((x) => (x ? JSON.stringify(x, null, 2) : '(no JSON)')).join('\n'))
 
     return {
         paths: fullPaths,

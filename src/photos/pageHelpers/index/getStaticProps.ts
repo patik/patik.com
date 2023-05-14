@@ -2,57 +2,73 @@ import cloudinary from '@src/photos/utils/cloudinary'
 import getBase64ImageUrl from '@src/photos/utils/generateBlurPlaceholder'
 import { GalleryMeta, ImageProps } from '@src/photos/utils/types'
 import { GetStaticPropsContext } from 'next'
+import { PageProps } from '../../../../pages/travel/uzbekistan/photos/[[...photos]]'
 
 export default async function galleryIndexPageGetStaticProps(
-    { cloudinaryFolder }: GalleryMeta,
+    galleries: GalleryMeta[],
     context: GetStaticPropsContext
-) {
+): Promise<{ props: PageProps }> {
     console.log('context.params ', context.params)
-    const results = await cloudinary.v2.search
-        .expression(`folder:${cloudinaryFolder}/*`)
-        .sort_by('public_id', 'desc')
-        .max_results(400)
-        .execute()
-    const reducedResults: ImageProps[] = []
-
     const photoIdFromProps =
         context.params?.photos && context.params.photos.length > 1 ? Number(context.params.photos[1]) : undefined
+    console.log('photoIdFromProps ', photoIdFromProps)
+    let images: ImageProps[] = []
 
-    let i = 0
-    for (const result of results.resources) {
-        reducedResults.push({
-            id: i,
-            height: result.height,
-            width: result.width,
-            public_id: result.public_id,
-            format: result.format,
+    await Promise.all(
+        galleries.map(async ({ cloudinaryFolder }) => {
+            const results = await cloudinary.v2.search
+                .expression(`folder:${cloudinaryFolder}/*`)
+                .sort_by('public_id', 'desc')
+                .max_results(400)
+                .execute()
+            const reducedResults: ImageProps[] = []
+
+            let i = 0
+            for (const result of results.resources) {
+                reducedResults.push({
+                    id: i,
+                    height: result.height,
+                    width: result.width,
+                    public_id: result.public_id,
+                    format: result.format,
+                })
+                i++
+            }
+
+            const blurImagePromises = results.resources.map((image: ImageProps) => {
+                return getBase64ImageUrl(image)
+            })
+            const imagesWithBlurDataUrls = await Promise.all(blurImagePromises)
+
+            for (let i = 0; i < reducedResults.length; i++) {
+                reducedResults[i].blurDataUrl = imagesWithBlurDataUrls[i]
+            }
+
+            images = images.concat(reducedResults)
         })
-        i++
+    )
+
+    if (images.length === 0) {
+        console.error('no images found')
     }
+    console.log(`images: ${images.length}`)
 
-    const blurImagePromises = results.resources.map((image: ImageProps) => {
-        return getBase64ImageUrl(image)
-    })
-    const imagesWithBlurDataUrls = await Promise.all(blurImagePromises)
+    let currentPhoto = null
 
-    for (let i = 0; i < reducedResults.length; i++) {
-        reducedResults[i].blurDataUrl = imagesWithBlurDataUrls[i]
-    }
+    if (photoIdFromProps !== undefined) {
+        currentPhoto = images.find((img) => img.id === photoIdFromProps) ?? null
 
-    let currentPhoto
-
-    if (photoIdFromProps) {
-        currentPhoto = reducedResults.find((img) => img.id === photoIdFromProps)
         if (currentPhoto) {
             currentPhoto.blurDataUrl = await getBase64ImageUrl(currentPhoto)
         } else {
-            throw new Error('could find find photo in PhotoPageGetStaticProps')
+            // throw new Error('could not find photo in PhotoPageGetStaticProps')
+            console.log('could not find blur data in getStaticProps')
         }
     }
 
     return {
         props: {
-            images: reducedResults,
+            images,
             currentPhoto,
         },
     }

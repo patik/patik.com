@@ -10,7 +10,7 @@ type Props = {
 }
 
 export const SinglePhotoPage: FC<Props> = ({
-    galleryMeta: { cloudinaryFolder: folderName, rootPath, galleryTitle },
+    galleryMeta: { cloudinaryFolder, rootPath, galleryTitle },
     currentPhoto,
 }: Props) => {
     const router = useRouter()
@@ -21,7 +21,7 @@ export const SinglePhotoPage: FC<Props> = ({
     return (
         <>
             <Head>
-                <title>{folderName}</title>
+                <title>{cloudinaryFolder}</title>
                 <meta property="og:image" content={currentPhotoUrl} />
                 <meta name="twitter:image" content={currentPhotoUrl} />
             </Head>
