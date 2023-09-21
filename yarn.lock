@@ -775,10 +775,10 @@
   dependencies:
     "@types/ms" "*"
 
-"@types/google.visualization@^0.0.68":
-  version "0.0.68"
-  resolved "https://registry.yarnpkg.com/@types/google.visualization/-/google.visualization-0.0.68.tgz#773e908c02e08dffe689844f0972dd481516e704"
-  integrity sha512-LkLniL1TYykhz+ZdRof3Bi8cp1OhqoK11Tj1RM2bPtGVBNexQ0eRnOrOWcWTdi80Sz9DzJ4JIG2rTlSJBVV58w==
+"@types/google.visualization@^0.0.70":
+  version "0.0.70"
+  resolved "https://registry.yarnpkg.com/@types/google.visualization/-/google.visualization-0.0.70.tgz#90953341ac52fb6adeb6a1365ea9fe0d7dbac467"
+  integrity sha512-kDoIxZOVcPYZTD5cVgCeCSYODPWsC/1G5NkIdfb2qIE/veblRvxSh8Oa0wBw8aaM9Xdfh+3kVV7ITUBKODbZkA==
 
 "@types/graceful-fs@^4.1.3":
   version "4.1.6"

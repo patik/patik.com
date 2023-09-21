@@ -35,7 +35,7 @@
         "sharp": "^0.31.3"
     },
     "devDependencies": {
-        "@types/google.visualization": "^0.0.68",
+        "@types/google.visualization": "^0.0.70",
         "@types/jest": "^29.5.0",
         "@types/lodash": "^4.14.194",
         "@types/node": "^20.4.10",
