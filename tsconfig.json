@@ -24,6 +24,8 @@
             }
         ],
         "paths": {
+            "@pages/*": ["./pages/*"],
+            "@public/*": ["./public/*"],
             "@src/*": ["./src/*"]
         }
     },
