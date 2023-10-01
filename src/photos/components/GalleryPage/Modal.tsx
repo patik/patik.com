@@ -1,5 +1,5 @@
 import { Dialog } from '@headlessui/react'
-import Lightbox from '@src/photos/components/single/Lightbox'
+import Lightbox from '@src/photos/components/Lightbox'
 import type { CityGallery, ImageProps } from '@src/photos/utils/types'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'

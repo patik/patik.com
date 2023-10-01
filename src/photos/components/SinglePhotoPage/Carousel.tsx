@@ -1,4 +1,4 @@
-import Lightbox from '@src/photos/components/single/Lightbox'
+import Lightbox from '@src/photos/components/Lightbox'
 import type { CityGallery, ImageProps } from '@src/photos/utils/types'
 import { useLastViewedPhoto } from '@src/photos/utils/useLastViewedPhoto'
 import Image from 'next/image'
