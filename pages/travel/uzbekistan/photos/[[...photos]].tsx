@@ -20,7 +20,7 @@ const samarkandGalleryMap: CityGallery = {
     city: 'samarkand',
     cloudinaryFolder: 'Uzbekistan\\ 2023/Samarkand',
     title: 'Samarkand, Uzbekistan',
-    keywords: [...countryGallery.keywords, 'Samarkand', 'Asia', 'Central Asia', 'Silk road', 'travel'],
+    keywords: ['Uzbekistan', 'Samarkand', 'Asia', 'Central Asia', 'Silk road', 'travel'],
 }
 
 const cityGalleryMaps: CityGalleryMap = {

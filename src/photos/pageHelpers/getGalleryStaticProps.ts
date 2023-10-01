@@ -9,9 +9,9 @@ export default async function getGalleryStaticProps(
     galleries: CityGallery[],
     context: GetStaticPropsContext
 ): Promise<{ props: PageProps }> {
-    // console.log('[props] context.params ', context.params)
+    console.log('[props] context.params ', context.params)
     const photoIdFromProps = getPhotoIdFromRouter(context.params)
-    // console.log('[props] photoIdFromProps ', photoIdFromProps)
+    console.log('[props] photoIdFromProps ', photoIdFromProps)
     let images: ImageProps[] = []
 
     await Promise.all(
@@ -19,13 +19,15 @@ export default async function getGalleryStaticProps(
             const results: { resources: CloundinaryResource[] } = await cloudinary.v2.search
                 .expression(`folder:${cloudinaryFolder}/*`)
                 .sort_by('public_id', 'desc')
-                .max_results(10)
+                // .max_results(10)
                 .execute()
             const reducedResults: ImageProps[] = []
 
             let i = 0
             for (const result of results.resources) {
-                console.log('result: ', result)
+                if (result.resource_type === 'video') {
+                    console.log('result: ', i, ':\n', result)
+                }
                 reducedResults.push({
                     id: i,
                     height: String(result.height),
@@ -54,7 +56,7 @@ export default async function getGalleryStaticProps(
     if (images.length === 0) {
         console.error('no images found')
     }
-    // console.log(`[props] images: ${images.length}`)
+    console.log(`[props] images: ${images.length}`)
 
     let currentPhoto = null
 
