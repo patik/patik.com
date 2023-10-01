@@ -25,6 +25,7 @@ export default function Modal({
 
     function handleClose() {
         router.push(`/travel/${country}/photos/`, undefined, { shallow: true })
+
         if (onClose) {
             onClose()
         }

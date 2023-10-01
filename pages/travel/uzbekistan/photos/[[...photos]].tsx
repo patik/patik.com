@@ -1,7 +1,7 @@
 import { countryGallery } from '@pages/travel/uzbekistan'
 import Layout from '@src/components/common/Layout'
 import { SinglePhotoPage } from '@src/photos/components/single/SinglePhotoPage'
-import { GalleryIndexPage } from '@src/photos/components/multi/GalleryIndexPage'
+import { GalleryIndexPage } from '@src/photos/components/multi/GalleryPage'
 import getGalleryStaticPaths from '@src/photos/pageHelpers/getGalleryStaticPaths'
 import getGalleryStaticProps from '@src/photos/pageHelpers/getGalleryStaticProps'
 import { getPhotoIdFromRouter } from '@src/photos/pageHelpers/getPhotoIdFromRouter'
