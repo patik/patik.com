@@ -1,4 +1,4 @@
-import Carousel from '@src/photos/components/Carousel'
+import Carousel from '@src/photos/components/single/Carousel'
 import { getPhotoIdFromRouter } from '@src/photos/pageHelpers/getPhotoIdFromRouter'
 import type { CityGallery, ImageProps } from '@src/photos/utils/types'
 import Head from 'next/head'

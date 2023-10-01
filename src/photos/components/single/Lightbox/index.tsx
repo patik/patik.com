@@ -1,11 +1,11 @@
+import BottomNavigation from '@src/photos/components/single/Lightbox/BottomNavigation'
+import Buttons from '@src/photos/components/single/Lightbox/Buttons'
+import MainImage from '@src/photos/components/single/Lightbox/MainImage'
 import { range } from '@src/photos/utils/range'
 import type { ImageProps, SharedModalProps } from '@src/photos/utils/types'
 import { MotionConfig } from 'framer-motion'
 import { useState } from 'react'
 import { useSwipeable } from 'react-swipeable'
-import MainImage from './MainImage'
-import Buttons from './Buttons'
-import BottomNavigation from './BottomNavigation'
 
 export default function Lightbox({
     index,

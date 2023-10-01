@@ -1,6 +1,6 @@
-import Modal from '@src/photos/components/Modal'
-import escapeCloudinaryString from '@src/photos/utils/escapeCloudinaryString'
+import Modal from '@src/photos/components/single/Modal'
 import { getPhotoIdFromRouter } from '@src/photos/pageHelpers/getPhotoIdFromRouter'
+import escapeCloudinaryString from '@src/photos/utils/escapeCloudinaryString'
 import type { CityGallery, CityGalleryMap, CountryGallery, ImageProps } from '@src/photos/utils/types'
 import { useLastViewedPhoto } from '@src/photos/utils/useLastViewedPhoto'
 import type { NextPage } from 'next'

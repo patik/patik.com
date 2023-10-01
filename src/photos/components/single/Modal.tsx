@@ -1,10 +1,10 @@
 import { Dialog } from '@headlessui/react'
-import Lightbox from '@src/photos/components/Lightbox'
+import Lightbox from '@src/photos/components/single/Lightbox'
+import type { CityGallery, ImageProps } from '@src/photos/utils/types'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 import { useRef, useState } from 'react'
 import useKeypress from 'react-use-keypress'
-import type { CityGallery, ImageProps } from '../utils/types'
 
 export default function Modal({
     images,
