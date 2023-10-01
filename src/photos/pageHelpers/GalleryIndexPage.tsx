@@ -31,7 +31,7 @@ export const GalleryIndexPage: NextPage<Props> = ({ gallery, images, city, cityG
             setLastViewedPhoto(null)
         }
     }, [photoId, lastViewedPhoto, setLastViewedPhoto])
-    console.log('[GalleryIndexPage] photoId ', photoId)
+    console.log('[GalleryIndexPage] ', { photoId, images })
 
     return (
         <>

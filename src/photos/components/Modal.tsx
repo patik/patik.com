@@ -1,5 +1,5 @@
 import { Dialog } from '@headlessui/react'
-import SharedModal from '@src/photos/components/SharedModal'
+import Lightbox from '@src/photos/components/Lightbox'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 import { useRef, useState } from 'react'
@@ -75,7 +75,7 @@ export default function Modal({
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
             />
-            <SharedModal
+            <Lightbox
                 index={curIndex}
                 direction={direction}
                 images={images}

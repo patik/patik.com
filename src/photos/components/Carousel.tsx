@@ -3,16 +3,18 @@ import { useRouter } from 'next/router'
 import useKeypress from 'react-use-keypress'
 import type { CityGallery, ImageProps } from '../utils/types'
 import { useLastViewedPhoto } from '../utils/useLastViewedPhoto'
-import SharedModal from './SharedModal'
+import Lightbox from './Lightbox'
 
 export default function Carousel({
     index,
     currentPhoto,
     cityGallery,
+    images,
 }: {
     index: number
     currentPhoto: ImageProps
     cityGallery: CityGallery
+    images?: ImageProps[]
 }) {
     const router = useRouter()
     const [, setLastViewedPhoto] = useLastViewedPhoto()
@@ -24,6 +26,9 @@ export default function Carousel({
     }
 
     function changePhotoId(newVal: number) {
+        console.log('changePhotoId ', currentPhoto.id, newVal)
+        setLastViewedPhoto(newVal)
+        router.push(`/travel/${country}/photos/${cityGallery.city}/${newVal}`, undefined, { shallow: true })
         return newVal
     }
 
@@ -42,8 +47,9 @@ export default function Carousel({
                     priority={true}
                 />
             </button>
-            <SharedModal
+            <Lightbox
                 index={index}
+                images={images}
                 changePhotoId={changePhotoId}
                 currentPhoto={currentPhoto}
                 closeModal={closeModal}

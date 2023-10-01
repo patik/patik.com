@@ -31,7 +31,7 @@ const cityGalleryMap: CityGalleryMap = {
 export default function Page({ images, currentPhoto }: PageProps) {
     const router = useRouter()
     console.log('[jsx] =====================')
-    console.log('[jsx] router.query ', router.query)
+    console.log('[jsx] single photo page ', { images, routerQuery: router.query })
     const photosParam = router.query.photos
     const segments: string[] = Array.isArray(photosParam) ? photosParam : photosParam ? [photosParam] : []
     console.log('[jsx] segments ', segments.length, segments.join(', '))
@@ -110,7 +110,7 @@ export default function Page({ images, currentPhoto }: PageProps) {
                     ]}
                 >
                     <h1>Uzbekistan</h1>
-                    <SinglePhotoPage cityGallery={cityGallery} currentPhoto={currentPhoto} />
+                    <SinglePhotoPage cityGallery={cityGallery} currentPhoto={currentPhoto} images={images} />
                 </Layout>
             )
         } else {

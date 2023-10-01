@@ -6,16 +6,16 @@ import {
     ChevronRightIcon,
     XMarkIcon,
 } from '@heroicons/react/24/outline'
-import { AnimatePresence, motion, MotionConfig } from 'framer-motion'
+import { variants } from '@src/photos/utils/animationVariants'
+import downloadPhoto from '@src/photos/utils/downloadPhoto'
+import { range } from '@src/photos/utils/range'
+import type { ImageProps, SharedModalProps } from '@src/photos/utils/types'
+import { AnimatePresence, MotionConfig, motion } from 'framer-motion'
 import Image from 'next/image'
 import { useState } from 'react'
 import { useSwipeable } from 'react-swipeable'
-import { variants } from '../utils/animationVariants'
-import downloadPhoto from '../utils/downloadPhoto'
-import { range } from '../utils/range'
-import type { ImageProps, SharedModalProps } from '../utils/types'
 
-export default function SharedModal({
+export default function Lightbox({
     index,
     images,
     changePhotoId,
@@ -42,7 +42,7 @@ export default function SharedModal({
     })
     const currentImage = images ? images[index] : currentPhoto
     const { title } = gallery
-    console.log({ images, navigation, loaded })
+    console.log('<SharedModal> ', { images, index, navigation, loaded })
 
     return (
         <MotionConfig
@@ -117,7 +117,7 @@ export default function SharedModal({
                                             <ChevronLeftIcon className="h-6 w-6" />
                                         </button>
                                     )}
-                                    {images && index + 1 < images.length && (
+                                    {images && index + 1 < images.length ? (
                                         <button
                                             className="absolute right-3 top-[calc(50%-16px)] rounded-full bg-black/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-none"
                                             style={{ transform: 'translate3d(0, 0, 0)' }}
@@ -125,7 +125,7 @@ export default function SharedModal({
                                         >
                                             <ChevronRightIcon className="h-6 w-6" />
                                         </button>
-                                    )}
+                                    ) : null}
                                 </>
                             ) : null}
                             <div className="absolute top-0 right-0 flex items-center gap-2 p-3 text-white">

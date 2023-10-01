@@ -8,9 +8,10 @@ import { FC } from 'react'
 type Props = {
     cityGallery: CityGallery
     currentPhoto: ImageProps
+    images: ImageProps[]
 }
 
-export const SinglePhotoPage: FC<Props> = ({ cityGallery, currentPhoto }: Props) => {
+export const SinglePhotoPage: FC<Props> = ({ cityGallery, currentPhoto, images }: Props) => {
     const { cloudinaryFolder } = cityGallery
     const router = useRouter()
     const index = getPhotoIdFromRouter(router.query)
@@ -28,7 +29,7 @@ export const SinglePhotoPage: FC<Props> = ({ cityGallery, currentPhoto }: Props)
                 <meta name="twitter:image" content={currentPhotoUrl} />
             </Head>
             <main className="mx-auto max-w-[1960px] p-4">
-                <Carousel currentPhoto={currentPhoto} index={index} cityGallery={cityGallery} />
+                <Carousel currentPhoto={currentPhoto} index={index} cityGallery={cityGallery} images={images} />
             </main>
         </>
     )
