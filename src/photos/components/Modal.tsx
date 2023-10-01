@@ -19,7 +19,7 @@ export default function Modal({
     const router = useRouter()
     const { photoId } = router.query
     const index = Number(photoId)
-    const [direction, setDirection] = useState(0)
+    const [direction, setDirection] = useState(1)
     const [curIndex, setCurIndex] = useState(index)
     const { country, city } = gallery
 

@@ -1,25 +1,30 @@
-import BukharaImage from '../../../public/images/uzbekistan-bukhara-minaret.jpg'
-import KhivaImage from '../../../public/images/uzbekistan-khiva-night.jpg'
-import SamarkandImage from '../../../public/images/uzbekistan-samarkand-dome.jpg'
-import Layout from '../../../src/components/common/Layout'
-import TravelLinkList from '../../../src/components/site/TravelLinkList'
+import BukharaImage from '@public/images/uzbekistan-bukhara-minaret.jpg'
+import KhivaImage from '@public/images/uzbekistan-khiva-night.jpg'
+import SamarkandImage from '@public/images/uzbekistan-samarkand-dome.jpg'
+import Layout from '@src/components/common/Layout'
+import TravelLinkList from '@src/components/site/TravelLinkList'
+import { CountryGallery } from '@src/photos/utils/types'
+
+export const countryGallery: CountryGallery = {
+    country: 'uzbekistan',
+    cloudinaryFolder: 'Uzbekistan\\ 2023/Samarkand',
+    title: 'Uzbekistan',
+    keywords: [
+        'Uzbekistan',
+        'Tashkent',
+        'Bukhara',
+        'Samarkand',
+        'Khiva',
+        'Asia',
+        'Central Asia',
+        'Silk road',
+        'travel',
+    ],
+}
 
 export default function Page() {
     return (
-        <Layout
-            title="Uzbekistan"
-            keywords={[
-                'Uzbekistan',
-                'Tashkent',
-                'Bukhara',
-                'Samarkand',
-                'Khiva',
-                'Asia',
-                'Central Asia',
-                'Silk road',
-                'travel',
-            ]}
-        >
+        <Layout title="Uzbekistan" keywords={countryGallery.keywords}>
             <h1>Uzbekistan</h1>
 
             <p>A beautiful country full of Islamic architecture that had only just opened up to mass tourism</p>

@@ -61,6 +61,7 @@ export type CountryGallery = {
     country: string
     cloudinaryFolder: string
     title: string
+    keywords: Array<string>
 }
 
 export type CityGallery = CountryGallery & {

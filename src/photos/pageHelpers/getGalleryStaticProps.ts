@@ -9,9 +9,9 @@ export default async function getGalleryStaticProps(
     galleries: CityGallery[],
     context: GetStaticPropsContext
 ): Promise<{ props: PageProps }> {
-    console.log('[props] context.params ', context.params)
+    // console.log('[props] context.params ', context.params)
     const photoIdFromProps = getPhotoIdFromRouter(context.params)
-    console.log('[props] photoIdFromProps ', photoIdFromProps)
+    // console.log('[props] photoIdFromProps ', photoIdFromProps)
     let images: ImageProps[] = []
 
     await Promise.all(
@@ -54,7 +54,7 @@ export default async function getGalleryStaticProps(
     if (images.length === 0) {
         console.error('no images found')
     }
-    console.log(`[props] images: ${images.length}`)
+    // console.log(`[props] images: ${images.length}`)
 
     let currentPhoto = null
 
@@ -64,8 +64,8 @@ export default async function getGalleryStaticProps(
         if (currentPhoto) {
             currentPhoto.blurDataUrl = await getBase64ImageUrl(currentPhoto)
         } else {
-            // throw new Error('could not find photo in PhotoPageGetStaticProps')
-            console.log('[props] could not find blur data in getStaticProps')
+            throw new Error('could not find photo in PhotoPageGetStaticProps')
+            // console.log('[props] could not find blur data in getStaticProps')
         }
     }
 

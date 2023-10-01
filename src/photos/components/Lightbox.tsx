@@ -42,7 +42,7 @@ export default function Lightbox({
     })
     const currentImage = images ? images[index] : currentPhoto
     const { title } = gallery
-    console.log('<SharedModal> ', { images, index, navigation, loaded })
+    // console.log('<SharedModal> ', { images, index, navigation, loaded })
 
     return (
         <MotionConfig
@@ -89,7 +89,7 @@ export default function Lightbox({
                                         width={currentImage.width}
                                         height={currentImage.height}
                                         onCanPlay={() => {
-                                            console.log('onCanPlay')
+                                            // console.log('onCanPlay')
                                             setLoaded(true)
                                         }}
                                     />

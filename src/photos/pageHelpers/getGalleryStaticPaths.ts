@@ -1,6 +1,6 @@
 import cloudinary from '@src/photos/utils/cloudinary'
 import { CityGallery } from '@src/photos/utils/types'
-import { GetStaticPathsContext, GetStaticPathsResult } from 'next'
+import { GetStaticPathsResult } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 
 /**
@@ -12,10 +12,10 @@ import { ParsedUrlQuery } from 'querystring'
  */
 
 export default async function getGalleryStaticPaths(
-    galleries: CityGallery[],
-    context: GetStaticPathsContext
+    galleries: CityGallery[]
+    // context: GetStaticPathsContext
 ): Promise<GetStaticPathsResult> {
-    console.log('[paths] context ', context)
+    // console.log('[paths] context ', context)
     const fullPaths: (
         | string
         | {
@@ -46,7 +46,7 @@ export default async function getGalleryStaticPaths(
                 .max_results(10)
                 .execute()
 
-            console.log(`[paths] cloudinaryFolder ${cloudinaryFolder} returned ${results.resources.length} items`)
+            // console.log(`[paths] cloudinaryFolder ${cloudinaryFolder} returned ${results.resources.length} items`)
             for (let i = 0; i < results.resources.length; i++) {
                 fullPaths.push({ params: { photos: [city, i.toString()] } })
             }

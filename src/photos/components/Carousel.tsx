@@ -1,9 +1,10 @@
+import Lightbox from '@src/photos/components/Lightbox'
+import type { CityGallery, ImageProps } from '@src/photos/utils/types'
+import { useLastViewedPhoto } from '@src/photos/utils/useLastViewedPhoto'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
+import { useState } from 'react'
 import useKeypress from 'react-use-keypress'
-import type { CityGallery, ImageProps } from '../utils/types'
-import { useLastViewedPhoto } from '../utils/useLastViewedPhoto'
-import Lightbox from './Lightbox'
 
 export default function Carousel({
     index,
@@ -19,6 +20,7 @@ export default function Carousel({
     const router = useRouter()
     const [, setLastViewedPhoto] = useLastViewedPhoto()
     const { country } = cityGallery
+    const [direction, setDirection] = useState(1)
 
     function closeModal() {
         setLastViewedPhoto(currentPhoto.id)
@@ -26,9 +28,16 @@ export default function Carousel({
     }
 
     function changePhotoId(newVal: number) {
-        console.log('changePhotoId ', currentPhoto.id, newVal)
         setLastViewedPhoto(newVal)
+
+        if (newVal > index) {
+            setDirection(1)
+        } else {
+            setDirection(-1)
+        }
+
         router.push(`/travel/${country}/photos/${cityGallery.city}/${newVal}`, undefined, { shallow: true })
+
         return newVal
     }
 
@@ -50,6 +59,7 @@ export default function Carousel({
             <Lightbox
                 index={index}
                 images={images}
+                direction={direction}
                 changePhotoId={changePhotoId}
                 currentPhoto={currentPhoto}
                 closeModal={closeModal}
