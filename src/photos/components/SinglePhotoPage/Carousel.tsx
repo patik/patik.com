@@ -4,7 +4,7 @@ import { useLastViewedPhoto } from '@src/photos/utils/useLastViewedPhoto'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
-import useKeypress from 'react-use-keypress'
+import { useKeyHandlers } from '@src/photos/utils/useKeyHandlers'
 
 export default function Carousel({
     index,
@@ -41,20 +41,20 @@ export default function Carousel({
         return newVal
     }
 
-    useKeypress('Escape', () => {
-        closeModal()
-    })
+    useKeyHandlers({ closeModal, images, index, changePhotoId })
 
     return (
         <div className="fixed inset-0 flex items-center justify-center">
             <button className="absolute inset-0 z-30 cursor-default bg-black backdrop-blur-2xl" onClick={closeModal}>
-                <Image
-                    src={currentPhoto.blurDataUrl ?? ''}
-                    className="pointer-events-none h-full w-full"
-                    alt="blurred background"
-                    fill
-                    priority={true}
-                />
+                {currentPhoto.blurDataUrl ? (
+                    <Image
+                        src={currentPhoto.blurDataUrl}
+                        className="pointer-events-none h-full w-full"
+                        alt=""
+                        fill
+                        priority={true}
+                    />
+                ) : null}
             </button>
             <Lightbox
                 index={index}
@@ -63,7 +63,7 @@ export default function Carousel({
                 changePhotoId={changePhotoId}
                 currentPhoto={currentPhoto}
                 closeModal={closeModal}
-                navigation // ={false}
+                navigation
                 gallery={cityGallery}
             />
         </div>

@@ -1,10 +1,10 @@
 import { Dialog } from '@headlessui/react'
 import Lightbox from '@src/photos/components/Lightbox'
 import type { CityGallery, ImageProps } from '@src/photos/utils/types'
+import { useKeyHandlers } from '@src/photos/utils/useKeyHandlers'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 import { useRef, useState } from 'react'
-import useKeypress from 'react-use-keypress'
 
 export default function Modal({
     images,
@@ -48,17 +48,7 @@ export default function Modal({
         )
     }
 
-    useKeypress('ArrowRight', () => {
-        if (index + 1 < images.length) {
-            changePhotoId(index + 1)
-        }
-    })
-
-    useKeypress('ArrowLeft', () => {
-        if (index > 0) {
-            changePhotoId(index - 1)
-        }
-    })
+    useKeyHandlers({ closeModal: handleClose, images, index, changePhotoId })
 
     return (
         <Dialog

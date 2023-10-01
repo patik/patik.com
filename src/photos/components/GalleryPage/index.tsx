@@ -1,6 +1,6 @@
 import Modal from '@src/photos/components/GalleryPage/Modal'
 import { getPhotoIdFromRouter } from '@src/photos/pageHelpers/getPhotoIdFromRouter'
-import escapeCloudinaryString from '@src/photos/utils/escapeCloudinaryString'
+import getImageUrl from '@src/photos/utils/getImageUrl'
 import type { CityGallery, CityGalleryMap, CountryGallery, ImageProps } from '@src/photos/utils/types'
 import { useLastViewedPhoto } from '@src/photos/utils/useLastViewedPhoto'
 import type { NextPage } from 'next'
@@ -40,7 +40,7 @@ export const GalleryIndexPage: NextPage<Props> = ({ gallery, images, city, cityG
                 <meta property="og:image" content="https://nextjsconf-pics.vercel.app/og-image.png" />
                 <meta name="twitter:image" content="https://nextjsconf-pics.vercel.app/og-image.png" />
             </Head>
-            <main className="mx-auto max-w-[1960px] p-4">
+            <div>
                 {typeof photoId === 'number' && city && 'city' in gallery ? (
                     <Modal
                         images={images}
@@ -54,55 +54,55 @@ export const GalleryIndexPage: NextPage<Props> = ({ gallery, images, city, cityG
                     <Fragment key={city}>
                         <h2>{title}</h2>
                         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                            {images.map(({ id, public_id, format, blurDataUrl, resource_type, secure_url }) => (
-                                <Link
-                                    key={id}
-                                    href={`/travel/${country}/photos/${city}/${id}`}
-                                    ref={id === Number(lastViewedPhoto) ? lastViewedPhotoRef : null}
-                                    shallow
-                                    className="after:content group relative cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight"
-                                >
-                                    {resource_type === 'video' ? (
-                                        <Image
-                                            alt={`${title} video`}
-                                            className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
-                                            style={{ transform: 'translate3d(0, 0, 0)' }}
-                                            placeholder="blur"
-                                            blurDataURL={blurDataUrl}
-                                            src={secure_url.replace(new RegExp(`\\.\\w+$`), '.jpg')}
-                                            width={720}
-                                            height={480}
-                                            sizes="(max-width: 640px) 100vw,
+                            {images.map(({ id, public_id, format, blurDataUrl, resource_type }) => {
+                                const src = getImageUrl({ width: 720, public_id, format })
+
+                                return (
+                                    <Link
+                                        key={id}
+                                        href={`/travel/${country}/photos/${city}/${id}`}
+                                        ref={id === Number(lastViewedPhoto) ? lastViewedPhotoRef : null}
+                                        shallow
+                                        className="after:content group relative cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight"
+                                    >
+                                        {resource_type === 'video' ? (
+                                            <Image
+                                                alt={`${title} video`}
+                                                className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
+                                                style={{ transform: 'translate3d(0, 0, 0)' }}
+                                                placeholder="blur"
+                                                blurDataURL={blurDataUrl}
+                                                src={src.replace(new RegExp(`\\.\\w+$`), '.jpg')}
+                                                width={720}
+                                                height={480}
+                                                sizes="(max-width: 640px) 100vw,
                                         (max-width: 1280px) 50vw,
                                 (max-width: 1536px) 33vw,
                                 25vw"
-                                        />
-                                    ) : (
-                                        <Image
-                                            alt={`${title} photo`}
-                                            className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
-                                            style={{ transform: 'translate3d(0, 0, 0)' }}
-                                            placeholder="blur"
-                                            blurDataURL={blurDataUrl}
-                                            src={`https://res.cloudinary.com/${
-                                                process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
-                                            }/image/upload/c_scale,w_720/${escapeCloudinaryString(
-                                                public_id
-                                            )}.${format}`}
-                                            width={720}
-                                            height={480}
-                                            sizes="(max-width: 640px) 100vw,
+                                            />
+                                        ) : (
+                                            <Image
+                                                alt={`${title} photo`}
+                                                className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
+                                                style={{ transform: 'translate3d(0, 0, 0)' }}
+                                                placeholder="blur"
+                                                blurDataURL={blurDataUrl}
+                                                src={src}
+                                                width={720}
+                                                height={480}
+                                                sizes="(max-width: 640px) 100vw,
                                         (max-width: 1280px) 50vw,
                                 (max-width: 1536px) 33vw,
                                 25vw"
-                                        />
-                                    )}
-                                </Link>
-                            ))}
+                                            />
+                                        )}
+                                    </Link>
+                                )
+                            })}
                         </div>
                     </Fragment>
                 ))}
-            </main>
+            </div>
         </>
     )
 }

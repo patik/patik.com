@@ -1,4 +1,5 @@
 import { variants } from '@src/photos/utils/animationVariants'
+import getImageUrl from '@src/photos/utils/getImageUrl'
 import type { ImageProps } from '@src/photos/utils/types'
 import { AnimatePresence, motion } from 'framer-motion'
 import Image from 'next/image'
@@ -18,6 +19,13 @@ export default function MainImage({
     title: string
     setLoaded: (val: boolean) => void
 }) {
+    if (!currentImage) {
+        return <p>No photo!</p>
+    }
+
+    const { public_id, format } = currentImage
+    const src = getImageUrl({ width: navigation ? 1280 : 1920, public_id, format })
+
     return (
         <AnimatePresence initial={false} custom={direction}>
             <motion.div
@@ -29,33 +37,28 @@ export default function MainImage({
                 exit="exit"
                 className="absolute"
             >
-                {currentImage && currentImage.resource_type === 'image' ? (
+                {currentImage.resource_type === 'image' ? (
                     <Image
-                        src={`https://res.cloudinary.com/${
-                            process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
-                        }/image/upload/c_scale,${navigation ? 'w_1280' : 'w_1920'}/${currentImage.public_id}.${
-                            currentImage.format
-                        }`}
+                        src={src}
                         width={navigation ? 1280 : 1920}
                         height={navigation ? 853 : 1280}
                         priority
                         alt={`${title} image`}
                         onLoadingComplete={() => setLoaded(true)}
                     />
-                ) : currentImage ? (
+                ) : (
                     // eslint-disable-next-line jsx-a11y/media-has-caption
                     <video
-                        src={currentImage.secure_url}
                         controls={true}
                         width={currentImage.width}
                         height={currentImage.height}
                         onCanPlay={() => {
-                            // console.log('onCanPlay')
+                            console.log('onCanPlay')
                             setLoaded(true)
                         }}
-                    />
-                ) : (
-                    <p>No photo!</p>
+                    >
+                        <source src={currentImage.secure_url} type="video/mp4" />
+                    </video>
                 )}
             </motion.div>
         </AnimatePresence>

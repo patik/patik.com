@@ -1,3 +1,4 @@
+import getImageUrl from '@src/photos/utils/getImageUrl'
 import type { ImageProps } from '@src/photos/utils/types'
 import { AnimatePresence, motion } from 'framer-motion'
 import Image from 'next/image'
@@ -18,53 +19,57 @@ export default function BottomNavigation({
             <motion.div initial={false} className="mx-auto mt-6 mb-6 flex aspect-[3/2] h-14">
                 <AnimatePresence initial={false}>
                     {filteredImages
-                        ? filteredImages.map(({ public_id, format, id, resource_type, secure_url }) => (
-                              <motion.button
-                                  initial={{
-                                      width: '0%',
-                                      x: `${Math.max((index - 1) * -100, 15 * -100)}%`,
-                                  }}
-                                  animate={{
-                                      scale: id === index ? 1.25 : 1,
-                                      width: '180px',
-                                      x: `${Math.max(index * -100, 15 * -100)}%`,
-                                  }}
-                                  exit={{ width: '0%' }}
-                                  onClick={() => changePhotoId(id)}
-                                  key={id}
-                                  className={`${id === index ? 'z-20 rounded-md shadow shadow-black/50' : 'z-10'} ${
-                                      id === 0 ? 'rounded-l-md' : ''
-                                  } ${
-                                      images && id === images.length - 1 ? 'rounded-r-md' : ''
-                                  } relative inline-block w-full shrink-0 transform-gpu overflow-hidden focus:outline-none`}
-                              >
-                                  {resource_type === 'image' ? (
-                                      <Image
-                                          alt=""
-                                          width={180}
-                                          height={120}
-                                          className={`${
-                                              id === index
-                                                  ? 'brightness-110 hover:brightness-110'
-                                                  : 'brightness-50 contrast-125 hover:brightness-75'
-                                          } h-full transform object-cover transition`}
-                                          src={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_180/${public_id}.${format}`}
-                                      />
-                                  ) : (
-                                      <Image
-                                          alt=""
-                                          width={180}
-                                          height={120}
-                                          className={`${
-                                              id === index
-                                                  ? 'brightness-110 hover:brightness-110'
-                                                  : 'brightness-50 contrast-125 hover:brightness-75'
-                                          } h-full transform object-cover transition`}
-                                          src={secure_url.replace(new RegExp(`\\.\\w+$`), '.jpg')}
-                                      />
-                                  )}
-                              </motion.button>
-                          ))
+                        ? filteredImages.map(({ public_id, format, id, resource_type }) => {
+                              const src = getImageUrl({ width: 180, public_id, format })
+
+                              return (
+                                  <motion.button
+                                      initial={{
+                                          width: '0%',
+                                          x: `${Math.max((index - 1) * -100, 15 * -100)}%`,
+                                      }}
+                                      animate={{
+                                          scale: id === index ? 1.25 : 1,
+                                          width: '180px',
+                                          x: `${Math.max(index * -100, 15 * -100)}%`,
+                                      }}
+                                      exit={{ width: '0%' }}
+                                      onClick={() => changePhotoId(id)}
+                                      key={id}
+                                      className={`${id === index ? 'z-20 rounded-md shadow shadow-black/50' : 'z-10'} ${
+                                          id === 0 ? 'rounded-l-md' : ''
+                                      } ${
+                                          images && id === images.length - 1 ? 'rounded-r-md' : ''
+                                      } relative inline-block w-full shrink-0 transform-gpu overflow-hidden focus:outline-none`}
+                                  >
+                                      {resource_type === 'image' ? (
+                                          <Image
+                                              alt=""
+                                              width={180}
+                                              height={120}
+                                              className={`${
+                                                  id === index
+                                                      ? 'brightness-110 hover:brightness-110'
+                                                      : 'brightness-50 contrast-125 hover:brightness-75'
+                                              } h-full transform object-cover transition`}
+                                              src={src}
+                                          />
+                                      ) : (
+                                          <Image
+                                              alt=""
+                                              width={180}
+                                              height={120}
+                                              className={`${
+                                                  id === index
+                                                      ? 'brightness-110 hover:brightness-110'
+                                                      : 'brightness-50 contrast-125 hover:brightness-75'
+                                              } h-full transform object-cover transition`}
+                                              src={src.replace(new RegExp(`\\.\\w+$`), '.jpg')}
+                                          />
+                                      )}
+                                  </motion.button>
+                              )
+                          })
                         : null}
                 </AnimatePresence>
             </motion.div>
