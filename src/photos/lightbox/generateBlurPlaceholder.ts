@@ -1,10 +1,10 @@
 import imagemin from 'imagemin'
 import imageminJpegtran from 'imagemin-jpegtran'
-import { CustomImage } from './getGalleryStaticProps'
+import { Image } from '@src/photos/utils/types'
 
-const cache = new Map<CustomImage, string>()
+const cache = new Map<Image, string>()
 
-export default async function getBase64ImageUrl(image: CustomImage): Promise<string> {
+export default async function getBase64ImageUrl(image: Image): Promise<string> {
     let url = cache.get(image)
     if (url) {
         return url

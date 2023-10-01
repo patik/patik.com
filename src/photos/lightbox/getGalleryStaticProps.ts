@@ -1,23 +1,15 @@
 import getBase64ImageUrl from '@src/photos/lightbox/generateBlurPlaceholder'
 import cloudinary from '@src/photos/utils/cloudinary'
-import { CityGallery, CloundinaryResource } from '@src/photos/utils/types'
-import { Image } from 'react-grid-gallery'
-
-export interface CustomImage extends Image {
-    original: string
-    blurDataUrl?: string
-    public_id: CloundinaryResource['public_id']
-    format: CloundinaryResource['format']
-}
+import { CityGallery, CloundinaryResource, Image } from '@src/photos/utils/types'
 
 export default async function getGalleryStaticProps(
     galleries: CityGallery[]
     // context: GetStaticPropsContext
-): Promise<{ props: { images: CustomImage[] } }> {
+): Promise<{ props: { images: Image[] } }> {
     // console.log('[props] context.params ', context.params)
     // const photoIdFromProps = getPhotoIdFromRouter(context.params)
     // console.log('[props] photoIdFromProps ', photoIdFromProps)
-    let images: CustomImage[] = []
+    let images: Image[] = []
 
     await Promise.all(
         galleries.map(async ({ cloudinaryFolder }) => {
@@ -26,7 +18,7 @@ export default async function getGalleryStaticProps(
                 .sort_by('public_id', 'desc')
                 .max_results(10)
                 .execute()
-            const reducedResults: CustomImage[] = []
+            const reducedResults: Image[] = []
 
             for (const result of results.resources) {
                 console.log('result: ', result)

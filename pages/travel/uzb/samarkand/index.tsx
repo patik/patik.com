@@ -1,7 +1,7 @@
 import Layout from '@src/components/common/Layout'
+import Gallery from '@src/photos/lightbox/Gallery'
 import getGalleryStaticProps from '@src/photos/lightbox/getGalleryStaticProps'
-import { CustomImage } from '@src/photos/lightbox/images'
-import { CityGalleryMap } from '@src/photos/utils/types'
+import { CityGalleryMap, Image } from '@src/photos/utils/types'
 import { GetStaticProps } from 'next'
 
 const cityGalleryMap: CityGalleryMap = {
@@ -13,7 +13,7 @@ const cityGalleryMap: CityGalleryMap = {
     },
 }
 
-export default function Page({ images }: { images: CustomImage[] }) {
+export default function Page({ images }: { images: Image[] }) {
     console.log('images prop: ', images)
 
     return (
@@ -22,6 +22,8 @@ export default function Page({ images }: { images: CustomImage[] }) {
 
             <section>
                 <h2>Photos and Video</h2>
+
+                <Gallery images={images} />
             </section>
         </Layout>
     )

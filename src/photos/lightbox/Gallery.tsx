@@ -1,10 +1,10 @@
+import { Image } from '@src/photos/utils/types'
 import { useState } from 'react'
-import { Gallery } from 'react-grid-gallery'
+import { Gallery as ReactGridGallery } from 'react-grid-gallery'
 import Lightbox from 'react-image-lightbox'
 import 'react-image-lightbox/style.css'
-import { images } from './images'
 
-export default function App() {
+export default function Gallery({ images }: { images: Image[] }) {
     const [index, setIndex] = useState(-1)
 
     const currentImage = images[index]
@@ -13,15 +13,15 @@ export default function App() {
     const prevIndex = (index + images.length - 1) % images.length
     const prevImage = images[prevIndex] || currentImage
 
-    const handleClick = (index: number /* , item: CustomImage */) => setIndex(index)
+    const handleClick = (index: number /* , item: Image */) => setIndex(index)
     const handleClose = () => setIndex(-1)
     const handleMovePrev = () => setIndex(prevIndex)
     const handleMoveNext = () => setIndex(nextIndex)
 
     return (
         <div>
-            <Gallery images={images} onClick={handleClick} enableImageSelection={false} />
-            {!!currentImage && (
+            <ReactGridGallery images={images} onClick={handleClick} enableImageSelection={false} />
+            {currentImage ? (
                 <Lightbox
                     mainSrc={currentImage.original}
                     imageTitle={currentImage.caption}
@@ -34,7 +34,7 @@ export default function App() {
                     onMovePrevRequest={handleMovePrev}
                     onMoveNextRequest={handleMoveNext}
                 />
-            )}
+            ) : null}
         </div>
     )
 }

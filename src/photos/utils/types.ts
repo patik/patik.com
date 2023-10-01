@@ -1,3 +1,5 @@
+import { Image as ReactGalleryImage } from 'react-grid-gallery'
+
 export interface ImageProps {
     id: number
     height: string
@@ -68,3 +70,10 @@ export type CityGallery = CountryGallery & {
 }
 
 export type CityGalleryMap = Record<string, CityGallery>
+
+export interface Image extends ReactGalleryImage {
+    original: string
+    blurDataUrl?: string
+    public_id: CloundinaryResource['public_id']
+    format: CloundinaryResource['format']
+}
