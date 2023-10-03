@@ -44,22 +44,23 @@ export default function Lightbox({
             }}
         >
             <div
-                className="relative z-50 flex aspect-[3/2] w-full max-w-7xl items-center wide:h-full xl:taller-than-854:h-auto"
+                className="absolute z-50"
+                style={{
+                    top: 0,
+                    bottom: 0,
+                    right: 0,
+                    left: 0,
+                }}
                 {...handlers}
             >
-                {/* Main image */}
-                <div className="w-full overflow-hidden">
-                    <div className="relative flex aspect-[3/2] items-center justify-center">
-                        <MainImage
-                            direction={direction}
-                            index={index}
-                            currentImage={currentImage}
-                            navigation={navigation}
-                            title={title}
-                            setLoaded={setLoaded}
-                        />
-                    </div>
-                </div>
+                <MainImage
+                    direction={direction}
+                    index={index}
+                    currentImage={currentImage}
+                    navigation={navigation}
+                    title={title}
+                    setLoaded={setLoaded}
+                />
 
                 {/* Buttons + bottom nav bar */}
                 <div className="absolute inset-0 mx-auto flex max-w-7xl items-center justify-center">

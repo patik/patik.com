@@ -30,8 +30,8 @@ export default async function getGalleryStaticProps(
                 }
                 reducedResults.push({
                     id: i,
-                    height: String(result.height),
-                    width: String(result.width),
+                    height: result.height,
+                    width: result.width,
                     public_id: result.public_id,
                     format: result.format,
                     secure_url: result.secure_url,

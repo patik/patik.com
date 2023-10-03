@@ -25,7 +25,7 @@ export default function Buttons({
     closeModal: () => void
 }) {
     return (
-        <div className="relative aspect-[3/2] max-h-full w-full">
+        <div className="nav-button-wrapper relative max-h-full w-full" style={{ backgroundColor: '#9933006' }}>
             {navigation ? (
                 <>
                     {index > 0 && (

@@ -1,7 +1,7 @@
 export interface ImageProps {
     id: number
-    height: string
-    width: string
+    height: number
+    width: number
     public_id: string
     format: string
     blurDataUrl?: string
@@ -31,12 +31,12 @@ export type CloundinaryResource = {
     type: string
     created_at: string
     uploaded_at: string
-    bytes: 550564
-    backup_bytes: 0
-    width: 1536
-    height: 2049
-    aspect_ratio: 0.74963
-    pixels: 3147264
+    bytes: number // integer
+    backup_bytes: number // integer
+    width: number // integer
+    height: number // integer
+    aspect_ratio: number // float
+    pixels: number // integer
     url: string
     secure_url: string
     status: string

@@ -23,8 +23,9 @@ export default function MainImage({
         return <p>No photo!</p>
     }
 
-    const { public_id, format } = currentImage
+    const { public_id, format, width, height } = currentImage
     const src = getImageUrl({ width: navigation ? 1280 : 1920, public_id, format })
+    const isPortrait = height > width
 
     return (
         <AnimatePresence initial={false} custom={direction}>
@@ -35,16 +36,27 @@ export default function MainImage({
                 initial="enter"
                 animate="center"
                 exit="exit"
-                className="absolute"
+                className="image-wrapper flex justify-center"
+                style={{
+                    marginBottom: '100px',
+                    height: 'calc(100vh - 100px)',
+                }}
             >
                 {currentImage.resource_type === 'image' ? (
                     <Image
                         src={src}
-                        width={navigation ? 1280 : 1920}
-                        height={navigation ? 853 : 1280}
+                        width={Number(height)}
+                        height={Number(width)}
                         priority
                         alt={`${title} image`}
                         onLoadingComplete={() => setLoaded(true)}
+                        style={{
+                            height: isPortrait ? 'calc(100vh - 80px)' : 'auto',
+                            maxHeight: isPortrait ? 'calc(100vh - 100px)' : 'auto',
+                            width: isPortrait ? 'auto' : '100vw',
+                            maxWidth: isPortrait ? 'auto' : '100vw',
+                            objectFit: 'contain',
+                        }}
                     />
                 ) : (
                     // eslint-disable-next-line jsx-a11y/media-has-caption

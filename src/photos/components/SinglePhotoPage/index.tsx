@@ -31,9 +31,7 @@ export const SinglePhotoPage: FC<Props> = ({ cityGallery, currentPhoto, images }
                 <meta property="og:image" content={currentPhotoUrl} />
                 <meta name="twitter:image" content={currentPhotoUrl} />
             </Head>
-            <div>
-                <Carousel currentPhoto={currentPhoto} index={index} cityGallery={cityGallery} images={images} />
-            </div>
+            <Carousel currentPhoto={currentPhoto} index={index} cityGallery={cityGallery} images={images} />
         </>
     )
 }

@@ -12,5 +12,5 @@ export default function getImageUrl({
 }): string {
     return `https://res.cloudinary.com/${
         process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
-    }/image/upload/c_scale,w_${width}/${escapeCloudinaryString(public_id)}.${format}`
+    }/image/upload/c_scale,w_${width}/f_auto,q_auto:good/${escapeCloudinaryString(public_id)}.${format}`
 }
