@@ -23,8 +23,8 @@ export default function MainImage({
         return <p>No photo!</p>
     }
 
-    const { public_id, format, width, height } = currentImage
-    const src = getImageUrl({ width: navigation ? 1280 : 1920, public_id, format })
+    const { width, height } = currentImage
+    const src = getImageUrl({ ...currentImage, width: navigation ? 1280 : 1920 })
     const isPortrait = height > width
 
     return (

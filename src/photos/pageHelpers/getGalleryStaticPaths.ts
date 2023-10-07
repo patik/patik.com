@@ -11,11 +11,7 @@ import { ParsedUrlQuery } from 'querystring'
  * /travel/country/photos/city2/5678
  */
 
-export default async function getGalleryStaticPaths(
-    galleries: CityGallery[]
-    // context: GetStaticPathsContext
-): Promise<GetStaticPathsResult> {
-    // console.log('[paths] context ', context)
+export default async function getGalleryStaticPaths(galleries: CityGallery[]): Promise<GetStaticPathsResult> {
     const fullPaths: (
         | string
         | {
@@ -43,20 +39,14 @@ export default async function getGalleryStaticPaths(
             const results = await cloudinary.v2.search
                 .expression(`folder:${cloudinaryFolder}/*`)
                 .sort_by('public_id', 'desc')
-                // .max_results(10)
+                .max_results(100)
                 .execute()
 
-            // console.log(`[paths] cloudinaryFolder ${cloudinaryFolder} returned ${results.resources.length} items`)
             for (let i = 0; i < results.resources.length; i++) {
                 fullPaths.push({ params: { photos: [city, i.toString()] } })
             }
         })
     )
-
-    // console.log(
-    //     '[paths] fullPaths: \n',
-    //     fullPaths.map((x) => (x ? JSON.stringify(x, null, 2) : '(no JSON)')).join('\n')
-    // )
 
     return {
         paths: fullPaths,

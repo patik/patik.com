@@ -22,7 +22,7 @@ export default function BottomNavigation({
             <AnimatePresence initial={false}>
                 {filteredImages && filteredImages?.length > 0
                     ? filteredImages.map((image) => {
-                          const { id, resource_type } = image
+                          const { id } = image
 
                           return (
                               <motion.button
@@ -44,31 +44,17 @@ export default function BottomNavigation({
                                       images && id === images.length - 1 ? 'rounded-r-md' : ''
                                   } relative inline-block w-full shrink-0 transform-gpu overflow-hidden focus:outline-none`}
                               >
-                                  {resource_type === 'image' ? (
-                                      <Image
-                                          alt=""
-                                          width={180}
-                                          height={120}
-                                          className={`${
-                                              id === index
-                                                  ? 'brightness-110 hover:brightness-110'
-                                                  : 'brightness-50 contrast-125 hover:brightness-75'
-                                          } h-full transform object-cover transition`}
-                                          src={getImageUrl(image)}
-                                      />
-                                  ) : (
-                                      <Image
-                                          alt=""
-                                          width={180}
-                                          height={120}
-                                          className={`${
-                                              id === index
-                                                  ? 'brightness-110 hover:brightness-110'
-                                                  : 'brightness-50 contrast-125 hover:brightness-75'
-                                          } h-full transform object-cover transition`}
-                                          src={getImageUrl(image)}
-                                      />
-                                  )}
+                                  <Image
+                                      alt=""
+                                      width={180}
+                                      height={120}
+                                      className={`${
+                                          id === index
+                                              ? 'brightness-110 hover:brightness-110'
+                                              : 'brightness-50 contrast-125 hover:brightness-75'
+                                      } h-full transform object-cover transition`}
+                                      src={getImageUrl(image, 180)}
+                                  />
                               </motion.button>
                           )
                       })

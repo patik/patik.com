@@ -9,9 +9,7 @@ export default async function getGalleryStaticProps(
     galleries: CityGallery[],
     context: GetStaticPropsContext
 ): Promise<{ props: PageProps }> {
-    console.log('[props] context.params ', context.params)
     const photoIdFromProps = getPhotoIdFromRouter(context.params)
-    console.log('[props] photoIdFromProps ', photoIdFromProps)
     let images: ImageProps[] = []
 
     await Promise.all(
@@ -19,15 +17,12 @@ export default async function getGalleryStaticProps(
             const results: { resources: CloundinaryResource[] } = await cloudinary.v2.search
                 .expression(`folder:${cloudinaryFolder}/*`)
                 .sort_by('public_id', 'desc')
-                // .max_results(10)
+                .max_results(100)
                 .execute()
             const reducedResults: ImageProps[] = []
 
             let i = 0
             for (const result of results.resources) {
-                if (result.resource_type === 'video') {
-                    console.log('result: ', i, ':\n', result)
-                }
                 reducedResults.push({
                     id: i,
                     height: result.height,
@@ -49,14 +44,17 @@ export default async function getGalleryStaticProps(
                 reducedResults[i].blurDataUrl = imagesWithBlurDataUrls[i]
             }
 
+            console.log(`Found ${reducedResults.length} images in folder ${cloudinaryFolder}`)
+
             images = images.concat(reducedResults)
         })
     )
 
+    console.log(`Found ${images.length} total images across ${galleries.length} galleries`)
+
     if (images.length === 0) {
         console.error('no images found')
     }
-    console.log(`[props] images: ${images.length}`)
 
     let currentPhoto = null
 
@@ -67,7 +65,6 @@ export default async function getGalleryStaticProps(
             currentPhoto.blurDataUrl = await getBase64ImageUrl(currentPhoto)
         } else {
             throw new Error('could not find photo in PhotoPageGetStaticProps')
-            // console.log('[props] could not find blur data in getStaticProps')
         }
     }
 

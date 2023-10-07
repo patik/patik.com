@@ -31,14 +31,17 @@ export const GalleryIndexPage: NextPage<Props> = ({ gallery, images, city, cityG
             setLastViewedPhoto(null)
         }
     }, [photoId, lastViewedPhoto, setLastViewedPhoto])
-    // console.log('[GalleryIndexPage] ', { photoId, images })
 
     return (
         <>
             <Head>
                 <title>{cloudinaryFolder}</title>
-                <meta property="og:image" content="https://nextjsconf-pics.vercel.app/og-image.png" />
-                <meta name="twitter:image" content="https://nextjsconf-pics.vercel.app/og-image.png" />
+                {images && images.length > 0 ? (
+                    <>
+                        <meta property="og:image" content={getImageUrl(images[0])} />
+                        <meta name="twitter:image" content={getImageUrl(images[0])} />
+                    </>
+                ) : null}
             </Head>
             <div>
                 {typeof photoId === 'number' && city && 'city' in gallery ? (
@@ -53,11 +56,8 @@ export const GalleryIndexPage: NextPage<Props> = ({ gallery, images, city, cityG
                 {Object.values(cityGalleryMap).map(({ country, city, title }) => (
                     <Fragment key={city}>
                         <h2>{title}</h2>
-                        <div
-                            className="grid grid-cols-3 gap-4 sm:grid-cols-4 lg:grid-cols-5"
-                            style={{ gridTemplateRows: 'repeat(9999, 1fr)' }}
-                        >
-                            {images.map((image) => {
+                        <div className="grid grid-cols-3 gap-4 sm:grid-cols-4 lg:grid-cols-5 auto-rows-fr">
+                            {images.map((image, i) => {
                                 const { id, blurDataUrl, resource_type } = image
 
                                 return (
@@ -68,47 +68,23 @@ export const GalleryIndexPage: NextPage<Props> = ({ gallery, images, city, cityG
                                         shallow
                                         className="after:content group relative cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight"
                                     >
-                                        {resource_type === 'video' ? (
-                                            <Image
-                                                alt={`${title} video`}
-                                                className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
-                                                style={{
-                                                    transform: 'translate3d(0, 0, 0)',
-                                                    width: '100%',
-                                                    height: '100%',
-                                                    objectFit: 'cover',
-                                                }}
-                                                placeholder="blur"
-                                                blurDataURL={blurDataUrl}
-                                                src={getImageUrl(image)}
-                                                width={720}
-                                                height={480}
-                                                sizes="(max-width: 640px) 100vw,
-                                        (max-width: 1280px) 50vw,
-                                (max-width: 1536px) 33vw,
-                                25vw"
-                                            />
-                                        ) : (
-                                            <Image
-                                                alt={`${title} photo`}
-                                                className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
-                                                style={{
-                                                    transform: 'translate3d(0, 0, 0)',
-                                                    width: '100%',
-                                                    height: '100%',
-                                                    objectFit: 'cover',
-                                                }}
-                                                placeholder="blur"
-                                                blurDataURL={blurDataUrl}
-                                                src={getImageUrl(image)}
-                                                width={720}
-                                                height={480}
-                                                sizes="(max-width: 640px) 100vw,
-                                        (max-width: 1280px) 50vw,
-                                (max-width: 1536px) 33vw,
-                                25vw"
-                                            />
-                                        )}
+                                        <Image
+                                            alt={`${title} ${resource_type}`}
+                                            className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
+                                            style={{
+                                                transform: 'translate3d(0, 0, 0)',
+                                                width: '100%',
+                                                height: '100%',
+                                                objectFit: 'cover',
+                                            }}
+                                            priority={i < 10}
+                                            placeholder="blur"
+                                            blurDataURL={blurDataUrl}
+                                            src={getImageUrl(image, 720)}
+                                            width={720}
+                                            height={480}
+                                            sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, (max-width: 1536px) 33vw, 25vw"
+                                        />
                                     </Link>
                                 )
                             })}

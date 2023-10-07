@@ -21,8 +21,7 @@ export const SinglePhotoPage: FC<Props> = ({ cityGallery, currentPhoto, images }
         return null
     }
 
-    const { public_id, format } = currentPhoto
-    const currentPhotoUrl = getImageUrl({ width: 2560, public_id, format })
+    const currentPhotoUrl = getImageUrl(currentPhoto, 2560)
 
     return (
         <>
