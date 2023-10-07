@@ -1,4 +1,4 @@
-import Modal from '@src/photos/components/GalleryPage/Modal'
+import Modal from '@src/photos/components/GalleryGrid/Modal'
 import { getPhotoIdFromRouter } from '@src/photos/pageHelpers/getPhotoIdFromRouter'
 import getImageUrl from '@src/photos/utils/getImageUrl'
 import type { CityGallery, CityGalleryMap, CountryGallery, ImageProps } from '@src/photos/utils/types'
@@ -17,7 +17,7 @@ type Props = {
     images: ImageProps[]
 }
 
-export const GalleryIndexPage: NextPage<Props> = ({ gallery, images, city, cityGalleryMap }: Props) => {
+const GalleryGrid: NextPage<Props> = ({ gallery, images, city, cityGalleryMap }: Props) => {
     const { cloudinaryFolder } = gallery
     const router = useRouter()
     const photoId = getPhotoIdFromRouter(router.query)
@@ -95,3 +95,5 @@ export const GalleryIndexPage: NextPage<Props> = ({ gallery, images, city, cityG
         </>
     )
 }
+
+export default GalleryGrid

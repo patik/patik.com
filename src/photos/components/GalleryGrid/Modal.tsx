@@ -32,13 +32,14 @@ export default function Modal({
     }
 
     function changePhotoId(newVal: number) {
-        console.log('changePhotoId ', newVal)
         if (newVal > index) {
             setDirection(1)
         } else {
             setDirection(-1)
         }
+
         setCurIndex(newVal)
+
         router.push(
             {
                 query: { photoId: newVal },
