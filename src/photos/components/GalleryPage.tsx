@@ -1,16 +1,16 @@
 import Layout from '@src/components/common/Layout'
 import countryGallery from '@src/galleries/uzbekistan'
 import GalleryGrid from '@src/photos/components/GalleryGrid'
-import type { CityGallery, CityGalleryMap, CountryGallery, ImageProps } from '@src/photos/utils/types'
+import type { CityGallery, CountryGallery, ImageProps } from '@src/photos/utils/types'
 import Link from 'next/link'
 
 export function GalleryPage({
     gallery,
-    cityGalleryMap,
+    cityGalleries,
     images,
 }: {
     gallery: CountryGallery | CityGallery
-    cityGalleryMap: CityGalleryMap
+    cityGalleries: CityGallery[]
     images: ImageProps[]
 }) {
     return (
@@ -27,7 +27,7 @@ export function GalleryPage({
                 <GalleryGrid
                     gallery={gallery}
                     city={'city' in gallery ? gallery.city : undefined}
-                    cityGalleryMap={cityGalleryMap}
+                    cityGalleries={cityGalleries}
                     images={images}
                 />
             </section>

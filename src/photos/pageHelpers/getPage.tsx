@@ -2,11 +2,11 @@ import Layout from '@src/components/common/Layout'
 import { GalleryPage } from '@src/photos/components/GalleryPage'
 import { SinglePhotoPage } from '@src/photos/components/SinglePhotoPage'
 import { getPhotoIdFromRouter } from '@src/photos/pageHelpers/getPhotoIdFromRouter'
-import type { CityGalleryMap, CountryGallery, PageProps } from '@src/photos/utils/types'
+import type { CityGallery, CountryGallery, PageProps } from '@src/photos/utils/types'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-export function getPage(countryGallery: CountryGallery, cityGalleryMap: CityGalleryMap) {
+export function getPage(countryGallery: CountryGallery, cityGallery: CityGallery) {
     return function Page({ images, currentPhoto }: PageProps) {
         const router = useRouter()
         const photosParam = router.query.photos
@@ -15,15 +15,13 @@ export function getPage(countryGallery: CountryGallery, cityGalleryMap: CityGall
         if (segments && segments.length > 0) {
             const cityName = segments[0]
 
-            if (!cityName || !(cityName in cityGalleryMap)) {
+            if (!cityName || cityGallery.city !== cityName) {
                 throw new Error(`invalid city name in query params: ${cityName}`)
             }
 
-            const cityGallery = cityGalleryMap[cityName]
-
             // Index page for a specific city
             if (segments.length === 1) {
-                return <GalleryPage gallery={cityGallery} cityGalleryMap={cityGalleryMap} images={images} />
+                return <GalleryPage gallery={cityGallery} cityGalleries={[cityGallery]} images={images} />
             }
 
             // Page for a specific photo
@@ -55,6 +53,6 @@ export function getPage(countryGallery: CountryGallery, cityGalleryMap: CityGall
         }
 
         // Index page for all of the country's photos
-        return <GalleryPage gallery={countryGallery} cityGalleryMap={cityGalleryMap} images={images} />
+        return <GalleryPage gallery={countryGallery} cityGalleries={[cityGallery]} images={images} />
     }
 }

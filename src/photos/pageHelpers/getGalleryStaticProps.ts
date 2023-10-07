@@ -5,7 +5,7 @@ import { CityGallery, CloundinaryResource, ImageProps, PageProps } from '@src/ph
 import { GetStaticPropsContext } from 'next'
 
 export default async function getGalleryStaticProps(
-    galleries: CityGallery[],
+    galleries: Pick<CityGallery, 'cloudinaryFolder'>[],
     context: GetStaticPropsContext
 ): Promise<{ props: PageProps }> {
     const photoIdFromProps = getPhotoIdFromRouter(context.params)

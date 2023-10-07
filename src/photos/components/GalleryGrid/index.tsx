@@ -1,7 +1,7 @@
 import Modal from '@src/photos/components/GalleryGrid/Modal'
 import { getPhotoIdFromRouter } from '@src/photos/pageHelpers/getPhotoIdFromRouter'
 import getImageUrl from '@src/photos/utils/getImageUrl'
-import type { CityGallery, CityGalleryMap, CountryGallery, ImageProps } from '@src/photos/utils/types'
+import type { CityGallery, CountryGallery, ImageProps } from '@src/photos/utils/types'
 import { useLastViewedPhoto } from '@src/photos/utils/useLastViewedPhoto'
 import type { NextPage } from 'next'
 import Head from 'next/head'
@@ -13,11 +13,11 @@ import { Fragment, useEffect, useRef } from 'react'
 type Props = {
     gallery: CountryGallery | CityGallery
     city?: CityGallery['city']
-    cityGalleryMap: CityGalleryMap
+    cityGalleries: CityGallery[]
     images: ImageProps[]
 }
 
-const GalleryGrid: NextPage<Props> = ({ gallery, images, city, cityGalleryMap }: Props) => {
+const GalleryGrid: NextPage<Props> = ({ gallery, images, city, cityGalleries }: Props) => {
     const { cloudinaryFolder } = gallery
     const router = useRouter()
     const photoId = getPhotoIdFromRouter(router.query)
@@ -53,7 +53,7 @@ const GalleryGrid: NextPage<Props> = ({ gallery, images, city, cityGalleryMap }:
                         gallery={gallery}
                     />
                 ) : null}
-                {Object.values(cityGalleryMap).map(({ country, city, title }) => (
+                {cityGalleries.map(({ country, city, title }) => (
                     <Fragment key={city}>
                         <h2>{title}</h2>
                         <div className="grid grid-cols-3 gap-4 sm:grid-cols-4 lg:grid-cols-5 auto-rows-fr">
