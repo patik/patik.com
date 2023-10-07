@@ -34,7 +34,6 @@ export default function Lightbox({
     })
     const currentImage = images ? images[index] : currentPhoto
     const { title } = gallery
-    // console.log('<SharedModal> ', { images, index, navigation, loaded })
 
     return (
         <MotionConfig
