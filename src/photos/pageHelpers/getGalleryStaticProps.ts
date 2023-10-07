@@ -1,9 +1,8 @@
+import { getPhotoIdFromRouter } from '@src/photos/pageHelpers/getPhotoIdFromRouter'
 import cloudinary from '@src/photos/utils/cloudinary'
 import getBase64ImageUrl from '@src/photos/utils/generateBlurPlaceholder'
-import { CityGallery, CloundinaryResource, ImageProps } from '@src/photos/utils/types'
+import { CityGallery, CloundinaryResource, ImageProps, PageProps } from '@src/photos/utils/types'
 import { GetStaticPropsContext } from 'next'
-import { PageProps } from '../../../pages/travel/uzbekistan/photos/[[...photos]]'
-import { getPhotoIdFromRouter } from './getPhotoIdFromRouter'
 
 export default async function getGalleryStaticProps(
     galleries: CityGallery[],

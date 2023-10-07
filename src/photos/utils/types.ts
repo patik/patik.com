@@ -9,6 +9,11 @@ export interface ImageProps {
     resource_type: CloundinaryResource['resource_type']
 }
 
+export type PageProps = {
+    images: ImageProps[]
+    currentPhoto?: ImageProps | null
+}
+
 export interface SharedModalProps {
     index: number
     images?: ImageProps[]
