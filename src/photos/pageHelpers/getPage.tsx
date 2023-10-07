@@ -1,10 +1,10 @@
 import Layout from '@src/components/common/Layout'
+import { GalleryPage } from '@src/photos/components/GalleryPage'
 import { SinglePhotoPage } from '@src/photos/components/SinglePhotoPage'
 import { getPhotoIdFromRouter } from '@src/photos/pageHelpers/getPhotoIdFromRouter'
 import type { CityGalleryMap, CountryGallery, PageProps } from '@src/photos/utils/types'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { GalleryPage } from '../components/GalleryPage'
 
 export function getPage(countryGallery: CountryGallery, cityGalleryMap: CityGalleryMap) {
     return function Page({ images, currentPhoto }: PageProps) {

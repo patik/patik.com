@@ -1,10 +1,10 @@
 import Lightbox from '@src/photos/components/Lightbox'
 import type { CityGallery, ImageProps } from '@src/photos/utils/types'
+import { useKeyHandlers } from '@src/photos/utils/useKeyHandlers'
 import { useLastViewedPhoto } from '@src/photos/utils/useLastViewedPhoto'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
-import { useKeyHandlers } from '@src/photos/utils/useKeyHandlers'
 
 export default function Carousel({
     index,
