@@ -21,8 +21,8 @@ export default function BottomNavigation({
         >
             <AnimatePresence initial={false}>
                 {filteredImages && filteredImages?.length > 0
-                    ? filteredImages.map(({ public_id, format, id, resource_type }) => {
-                          const src = getImageUrl({ width: 180, public_id, format })
+                    ? filteredImages.map((image) => {
+                          const { id, resource_type } = image
 
                           return (
                               <motion.button
@@ -54,7 +54,7 @@ export default function BottomNavigation({
                                                   ? 'brightness-110 hover:brightness-110'
                                                   : 'brightness-50 contrast-125 hover:brightness-75'
                                           } h-full transform object-cover transition`}
-                                          src={src}
+                                          src={getImageUrl(image)}
                                       />
                                   ) : (
                                       <Image
@@ -66,7 +66,7 @@ export default function BottomNavigation({
                                                   ? 'brightness-110 hover:brightness-110'
                                                   : 'brightness-50 contrast-125 hover:brightness-75'
                                           } h-full transform object-cover transition`}
-                                          src={src.replace(new RegExp(`\\.\\w+$`), '.jpg')}
+                                          src={getImageUrl(image)}
                                       />
                                   )}
                               </motion.button>

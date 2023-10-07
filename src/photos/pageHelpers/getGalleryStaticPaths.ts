@@ -43,7 +43,7 @@ export default async function getGalleryStaticPaths(
             const results = await cloudinary.v2.search
                 .expression(`folder:${cloudinaryFolder}/*`)
                 .sort_by('public_id', 'desc')
-                .max_results(10)
+                // .max_results(10)
                 .execute()
 
             // console.log(`[paths] cloudinaryFolder ${cloudinaryFolder} returned ${results.resources.length} items`)

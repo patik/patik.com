@@ -54,8 +54,8 @@ export const GalleryIndexPage: NextPage<Props> = ({ gallery, images, city, cityG
                     <Fragment key={city}>
                         <h2>{title}</h2>
                         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                            {images.map(({ id, public_id, format, blurDataUrl, resource_type }) => {
-                                const src = getImageUrl({ width: 720, public_id, format })
+                            {images.map((image) => {
+                                const { id, blurDataUrl, resource_type } = image
 
                                 return (
                                     <Link
@@ -72,7 +72,7 @@ export const GalleryIndexPage: NextPage<Props> = ({ gallery, images, city, cityG
                                                 style={{ transform: 'translate3d(0, 0, 0)' }}
                                                 placeholder="blur"
                                                 blurDataURL={blurDataUrl}
-                                                src={src.replace(new RegExp(`\\.\\w+$`), '.jpg')}
+                                                src={getImageUrl(image)}
                                                 width={720}
                                                 height={480}
                                                 sizes="(max-width: 640px) 100vw,
@@ -87,7 +87,7 @@ export const GalleryIndexPage: NextPage<Props> = ({ gallery, images, city, cityG
                                                 style={{ transform: 'translate3d(0, 0, 0)' }}
                                                 placeholder="blur"
                                                 blurDataURL={blurDataUrl}
-                                                src={src}
+                                                src={getImageUrl(image)}
                                                 width={720}
                                                 height={480}
                                                 sizes="(max-width: 640px) 100vw,
