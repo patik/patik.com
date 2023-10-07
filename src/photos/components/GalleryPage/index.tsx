@@ -53,7 +53,10 @@ export const GalleryIndexPage: NextPage<Props> = ({ gallery, images, city, cityG
                 {Object.values(cityGalleryMap).map(({ country, city, title }) => (
                     <Fragment key={city}>
                         <h2>{title}</h2>
-                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                        <div
+                            className="grid grid-cols-3 gap-4 sm:grid-cols-4 lg:grid-cols-5"
+                            style={{ gridTemplateRows: 'repeat(9999, 1fr)' }}
+                        >
                             {images.map((image) => {
                                 const { id, blurDataUrl, resource_type } = image
 
@@ -69,7 +72,12 @@ export const GalleryIndexPage: NextPage<Props> = ({ gallery, images, city, cityG
                                             <Image
                                                 alt={`${title} video`}
                                                 className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
-                                                style={{ transform: 'translate3d(0, 0, 0)' }}
+                                                style={{
+                                                    transform: 'translate3d(0, 0, 0)',
+                                                    width: '100%',
+                                                    height: '100%',
+                                                    objectFit: 'cover',
+                                                }}
                                                 placeholder="blur"
                                                 blurDataURL={blurDataUrl}
                                                 src={getImageUrl(image)}
@@ -84,7 +92,12 @@ export const GalleryIndexPage: NextPage<Props> = ({ gallery, images, city, cityG
                                             <Image
                                                 alt={`${title} photo`}
                                                 className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
-                                                style={{ transform: 'translate3d(0, 0, 0)' }}
+                                                style={{
+                                                    transform: 'translate3d(0, 0, 0)',
+                                                    width: '100%',
+                                                    height: '100%',
+                                                    objectFit: 'cover',
+                                                }}
                                                 placeholder="blur"
                                                 blurDataURL={blurDataUrl}
                                                 src={getImageUrl(image)}
