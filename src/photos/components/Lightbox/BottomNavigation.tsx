@@ -17,7 +17,7 @@ export default function BottomNavigation({
     return (
         <motion.div
             initial={false}
-            className="bottom-nav-wrapper mx-auto mt-6 mb-6 flex h-14 fixed inset-x-0 bottom-0 z-40 bg-gradient-to-b from-black/0 to-black/60"
+            className="mx-auto mt-6 mb-6 flex h-14 fixed inset-x-0 bottom-0 z-40 bg-gradient-to-b from-black/0 to-black/60"
         >
             <AnimatePresence initial={false}>
                 {filteredImages && filteredImages?.length > 0

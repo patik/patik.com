@@ -65,7 +65,7 @@ export default function Lightbox({
                 ) : null}
                 {/* Bottom nav bar */}
                 {navigation ? (
-                    <div className="inset-0 mx-auto flex max-w-7xl items-center justify-center">
+                    <div className="bottom-nav-wrapper inset-0 mx-auto flex max-w-7xl items-center justify-center">
                         <BottomNavigation
                             filteredImages={filteredImages}
                             index={index}

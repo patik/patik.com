@@ -47,7 +47,9 @@ export default function Carousel({
                 {currentPhoto.blurDataUrl ? (
                     <Image
                         src={currentPhoto.blurDataUrl}
-                        className="pointer-events-none h-full w-full"
+                        className={`pointer-events-none h-full w-full${
+                            currentPhoto.resource_type === 'video' ? ' blur-2xl' : ''
+                        }`}
                         alt=""
                         fill
                         priority={true}
