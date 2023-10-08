@@ -1,7 +1,9 @@
 import { Dialog } from '@headlessui/react'
 import Lightbox from '@src/photos/components/Lightbox'
+import { getChangePhotoId } from '@src/photos/utils/getChangePhotoId'
 import type { CityGallery, ImageProps } from '@src/photos/utils/types'
 import { useKeyHandlers } from '@src/photos/utils/useKeyHandlers'
+import { useLastViewedPhoto } from '@src/photos/utils/useLastViewedPhoto'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 import { useRef, useState } from 'react'
@@ -21,33 +23,26 @@ export default function Modal({
     const index = Number(photoId)
     const [direction, setDirection] = useState(1)
     const [curIndex, setCurIndex] = useState(index)
-    const { countryId: country, cityId: city } = gallery
+    const { countryId, cityId } = gallery
+    const [, setLastViewedPhoto] = useLastViewedPhoto()
 
     function handleClose() {
-        router.push(`/travel/${country}/photos/`, undefined, { shallow: true })
+        router.push(`/travel/${countryId}/photos/`, undefined, { shallow: true })
 
         if (onClose) {
             onClose()
         }
     }
 
-    function changePhotoId(newVal: number) {
-        if (newVal > index) {
-            setDirection(1)
-        } else {
-            setDirection(-1)
-        }
-
-        setCurIndex(newVal)
-
-        router.push(
-            {
-                query: { photoId: newVal },
-            },
-            `/travel/${country}/photos/${city}/${newVal}`,
-            { shallow: true }
-        )
-    }
+    const changePhotoId = getChangePhotoId({
+        setLastViewedPhoto,
+        setDirection,
+        setCurIndex,
+        router,
+        index,
+        countryId,
+        cityId,
+    })
 
     useKeyHandlers({ closeModal: handleClose, images, index, changePhotoId })
 

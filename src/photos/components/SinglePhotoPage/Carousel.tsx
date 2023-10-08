@@ -1,4 +1,5 @@
 import Lightbox from '@src/photos/components/Lightbox'
+import { getChangePhotoId } from '@src/photos/utils/getChangePhotoId'
 import type { CityGallery, ImageProps } from '@src/photos/utils/types'
 import { useKeyHandlers } from '@src/photos/utils/useKeyHandlers'
 import { useLastViewedPhoto } from '@src/photos/utils/useLastViewedPhoto'
@@ -19,27 +20,22 @@ export default function Carousel({
 }) {
     const router = useRouter()
     const [, setLastViewedPhoto] = useLastViewedPhoto()
-    const { countryId: country } = cityGallery
+    const { countryId, cityId } = cityGallery
     const [direction, setDirection] = useState(1)
 
     function closeModal() {
         setLastViewedPhoto(currentPhoto.id)
-        router.push(`/travel/${country}/photos/`, undefined, { shallow: true })
+        router.push(`/travel/${countryId}/photos/`, undefined, { shallow: true })
     }
 
-    function changePhotoId(newVal: number) {
-        setLastViewedPhoto(newVal)
-
-        if (newVal > index) {
-            setDirection(1)
-        } else {
-            setDirection(-1)
-        }
-
-        router.push(`/travel/${country}/photos/${cityGallery.cityId}/${newVal}`, undefined, { shallow: true })
-
-        return newVal
-    }
+    const changePhotoId = getChangePhotoId({
+        setLastViewedPhoto,
+        setDirection,
+        router,
+        index,
+        countryId,
+        cityId,
+    })
 
     useKeyHandlers({ closeModal, images, index, changePhotoId })
 
