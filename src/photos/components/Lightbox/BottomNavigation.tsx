@@ -17,7 +17,7 @@ export default function BottomNavigation({
     return (
         <motion.div
             initial={false}
-            className="bottom-nav-wrapper mx-auto mt-6 mb-6 flex h-14 fixed inset-x-0 bottom-0 z-40 overflow-hidden bg-gradient-to-b from-black/0 to-black/60"
+            className="bottom-nav-wrapper mx-auto mt-6 mb-6 flex h-14 fixed inset-x-0 bottom-0 z-40 bg-gradient-to-b from-black/0 to-black/60"
         >
             <AnimatePresence initial={false}>
                 {filteredImages && filteredImages?.length > 0
@@ -25,7 +25,7 @@ export default function BottomNavigation({
                           const { id } = image
 
                           const buttonClasses = [
-                              `blur-wrapper`,
+                              'blur-wrapper',
                               'relative',
                               'inline-block',
                               'w-full',
@@ -50,12 +50,12 @@ export default function BottomNavigation({
                               buttonClasses.push('rounded-r-md')
                           }
 
-                          const imageClasses = [`h-full`, `transform`, `object-cover`, `transition`]
+                          const imageClasses = ['h-full', 'transform', 'object-cover', 'transition']
 
                           if (id === index) {
-                              buttonClasses.push('brightness-110', 'hover:brightness-110')
+                              imageClasses.push('brightness-110', 'hover:brightness-110')
                           } else {
-                              buttonClasses.push('brightness-50', 'contrast-125', 'hover:brightness-75')
+                              imageClasses.push('brightness-50', 'contrast-125', 'hover:brightness-75')
                           }
 
                           return (
@@ -66,7 +66,7 @@ export default function BottomNavigation({
                                   }}
                                   animate={{
                                       scale: id === index ? 1.25 : 1,
-                                      width: '180px',
+                                      width: '90px',
                                       x: `${Math.max(index * -100, 15 * -100)}%`,
                                   }}
                                   exit={{ width: '0%' }}
@@ -76,7 +76,7 @@ export default function BottomNavigation({
                               >
                                   <Image
                                       alt=""
-                                      width={180}
+                                      width={90}
                                       height={120}
                                       className={imageClasses.join(' ')}
                                       src={getImageUrl(image, 180)}
