@@ -13,7 +13,6 @@ type Props = {
 }
 
 export const SinglePhotoPage: FC<Props> = ({ cityGallery, currentPhoto, images }: Props) => {
-    const { cloudinaryFolder } = cityGallery
     const router = useRouter()
     const index = getPhotoIdFromRouter(router.query)
 
@@ -21,6 +20,7 @@ export const SinglePhotoPage: FC<Props> = ({ cityGallery, currentPhoto, images }
         return null
     }
 
+    const { cloudinaryFolder } = cityGallery
     const currentPhotoUrl = getImageUrl(currentPhoto, 2560)
 
     return (

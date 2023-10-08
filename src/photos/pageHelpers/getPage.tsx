@@ -12,7 +12,6 @@ export function getPage(countryGallery: CountryGallery, cityGalleries: CityGalle
         const photosParam = router.query.photos
         const segments: string[] = Array.isArray(photosParam) ? photosParam : photosParam ? [photosParam] : []
 
-        console.log('getPage ', images.find((img) => img.id === getPhotoIdFromRouter(router.query))?.id)
         if (segments && segments.length > 0) {
             const cityName = segments[0]
 
