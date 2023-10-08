@@ -5,7 +5,7 @@ import getGalleryStaticProps from '@src/photos/pageHelpers/getGalleryStaticProps
 import { getPage } from '@src/photos/pageHelpers/getPage'
 import { GetStaticPaths, GetStaticProps } from 'next'
 
-export default getPage(countryGallery, samarkand)
+export default getPage(countryGallery, [samarkand])
 
 export const getStaticProps: GetStaticProps = async function (context) {
     return getGalleryStaticProps([samarkand], context)

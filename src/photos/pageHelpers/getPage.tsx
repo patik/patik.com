@@ -6,7 +6,7 @@ import type { CityGallery, CountryGallery, PageProps } from '@src/photos/utils/t
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-export function getPage(countryGallery: CountryGallery, cityGallery: CityGallery) {
+export function getPage(countryGallery: CountryGallery, cityGalleries: CityGallery[]) {
     return function Page({ images, currentPhoto }: PageProps) {
         const router = useRouter()
         const photosParam = router.query.photos
@@ -15,8 +15,14 @@ export function getPage(countryGallery: CountryGallery, cityGallery: CityGallery
         if (segments && segments.length > 0) {
             const cityName = segments[0]
 
-            if (!cityName || cityGallery.city !== cityName) {
-                throw new Error(`invalid city name in query params: ${cityName}`)
+            if (!cityName) {
+                throw new Error(`no city name in URL: ${cityName}`)
+            }
+
+            const cityGallery = cityGalleries.find(({ city }) => city === cityName)
+
+            if (!cityGallery) {
+                throw new Error(`invalid city name in URL: ${cityName}`)
             }
 
             // Index page for a specific city
@@ -53,6 +59,6 @@ export function getPage(countryGallery: CountryGallery, cityGallery: CityGallery
         }
 
         // Index page for all of the country's photos
-        return <GalleryPage gallery={countryGallery} cityGalleries={[cityGallery]} images={images} />
+        return <GalleryPage gallery={countryGallery} cityGalleries={cityGalleries} images={images} />
     }
 }

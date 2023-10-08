@@ -13,20 +13,20 @@ export function GalleryPage({
     cityGalleries: CityGallery[]
     images: ImageProps[]
 }) {
+    const isCityGallery = 'city' in gallery
+
     return (
         <Layout title={gallery.title} keywords={gallery.keywords}>
-            <h1>{gallery.title}</h1>
+            <h1>
+                <Link href={`/travel/${countryGallery.country}`}>{gallery.title}</Link>
+            </h1>
 
             <section>
                 <h2>Photos and Video</h2>
 
-                <p>
-                    <Link href={`/travel/${countryGallery.country}`}>{`Back to ${countryGallery.title}`}</Link>
-                </p>
-
                 <GalleryGrid
                     gallery={gallery}
-                    city={'city' in gallery ? gallery.city : undefined}
+                    city={isCityGallery ? gallery.city : undefined}
                     cityGalleries={cityGalleries}
                     images={images}
                 />
