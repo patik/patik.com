@@ -27,7 +27,7 @@ export default async function getGalleryStaticPaths(galleries: CityGallery[]): P
     })
 
     await Promise.all(
-        galleries.map(async ({ cloudinaryFolder, city }) => {
+        galleries.map(async ({ cloudinaryFolder, cityId: city }) => {
             // City index page
             // /travel/country/photos/city1/
             fullPaths.push({

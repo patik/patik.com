@@ -1,5 +1,5 @@
-import cloudinary from './cloudinary'
-import { CloudinaryResult } from './types'
+import cloudinary from '@src/photos/utils/cloudinary'
+import type { CloudinaryResult } from '@src/photos/utils/types'
 
 let cachedResults: CloudinaryResult
 

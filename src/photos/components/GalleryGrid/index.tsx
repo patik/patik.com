@@ -12,18 +12,18 @@ import { Fragment, useEffect, useRef } from 'react'
 
 type Props = {
     gallery: CountryGallery | CityGallery
-    city?: CityGallery['city']
+    cityId?: CityGallery['cityId']
     cityGalleries: CityGallery[]
     images: ImageProps[]
 }
 
-const GalleryGrid: NextPage<Props> = ({ gallery, images, city, cityGalleries }: Props) => {
+const GalleryGrid: NextPage<Props> = ({ gallery, images, cityId, cityGalleries }: Props) => {
     const { cloudinaryFolder } = gallery
     const router = useRouter()
     const photoId = getPhotoIdFromRouter(router.query)
     const [lastViewedPhoto, setLastViewedPhoto] = useLastViewedPhoto()
     const lastViewedPhotoRef = useRef<HTMLAnchorElement>(null)
-    const isCityGallery = 'city' in gallery
+    const isCityGallery = 'cityId' in gallery
 
     useEffect(() => {
         // This effect keeps track of the last viewed photo in the modal to keep the index page in sync when the user navigates back
@@ -45,7 +45,7 @@ const GalleryGrid: NextPage<Props> = ({ gallery, images, city, cityGalleries }: 
                 ) : null}
             </Head>
             <div>
-                {typeof photoId === 'number' && city && 'city' in gallery ? (
+                {typeof photoId === 'number' && cityId && isCityGallery ? (
                     <Modal
                         images={images}
                         onClose={() => {
@@ -54,7 +54,7 @@ const GalleryGrid: NextPage<Props> = ({ gallery, images, city, cityGalleries }: 
                         gallery={gallery}
                     />
                 ) : null}
-                {cityGalleries.map(({ country, city, title }) => (
+                {cityGalleries.map(({ country, cityId: city, title }) => (
                     <Fragment key={city}>
                         <h2>{isCityGallery ? title : <Link href={`./${city}`}>{title}</Link>}</h2>
                         <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 auto-rows-fr gap-4">

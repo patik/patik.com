@@ -1,7 +1,7 @@
+import config from '@src/config.json'
 import cn from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
-import config from '../../config.json'
 
 const { blogUrl } = config
 

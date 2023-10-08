@@ -36,7 +36,7 @@ export default function Carousel({
             setDirection(-1)
         }
 
-        router.push(`/travel/${country}/photos/${cityGallery.city}/${newVal}`, undefined, { shallow: true })
+        router.push(`/travel/${country}/photos/${cityGallery.cityId}/${newVal}`, undefined, { shallow: true })
 
         return newVal
     }

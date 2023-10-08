@@ -1,9 +1,9 @@
+import { PartialPost } from '@src/lib/getPosts'
 import fs from 'fs'
 import imageSize from 'image-size'
 import { ISizeCalculationResult } from 'image-size/dist/types/interface'
 import { join } from 'path'
 import { promisify } from 'util'
-import { PartialPost } from './getPosts'
 
 const imagesDirectory = join(process.cwd(), 'public/blog/images')
 

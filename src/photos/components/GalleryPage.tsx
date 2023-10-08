@@ -13,7 +13,7 @@ export function GalleryPage({
     cityGalleries: CityGallery[]
     images: ImageProps[]
 }) {
-    const isCityGallery = 'city' in gallery
+    const isCityGallery = 'cityId' in gallery
 
     return (
         <Layout title={gallery.title} keywords={gallery.keywords}>
@@ -26,7 +26,7 @@ export function GalleryPage({
 
                 <GalleryGrid
                     gallery={gallery}
-                    city={isCityGallery ? gallery.city : undefined}
+                    cityId={isCityGallery ? gallery.cityId : undefined}
                     cityGalleries={cityGalleries}
                     images={images}
                 />

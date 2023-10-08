@@ -19,7 +19,7 @@ export function getPage(countryGallery: CountryGallery, cityGalleries: CityGalle
                 throw new Error(`no city name in URL: ${cityName}`)
             }
 
-            const cityGallery = cityGalleries.find(({ city }) => city === cityName)
+            const cityGallery = cityGalleries.find(({ cityId: city }) => city === cityName)
 
             if (!cityGallery) {
                 throw new Error(`invalid city name in URL: ${cityName}`)

@@ -1,4 +1,4 @@
-import { getCodeFenceConfig } from './getCodeFenceConfig'
+import { getCodeFenceConfig } from '@src/lib/getCodeFenceConfig'
 
 describe('getCodeFenceConfig', () => {
     describe('starting line number', () => {

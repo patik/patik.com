@@ -1,7 +1,7 @@
+import HeaderNav from '@src/components/common/HeaderNav'
 import Head from 'next/head'
 import { PropsWithChildren, ReactElement } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
-import HeaderNav from './HeaderNav'
 
 function FallbackComponent() {
     return <p>Something went wrong</p>

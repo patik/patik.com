@@ -1,10 +1,10 @@
+import { SyntaxHighlighter } from '@src/components/blog/SyntaxHighlighter'
+import config from '@src/config.json'
+import postBodyStyles from '@src/styles/blog/post-body.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
 import { SpecialComponents } from 'react-markdown/lib/ast-to-react'
 import { NormalComponents } from 'react-markdown/lib/complex-types'
-import config from '../../src/config.json'
-import postBodyStyles from '../../src/styles/blog/post-body.module.scss'
-import { SyntaxHighlighter } from '../components/blog/SyntaxHighlighter'
 
 const { blogPath } = config
 

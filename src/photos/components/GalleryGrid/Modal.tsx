@@ -21,7 +21,7 @@ export default function Modal({
     const index = Number(photoId)
     const [direction, setDirection] = useState(1)
     const [curIndex, setCurIndex] = useState(index)
-    const { country, city } = gallery
+    const { country, cityId: city } = gallery
 
     function handleClose() {
         router.push(`/travel/${country}/photos/`, undefined, { shallow: true })

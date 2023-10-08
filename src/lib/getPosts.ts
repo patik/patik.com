@@ -1,8 +1,8 @@
+import { withImageDimensions } from '@src/lib/withImageDimensions'
 import fs from 'fs'
 import matter from 'gray-matter'
 import { defaults, omit } from 'lodash'
 import { join } from 'path'
-import { withImageDimensions } from './withImageDimensions'
 
 const postsDirectory = join(process.cwd(), '_posts')
 

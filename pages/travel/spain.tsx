@@ -1,10 +1,10 @@
+import itineraryMapSmall from '@public/images/spain-itinerary-map-small.jpg'
+import linkWorldCup from '@public/images/spain-link-world-cup.jpg'
+import Layout from '@src/components/common/Layout'
+import Space from '@src/components/common/Space'
+import TravelLinkList from '@src/components/site/TravelLinkList'
 import Image from 'next/image'
 import Link from 'next/link'
-import itineraryMapSmall from '../../public/images/spain-itinerary-map-small.jpg'
-import linkWorldCup from '../../public/images/spain-link-world-cup.jpg'
-import Layout from '../../src/components/common/Layout'
-import Space from '../../src/components/common/Space'
-import TravelLinkList from '../../src/components/site/TravelLinkList'
 
 export default function Page() {
     return (

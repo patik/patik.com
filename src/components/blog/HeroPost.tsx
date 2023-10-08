@@ -1,6 +1,6 @@
+import DateFormatter from '@src/components/blog/DateFormatter'
+import config from '@src/config.json'
 import Link from 'next/link'
-import config from '../../../src/config.json'
-import DateFormatter from './DateFormatter'
 
 const { blogPath } = config
 

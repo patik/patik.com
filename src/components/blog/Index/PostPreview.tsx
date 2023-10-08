@@ -1,7 +1,7 @@
+import DateFormatter from '@src/components/blog/DateFormatter'
+import Excerpt from '@src/components/blog/Index/Excerpt'
+import config from '@src/config.json'
 import Link from 'next/link'
-import config from '../../../config.json'
-import DateFormatter from '../DateFormatter'
-import Excerpt from './Excerpt'
 
 const { blogPath } = config
 

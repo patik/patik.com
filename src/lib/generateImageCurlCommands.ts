@@ -1,4 +1,4 @@
-import { getPostSlugs, getPostBySlug } from './getPosts'
+import { getPostBySlug, getPostSlugs } from '@src/lib/getPosts'
 
 type Item = { slug: string; images: string[] }
 

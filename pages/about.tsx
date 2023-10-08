@@ -1,6 +1,6 @@
+import Layout from '@src/components/common/Layout'
+import Space from '@src/components/common/Space'
 import Link from 'next/link'
-import Layout from '../src/components/common/Layout'
-import Space from '../src/components/common/Space'
 
 export default function Page() {
     return (

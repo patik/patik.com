@@ -1,13 +1,13 @@
+import Container from '@src/components/blog/Container'
+import Discussion from '@src/components/blog/Discussion'
+import Layout from '@src/components/blog/Layout'
+import Meta from '@src/components/blog/Meta'
+import PageHeader from '@src/components/blog/Post/PageHeader'
+import PostBody from '@src/components/blog/Post/PostBody'
+import PostHeader from '@src/components/blog/Post/PostHeader'
+import PostTitle from '@src/components/blog/Post/PostTitle'
+import config from '@src/config.json'
 import Head from 'next/head'
-import config from '../../../config.json'
-import Container from '../Container'
-import Discussion from '../Discussion'
-import Layout from '../Layout'
-import Meta from '../Meta'
-import PageHeader from './PageHeader'
-import PostBody from './PostBody'
-import PostHeader from './PostHeader'
-import PostTitle from './PostTitle'
 
 const { blogUrl, blogDescription } = config
 

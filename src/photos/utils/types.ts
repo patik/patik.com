@@ -70,5 +70,5 @@ export type CountryGallery = {
 }
 
 export type CityGallery = CountryGallery & {
-    city: string
+    cityId: string
 }
