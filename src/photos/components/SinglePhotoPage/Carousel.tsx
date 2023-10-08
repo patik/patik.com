@@ -19,7 +19,7 @@ export default function Carousel({
 }) {
     const router = useRouter()
     const [, setLastViewedPhoto] = useLastViewedPhoto()
-    const { country } = cityGallery
+    const { countryId: country } = cityGallery
     const [direction, setDirection] = useState(1)
 
     function closeModal() {

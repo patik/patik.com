@@ -54,7 +54,7 @@ const GalleryGrid: NextPage<Props> = ({ gallery, images, cityId, cityGalleries }
                         gallery={gallery}
                     />
                 ) : null}
-                {cityGalleries.map(({ country, cityId: city, title }) => (
+                {cityGalleries.map(({ countryId: country, cityId: city, title }) => (
                     <Fragment key={city}>
                         <h2>{isCityGallery ? title : <Link href={`./${city}`}>{title}</Link>}</h2>
                         <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 auto-rows-fr gap-4">

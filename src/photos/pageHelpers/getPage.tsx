@@ -47,7 +47,9 @@ export function getPage(countryGallery: CountryGallery, cityGalleries: CityGalle
                         <h1>{countryGallery.title}</h1>
 
                         <p>
-                            <Link href={`/travel/${countryGallery.country}`}>{`Back to ${countryGallery.title}`}</Link>
+                            <Link
+                                href={`/travel/${countryGallery.countryId}`}
+                            >{`Back to ${countryGallery.title}`}</Link>
                         </p>
 
                         <SinglePhotoPage cityGallery={cityGallery} currentPhoto={currentPhoto} images={images} />

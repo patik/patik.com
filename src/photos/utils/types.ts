@@ -63,7 +63,8 @@ export type CloudinaryResult = {
 }
 
 export type CountryGallery = {
-    country: string
+    countryId: string
+    countryName: string
     cloudinaryFolder: string
     title: string
     keywords: Array<string>

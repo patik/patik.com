@@ -18,7 +18,9 @@ export function GalleryPage({
     return (
         <Layout title={gallery.title} keywords={gallery.keywords}>
             <h1>
-                <Link href={`/travel/${countryGallery.country}`}>{gallery.title}</Link>
+                <Link href={`/travel/${countryGallery.countryId}`}>
+                    {isCityGallery ? gallery.countryName : gallery.title}
+                </Link>
             </h1>
 
             <section>
