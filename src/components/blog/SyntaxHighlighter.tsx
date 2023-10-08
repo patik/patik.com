@@ -1,5 +1,5 @@
 import { CodeFenceConfig, getCodeFenceConfig } from '@src/lib/getCodeFenceConfig'
-import postBodyStyles from '@styles/blog/post-body.module.scss'
+import postBodyStyles from '@src/styles/blog/post-body.module.scss'
 import { omit } from 'lodash'
 import { useEffect, useMemo, useState } from 'react'
 import { PrismLight } from 'react-syntax-highlighter'

@@ -43,6 +43,8 @@ export default function Carousel({
 
     useKeyHandlers({ closeModal, images, index, changePhotoId })
 
+    console.log('currentPhoto.public_id ', currentPhoto.public_id)
+
     return (
         <div className="carousel-wrapper fixed inset-0 flex items-center justify-center">
             <button className="absolute inset-0 z-30 cursor-default bg-black backdrop-blur-2xl" onClick={closeModal}>

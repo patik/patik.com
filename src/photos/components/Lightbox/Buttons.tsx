@@ -26,7 +26,7 @@ export default function Buttons({
 }) {
     return (
         <div
-            className="nav-button-wrapper absolute top-0 right-0 bottom-0 right-0 max-h-full w-full"
+            className="nav-button-wrapper top-0 right-0 bottom-0 right-0 max-h-full w-full"
             style={{ backgroundColor: '#9933006' }}
         >
             {navigation ? (

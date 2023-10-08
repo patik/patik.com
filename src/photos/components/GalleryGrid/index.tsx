@@ -37,7 +37,7 @@ const GalleryGrid: NextPage<Props> = ({ gallery, images, cityId, cityGalleries }
         <>
             <Head>
                 <title>{cloudinaryFolder}</title>
-                {images && images.length > 0 ? (
+                {images.length > 0 ? (
                     <>
                         <meta property="og:image" content={getImageUrl(images[0])} />
                         <meta name="twitter:image" content={getImageUrl(images[0])} />
@@ -71,7 +71,7 @@ const GalleryGrid: NextPage<Props> = ({ gallery, images, cityId, cityGalleries }
                                     >
                                         <Image
                                             alt={`${title} ${resource_type}`}
-                                            className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
+                                            className="blurred-photo transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
                                             style={{
                                                 transform: 'translate3d(0, 0, 0)',
                                                 width: '100%',

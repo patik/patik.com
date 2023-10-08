@@ -42,16 +42,7 @@ export default function Lightbox({
                 opacity: { duration: 0.2 },
             }}
         >
-            <div
-                className="absolute z-50"
-                style={{
-                    top: 0,
-                    bottom: 0,
-                    right: 0,
-                    left: 0,
-                }}
-                {...handlers}
-            >
+            <div className="absolute z-50 top-0 bottom-0 right-0 left-0" {...handlers}>
                 <MainImage
                     direction={direction}
                     index={index}
@@ -59,31 +50,30 @@ export default function Lightbox({
                     navigation={navigation}
                     title={title}
                     setLoaded={setLoaded}
+                    handlers={handlers}
                 />
-
-                {/* Buttons + bottom nav bar */}
-                <div className="absolute inset-0 mx-auto flex max-w-7xl items-center justify-center">
-                    {/* Buttons */}
-                    {loaded ? (
-                        <Buttons
-                            navigation={navigation}
-                            index={index}
-                            changePhotoId={changePhotoId}
-                            images={images}
-                            currentImage={currentImage}
-                            closeModal={closeModal}
-                        />
-                    ) : null}
-                    {/* Bottom Nav bar */}
-                    {navigation ? (
+                {/* Buttons */}
+                {loaded ? (
+                    <Buttons
+                        navigation={navigation}
+                        index={index}
+                        changePhotoId={changePhotoId}
+                        images={images}
+                        currentImage={currentImage}
+                        closeModal={closeModal}
+                    />
+                ) : null}
+                {/* Bottom nav bar */}
+                {navigation ? (
+                    <div className="inset-0 mx-auto flex max-w-7xl items-center justify-center">
                         <BottomNavigation
                             filteredImages={filteredImages}
                             index={index}
                             changePhotoId={changePhotoId}
                             images={images}
                         />
-                    ) : null}
-                </div>
+                    </div>
+                ) : null}
             </div>
         </MotionConfig>
     )

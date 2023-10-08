@@ -2,6 +2,7 @@ import { CountryGallery } from '@src/photos/utils/types'
 
 const countryGallery: CountryGallery = {
     countryId: 'uzbekistan',
+    countryName: 'Uzbekistan',
     cloudinaryFolder: 'Uzbekistan\\ 2023/Samarkand',
     title: 'Uzbekistan',
     keywords: [

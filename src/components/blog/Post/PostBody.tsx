@@ -1,6 +1,6 @@
 import MarkdownBody from '@src/components/blog/Post/MarkdownBody'
-import markdownStyles from '@styles/blog/markdown-styles.module.css'
-import postBodyStyles from '@styles/blog/post-body.module.scss'
+import markdownStyles from '@src/styles/blog/markdown-styles.module.css'
+import postBodyStyles from '@src/styles/blog/post-body.module.scss'
 
 type Props = {
     slug: string

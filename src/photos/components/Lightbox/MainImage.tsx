@@ -3,6 +3,7 @@ import getImageUrl from '@src/photos/utils/getImageUrl'
 import type { ImageProps } from '@src/photos/utils/types'
 import { AnimatePresence, motion } from 'framer-motion'
 import Image from 'next/image'
+import { SwipeableHandlers } from 'react-swipeable'
 
 export default function MainImage({
     direction,
@@ -11,6 +12,7 @@ export default function MainImage({
     navigation,
     title,
     setLoaded,
+    handlers,
 }: {
     direction: number | undefined
     index: number
@@ -18,6 +20,7 @@ export default function MainImage({
     navigation?: boolean
     title: string
     setLoaded: (val: boolean) => void
+    handlers: SwipeableHandlers
 }) {
     if (!currentImage) {
         return <p>No photo!</p>
@@ -57,6 +60,7 @@ export default function MainImage({
                             maxWidth: isPortrait ? 'auto' : '100vw',
                             objectFit: 'contain',
                         }}
+                        {...handlers}
                     />
                 ) : (
                     // eslint-disable-next-line jsx-a11y/media-has-caption
@@ -68,6 +72,7 @@ export default function MainImage({
                             console.log('onCanPlay')
                             setLoaded(true)
                         }}
+                        {...handlers}
                     >
                         <source src={currentImage.secure_url} type="video/mp4" />
                     </video>
