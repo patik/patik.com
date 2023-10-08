@@ -24,6 +24,40 @@ export default function BottomNavigation({
                     ? filteredImages.map((image) => {
                           const { id } = image
 
+                          const buttonClasses = [
+                              `blur-wrapper`,
+                              'relative',
+                              'inline-block',
+                              'w-full',
+                              'shrink-0',
+                              'transform-gpu',
+                              'overflow-hidden',
+                              'focus:outline-none',
+                              'p-0',
+                          ]
+
+                          if (id === index) {
+                              buttonClasses.push('z-20', 'rounded-md', 'shadow', 'shadow-black/50')
+                          } else {
+                              buttonClasses.push('z-10')
+                          }
+
+                          if (id === 0) {
+                              buttonClasses.push('rounded-l-md')
+                          }
+
+                          if (images && id === images.length - 1) {
+                              buttonClasses.push('rounded-r-md')
+                          }
+
+                          const imageClasses = [`h-full`, `transform`, `object-cover`, `transition`]
+
+                          if (id === index) {
+                              buttonClasses.push('brightness-110', 'hover:brightness-110')
+                          } else {
+                              buttonClasses.push('brightness-50', 'contrast-125', 'hover:brightness-75')
+                          }
+
                           return (
                               <motion.button
                                   initial={{
@@ -38,21 +72,13 @@ export default function BottomNavigation({
                                   exit={{ width: '0%' }}
                                   onClick={() => changePhotoId(id)}
                                   key={id}
-                                  className={`blur-wrapper ${
-                                      id === index ? 'z-20 rounded-md shadow shadow-black/50' : 'z-10'
-                                  } ${id === 0 ? 'rounded-l-md' : ''} ${
-                                      images && id === images.length - 1 ? 'rounded-r-md' : ''
-                                  } relative inline-block w-full shrink-0 transform-gpu overflow-hidden focus:outline-none`}
+                                  className={buttonClasses.join(' ')}
                               >
                                   <Image
                                       alt=""
                                       width={180}
                                       height={120}
-                                      className={`${
-                                          id === index
-                                              ? 'brightness-110 hover:brightness-110'
-                                              : 'brightness-50 contrast-125 hover:brightness-75'
-                                      } h-full transform object-cover transition`}
+                                      className={imageClasses.join(' ')}
                                       src={getImageUrl(image, 180)}
                                   />
                               </motion.button>
