@@ -3,7 +3,7 @@ import { NextRouter } from 'next/router'
 export function getChangePhotoId({
     setLastViewedPhoto,
     setDirection,
-    setCurIndex,
+    setCurrIndex,
     router,
     index,
     countryId,
@@ -11,7 +11,7 @@ export function getChangePhotoId({
 }: {
     setLastViewedPhoto: (newVal: number) => void
     setDirection: (newVal: number) => void
-    setCurIndex?: (newVal: number) => void
+    setCurrIndex?: (newVal: number) => void
     router: NextRouter
     index: number
     countryId: string
@@ -26,8 +26,8 @@ export function getChangePhotoId({
             setDirection(-1)
         }
 
-        if (setCurIndex) {
-            setCurIndex(newVal)
+        if (setCurrIndex) {
+            setCurrIndex(newVal)
         }
 
         const pathname = `/travel/${countryId}/photos/${cityId}/${newVal}`

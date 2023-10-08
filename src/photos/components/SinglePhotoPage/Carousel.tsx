@@ -22,6 +22,7 @@ export default function Carousel({
     const [, setLastViewedPhoto] = useLastViewedPhoto()
     const { countryId, cityId } = cityGallery
     const [direction, setDirection] = useState(1)
+    const [currIndex, setCurrIndex] = useState(index)
 
     function closeModal() {
         setLastViewedPhoto(currentPhoto.id)
@@ -31,6 +32,7 @@ export default function Carousel({
     const changePhotoId = getChangePhotoId({
         setLastViewedPhoto,
         setDirection,
+        setCurrIndex,
         router,
         index,
         countryId,
@@ -53,7 +55,7 @@ export default function Carousel({
                 ) : null}
             </button>
             <Lightbox
-                index={index}
+                index={currIndex}
                 images={images}
                 direction={direction}
                 changePhotoId={changePhotoId}

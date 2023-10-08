@@ -22,7 +22,7 @@ export default function Modal({
     const { photoId } = router.query
     const index = Number(photoId)
     const [direction, setDirection] = useState(1)
-    const [curIndex, setCurIndex] = useState(index)
+    const [currIndex, setCurrIndex] = useState(index)
     const { countryId, cityId } = gallery
     const [, setLastViewedPhoto] = useLastViewedPhoto()
 
@@ -37,7 +37,7 @@ export default function Modal({
     const changePhotoId = getChangePhotoId({
         setLastViewedPhoto,
         setDirection,
-        setCurIndex,
+        setCurrIndex,
         router,
         index,
         countryId,
@@ -63,7 +63,7 @@ export default function Modal({
                 animate={{ opacity: 1 }}
             />
             <Lightbox
-                index={curIndex}
+                index={currIndex}
                 direction={direction}
                 images={images}
                 changePhotoId={changePhotoId}
