@@ -1,6 +1,7 @@
 import Image, { StaticImageData } from 'next/image'
 import Link from 'next/link'
 import { ReactNode } from 'react'
+import { AppErrorBoundary } from '../common/AppErrorBoundary'
 
 type Item = {
     imageSrc: StaticImageData
@@ -16,7 +17,11 @@ function TravelLinkItem({ item }: { item: Item }) {
 
     return (
         <LinkComponent className={className} href={url}>
-            <Image src={imageSrc} alt={imageAlt} />
+            <div style={{ display: 'block', width: '200px', height: '200px' }}>
+                <AppErrorBoundary>
+                    <Image src={imageSrc} alt={imageAlt} priority />
+                </AppErrorBoundary>
+            </div>
             <span>{title}</span>
             <div className="image-cover"></div>
         </LinkComponent>
