@@ -13,13 +13,13 @@
         "lint": "yarn next lint && yarn tsc --noEmit && yarn find-unused-sass-variables src/styles",
         "test": "yarn test:blog",
         "test:blog": "jest --config ./jest.config.js",
-        "clean": "git clean -fdx"
+        "clean": "rm -rf node_modules; rm -rf out; rm -rf .next; rm next-env.d.ts"
     },
     "dependencies": {
         "@headlessui/react": "^1.7.14",
         "@heroicons/react": "^2.0.17",
         "classnames": "^2.3.2",
-        "cloudinary": "^1.36.4",
+        "cloudinary": "^1.41.1",
         "date-fns": "^2.30.0",
         "disqus-react": "^1.1.5",
         "framer-motion": "^10.12.8",
