@@ -27,6 +27,9 @@ jobs:
           cache: 'yarn'
       - run: yarn install
       - run: yarn build
+        env:
+          CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
+          CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
       - run: yarn lint
       - run: yarn test
       - name: Get yarn cache directory path
