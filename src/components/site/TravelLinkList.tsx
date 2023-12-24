@@ -1,8 +1,6 @@
 import Image, { StaticImageData } from 'next/image'
 import Link from 'next/link'
 import { ReactNode } from 'react'
-import { AppErrorBoundary } from '../common/AppErrorBoundary'
-import { omit } from 'lodash'
 
 type Item = {
     imageSrc: StaticImageData
@@ -19,11 +17,7 @@ function TravelLinkItem({ item }: { item: Item }) {
 
     return (
         <LinkComponent className={className} href={url}>
-            <div style={{ display: 'block', width: '200px', height: '200px' }}>
-                <AppErrorBoundary>
-                    <Image alt={imageAlt} priority {...omit(imageSrc, ['blurHeight', 'blurWidth'])} />
-                </AppErrorBoundary>
-            </div>
+            <Image alt={imageAlt} src={imageSrc} />
             <span>{title}</span>
             <div className="image-cover"></div>
         </LinkComponent>
