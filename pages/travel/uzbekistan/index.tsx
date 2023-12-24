@@ -1,25 +1,13 @@
-import BukharaImage from '../../public/images/uzbekistan-bukhara-minaret.jpg'
-import KhivaImage from '../../public/images/uzbekistan-khiva-night.jpg'
-import SamarkandImage from '../../public/images/uzbekistan-samarkand-dome.jpg'
-import Layout from '../../src/components/common/Layout'
-import TravelLinkList from '../../src/components/site/TravelLinkList'
+import BukharaImage from '@public/images/uzbekistan-bukhara-minaret.jpg'
+import KhivaImage from '@public/images/uzbekistan-khiva-night.jpg'
+import SamarkandImage from '@public/images/uzbekistan-samarkand-dome.jpg'
+import Layout from '@src/components/common/Layout'
+import TravelLinkList from '@src/components/site/TravelLinkList'
+import countryGallery from '@src/galleries/uzbekistan'
 
 export default function Page() {
     return (
-        <Layout
-            title="Uzbekistan"
-            keywords={[
-                'Uzbekistan',
-                'Tashkent',
-                'Bukhara',
-                'Samarkand',
-                'Khiva',
-                'Asia',
-                'Central Asia',
-                'Silk road',
-                'travel',
-            ]}
-        >
+        <Layout title="Uzbekistan" keywords={countryGallery.keywords}>
             <h1>Uzbekistan</h1>
 
             <p>A beautiful country full of Islamic architecture that had only just opened up to mass tourism</p>
@@ -39,7 +27,8 @@ export default function Page() {
                         {
                             title: 'Samarkand',
                             className: 'bg-travel-bottom-middle',
-                            url: 'https://www.icloud.com/sharedalbum/#B0x5n8hH43fN8G',
+                            // url: 'https://www.icloud.com/sharedalbum/#B0x5n8hH43fN8G',
+                            url: '/travel/uzbekistan/photos/samarkand/',
                             imageSrc: SamarkandImage,
                             imageAlt: 'The gold and blue interior of a mausoleum dome',
                         },

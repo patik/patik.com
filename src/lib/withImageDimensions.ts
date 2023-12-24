@@ -1,9 +1,9 @@
+import { PartialPost } from '@src/lib/getPosts'
 import fs from 'fs'
 import imageSize from 'image-size'
 import { ISizeCalculationResult } from 'image-size/dist/types/interface'
 import { join } from 'path'
 import { promisify } from 'util'
-import { PartialPost } from './getPosts'
 
 const imagesDirectory = join(process.cwd(), 'public/blog/images')
 
@@ -33,7 +33,7 @@ export async function withImageDimensions(post: PartialPost): Promise<PartialPos
     const imagesMetadata: Record<string, ISizeCalculationResult> = {}
 
     for (const imagePath of imageFiles) {
-        console.log(`getting image for path ${postImagesPath}/${imagePath}`)
+        // console.log(`getting image for path ${postImagesPath}/${imagePath}`)
         imagesMetadata[imagePath] = await getDimensions(`${postImagesPath}/${imagePath}`)
     }
 

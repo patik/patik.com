@@ -1,4 +1,5 @@
 declare module 'remark-change-image-paths'
+declare module 'react-use-keypress'
 
 interface Window {
     Typekit: {

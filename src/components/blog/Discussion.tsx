@@ -1,5 +1,5 @@
+import config from '@src/config.json'
 import { DiscussionEmbed } from 'disqus-react'
-import config from '../../config.json'
 
 const { blogUrl } = config
 

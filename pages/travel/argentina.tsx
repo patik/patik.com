@@ -1,10 +1,10 @@
+import ColoniaImage from '@public/images/peru-argentina-link-colonia.jpg'
+import MapSmall from '@public/images/peru-argentina-map-small.png'
+import Layout from '@src/components/common/Layout'
+import Space from '@src/components/common/Space'
+import TravelLinkList from '@src/components/site/TravelLinkList'
 import Image from 'next/image'
 import Link from 'next/link'
-import ColoniaImage from '../../public/images/peru-argentina-link-colonia.jpg'
-import MapSmall from '../../public/images/peru-argentina-map-small.png'
-import Layout from '../../src/components/common/Layout'
-import Space from '../../src/components/common/Space'
-import TravelLinkList from '../../src/components/site/TravelLinkList'
 
 export default function Page() {
     return (
@@ -14,8 +14,9 @@ export default function Page() {
             <p>
                 Our first forage into the southern hemisphere brought us everywhere from the
                 <Space />
-                <Link href="/travel/peru/">Amazon rainforest and Machu Picchu</Link> to Europe-esque Buenos Aires and a
-                quiet estancia.
+                <Link href="/travel/peru/">Amazon rainforest and Machu Picchu</Link>
+                <Space />
+                to Europe-esque Buenos Aires and a quiet estancia.
             </p>
 
             <section>

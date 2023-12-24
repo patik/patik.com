@@ -1,9 +1,9 @@
+import BrugesImage from '@public/images/britain-benelux-bruges-link.jpg'
+import OverviewMap from '@public/images/britain-benelux-overview-map-small.jpg'
+import Layout from '@src/components/common/Layout'
+import TravelLinkList from '@src/components/site/TravelLinkList'
 import Image from 'next/image'
 import Link from 'next/link'
-import BrugesImage from '../../public/images/britain-benelux-bruges-link.jpg'
-import OverviewMap from '../../public/images/britain-benelux-overview-map-small.jpg'
-import Layout from '../../src/components/common/Layout'
-import TravelLinkList from '../../src/components/site/TravelLinkList'
 
 export default function Page() {
     return (

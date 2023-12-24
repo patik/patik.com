@@ -1,10 +1,10 @@
+import { CodeFenceConfig, getCodeFenceConfig } from '@src/lib/getCodeFenceConfig'
+import postBodyStyles from '@src/styles/blog/post-body.module.scss'
 import { omit } from 'lodash'
 import { useEffect, useMemo, useState } from 'react'
 import { PrismLight } from 'react-syntax-highlighter'
 import javascript from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript'
 import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
-import postBodyStyles from '../../styles/blog/post-body.module.scss'
-import { CodeFenceConfig, getCodeFenceConfig } from '../../lib/getCodeFenceConfig'
 
 PrismLight.registerLanguage('javascript', javascript)
 

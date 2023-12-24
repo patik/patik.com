@@ -1,4 +1,4 @@
-import { getAllPosts, hideUnpublishedValue } from './getPosts'
+import { getAllPosts, hideUnpublishedValue } from '@src/lib/getPosts'
 
 const publishedPost = {
     slug: 'alpha',

@@ -1,9 +1,12 @@
+import config from '@src/config.json'
 import type { AppProps } from 'next/app'
 import NextHead from 'next/head'
-import config from '../src/config.json'
-import '../src/styles/site/globals.css'
-import '../src/styles/site/scss/style.scss'
-import '../src/styles/blog/index.css'
+
+// Side effects
+import '@src/styles/blog/index.css'
+import '@src/styles/photos.css'
+import '@src/styles/site/globals.css'
+import '@src/styles/site/scss/style.scss'
 
 const { description } = config
 

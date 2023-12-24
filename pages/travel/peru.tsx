@@ -1,11 +1,11 @@
+import AmazonImage from '@public/images/peru-argentina-link-amazon.jpg'
+import CuscoImage from '@public/images/peru-argentina-link-cusco.jpg'
+import MapSmall from '@public/images/peru-argentina-map-small.png'
+import Layout from '@src/components/common/Layout'
+import Space from '@src/components/common/Space'
+import TravelLinkList from '@src/components/site/TravelLinkList'
 import Image from 'next/image'
 import Link from 'next/link'
-import AmazonImage from '../../public/images/peru-argentina-link-amazon.jpg'
-import CuscoImage from '../../public/images/peru-argentina-link-cusco.jpg'
-import MapSmall from '../../public/images/peru-argentina-map-small.png'
-import Layout from '../../src/components/common/Layout'
-import Space from '../../src/components/common/Space'
-import TravelLinkList from '../../src/components/site/TravelLinkList'
 
 export default function Page() {
     return (

@@ -1,0 +1,76 @@
+import { getPhotoIdFromRouter } from '@src/photos/pageHelpers/getPhotoIdFromRouter'
+import cloudinary from '@src/photos/utils/cloudinary'
+import getBase64ImageUrl from '@src/photos/utils/generateBlurPlaceholder'
+import { CityGallery, CloundinaryResource, ImageProps, PageProps } from '@src/photos/utils/types'
+import { GetStaticPropsContext } from 'next'
+
+export default async function getGalleryStaticProps(
+    galleries: Pick<CityGallery, 'cloudinaryFolder'>[],
+    context: GetStaticPropsContext
+): Promise<{ props: PageProps }> {
+    const photoIdFromProps = getPhotoIdFromRouter(context.params)
+    let images: ImageProps[] = []
+
+    await Promise.all(
+        galleries.map(async ({ cloudinaryFolder }) => {
+            const results: { resources: CloundinaryResource[] } = await cloudinary.v2.search
+                .expression(`folder:${cloudinaryFolder}/*`)
+                .sort_by('public_id', 'desc')
+                .max_results(100)
+                .execute()
+            const reducedResults: ImageProps[] = []
+
+            let i = 0
+            for (const result of results.resources) {
+                reducedResults.push({
+                    id: i,
+                    height: result.height,
+                    width: result.width,
+                    public_id: result.public_id,
+                    format: result.format,
+                    secure_url: result.secure_url,
+                    resource_type: result.resource_type,
+                })
+                i++
+            }
+
+            const blurImagePromises = reducedResults.map((image) => {
+                return getBase64ImageUrl(image)
+            })
+            const imagesWithBlurDataUrls = await Promise.all(blurImagePromises)
+
+            for (let i = 0; i < reducedResults.length; i++) {
+                reducedResults[i].blurDataUrl = imagesWithBlurDataUrls[i]
+            }
+
+            console.log(`Found ${reducedResults.length} images in folder ${cloudinaryFolder}`)
+
+            images = images.concat(reducedResults)
+        })
+    )
+
+    console.log(`Found ${images.length} total images across ${galleries.length} galleries`)
+
+    if (images.length === 0) {
+        console.error('no images found')
+    }
+
+    let currentPhoto = null
+
+    if (photoIdFromProps !== undefined) {
+        currentPhoto = images.find((img) => img.id === photoIdFromProps) ?? null
+
+        if (currentPhoto) {
+            currentPhoto.blurDataUrl = await getBase64ImageUrl(currentPhoto)
+        } else {
+            throw new Error('could not find photo in PhotoPageGetStaticProps')
+        }
+    }
+
+    return {
+        props: {
+            images,
+            currentPhoto,
+        },
+    }
+}

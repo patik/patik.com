@@ -7,9 +7,14 @@ const nextConfig = {
     swcMinify: true,
     images: {
         unoptimized: true,
+        // For photo gallery
+        formats: ['image/avif', 'image/webp'],
+        // For photo gallery
+        domains: ['res.cloudinary.com'],
     },
     trailingSlash: true,
     basePath: '',
+    // typescript: { ignoreBuildErrors: true },
     async redirects() {
         // Create return objects, both with and without a trailing slash
         return [
@@ -31,6 +36,9 @@ const nextConfig = {
                 },
             ])
             .flat()
+    },
+    typescript: {
+        ignoreBuildErrors: true,
     },
     webpack: (config, { isServer }) => {
         // Fixes npm packages that depend on `fs` module

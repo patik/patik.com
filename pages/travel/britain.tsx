@@ -1,12 +1,12 @@
+import EdinburghImage from '@public/images/britain-benelux-edinburgh-link.jpg'
+import LiverpoolImage from '@public/images/britain-benelux-liverpool-link.jpg'
+import LondonImage from '@public/images/britain-benelux-london-link.jpg'
+import OverviewMap from '@public/images/britain-benelux-overview-map-small.jpg'
+import Layout from '@src/components/common/Layout'
+import Space from '@src/components/common/Space'
+import TravelLinkList from '@src/components/site/TravelLinkList'
 import Image from 'next/image'
 import Link from 'next/link'
-import EdinburghImage from '../../public/images/britain-benelux-edinburgh-link.jpg'
-import LiverpoolImage from '../../public/images/britain-benelux-liverpool-link.jpg'
-import LondonImage from '../../public/images/britain-benelux-london-link.jpg'
-import OverviewMap from '../../public/images/britain-benelux-overview-map-small.jpg'
-import Layout from '../../src/components/common/Layout'
-import Space from '../../src/components/common/Space'
-import TravelLinkList from '../../src/components/site/TravelLinkList'
 
 export default function Page() {
     return (

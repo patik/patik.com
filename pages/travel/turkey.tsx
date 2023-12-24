@@ -1,13 +1,13 @@
+import CappadociaImage from '@public/images/turkey-link-cappadocia.jpg'
+import CiraliImage from '@public/images/turkey-link-cirali.jpg'
+import EphesusImage from '@public/images/turkey-link-ephesus.jpg'
+import IstanbulImage from '@public/images/turkey-link-istanbul.jpg'
+import OverviewMap from '@public/images/turkey-overview-map-small.jpg'
+import Layout from '@src/components/common/Layout'
+import Space from '@src/components/common/Space'
+import TravelLinkList from '@src/components/site/TravelLinkList'
 import Image from 'next/image'
 import Link from 'next/link'
-import CappadociaImage from '../../public/images/turkey-link-cappadocia.jpg'
-import CiraliImage from '../../public/images/turkey-link-cirali.jpg'
-import EphesusImage from '../../public/images/turkey-link-ephesus.jpg'
-import IstanbulImage from '../../public/images/turkey-link-istanbul.jpg'
-import OverviewMap from '../../public/images/turkey-overview-map-small.jpg'
-import Layout from '../../src/components/common/Layout'
-import Space from '../../src/components/common/Space'
-import TravelLinkList from '../../src/components/site/TravelLinkList'
 
 export default function Page() {
     return (

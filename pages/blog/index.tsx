@@ -1,14 +1,14 @@
+import Container from '@src/components/blog/Container'
+import HeroPost from '@src/components/blog/HeroPost'
+import Intro from '@src/components/blog/Index/Intro'
+import MoreStories from '@src/components/blog/Index/MoreStories'
+import Layout from '@src/components/blog/Layout'
+import Meta from '@src/components/blog/Meta'
+import config from '@src/config.json'
+import { generateSiteMap } from '@src/lib/generateSiteMap'
+import { getAllPosts, toCompletePost } from '@src/lib/getPosts'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import Container from '../../src/components/blog/Container'
-import HeroPost from '../../src/components/blog/HeroPost'
-import Intro from '../../src/components/blog/Index/Intro'
-import MoreStories from '../../src/components/blog/Index/MoreStories'
-import Layout from '../../src/components/blog/Layout'
-import Meta from '../../src/components/blog/Meta'
-import config from '../../src/config.json'
-import { generateSiteMap } from '../../src/lib/generateSiteMap'
-import { getAllPosts, toCompletePost } from '../../src/lib/getPosts'
 
 const { blogDescription, blogUrl, blogPath } = config
 
