@@ -58,7 +58,7 @@ export function getMarkdownComponents({
                 </a>
             )
         },
-        code({ className, children, node, ...props }) {
+        code({ className, children, node }) {
             const isInline = node?.children[0].type === 'text' && !node?.children[0].value.includes('\n')
 
             if (isInline) {
