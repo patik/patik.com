@@ -21,7 +21,6 @@
         "classnames": "^2.3.3",
         "cloudinary": "^1.41.1",
         "date-fns": "^3.0.6",
-        "disqus-react": "^1.1.5",
         "framer-motion": "^10.16.16",
         "gray-matter": "^4.0.3",
         "imagemin": "^8.0.1",

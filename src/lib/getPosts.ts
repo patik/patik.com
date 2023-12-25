@@ -84,7 +84,6 @@ export function toCompletePost(items: PartialPost): BlogPost {
             coverImage: '',
             ogImage: '',
             content: '',
-            dsq_thread_id: '',
         }
     )
 }
