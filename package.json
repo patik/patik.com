@@ -44,7 +44,7 @@
     },
     "devDependencies": {
         "@types/google.visualization": "^0.0.72",
-        "@types/imagemin": "^8.0.1",
+        "@types/imagemin": "^8.0.5",
         "@types/imagemin-jpegtran": "^5.0.1",
         "@types/jest": "^29.5.0",
         "@types/lodash": "^4.14.194",
