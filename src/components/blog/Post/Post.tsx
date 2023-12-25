@@ -1,5 +1,4 @@
 import Container from '@src/components/blog/Container'
-import Discussion from '@src/components/blog/Discussion'
 import Layout from '@src/components/blog/Layout'
 import Meta from '@src/components/blog/Meta'
 import PageHeader from '@src/components/blog/Post/PageHeader'
@@ -26,11 +25,9 @@ export default function Post({ post, isFallback }: Props) {
         excerpt,
         unpublished,
         imagesMetadata,
-        dsq_thread_id,
+
         syntaxHighlightSSRHack,
     } = post
-
-    // console.log('dsq_thread_id ', dsq_thread_id)
 
     return (
         <Layout unpublished={unpublished}>
@@ -58,9 +55,6 @@ export default function Post({ post, isFallback }: Props) {
                                 imagesMetadata={imagesMetadata}
                                 syntaxHighlightSSRHack={syntaxHighlightSSRHack}
                             />
-                            {dsq_thread_id ? (
-                                <Discussion dsqThreadId={dsq_thread_id} slug={slug} title={title} />
-                            ) : null}
                         </article>
                     </>
                 )}

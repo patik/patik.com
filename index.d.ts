@@ -19,7 +19,6 @@ type BlogPost = {
     ogImage: string
     content: string
     categories: string[]
-    dsq_thread_id: string
     unpublished?: boolean
     imagesMetadata: ImagesMetadata
     syntaxHighlightSSRHack?: boolean

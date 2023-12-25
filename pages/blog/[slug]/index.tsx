@@ -32,7 +32,6 @@ export async function getStaticProps({ params }: Params) {
         'ogImage',
         'coverImage',
         'categories',
-        'dsq_thread_id',
         'unpublished',
         'syntaxHighlightSSRHack',
     ])
