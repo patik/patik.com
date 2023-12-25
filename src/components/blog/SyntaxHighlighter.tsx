@@ -21,7 +21,7 @@ const syntaxTheme = oneDark
  * that other files don't need this hack and don't need to suffer from extra re-renders.
  *
  * The effect is that the syntax is not highlighted for the very first render, but this is very hard to notice.
-
+ *
  */
 export function SyntaxHighlighter({
     className,
