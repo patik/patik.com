@@ -1,14 +1,14 @@
 import { SyntaxHighlighter } from '@src/components/blog/SyntaxHighlighter'
 import config from '@src/config.json'
 import postBodyStyles from '@src/styles/blog/post-body.module.scss'
+import { omit } from 'lodash'
 import Image from 'next/image'
 import Link from 'next/link'
-import { SpecialComponents } from 'react-markdown/lib/ast-to-react'
-import { NormalComponents } from 'react-markdown/lib/complex-types'
+import { Components } from 'react-markdown'
 
 const { blogPath } = config
 
-type MarkdownComponents = Partial<Omit<NormalComponents, keyof SpecialComponents> & SpecialComponents>
+type MarkdownComponents = Components
 
 type BaseProps = {
     slug: string
@@ -46,7 +46,7 @@ export function getMarkdownComponents({
         a({ href, children, ...props }) {
             if (href && !/^javascript?:\/\//.test(href)) {
                 return (
-                    <Link href={href} {...props}>
+                    <Link href={href} {...omit(props, ['ref'])}>
                         {children}
                     </Link>
                 )
@@ -58,13 +58,16 @@ export function getMarkdownComponents({
                 </a>
             )
         },
-        code({ className, children, inline }) {
-            if (inline) {
+        code({ className, children, node }) {
+            const isInline = node?.children[0].type === 'text' && !node?.children[0].value.includes('\n')
+
+            if (isInline) {
                 return <code className={postBodyStyles['inline-code']}>{children}</code>
             }
 
             return (
                 <SyntaxHighlighter
+                    PreTag={isInline ? 'span' : 'div'}
                     className={`${className} ${postBodyStyles['codeFence']}`}
                     // Strip the extra new line that seems to be added to the end of code blocks by the markdown-to-html process; appears to be a standard issue because it's in react-markdown's docs examples
                     code={String(children).replace(/\n$/, '')}

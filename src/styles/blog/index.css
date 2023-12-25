@@ -32,3 +32,8 @@
         @apply list-decimal ml-8 mr-4;
     }
 }
+
+/* Fix to make Disqus use dark mode */
+#disqus_thread {
+    color-scheme: none;
+}
