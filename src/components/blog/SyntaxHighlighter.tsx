@@ -1,7 +1,7 @@
 import { CodeFenceConfig, getCodeFenceConfig } from '@src/lib/getCodeFenceConfig'
 import postBodyStyles from '@src/styles/blog/post-body.module.scss'
 import { omit } from 'lodash'
-import { useEffect, useMemo, useState } from 'react'
+import { ComponentType, useEffect, useMemo, useState } from 'react'
 import { PrismLight } from 'react-syntax-highlighter'
 import javascript from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript'
 import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
@@ -27,10 +27,12 @@ export function SyntaxHighlighter({
     className,
     code,
     syntaxHighlightSSRHack,
+    PreTag = 'div',
 }: {
     className?: string
     code: string
     syntaxHighlightSSRHack?: boolean
+    PreTag?: ComponentType<any> | keyof JSX.IntrinsicElements
 }) {
     // Parse my custom string to determine the language, line highlighting, and starting line for this code block
     const fullConfig = useMemo(() => getCodeFenceConfig(className), [className])
@@ -47,7 +49,7 @@ export function SyntaxHighlighter({
     return (
         <PrismLight
             style={syntaxTheme}
-            PreTag="div"
+            PreTag={PreTag}
             className={`${className} ${postBodyStyles['codeFence']}`}
             showLineNumbers
             wrapLines
