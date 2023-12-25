@@ -32,7 +32,7 @@ export function SyntaxHighlighter({
     className?: string
     code: string
     syntaxHighlightSSRHack?: boolean
-    PreTag?: ComponentType<any> | keyof JSX.IntrinsicElements
+    PreTag?: ComponentType<object> | keyof JSX.IntrinsicElements
 }) {
     // Parse my custom string to determine the language, line highlighting, and starting line for this code block
     const fullConfig = useMemo(() => getCodeFenceConfig(className), [className])
