@@ -82,20 +82,13 @@ export default function Buttons({
             <div className="absolute top-0 left-0 flex items-center gap-2 p-3 text-white">
                 <button
                     onClick={() => {
+                        // Only do this hack for single-image pages
+                        // See https://github.com/patik/patik.com/issues/174
                         if (images && images.length === 1) {
                             const path = router.asPath.replace(/\/$/, '')
                             const nextPath = path.slice(0, path.lastIndexOf('/') + 1)
+                            window.location.href = nextPath
                             closeModal()
-                            console.log('onClose going to: ', nextPath)
-                            router
-                                .push(nextPath, undefined, {
-                                    shallow: true,
-                                })
-                                .then(() => {
-                                    // This isn't a good solution to get all of the thumbnails from the gallery to display :/
-                                    // But it means that `getStaticProps` doesn't need to get all images for every single photo page
-                                    router.reload()
-                                })
                         } else {
                             closeModal()
                         }
