@@ -44,7 +44,7 @@ export default async function getGalleryStaticPaths(galleries: CityGallery[] = [
             const results = await cloudinary.v2.search
                 .expression(`folder:${cloudinaryFolder}/*`)
                 .sort_by('public_id', 'desc')
-                .max_results(2)
+                .max_results(10)
                 .execute()
 
             console.log('getGalleryStaticPaths results.resources.length: ', results.resources.length)
