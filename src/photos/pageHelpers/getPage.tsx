@@ -46,7 +46,6 @@ export function getPage(countryGallery: CountryGallery, cityGalleries: CityGalle
                     throw new Error('Missing the currentPhoto prop')
                 }
 
-                console.log('single photo page', { cityGallery, currentPhoto, images })
                 return (
                     <Layout title={countryGallery.title} keywords={cityGallery.keywords}>
                         <h1>{countryGallery.title}</h1>

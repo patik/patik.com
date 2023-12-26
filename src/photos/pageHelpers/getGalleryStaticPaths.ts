@@ -31,8 +31,8 @@ export default async function getGalleryStaticPaths(galleries: CityGallery[] = [
         params: { photos: undefined },
     })
 
-    await Promise.all(
-        galleries.map(async ({ cloudinaryFolder, cityId: city }) => {
+    async function forEachCityGallery({ cloudinaryFolder, cityId: city }: CityGallery) {
+        try {
             // City index page
             // /travel/country/photos/city1/
             fullPaths.push({
@@ -50,8 +50,12 @@ export default async function getGalleryStaticPaths(galleries: CityGallery[] = [
                 // console.log('[getGalleryStaticPaths] i.toString(): ', i.toString())
                 fullPaths.push({ params: { photos: [city, i.toString()] } })
             }
-        })
-    )
+        } catch (e) {
+            console.log('[getGalleryStaticPaths] error in forEachCityGallery: ', e)
+        }
+    }
+
+    await Promise.all(galleries.map(forEachCityGallery))
 
     console.log(`[getGalleryStaticPaths] created ${fullPaths.length} fullPaths`)
 

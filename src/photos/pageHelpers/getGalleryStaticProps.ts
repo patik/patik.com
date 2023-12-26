@@ -19,8 +19,8 @@ function getImagePropsFromCloudinaryResult(result: CloundinaryResource, indexOrP
 
 async function getReducedResults(cloudinaryFolder: CityGallery['cloudinaryFolder'], photoIdFromProps?: number) {
     const results: { resources: CloundinaryResource[] } = await fetchFolderFromAssetProvider(cloudinaryFolder)
-    console.log('[getGalleryStaticProps] results.resources.length: ', results.resources.length)
-    console.log('photoIdFromProps ', photoIdFromProps)
+    console.log('[getGalleryStaticProps, getReducedResults] results.resources.length: ', results.resources.length)
+    console.log('[getGalleryStaticProps, getReducedResults] photoIdFromProps ', photoIdFromProps)
     // // Index page, return all images' props
     // if (!photoIdFromProps) {
     return results.resources.reduce((acc, result, i) => {
@@ -40,21 +40,31 @@ function getGalleryMapper(
     photoIdFromProps?: number
 ): ({ cloudinaryFolder }: Pick<CityGallery, 'cloudinaryFolder'>) => Promise<ImageProps[]> {
     return async function getGalleryImages({ cloudinaryFolder }) {
-        const reducedResults = await getReducedResults(cloudinaryFolder, photoIdFromProps)
-        console.log('[getGalleryStaticProps] reducedResults.length: ', reducedResults.length)
+        try {
+            const reducedResults = await getReducedResults(cloudinaryFolder, photoIdFromProps)
+            console.log('[getGalleryStaticProps, getGalleryImages] reducedResults.length: ', reducedResults.length)
 
-        const blurImagePromises = reducedResults.map((image) => {
-            return getBase64ImageUrl(image)
-        })
-        const imagesWithBlurDataUrls = await Promise.all(blurImagePromises)
-        console.log('[getGalleryStaticProps] imagesWithBlurDataUrls.length: ', imagesWithBlurDataUrls.length)
-        for (let i = 0; i < reducedResults.length; i++) {
-            reducedResults[i].blurDataUrl = imagesWithBlurDataUrls[i]
+            const blurImagePromises = reducedResults.map((image) => {
+                return getBase64ImageUrl(image)
+            })
+            const imagesWithBlurDataUrls = await Promise.all(blurImagePromises)
+            console.log(
+                '[getGalleryStaticProps, getGalleryImages] imagesWithBlurDataUrls.length: ',
+                imagesWithBlurDataUrls.length
+            )
+            for (let i = 0; i < reducedResults.length; i++) {
+                reducedResults[i].blurDataUrl = imagesWithBlurDataUrls[i]
+            }
+
+            console.log(
+                `[getGalleryStaticProps, getGalleryImages] Found ${reducedResults.length} images in folder ${cloudinaryFolder}`
+            )
+            return reducedResults
+        } catch (e) {
+            console.log('[getGalleryStaticProps, getGalleryImages] error: ', e)
         }
 
-        console.log(`Found ${reducedResults.length} images in folder ${cloudinaryFolder}`)
-
-        return reducedResults
+        return []
     }
 }
 
