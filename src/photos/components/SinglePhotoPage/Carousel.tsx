@@ -3,6 +3,7 @@ import { getChangePhotoId } from '@src/photos/utils/getChangePhotoId'
 import type { CityGallery, ImageProps } from '@src/photos/utils/types'
 import { useKeyHandlers } from '@src/photos/utils/useKeyHandlers'
 import { useLastViewedPhoto } from '@src/photos/utils/useLastViewedPhoto'
+import { cloneDeep } from 'lodash'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
@@ -41,6 +42,7 @@ export default function Carousel({
 
     useKeyHandlers({ closeModal, images, index, changePhotoId })
 
+    console.log('Carousel currentPhoto ', cloneDeep(currentPhoto))
     return (
         <div className="carousel-wrapper fixed inset-0 flex items-center justify-center">
             <button className="absolute inset-0 z-30 cursor-default bg-black backdrop-blur-2xl" onClick={closeModal}>

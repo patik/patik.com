@@ -60,8 +60,8 @@ export default async function getBase64ImageUrl(image: ImageProps): Promise<stri
 
     const url = `data:image/jpeg;base64,${Buffer.from(minified).toString('base64')}`
     console.log('[getBase64ImageUrl] caching with image.public_id ', image.public_id)
-
     console.log(`[getBase64ImageUrl] writing ${url.length} chars to filePath: ${filePath}`)
+
     writeFileSync(filePath, url, 'utf8')
 
     // if (image.resource_type === 'video') {

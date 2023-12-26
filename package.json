@@ -7,13 +7,14 @@
     "scripts": {
         "copyimages": "node ./bin/copy-images.mjs",
         "prebuild": "yarn copyimages",
-        "build": "yarn copyimages && next build",
+        "clear-fetch-cache": "rm -rf tmp",
+        "build": "yarn clear-fetch-cache; yarn copyimages && next build",
         "start": "yarn copyimages && next dev",
-        "start:prod": "rm -rf tmp; next build && npx serve@latest out",
+        "start:prod": "yarn clear-fetch-cache; next build && npx serve@latest out",
         "lint": "yarn next lint && yarn tsc --noEmit && yarn find-unused-sass-variables src/styles",
         "test": "yarn test:blog",
         "test:blog": "jest --config ./jest.config.js",
-        "clean": "rm -rf node_modules; rm -rf out; rm -rf .next; rm next-env.d.ts; rm -rf tmp"
+        "clean": "rm -rf node_modules; rm -rf out; rm -rf .next; rm next-env.d.ts; yarn clear-fetch-cache"
     },
     "dependencies": {
         "@headlessui/react": "^1.7.17",

@@ -11,7 +11,7 @@ export function getPage(countryGallery: CountryGallery, cityGalleries: CityGalle
         throw new Error('Missing the countryGallery prop')
     }
 
-    return function Page({ images = [], currentPhoto }: PageProps) {
+    return function Page({ images = [], currentPhoto = null }: PageProps) {
         const router = useRouter()
         const photosParam = router.query.photos
         const segments: string[] = Array.isArray(photosParam) ? photosParam : photosParam ? [photosParam] : []
@@ -39,13 +39,14 @@ export function getPage(countryGallery: CountryGallery, cityGalleries: CityGalle
                 if (!currentPhoto) {
                     // This will happen when loading an index page and then clicking on a photo
                     const photoIdFromProps = getPhotoIdFromRouter(router.query)
-                    currentPhoto = images.find((img) => img.id === photoIdFromProps)
+                    currentPhoto = images.find((img) => img.id === photoIdFromProps) ?? null
                 }
 
                 if (!currentPhoto) {
                     throw new Error('Missing the currentPhoto prop')
                 }
 
+                console.log('single photo page', { cityGallery, currentPhoto, images })
                 return (
                     <Layout title={countryGallery.title} keywords={cityGallery.keywords}>
                         <h1>{countryGallery.title}</h1>

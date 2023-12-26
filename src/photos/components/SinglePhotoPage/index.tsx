@@ -2,6 +2,7 @@ import Carousel from '@src/photos/components/SinglePhotoPage/Carousel'
 import { getPhotoIdFromRouter } from '@src/photos/pageHelpers/getPhotoIdFromRouter'
 import getImageUrl from '@src/photos/utils/getImageUrl'
 import type { CityGallery, ImageProps } from '@src/photos/utils/types'
+import { cloneDeep } from 'lodash'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
@@ -23,6 +24,7 @@ export const SinglePhotoPage: FC<Props> = ({ cityGallery, currentPhoto, images }
     const { cloudinaryFolder } = cityGallery
     const currentPhotoUrl = getImageUrl(currentPhoto, 2560)
 
+    console.log('SinglePhotoPage currentPhoto ', cloneDeep(currentPhoto))
     return (
         <>
             <Head>

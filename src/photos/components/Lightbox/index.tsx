@@ -4,6 +4,7 @@ import MainImage from '@src/photos/components/Lightbox/MainImage'
 import { range } from '@src/photos/utils/range'
 import type { ImageProps, SharedModalProps } from '@src/photos/utils/types'
 import { MotionConfig } from 'framer-motion'
+import { cloneDeep } from 'lodash'
 import { useState } from 'react'
 import { useSwipeable } from 'react-swipeable'
 
@@ -32,9 +33,13 @@ export default function Lightbox({
         },
         trackMouse: true,
     })
-    const currentImage = images ? images[index] : currentPhoto
+    const currentImage = images && images.length - 1 >= index ? images[index] : currentPhoto
     const { title } = gallery
 
+    console.log('Lightbox currentPhoto ', cloneDeep(currentPhoto))
+    console.log('Lightbox currentImage ', cloneDeep(currentImage))
+    console.log('Lightbox images ', cloneDeep(images))
+    console.log('Lightbox index ', cloneDeep(index))
     return (
         <MotionConfig
             transition={{

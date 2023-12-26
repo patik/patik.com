@@ -1,4 +1,4 @@
-import fetchFromAssetProvider from '@src/photos/utils/fetchFromAssetProvider'
+import fetchFolderFromAssetProvider from '@src/photos/utils/fetchFolderFromAssetProvider'
 import { CityGallery } from '@src/photos/utils/types'
 import { GetStaticPathsResult } from 'next'
 import { ParsedUrlQuery } from 'querystring'
@@ -41,13 +41,13 @@ export default async function getGalleryStaticPaths(galleries: CityGallery[] = [
                 },
             })
 
-            const results = await fetchFromAssetProvider(cloudinaryFolder)
+            const results = await fetchFolderFromAssetProvider(cloudinaryFolder)
 
             console.log('[getGalleryStaticPaths] results.resources.length: ', results.resources.length)
 
             for (let i = 0; i < results.resources.length; i++) {
-                console.log('[getGalleryStaticPaths] city: ', city)
-                console.log('[getGalleryStaticPaths] i.toString(): ', i.toString())
+                // console.log('[getGalleryStaticPaths] city: ', city)
+                // console.log('[getGalleryStaticPaths] i.toString(): ', i.toString())
                 fullPaths.push({ params: { photos: [city, i.toString()] } })
             }
         })

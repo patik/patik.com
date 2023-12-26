@@ -11,7 +11,7 @@ export interface ImageProps {
 
 export type PageProps = {
     images: ImageProps[]
-    currentPhoto?: ImageProps | null
+    currentPhoto: ImageProps | null
 }
 
 export interface SharedModalProps {

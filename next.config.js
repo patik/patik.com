@@ -13,6 +13,9 @@ const nextConfig = {
         domains: ['res.cloudinary.com'],
     },
     trailingSlash: true,
+    compiler: {
+        removeConsole: false,
+    },
     basePath: '',
     output: 'export',
     async redirects() {
