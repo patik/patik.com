@@ -8,9 +8,13 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 export default getPage(countryGallery, [samarkand])
 
 export const getStaticProps: GetStaticProps = async function (context) {
-    return getGalleryStaticProps([samarkand], context)
+    const result = getGalleryStaticProps([samarkand], context)
+    console.log('getStaticProps finished calling its getter')
+    return result
 }
 
 export const getStaticPaths: GetStaticPaths = async function () {
-    return getGalleryStaticPaths([samarkand])
+    const result = getGalleryStaticPaths([samarkand])
+    console.log('getStaticPaths finished calling its getter')
+    return result
 }

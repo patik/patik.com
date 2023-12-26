@@ -5,9 +5,15 @@ import { CityGallery, CloundinaryResource, ImageProps, PageProps } from '@src/ph
 import { GetStaticPropsContext } from 'next'
 
 export default async function getGalleryStaticProps(
-    galleries: Pick<CityGallery, 'cloudinaryFolder'>[],
+    galleries: Pick<CityGallery, 'cloudinaryFolder'>[] = [],
     context: GetStaticPropsContext
 ): Promise<{ props: PageProps }> {
+    if (galleries.length === 0) {
+        throw new Error('getGalleryStaticProps did not receive any galleries')
+    }
+    console.log(`getGalleryStaticProps received ${galleries.length} galleries`)
+    console.log(`getGalleryStaticProps context.params: `, context.params)
+
     const photoIdFromProps = getPhotoIdFromRouter(context.params)
     let images: ImageProps[] = []
 
@@ -19,7 +25,7 @@ export default async function getGalleryStaticProps(
                 .max_results(100)
                 .execute()
             const reducedResults: ImageProps[] = []
-
+            console.log('getGalleryStaticProps results.resources.length: ', results.resources.length)
             let i = 0
             for (const result of results.resources) {
                 reducedResults.push({
@@ -33,12 +39,13 @@ export default async function getGalleryStaticProps(
                 })
                 i++
             }
+            console.log('getGalleryStaticProps reducedResults.length: ', reducedResults.length)
 
             const blurImagePromises = reducedResults.map((image) => {
                 return getBase64ImageUrl(image)
             })
             const imagesWithBlurDataUrls = await Promise.all(blurImagePromises)
-
+            console.log('getGalleryStaticProps imagesWithBlurDataUrls.length: ', imagesWithBlurDataUrls.length)
             for (let i = 0; i < reducedResults.length; i++) {
                 reducedResults[i].blurDataUrl = imagesWithBlurDataUrls[i]
             }
@@ -56,6 +63,7 @@ export default async function getGalleryStaticProps(
     }
 
     let currentPhoto = null
+    console.log('photoIdFromProps: ', photoIdFromProps)
 
     if (photoIdFromProps !== undefined) {
         currentPhoto = images.find((img) => img.id === photoIdFromProps) ?? null
@@ -65,6 +73,25 @@ export default async function getGalleryStaticProps(
         } else {
             throw new Error('could not find photo in PhotoPageGetStaticProps')
         }
+    }
+
+    try {
+        console.log(
+            'getGalleryStaticProps is returning: ',
+            JSON.stringify({
+                props: {
+                    images,
+                    currentPhoto,
+                },
+            })
+        )
+    } catch (e) {
+        console.log('getGalleryStaticProps could not stringify return props: ', {
+            props: {
+                images,
+                currentPhoto,
+            },
+        })
     }
 
     return {

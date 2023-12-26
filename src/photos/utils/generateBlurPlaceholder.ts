@@ -26,12 +26,12 @@ export default async function getBase64ImageUrl(image: ImageProps): Promise<stri
     url = `data:image/jpeg;base64,${Buffer.from(minified).toString('base64')}`
     cache.set(image, url)
 
-    // if (image.resource_type === 'video') {
-    //     console.log('---------------------')
-    //     console.log('imageUrl: ', imageUrl)
-    //     console.log('secure_url: ', image.secure_url)
-    //     console.log('blurred: ', Buffer.from(minified).toString('base64'))
-    // }
+    if (image.resource_type === 'video') {
+        console.log('---------------------')
+        console.log('imageUrl: ', imageUrl)
+        console.log('secure_url: ', image.secure_url)
+        console.log('blurred: ', Buffer.from(minified).toString('base64'))
+    }
 
     return url
 }

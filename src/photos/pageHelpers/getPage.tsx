@@ -6,8 +6,12 @@ import type { CityGallery, CountryGallery, PageProps } from '@src/photos/utils/t
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-export function getPage(countryGallery: CountryGallery, cityGalleries: CityGallery[]) {
-    return function Page({ images, currentPhoto }: PageProps) {
+export function getPage(countryGallery: CountryGallery, cityGalleries: CityGallery[] = []) {
+    if (!countryGallery) {
+        throw new Error('Missing the countryGallery prop')
+    }
+
+    return function Page({ images = [], currentPhoto }: PageProps) {
         const router = useRouter()
         const photosParam = router.query.photos
         const segments: string[] = Array.isArray(photosParam) ? photosParam : photosParam ? [photosParam] : []
@@ -16,13 +20,13 @@ export function getPage(countryGallery: CountryGallery, cityGalleries: CityGalle
             const cityName = segments[0]
 
             if (!cityName) {
-                throw new Error(`no city name in URL: ${cityName}`)
+                throw new Error(`No city name in URL: ${cityName}`)
             }
 
             const cityGallery = cityGalleries.find(({ cityId: city }) => city === cityName)
 
             if (!cityGallery) {
-                throw new Error(`invalid city name in URL: ${cityName}`)
+                throw new Error(`Invalid city name in URL: ${cityName}`)
             }
 
             // Index page for a specific city
@@ -39,7 +43,7 @@ export function getPage(countryGallery: CountryGallery, cityGalleries: CityGalle
                 }
 
                 if (!currentPhoto) {
-                    throw new Error('missing the currentPhoto prop')
+                    throw new Error('Missing the currentPhoto prop')
                 }
 
                 return (
@@ -57,7 +61,7 @@ export function getPage(countryGallery: CountryGallery, cityGalleries: CityGalle
                 )
             }
 
-            console.error('cannot figure out where to go')
+            console.error('Cannot figure out which type of photo page to render')
         }
 
         // Index page for all of the country's photos

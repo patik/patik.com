@@ -11,7 +11,12 @@ import { ParsedUrlQuery } from 'querystring'
  * /travel/country/photos/city2/5678
  */
 
-export default async function getGalleryStaticPaths(galleries: CityGallery[]): Promise<GetStaticPathsResult> {
+export default async function getGalleryStaticPaths(galleries: CityGallery[] = []): Promise<GetStaticPathsResult> {
+    if (galleries.length === 0) {
+        throw new Error('getGalleryStaticPaths did not receive any galleries')
+    }
+    console.log(`getGalleryStaticPaths received ${galleries.length} galleries`)
+
     const fullPaths: (
         | string
         | {
@@ -42,11 +47,29 @@ export default async function getGalleryStaticPaths(galleries: CityGallery[]): P
                 .max_results(100)
                 .execute()
 
+            console.log('getGalleryStaticPaths results.resources.length: ', results.resources.length)
             for (let i = 0; i < results.resources.length; i++) {
                 fullPaths.push({ params: { photos: [city, i.toString()] } })
             }
         })
     )
+
+    console.log(`getGalleryStaticPaths created ${fullPaths.length} fullPaths`)
+
+    try {
+        console.log(
+            'getGalleryStaticPaths is returning: ',
+            JSON.stringify({
+                paths: fullPaths,
+                fallback: false,
+            })
+        )
+    } catch (e) {
+        console.log('getGalleryStaticPaths could not stringify return props: ', {
+            paths: fullPaths,
+            fallback: false,
+        })
+    }
 
     return {
         paths: fullPaths,

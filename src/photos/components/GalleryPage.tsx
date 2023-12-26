@@ -7,7 +7,7 @@ import Link from 'next/link'
 export function GalleryPage({
     gallery,
     cityGalleries,
-    images,
+    images = [],
 }: {
     gallery: CountryGallery | CityGallery
     cityGalleries: CityGallery[]
