@@ -9,12 +9,13 @@ export default async function getBase64ImageUrl(image: ImageProps): Promise<stri
     let url = cache.get(image)
 
     if (url) {
+        console.log('getBase64ImageUrl returning cached url')
         return url
     }
 
     const imageUrl = getImageUrlToBeBlurred(image)
 
-    console.log('getBase64ImageUrl about to fetch imageUrl: ', imageUrl)
+    console.log('getBase64ImageUrl needs to fetch imageUrl: ', imageUrl)
     const response = await fetch(imageUrl)
     // console.log('getBase64ImageUrl response.status: ', response.status)
 

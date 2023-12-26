@@ -1,4 +1,4 @@
-import cloudinary from '@src/photos/utils/cloudinary'
+import fetchFromAssetProvider from '@src/photos/utils/fetchFromAssetProvider'
 import { CityGallery } from '@src/photos/utils/types'
 import { GetStaticPathsResult } from 'next'
 import { ParsedUrlQuery } from 'querystring'
@@ -15,7 +15,7 @@ export default async function getGalleryStaticPaths(galleries: CityGallery[] = [
     if (galleries.length === 0) {
         throw new Error('getGalleryStaticPaths did not receive any galleries')
     }
-    console.log(`getGalleryStaticPaths received ${galleries.length} galleries`)
+    console.log(`[getGalleryStaticPaths] received ${galleries.length} galleries`)
 
     const fullPaths: (
         | string
@@ -41,33 +41,29 @@ export default async function getGalleryStaticPaths(galleries: CityGallery[] = [
                 },
             })
 
-            const results = await cloudinary.v2.search
-                .expression(`folder:${cloudinaryFolder}/*`)
-                .sort_by('public_id', 'desc')
-                .max_results(10)
-                .execute()
+            const results = await fetchFromAssetProvider(cloudinaryFolder)
 
-            console.log('getGalleryStaticPaths results.resources.length: ', results.resources.length)
+            console.log('[getGalleryStaticPaths] results.resources.length: ', results.resources.length)
             for (let i = 0; i < results.resources.length; i++) {
-                console.log('getGalleryStaticPaths city: ', city)
-                console.log('getGalleryStaticPaths i.toString(): ', i.toString())
+                console.log('[getGalleryStaticPaths] city: ', city)
+                console.log('[getGalleryStaticPaths] i.toString(): ', i.toString())
                 fullPaths.push({ params: { photos: [city, i.toString()] } })
             }
         })
     )
 
-    console.log(`getGalleryStaticPaths created ${fullPaths.length} fullPaths`)
+    console.log(`[getGalleryStaticPaths] created ${fullPaths.length} fullPaths`)
 
     // try {
     //     console.log(
-    //         'getGalleryStaticPaths is returning: ',
+    //         '[getGalleryStaticPaths] is returning: ',
     //         JSON.stringify({
     //             paths: fullPaths,
     //             fallback: false,
     //         })
     //     )
     // } catch (e) {
-    //     console.log('getGalleryStaticPaths could not stringify return props: ', {
+    //     console.log('[getGalleryStaticPaths] could not stringify return props: ', {
     //         paths: fullPaths,
     //         fallback: false,
     //     })

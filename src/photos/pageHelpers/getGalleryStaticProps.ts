@@ -1,5 +1,5 @@
 import { getPhotoIdFromRouter } from '@src/photos/pageHelpers/getPhotoIdFromRouter'
-import cloudinary from '@src/photos/utils/cloudinary'
+import fetchFromAssetProvider from '@src/photos/utils/fetchFromAssetProvider'
 import getBase64ImageUrl from '@src/photos/utils/generateBlurPlaceholder'
 import { CityGallery, CloundinaryResource, ImageProps, PageProps } from '@src/photos/utils/types'
 import { GetStaticPropsContext } from 'next'
@@ -11,24 +11,20 @@ export default async function getGalleryStaticProps(
     if (galleries.length === 0) {
         throw new Error('getGalleryStaticProps did not receive any galleries')
     }
-    console.log(`getGalleryStaticProps received ${galleries.length} galleries`)
-    console.log(`getGalleryStaticProps context.params: `, context.params)
+    console.log(`[getGalleryStaticProps] received ${galleries.length} galleries`)
+    console.log(`[getGalleryStaticProps] context.params: `, context.params)
 
     const photoIdFromProps = getPhotoIdFromRouter(context.params)
     let images: ImageProps[] = []
 
     await Promise.all(
         galleries.map(async ({ cloudinaryFolder }) => {
-            const results: { resources: CloundinaryResource[] } = await cloudinary.v2.search
-                .expression(`folder:${cloudinaryFolder}/*`)
-                .sort_by('public_id', 'desc')
-                .max_results(10)
-                .execute()
+            const results: { resources: CloundinaryResource[] } = await fetchFromAssetProvider(cloudinaryFolder)
             const reducedResults: ImageProps[] = []
-            console.log('getGalleryStaticProps results.resources.length: ', results.resources.length)
+            console.log('[getGalleryStaticProps] results.resources.length: ', results.resources.length)
             let i = 0
             for (const result of results.resources) {
-                console.log('getGalleryStaticProps reducedResult: ', {
+                console.log('[getGalleryStaticProps] reducedResult: ', {
                     id: i,
                     height: result.height,
                     width: result.width,
@@ -48,13 +44,13 @@ export default async function getGalleryStaticProps(
                 })
                 i++
             }
-            console.log('getGalleryStaticProps reducedResults.length: ', reducedResults.length)
+            console.log('[getGalleryStaticProps] reducedResults.length: ', reducedResults.length)
 
             const blurImagePromises = reducedResults.map((image) => {
                 return getBase64ImageUrl(image)
             })
             const imagesWithBlurDataUrls = await Promise.all(blurImagePromises)
-            console.log('getGalleryStaticProps imagesWithBlurDataUrls.length: ', imagesWithBlurDataUrls.length)
+            console.log('[getGalleryStaticProps] imagesWithBlurDataUrls.length: ', imagesWithBlurDataUrls.length)
             for (let i = 0; i < reducedResults.length; i++) {
                 reducedResults[i].blurDataUrl = imagesWithBlurDataUrls[i]
             }
@@ -72,7 +68,7 @@ export default async function getGalleryStaticProps(
     }
 
     let currentPhoto = null
-    console.log('photoIdFromProps: ', photoIdFromProps)
+    console.log('[getGalleryStaticProps] photoIdFromProps: ', photoIdFromProps)
 
     if (photoIdFromProps !== undefined) {
         currentPhoto = images.find((img) => img.id === photoIdFromProps) ?? null
@@ -95,7 +91,7 @@ export default async function getGalleryStaticProps(
     //         })
     //     )
     // } catch (e) {
-    //     console.log('getGalleryStaticProps could not stringify return props: ', {
+    //     console.log('[getGalleryStaticProps] could not stringify return props: ', {
     //         props: {
     //             images,
     //             currentPhoto,
