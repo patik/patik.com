@@ -44,11 +44,13 @@ export default async function getGalleryStaticPaths(galleries: CityGallery[] = [
             const results = await cloudinary.v2.search
                 .expression(`folder:${cloudinaryFolder}/*`)
                 .sort_by('public_id', 'desc')
-                .max_results(100)
+                .max_results(1)
                 .execute()
 
             console.log('getGalleryStaticPaths results.resources.length: ', results.resources.length)
             for (let i = 0; i < results.resources.length; i++) {
+                console.log('getGalleryStaticPaths city: ', city)
+                console.log('getGalleryStaticPaths i.toString(): ', i.toString())
                 fullPaths.push({ params: { photos: [city, i.toString()] } })
             }
         })

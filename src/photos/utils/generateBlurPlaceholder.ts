@@ -1,4 +1,4 @@
-import getImageUrl from '@src/photos/utils/getImageUrl'
+import getImageUrlToBeBlurred from '@src/photos/utils/getImageUrlToBeBlurred'
 import type { ImageProps } from '@src/photos/utils/types'
 import imagemin from 'imagemin'
 import imageminJpegtran from 'imagemin-jpegtran'
@@ -12,17 +12,14 @@ export default async function getBase64ImageUrl(image: ImageProps): Promise<stri
         return url
     }
 
-    const imageUrl =
-        image.resource_type === 'video'
-            ? getImageUrl(image)
-            : `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/f_jpg,w_8,q_70/${image.public_id}.${image.format}`
+    const imageUrl = getImageUrlToBeBlurred(image)
 
     console.log('getBase64ImageUrl about to fetch imageUrl: ', imageUrl)
     const response = await fetch(imageUrl)
-    console.log('getBase64ImageUrl response.status: ', response.status)
+    // console.log('getBase64ImageUrl response.status: ', response.status)
 
     if (response.status !== 200) {
-        console.log('getBase64ImageUrl response will be printed over the next few lines')
+        console.log('getBase64ImageUrl response will be printed over the next few lines; tried to fetch ', imageUrl)
         try {
             console.log('response.status: ', response.status)
             console.log('response.statusText: ', response.statusText)

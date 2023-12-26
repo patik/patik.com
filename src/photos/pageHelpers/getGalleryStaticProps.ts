@@ -22,12 +22,21 @@ export default async function getGalleryStaticProps(
             const results: { resources: CloundinaryResource[] } = await cloudinary.v2.search
                 .expression(`folder:${cloudinaryFolder}/*`)
                 .sort_by('public_id', 'desc')
-                .max_results(100)
+                .max_results(1)
                 .execute()
             const reducedResults: ImageProps[] = []
             console.log('getGalleryStaticProps results.resources.length: ', results.resources.length)
             let i = 0
             for (const result of results.resources) {
+                console.log('getGalleryStaticProps reducedResult: ', {
+                    id: i,
+                    height: result.height,
+                    width: result.width,
+                    public_id: result.public_id,
+                    format: result.format,
+                    secure_url: result.secure_url,
+                    resource_type: result.resource_type,
+                })
                 reducedResults.push({
                     id: i,
                     height: result.height,
