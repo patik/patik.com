@@ -1,11 +1,11 @@
 import { getPhotoIdFromRouter } from '@src/photos/pageHelpers/getPhotoIdFromRouter'
+import fetchFromAssetProvider from '@src/photos/utils/fetchFromAssetProvider'
 import getBase64ImageUrl from '@src/photos/utils/generateBlurPlaceholder'
-import { CityGallery, CloudinaryResult, CloundinaryResource, ImageProps, PageProps } from '@src/photos/utils/types'
+import { CityGallery, CloundinaryResource, ImageProps, PageProps } from '@src/photos/utils/types'
 import { GetStaticPropsContext } from 'next'
 
 export default async function getGalleryStaticProps(
     galleries: Pick<CityGallery, 'cloudinaryFolder'>[] = [],
-    fetchFromAssetProvider: (folderName: string) => Promise<CloudinaryResult>,
     context: GetStaticPropsContext
 ): Promise<{ props: PageProps }> {
     if (galleries.length === 0) {
@@ -22,6 +22,7 @@ export default async function getGalleryStaticProps(
             const results: { resources: CloundinaryResource[] } = await fetchFromAssetProvider(cloudinaryFolder)
             const reducedResults: ImageProps[] = []
             console.log('[getGalleryStaticProps] results.resources.length: ', results.resources.length)
+
             let i = 0
             for (const result of results.resources) {
                 console.log('[getGalleryStaticProps] reducedResult: ', {

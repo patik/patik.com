@@ -9,11 +9,11 @@
         "prebuild": "yarn copyimages",
         "build": "yarn copyimages && next build",
         "start": "yarn copyimages && next dev",
-        "start:prod": "next build && next start",
+        "start:prod": "rm -rf tmp; next build && npx serve@latest out",
         "lint": "yarn next lint && yarn tsc --noEmit && yarn find-unused-sass-variables src/styles",
         "test": "yarn test:blog",
         "test:blog": "jest --config ./jest.config.js",
-        "clean": "rm -rf node_modules; rm -rf out; rm -rf .next; rm next-env.d.ts"
+        "clean": "rm -rf node_modules; rm -rf out; rm -rf .next; rm next-env.d.ts; rm -rf tmp"
     },
     "dependencies": {
         "@headlessui/react": "^1.7.17",
@@ -27,7 +27,6 @@
         "imagemin-jpegtran": "^7.0.0",
         "lodash": "^4.17.21",
         "next": "^14.0.4",
-        "node-fetch-cache": "^4.0.8",
         "parse-numeric-range": "^1.3.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",

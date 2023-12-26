@@ -1,16 +1,27 @@
 import getImageUrlToBeBlurred from '@src/photos/utils/getImageUrlToBeBlurred'
 import type { ImageProps } from '@src/photos/utils/types'
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs'
 import imagemin from 'imagemin'
 import imageminJpegtran from 'imagemin-jpegtran'
+import path from 'path'
 
-const cache = new Map<ImageProps['public_id'], string>()
+const folderPath = path.join(__dirname, '../../../../../../tmp')
+
+if (!existsSync(folderPath)) {
+    console.log('[getBase64ImageUrl] creating cache folder ', folderPath)
+    mkdirSync(folderPath)
+}
+
+console.log('[getBase64ImageUrl] folderPath ', folderPath)
 
 export default async function getBase64ImageUrl(image: ImageProps): Promise<string> {
-    let url = cache.get(image.public_id)
+    console.log('[getBase64ImageUrl] public_id: ', image.public_id)
+    const filePath = path.join(folderPath, image.public_id.replace(/\W/g, '_'))
+    console.log('[getBase64ImageUrl] filePath: ', filePath)
 
-    if (url) {
-        console.log('[getBase64ImageUrl] returning cached url')
-        return url
+    if (existsSync(filePath)) {
+        console.log('[getBase64ImageUrl] returning cached results from ', filePath)
+        return readFileSync(filePath, 'utf8')
     }
 
     const imageUrl = getImageUrlToBeBlurred(image)
@@ -47,9 +58,11 @@ export default async function getBase64ImageUrl(image: ImageProps): Promise<stri
         plugins: [imageminJpegtran()],
     })
 
-    url = `data:image/jpeg;base64,${Buffer.from(minified).toString('base64')}`
+    const url = `data:image/jpeg;base64,${Buffer.from(minified).toString('base64')}`
     console.log('[getBase64ImageUrl] caching with image.public_id ', image.public_id)
-    cache.set(image.public_id, url)
+
+    console.log(`[getBase64ImageUrl] writing ${url.length} chars to filePath: ${filePath}`)
+    writeFileSync(filePath, url, 'utf8')
 
     // if (image.resource_type === 'video') {
     //     console.log('---------------------')
