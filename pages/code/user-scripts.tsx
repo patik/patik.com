@@ -67,7 +67,7 @@ export default function Page() {
                     </Link>
                 </figure>
                 <p>
-                    <UserScriptLink fileName="/user-scripts/magent-links.user.js" />
+                    <UserScriptLink fileName="magent-links.user.js" />
 
                     <a href="https://gist.github.com/patik/8388768" className="button">
                         Gist
@@ -97,7 +97,7 @@ export default function Page() {
                         Chrome Extension
                     </a>
                     <Space />
-                    <UserScriptLink fileName="/user-scripts/alpha-app-net-enhanced.user.js" />
+                    <UserScriptLink fileName="alpha-app-net-enhanced.user.js" />
                     <Space />
                     <a href="https://gist.github.com/3542903" className="button">
                         Gist
@@ -112,7 +112,7 @@ export default function Page() {
                 <h2>Readable Reader</h2>
                 <p>Compact styles for Google Reader</p>
                 <p>
-                    <UserScriptLink fileName="/user-scripts/readable-reader.user.js" />
+                    <UserScriptLink fileName="readable-reader.user.js" />
                 </p>
             </section>
 
@@ -120,7 +120,7 @@ export default function Page() {
                 <h2>Readable Google+</h2>
                 <p>Cleans up Google+ Post pages. Currently only eliminates the gigantic avatar in the sidebar.</p>
                 <p>
-                    <UserScriptLink fileName="/user-scripts/readable-google-plus.user.js" />
+                    <UserScriptLink fileName="readable-google-plus.user.js" />
                 </p>
             </section>
 
@@ -138,7 +138,7 @@ export default function Page() {
                     results, blogs, etc.
                 </p>
                 <p>
-                    <UserScriptLink fileName="/user-scripts/wiki-travel-voyage-redirect.user.js" />
+                    <UserScriptLink fileName="wiki-travel-voyage-redirect.user.js" />
 
                     <a href="https://gist.github.com/patik/4979331" className="button">
                         Gist
@@ -150,7 +150,7 @@ export default function Page() {
                 <h2>Readable Flickr</h2>
                 <p>Legible (large-font) styles for Flickr</p>
                 <p>
-                    <UserScriptLink fileName="/user-scripts/readable-flickr.user.js" />
+                    <UserScriptLink fileName="readable-flickr.user.js" />
                 </p>
             </section>
 
@@ -162,7 +162,7 @@ export default function Page() {
                     fields, signs me in.
                 </p>
                 <p>
-                    <UserScriptLink fileName="/user-scripts/auto-login.user.js" />
+                    <UserScriptLink fileName="auto-login.user.js" />
                 </p>
             </section>
         </Layout>
