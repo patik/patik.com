@@ -5,7 +5,7 @@ import imagemin from 'imagemin'
 import imageminJpegtran from 'imagemin-jpegtran'
 import path from 'path'
 
-const folderPath = path.join(__dirname, '../../../../../../tmp')
+const folderPath = path.join(__dirname, '../../../../../tmp')
 
 if (!existsSync(folderPath)) {
     console.log('[getBase64ImageUrl] creating cache folder ', folderPath)
@@ -15,7 +15,7 @@ if (!existsSync(folderPath)) {
 console.log('[getBase64ImageUrl] folderPath ', folderPath)
 
 export default async function getBase64ImageUrl(image: ImageProps): Promise<string> {
-    console.log('[getBase64ImageUrl] public_id: ', image.public_id)
+    console.log('[getBase64ImageUrl] public_id: ', image.public_id.replace(/\W+/g, '_'))
     const filePath = path.join(folderPath, image.public_id.replace(/\W/g, '_'))
     console.log('[getBase64ImageUrl] filePath: ', filePath)
 
