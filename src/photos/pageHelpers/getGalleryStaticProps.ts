@@ -21,19 +21,20 @@ async function getReducedResults(cloudinaryFolder: CityGallery['cloudinaryFolder
     const results: { resources: CloundinaryResource[] } = await fetchFolderFromAssetProvider(cloudinaryFolder)
     console.log('[getGalleryStaticProps, getReducedResults] results.resources.length: ', results.resources.length)
     console.log('[getGalleryStaticProps, getReducedResults] photoIdFromProps ', photoIdFromProps)
-    // // Index page, return all images' props
-    // if (!photoIdFromProps) {
-    return results.resources.reduce((acc, result, i) => {
-        acc.push(getImagePropsFromCloudinaryResult(result, i))
-        return acc
-    }, [] as ImageProps[])
-    // }
 
-    // // Page for a specific photo, just return that one image's props
-    // const photoId = Number(photoIdFromProps)
-    // const result = results.resources[photoId]
+    // Index page, return all images' props
+    if (!photoIdFromProps) {
+        return results.resources.reduce((acc, result, i) => {
+            acc.push(getImagePropsFromCloudinaryResult(result, i))
+            return acc
+        }, [] as ImageProps[])
+    }
 
-    // return [getImagePropsFromCloudinaryResult(result, photoId)]
+    // Page for a specific photo, just return that one image's props
+    const photoId = Number(photoIdFromProps)
+    const result = results.resources[photoId]
+
+    return [getImagePropsFromCloudinaryResult(result, photoId)]
 }
 
 function getGalleryMapper(
