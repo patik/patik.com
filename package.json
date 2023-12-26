@@ -13,7 +13,7 @@
         "lint": "yarn next lint && yarn tsc --noEmit && yarn find-unused-sass-variables src/styles",
         "test": "yarn test:blog",
         "test:blog": "jest --config ./jest.config.js",
-        "clean": "rm -rf node_modules; rm -rf out; rm -rf .next; rm next-env.d.ts"
+        "clean": "rm -rf node_modules; rm -rf out; rm -rf .next; rm next-env.d.ts rm -rf tmp"
     },
     "dependencies": {
         "@headlessui/react": "^1.7.17",
