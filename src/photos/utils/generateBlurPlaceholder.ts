@@ -3,24 +3,30 @@ import type { ImageProps } from '@src/photos/utils/types'
 import imagemin from 'imagemin'
 import imageminJpegtran from 'imagemin-jpegtran'
 
-const cache = new Map<ImageProps, string>()
+const cache = new Map<ImageProps['public_id'], string>()
 
 export default async function getBase64ImageUrl(image: ImageProps): Promise<string> {
-    let url = cache.get(image)
+    let url = cache.get(image.public_id)
 
     if (url) {
-        console.log('getBase64ImageUrl returning cached url')
+        console.log('[getBase64ImageUrl] returning cached url')
         return url
     }
 
     const imageUrl = getImageUrlToBeBlurred(image)
 
-    console.log('getBase64ImageUrl needs to fetch imageUrl: ', imageUrl)
-    const response = await fetch(imageUrl)
-    // console.log('getBase64ImageUrl response.status: ', response.status)
+    console.log('[getBase64ImageUrl] needs to fetch imageUrl: ', imageUrl)
+    const response = await fetch(imageUrl, {
+        cache: 'force-cache',
+        headers: {
+            'Cache-Control': 'force-cache',
+            pragma: 'force-cache',
+        },
+    })
+    // console.log('[getBase64ImageUrl] response.status: ', response.status)
 
     if (response.status !== 200) {
-        console.log('getBase64ImageUrl response will be printed over the next few lines; tried to fetch ', imageUrl)
+        console.log('[getBase64ImageUrl] response will be printed over the next few lines; tried to fetch ', imageUrl)
         try {
             console.log('response.status: ', response.status)
             console.log('response.statusText: ', response.statusText)
@@ -31,9 +37,9 @@ export default async function getBase64ImageUrl(image: ImageProps): Promise<stri
             console.log('response.json: ', response.json())
             console.log('stringified response: ', JSON.stringify(response))
         } catch (e) {
-            console.log('getBase64ImageUrl error trying to print the bad response ', e)
+            console.log('[getBase64ImageUrl] error trying to print the bad response ', e)
         }
-        throw new Error(`getBase64ImageUrl received response.status ${response.status}`)
+        throw new Error(`[getBase64ImageUrl] received response.status ${response.status}`)
     }
 
     const buffer = await response.arrayBuffer()
@@ -42,7 +48,8 @@ export default async function getBase64ImageUrl(image: ImageProps): Promise<stri
     })
 
     url = `data:image/jpeg;base64,${Buffer.from(minified).toString('base64')}`
-    cache.set(image, url)
+    console.log('[getBase64ImageUrl] caching with image.public_id ', image.public_id)
+    cache.set(image.public_id, url)
 
     // if (image.resource_type === 'video') {
     //     console.log('---------------------')
