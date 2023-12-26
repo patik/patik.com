@@ -8,6 +8,7 @@ import {
 } from '@heroicons/react/24/outline'
 import downloadPhoto from '@src/photos/utils/downloadPhoto'
 import type { ImageProps } from '@src/photos/utils/types'
+import { useRouter } from 'next/router'
 
 export default function Buttons({
     navigation,
@@ -24,6 +25,8 @@ export default function Buttons({
     currentImage: ImageProps | undefined
     closeModal: () => void
 }) {
+    const router = useRouter()
+
     return (
         <div
             className="nav-button-wrapper top-0 right-0 bottom-0 right-0 max-h-full w-full"
@@ -78,7 +81,25 @@ export default function Buttons({
             </div>
             <div className="absolute top-0 left-0 flex items-center gap-2 p-3 text-white">
                 <button
-                    onClick={() => closeModal()}
+                    onClick={() => {
+                        if (images && images.length === 1) {
+                            const path = router.asPath.replace(/\/$/, '')
+                            const nextPath = path.slice(0, path.lastIndexOf('/') + 1)
+                            closeModal()
+                            console.log('onClose going to: ', nextPath)
+                            router
+                                .push(nextPath, undefined, {
+                                    shallow: true,
+                                })
+                                .then(() => {
+                                    // This isn't a good solution to get all of the thumbnails from the gallery to display :/
+                                    // But it means that `getStaticProps` doesn't need to get all images for every single photo page
+                                    router.reload()
+                                })
+                        } else {
+                            closeModal()
+                        }
+                    }}
                     className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
                 >
                     {navigation ? <XMarkIcon className="h-5 w-5" /> : <ArrowUturnLeftIcon className="h-5 w-5" />}

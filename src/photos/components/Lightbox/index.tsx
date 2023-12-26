@@ -32,7 +32,7 @@ export default function Lightbox({
         },
         trackMouse: true,
     })
-    const currentImage = images ? images[index] : currentPhoto
+    const currentImage = images && images.length - 1 >= index ? images[index] : currentPhoto
     const { title } = gallery
 
     return (
