@@ -13,7 +13,6 @@ type Item = {
 function TravelLinkItem({ item }: { item: Item }) {
     const { imageSrc, imageAlt, url, className, title } = item
     const LinkComponent = url.startsWith('/') ? Link : 'a'
-    console.log('imageSrc ', imageSrc)
 
     return (
         <LinkComponent className={className} href={url}>

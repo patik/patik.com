@@ -56,20 +56,20 @@ export default async function getGalleryStaticPaths(galleries: CityGallery[] = [
 
     console.log(`getGalleryStaticPaths created ${fullPaths.length} fullPaths`)
 
-    try {
-        console.log(
-            'getGalleryStaticPaths is returning: ',
-            JSON.stringify({
-                paths: fullPaths,
-                fallback: false,
-            })
-        )
-    } catch (e) {
-        console.log('getGalleryStaticPaths could not stringify return props: ', {
-            paths: fullPaths,
-            fallback: false,
-        })
-    }
+    // try {
+    //     console.log(
+    //         'getGalleryStaticPaths is returning: ',
+    //         JSON.stringify({
+    //             paths: fullPaths,
+    //             fallback: false,
+    //         })
+    //     )
+    // } catch (e) {
+    //     console.log('getGalleryStaticPaths could not stringify return props: ', {
+    //         paths: fullPaths,
+    //         fallback: false,
+    //     })
+    // }
 
     return {
         paths: fullPaths,

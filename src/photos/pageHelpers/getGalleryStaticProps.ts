@@ -75,24 +75,24 @@ export default async function getGalleryStaticProps(
         }
     }
 
-    try {
-        console.log(
-            'getGalleryStaticProps is returning: ',
-            JSON.stringify({
-                props: {
-                    images,
-                    currentPhoto,
-                },
-            })
-        )
-    } catch (e) {
-        console.log('getGalleryStaticProps could not stringify return props: ', {
-            props: {
-                images,
-                currentPhoto,
-            },
-        })
-    }
+    // try {
+    //     console.log(
+    //         'getGalleryStaticProps is returning: ',
+    //         JSON.stringify({
+    //             props: {
+    //                 images,
+    //                 currentPhoto,
+    //             },
+    //         })
+    //     )
+    // } catch (e) {
+    //     console.log('getGalleryStaticProps could not stringify return props: ', {
+    //         props: {
+    //             images,
+    //             currentPhoto,
+    //         },
+    //     })
+    // }
 
     return {
         props: {
