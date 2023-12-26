@@ -1,11 +1,11 @@
 import { getPhotoIdFromRouter } from '@src/photos/pageHelpers/getPhotoIdFromRouter'
-import fetchFromAssetProvider from '@src/photos/utils/fetchFromAssetProvider'
 import getBase64ImageUrl from '@src/photos/utils/generateBlurPlaceholder'
-import { CityGallery, CloundinaryResource, ImageProps, PageProps } from '@src/photos/utils/types'
+import { CityGallery, CloudinaryResult, CloundinaryResource, ImageProps, PageProps } from '@src/photos/utils/types'
 import { GetStaticPropsContext } from 'next'
 
 export default async function getGalleryStaticProps(
     galleries: Pick<CityGallery, 'cloudinaryFolder'>[] = [],
+    fetchFromAssetProvider: (folderName: string) => Promise<CloudinaryResult>,
     context: GetStaticPropsContext
 ): Promise<{ props: PageProps }> {
     if (galleries.length === 0) {

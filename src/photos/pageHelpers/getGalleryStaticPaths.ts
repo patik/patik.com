@@ -1,5 +1,4 @@
-import fetchFromAssetProvider from '@src/photos/utils/fetchFromAssetProvider'
-import { CityGallery } from '@src/photos/utils/types'
+import { CityGallery, CloudinaryResult } from '@src/photos/utils/types'
 import { GetStaticPathsResult } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 
@@ -11,7 +10,10 @@ import { ParsedUrlQuery } from 'querystring'
  * /travel/country/photos/city2/5678
  */
 
-export default async function getGalleryStaticPaths(galleries: CityGallery[] = []): Promise<GetStaticPathsResult> {
+export default async function getGalleryStaticPaths(
+    galleries: CityGallery[] = [],
+    fetchFromAssetProvider: (folderName: string) => Promise<CloudinaryResult>
+): Promise<GetStaticPathsResult> {
     if (galleries.length === 0) {
         throw new Error('getGalleryStaticPaths did not receive any galleries')
     }
