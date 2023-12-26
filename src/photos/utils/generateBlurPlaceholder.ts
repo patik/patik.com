@@ -5,7 +5,7 @@ import imagemin from 'imagemin'
 import imageminJpegtran from 'imagemin-jpegtran'
 import path from 'path'
 
-const folderPath = path.join(__dirname, '../../../../../tmp')
+const folderPath = path.join(__dirname, '../../../../../../tmp')
 
 if (!existsSync(folderPath)) {
     console.log('[getBase64ImageUrl] creating cache folder ', folderPath)
@@ -15,18 +15,19 @@ if (!existsSync(folderPath)) {
 console.log('[getBase64ImageUrl] folderPath ', folderPath)
 
 export default async function getBase64ImageUrl(image: ImageProps): Promise<string> {
-    console.log('[getBase64ImageUrl] public_id: ', image.public_id.replace(/\W+/g, '_'))
-    const filePath = path.join(folderPath, image.public_id.replace(/\W/g, '_'))
-    console.log('[getBase64ImageUrl] filePath: ', filePath)
+    const id = image.public_id.replace(/\W+/g, '_')
+    console.log(`[getBase64ImageUrl, ${id}] public_id: ${id}`)
+    const filePath = path.join(folderPath, id)
+    console.log(`[getBase64ImageUrl, ${id}] filePath: ${filePath}`)
 
     if (existsSync(filePath)) {
-        console.log('[getBase64ImageUrl] returning cached results from ', filePath)
+        console.log(`[getBase64ImageUrl, ${id}] returning cached results from ${filePath}`)
         return readFileSync(filePath, 'utf8')
     }
 
     const imageUrl = getImageUrlToBeBlurred(image)
 
-    console.log('[getBase64ImageUrl] needs to fetch imageUrl: ', imageUrl)
+    console.log(`[getBase64ImageUrl, ${id}] new request: ${imageUrl}`)
     const response = await fetch(imageUrl, {
         cache: 'force-cache',
         headers: {
@@ -34,10 +35,12 @@ export default async function getBase64ImageUrl(image: ImageProps): Promise<stri
             pragma: 'force-cache',
         },
     })
-    // console.log('[getBase64ImageUrl] response.status: ', response.status)
+    // console.log(`[getBase64ImageUrl, ${id}] response.status: ', response.status)
 
     if (response.status !== 200) {
-        console.log('[getBase64ImageUrl] response will be printed over the next few lines; tried to fetch ', imageUrl)
+        console.log(
+            `[getBase64ImageUrl, ${id}] Response will be printed over the next few lines. Tried to fetch imageUrl: ${imageUrl}`
+        )
         try {
             console.log('response.status: ', response.status)
             console.log('response.statusText: ', response.statusText)
@@ -48,9 +51,9 @@ export default async function getBase64ImageUrl(image: ImageProps): Promise<stri
             console.log('response.json: ', response.json())
             console.log('stringified response: ', JSON.stringify(response))
         } catch (e) {
-            console.log('[getBase64ImageUrl] error trying to print the bad response ', e)
+            console.log(`[getBase64ImageUrl, ${id}] error trying to print the bad response `, e)
         }
-        throw new Error(`[getBase64ImageUrl] received response.status ${response.status}`)
+        throw new Error(`[getBase64ImageUrl, ${id}] received response.status ${response.status}`)
     }
 
     const buffer = await response.arrayBuffer()
@@ -59,8 +62,7 @@ export default async function getBase64ImageUrl(image: ImageProps): Promise<stri
     })
 
     const url = `data:image/jpeg;base64,${Buffer.from(minified).toString('base64')}`
-    console.log('[getBase64ImageUrl] caching with image.public_id ', image.public_id)
-    console.log(`[getBase64ImageUrl] writing ${url.length} chars to filePath: ${filePath}`)
+    console.log(`[getBase64ImageUrl, ${id}] writing ${url.length} chars to filePath: ${filePath}`)
 
     writeFileSync(filePath, url, 'utf8')
 

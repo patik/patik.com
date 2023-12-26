@@ -2,7 +2,6 @@ import { variants } from '@src/photos/utils/animationVariants'
 import getImageUrl from '@src/photos/utils/getImageUrl'
 import type { ImageProps } from '@src/photos/utils/types'
 import { AnimatePresence, motion } from 'framer-motion'
-import { cloneDeep } from 'lodash'
 import Image from 'next/image'
 import { SwipeableHandlers } from 'react-swipeable'
 
@@ -23,7 +22,6 @@ export default function MainImage({
     setLoaded: (val: boolean) => void
     handlers: SwipeableHandlers
 }) {
-    console.log('MainImage currentPhoto ', cloneDeep(currentImage))
     if (!currentImage) {
         return <p>No photo!</p>
     }

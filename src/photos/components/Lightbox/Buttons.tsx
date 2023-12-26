@@ -82,21 +82,23 @@ export default function Buttons({
             <div className="absolute top-0 left-0 flex items-center gap-2 p-3 text-white">
                 <button
                     onClick={() => {
-                        const path = router.asPath.replace(/\/$/, '')
-                        console.log('onClose current path: ', path)
-                        console.log('onClose lastIndexOf: ', path.lastIndexOf('/'))
-                        const nextPath = path.slice(0, path.lastIndexOf('/') + 1)
-                        closeModal()
-                        console.log('onClose going to: ', nextPath)
-                        router
-                            .push(nextPath, undefined, {
-                                shallow: true,
-                            })
-                            .then(() => {
-                                // This isn't a good solution to get all of the thumbnails from the gallery to display :/
-                                // But it means that `getStaticProps` doesn't need to get all images for every single photo page
-                                router.reload()
-                            })
+                        if (images && images.length === 1) {
+                            const path = router.asPath.replace(/\/$/, '')
+                            const nextPath = path.slice(0, path.lastIndexOf('/') + 1)
+                            closeModal()
+                            console.log('onClose going to: ', nextPath)
+                            router
+                                .push(nextPath, undefined, {
+                                    shallow: true,
+                                })
+                                .then(() => {
+                                    // This isn't a good solution to get all of the thumbnails from the gallery to display :/
+                                    // But it means that `getStaticProps` doesn't need to get all images for every single photo page
+                                    router.reload()
+                                })
+                        } else {
+                            closeModal()
+                        }
                     }}
                     className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
                 >

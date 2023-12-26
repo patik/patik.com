@@ -19,7 +19,7 @@ export default async function fetchFolderFromAssetProvider(folderName: string) {
         return JSON.parse(readFileSync(filePath, 'utf8'))
     }
 
-    console.log('[fetchFolderFromAssetProvider] making a new request')
+    console.log('[fetchFolderFromAssetProvider] new request')
     const fetchedResults = await cloudinary.v2.search
         .expression(`folder:${folderName}/*`)
         .sort_by('public_id', 'desc')
