@@ -17,7 +17,7 @@
         "clean": "rm -rf node_modules; rm -rf out; rm -rf .next; rm next-env.d.ts; yarn clear-fetch-cache"
     },
     "dependencies": {
-        "@headlessui/react": "^1.7.17",
+        "@headlessui/react": "^1.7.18",
         "@heroicons/react": "^2.1.1",
         "classnames": "^2.5.0",
         "cloudinary": "^1.41.1",
