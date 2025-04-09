@@ -14,6 +14,10 @@
             "yearsVisited": [2012]
         },
         {
+            "name": "Bosnia",
+            "yearsVisited": [2024]
+        },
+        {
             "name": "Bulgaria",
             "yearsVisited": [2021]
         },
@@ -31,7 +35,6 @@
         },
         {
             "name": "Croatia",
-
             "yearsVisited": [2020, 2022]
         },
         {
@@ -52,7 +55,7 @@
         },
         {
             "name": "Greece",
-            "yearsVisited": [2007, 2019, 2020, 2021, 2022, 2023]
+            "yearsVisited": [2007, 2019, 2020, 2021, 2022, 2023, 2024]
         },
         {
             "name": "Hungary",
@@ -136,7 +139,7 @@
         },
         {
             "name": "United States",
-            "yearsVisited": [2017, 2018, 2019, 2021, 2022]
+            "yearsVisited": [2017, 2018, 2019, 2021, 2022, 2024, 2025]
         },
         {
             "name": "Uruguay",
