@@ -1,10 +1,9 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const path = require('path')
+// const path = require('path')
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
-    swcMinify: true,
     images: {
         unoptimized: true,
         // For photo gallery
@@ -57,12 +56,12 @@ const nextConfig = {
 
         return config
     },
-    // Fix sass-loader for Node versions older than 16
-    // See https://github.com/vercel/next.js/issues/45052#issuecomment-1468754780
-    sassOptions: {
-        fiber: false,
-        includePaths: [path.join(__dirname, 'styles')],
-    },
+    // // Fix sass-loader for Node versions older than 16
+    // // See https://github.com/vercel/next.js/issues/45052#issuecomment-1468754780
+    // sassOptions: {
+    //     // fiber: false,
+    //     includePaths: [path.join(__dirname, 'styles')],
+    // },
 }
 
 module.exports = nextConfig
