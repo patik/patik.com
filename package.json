@@ -22,7 +22,7 @@
     "dependencies": {
         "@headlessui/react": "^1.7.17",
         "@heroicons/react": "^2.1.1",
-        "classnames": "^2.5.0",
+        "classnames": "^2.5.1",
         "cloudinary": "^1.41.1",
         "date-fns": "^3.2.0",
         "eslint-plugin-jsx-a11y": "^6.8.0",
