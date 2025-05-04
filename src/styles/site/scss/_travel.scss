@@ -27,11 +27,15 @@
 
         span {
             color: white;
-            font-size: 2em;
+            font-size: 1em;
             font-weight: bold;
             line-height: 1em;
             position: absolute;
             z-index: 3;
+
+            @media (min-width: #{$small-screen}) {
+                font-size: 2em;
+            }
         }
 
         .image-cover {
@@ -469,11 +473,16 @@
         .cp-item-third {
             flex-basis: calc(33% - 1.16rem);
             max-width: calc(33% - 1.16rem);
-            margin-right: 2rem;
-            margin-bottom: 2rem;
+            margin-right: 1rem;
+            margin-bottom: 1rem;
 
             &:nth-child(3n) {
                 margin-right: 0;
+            }
+
+            @media (min-width: #{$medium-screen}) {
+                margin-right: 2rem;
+                margin-bottom: 2rem;
             }
         }
     }

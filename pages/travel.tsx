@@ -40,6 +40,31 @@ export default function Page() {
                     <Space />
                     {numCountriesVisitedExceptBirthplace} countries
                 </p>
+                <details>
+                    <summary
+                        style={{
+                            // Undo Tailwind's normalize
+                            display: 'list-item',
+                        }}
+                    >
+                        Full list of countries
+                    </summary>
+
+                    <p style={{ marginTop: '1rem' }}>
+                        In alphabetical order, including the year(s) that I visited each one.
+                    </p>
+
+                    <ol style={{ marginLeft: '2rem' }}>
+                        {countries.visited.map((country) => (
+                            <li key={country.name}>
+                                {country.name}{' '}
+                                <span style={{ fontSize: 'smaller', color: '#ccc' }}>
+                                    ({country.yearsVisited.join(', ')})
+                                </span>
+                            </li>
+                        ))}
+                    </ol>
+                </details>
                 <WorldMap />
             </section>
 
