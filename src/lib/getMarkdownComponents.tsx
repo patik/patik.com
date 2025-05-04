@@ -97,7 +97,11 @@ export function getMarkdownComponents({
                 throw new Error(`No imagesMetadata for the post containing this image: ${src}`)
             }
 
-            if (!imagesMetadata[src]) {
+            if (typeof src !== 'string') {
+                return
+            }
+
+            if (typeof src === 'string' && !imagesMetadata[src]) {
                 throw new Error(
                     `No metadata found for image “${src}”. Post's imagesMetadata: ${typeof imagesMetadata} = ${
                         imagesMetadata ? JSON.stringify(imagesMetadata) : imagesMetadata

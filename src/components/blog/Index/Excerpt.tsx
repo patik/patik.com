@@ -14,13 +14,14 @@ type Props = {
 
 export default function Excerpt({ slug, excerpt, className }: Props) {
     return (
-        <ReactMarkdown
-            rehypePlugins={[rehypeRaw]}
-            components={getMarkdownComponents({ slug, noImages: true })}
-            className={className}
-            unwrapDisallowed
-        >
-            {excerpt}
-        </ReactMarkdown>
+        <div className={className}>
+            <ReactMarkdown
+                rehypePlugins={[rehypeRaw]}
+                components={getMarkdownComponents({ slug, noImages: true })}
+                unwrapDisallowed
+            >
+                {excerpt}
+            </ReactMarkdown>
+        </div>
     )
 }
