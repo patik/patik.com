@@ -3664,12 +3664,10 @@ ignore@^5.1.9, ignore@^5.2.0, ignore@^5.2.4:
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.3.0.tgz#67418ae40d34d6999c95ff56016759c718c82f78"
   integrity sha512-g7dmpshy+gD7mh88OC9NwSGTKoc3kyLAZQRU1mt53Aw/vnvfXnbC+F/7F7QoYVKbV+KNvJx8wArewKy1vXMtlg==
 
-image-size@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/image-size/-/image-size-1.1.0.tgz#e0458a7957b1230ec3916ae2cac7273345a93a86"
-  integrity sha512-asnTHw2K8OlqT5kVnQwX+AGKQqpvLo95LbNzQ/C0ln3yzentZmAdd0ygoD004VC4Kkd4PV7J2iaPQkqwp9yuTw==
-  dependencies:
-    queue "6.0.2"
+image-size@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/image-size/-/image-size-2.0.2.tgz#84a7b43704db5736f364bf0d1b029821299b4bdc"
+  integrity sha512-IRqXKlaXwgSMAMtpNzZa1ZAe8m+Sa1770Dhk8VkSsP9LS+iHD62Zd8FQKs8fbPiagBE7BzoFX23cxFnwshpV6w==
 
 imagemin-jpegtran@^7.0.0:
   version "7.0.0"
@@ -5916,13 +5914,6 @@ queue-microtask@^1.2.2:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
-
-queue@6.0.2:
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/queue/-/queue-6.0.2.tgz#b91525283e2315c7553d2efa18d83e76432fed65"
-  integrity sha512-iHZWu+q3IdFZFX36ro/lKBkSvfkztY5Y7HMiPlOUjhupPcG2JMfst2KKEpu5XndviX/3UhFbRngUPNKtgvtZiA==
-  dependencies:
-    inherits "~2.0.3"
 
 react-dom@^19.1.0:
   version "19.1.0"
