@@ -1,5 +1,5 @@
 {
-    "lastUpdated": "2023-01-10",
+    "lastUpdated": "2025-09-01",
     "visited": [
         {
             "name": "Albania",
@@ -11,7 +11,7 @@
         },
         {
             "name": "Austria",
-            "yearsVisited": [2008, 2017, 2022]
+            "yearsVisited": [2008, 2017, 2022, 2025]
         },
         {
             "name": "Belgium",
@@ -74,6 +74,10 @@
             "yearsVisited": [2018]
         },
         {
+            "name": "Kosovo",
+            "yearsVisited": [2025]
+        },
+        {
             "name": "Latvia",
             "yearsVisited": [2023]
         },
@@ -96,6 +100,10 @@
         {
             "name": "Netherlands",
             "yearsVisited": [2012]
+        },
+        {
+            "name": "North Macedonia",
+            "yearsVisited": [2025]
         },
         {
             "name": "Panama",
