@@ -20,7 +20,7 @@
         "clean": "rm -rf node_modules; rm -rf out; rm -rf .next; rm next-env.d.ts; pnpm run clear-fetch-cache"
     },
     "dependencies": {
-        "@headlessui/react": "^1.7.19",
+        "@headlessui/react": "^2.2.9",
         "@heroicons/react": "^2.2.0",
         "classnames": "^2.5.1",
         "cloudinary": "^2.7.0",
@@ -48,6 +48,7 @@
     "devDependencies": {
         "@eslint/compat": "^1.4.0",
         "@next/eslint-plugin-next": "^15.5.4",
+        "@tailwindcss/postcss": "^4.1.14",
         "@types/google.visualization": "^0.0.74",
         "@types/imagemin": "^9.0.1",
         "@types/imagemin-jpegtran": "^5.0.4",
@@ -73,7 +74,7 @@
         "postcss": "^8.5.6",
         "prettier-plugin-tailwindcss": "^0.6.14",
         "sass": "^1.93.2",
-        "tailwindcss": "^3.4.18",
+        "tailwindcss": "^4.1.14",
         "ts-jest": "^29.4.4",
         "typescript": "^5.9.3",
         "typescript-eslint": "^8.45.0"
