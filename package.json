@@ -58,7 +58,7 @@
         "@types/react-syntax-highlighter": "^15.5.11",
         "@typescript-eslint/eslint-plugin": "^6.19.0",
         "@typescript-eslint/parser": "^6.16.0",
-        "autoprefixer": "^10.4.16",
+        "autoprefixer": "^10.4.21",
         "eslint": "^8.56.0",
         "eslint-config-next": "^14.0.4",
         "find-unused-sass-variables": "^5.0.0",
