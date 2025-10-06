@@ -144,15 +144,15 @@ importers:
       fs-extra:
         specifier: ^11.3.0
         version: 11.3.0
+      globals:
+        specifier: ^16.4.0
+        version: 16.4.0
       image-size:
         specifier: ^1.1.0
         version: 1.1.0
       jest:
         specifier: ^29.7.0
         version: 29.7.0(@types/node@22.15.3)
-      jiti:
-        specifier: ^2.6.1
-        version: 2.6.1
       postcss:
         specifier: ^8.4.32
         version: 8.4.32
@@ -2166,6 +2166,10 @@ packages:
 
   globals@14.0.0:
     resolution: {integrity: sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ==}
+    engines: {node: '>=18'}
+
+  globals@16.4.0:
+    resolution: {integrity: sha512-ob/2LcVVaVGCYN+r14cnwnoDPUufjiYgSqRhiFD0Q1iI4Odora5RE8Iv1D24hAz5oMophRGkGz+yuvQmmUMnMw==}
     engines: {node: '>=18'}
 
   globalthis@1.0.3:
@@ -6933,6 +6937,8 @@ snapshots:
 
   globals@14.0.0: {}
 
+  globals@16.4.0: {}
+
   globalthis@1.0.3:
     dependencies:
       define-properties: 1.2.1
@@ -7823,7 +7829,8 @@ snapshots:
 
   jiti@1.21.0: {}
 
-  jiti@2.6.1: {}
+  jiti@2.6.1:
+    optional: true
 
   jpegtran-bin@7.0.0:
     dependencies:

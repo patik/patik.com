@@ -4,6 +4,7 @@ import pluginReact from 'eslint-plugin-react'
 import pluginReactHooks from 'eslint-plugin-react-hooks'
 import pluginJsxA11y from 'eslint-plugin-jsx-a11y'
 import pluginNext from '@next/eslint-plugin-next'
+import globals from 'globals'
 
 export default tseslint.config(
     // Global ignores
@@ -23,30 +24,9 @@ export default tseslint.config(
                 },
             },
             globals: {
-                // Node.js globals
-                __dirname: 'readonly',
-                __filename: 'readonly',
-                Buffer: 'readonly',
-                console: 'readonly',
-                exports: 'writable',
-                global: 'readonly',
-                module: 'readonly',
-                process: 'readonly',
-                require: 'readonly',
-                // Browser globals
-                document: 'readonly',
-                window: 'readonly',
-                navigator: 'readonly',
-                // Jest globals
-                describe: 'readonly',
-                it: 'readonly',
-                test: 'readonly',
-                expect: 'readonly',
-                beforeEach: 'readonly',
-                afterEach: 'readonly',
-                beforeAll: 'readonly',
-                afterAll: 'readonly',
-                jest: 'readonly',
+                ...globals.node,
+                ...globals.browser,
+                ...globals.jest,
             },
         },
     },
