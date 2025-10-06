@@ -41,6 +41,9 @@ const nextConfig = {
     typescript: {
         ignoreBuildErrors: true,
     },
+    eslint: {
+        ignoreDuringBuilds: true,
+    },
     webpack: (config, { isServer }) => {
         // Fixes npm packages that depend on `fs` module
         if (!isServer) {

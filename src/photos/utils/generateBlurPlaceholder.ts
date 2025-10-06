@@ -56,11 +56,13 @@ export default async function getBase64ImageUrl(image: ImageProps): Promise<stri
         throw new Error(`[getBase64ImageUrl, ${id}] received response.status ${response.status}`)
     }
 
-    const buffer = await response.arrayBuffer()
-    const minified = await imagemin.buffer(Buffer.from(buffer), {
+    console.log('response.url ', response.url)
+
+    // Get the image data as a buffer
+    const imageBuffer = Buffer.from(await response.arrayBuffer())
+    const minified = await imagemin.buffer(imageBuffer, {
         plugins: [imageminJpegtran()],
     })
-
     const url = `data:image/jpeg;base64,${Buffer.from(minified).toString('base64')}`
     console.log(`[getBase64ImageUrl, ${id}] writing ${url.length} chars to filePath: ${filePath}`)
 

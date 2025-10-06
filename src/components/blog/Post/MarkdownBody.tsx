@@ -1,7 +1,7 @@
 import { getMarkdownComponents } from '@src/lib/getMarkdownComponents'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
-import remarkUnwrapImages from 'remark-unwrap-images'
+import remarkUnwrapImages from 'rehype-unwrap-images'
 
 type Props = {
     slug: string

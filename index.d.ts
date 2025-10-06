@@ -1,5 +1,6 @@
 declare module 'remark-change-image-paths'
 declare module 'react-use-keypress'
+declare module 'react-google-charts'
 
 interface Window {
     Typekit: {

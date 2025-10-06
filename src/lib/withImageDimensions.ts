@@ -1,26 +1,10 @@
 import { PartialPost } from '@src/lib/getPosts'
 import fs from 'fs'
-import imageSize from 'image-size'
-import { ISizeCalculationResult } from 'image-size/dist/types/interface'
+import { imageSizeFromFile } from 'image-size/fromFile'
+import { ISizeCalculationResult } from 'image-size/types/interface'
 import { join } from 'path'
-import { promisify } from 'util'
 
 const imagesDirectory = join(process.cwd(), 'public/blog/images')
-
-const sizeOf = promisify(imageSize)
-
-/**
- * Adds the image's `height` and `width` to it's properties.
- */
-async function getDimensions(imagePath: string): Promise<ISizeCalculationResult> {
-    const res = await sizeOf(imagePath)
-
-    if (!res) {
-        throw Error(`Invalid image with src "${imagePath}"`)
-    }
-
-    return res
-}
 
 export async function withImageDimensions(post: PartialPost): Promise<PartialPost> {
     const postImagesPath = `${imagesDirectory}/${post.slug}`
@@ -33,8 +17,7 @@ export async function withImageDimensions(post: PartialPost): Promise<PartialPos
     const imagesMetadata: Record<string, ISizeCalculationResult> = {}
 
     for (const imagePath of imageFiles) {
-        // console.log(`getting image for path ${postImagesPath}/${imagePath}`)
-        imagesMetadata[imagePath] = await getDimensions(`${postImagesPath}/${imagePath}`)
+        imagesMetadata[imagePath] = await imageSizeFromFile(`${postImagesPath}/${imagePath}`)
     }
 
     return {
