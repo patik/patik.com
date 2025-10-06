@@ -61,8 +61,10 @@ export function AppErrorBoundary(props: Props): ReactElement {
     return <InnerLayer onError={defaultOnError} {...props} />
 }
 
-export function withAppErrorBoundary<Props extends object>(
-    Component: ComponentType<Props>
+// The library itself uses `any` and we need to match it. Doesn't make the type any less safe.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function withAppErrorBoundary<Props extends ComponentType<any>>(
+    Component: Props
 ): ReturnType<typeof withErrorBoundary<Props>> {
     return withErrorBoundary(Component, {
         fallback: <ErrorFallback />,
