@@ -1,7 +1,7 @@
 import { variants } from '@src/photos/utils/animationVariants'
 import getImageUrl from '@src/photos/utils/getImageUrl'
 import type { ImageProps } from '@src/photos/utils/types'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'motion/react'
 import Image from 'next/image'
 import { SwipeableHandlers } from 'react-swipeable'
 

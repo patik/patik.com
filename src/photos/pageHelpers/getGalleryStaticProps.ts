@@ -43,23 +43,23 @@ function getGalleryMapper(
     return async function getGalleryImages({ cloudinaryFolder }) {
         try {
             const reducedResults = await getReducedResults(cloudinaryFolder, photoIdFromProps)
-            console.log('[getGalleryStaticProps, getGalleryImages] reducedResults.length: ', reducedResults.length)
+            // console.log('[getGalleryStaticProps, getGalleryImages] reducedResults.length: ', reducedResults.length)
 
             const blurImagePromises = reducedResults.map((image) => {
                 return getBase64ImageUrl(image)
             })
             const imagesWithBlurDataUrls = await Promise.all(blurImagePromises)
-            console.log(
-                '[getGalleryStaticProps, getGalleryImages] imagesWithBlurDataUrls.length: ',
-                imagesWithBlurDataUrls.length
-            )
+            // console.log(
+            //     '[getGalleryStaticProps, getGalleryImages] imagesWithBlurDataUrls.length: ',
+            //     imagesWithBlurDataUrls.length
+            // )
             for (let i = 0; i < reducedResults.length; i++) {
                 reducedResults[i].blurDataUrl = imagesWithBlurDataUrls[i]
             }
 
-            console.log(
-                `[getGalleryStaticProps, getGalleryImages] Found ${reducedResults.length} images in folder ${cloudinaryFolder}`
-            )
+            // console.log(
+            //     `[getGalleryStaticProps, getGalleryImages] Found ${reducedResults.length} images in folder ${cloudinaryFolder}`
+            // )
             return reducedResults
         } catch (e) {
             console.log('[getGalleryStaticProps, getGalleryImages] error: ', e)
@@ -76,21 +76,21 @@ export default async function getGalleryStaticProps(
     if (galleries.length === 0) {
         throw new Error('getGalleryStaticProps did not receive any galleries')
     }
-    console.log(`[getGalleryStaticProps] received ${galleries.length} galleries`)
-    console.log(`[getGalleryStaticProps] context.params: `, context.params)
+    // console.log(`[getGalleryStaticProps] received ${galleries.length} galleries`)
+    // console.log(`[getGalleryStaticProps] context.params: `, context.params)
 
     const photoIdFromProps = getPhotoIdFromRouter(context.params)
     const galleryMapper = getGalleryMapper(photoIdFromProps)
     const images: ImageProps[] = flatten(await Promise.all(galleries.map(galleryMapper)))
 
-    console.log(`Found ${images.length} total images across ${galleries.length} galleries`)
+    // console.log(`Found ${images.length} total images across ${galleries.length} galleries`)
 
     if (images.length === 0) {
-        console.error('no images found')
+        throw new Error('no images found in any gallery')
     }
 
     let currentPhoto = null
-    console.log('[getGalleryStaticProps] photoIdFromProps: ', photoIdFromProps)
+    // console.log('[getGalleryStaticProps] photoIdFromProps: ', photoIdFromProps)
 
     if (photoIdFromProps !== undefined) {
         currentPhoto = images.find((img) => img.id === photoIdFromProps) ?? null

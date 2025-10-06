@@ -4,7 +4,7 @@ import { getChangePhotoId } from '@src/photos/utils/getChangePhotoId'
 import type { CityGallery, ImageProps } from '@src/photos/utils/types'
 import { useKeyHandlers } from '@src/photos/utils/useKeyHandlers'
 import { useLastViewedPhoto } from '@src/photos/utils/useLastViewedPhoto'
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { useRouter } from 'next/router'
 import { useRef, useState } from 'react'
 

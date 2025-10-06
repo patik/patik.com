@@ -11,6 +11,8 @@ tmp
 /node_modules
 /.pnp
 .pnp.js
+.pnpm-store/
+.pnpm-debug.log
 
 # testing
 /coverage
@@ -42,3 +44,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Shared Copilot instruction symlinks
+.github/instructions/*.instructions.md
+.github/copilot-instructions.md
+.github/chatmodes
+.github/prompts

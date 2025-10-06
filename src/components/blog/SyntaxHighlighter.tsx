@@ -1,7 +1,7 @@
 import { CodeFenceConfig, getCodeFenceConfig } from '@src/lib/getCodeFenceConfig'
 import postBodyStyles from '@src/styles/blog/post-body.module.scss'
 import { omit } from 'lodash'
-import { ComponentType, useEffect, useMemo, useState } from 'react'
+import { ComponentType, JSX, useEffect, useMemo, useState } from 'react'
 import { PrismLight } from 'react-syntax-highlighter'
 import javascript from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript'
 import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
@@ -32,7 +32,7 @@ export function SyntaxHighlighter({
     className?: string
     code: string
     syntaxHighlightSSRHack?: boolean
-    PreTag?: ComponentType<object> | keyof JSX.IntrinsicElements
+    PreTag?: keyof JSX.IntrinsicElements | ComponentType<unknown> | undefined
 }) {
     // Parse my custom string to determine the language, line highlighting, and starting line for this code block
     const fullConfig = useMemo(() => getCodeFenceConfig(className), [className])
