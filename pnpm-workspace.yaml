@@ -3,3 +3,4 @@ onlyBuiltDependencies:
   - core-js
   - jpegtran-bin
   - sharp
+  - unrs-resolver
