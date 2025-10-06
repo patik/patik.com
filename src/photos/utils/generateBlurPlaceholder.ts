@@ -2,7 +2,7 @@ import getImageUrlToBeBlurred from '@src/photos/utils/getImageUrlToBeBlurred'
 import type { ImageProps } from '@src/photos/utils/types'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs'
 import imagemin from 'imagemin'
-// import imageminJpegtran from 'imagemin-jpegtran'
+import imageminJpegtran from 'imagemin-jpegtran'
 import path from 'path'
 
 const folderPath = path.join(__dirname, '../../../../../../tmp')
@@ -57,11 +57,9 @@ export default async function getBase64ImageUrl(image: ImageProps): Promise<stri
     }
 
     const buffer = await response.arrayBuffer()
-    const minified = await imagemin.buffer(
-        Buffer.from(buffer) /* , {
+    const minified = await imagemin.buffer(Buffer.from(buffer), {
         plugins: [imageminJpegtran()],
-    } */
-    )
+    })
 
     const url = `data:image/jpeg;base64,${Buffer.from(minified).toString('base64')}`
     console.log(`[getBase64ImageUrl, ${id}] writing ${url.length} chars to filePath: ${filePath}`)
