@@ -11,6 +11,8 @@ tmp
 /node_modules
 /.pnp
 .pnp.js
+.pnpm-store/
+.pnpm-debug.log
 
 # testing
 /coverage

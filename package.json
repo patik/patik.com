@@ -84,5 +84,6 @@
     "license": "ISC",
     "bugs": {
         "url": "https://github.com/patik/patik.com/issues"
-    }
+    },
+    "packageManager": "pnpm@10.8.0"
 }
