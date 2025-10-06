@@ -3,7 +3,7 @@ import Buttons from '@src/photos/components/Lightbox/Buttons'
 import MainImage from '@src/photos/components/Lightbox/MainImage'
 import { range } from '@src/photos/utils/range'
 import type { ImageProps, SharedModalProps } from '@src/photos/utils/types'
-import { MotionConfig } from 'framer-motion'
+import { MotionConfig } from 'motion/react'
 import { useState } from 'react'
 import { useSwipeable } from 'react-swipeable'
 
