@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import "./tailwind-theme.css";
 
 @supports (font: -apple-system-body) and (-webkit-appearance: none) {
     img[loading='lazy'] {

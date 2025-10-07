@@ -1,4 +1,4 @@
-@reference "../blog/index.css";
+@reference "../tailwind-theme.css";
 
 .markdown {
     @apply text-lg leading-relaxed;

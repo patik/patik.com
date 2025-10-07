@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+    /* Colors */
+    --color-accent-1: #FAFAFA;
+    --color-accent-2: #EAEAEA;
+    --color-accent-7: #333;
+    --color-success: #0070f3;
+    --color-cyan: #79FFE1;
+
+    /* Spacing */
+    --spacing-28: 7rem;
+
+    /* Letter Spacing */
+    --letter-spacing-tighter: -0.04em;
+
+    /* Line Height */
+    --line-height-tight: 1.2;
+
+    /* Font Size */
+    --font-size-5xl: 2.5rem;
+    --font-size-6xl: 2.75rem;
+    --font-size-7xl: 4.5rem;
+    --font-size-8xl: 6.25rem;
+
+    /* Box Shadow */
+    --shadow-sm: 0 5px 10px rgba(0, 0, 0, 0.12);
+    --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.12);
+    --shadow-highlight: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* Custom Screens */
+@custom-media --narrow (max-aspect-ratio: 3 / 2);
+@custom-media --wide (min-aspect-ratio: 3 / 2);
+@custom-media --taller-than-854 (min-height: 854px);
