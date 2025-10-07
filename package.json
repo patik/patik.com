@@ -1,6 +1,6 @@
 {
     "name": "patik.com",
-    "version": "1.0.0",
+    "version": "3.0.0",
     "description": "Craig Patik’s personal web site",
     "homepage": "https://patik.com",
     "private": true,
@@ -11,7 +11,10 @@
         "dev": "astro dev",
         "build": "astro build",
         "preview": "astro preview",
-        "astro": "astro"
+        "astro": "astro",
+        "lint": "pnpm next lint && pnpm tsc --noEmit && pnpm find-unused-sass-variables src/styles",
+        "clear-fetch-cache": "rm -rf tmp",
+        "clean": "rm -rf node_modules && pnpm run clear-fetch-cache"
     },
     "dependencies": {
         "@astrojs/mdx": "^4.3.6",
@@ -43,9 +46,24 @@
         "eslint-plugin-jsx-a11y": "^6.10.2",
         "eslint-plugin-react": "^7.37.5",
         "eslint-plugin-react-hooks": "^6.1.1",
+        "find-unused-sass-variables": "^6.1.0",
         "prettier": "^3.6.2",
         "prettier-plugin-astro": "^0.14.1",
         "typescript": "^5.9.3",
         "typescript-eslint": "^8.46.0"
-    }
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/patik/patik.com.git"
+    },
+    "author": {
+        "name": "Craig Patik",
+        "email": "craig@patik.com",
+        "url": "https://patik.com"
+    },
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/patik/patik.com/issues"
+    },
+    "packageManager": "pnpm@10.8.0"
 }
