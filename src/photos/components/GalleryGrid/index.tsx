@@ -1,14 +1,12 @@
-import Modal from '@src/photos/components/GalleryGrid/Modal'
-import { getPhotoIdFromRouter } from '@src/photos/pageHelpers/getPhotoIdFromRouter'
-import getImageUrl from '@src/photos/utils/getImageUrl'
-import type { CityGallery, CountryGallery, ImageProps } from '@src/photos/utils/types'
-import { useLastViewedPhoto } from '@src/photos/utils/useLastViewedPhoto'
-import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Fragment, useEffect, useRef } from 'react'
+import { getPhotoIdFromRouter } from '../../pageHelpers/getPhotoIdFromRouter'
+import getImageUrl from '../../utils/getImageUrl'
+import type { CityGallery, CountryGallery, ImageProps } from '../../utils/types'
+import { useLastViewedPhoto } from '../../utils/useLastViewedPhoto'
+import Modal from './Modal'
 
 type Props = {
     gallery: CountryGallery | CityGallery
@@ -17,7 +15,7 @@ type Props = {
     images: ImageProps[]
 }
 
-const GalleryGrid: NextPage<Props> = ({ gallery, images, cityId, cityGalleries }: Props) => {
+const GalleryGrid = ({ gallery, images, cityId, cityGalleries }: Props) => {
     const { cloudinaryFolder } = gallery
     const router = useRouter()
     const photoId = getPhotoIdFromRouter(router.query)
@@ -56,17 +54,16 @@ const GalleryGrid: NextPage<Props> = ({ gallery, images, cityId, cityGalleries }
                 ) : null}
                 {cityGalleries.map(({ countryId: country, cityId: city, title }) => (
                     <Fragment key={city}>
-                        <h2>{isCityGallery ? title : <Link href={`./${city}`}>{title}</Link>}</h2>
+                        <h2>{isCityGallery ? title : <a href={`./${city}`}>{title}</a>}</h2>
                         <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 auto-rows-fr gap-4">
                             {images.map((image, i) => {
                                 const { id, blurDataUrl, resource_type } = image
 
                                 return (
-                                    <Link
+                                    <a
                                         key={id}
                                         href={`/travel/${country}/photos/${city}/${id}`}
                                         ref={id === Number(lastViewedPhoto) ? lastViewedPhotoRef : null}
-                                        shallow
                                         className="after:content group relative cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight"
                                     >
                                         <Image
@@ -86,7 +83,7 @@ const GalleryGrid: NextPage<Props> = ({ gallery, images, cityId, cityGalleries }
                                             height={480}
                                             sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, (max-width: 1536px) 33vw, 25vw"
                                         />
-                                    </Link>
+                                    </a>
                                 )
                             })}
                         </div>

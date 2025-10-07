@@ -1,0 +1,227 @@
+:root {
+    --button-med: 0.75rem;
+    --button-tny: 0.4rem;
+    --button-sml: 0.6rem;
+    --button-lrg: 1rem;
+
+    --button-display: inline-block;
+    --button-margin-bottom: 1.25em; /* em-calc(20) = 20/16 */
+
+    --button-font-family: inherit;
+    --button-font-color: #fff;
+    --button-font-color-alt: #333;
+    --button-font-med: 1em; /* em-calc(16) = 16/16 */
+    --button-font-tny: 0.6875em; /* em-calc(11) = 11/16 */
+    --button-font-sml: 0.8125em; /* em-calc(13) = 13/16 */
+    --button-font-lrg: 1.25em; /* em-calc(20) = 20/16 */
+    --button-font-weight: bold;
+    --button-font-align: center;
+
+    --button-function-factor: 10%;
+
+    --button-border-width: 1px;
+    --button-border-style: solid;
+
+    --button-radius: var(--global-radius);
+    --button-round: var(--global-rounded);
+
+    --button-disabled-opacity: 0.6;
+}
+
+/* Default button styles */
+button,
+.button {
+    /* Base styles */
+    border-style: var(--button-border-style);
+    border-width: var(--button-border-width);
+    cursor: pointer;
+    font-family: var(--button-font-family);
+    font-weight: var(--button-font-weight);
+    line-height: normal;
+    margin: 0 0 var(--button-margin-bottom);
+    position: relative;
+    text-decoration: none;
+    text-align: var(--button-font-align);
+    display: var(--button-display);
+
+    /* Size styles (medium - default) */
+    padding-top: var(--button-med);
+    padding-right: calc(var(--button-med) * 2);
+    padding-bottom: calc(var(--button-med) + 0.0625em); /* button-med + em-calc(1) */
+    padding-left: calc(var(--button-med) * 2);
+    font-size: var(--button-font-med);
+
+    /* Color styles (primary - default) */
+    background-color: var(--primary-color);
+    border-color: var(--primary-color-dark); /* darken(primary-color, 10%) */
+    color: var(--button-font-color);
+
+    &:hover,
+    &:focus {
+        background-color: var(--primary-color-dark);
+        color: var(--button-font-color);
+    }
+
+    /* Color variants */
+    &.secondary {
+        background-color: var(--secondary-color);
+        border-color: var(--secondary-color-dark);
+        color: var(--button-font-color);
+
+        &:hover,
+        &:focus {
+            background-color: var(--secondary-color-dark);
+            color: var(--button-font-color);
+        }
+    }
+
+    &.success {
+        background-color: var(--success-color);
+        border-color: var(--success-color-dark);
+        color: var(--button-font-color);
+
+        &:hover,
+        &:focus {
+            background-color: var(--success-color-dark);
+            color: var(--button-font-color);
+        }
+    }
+
+    &.alert {
+        background-color: var(--alert-color);
+        border-color: var(--alert-color-dark);
+        color: var(--button-font-color);
+
+        &:hover,
+        &:focus {
+            background-color: var(--alert-color-dark);
+            color: var(--button-font-color);
+        }
+    }
+
+    /* Size variants */
+    &.large {
+        padding-top: var(--button-lrg);
+        padding-right: calc(var(--button-lrg) * 2);
+        padding-bottom: calc(var(--button-lrg) + 0.0625em);
+        padding-left: calc(var(--button-lrg) * 2);
+        font-size: var(--button-font-lrg);
+    }
+
+    &.small {
+        padding-top: var(--button-sml);
+        padding-right: calc(var(--button-sml) * 2);
+        padding-bottom: calc(var(--button-sml) + 0.0625em);
+        padding-left: calc(var(--button-sml) * 2);
+        font-size: var(--button-font-sml);
+    }
+
+    &.tiny {
+        padding-top: var(--button-tny);
+        padding-right: calc(var(--button-tny) * 2);
+        padding-bottom: calc(var(--button-tny) + 0.0625em);
+        padding-left: calc(var(--button-tny) * 2);
+        font-size: var(--button-font-tny);
+    }
+
+    &.expand {
+        padding-top: var(--button-med);
+        padding-bottom: calc(var(--button-med) + 0.0625em);
+        padding-right: 0;
+        padding-left: 0;
+        width: 100%;
+    }
+
+    /* Alignment variants */
+    &.left-align {
+        text-align: left;
+        text-indent: 0.75em; /* em-calc(12) = 12/16 */
+    }
+
+    &.right-align {
+        text-align: right;
+        padding-right: 0.75em; /* em-calc(12) = 12/16 */
+    }
+
+    /* Disabled states */
+    &.disabled,
+    &[disabled] {
+        cursor: default;
+        opacity: var(--button-disabled-opacity);
+        box-shadow: none;
+
+        &:hover,
+        &:focus {
+            background-color: var(--primary-color);
+        }
+
+        &.secondary {
+            &:hover,
+            &:focus {
+                background-color: var(--secondary-color);
+            }
+        }
+
+        &.success {
+            &:hover,
+            &:focus {
+                background-color: var(--success-color);
+            }
+        }
+
+        &.alert {
+            &:hover,
+            &:focus {
+                background-color: var(--alert-color);
+            }
+        }
+    }
+
+    /* Input-specific adjustments */
+    padding-top: calc(var(--button-med) + 0.0625em); /* button-med + em-calc(1) */
+    padding-bottom: var(--button-med);
+    -webkit-appearance: none;
+
+    &.tiny {
+        padding-top: calc(var(--button-tny) + 0.0625em);
+        padding-bottom: var(--button-tny);
+    }
+
+    &.small {
+        padding-top: calc(var(--button-sml) + 0.0625em);
+        padding-bottom: var(--button-sml);
+    }
+
+    &.large {
+        padding-top: calc(var(--button-lrg) + 0.03125em); /* button-lrg + em-calc(.5) */
+        padding-bottom: calc(var(--button-lrg) + 0.03125em);
+    }
+}
+
+/* Styles for any browser or device that support media queries */
+@media only screen {
+    button,
+    .button {
+        /* Inset shadow */
+        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+
+        /* Transition */
+        transition: background-color 300ms ease-out;
+
+        &.radius {
+            border-radius: var(--button-radius);
+        }
+
+        &.round {
+            border-radius: var(--button-round);
+        }
+    }
+}
+
+/* Additional styles for screens larger than 768px (small breakpoint) */
+@media only screen and (min-width: 48em) {
+    button,
+    .button {
+        display: inline-block;
+    }
+}

@@ -1,8 +1,7 @@
-import Layout from '@src/components/common/Layout'
-import countryGallery from '@src/galleries/uzbekistan'
-import GalleryGrid from '@src/photos/components/GalleryGrid'
-import type { CityGallery, CountryGallery, ImageProps } from '@src/photos/utils/types'
-import Link from 'next/link'
+import countryGallery from '../../galleries/uzbekistan'
+import Layout from '../../layouts/Layout.astro'
+import type { CityGallery, CountryGallery, ImageProps } from '../utils/types'
+import GalleryGrid from './GalleryGrid'
 
 export function GalleryPage({
     gallery,
@@ -18,9 +17,9 @@ export function GalleryPage({
     return (
         <Layout title={gallery.title} keywords={gallery.keywords}>
             <h1>
-                <Link href={`/travel/${countryGallery.countryId}`}>
+                <a href={`/travel/${countryGallery.countryId}`}>
                     {isCityGallery ? gallery.countryName : gallery.title}
-                </Link>
+                </a>
             </h1>
 
             <section>

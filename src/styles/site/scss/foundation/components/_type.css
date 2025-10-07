@@ -1,0 +1,413 @@
+/*
+ Typography Variables
+ */
+
+:root {
+    /* We use these to control header font styles */
+    --header-font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+    --header-font-weight: bold;
+    --header-font-style: normal;
+    --header-font-color: #222;
+    --header-line-height: 1.4;
+    --header-top-margin: 0.2em;
+    --header-bottom-margin: 0.5em;
+    --header-text-rendering: optimizeLegibility;
+
+    /* We use these to control header font sizes */
+    /* em-calc values calculated as px/16 */
+    --h1-font-size: 2.75em; /* em-calc(44) = 44/16 */
+    --h2-font-size: 2.3125em; /* em-calc(37) = 37/16 */
+    --h3-font-size: 1.6875em; /* em-calc(27) = 27/16 */
+    --h4-font-size: 1.4375em; /* em-calc(23) = 23/16 */
+    --h5-font-size: 1.125em; /* em-calc(18) = 18/16 */
+    --h6-font-size: 1em;
+
+    /* These control how subheaders are styled. */
+    --subheader-line-height: 1.4;
+    --subheader-font-color: #6f6f6f; /* lighten(#222, 30%) */
+    --subheader-font-weight: 300;
+    --subheader-top-margin: 0.2em;
+    --subheader-bottom-margin: 0.5em;
+
+    /* A general <small> styling */
+    --small-font-size: 60%;
+    --small-font-color: #6f6f6f; /* lighten(#222, 30%) */
+
+    /* We use these to style paragraphs */
+    --paragraph-font-family: inherit;
+    --paragraph-font-weight: normal;
+    --paragraph-font-size: 1em;
+    --paragraph-line-height: 1.6;
+    --paragraph-margin-bottom: 1.25em; /* em-calc(20) = 20/16 */
+    --paragraph-aside-font-size: 0.875em; /* em-calc(14) = 14/16 */
+    --paragraph-aside-line-height: 1.35;
+    --paragraph-aside-font-style: italic;
+    --paragraph-text-rendering: optimizeLegibility;
+
+    /* We use these to style <code> tags */
+    --code-color: #a9300a; /* darken(#c60f13, 15%) */
+    --code-font-family: Consolas, 'Liberation Mono', Courier, monospace;
+    --code-font-weight: bold;
+
+    /* We use these to style anchors */
+    --anchor-text-decoration: none;
+    /* --anchor-font-color and --anchor-font-color-hover defined in other files */
+
+    /* We use these to style the <hr> element */
+    --hr-border-width: 1px;
+    --hr-border-style: solid;
+    --hr-border-color: #ddd;
+    --hr-margin: 1.25em; /* em-calc(20) = 20/16 */
+
+    /* We use these to style lists */
+    --list-style-position: outside;
+    --list-side-margin: 0;
+    --list-nested-margin: 1.25em; /* em-calc(20) = 20/16 */
+    --definition-list-header-weight: bold;
+    --definition-list-header-margin-bottom: 0.3em;
+    --definition-list-margin-bottom: 0.75em; /* em-calc(12) = 12/16 */
+
+    /* We use these to style blockquotes */
+    --blockquote-font-color: #6f6f6f; /* lighten(#222, 30%) */
+    --blockquote-padding: 0.5625em 1.25em 0 1.1875em; /* em-calc(9 20 0 19) */
+    --blockquote-border: 1px solid #ddd;
+    --blockquote-cite-font-size: 0.8125em; /* em-calc(13) = 13/16 */
+    --blockquote-cite-font-color: #555; /* lighten(#222, 20%) */
+
+    /* Acronym styles */
+    --acronym-underline: 1px dotted #ddd;
+
+    /* We use these to control padding and margin */
+    --microformat-padding: 0.625em 0.75em; /* em-calc(10 12) */
+    --microformat-margin: 0 0 1.25em 0; /* em-calc(0 0 20 0) */
+
+    /* We use these to control the border styles */
+    --microformat-border-width: 1px;
+    --microformat-border-style: solid;
+    --microformat-border-color: #ddd;
+
+    /* We use these to control full name font styles */
+    --microformat-fullname-font-weight: bold;
+    --microformat-fullname-font-size: 0.9375em; /* em-calc(15) = 15/16 */
+
+    /* We use this to control the summary font styles */
+    --microformat-summary-font-weight: bold;
+
+    /* We use this to control abbr padding */
+    --microformat-abbr-padding: 0 0.0625em; /* em-calc(0 1) */
+
+    /* We use this to control abbr font styles */
+    --microformat-abbr-font-weight: bold;
+    --microformat-abbr-font-decoration: none;
+}
+
+/*
+ Typography Placeholders
+ */
+
+/* These will throw a deprecation warning if used within a media query. */
+.lead {
+    font-size: calc(1em + 0.21875em); /* paragraph-font-size + em-calc(3.5) = 1em + 3.5/16 */
+    line-height: 1.6;
+}
+
+.subheader {
+    line-height: var(--subheader-line-height);
+    color: var(--subheader-font-color);
+    font-weight: var(--subheader-font-weight);
+    margin-top: var(--subheader-top-margin);
+    margin-bottom: var(--subheader-bottom-margin);
+}
+
+/* Typography resets */
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+p,
+blockquote,
+th,
+td {
+    margin: 0;
+    padding: 0;
+    direction: ltr;
+}
+
+/* Default Link Styles */
+a {
+    color: var(--anchor-font-color);
+    text-decoration: var(--anchor-text-decoration);
+    line-height: inherit;
+
+    &:hover,
+    &:focus {
+        color: var(--anchor-font-color-hover);
+    }
+
+    img {
+        border: none;
+    }
+}
+
+/* Default paragraph styles */
+p {
+    font-family: var(--paragraph-font-family);
+    font-weight: var(--paragraph-font-weight);
+    font-size: var(--paragraph-font-size);
+    line-height: var(--paragraph-line-height);
+    margin-bottom: var(--paragraph-margin-bottom);
+    text-rendering: var(--paragraph-text-rendering);
+
+    & aside {
+        font-size: var(--paragraph-aside-font-size);
+        line-height: var(--paragraph-aside-line-height);
+        font-style: var(--paragraph-aside-font-style);
+    }
+}
+
+/* Default header styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--header-font-family);
+    font-weight: var(--header-font-weight);
+    font-style: var(--header-font-style);
+    color: var(--header-font-color);
+    text-rendering: var(--header-text-rendering);
+    margin-top: var(--header-top-margin);
+    margin-bottom: var(--header-bottom-margin);
+    line-height: calc(var(--header-line-height) - 0.1875em); /* header-line-height - em-calc(3) = 1.4 - 3/16 */
+
+    small {
+        font-size: var(--small-font-size);
+        color: var(--small-font-color);
+        line-height: 0;
+    }
+}
+
+/* h1 { font-size: calc(var(--h1-font-size) - 0.625em); } em-calc(10) = 10/16 */
+/* h2 { font-size: calc(var(--h2-font-size) - 0.625em); } em-calc(10) = 10/16 */
+/* h3 { font-size: calc(var(--h3-font-size) - 0.3125em); } em-calc(5) = 5/16 */
+/* h4 { font-size: calc(var(--h4-font-size) - 0.3125em); } em-calc(5) = 5/16 */
+/* h5 { font-size: var(--h5-font-size); } */
+/* h6 { font-size: var(--h6-font-size); } */
+
+hr {
+    border: var(--hr-border-style) var(--hr-border-color);
+    border-width: var(--hr-border-width) 0 0;
+    clear: both;
+    margin: var(--hr-margin) 0 calc(var(--hr-margin) - 0.0625em); /* hr-margin - em-calc(1) = 1.25em - 1/16 */
+    height: 0;
+}
+
+/* Helpful Typography Defaults */
+em,
+i {
+    font-style: italic;
+    line-height: inherit;
+}
+
+strong,
+b {
+    font-weight: bold;
+    line-height: inherit;
+}
+
+small {
+    font-size: var(--small-font-size);
+    line-height: inherit;
+}
+
+code {
+    font-family: var(--code-font-family);
+    font-weight: var(--code-font-weight);
+    color: var(--code-color);
+}
+
+/* Lists */
+ul,
+ol,
+dl {
+    font-size: var(--paragraph-font-size);
+    line-height: var(--paragraph-line-height);
+    margin-bottom: var(--paragraph-margin-bottom);
+    list-style-position: var(--list-style-position);
+    font-family: var(--paragraph-font-family);
+}
+
+ul,
+ol {
+    margin-left: var(--list-side-margin);
+    &.no-bullet {
+        margin-left: var(--list-side-margin);
+    }
+}
+
+/* Unordered Lists */
+ul {
+    li {
+        ul,
+        ol {
+            margin-left: var(--list-nested-margin);
+            margin-bottom: 0;
+            font-size: 1em; /* Override nested font-size change */
+        }
+    }
+    &.square,
+    &.circle,
+    &.disc {
+        li ul {
+            list-style: inherit;
+        }
+    }
+
+    &.square {
+        list-style-type: square;
+    }
+    &.circle {
+        list-style-type: circle;
+    }
+    &.disc {
+        list-style-type: disc;
+    }
+    &.no-bullet {
+        list-style: none;
+    }
+}
+
+/* Ordered Lists */
+ol {
+    li {
+        ul,
+        ol {
+            margin-left: var(--list-nested-margin);
+            margin-bottom: 0;
+        }
+    }
+}
+
+/* Definition Lists */
+dl {
+    dt {
+        margin-bottom: var(--definition-list-header-margin-bottom);
+        font-weight: var(--definition-list-header-weight);
+    }
+    dd {
+        margin-bottom: var(--definition-list-margin-bottom);
+    }
+}
+
+/* Abbreviations */
+abbr,
+acronym {
+    text-transform: uppercase;
+    font-size: 90%;
+    color: var(--body-font-color);
+    text-decoration-color: #999;
+    cursor: help;
+
+    @media (prefers-color-scheme: dark) {
+        color: white;
+    }
+}
+abbr {
+    text-transform: none;
+}
+
+/* Blockquotes */
+blockquote {
+    margin: 0 0 var(--paragraph-margin-bottom);
+    padding: var(--blockquote-padding);
+    border-left: var(--blockquote-border);
+
+    cite {
+        display: block;
+        font-size: var(--blockquote-cite-font-size);
+        color: var(--blockquote-cite-font-color);
+        &:before {
+            content: '\2014 \0020';
+        }
+
+        a,
+        a:visited {
+            color: var(--blockquote-cite-font-color);
+        }
+    }
+}
+blockquote,
+blockquote p {
+    line-height: var(--paragraph-line-height);
+    color: var(--blockquote-font-color);
+}
+
+/* Microformats */
+.vcard {
+    display: inline-block;
+    margin: var(--microformat-margin);
+    border: var(--microformat-border-width) var(--microformat-border-style) var(--microformat-border-color);
+    padding: var(--microformat-padding);
+
+    li {
+        margin: 0;
+        display: block;
+    }
+    .fn {
+        font-weight: var(--microformat-fullname-font-weight);
+        font-size: var(--microformat-fullname-font-size);
+    }
+}
+
+.vevent {
+    .summary {
+        font-weight: var(--microformat-summary-font-weight);
+    }
+
+    abbr {
+        cursor: default;
+        text-decoration: var(--microformat-abbr-font-decoration);
+        font-weight: var(--microformat-abbr-font-weight);
+        border: none;
+        padding: var(--microformat-abbr-padding);
+    }
+}
+
+@media only screen and (min-width: 48em) {
+    /* $small breakpoint */
+    /* Adding this tag just to give it specificity over Tailwind's style reset */
+    body {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            line-height: var(--header-line-height);
+        }
+        h1 {
+            font-size: var(--h1-font-size);
+        }
+        h2 {
+            font-size: var(--h2-font-size);
+        }
+        h3 {
+            font-size: var(--h3-font-size);
+        }
+        h4 {
+            font-size: var(--h4-font-size);
+        }
+    }
+}

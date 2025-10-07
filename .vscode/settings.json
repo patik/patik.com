@@ -1,0 +1,16 @@
+{
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#0a8c5ff0",
+        "titleBar.activeBackground": "#0a8c5ff0",
+        "titleBar.activeForeground": "#F6FBFA",
+        "statusBar.background": "#0a8c5ff0"
+    },
+    "eslint.useFlatConfig": true,
+    "typescript.tsserver.watchOptions": {
+        "watchDirectory": "useFsEvents",
+        "fallbackPolling": "dynamicPriorityPolling",
+        "watchFile": "useFsEventsOnParentDirectory",
+        "synchronousWatchDirectory": true
+    },
+    "js/ts.implicitProjectConfig.checkJs": true
+}

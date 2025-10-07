@@ -1,6 +1,4 @@
 onlyBuiltDependencies:
   - '@parcel/watcher'
-  - core-js
-  - jpegtran-bin
+  - esbuild
   - sharp
-  - unrs-resolver

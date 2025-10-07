@@ -1,0 +1,32 @@
+@import "../tailwind-theme.css";
+
+@layer components {
+    body {
+        font-family: 'chaparral-pro', Palatino Linotype, Palatino, serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        body {
+            background-color: #222;
+            color: white;
+        }
+    }
+
+    a {
+        @apply text-blue-600 hover:text-blue-800 visited:text-blue-400;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        a {
+            @apply text-blue-300 hover:text-blue-200 visited:text-blue-400;
+        }
+    }
+
+    ul {
+        @apply list-disc ml-8 mr-4;
+    }
+
+    ol {
+        @apply list-decimal ml-8 mr-4;
+    }
+}

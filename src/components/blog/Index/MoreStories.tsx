@@ -1,4 +1,4 @@
-import PostPreview from '@src/components/blog/Index/PostPreview'
+import PostPreview from './PostPreview'
 
 type Props = {
     posts: BlogPost[]

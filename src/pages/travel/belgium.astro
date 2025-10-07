@@ -1,0 +1,56 @@
+---
+import { Image } from 'astro:assets'
+import TravelLinkList from '../../components/TravelLinkList'
+import BrugesImage from '../../images/britain-benelux-bruges-link.jpg'
+import OverviewMap from '../../images/britain-benelux-overview-map-small.jpg'
+import Layout from '../../layouts/Layout.astro'
+---
+
+<Layout title="Belgium" keywords={['Belgium', 'Bruges', 'Europe', 'travel']}>
+    <h1>Belgium</h1>
+
+    <p>August 2012</p>
+
+    <section>
+        <h2>Photos and Video</h2>
+
+        <TravelLinkList
+            items={[
+                {
+                    title: 'Bruges',
+                    className: 'bg-belgium-bruges',
+                    url: 'https://get.google.com/albumarchive/116513687533678150554/album/AF1QipN-4ZhzSVdq3x0O8opTTZA3hYiuMZIMA_mtpD1D',
+                    imageSrc: BrugesImage,
+                    imageAlt: 'Windmill in the Belgian countryside',
+                },
+            ]}
+        />
+    </section>
+
+    <section>
+        <h2>Itinerary</h2>
+        <ul>
+            <li>
+                <a href="/travel/netherlands/">Netherlands</a>
+            </li>
+            <li>
+                <strong>Bruges, Belgium</strong>
+            </li>
+            <li>Eurostar train to London, via Paris</li>
+            <li>
+                <a href="/travel/britain/">Edinburgh, Scotland</a>
+            </li>
+            <li>
+                <a href="/travel/britain/">London</a>
+            </li>
+            <li>
+                <a href="/travel/britain/">Liverpool</a>
+            </li>
+        </ul>
+        <div class="travel-map">
+            <a href="/images/britain-benelux-overview-map.png">
+                <Image src={OverviewMap} alt="Map of trip locations" title="Click for a larger version" />
+            </a>
+        </div>
+    </section>
+</Layout>

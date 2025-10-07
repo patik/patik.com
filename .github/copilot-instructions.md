@@ -1,6 +1,6 @@
 # Project description
 
-This is a personal website. It includes travel photos, blog posts, and a code portfolio. It is built using Next.js, TypeScript, and Tailwind.
+This is a personal website. It includes travel photos, blog posts, and a code portfolio. It is built using Astro, React, and TypeScript.
 
 The blog is somewhat a separate system based on markdown files.
 

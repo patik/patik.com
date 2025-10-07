@@ -1,0 +1,45 @@
+.main-nav {
+    display: flex;
+    background-color: #333;
+    margin: 0 auto;
+    max-width: 980px;
+    -webkit-font-smoothing: antialiased;
+
+    h1 {
+        flex-grow: 1;
+        margin: 0.25rem 0 0.25rem 1rem;
+
+        @media (max-width: 980px) {
+            margin-left: 1.5rem;
+        }
+
+        a {
+            color: #fff;
+            font-size: 1em;
+
+            @media (max-width: 400px) {
+                font-size: 0.6em;
+            }
+        }
+    }
+
+    ul {
+        display: flex;
+        flex-shrink: 1;
+        margin-bottom: 0;
+        margin-right: 1rem;
+
+        li {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            list-style: none;
+            margin-left: 1rem;
+            margin-bottom: 0;
+
+            a {
+                color: #fff;
+            }
+        }
+    }
+}

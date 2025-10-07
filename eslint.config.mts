@@ -1,10 +1,8 @@
-import { fixupPluginRules } from '@eslint/compat'
-import tseslint from 'typescript-eslint'
+import pluginJsxA11y from 'eslint-plugin-jsx-a11y'
 import pluginReact from 'eslint-plugin-react'
 import pluginReactHooks from 'eslint-plugin-react-hooks'
-import pluginJsxA11y from 'eslint-plugin-jsx-a11y'
-import pluginNext from '@next/eslint-plugin-next'
 import globals from 'globals'
+import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
     // Global ignores
@@ -39,15 +37,15 @@ export default tseslint.config(
         files: ['**/*.{js,jsx,ts,tsx}'],
         plugins: {
             react: pluginReact,
-            'react-hooks': fixupPluginRules(pluginReactHooks),
+            'react-hooks': pluginReactHooks,
             'jsx-a11y': pluginJsxA11y,
-            '@next/next': pluginNext,
         },
         settings: {
             react: {
                 version: 'detect',
             },
         },
+        extends: [pluginReactHooks],
         rules: {
             // React rules
             ...pluginReact.configs.recommended.rules,
@@ -55,15 +53,8 @@ export default tseslint.config(
             'react/prop-types': 'off',
             'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
 
-            // React Hooks rules
-            ...pluginReactHooks.configs.recommended.rules,
-
             // JSX A11y rules
             ...pluginJsxA11y.configs.recommended.rules,
-
-            // Next.js rules
-            ...pluginNext.configs.recommended.rules,
-            ...pluginNext.configs['core-web-vitals'].rules,
         },
-    }
+    },
 )

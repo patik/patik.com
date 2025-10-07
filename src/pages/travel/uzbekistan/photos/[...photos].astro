@@ -1,0 +1,27 @@
+---
+import countryGallery from '../../../../galleries/uzbekistan'
+import samarkand from '../../../../galleries/uzbekistan/samarkand'
+import getGalleryStaticPaths from '../../../../photos/pageHelpers/getGalleryStaticPaths'
+import { getPage } from '../../../../photos/pageHelpers/getPage'
+
+// import getGalleryStaticProps from '../../../../photos/pageHelpers/getGalleryStaticProps'
+// export const getStaticProps = async function (context) {
+//     const result = getGalleryStaticProps([samarkand], context)
+//     console.log('[getStaticProps] finished calling its getter')
+//     return result
+// }
+
+export const getStaticPaths = async function () {
+    const result = getGalleryStaticPaths([samarkand])
+    console.log('[getStaticPaths] finished calling its getter')
+    return result
+}
+
+const { photos } = Astro.params
+
+const Page = getPage(countryGallery, photos, [samarkand])
+
+const { images, currentPhoto } = Astro.props
+---
+
+<Page images={images} currentPhoto={currentPhoto} />

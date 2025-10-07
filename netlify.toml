@@ -1,10 +1,4 @@
 [[redirects]]
-    from = "/blog/*"
-    to = "https://patik-blog.netlify.app/:splat"
-    status = 200
-    force = false
-
-[[redirects]]
     from = "/dof/*"
     to = "https://depth-of-field.netlify.app/:splat"
     status = 200

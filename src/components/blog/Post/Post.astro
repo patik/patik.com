@@ -1,0 +1,45 @@
+---
+import { render } from 'astro:content'
+import type { InferEntrySchema, RenderedContent } from 'astro:content'
+import config from '../../../config.json'
+import Container from '../Container'
+import Layout from '../Layout.astro'
+import Meta from '../Meta'
+import PageHeader from './PageHeader'
+import PostBody from './PostBody'
+import PostHeader from './PostHeader'
+
+const { blogUrl, blogDescription } = config
+
+interface Props {
+    post: {
+        id: string
+        body?: string
+        collection: 'blog'
+        data: InferEntrySchema<'blog'>
+        rendered?: RenderedContent
+        filePath?: string
+    }
+}
+
+const { post } = Astro.props
+const { Content } = await render(post)
+// const { title, date, slug, ogImage, excerpt, unpublished } = post
+---
+
+<Layout unpublished={post.data.unpublished}>
+    <Container>
+        <PageHeader />
+        <Meta
+            siteName={blogDescription}
+            image={post.data.ogImage ?? ''}
+            description={post.data.excerpt ?? ''}
+            title={`${post.data.title} | ${blogDescription}`}
+            url={`${blogUrl}/${post.id}`}
+        />
+        <article class="mb-32">
+            <PostHeader title={post.data.title} date={post.data.date.toISOString()} />
+            <Content />
+        </article>
+    </Container>
+</Layout>

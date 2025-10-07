@@ -1,0 +1,31 @@
+/* **************************************************************** */
+/* Fonts */
+/* **************************************************************** */
+
+:root {
+    --font-serif: 'chaparral-pro', Palatino Linotype, Palatino, serif;
+    --font-sans: 'Helvetica Neue', Helvetica, sans-serif;
+    --font-fixed: Menlo, Consolas, Inconsolata, Monaco, monospace;
+    /* --font-helv: "Helvetica Neue", Helvetica, Geneva, sans-serif; */
+
+    /* **************************************************************** */
+    /* Colors */
+    /* **************************************************************** */
+
+    --dark-charcoal: #222;
+    --charcoal: #444;
+    --gray: #888;
+    /* --light-gray: #ccc; */
+
+    --buttonLinkImageWidth: 96px;
+    --imgPositionOffset: 5px;
+
+    /* **************************************************************** */
+    /* Breakpoints */
+    /* **************************************************************** */
+
+    --tiny-screen: 480px;
+    --small-screen: 600px;
+    --medium-screen: 980px;
+    --large-screen: 1280px;
+}

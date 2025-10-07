@@ -1,19 +1,16 @@
-import Layout from '@src/components/common/Layout'
-import { GalleryPage } from '@src/photos/components/GalleryPage'
-import { SinglePhotoPage } from '@src/photos/components/SinglePhotoPage'
-import { getPhotoIdFromRouter } from '@src/photos/pageHelpers/getPhotoIdFromRouter'
-import type { CityGallery, CountryGallery, PageProps } from '@src/photos/utils/types'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
+import Layout from '../../layouts/Layout.astro'
+import { GalleryPage } from '../components/GalleryPage'
+import { SinglePhotoPage } from '../components/SinglePhotoPage'
+import { getPhotoIdFromRouter } from '../pageHelpers/getPhotoIdFromRouter'
+import type { CityGallery, CountryGallery, PageProps } from '../utils/types'
 
-export function getPage(countryGallery: CountryGallery, cityGalleries: CityGallery[] = []) {
+export function getPage(countryGallery: CountryGallery, slug: string, cityGalleries: CityGallery[] = []) {
     if (!countryGallery) {
         throw new Error('Missing the countryGallery prop')
     }
 
     return function Page({ images = [], currentPhoto = null }: PageProps) {
-        const router = useRouter()
-        const photosParam = router.query.photos
+        const photosParam = slug
         const segments: string[] = Array.isArray(photosParam) ? photosParam : photosParam ? [photosParam] : []
 
         if (segments && segments.length > 0) {
@@ -38,8 +35,7 @@ export function getPage(countryGallery: CountryGallery, cityGalleries: CityGalle
             if (segments.length === 2) {
                 if (!currentPhoto) {
                     // This will happen when loading an index page and then clicking on a photo
-                    const photoIdFromProps = getPhotoIdFromRouter(router.query)
-                    currentPhoto = images.find((img) => img.id === photoIdFromProps) ?? null
+                    currentPhoto = images.find((img) => img.id === Number(slug)) ?? null
                 }
 
                 if (!currentPhoto) {
@@ -51,9 +47,7 @@ export function getPage(countryGallery: CountryGallery, cityGalleries: CityGalle
                         <h1>{countryGallery.title}</h1>
 
                         <p>
-                            <Link
-                                href={`/travel/${countryGallery.countryId}`}
-                            >{`Back to ${countryGallery.title}`}</Link>
+                            <a href={`/travel/${countryGallery.countryId}`}>{`Back to ${countryGallery.title}`}</a>
                         </p>
 
                         <SinglePhotoPage cityGallery={cityGallery} currentPhoto={currentPhoto} images={images} />

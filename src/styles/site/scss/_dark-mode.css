@@ -1,0 +1,24 @@
+body {
+    background-color: white;
+    color: var(--dark-charcoal);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --body-font-color: white;
+    }
+
+    body {
+        background-color: var(--dark-charcoal);
+        color: white;
+    }
+
+    a {
+        color: #75bcf9;
+
+        &:hover,
+        &:focus {
+            color: var(--anchor-font-color-hover, #0073aa);
+        }
+    }
+}

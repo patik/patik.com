@@ -1,0 +1,173 @@
+{
+    "lastUpdated": "2025-09-01",
+    "visited": [
+        {
+            "name": "Albania",
+            "yearsVisited": [2022]
+        },
+        {
+            "name": "Argentina",
+            "yearsVisited": [2011]
+        },
+        {
+            "name": "Austria",
+            "yearsVisited": [2008, 2017, 2022, 2025]
+        },
+        {
+            "name": "Belgium",
+            "yearsVisited": [2012]
+        },
+        {
+            "name": "Bosnia and Herzegovina",
+            "yearsVisited": [2024]
+        },
+        {
+            "name": "Bulgaria",
+            "yearsVisited": [2021]
+        },
+        {
+            "name": "Cambodia",
+            "yearsVisited": [2013]
+        },
+        {
+            "name": "Canada",
+            "yearsVisited": [2000, 2005, 2017]
+        },
+        {
+            "name": "China",
+            "yearsVisited": [2017]
+        },
+        {
+            "name": "Croatia",
+            "yearsVisited": [2020, 2022]
+        },
+        {
+            "name": "Czech Republic",
+            "yearsVisited": [2015]
+        },
+        {
+            "name": "Estonia",
+            "yearsVisited": [2023]
+        },
+        {
+            "name": "France",
+            "yearsVisited": [2000, 2005, 2017]
+        },
+        {
+            "name": "Germany",
+            "yearsVisited": [2008, 2014, 2015]
+        },
+        {
+            "name": "Greece",
+            "yearsVisited": [2007, 2019, 2020, 2021, 2022, 2023, 2024]
+        },
+        {
+            "name": "Hungary",
+            "yearsVisited": [2015]
+        },
+        {
+            "name": "Ireland",
+            "yearsVisited": [2022]
+        },
+        {
+            "name": "Italy",
+            "yearsVisited": [2018]
+        },
+        {
+            "name": "Kosovo",
+            "yearsVisited": [2025]
+        },
+        {
+            "name": "Latvia",
+            "yearsVisited": [2023]
+        },
+        {
+            "name": "Lithuania",
+            "yearsVisited": [2023]
+        },
+        {
+            "name": "Monaco",
+            "yearsVisited": [2000]
+        },
+        {
+            "name": "Morocco",
+            "yearsVisited": [2010]
+        },
+        {
+            "name": "Myanmar",
+            "yearsVisited": [2013]
+        },
+        {
+            "name": "Netherlands",
+            "yearsVisited": [2012]
+        },
+        {
+            "name": "North Macedonia",
+            "yearsVisited": [2025]
+        },
+        {
+            "name": "Panama",
+            "yearsVisited": [2011]
+        },
+        {
+            "name": "Peru",
+            "yearsVisited": [2011]
+        },
+        {
+            "name": "Poland",
+            "yearsVisited": [2019]
+        },
+        {
+            "name": "Portugal",
+            "yearsVisited": [2010]
+        },
+        {
+            "name": "Romania",
+            "yearsVisited": [2022]
+        },
+        {
+            "name": "Slovakia",
+            "yearsVisited": [2015]
+        },
+        {
+            "name": "Slovenia",
+            "yearsVisited": [2019]
+        },
+        {
+            "name": "Spain",
+            "yearsVisited": [2010, 2018, 2020]
+        },
+        {
+            "name": "Thailand",
+            "yearsVisited": [2013]
+        },
+        {
+            "name": "Turkey",
+            "yearsVisited": [2009]
+        },
+        {
+            "name": "United Kingdom",
+            "yearsVisited": [2012, 2018, 2022, 2024]
+        },
+        {
+            "name": "United States",
+            "yearsVisited": [2017, 2018, 2019, 2021, 2022, 2024, 2025]
+        },
+        {
+            "name": "Uruguay",
+            "yearsVisited": [2011]
+        },
+        {
+            "name": "Uzbekistan",
+            "yearsVisited": [2023]
+        },
+        {
+            "name": "Vietnam",
+            "yearsVisited": [2017]
+        }
+    ],
+    "resided": [
+        { "name": "United States", "begin": 1981, "end": 2017 },
+        { "name": "Germany", "begin": 2017 }
+    ]
+}
