@@ -5,15 +5,15 @@ import UnpublishedAlert from './UnpublishedAlert'
 interface Props {
     title?: string
     keywords?: string[]
-    unpublished?: boolean
+    draft?: boolean
 }
 
-const { unpublished, ...commonLayoutProps } = Astro.props
+const { draft, ...commonLayoutProps } = Astro.props
 ---
 
 <CommonLayout {...commonLayoutProps}>
     <div class="min-h-screen">
-        {unpublished && <UnpublishedAlert />}
+        {draft && <UnpublishedAlert />}
         <main>
             <slot />
         </main>

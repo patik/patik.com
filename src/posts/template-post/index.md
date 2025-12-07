@@ -8,7 +8,7 @@ categories:
     - web
 ogImage: 'cover.jpg'
 coverImage: 'cover.jpg'
-unpublished: true
+draft: true
 ---
 
 ## Code fences
@@ -76,7 +76,7 @@ Link to a heading: <a href="#html">HTML</a>
 
 Standard MD, with a title:
 
-![Hello](test2.png "This is the title")
+![Hello](test2.png 'This is the title')
 
 ### IMG in Figure with FigCaption
 

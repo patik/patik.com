@@ -11,7 +11,7 @@ const blog = defineCollection({
         categories: z.array(z.string()).optional(),
         ogImage: z.string().optional(),
         coverImage: z.string().optional(),
-        unpublished: z.boolean().optional(),
+        draft: z.boolean().optional(),
     }),
 })
 

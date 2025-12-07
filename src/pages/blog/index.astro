@@ -1,6 +1,6 @@
 ---
-import { getCollection } from 'astro:content'
 import type { BlogPost } from '@src/types/blog'
+import { getCollection } from 'astro:content'
 import Container from '../../components/blog/Container'
 import HeroPost from '../../components/blog/HeroPost'
 import Intro from '../../components/blog/Index/Intro'
@@ -14,7 +14,6 @@ import config from '../../config.json'
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
     const posts = await getCollection('blog')
-    console.log('posts', posts)
 
     return posts.map((post) => ({
         params: { id: post.id },
@@ -23,16 +22,13 @@ export async function getStaticPaths() {
 }
 
 // 2. For your template, you can get the entry directly from the prop
-console.log('Astro.props ', Astro.props)
-
 const { blogDescription, blogUrl } = config
-
-// type Props = {}
-
-const allPosts = await getCollection('blog')
-
-const heroPost = allPosts[0]
-const morePosts = allPosts.slice(1)
+const allPosts = await getCollection('blog', ({ data }) => {
+    return import.meta.env.DEV || !data.draft
+})
+const sortedPosts = [...allPosts].sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+const heroPost = sortedPosts[0]
+const morePosts = sortedPosts.slice(1)
 ---
 
 <Layout>
