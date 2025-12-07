@@ -8,7 +8,7 @@ export default function getImageUrl(image: ImageProps, customWidth?: number): st
         return secure_url.replace(new RegExp(`\\.\\w+$`), '.jpg')
     }
 
-    return `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_${
+    return `https://res.cloudinary.com/${process.env.PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_${
         customWidth ?? width
     }/f_auto,q_auto:good/${escapeCloudinaryString(public_id)}.${format}`
 }

@@ -1,9 +1,13 @@
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
 import getImageUrlToBeBlurred from '@src/photos/utils/getImageUrlToBeBlurred'
 import type { ImageProps } from '@src/photos/utils/types'
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs'
 import imagemin from 'imagemin'
 import imageminJpegtran from 'imagemin-jpegtran'
-import path from 'path'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 const folderPath = path.join(__dirname, '../../../../../../tmp')
 
@@ -39,7 +43,7 @@ export default async function getBase64ImageUrl(image: ImageProps): Promise<stri
 
     if (response.status !== 200) {
         console.log(
-            `[getBase64ImageUrl, ${id}] Response will be printed over the next few lines. Tried to fetch imageUrl: ${imageUrl}`
+            `[getBase64ImageUrl, ${id}] Response will be printed over the next few lines. Tried to fetch imageUrl: ${imageUrl}`,
         )
         try {
             console.log('response.status: ', response.status)

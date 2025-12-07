@@ -1,21 +1,13 @@
 ---
-import appNetPng from '@public/images/app-net-twitter-char-count.png'
-import magnetPng from '@public/images/magnet-links-preview.png'
-import twitterAvatarPng from '@public/images/twitter-avatar-in-menu.png'
 import { Image } from 'astro:assets'
 import Space from '../../components/Space'
+import appNetPng from '../../images/app-net-twitter-char-count.png'
+import magnetPng from '../../images/magnet-links-preview.png'
+import twitterAvatarPng from '../../images/twitter-avatar-in-menu.png'
 import Layout from '../../layouts/Layout.astro'
 
-function UserScriptLink({ fileName }: { fileName: string }) {
-    return (
-        <a
-            download={`/code/user-scripts/${fileName}`}
-            href={`/code/user-scripts/${fileName}`}
-            class="button button-primary"
-        >
-            Install
-        </a>
-    )
+function getUserScriptUrl(fileName: string) {
+    return `/code/user-scripts/${fileName}`
 }
 ---
 
@@ -47,7 +39,9 @@ function UserScriptLink({ fileName }: { fileName: string }) {
             <Image src={twitterAvatarPng} alt="" />
         </figure>
         <p>
-            <UserScriptLink fileName="twitter-avatar-in-menu.user.js" />
+            <a href={getUserScriptUrl('twitter-avatar-in-menu.user.js')} download class="button button-primary"
+                >Install</a
+            >
             <a href="https://gist.github.com/patik/2029861" class="button"> Gist </a>
         </p>
     </section>
@@ -64,7 +58,7 @@ function UserScriptLink({ fileName }: { fileName: string }) {
             </a>
         </figure>
         <p>
-            <UserScriptLink fileName="magent-links.user.js" />
+            <a href={getUserScriptUrl('magent-links.user.js')} download class="button button-primary">Install</a>
 
             <a href="https://gist.github.com/patik/8388768" class="button"> Gist </a>
         </p>
@@ -92,7 +86,9 @@ function UserScriptLink({ fileName }: { fileName: string }) {
                 Chrome Extension
             </a>
             <Space />
-            <UserScriptLink fileName="alpha-app-net-enhanced.user.js" />
+            <a href={getUserScriptUrl('alpha-app-net-enhanced.user.js')} download class="button button-primary"
+                >Install</a
+            >
             <Space />
             <a href="https://gist.github.com/3542903" class="button"> Gist </a>
         </p>
@@ -105,7 +101,7 @@ function UserScriptLink({ fileName }: { fileName: string }) {
         <h2>Readable Reader</h2>
         <p>Compact styles for Google Reader</p>
         <p>
-            <UserScriptLink fileName="readable-reader.user.js" />
+            <a href={getUserScriptUrl('readable-reader.user.js')} download class="button button-primary">Install</a>
         </p>
     </section>
 
@@ -113,7 +109,8 @@ function UserScriptLink({ fileName }: { fileName: string }) {
         <h2>Readable Google+</h2>
         <p>Cleans up Google+ Post pages. Currently only eliminates the gigantic avatar in the sidebar.</p>
         <p>
-            <UserScriptLink fileName="readable-google-plus.user.js" />
+            <a href={getUserScriptUrl('readable-google-plus.user.js')} download class="button button-primary">Install</a
+            >
         </p>
     </section>
 
@@ -130,7 +127,9 @@ function UserScriptLink({ fileName }: { fileName: string }) {
             this script is still necessary because links to WikiTravel often show up in search results, blogs, etc.
         </p>
         <p>
-            <UserScriptLink fileName="wiki-travel-voyage-redirect.user.js" />
+            <a href={getUserScriptUrl('wiki-travel-voyage-redirect.user.js')} download class="button button-primary"
+                >Install</a
+            >
 
             <a href="https://gist.github.com/patik/4979331" class="button"> Gist </a>
         </p>
@@ -140,7 +139,7 @@ function UserScriptLink({ fileName }: { fileName: string }) {
         <h2>Readable Flickr</h2>
         <p>Legible (large-font) styles for Flickr</p>
         <p>
-            <UserScriptLink fileName="readable-flickr.user.js" />
+            <a href={getUserScriptUrl('readable-flickr.user.js')} download class="button button-primary">Install</a>
         </p>
     </section>
 
@@ -151,7 +150,7 @@ function UserScriptLink({ fileName }: { fileName: string }) {
             then automatically navigates to the login page and, once my browser has auto-filled the fields, signs me in.
         </p>
         <p>
-            <UserScriptLink fileName="auto-login.user.js" />
+            <a href={getUserScriptUrl('auto-login.user.js')} download class="button button-primary">Install</a>
         </p>
     </section>
 </Layout>

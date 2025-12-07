@@ -12,7 +12,7 @@
         "build": "astro build",
         "preview": "astro preview",
         "astro": "astro",
-        "lint": "pnpm next lint && pnpm tsc --noEmit && pnpm find-unused-sass-variables src/styles",
+        "lint": "pnpm eslint . && pnpm tsc --noEmit && pnpm find-unused-sass-variables src/styles",
         "clear-fetch-cache": "rm -rf tmp",
         "clean": "rm -rf node_modules && pnpm run clear-fetch-cache"
     },

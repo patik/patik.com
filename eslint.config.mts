@@ -1,13 +1,14 @@
 import pluginJsxA11y from 'eslint-plugin-jsx-a11y'
 import pluginReact from 'eslint-plugin-react'
 import pluginReactHooks from 'eslint-plugin-react-hooks'
+import pluginAstro from 'eslint-plugin-astro'
 import globals from 'globals'
 import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
     // Global ignores
     {
-        ignores: ['node_modules/**', '.next/**', 'out/**', 'public/**'],
+        ignores: ['node_modules/**', 'dist/**', '.astro/**', 'public/**'],
     },
 
     // Base ESLint recommended rules
@@ -45,7 +46,6 @@ export default tseslint.config(
                 version: 'detect',
             },
         },
-        extends: [pluginReactHooks],
         rules: {
             // React rules
             ...pluginReact.configs.recommended.rules,
@@ -53,8 +53,14 @@ export default tseslint.config(
             'react/prop-types': 'off',
             'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
 
+            // React Hooks rules
+            ...pluginReactHooks.configs.recommended.rules,
+
             // JSX A11y rules
             ...pluginJsxA11y.configs.recommended.rules,
         },
     },
+
+    // Astro configuration
+    ...pluginAstro.configs.recommended,
 )
