@@ -5,7 +5,7 @@
         margin: 0 auto;
     }
 
-    // Standalone images
+    /* Standalone images */
     p:has(> img) img {
         display: block;
         margin: 0 auto;
@@ -24,7 +24,7 @@
     }
 }
 
-.inline-code {
+p code {
     font-family: Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace;
     font-size: 1rem;
     color: #666;
@@ -38,11 +38,15 @@
     }
 }
 
-.codeFence {
+:global(.astro-code) {
+    font-family: Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace;
+    margin-bottom: 2rem;
+    padding: 1rem;
+
     code {
+        font-weight: 400;
         min-width: 100%;
         transform: translateZ(0);
-        /* float: left; */
 
         & > span[data='highlight'] {
             display: block;

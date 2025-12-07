@@ -1,6 +1,10 @@
 ---
+import '@src/styles/blog/index.css'
+import css from '@src/styles/blog/post-body.module.css'
 import { getCollection, render } from 'astro:content'
 import BlogLayout from '../../components/blog/Layout.astro'
+import Code from '../../components/blog/markdown/Code.astro'
+import Pre from '../../components/blog/markdown/Pre.astro'
 
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
@@ -31,8 +35,8 @@ const { Content } = await render(post)
                 )
             }
         </header>
-        <div class="content">
-            <Content />
+        <div class={`content ${css['post-body']}`}>
+            <Content components={{ code: Code, pre: Pre }} />
         </div>
     </article>
 </BlogLayout>

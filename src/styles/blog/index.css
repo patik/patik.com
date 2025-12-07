@@ -1,4 +1,5 @@
 @import '../tailwind-theme.css';
+@import './markdown-styles.css';
 
 @layer components {
     body {

@@ -1,0 +1,21 @@
+---
+interface Props {
+    class?: string
+    [key: string]: unknown
+}
+
+const { class: className, ...props } = Astro.props
+const isInline = !className?.includes('language-')
+---
+
+{
+    isInline ? (
+        <code {...props}>
+            <slot />
+        </code>
+    ) : (
+        <code class={className} {...props}>
+            <slot />
+        </code>
+    )
+}
