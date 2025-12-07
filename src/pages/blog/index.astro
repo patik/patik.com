@@ -9,8 +9,6 @@ import Layout from '../../components/blog/Layout.astro'
 import Meta from '../../components/blog/Meta'
 import config from '../../config.json'
 
-// import SlugPage from '../../../oldsite/pages/blog/[slug]'
-
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
     const posts = await getCollection('blog')
@@ -21,7 +19,7 @@ export async function getStaticPaths() {
     }))
 }
 
-// 2. For your template, you can get the entry directly from the prop
+// 2. For the template, you can get the entry directly from the prop
 const { blogDescription, blogUrl } = config
 const allPosts = await getCollection('blog', ({ data }) => {
     return import.meta.env.DEV || !data.draft

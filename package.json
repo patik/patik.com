@@ -10,7 +10,8 @@
     "scripts": {
         "dev": "astro dev",
         "build": "astro build",
-        "preview": "astro preview",
+        "start": "netlify dev",
+        "start:prod": "pnpm run build && netlify serve",
         "astro": "astro",
         "lint": "pnpm eslint . && pnpm tsc --noEmit && pnpm find-unused-sass-variables src/styles",
         "clear-fetch-cache": "rm -rf tmp",
@@ -49,6 +50,7 @@
         "eslint-plugin-react": "^7.37.5",
         "eslint-plugin-react-hooks": "^6.1.1",
         "find-unused-sass-variables": "^6.1.0",
+        "netlify-cli": "^23.12.3",
         "prettier": "^3.6.2",
         "prettier-plugin-astro": "^0.14.1",
         "tailwindcss": "^3.4.0",

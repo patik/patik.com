@@ -25,7 +25,9 @@ export default defineConfig({
                     hooks: {
                         preprocessMetadata: ({ codeBlock }) => {
                             // Add showLineNumbers if not already present
+                            // @ts-expect-error - showLineNumbers exists at runtime but not in types
                             if (!codeBlock.props.showLineNumbers) {
+                                // @ts-expect-error - showLineNumbers exists at runtime but not in types
                                 codeBlock.props.showLineNumbers = true
                             }
                         },

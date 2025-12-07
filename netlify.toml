@@ -1,3 +1,10 @@
+[build]
+    command = "pnpm run build"
+    publish = "dist"
+
+[build.environment]
+    NODE_VERSION = "24"
+
 [[redirects]]
     from = "/dof/*"
     to = "https://depth-of-field.netlify.app/:splat"
