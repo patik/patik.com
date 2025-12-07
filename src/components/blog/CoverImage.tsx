@@ -13,7 +13,7 @@ export default function CoverImage({ title, src, slug }: Props) {
     const image = (
         <img
             src={`${blogUrl}/${src}`}
-            alt={`Cover Image for ${title}`}
+            alt={title}
             className={cn('shadow-sm w-full', {
                 'hover:shadow-lg transition-shadow duration-200': slug,
             })}

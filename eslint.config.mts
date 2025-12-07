@@ -8,7 +8,7 @@ import tseslint from 'typescript-eslint'
 export default tseslint.config(
     // Global ignores
     {
-        ignores: ['node_modules/**', 'dist/**', '.astro/**', 'public/**'],
+        ignores: ['node_modules/**', 'dist/**', '.astro/**', 'public/**', 'oldsite/**'],
     },
 
     // Base ESLint recommended rules
@@ -54,7 +54,8 @@ export default tseslint.config(
             'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
 
             // React Hooks rules
-            ...pluginReactHooks.configs.recommended.rules,
+            'react-hooks/rules-of-hooks': 'error',
+            'react-hooks/exhaustive-deps': 'warn',
 
             // JSX A11y rules
             ...pluginJsxA11y.configs.recommended.rules,

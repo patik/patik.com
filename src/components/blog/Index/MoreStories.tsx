@@ -1,3 +1,4 @@
+import type { BlogPost } from '@src/types/blog'
 import PostPreview from './PostPreview'
 
 type Props = {

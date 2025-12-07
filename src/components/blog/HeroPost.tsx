@@ -11,7 +11,7 @@ type Props = {
     slug: string
 }
 
-export default function HeroPost({ title, date, excerpt, slug }: Props) {
+export default function HeroPost({ title, date, excerpt }: Props) {
     return (
         <section>
             {/*  <div className="mb-8 md:mb-16">
