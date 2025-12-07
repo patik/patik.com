@@ -111,7 +111,7 @@
     .bg-travel-paris {
         span {
             top: var(--imgPositionOffset);
-            right: var(--imgPositionOffset) * 2;
+            right: calc(var(--imgPositionOffset) * 2px);
         }
     }
 
@@ -124,8 +124,8 @@
 
     .bg-travel-britain-benelux {
         span {
-            top: var(--imgPositionOffset) + 1;
-            left: var(--imgPositionOffset) + 3;
+            top: calc(var(--imgPositionOffset) + 1px);
+            left: calc(var(--imgPositionOffset) + 3px);
             text-align: left;
         }
     }

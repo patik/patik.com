@@ -8,7 +8,7 @@ import tseslint from 'typescript-eslint'
 export default tseslint.config(
     // Global ignores
     {
-        ignores: ['node_modules/**', 'dist/**', '.astro/**', 'public/**', 'oldsite/**'],
+        ignores: ['node_modules/**', 'dist/**', '.astro/**', '.netlify/**', 'public/**', 'oldsite/**'],
     },
 
     // Base ESLint recommended rules
