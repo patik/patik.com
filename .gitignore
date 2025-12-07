@@ -33,6 +33,7 @@ pnpm-debug.log*
 .astro/*
 !.astro/types.d.ts
 tmp
+tsconfig.tsbuildinfo
 
 # Shared Copilot instruction symlinks
 .github/instructions/*.instructions.md
