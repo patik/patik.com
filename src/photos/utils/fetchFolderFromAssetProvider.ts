@@ -19,6 +19,12 @@ export default async function fetchFolderFromAssetProvider(folderName: string) {
         return JSON.parse(readFileSync(filePath, 'utf8'))
     }
 
+    // Check if Cloudinary credentials are available
+    if (!process.env.CLOUDINARY_API_KEY || !process.env.CLOUDINARY_API_SECRET) {
+        console.warn('[fetchFolderFromAssetProvider] Cloudinary credentials not found, skipping photo gallery generation')
+        return { resources: [] }
+    }
+
     console.log('[fetchFolderFromAssetProvider] new request')
     const fetchedResults = await cloudinary.v2.search
         .expression(`folder:${folderName}/*`)

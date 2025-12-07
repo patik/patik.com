@@ -86,7 +86,13 @@ export default async function getGalleryStaticProps(
     // console.log(`Found ${images.length} total images across ${galleries.length} galleries`)
 
     if (images.length === 0) {
-        throw new Error('no images found in any gallery')
+        console.warn('[getGalleryStaticProps] no images found in any gallery, returning empty props')
+        return {
+            props: {
+                images: [],
+                currentPhoto: null,
+            },
+        }
     }
 
     let currentPhoto = null
