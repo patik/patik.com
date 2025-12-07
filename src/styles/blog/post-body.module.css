@@ -24,7 +24,7 @@
     }
 }
 
-p code {
+code {
     font-family: Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace;
     font-size: 1rem;
     color: #666;
@@ -38,28 +38,6 @@ p code {
     }
 }
 
-:global(.astro-code) {
-    font-family: Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace;
+:global(.expressive-code) {
     margin-bottom: 2rem;
-    padding: 1rem;
-
-    code {
-        font-weight: 400;
-        min-width: 100%;
-        transform: translateZ(0);
-
-        & > span[data='highlight'] {
-            display: block;
-        }
-
-        & > span {
-            display: block;
-        }
-    }
-
-    [data='highlight'] {
-        background: rgba(255, 255, 255, 0.1);
-        margin: 0 -1.5rem;
-        padding: 0 1.5rem;
-    }
 }

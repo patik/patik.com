@@ -43,11 +43,10 @@ Note that when I talk about IE I’m referring to the native versions — “IE8
 Before we build `log()` we need to tell IE9 to use its own console and to consider `console.log()` to be a function. Many thanks to [Andy E](http://whattheheadsaid.com/2011/04/internet-explorer-9s-problematic-console-object) for this piece.
 
 ```js
-if (typeof console.log == "object" && Function.prototype.bind && console) {
-    ["log","info","warn","error","assert","dir","clear","profile","profileEnd"]
-        .forEach(function (method) {
-        console[method] = this.call(console[method], console);
-    }, Function.prototype.bind);
+if (typeof console.log == 'object' && Function.prototype.bind && console) {
+    ;['log', 'info', 'warn', 'error', 'assert', 'dir', 'clear', 'profile', 'profileEnd'].forEach(function (method) {
+        console[method] = this.call(console[method], console)
+    }, Function.prototype.bind)
 }
 ```
 
@@ -55,9 +54,9 @@ For this particular case we really only need to define the `log` method, but it 
 
 ## Modern browsers
 
-Now we can define `log()`. There’s no sense in re-inventing a very round wheel, so I’m just going to fork [Paul Irish’s original console.log wrapper](http://paulirish.com/2009/log-a-lightweight-wrapper-for-consolelog/).
+Now we can define `log()`. There's no sense in re-inventing a very round wheel, so I'm just going to fork [Paul Irish's original console.log wrapper](http://paulirish.com/2009/log-a-lightweight-wrapper-for-consolelog/).
 
-```js::highlight-7
+```js showLineNumbers startLineNumber=1 {7}
 if (!window.log) {
     window.log = function () {
     log.history = log.history || [];  // store logs to an array for reference
@@ -84,11 +83,11 @@ _**Update:** Since I first wrote this post, Opera has updated Dragonfly such tha
 
 So that takes care of the modern browsers… except Opera. Opera seems to display the arguments as a whole `Array()` rather than splitting them apart. So if you passed several arguments you’d just see this:
 
-![Opera console showing &quot;Array()&quot; rather than the actual arguments](opera1.png)
+![Opera console showing "Array()" rather than the actual arguments](opera1.png)
 
-And that’s not too helpful. We can get around this with a rather boring `while()` loop to log each argument one by one.
+And that's not too helpful. We can get around this with a rather boring `while()` loop to log each argument one by one.
 
-```js::highlight-4
+```js {4}
 var log = function () {
     // Modern browsers
     if (typeof console != 'undefined' && typeof console.log == 'function') {
@@ -119,9 +118,9 @@ It’s a little messy and if you use `log()` a lot you’ll find that your conso
 
 ## <a name="ie8" href="#ie8">IE8</a>
 
-As we discussed earlier, IE8 has a console but your scripts can’t call `console.log()` directly, so we’re going to add a special condition for it. [Andy’s aforementioned post](http://whattheheadsaid.com/2011/04/internet-explorer-9s-problematic-console-object) included a similar bit of code for writing to IE8’s console, however in actual IE8 (as opposed to IE9 switched to IE8 mode) `Function.prototype.bind` is not defined. Instead, I’m using [@kangax](http://twitter.com/kangax/status/56059642433900544)’s alternative, `Function.prototype.call.call()`.
+As we discussed earlier, IE8 has a console but your scripts can't call `console.log()` directly, so we're going to add a special condition for it. [Andy's aforementioned post](http://whattheheadsaid.com/2011/04/internet-explorer-9s-problematic-console-object) included a similar bit of code for writing to IE8's console, however in actual IE8 (as opposed to IE9 switched to IE8 mode) `Function.prototype.bind` is not defined. Instead, I'm using [@kangax](http://twitter.com/kangax/status/56059642433900544)'s alternative, `Function.prototype.call.call()`.
 
-```js::start-21
+```js showLineNumbers startLineNumber=21
     else if (!Function.prototype.bind && typeof console != 'undefined' && typeof console.log == 'object') {
         Function.prototype.call.call(console.log, console, Array.prototype.slice.call(arguments));
     }
@@ -137,7 +136,7 @@ You can pull it directly from getfirebug.com, or use a local copy (point to the 
 
 In my experience FBL takes a few moments to load and begin accepting console logs, even locally. To compensate for this delay, this piece of code is split into two conditions. The first one loads FBL and will only run the first time you call `log()`:
 
-```js::start-24
+```js showLineNumbers startLineNumber=24
     else {
         // Inject Firebug lite
         if (!document.getElementById('firebug-lite')) {

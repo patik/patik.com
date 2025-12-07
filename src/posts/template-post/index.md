@@ -33,7 +33,7 @@ if (!window.log) {
 
 Single line
 
-```js::highlight-2
+```js {2}
 if (!window.log) {
     foo() // This line should be highlighted
 }
@@ -41,14 +41,14 @@ if (!window.log) {
 
 Multiple lines + range
 
-```js::highlight-2,5-8
+```js {2,5-8}
 if (!window.log) {
     foo() // This line should be highlighted
 }
 
 const highlightMe = foo({
     high: 1,
-    light: 2
+    light: 2,
 })
 
 bar()
@@ -56,10 +56,10 @@ bar()
 
 ### Starting line
 
-```js::start-21
-    // This is line 21
-    hey()
-    yo = 'alpha'
+```js showLineNumbers startLineNumber=21
+// This is line 21
+hey()
+yo = 'alpha'
 ```
 
 ## HTML

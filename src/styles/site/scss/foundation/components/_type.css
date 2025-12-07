@@ -45,7 +45,7 @@
     --paragraph-text-rendering: optimizeLegibility;
 
     /* We use these to style <code> tags */
-    --code-color: #a9300a; /* darken(#c60f13, 15%) */
+    --code-color: #ccc; /* darken(#c60f13, 15%) */
     --code-font-family: Consolas, 'Liberation Mono', Courier, monospace;
     --code-font-weight: bold;
 
