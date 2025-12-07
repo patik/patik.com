@@ -19,6 +19,7 @@ const MY_MAX_WIDTH = 960
 const getMapHeight = (width: number) => (width * GOOGLE_DEFAULT_HEIGHT) / GOOGLE_DEFAULT_WIDTH
 
 export default function WorldMap({ className = '' }: { className?: string }) {
+    console.log('Rendering WorldMap')
     const [mapWidth, setMapWidth] = useState(GOOGLE_DEFAULT_WIDTH)
     const [mapHeight, setMapHeight] = useState(GOOGLE_DEFAULT_HEIGHT)
     const [isDarkMode, setIsDarkMode] = useState(true)
