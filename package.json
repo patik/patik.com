@@ -9,13 +9,14 @@
     },
     "scripts": {
         "dev": "astro dev",
+        "astro": "astro",
         "build": "astro build",
         "start": "netlify dev",
         "start:prod": "pnpm run build && netlify serve",
-        "astro": "astro",
         "lint": "pnpm eslint . && pnpm tsc --noEmit && pnpm find-unused-sass-variables src/styles",
         "clear-fetch-cache": "rm -rf tmp",
-        "clean": "rm -rf node_modules && pnpm run clear-fetch-cache"
+        "clean": "rm -rf node_modules && pnpm run clear-fetch-cache",
+        "test": "echo \"No tests yet\" && exit 0"
     },
     "dependencies": {
         "@astrojs/mdx": "^4.3.6",
