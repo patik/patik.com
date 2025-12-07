@@ -84,10 +84,7 @@ export async function getStaticPaths() {
 const { images, currentPhoto, cityId } = Astro.props
 const { photos } = Astro.params
 
-console.log('[Gallery Page] photos param:', photos)
-console.log('[Gallery Page] images count:', images?.length)
-console.log('[Gallery Page] currentPhoto:', currentPhoto?.id)
-console.log('[Gallery Page] cityId:', cityId)
+console.log(`[Gallery Page] cityId: ${cityId}, image ${currentPhoto?.id} of ${images?.length}. Photos param: `, photos)
 
 // Define city galleries for template use
 const cityGalleries = [samarkand]
