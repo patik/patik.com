@@ -1,0 +1,68 @@
+---
+import '@src/styles/blog/index.css'
+import css from '@src/styles/blog/post-body.module.css'
+import { getCollection, render } from 'astro:content'
+import BlogLayout from '../../components/blog/Layout.astro'
+import Code from '../../components/blog/markdown/Code.astro'
+import Pre from '../../components/blog/markdown/Pre.astro'
+
+// 1. Generate a new path for every collection entry
+export async function getStaticPaths() {
+    const posts = await getCollection('blog', ({ data }) => {
+        return import.meta.env.DEV || !data.draft
+    })
+
+    return posts.map((post) => ({
+        params: { slug: post.id },
+        props: { post },
+    }))
+}
+
+// 2. For your template, you can get the entry directly from the prop
+const { post } = Astro.props
+const { Content } = await render(post)
+---
+
+<BlogLayout title={post.data.title} draft={post.data.draft}>
+    <article class="blog-post">
+        <header>
+            <h1>{post.data.title}</h1>
+            {
+                post.data.date && (
+                    <time datetime={post.data.date.toISOString()}>
+                        {post.data.date.toLocaleDateString('de-DE', { year: 'numeric', month: 'long', day: 'numeric' })}
+                    </time>
+                )
+            }
+        </header>
+        <div class={`content ${css['post-body']}`}>
+            <Content components={{ code: Code, pre: Pre }} />
+        </div>
+    </article>
+</BlogLayout>
+
+<style>
+    .blog-post {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
+
+    .blog-post header {
+        margin-bottom: 2rem;
+    }
+
+    .blog-post h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .blog-post time {
+        color: #666;
+        font-size: 0.9rem;
+    }
+
+    .blog-post .content {
+        line-height: 1.8;
+    }
+</style>

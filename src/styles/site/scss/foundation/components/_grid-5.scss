@@ -1,41 +1,41 @@
-//
-// @version
-//   4.3.0
-//
-// @title
-//   Grid
-//
-// @description
-//   With a default "small-#" grid, a 640-1024px "medium-#" grid, and a 1024+ "large-#" grid, we've got you covered for any layout you can think of.
-//
+/*
+ @version
+   4.3.0
 
-//
-// Grid Variables
-//
+ @title
+   Grid
+
+ @description
+   With a default "small-#" grid, a 640-1024px "medium-#" grid, and a 1024+ "large-#" grid, we've got you covered for any layout you can think of.
+ */
+
+/*
+ Grid Variables
+ */
 $include-html-grid-classes: true !default;
 $row-width: em-calc(1000) !default;
 $column-gutter: em-calc(30) !default;
 $total-columns: 12 !default;
 
-//
-// Grid Calc Function
-//
+/*
+ Grid Calc Function
+ */
 @function gridCalc($colNumber, $totalColumns) {
   @return percentage(($colNumber / $totalColumns));
 }
 
-// Right and Left "auto" for grid
+/* Right and Left "auto" for grid */
 %right-auto { #{$opposite-direction}: auto; }
 %left-auto { #{$default-float}: auto; }
 
-//
-// Grid Mixins
-//
+/*
+ Grid Mixins
+ */
 
-// Create default, nested, and collapsed rows
+/* Create default, nested, and collapsed rows */
 @mixin grid-row($behavior: false) {
 
-  // use @include grid-row(nest); to include a nested row
+  /* use @include grid-row(nest); to include a nested row */
   @if $behavior == nest {
     margin-#{$default-float}: -($column-gutter/2);
     margin-#{$opposite-direction}: -($column-gutter/2);
@@ -43,7 +43,7 @@ $total-columns: 12 !default;
     width: auto;
   }
 
-  // use @include grid-row(collapse); to collapsed a container row margins
+  /* use @include grid-row(collapse); to collapsed a container row margins */
   @else if $behavior == collapse {
     margin-#{$default-float}: 0;
     margin-#{$opposite-direction}: 0;
@@ -51,7 +51,7 @@ $total-columns: 12 !default;
     width: 100%;
   }
 
-  // use @include grid-row(nest-collapse); to collapse outer margins on a nested row
+  /* use @include grid-row(nest-collapse); to collapse outer margins on a nested row */
   @else if $behavior == nest-collapse {
     margin-#{$default-float}: 0;
     margin-#{$opposite-direction}: 0;
@@ -59,7 +59,7 @@ $total-columns: 12 !default;
     width: auto;
   }
 
-  // use @include grid-row; to use a container row
+  /* use @include grid-row; to use a container row */
   @else {
     margin-#{$default-float}: auto;
     margin-#{$opposite-direction}: auto;
@@ -68,43 +68,41 @@ $total-columns: 12 !default;
     max-width: $row-width;
     width: 100%;
   }
-
-  @include clearfix;
 }
 
 
-// For creating columns - @include these inside a media query to control small vs. large grid layouts
+/* For creating columns - @include these inside a media query to control small vs. large grid layouts */
 @mixin grid-column($columns:false, $last-column:false, $center:false, $offset:false, $push:false, $pull:false, $collapse:false, $float:true, $include-position-relative: false) {
 
-  // If collapsed, get rid of gutter padding
+  /* If collapsed, get rid of gutter padding */
   @if $collapse {
     padding-left: 0;
     padding-right: 0;
   }
 
-  // Gutter padding whenever a column isn't set to collapse
-  // (use $collapse:null to do nothing)
+  /* Gutter padding whenever a column isn't set to collapse */
+  /* (use $collapse:null to do nothing) */
   @else if $collapse == false {
     padding-left: $column-gutter / 2;
     padding-right: $column-gutter / 2;
   }
 
-  // If a column number is given, calculate width
+  /* If a column number is given, calculate width */
   @if $columns {
     width: gridCalc($columns, $total-columns);
 
-    // If last column, float naturally instead of to the right
+    /* If last column, float naturally instead of to the right */
     @if $last-column { float: $opposite-direction; }
   }
 
-  // If offset, calculate appropriate margins
+  /* If offset, calculate appropriate margins */
   @if $offset { margin-#{$default-float}: gridCalc($offset, $total-columns); }
 
-  // Source Ordering, adds left/right depending on which you use.
+  /* Source Ordering, adds left/right depending on which you use. */
   @if $push { #{$default-float}: gridCalc($push, $total-columns); #{$opposite-direction}: auto; }
   @if $pull { #{$opposite-direction}: gridCalc($pull, $total-columns); #{$default-float}: auto; }
 
-  // If centered, get rid of float and add appropriate margins
+  /* If centered, get rid of float and add appropriate margins */
   @if $center {
     margin-#{$default-float}: auto;
     margin-#{$opposite-direction}: auto;
@@ -117,7 +115,7 @@ $total-columns: 12 !default;
     @else { float: none; }
   }
 
-  // This helps us not need to repeat "position:relative" everywehere
+  /* This helps us not need to repeat "position:relative" everywehere */
   @if $include-position-relative { position: relative; }
 }
 

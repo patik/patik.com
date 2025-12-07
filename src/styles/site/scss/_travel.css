@@ -1,0 +1,506 @@
+@import '_foundation-overrides.css';
+@import 'foundation';
+@import '_mixins.css';
+@import '_variables.css';
+@import '_dark-mode.css';
+
+.travel-link-list {
+    --imgPositionOffset: 5px;
+
+    a {
+        display: block;
+        float: none;
+        clear: both;
+        overflow: hidden;
+        background-color: var(--gray); /* In case an image doesn't load, since the text is white */
+        max-width: 336px; /* Max width of the image files (some are 340px, but whatever) */
+        position: relative;
+        border-radius: 5px;
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+        text-shadow:
+            3px 3px 4px black,
+            0 -1px 0 rgba(0, 0, 0, 0.5);
+
+        &:active,
+        &:hover,
+        &:focus {
+            text-decoration: none;
+            box-shadow:
+                0 1px 4px rgba(0, 0, 0, 0.1),
+                0 0 40px rgba(0, 0, 0, 0.05) inset;
+        }
+
+        span {
+            color: white;
+            font-size: 1em;
+            font-weight: bold;
+            line-height: 1em;
+            position: absolute;
+            z-index: 3;
+            @media (min-width: 480px) {
+                font-size: 2em;
+            }
+        }
+
+        .image-cover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2;
+            background-color: rgba(0, 0, 0, 0.1);
+            transition: all 0.15s ease 0s;
+        }
+
+        &:active,
+        &:hover,
+        &:focus {
+            .image-cover {
+                background-color: rgba(0, 0, 0, 0);
+            }
+        }
+
+        img {
+            max-width: 100%;
+        }
+    }
+
+    /* -----------------------------------
+     * Travel main page
+     * -----------------------------------
+     */
+
+    .bg-travel-peru-argentina {
+        span {
+            bottom: calc(var(--imgPositionOffset) * 2);
+            left: var(--imgPositionOffset);
+        }
+    }
+
+    .bg-travel-spain {
+        span {
+            bottom: var(--imgPositionOffset);
+            left: var(--imgPositionOffset);
+        }
+    }
+
+    .bg-travel-turkey {
+        span {
+            top: 70%;
+            right: var(--imgPositionOffset);
+        }
+    }
+
+    .bg-travel-germany {
+        span {
+            top: var(--imgPositionOffset);
+            left: var(--imgPositionOffset);
+        }
+    }
+
+    .bg-travel-greece {
+        span {
+            bottom: var(--imgPositionOffset);
+            left: 0;
+            right: 0;
+            text-align: center;
+        }
+    }
+
+    .bg-travel-paris {
+        span {
+            top: var(--imgPositionOffset);
+            right: calc(var(--imgPositionOffset) * 2px);
+        }
+    }
+
+    .bg-travel-france {
+        span {
+            top: var(--imgPositionOffset);
+            left: var(--imgPositionOffset);
+        }
+    }
+
+    .bg-travel-britain-benelux {
+        span {
+            top: calc(var(--imgPositionOffset) + 1px);
+            left: calc(var(--imgPositionOffset) + 3px);
+            text-align: left;
+        }
+    }
+
+    .bg-travel-top-middle {
+        span {
+            position: absolute;
+            top: 6px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    .bg-travel-bottom-middle {
+        span {
+            position: absolute;
+            bottom: 6px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    /* -----------------------------------
+     * Britain & Benelux
+     * -----------------------------------
+     */
+
+    .bg-belgium-bruges {
+        span {
+            position: absolute;
+            bottom: 6px;
+            right: 16px;
+            width: 100%;
+            text-align: right;
+        }
+    }
+
+    .bg-britain-edinburgh {
+        span {
+            position: absolute;
+            bottom: 6px;
+            right: 8px;
+            width: 100%;
+            text-align: right;
+        }
+    }
+
+    .bg-britain-london {
+        span {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            text-align: center;
+            width: 100%;
+        }
+    }
+
+    .bg-britain-liverpool {
+        span {
+            position: absolute;
+            bottom: 6px;
+            left: 8px;
+            width: 100%;
+            text-align: left;
+        }
+    }
+
+    /* -----------------------------------
+     * Peru & Argentina
+     * -----------------------------------
+     */
+
+    .bg-peru-argentina-amazon {
+        span {
+            font-size: 1.5em;
+            position: absolute;
+            bottom: 6px;
+            left: 8px;
+        }
+    }
+
+    .bg-peru-argentina-cusco {
+        span {
+            position: absolute;
+            bottom: 6px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    .bg-peru-argentina-colonia {
+        span {
+            font-size: 1.5em;
+            position: absolute;
+            bottom: 6px;
+            right: 6px;
+            text-align: right;
+        }
+    }
+
+    /* -----------------------------------
+     * Spain
+     * -----------------------------------
+     */
+
+    .bg-spain-world-cup {
+        span {
+            position: absolute;
+            bottom: 6px;
+            left: 8px;
+        }
+    }
+
+    /* -----------------------------------
+     * Turkey
+     * -----------------------------------
+     */
+
+    .bg-turkey-istanbul {
+        span {
+            position: absolute;
+            bottom: 0;
+            right: 8px;
+        }
+    }
+
+    .bg-turkey-cappadocia {
+        span {
+            position: absolute;
+            top: 6px;
+            left: 6px;
+        }
+    }
+
+    .bg-turkey-cirali {
+        span {
+            position: absolute;
+            top: 6px;
+            left: 6px;
+        }
+    }
+
+    .bg-turkey-ephesus {
+        span {
+            position: absolute;
+            top: 6px;
+            right: 8px;
+        }
+    }
+
+    /* -----------------------------------
+     * Germany
+     * -----------------------------------
+     */
+
+    .bg-germany-austria {
+        span {
+            position: absolute;
+            top: 24px;
+            left: 8px;
+        }
+    }
+
+    .bg-germany-bavaria {
+        span {
+            position: absolute;
+            bottom: 16px;
+            left: 0;
+            text-align: center;
+            width: 100%;
+        }
+    }
+
+    .bg-germany-berlin {
+        span {
+            position: absolute;
+            bottom: 6px;
+            left: 12px;
+        }
+    }
+
+    /* -----------------------------------
+     * Greece
+     * -----------------------------------
+     */
+
+    .bg-greece-athens {
+        span {
+            position: absolute;
+            bottom: 6px;
+            left: 8px;
+        }
+    }
+
+    .bg-greece-sifnos {
+        span {
+            position: absolute;
+            bottom: 6px;
+            left: 0;
+            text-align: center;
+            width: 100%;
+        }
+    }
+
+    .bg-greece-santorini {
+        span {
+            position: absolute;
+            bottom: 6px;
+            right: 4px;
+        }
+    }
+
+    /* -----------------------------------
+     * France
+     * -----------------------------------
+     */
+
+    .bg-france-photos {
+        span {
+            position: absolute;
+            bottom: 6px;
+            right: 12px;
+        }
+    }
+
+    /* -----------------------------------
+     * Paris
+     * -----------------------------------
+     */
+
+    .bg-paris-photos {
+        span {
+            position: absolute;
+            bottom: 6px;
+            right: 12px;
+        }
+    }
+}
+
+/* Invert the image-cover action for touch devices */
+.touch .travel-link-list {
+    a {
+        .image-cover {
+            background-color: rgba(0, 0, 0, 0);
+            transition: background-color 0.2s ease-in;
+        }
+
+        &:active,
+        &:hover,
+        &:focus {
+            .image-cover {
+                background-color: rgba(0, 0, 0, 0.25);
+            }
+        }
+    }
+}
+
+@media (max-width: 980px) {
+    .travel-link-list .small-12 {
+        margin-bottom: 1em;
+    }
+}
+
+.travel-map {
+    text-align: center;
+
+    img {
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+        transition: all 0.15s ease 0s;
+
+        &:hover {
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+        }
+    }
+}
+
+/* Bigger than phone */
+@media (min-width: 480px) {
+    .travel-link-list {
+        .bg-peru-argentina-amazon {
+            span {
+                font-size: 2em;
+            }
+        }
+
+        .bg-peru-argentina-colonia {
+            span {
+                font-size: 2em;
+            }
+        }
+
+        .bg-greece-santorini {
+            span {
+                right: 12px;
+            }
+        }
+    }
+}
+
+/* PORTRAIT TABLET AND UP
+ * ---------------------------------- */
+
+@media (min-width: 600px) {
+    /* 600px and up */
+    .travel-link-list {
+        a span {
+            font-size: 3em;
+        }
+
+        .bg-peru-argentina-amazon {
+            span {
+                font-size: 3em;
+            }
+        }
+
+        .bg-peru-argentina-colonia {
+            span {
+                font-size: 2.8em;
+            }
+        }
+    }
+}
+
+@media (min-width: 980px) {
+    .travel-link-list {
+        & > div {
+            margin-bottom: 2%;
+            border-radius: 4px;
+        }
+    }
+}
+
+.cp-row {
+    &.travel-link-list {
+        .cp-item-third {
+            flex-basis: calc(33% - 1.16rem);
+            max-width: calc(33% - 1.16rem);
+            margin-right: 1rem;
+            margin-bottom: 1rem;
+
+            &:nth-child(3n) {
+                margin-right: 0;
+            }
+
+            @media (min-width: 980px) {
+                margin-right: 2rem;
+                margin-bottom: 2rem;
+            }
+        }
+    }
+}
+
+/* Large world map on the Travel index page */
+
+.world-map-container {
+    --MY_MAX_WIDTH: 960px;
+    --GOOGLE_DEFAULT_WIDTH: 556;
+    --GOOGLE_DEFAULT_HEIGHT: 347;
+
+    width: 90vw;
+    min-width: 90vw;
+    height: calc((90vw * var(--GOOGLE_DEFAULT_HEIGHT)) / var(--GOOGLE_DEFAULT_WIDTH));
+    min-height: calc((90vw * var(--GOOGLE_DEFAULT_HEIGHT)) / var(--GOOGLE_DEFAULT_WIDTH));
+
+    @media (min-width: 960px) {
+        width: var(--MY_MAX_WIDTH);
+        min-width: 0;
+        max-width: var(--MY_MAX_WIDTH);
+
+        height: calc((var(--MY_MAX_WIDTH) * var(--GOOGLE_DEFAULT_HEIGHT)) / var(--GOOGLE_DEFAULT_WIDTH));
+        min-height: 0;
+        max-height: calc((var(--MY_MAX_WIDTH) * var(--GOOGLE_DEFAULT_HEIGHT)) / var(--GOOGLE_DEFAULT_WIDTH));
+        max-height: calc((var(--MY_MAX_WIDTH) * var(--GOOGLE_DEFAULT_HEIGHT)) / var(--GOOGLE_DEFAULT_WIDTH));
+    }
+}

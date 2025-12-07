@@ -1,4 +1,4 @@
-import { CountryGallery } from '@src/photos/utils/types'
+import type { CountryGallery } from '../../photos/utils/types'
 
 const countryGallery: CountryGallery = {
     countryId: 'uzbekistan',

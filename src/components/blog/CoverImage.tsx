@@ -1,7 +1,5 @@
-import config from '@src/config.json'
 import cn from 'classnames'
-import Image from 'next/image'
-import Link from 'next/link'
+import config from '../../config.json'
 
 const { blogUrl } = config
 
@@ -13,24 +11,23 @@ type Props = {
 
 export default function CoverImage({ title, src, slug }: Props) {
     const image = (
-        <Image
+        <img
             src={`${blogUrl}/${src}`}
-            alt={`Cover Image for ${title}`}
+            alt={title}
             className={cn('shadow-sm w-full', {
                 'hover:shadow-lg transition-shadow duration-200': slug,
             })}
             width={1300}
             height={630}
-            priority
         />
     )
 
     return (
         <div className="sm:mx-0">
             {slug ? (
-                <Link as={`${slug}`} href={`[slug]`} aria-label={title}>
+                <a href={`${slug}`} aria-label={title}>
                     {image}
-                </Link>
+                </a>
             ) : (
                 image
             )}

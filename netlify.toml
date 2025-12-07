@@ -1,8 +1,9 @@
-[[redirects]]
-    from = "/blog/*"
-    to = "https://patik-blog.netlify.app/:splat"
-    status = 200
-    force = false
+[build]
+    command = "pnpm run build"
+    publish = "dist"
+
+[build.environment]
+    NODE_VERSION = "24"
 
 [[redirects]]
     from = "/dof/*"

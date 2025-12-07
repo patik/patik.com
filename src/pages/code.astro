@@ -1,0 +1,59 @@
+---
+import { Image } from 'astro:assets'
+import imgGithubLogo from '../images/home-github-logo.png'
+import imgBlogLogo from '../images/icons/blog/ios/AppIcon@3x.png'
+import imgConsoleLogLogo from '../images/icons/console-log/ios/AppIcon@3x.png'
+import imgDoFLogo from '../images/icons/depth-of-field/ios/AppIcon@3x.png'
+import imgKindjsLogo from '../images/icons/kindjs/ios/AppIcon@3x.png'
+import imgWithinViewportFLogo from '../images/icons/within-viewport/ios/AppIcon@3x.png'
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout title="Code & Projects">
+    <h1>Code &amp; Projects</h1>
+
+    <p>I work mostly in JavaScript and user interfaces</p>
+
+    <section>
+        <div class="cp-row button-link-list">
+            <div class="cp-item-half">
+                <a href="https://patik.github.io/within-viewport/">
+                    <Image src={imgWithinViewportFLogo} width={96} height={96} alt="" />
+                    <span>Within Viewport</span>
+                </a>
+            </div>
+            <div class="cp-item-half">
+                <a href="/dof/">
+                    <Image src={imgDoFLogo} width={96} height={96} alt="" />
+                    <span>Depth-of-Field Calculator</span>
+                </a>
+            </div>
+
+            <div class="cp-item-half">
+                <a href="https://github.com/patik/kind/">
+                    <Image src={imgKindjsLogo} width={96} height={96} alt="" />
+                    <span>Kind.js precise type-checker</span>
+                </a>
+            </div>
+            <div class="cp-item-half">
+                <a href="https://patik.github.io/console.log-wrapper/">
+                    <Image src={imgConsoleLogLogo} width={96} height={96} alt="" />
+                    <span>Cross-browser console logging</span>
+                </a>
+            </div>
+
+            <div class="cp-item-half">
+                <a href="https://github.com/patik">
+                    <Image src={imgGithubLogo} width={96} height={96} alt="" />
+                    <span>GitHub</span>
+                </a>
+            </div>
+            <div class="cp-item-half">
+                <a href="/blog/">
+                    <Image src={imgBlogLogo} width={96} height={96} alt="" />
+                    <span>Blog</span>
+                </a>
+            </div>
+        </div>
+    </section>
+</Layout>

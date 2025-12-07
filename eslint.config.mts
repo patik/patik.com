@@ -1,15 +1,14 @@
-import { fixupPluginRules } from '@eslint/compat'
-import tseslint from 'typescript-eslint'
+import pluginAstro from 'eslint-plugin-astro'
+import pluginJsxA11y from 'eslint-plugin-jsx-a11y'
 import pluginReact from 'eslint-plugin-react'
 import pluginReactHooks from 'eslint-plugin-react-hooks'
-import pluginJsxA11y from 'eslint-plugin-jsx-a11y'
-import pluginNext from '@next/eslint-plugin-next'
 import globals from 'globals'
+import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
     // Global ignores
     {
-        ignores: ['node_modules/**', '.next/**', 'out/**', 'public/**'],
+        ignores: ['node_modules/**', 'dist/**', '.astro/**', '.netlify/**', 'public/**', 'oldsite/**'],
     },
 
     // Base ESLint recommended rules
@@ -39,9 +38,8 @@ export default tseslint.config(
         files: ['**/*.{js,jsx,ts,tsx}'],
         plugins: {
             react: pluginReact,
-            'react-hooks': fixupPluginRules(pluginReactHooks),
+            'react-hooks': pluginReactHooks,
             'jsx-a11y': pluginJsxA11y,
-            '@next/next': pluginNext,
         },
         settings: {
             react: {
@@ -56,14 +54,14 @@ export default tseslint.config(
             'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
 
             // React Hooks rules
-            ...pluginReactHooks.configs.recommended.rules,
+            'react-hooks/rules-of-hooks': 'error',
+            'react-hooks/exhaustive-deps': 'warn',
 
             // JSX A11y rules
             ...pluginJsxA11y.configs.recommended.rules,
-
-            // Next.js rules
-            ...pluginNext.configs.recommended.rules,
-            ...pluginNext.configs['core-web-vitals'].rules,
         },
-    }
+    },
+
+    // Astro configuration
+    ...pluginAstro.configs.recommended,
 )

@@ -1,6 +1,10 @@
-import cloudinary from '@src/photos/utils/cloudinary'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs'
 import path from 'path'
+import { fileURLToPath } from 'url'
+import cloudinary from '@src/photos/utils/cloudinary'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 const fileName = 'cloundary-cache'
 const folderPath = path.join(__dirname, '../../../../../../tmp')
@@ -21,7 +25,9 @@ export default async function fetchFolderFromAssetProvider(folderName: string) {
 
     // Check if Cloudinary credentials are available
     if (!process.env.CLOUDINARY_API_KEY || !process.env.CLOUDINARY_API_SECRET) {
-        console.warn('[fetchFolderFromAssetProvider] Cloudinary credentials not found, skipping photo gallery generation')
+        console.warn(
+            '[fetchFolderFromAssetProvider] Cloudinary credentials not found, skipping photo gallery generation',
+        )
         return { resources: [] }
     }
 

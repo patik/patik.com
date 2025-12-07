@@ -1,0 +1,21 @@
+---
+import CommonLayout from '../../layouts/Layout.astro'
+import UnpublishedAlert from './UnpublishedAlert'
+
+interface Props {
+    title?: string
+    keywords?: string[]
+    draft?: boolean
+}
+
+const { draft, ...commonLayoutProps } = Astro.props
+---
+
+<CommonLayout {...commonLayoutProps}>
+    <div class="min-h-screen">
+        {draft && <UnpublishedAlert />}
+        <main>
+            <slot />
+        </main>
+    </div>
+</CommonLayout>

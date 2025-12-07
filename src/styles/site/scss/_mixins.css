@@ -1,0 +1,24 @@
+/* Utility classes to replace SCSS mixins */
+
+:root {
+    /* Base font and line-height settings */
+    --base-font-size: 100%;
+    --base-line-height: 150%;
+    --em-base: 16px;
+}
+
+/* Transition utility classes */
+.transition-all {
+    -webkit-transition: all 0.15s ease 0s;
+    transition: all 0.15s ease 0s;
+}
+
+.transition-fast {
+    -webkit-transition: all 0.1s ease 0s;
+    transition: all 0.1s ease 0s;
+}
+
+.transition-slow {
+    -webkit-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+}

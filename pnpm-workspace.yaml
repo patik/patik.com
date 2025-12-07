@@ -1,6 +1,6 @@
 onlyBuiltDependencies:
   - '@parcel/watcher'
-  - core-js
-  - jpegtran-bin
+  - esbuild
+  - netlify-cli
   - sharp
-  - unrs-resolver
+  - unix-dgram

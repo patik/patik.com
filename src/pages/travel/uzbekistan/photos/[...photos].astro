@@ -1,0 +1,153 @@
+---
+import PhotoGrid from '@src/components/gallery/PhotoGrid.astro'
+import PhotoLightbox from '@src/components/gallery/PhotoLightbox.astro'
+import countryGallery from '@src/galleries/uzbekistan'
+import samarkand from '@src/galleries/uzbekistan/samarkand'
+import Layout from '@src/layouts/Layout.astro'
+import fetchFolderFromAssetProvider from '@src/photos/utils/fetchFolderFromAssetProvider'
+import type { CloundinaryResource, ImageProps } from '@src/photos/utils/types'
+
+export async function getStaticPaths() {
+    // Define city galleries inside the function
+    const cityGalleries = [samarkand]
+
+    const paths: Array<{
+        params: { photos: string | undefined }
+        props: { images: ImageProps[]; currentPhoto: ImageProps | null; cityId: string | null }
+    }> = []
+
+    // Helper to convert Cloudinary resource to ImageProps
+    function toImageProps(resource: CloundinaryResource, index: number): ImageProps {
+        return {
+            id: index,
+            height: resource.height,
+            width: resource.width,
+            public_id: resource.public_id,
+            format: resource.format,
+            secure_url: resource.secure_url,
+            resource_type: resource.resource_type,
+        }
+    }
+
+    // Fetch images for each city gallery
+    const cityImagesMap: Record<string, ImageProps[]> = {}
+
+    for (const city of cityGalleries) {
+        try {
+            const results = await fetchFolderFromAssetProvider(city.cloudinaryFolder)
+            cityImagesMap[city.cityId] = results.resources.map(toImageProps)
+        } catch (e) {
+            console.error(`[getStaticPaths] Error fetching ${city.cityId}:`, e)
+            cityImagesMap[city.cityId] = []
+        }
+    }
+
+    // All images across all cities
+    const allImages = Object.values(cityImagesMap).flat()
+
+    // 1. Country gallery index: /travel/uzbekistan/photos/
+    paths.push({
+        params: { photos: undefined },
+        props: { images: allImages, currentPhoto: null, cityId: null },
+    })
+
+    // 2. Individual photos at country level: /travel/uzbekistan/photos/0, /travel/uzbekistan/photos/1, etc.
+    for (let i = 0; i < allImages.length; i++) {
+        paths.push({
+            params: { photos: `${i}` },
+            props: { images: allImages, currentPhoto: allImages[i], cityId: null },
+        })
+    }
+
+    // 3. City gallery pages
+    for (const city of cityGalleries) {
+        const cityImages = cityImagesMap[city.cityId] || []
+
+        // City index: /travel/uzbekistan/photos/samarkand/
+        paths.push({
+            params: { photos: city.cityId },
+            props: { images: cityImages, currentPhoto: null, cityId: city.cityId },
+        })
+
+        // Individual photos: /travel/uzbekistan/photos/samarkand/0, /travel/uzbekistan/photos/samarkand/1, etc.
+        for (let i = 0; i < cityImages.length; i++) {
+            paths.push({
+                params: { photos: `${city.cityId}/${i}` },
+                props: { images: cityImages, currentPhoto: cityImages[i], cityId: city.cityId },
+            })
+        }
+    }
+
+    return paths
+}
+
+const { images, currentPhoto, cityId } = Astro.props
+const { photos } = Astro.params
+
+console.log(`[Gallery Page] cityId: ${cityId}, image ${currentPhoto?.id} of ${images?.length}. Photos param: `, photos)
+
+// Define city galleries for template use
+const cityGalleries = [samarkand]
+
+// Determine which gallery we're showing
+let gallery = countryGallery
+let pageTitle = countryGallery.title
+
+if (cityId) {
+    const cityGallery = cityGalleries.find((g) => g.cityId === cityId)
+    if (cityGallery) {
+        gallery = cityGallery
+        pageTitle = cityGallery.title
+    }
+}
+
+// Determine base URL for navigation
+const baseUrl = photos?.includes('/') ? `/travel/uzbekistan/photos/${cityId}/` : '/travel/uzbekistan/photos/'
+---
+
+<Layout title={pageTitle} keywords={gallery.keywords}>
+    {
+        currentPhoto ? (
+            <PhotoLightbox currentPhoto={currentPhoto} images={images} galleryTitle={gallery.title} baseUrl={baseUrl} />
+        ) : (
+            <main class="gallery-page">
+                <header class="gallery-header">
+                    <h1>{gallery.title}</h1>
+                    <a href={`/travel/${countryGallery.countryId}`} class="back-link">
+                        ← Back to {countryGallery.countryName}
+                    </a>
+                </header>
+
+                <PhotoGrid images={images} baseUrl={baseUrl} />
+            </main>
+        )
+    }
+</Layout>
+
+<style>
+    .gallery-page {
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
+
+    .gallery-header {
+        margin-bottom: 2rem;
+    }
+
+    .gallery-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .back-link {
+        color: #666;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.2s;
+    }
+
+    .back-link:hover {
+        color: #000;
+    }
+</style>

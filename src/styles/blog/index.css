@@ -1,10 +1,13 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import '../tailwind-theme.css';
+@import './markdown-styles.css';
 
 @layer components {
     body {
-        font-family: 'chaparral-pro', Palatino Linotype, Palatino, serif;
+        font-family:
+            'chaparral-pro',
+            Palatino Linotype,
+            Palatino,
+            serif;
     }
 
     @media (prefers-color-scheme: dark) {
