@@ -1,13 +1,14 @@
 // @ts-check
+import { fileURLToPath } from 'url'
 import mdx from '@astrojs/mdx'
 import netlify from '@astrojs/netlify'
 import react from '@astrojs/react'
+import tailwind from '@astrojs/tailwind'
 import { defineConfig } from 'astro/config'
-import { fileURLToPath } from 'url'
 
 // https://astro.build/config
 export default defineConfig({
-    integrations: [react(), mdx()],
+    integrations: [react(), mdx(), tailwind({ applyBaseStyles: false })],
     adapter: netlify(),
     vite: {
         resolve: {
