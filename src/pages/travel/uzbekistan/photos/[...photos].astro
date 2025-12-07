@@ -51,7 +51,15 @@ export async function getStaticPaths() {
         props: { images: allImages, currentPhoto: null, cityId: null },
     })
 
-    // 2. City gallery pages
+    // 2. Individual photos at country level: /travel/uzbekistan/photos/0, /travel/uzbekistan/photos/1, etc.
+    for (let i = 0; i < allImages.length; i++) {
+        paths.push({
+            params: { photos: `${i}` },
+            props: { images: allImages, currentPhoto: allImages[i], cityId: null },
+        })
+    }
+
+    // 3. City gallery pages
     for (const city of cityGalleries) {
         const cityImages = cityImagesMap[city.cityId] || []
 
@@ -75,6 +83,11 @@ export async function getStaticPaths() {
 
 const { images, currentPhoto, cityId } = Astro.props
 const { photos } = Astro.params
+
+console.log('[Gallery Page] photos param:', photos)
+console.log('[Gallery Page] images count:', images?.length)
+console.log('[Gallery Page] currentPhoto:', currentPhoto?.id)
+console.log('[Gallery Page] cityId:', cityId)
 
 // Define city galleries for template use
 const cityGalleries = [samarkand]

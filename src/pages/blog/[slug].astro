@@ -1,18 +1,10 @@
 ---
 import { getCollection, render } from 'astro:content'
-import Post from '../../components/blog/Post/Post.astro'
-import Layout from '../../layouts/Layout.astro'
+import BlogLayout from '../../components/blog/Layout.astro'
 
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
     const posts = await getCollection('blog')
-    // console.debug(
-    //     'posts',
-    //     posts.map((post) => ({
-    //         params: { slug: post.id },
-    //         props: { post },
-    //     })),
-    // )
 
     return posts.map((post) => ({
         params: { slug: post.id },
@@ -21,12 +13,50 @@ export async function getStaticPaths() {
 }
 
 // 2. For your template, you can get the entry directly from the prop
-console.log('Astro.props ', Astro.props)
 const { post } = Astro.props
 const { Content } = await render(post)
 ---
 
-<Layout>
-    <h1>{post.data.title}</h1>
-    <Post post={post} />
-</Layout>
+<BlogLayout title={post.data.title} keywords={post.data.keywords} unpublished={post.data.unpublished}>
+    <article class="blog-post">
+        <header>
+            <h1>{post.data.title}</h1>
+            {
+                post.data.date && (
+                    <time datetime={post.data.date.toISOString()}>
+                        {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                    </time>
+                )
+            }
+        </header>
+        <div class="content">
+            <Content />
+        </div>
+    </article>
+</BlogLayout>
+
+<style>
+    .blog-post {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
+
+    .blog-post header {
+        margin-bottom: 2rem;
+    }
+
+    .blog-post h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .blog-post time {
+        color: #666;
+        font-size: 0.9rem;
+    }
+
+    .blog-post .content {
+        line-height: 1.8;
+    }
+</style>
