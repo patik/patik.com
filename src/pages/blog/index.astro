@@ -1,5 +1,5 @@
 ---
-import { getCollection, render } from 'astro:content'
+import { getCollection } from 'astro:content'
 import Container from '../../components/blog/Container'
 import HeroPost from '../../components/blog/HeroPost'
 import Intro from '../../components/blog/Index/Intro'
@@ -23,28 +23,15 @@ export async function getStaticPaths() {
 
 // 2. For your template, you can get the entry directly from the prop
 console.log('Astro.props ', Astro.props)
-const posts = await getCollection('blog')
 
-const { blogDescription, blogUrl, blogPath } = config
+const { blogDescription, blogUrl } = config
 
-type Props = {
-    p?: string
-}
+// type Props = {}
 
 const allPosts = await getCollection('blog')
 
 const heroPost = allPosts[0]
 const morePosts = allPosts.slice(1)
-
-// // Check for old URL format: `/?p={id}`
-// if (Astro.params.p) {
-//     const id = Number(Astro.params.p)
-//     const post = allPosts.find((post) => post.id === String(id))
-
-//     if (post) {
-//         Astro.redirect(`${blogPath}/${post.id}`)
-//     }
-// }
 ---
 
 <Layout>
