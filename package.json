@@ -71,5 +71,5 @@
     "bugs": {
         "url": "https://github.com/patik/patik.com/issues"
     },
-    "packageManager": "pnpm@10.8.0"
+    "packageManager": "pnpm@10.26.1"
 }
