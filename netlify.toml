@@ -28,3 +28,9 @@
     to = "/travel/"
     status = 301
     force = false
+
+[[redirects]]
+    from = "/trip-planner/*"
+    to = "https://ephemeral-lokum-dab4cc.netlify.app/trip-planner/:splat"
+    status = 200
+    force = false
