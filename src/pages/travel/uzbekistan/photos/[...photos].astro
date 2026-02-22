@@ -2,6 +2,8 @@
 import PhotoGrid from '@src/components/gallery/PhotoGrid.astro'
 import PhotoLightbox from '@src/components/gallery/PhotoLightbox.astro'
 import countryGallery from '@src/galleries/uzbekistan'
+import bukhara from '@src/galleries/uzbekistan/bukhara'
+import khiva from '@src/galleries/uzbekistan/khiva'
 import samarkand from '@src/galleries/uzbekistan/samarkand'
 import Layout from '@src/layouts/Layout.astro'
 import fetchFolderFromAssetProvider from '@src/photos/utils/fetchFolderFromAssetProvider'
@@ -9,7 +11,7 @@ import type { CloundinaryResource, ImageProps } from '@src/photos/utils/types'
 
 export async function getStaticPaths() {
     // Define city galleries inside the function
-    const cityGalleries = [samarkand]
+    const cityGalleries = [khiva, samarkand, bukhara]
 
     const paths: Array<{
         params: { photos: string | undefined }

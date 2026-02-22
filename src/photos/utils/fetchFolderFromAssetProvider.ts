@@ -6,18 +6,17 @@ import cloudinary from '@src/photos/utils/cloudinary'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-const fileName = 'cloundary-cache'
-const folderPath = path.join(__dirname, '../../../../../../tmp')
+const cacheDir = path.join(__dirname, '../../../../../../tmp')
 
-if (!existsSync(folderPath)) {
-    console.log('[fetchFolderFromAssetProvider] creating cache folder ', folderPath)
-    mkdirSync(folderPath)
+if (!existsSync(cacheDir)) {
+    console.log('[fetchFolderFromAssetProvider] creating cache folder ', cacheDir)
+    mkdirSync(cacheDir)
 }
 
-const filePath = path.join(folderPath, fileName)
-
-console.log('filePath: ', filePath)
 export default async function fetchFolderFromAssetProvider(folderName: string) {
+    const cacheKey = folderName.replace(/[^a-z0-9]/gi, '_')
+    const filePath = path.join(cacheDir, `cloudinary-cache-${cacheKey}`)
+
     if (existsSync(filePath)) {
         console.log('[fetchFolderFromAssetProvider] returning cached results in ', filePath)
         return JSON.parse(readFileSync(filePath, 'utf8'))
