@@ -24,6 +24,12 @@
     force = false
 
 [[redirects]]
+    from = "/travel/argentina/"
+    to = "/travel/uruguay/"
+    status = 307
+    force = false
+
+[[redirects]]
     from = "/travel/britain-benelux/"
     to = "/travel/"
     status = 301
