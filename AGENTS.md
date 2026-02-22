@@ -90,6 +90,7 @@ Photos are hosted on **Cloudinary** and displayed via a dynamic Astro gallery sy
 ### Cloudinary setup
 
 Required environment variables:
+
 - `PUBLIC_CLOUDINARY_CLOUD_NAME`
 - `CLOUDINARY_API_KEY`
 - `CLOUDINARY_API_SECRET`
@@ -146,6 +147,7 @@ Import the country gallery config and hero images, then use `TravelLinkList` to 
 #### 4. Dynamic gallery page — `src/pages/travel/<country>/photos/[...photos].astro`
 
 Copy the pattern from `src/pages/travel/uzbekistan/photos/[...photos].astro`. This single file generates all routes:
+
 - `/travel/<country>/photos/` — grid of all photos
 - `/travel/<country>/photos/<n>` — lightbox for photo `n` (country level)
 - `/travel/<country>/photos/<city>/` — grid for a city
@@ -156,3 +158,25 @@ In `getStaticPaths()`, import each city gallery file and add it to the `cityGall
 #### 5. Countries list — `src/countries.json`
 
 Add the country to `visited` with its `name` and `yearsVisited` array. This powers the visited-countries display.
+
+# Testing
+
+Uses Playwright and snapshots for visual regression testing.
+
+## Process
+
+### For intentional UI changes
+
+1. Make your change, rebuild, run pnpm test:update-snapshots locally to update the darwin PNGs
+2. Commit your code change + the updated darwin snapshots
+3. Go to Actions → "Update visual snapshots" → Run workflow (pick your branch)
+4. The workflow builds on Linux, runs --update-snapshots, and commits the updated linux PNGs back to your branch automatically
+5. Pull locally to get the commit → done
+
+### Unintentional regressions
+
+When pnpm test runs in CI and finds a difference (not a missing file), it:
+
+- Fails the run
+- Uploads the HTML report as the playwright-report artifact
+- The report has a side-by-side diff viewer showing exactly what pixel changed — open index.html from the downloaded zip
