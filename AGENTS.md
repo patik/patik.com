@@ -151,7 +151,7 @@ Copy the pattern from `src/pages/travel/uzbekistan/photos/[...photos].astro`. Th
 - `/travel/<country>/photos/<city>/` — grid for a city
 - `/travel/<country>/photos/<city>/<n>` — lightbox for photo `n` in a city
 
-In `getStaticPaths()`, import each city gallery file and add it to the `cityGalleries` array. `fetchFolderFromAssetProvider` handles Cloudinary API calls and caches results to `tmp/cloundary-cache` during the build.
+In `getStaticPaths()`, import each city gallery file and add it to the `cityGalleries` array. `fetchFolderFromAssetProvider` handles Cloudinary API calls and caches results to `tmp/cloudinary-cache` during the build.
 
 #### 5. Countries list — `src/countries.json`
 
