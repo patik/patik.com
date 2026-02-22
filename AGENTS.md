@@ -161,20 +161,11 @@ Add the country to `visited` with its `name` and `yearsVisited` array. This powe
 
 # Testing
 
-Uses Playwright and snapshots.
+Uses Playwright and snapshots for visual regression testing.
 
 ## Process
 
-### First push — bootstrapping Linux baselines
-
-1. Commit and push everything (including your \*-darwin.png snapshots)
-2. The CI run will fail — visual tests exit with "snapshot doesn't exist at \*-chromium-linux.png", but Playwright writes the files before dying
-3. On the failed run's page in GitHub Actions, scroll to the bottom → Artifacts section → download new-snapshots
-4. Unzip it — you'll find visual.spec.ts-snapshots/home-chromium-linux.png etc.
-5. Copy those files into your local tests-snapshots/visual.spec.ts-snapshots/
-6. Commit and push → second CI run passes ✓
-
-### Future intentional UI changes (e.g. you upgrade Tailwind and the nav spacing shifts)
+### For intentional UI changes
 
 1. Make your change, rebuild, run pnpm test:update-snapshots locally to update the darwin PNGs
 2. Commit your code change + the updated darwin snapshots
@@ -182,7 +173,7 @@ Uses Playwright and snapshots.
 4. The workflow builds on Linux, runs --update-snapshots, and commits the updated linux PNGs back to your branch automatically
 5. Pull locally to get the commit → done
 
-### Unintentional regressions (what the tests are actually guarding against)
+### Unintentional regressions
 
 When pnpm test runs in CI and finds a difference (not a missing file), it:
 
