@@ -79,3 +79,80 @@ Use `@src/` for imports from the `src/` directory (configured in `astro.config.m
 - Use clear naming to make the test self-documenting.
 - Write a separate test case for each code branch for the sake of cyclomatic complexity.
 - Tests should cover edge, corner, and boundary cases.
+
+## Travel photo galleries
+
+Photos are hosted on **Cloudinary** and displayed via a dynamic Astro gallery system. There are two tiers of travel pages:
+
+1. **Flat pages** (e.g. `src/pages/travel/turkey.astro`) — simple pages with no hosted photo gallery.
+2. **Directory pages** (e.g. `src/pages/travel/uzbekistan/`) — countries with a full Cloudinary-backed photo gallery.
+
+### Cloudinary setup
+
+Required environment variables:
+- `PUBLIC_CLOUDINARY_CLOUD_NAME`
+- `CLOUDINARY_API_KEY`
+- `CLOUDINARY_API_SECRET`
+
+Organize photos in Cloudinary under folders named `Country Year/City` (e.g. `Uzbekistan 2023/Samarkand`). The folder string used in gallery config files must escape spaces with a backslash: `'Uzbekistan\\ 2023/Samarkand'`.
+
+### Adding photos for a new trip
+
+To add a Cloudinary-backed photo gallery for a country, create the following files:
+
+#### 1. Gallery definition files — `src/galleries/<country>/`
+
+**`src/galleries/<country>/index.ts`** — country-level gallery (type `CountryGallery`):
+
+```ts
+import type { CountryGallery } from '../../photos/utils/types'
+
+const countryGallery: CountryGallery = {
+    countryId: 'uzbekistan',         // matches URL slug and directory name
+    countryName: 'Uzbekistan',
+    cloudinaryFolder: 'Uzbekistan\\ 2023/Samarkand', // escaped space
+    title: 'Uzbekistan',
+    keywords: ['Uzbekistan', 'travel', ...],
+}
+
+export default countryGallery
+```
+
+**`src/galleries/<country>/<city>.ts`** — per-city gallery (type `CityGallery`, which extends `CountryGallery`):
+
+```ts
+import type { CityGallery } from '../../photos/utils/types'
+
+const cityGallery: CityGallery = {
+    countryId: 'uzbekistan',
+    countryName: 'Uzbekistan',
+    cityId: 'samarkand',             // matches URL segment
+    cloudinaryFolder: 'Uzbekistan\\ 2023/Samarkand',
+    title: 'Samarkand',
+    keywords: ['Uzbekistan', 'Samarkand', 'travel', ...],
+}
+
+export default cityGallery
+```
+
+#### 2. Hero images — `src/images/`
+
+Add a representative JPEG for each city/destination, named `<country>-<city>-<description>.jpg` (e.g. `uzbekistan-samarkand-dome.jpg`).
+
+#### 3. Country page — `src/pages/travel/<country>/index.astro`
+
+Import the country gallery config and hero images, then use `TravelLinkList` to render links to each city. Each item can link to either an internal gallery URL (`/travel/<country>/photos/<city>/`) or an external iCloud album URL.
+
+#### 4. Dynamic gallery page — `src/pages/travel/<country>/photos/[...photos].astro`
+
+Copy the pattern from `src/pages/travel/uzbekistan/photos/[...photos].astro`. This single file generates all routes:
+- `/travel/<country>/photos/` — grid of all photos
+- `/travel/<country>/photos/<n>` — lightbox for photo `n` (country level)
+- `/travel/<country>/photos/<city>/` — grid for a city
+- `/travel/<country>/photos/<city>/<n>` — lightbox for photo `n` in a city
+
+In `getStaticPaths()`, import each city gallery file and add it to the `cityGalleries` array. `fetchFolderFromAssetProvider` handles Cloudinary API calls and caches results to `tmp/cloudinary-cache` during the build.
+
+#### 5. Countries list — `src/countries.json`
+
+Add the country to `visited` with its `name` and `yearsVisited` array. This powers the visited-countries display.
