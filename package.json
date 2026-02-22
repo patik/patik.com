@@ -33,9 +33,9 @@
     },
     "devDependencies": {
         "@astrojs/netlify": "^6.5.11",
-        "@astrojs/tailwind": "^6.0.2",
         "@eslint/compat": "^1.4.0",
         "@ianvs/prettier-plugin-sort-imports": "^4.7.0",
+        "@tailwindcss/postcss": "^4.2.0",
         "@types/eslint-plugin-jsx-a11y": "^6.10.1",
         "@types/jest": "^30.0.0",
         "@types/lodash": "^4.17.20",
@@ -52,9 +52,10 @@
         "eslint-plugin-react-hooks": "^6.1.1",
         "find-unused-sass-variables": "^6.1.0",
         "netlify-cli": "^23.12.3",
+        "postcss": "^8.5.6",
         "prettier": "^3.6.2",
         "prettier-plugin-astro": "^0.14.1",
-        "tailwindcss": "^3.4.0",
+        "tailwindcss": "^4.2.0",
         "typescript": "^5.9.3",
         "typescript-eslint": "^8.46.0"
     },
