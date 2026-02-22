@@ -90,6 +90,7 @@ Photos are hosted on **Cloudinary** and displayed via a dynamic Astro gallery sy
 ### Cloudinary setup
 
 Required environment variables:
+
 - `PUBLIC_CLOUDINARY_CLOUD_NAME`
 - `CLOUDINARY_API_KEY`
 - `CLOUDINARY_API_SECRET`
@@ -146,6 +147,7 @@ Import the country gallery config and hero images, then use `TravelLinkList` to 
 #### 4. Dynamic gallery page — `src/pages/travel/<country>/photos/[...photos].astro`
 
 Copy the pattern from `src/pages/travel/uzbekistan/photos/[...photos].astro`. This single file generates all routes:
+
 - `/travel/<country>/photos/` — grid of all photos
 - `/travel/<country>/photos/<n>` — lightbox for photo `n` (country level)
 - `/travel/<country>/photos/<city>/` — grid for a city
@@ -156,3 +158,34 @@ In `getStaticPaths()`, import each city gallery file and add it to the `cityGall
 #### 5. Countries list — `src/countries.json`
 
 Add the country to `visited` with its `name` and `yearsVisited` array. This powers the visited-countries display.
+
+# Testing
+
+Uses Playwright and snapshots.
+
+## Process
+
+### First push — bootstrapping Linux baselines
+
+1. Commit and push everything (including your \*-darwin.png snapshots)
+2. The CI run will fail — visual tests exit with "snapshot doesn't exist at \*-chromium-linux.png", but Playwright writes the files before dying
+3. On the failed run's page in GitHub Actions, scroll to the bottom → Artifacts section → download new-snapshots
+4. Unzip it — you'll find visual.spec.ts-snapshots/home-chromium-linux.png etc.
+5. Copy those files into your local tests-snapshots/visual.spec.ts-snapshots/
+6. Commit and push → second CI run passes ✓
+
+### Future intentional UI changes (e.g. you upgrade Tailwind and the nav spacing shifts)
+
+1. Make your change, rebuild, run pnpm test:update-snapshots locally to update the darwin PNGs
+2. Commit your code change + the updated darwin snapshots
+3. Go to Actions → "Update visual snapshots" → Run workflow (pick your branch)
+4. The workflow builds on Linux, runs --update-snapshots, and commits the updated linux PNGs back to your branch automatically
+5. Pull locally to get the commit → done
+
+### Unintentional regressions (what the tests are actually guarding against)
+
+When pnpm test runs in CI and finds a difference (not a missing file), it:
+
+- Fails the run
+- Uploads the HTML report as the playwright-report artifact
+- The report has a side-by-side diff viewer showing exactly what pixel changed — open index.html from the downloaded zip

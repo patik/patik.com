@@ -35,6 +35,10 @@ pnpm-debug.log*
 tmp
 tsconfig.tsbuildinfo
 
+# Playwright
+playwright-report/
+test-results/
+
 # Shared Copilot instruction symlinks
 .github/instructions/*.instructions.md
 .github/chatmodes
