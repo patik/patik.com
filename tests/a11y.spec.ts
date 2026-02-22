@@ -31,16 +31,9 @@ for (const { path, label } of routes) {
         const suppressed = knownViolations[path] ?? []
 
         const blocking = results.violations.filter(
-            (v) =>
-                (v.impact === 'critical' || v.impact === 'serious') &&
-                !suppressed.includes(v.id),
+            (v) => (v.impact === 'critical' || v.impact === 'serious') && !suppressed.includes(v.id),
         )
 
-        expect(
-            blocking,
-            blocking
-                .map((v) => `[${v.impact}] ${v.id}: ${v.description}`)
-                .join('\n'),
-        ).toHaveLength(0)
+        expect(blocking, blocking.map((v) => `[${v.impact}] ${v.id}: ${v.description}`).join('\n')).toHaveLength(0)
     })
 }
