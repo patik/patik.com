@@ -3,6 +3,7 @@ import Space from '../components/Space'
 import TravelLinkList from '../components/TravelLinkList'
 import WorldMap from '../components/WorldMap'
 import countries from '../countries.json'
+import TravelImageBosnia from '../images/bosnia-sarajevo-hero.jpg'
 import BrugesImage from '../images/britain-benelux-bruges-link.jpg'
 import NetherlandsImage from '../images/britain-benelux-netherlands-link.jpg'
 import TravelImageIreland from '../images/ireland-dublin-hero.jpg'
@@ -31,25 +32,18 @@ const numCountriesVisitedExceptBirthplace = countries.visited.length - 1
 
 const items = [
     {
+        title: 'Bosnia',
+        className: 'bg-travel-bottom-middle',
+        url: '/travel/bosnia/',
+        imageSrc: TravelImageBosnia,
+        imageAlt: 'Sarajevo, Bosnia and Herzegovina',
+    },
+    {
         title: 'Uzbekistan',
         className: 'bg-travel-bottom-middle',
         url: '/travel/uzbekistan/',
         imageSrc: TravelImageUzbekistan,
         imageAlt: 'The façade of a mausoleum in Khiva',
-    },
-    {
-        title: 'Vietnam',
-        className: 'bg-travel-bottom-middle',
-        url: '/travel/vietnam/',
-        imageSrc: TravelImageVietnam,
-        imageAlt: 'Ho Chi Minh City, Vietnam',
-    },
-    {
-        title: 'Italy',
-        className: 'bg-travel-bottom-middle',
-        url: '/travel/italy/',
-        imageSrc: TravelImageItaly,
-        imageAlt: 'Venice, Italy',
     },
     {
         title: 'Ireland',
@@ -59,23 +53,36 @@ const items = [
         imageAlt: 'Dublin, Ireland',
     },
     {
+        title: 'Italy',
+        className: 'bg-travel-bottom-middle bg-travel-italy',
+        url: '/travel/italy/',
+        imageSrc: TravelImageItaly,
+        imageAlt: 'Venice, Italy',
+    },
+    {
+        title: 'Vietnam',
+        className: 'bg-travel-bottom-middle',
+        url: '/travel/vietnam/',
+        imageSrc: TravelImageVietnam,
+        imageAlt: 'Ho Chi Minh City, Vietnam',
+    },
+    {
         title: 'Britain',
-        className: 'bg-travel-britain-benelux',
+        className: 'bg-travel-britain',
         url: '/travel/britain/',
         imageSrc: BritainbeneluxImage,
         imageAlt: 'Big Ben, a black cab, and a red double-decker bus in Parliament Square',
     },
     {
         title: 'Netherlands',
-        titleStyle: { fontSize: '2.75rem' },
-        className: 'bg-travel-bottom-middle',
+        className: 'bg-travel-bottom-middle bg-travel-netherlands',
         url: '/travel/netherlands/',
         imageSrc: NetherlandsImage,
         imageAlt: 'Westerkerk, overlooking an Amsterdam canal',
     },
     {
         title: 'Peru',
-        className: 'bg-travel-peru-argentina',
+        className: 'bg-travel-peru',
         url: '/travel/peru/',
         imageSrc: PeruImage,
         imageAlt: 'Kim holding a lamb and posing with two women in traditional Andean clothes',
@@ -124,7 +131,7 @@ const items = [
     },
     {
         title: 'Uruguay',
-        className: 'bg-peru-argentina-colonia',
+        className: '',
         url: '/travel/uruguay/',
         imageSrc: UruguayImage,
         imageAlt: 'Old train in Colonia del Sacramento, Uruguay',
@@ -135,7 +142,7 @@ const items = [
 <Layout title="Travel" keywords={[...countries.visited.map((country) => country.name), 'Europe', 'Asia', 'travel']}>
     <h1>Travel</h1>
 
-    <section style={{ marginBottom: '6rem' }}>
+    <section style={{ marginBottom: '3rem' }}>
         <h2>Countries I’ve been to</h2>
         <p>
             The colors indicate how many years it’s been since I’ve traveled to each of these
