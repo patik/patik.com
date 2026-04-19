@@ -3,6 +3,7 @@ import Space from '../components/Space'
 import TravelLinkList from '../components/TravelLinkList'
 import WorldMap from '../components/WorldMap'
 import countries from '../countries.json'
+import TravelImageBosnia from '../images/bosnia-sarajevo-hero.jpg'
 import BrugesImage from '../images/britain-benelux-bruges-link.jpg'
 import NetherlandsImage from '../images/britain-benelux-netherlands-link.jpg'
 import TravelImageIreland from '../images/ireland-dublin-hero.jpg'
@@ -31,6 +32,13 @@ const numCountriesVisitedExceptBirthplace = countries.visited.length - 1
 
 const items = [
     {
+        title: 'Bosnia',
+        className: 'bg-travel-bottom-middle',
+        url: '/travel/bosnia/',
+        imageSrc: TravelImageBosnia,
+        imageAlt: 'Sarajevo, Bosnia and Herzegovina',
+    },
+    {
         title: 'Uzbekistan',
         className: 'bg-travel-bottom-middle',
         url: '/travel/uzbekistan/',
@@ -38,11 +46,11 @@ const items = [
         imageAlt: 'The façade of a mausoleum in Khiva',
     },
     {
-        title: 'Vietnam',
+        title: 'Ireland',
         className: 'bg-travel-bottom-middle',
-        url: '/travel/vietnam/',
-        imageSrc: TravelImageVietnam,
-        imageAlt: 'Ho Chi Minh City, Vietnam',
+        url: '/travel/ireland/',
+        imageSrc: TravelImageIreland,
+        imageAlt: 'Dublin, Ireland',
     },
     {
         title: 'Italy',
@@ -52,11 +60,11 @@ const items = [
         imageAlt: 'Venice, Italy',
     },
     {
-        title: 'Ireland',
+        title: 'Vietnam',
         className: 'bg-travel-bottom-middle',
-        url: '/travel/ireland/',
-        imageSrc: TravelImageIreland,
-        imageAlt: 'Dublin, Ireland',
+        url: '/travel/vietnam/',
+        imageSrc: TravelImageVietnam,
+        imageAlt: 'Ho Chi Minh City, Vietnam',
     },
     {
         title: 'Britain',
@@ -67,8 +75,7 @@ const items = [
     },
     {
         title: 'Netherlands',
-        titleStyle: { fontSize: '2.75rem' },
-        className: 'bg-travel-bottom-middle',
+        className: 'bg-travel-bottom-middle bg-travel-netherlands',
         url: '/travel/netherlands/',
         imageSrc: NetherlandsImage,
         imageAlt: 'Westerkerk, overlooking an Amsterdam canal',
@@ -124,7 +131,7 @@ const items = [
     },
     {
         title: 'Uruguay',
-        className: 'bg-peru-argentina-colonia',
+        className: 'bg-travel-uruguay',
         url: '/travel/uruguay/',
         imageSrc: UruguayImage,
         imageAlt: 'Old train in Colonia del Sacramento, Uruguay',

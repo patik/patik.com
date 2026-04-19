@@ -32,12 +32,13 @@
 
         span {
             color: white;
-            font-size: 1em;
+            font-size: 1rem;
             font-weight: bold;
             line-height: 1em;
             position: absolute;
             z-index: 3;
-            @media (min-width: 480px) {
+
+            @media (min-width: 600px) {
                 font-size: 2em;
             }
         }
@@ -150,6 +151,12 @@
         }
     }
 
+    .bg-travel-netherlands {
+        span {
+            font-size: 1rem;
+        }
+    }
+
     /* -----------------------------------
      * Britain & Benelux
      * -----------------------------------
@@ -219,7 +226,7 @@
         }
     }
 
-    .bg-peru-argentina-colonia {
+    .bg-travel-uruguay {
         span {
             font-size: 1.5em;
             position: absolute;
@@ -414,9 +421,9 @@
             }
         }
 
-        .bg-peru-argentina-colonia {
+        .bg-travel-uruguay {
             span {
-                font-size: 2em;
+                font-size: 1rem;
             }
         }
 
@@ -435,7 +442,7 @@
     /* 600px and up */
     .travel-link-list {
         a span {
-            font-size: 3em;
+            font-size: 2rem;
         }
 
         .bg-peru-argentina-amazon {
@@ -444,9 +451,9 @@
             }
         }
 
-        .bg-peru-argentina-colonia {
+        .bg-travel-uruguay {
             span {
-                font-size: 2.8em;
+                font-size: 2rem;
             }
         }
     }
