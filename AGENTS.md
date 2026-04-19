@@ -95,7 +95,7 @@ Required environment variables:
 - `CLOUDINARY_API_KEY`
 - `CLOUDINARY_API_SECRET`
 
-Organize photos in Cloudinary under folders named `Country Year/City` (e.g. `Uzbekistan 2023/Samarkand`). The folder string used in gallery config files must escape spaces with a backslash: `'Uzbekistan\\ 2023/Samarkand'`.
+For new galleries, organize photos in Cloudinary under folders named `Year Country/City` (e.g. `2022 Ireland/Dublin`). Some legacy folders are country-first (e.g. `Uzbekistan 2023/Samarkand`). The folder string used in gallery config files must escape spaces with a backslash: `'2022\\ Ireland/Dublin'`.
 
 ### Adding photos for a new trip
 
@@ -146,7 +146,7 @@ Import the country gallery config and hero images, then use `TravelLinkList` to 
 
 #### 4. Dynamic gallery page — `src/pages/travel/<country>/photos/[...photos].astro`
 
-Copy the pattern from `src/pages/travel/uzbekistan/photos/[...photos].astro`. This single file generates all routes:
+Copy the pattern from `src/pages/travel/italy/photos/[...photos].astro` or `src/pages/travel/vietnam/photos/[...photos].astro`. This single file generates all routes:
 
 - `/travel/<country>/photos/` — grid of all photos
 - `/travel/<country>/photos/<n>` — lightbox for photo `n` (country level)
@@ -158,6 +158,10 @@ In `getStaticPaths()`, import each city gallery file and add it to the `cityGall
 #### 5. Countries list — `src/countries.json`
 
 Add the country to `visited` with its `name` and `yearsVisited` array. This powers the visited-countries display.
+
+#### 6. Main travel index — `src/pages/travel.astro`
+
+Add a `TravelLinkList` item so the country appears in the Photos section on `/travel/`.
 
 # Testing
 

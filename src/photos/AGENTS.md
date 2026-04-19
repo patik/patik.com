@@ -6,13 +6,13 @@ This directory contains the utilities that power the Cloudinary-backed travel ph
 
 ### On Cloudinary
 
-Photos live in folders named `{Year} {Country}/{City}`, e.g.:
+For new galleries, photos should live in folders named `{Year} {Country}/{City}`. Some existing folders use a legacy country-first pattern, e.g. `Uzbekistan 2023/Samarkand`.
 
 ```
 2017 Vietnam/Hanoi
 2017 Vietnam/Ha Long Bay
 2018 Italy/Florence
-2023 Uzbekistan/Samarkand
+Uzbekistan 2023/Samarkand
 ```
 
 Spaces in folder names must be escaped with a backslash **in TypeScript strings only** (this is a Cloudinary search API requirement — it is NOT a filesystem path):
@@ -31,7 +31,7 @@ Three layers of files implement a country's gallery:
 src/
 ├── galleries/
 │   └── {country}/
-│       ├── index.ts          ← CountryGallery (also re-exports cityGalleries array)
+│       ├── index.ts          ← CountryGallery (preferably also exports cityGalleries array)
 │       ├── {city}.ts         ← CityGallery (one file per city)
 │       └── ...
 ├── images/
@@ -88,15 +88,17 @@ The catch-all segment `[...photos]` covers four route shapes:
 
 ## Adding a new country
 
-1. **Create gallery configs** — `src/galleries/{country}/index.ts` (exports `default` + named `cityGalleries`) and one `{city}.ts` per city.
+1. **Create gallery configs** — `src/galleries/{country}/index.ts` (exports `default`; prefer exporting named `cityGalleries` for reuse in `[...photos].astro`) and one `{city}.ts` per city.
 2. **Add hero images** — one JPEG per city at `src/images/{country}-{city}-{description}.jpg` (800×600 or larger).
 3. **Create the country page** — `src/pages/travel/{country}/index.astro` using `TravelLinkList`.
 4. **Create the dynamic gallery page** — `src/pages/travel/{country}/photos/[...photos].astro`; copy the Italy or Vietnam version and swap the imports/country slug.
 5. **Update `src/countries.json`** — add the country to the `visited` array with `name` and `yearsVisited`.
+6. **Update `src/pages/travel.astro`** — add a TravelLinkList card so the new trip appears on the main Travel page.
 
 ### Cloudinary folder naming rules
 
-- Folder on Cloudinary: `{Year} {Country}/{City}` using natural spaces (e.g. `2017 Vietnam/Ha Long Bay`)
+- Preferred folder format on Cloudinary for new galleries: `{Year} {Country}/{City}` using natural spaces (e.g. `2017 Vietnam/Ha Long Bay`)
+- Legacy folders may use `{Country} {Year}/{City}` (e.g. `Uzbekistan 2023/Samarkand`)
 - In TypeScript `cloudinaryFolder` strings, escape every space with `\\ ` (double backslash because it's inside a JS string, producing a single `\` at runtime)
 - City IDs (`cityId`) use lowercase kebab-case matching the URL segment (e.g. `ha-long-bay`)
 

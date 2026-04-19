@@ -1,0 +1,68 @@
+---
+import TravelLinkList from '../../../components/TravelLinkList'
+import countryGallery from '../../../galleries/ireland'
+import BelfastImage from '../../../images/ireland-belfast-hero.jpg'
+import CountrysideImage from '../../../images/ireland-countryside-hero.jpg'
+import DublinImage from '../../../images/ireland-dublin-hero.jpg'
+import KillarneyImage from '../../../images/ireland-killarney-hero.jpg'
+import Layout from '../../../layouts/Layout.astro'
+---
+
+<Layout title="Ireland" keywords={countryGallery.keywords}>
+    <h1>Ireland</h1>
+
+    <p>A road trip through Ireland in 2022, from lively city streets to green hills and coastal views.</p>
+
+    <section>
+        <h2>Photos</h2>
+
+        <TravelLinkList
+            items={[
+                {
+                    title: 'Dublin',
+                    className: 'bg-travel-bottom-middle',
+                    url: '/travel/ireland/photos/dublin/',
+                    imageSrc: DublinImage,
+                    imageAlt: 'Dublin, Ireland',
+                },
+                {
+                    title: 'Belfast',
+                    className: 'bg-travel-bottom-middle',
+                    url: '/travel/ireland/photos/belfast/',
+                    imageSrc: BelfastImage,
+                    imageAlt: 'Belfast, Ireland',
+                },
+                {
+                    title: 'Killarney',
+                    className: 'bg-travel-bottom-middle',
+                    url: '/travel/ireland/photos/killarney/',
+                    imageSrc: KillarneyImage,
+                    imageAlt: 'Killarney, Ireland',
+                },
+                {
+                    title: 'Countryside',
+                    className: 'bg-travel-bottom-middle',
+                    url: '/travel/ireland/photos/countryside/',
+                    imageSrc: CountrysideImage,
+                    imageAlt: 'Irish countryside',
+                },
+            ]}
+        />
+    </section>
+
+    <section>
+        <h2>Itinerary</h2>
+        <ul>
+            <li>
+                <a href="https://en.wikipedia.org/wiki/Dublin">Dublin</a>
+            </li>
+            <li>
+                <a href="https://en.wikipedia.org/wiki/Belfast">Belfast</a>
+            </li>
+            <li>
+                <a href="https://en.wikipedia.org/wiki/Killarney">Killarney</a>
+            </li>
+            <li>The Irish countryside</li>
+        </ul>
+    </section>
+</Layout>
