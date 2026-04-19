@@ -1,12 +1,8 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs'
 import path from 'path'
-import { fileURLToPath } from 'url'
 import cloudinary from '@src/photos/utils/cloudinary'
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
-
-const cacheDir = path.join(__dirname, '../../../../../../tmp')
+const cacheDir = path.join(process.cwd(), 'tmp')
 
 if (!existsSync(cacheDir)) {
     console.log('[fetchFolderFromAssetProvider] creating cache folder ', cacheDir)
