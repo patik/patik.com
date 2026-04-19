@@ -13,8 +13,8 @@ if (!existsSync(cacheDir)) {
     mkdirSync(cacheDir)
 }
 
-export default async function fetchFolderFromAssetProvider(folderName: string) {
-    const cacheKey = folderName.replace(/[^a-z0-9]/gi, '_')
+export default async function fetchFolderFromAssetProvider(folderName: string, sortDirection: 'asc' | 'desc' = 'desc') {
+    const cacheKey = `${folderName.replace(/[^a-z0-9]/gi, '_')}_${sortDirection}`
     const filePath = path.join(cacheDir, `cloudinary-cache-${cacheKey}`)
 
     if (existsSync(filePath)) {
@@ -22,10 +22,14 @@ export default async function fetchFolderFromAssetProvider(folderName: string) {
         return JSON.parse(readFileSync(filePath, 'utf8'))
     }
 
-    // Check if Cloudinary credentials are available
-    if (!process.env.CLOUDINARY_API_KEY || !process.env.CLOUDINARY_API_SECRET) {
+    // Check if Cloudinary configuration is available (import.meta.env for local/Astro, process.env for Netlify/CI)
+    const cloudName =
+        import.meta.env?.PUBLIC_CLOUDINARY_CLOUD_NAME ?? process.env.PUBLIC_CLOUDINARY_CLOUD_NAME
+    const apiKey = import.meta.env?.CLOUDINARY_API_KEY ?? process.env.CLOUDINARY_API_KEY
+    const apiSecret = import.meta.env?.CLOUDINARY_API_SECRET ?? process.env.CLOUDINARY_API_SECRET
+    if (!cloudName || !apiKey || !apiSecret) {
         console.warn(
-            '[fetchFolderFromAssetProvider] Cloudinary credentials not found, skipping photo gallery generation',
+            '[fetchFolderFromAssetProvider] Cloudinary configuration not found, skipping photo gallery generation',
         )
         return { resources: [] }
     }
@@ -33,7 +37,7 @@ export default async function fetchFolderFromAssetProvider(folderName: string) {
     console.log('[fetchFolderFromAssetProvider] new request')
     const fetchedResults = await cloudinary.v2.search
         .expression(`folder:${folderName}/*`)
-        .sort_by('public_id', 'desc')
+        .sort_by('public_id', sortDirection)
         .max_results(400)
         .execute()
 
