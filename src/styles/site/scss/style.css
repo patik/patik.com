@@ -192,13 +192,13 @@ figure {
 /* // ---------------------------------- */
 
 @media (min-width: 600px) {
-    /* // 600px and up */
+    /* 600px and up */
 }
 
 /* // DEFAULT DESKTOP */
 /* // --------------- */
 @media (min-width: 980px) {
-    /* // 980px and up */
+    /* 80px and up */
     .button-link-list {
         & > div {
             margin-bottom: 2%;

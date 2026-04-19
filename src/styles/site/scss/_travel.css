@@ -457,6 +457,13 @@
             }
         }
     }
+
+     section {
+        /* Commonly used for travel page itineraries */
+        ul {
+            margin-inline-start: 1.5rem;
+        }
+    }
 }
 
 @media (min-width: 980px) {
