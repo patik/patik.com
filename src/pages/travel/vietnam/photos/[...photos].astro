@@ -38,8 +38,9 @@ export async function getStaticPaths() {
         }),
     )
 
-    const allImages = Object.values(cityImagesMap)
-        .flat()
+    // Concatenate in cityGalleries order so country-level indices are deterministic across builds
+    const allImages = cityGalleries
+        .flatMap((city) => cityImagesMap[city.cityId] ?? [])
         .map((img, i) => ({ ...img, id: i }))
 
     // Country gallery index: /travel/vietnam/photos/

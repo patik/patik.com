@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 
 type Item = {
     imageSrc: { src: string }
@@ -6,7 +6,7 @@ type Item = {
     url: string
     className: string
     title: ReactNode
-    titleStyle?: React.CSSProperties
+    titleStyle?: CSSProperties
 }
 
 function TravelLinkItem({ item }: { item: Item }) {
