@@ -9,9 +9,9 @@ import Layout from '@src/layouts/Layout.astro'
 import fetchFolderFromAssetProvider from '@src/photos/utils/fetchFolderFromAssetProvider'
 import type { CloundinaryResource, ImageProps } from '@src/photos/utils/types'
 
-export async function getStaticPaths() {
-    const cityGalleries = [florence, verona, venice]
+const cityGalleries = [florence, verona, venice]
 
+export async function getStaticPaths() {
     const paths: Array<{
         params: { photos: string | undefined }
         props: { images: ImageProps[]; currentPhoto: ImageProps | null; cityId: string | null }
@@ -31,15 +31,17 @@ export async function getStaticPaths() {
 
     const cityImagesMap: Record<string, ImageProps[]> = {}
 
-    for (const city of cityGalleries) {
-        try {
-            const results = await fetchFolderFromAssetProvider(city.cloudinaryFolder, 'asc')
-            cityImagesMap[city.cityId] = results.resources.map(toImageProps)
-        } catch (e) {
-            console.error(`[getStaticPaths] Error fetching ${city.cityId}:`, e)
-            cityImagesMap[city.cityId] = []
-        }
-    }
+    await Promise.all(
+        cityGalleries.map(async (city) => {
+            try {
+                const results = await fetchFolderFromAssetProvider(city.cloudinaryFolder, 'asc')
+                cityImagesMap[city.cityId] = results.resources.map(toImageProps)
+            } catch (e) {
+                console.error(`[getStaticPaths] Error fetching ${city.cityId}:`, e)
+                cityImagesMap[city.cityId] = []
+            }
+        }),
+    )
 
     const allImages = Object.values(cityImagesMap)
         .flat()
@@ -82,8 +84,6 @@ export async function getStaticPaths() {
 }
 
 const { images, currentPhoto, cityId } = Astro.props
-
-const cityGalleries = [florence, verona, venice]
 
 let gallery = countryGallery
 let pageTitle = countryGallery.title
