@@ -1,4 +1,9 @@
 import type { CountryGallery } from '../../photos/utils/types'
+import florence from './florence'
+import venice from './venice'
+import verona from './verona'
+
+export const cityGalleries = [florence, verona, venice]
 
 const countryGallery: CountryGallery = {
     countryId: 'italy',
