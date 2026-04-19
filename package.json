@@ -36,7 +36,7 @@
     "devDependencies": {
         "@astrojs/netlify": "^6.6.4",
         "@axe-core/playwright": "^4.11.1",
-        "@eslint/compat": "^2.0.2",
+        "@eslint/compat": "^2.0.5",
         "@ianvs/prettier-plugin-sort-imports": "^4.7.1",
         "@playwright/test": "^1.58.2",
         "@tailwindcss/postcss": "^4.2.0",
