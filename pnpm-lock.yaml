@@ -123,9 +123,6 @@ importers:
       stylelint:
         specifier: ^17.8.0
         version: 17.8.0(typescript@6.0.3)
-      stylelint-config-recommended:
-        specifier: ^18.0.0
-        version: 18.0.0(stylelint@17.8.0(typescript@6.0.3))
       tailwindcss:
         specifier: ^4.2.2
         version: 4.2.2
@@ -5983,12 +5980,6 @@ packages:
 
   style-to-object@1.0.14:
     resolution: {integrity: sha512-LIN7rULI0jBscWQYaSswptyderlarFkjQ+t79nzty8tcIAceVomEVlLzH5VP4Cmsv6MtKhs7qaAiwlcp+Mgaxw==}
-
-  stylelint-config-recommended@18.0.0:
-    resolution: {integrity: sha512-mxgT2XY6YZ3HWWe3Di8umG6aBmWmHTblTgu/f10rqFXnyWxjKWwNdjSWkgkwCtxIKnqjSJzvFmPT5yabVIRxZg==}
-    engines: {node: '>=20.19.0'}
-    peerDependencies:
-      stylelint: ^17.0.0
 
   stylelint@17.8.0:
     resolution: {integrity: sha512-oHkld9T60LDSaUQ4CSVc+tlt9eUoDlxhaGWShsUCKyIL14boZfmK5bSphZqx64aiC5tCqX+BsQMTMoSz8D1zIg==}
@@ -14017,10 +14008,6 @@ snapshots:
   style-to-object@1.0.14:
     dependencies:
       inline-style-parser: 0.2.7
-
-  stylelint-config-recommended@18.0.0(stylelint@17.8.0(typescript@6.0.3)):
-    dependencies:
-      stylelint: 17.8.0(typescript@6.0.3)
 
   stylelint@17.8.0(typescript@6.0.3):
     dependencies:
