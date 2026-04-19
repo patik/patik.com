@@ -41,7 +41,9 @@ export async function getStaticPaths() {
         }
     }
 
-    const allImages = Object.values(cityImagesMap).flat().map((img, i) => ({ ...img, id: i }))
+    const allImages = Object.values(cityImagesMap)
+        .flat()
+        .map((img, i) => ({ ...img, id: i }))
 
     // Country gallery index: /travel/italy/photos/
     paths.push({
@@ -80,7 +82,6 @@ export async function getStaticPaths() {
 }
 
 const { images, currentPhoto, cityId } = Astro.props
-const { photos } = Astro.params
 
 const cityGalleries = [florence, verona, venice]
 

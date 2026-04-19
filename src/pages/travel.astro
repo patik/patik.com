@@ -5,6 +5,7 @@ import WorldMap from '../components/WorldMap'
 import countries from '../countries.json'
 import BrugesImage from '../images/britain-benelux-bruges-link.jpg'
 import NetherlandsImage from '../images/britain-benelux-netherlands-link.jpg'
+import TravelImageItaly from '../images/italy-venice-hero.jpg'
 import UruguayImage from '../images/peru-argentina-link-colonia.jpg'
 import BritainbeneluxImage from '../images/travel-britain-benelux.jpg'
 import FranceImage from '../images/travel-france.jpg'
@@ -14,7 +15,6 @@ import PeruImage from '../images/travel-peru-argentina.jpg'
 import SpainImage from '../images/travel-spain.jpg'
 import TurkeyImage from '../images/travel-turkey.jpg'
 import TravelImageUzbekistan from '../images/uzbekistan-khiva-night.jpg'
-import TravelImageItaly from '../images/italy-venice-hero.jpg'
 import Layout from '../layouts/Layout.astro'
 
 const currentYear = new Date().getFullYear()
@@ -29,18 +29,18 @@ const numCountriesVisitedExceptBirthplace = countries.visited.length - 1
 
 const items = [
     {
-        title: 'Italy',
-        className: 'bg-travel-bottom-middle',
-        url: '/travel/italy/',
-        imageSrc: TravelImageItaly,
-        imageAlt: 'Venice, Italy',
-    },
-    {
         title: 'Uzbekistan',
         className: 'bg-travel-bottom-middle',
         url: '/travel/uzbekistan/',
         imageSrc: TravelImageUzbekistan,
         imageAlt: 'The façade of a mausoleum in Khiva',
+    },
+    {
+        title: 'Italy',
+        className: 'bg-travel-bottom-middle',
+        url: '/travel/italy/',
+        imageSrc: TravelImageItaly,
+        imageAlt: 'Venice, Italy',
     },
     {
         title: 'Britain',
