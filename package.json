@@ -21,7 +21,7 @@
         "test:ui": "playwright test --ui"
     },
     "dependencies": {
-        "@astrojs/mdx": "^4.3.13",
+        "@astrojs/mdx": "^4.3.14",
         "@astrojs/react": "^4.4.2",
         "astro": "^5.17.3",
         "astro-expressive-code": "^0.41.7",
