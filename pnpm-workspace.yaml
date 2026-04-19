@@ -4,3 +4,7 @@ onlyBuiltDependencies:
   - netlify-cli
   - sharp
   - unix-dgram
+
+peerDependencyRules:
+  allowedVersions:
+    typescript: '6'
