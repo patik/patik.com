@@ -21,9 +21,9 @@
         "test:ui": "playwright test --ui"
     },
     "dependencies": {
-        "@astrojs/mdx": "^4.3.13",
-        "@astrojs/react": "^4.4.2",
-        "astro": "^5.17.3",
+        "@astrojs/mdx": "^5.0.3",
+        "@astrojs/react": "^5.0.3",
+        "astro": "^6.1.8",
         "astro-expressive-code": "^0.41.7",
         "classnames": "^2.5.1",
         "cloudinary": "^2.9.0",
@@ -34,7 +34,7 @@
         "react-google-charts": "^5.2.1"
     },
     "devDependencies": {
-        "@astrojs/netlify": "^6.6.4",
+        "@astrojs/netlify": "^7.0.7",
         "@axe-core/playwright": "^4.11.2",
         "@eslint/compat": "^2.0.5",
         "@ianvs/prettier-plugin-sort-imports": "^4.7.1",
