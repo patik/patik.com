@@ -3,8 +3,8 @@ import PhotoGrid from '@src/components/gallery/PhotoGrid.astro'
 import PhotoLightbox from '@src/components/gallery/PhotoLightbox.astro'
 import countryGallery from '@src/galleries/italy'
 import florence from '@src/galleries/italy/florence'
-import verona from '@src/galleries/italy/verona'
 import venice from '@src/galleries/italy/venice'
+import verona from '@src/galleries/italy/verona'
 import Layout from '@src/layouts/Layout.astro'
 import fetchFolderFromAssetProvider from '@src/photos/utils/fetchFolderFromAssetProvider'
 import type { CloundinaryResource, ImageProps } from '@src/photos/utils/types'
@@ -33,7 +33,7 @@ export async function getStaticPaths() {
 
     for (const city of cityGalleries) {
         try {
-            const results = await fetchFolderFromAssetProvider(city.cloudinaryFolder)
+            const results = await fetchFolderFromAssetProvider(city.cloudinaryFolder, 'asc')
             cityImagesMap[city.cityId] = results.resources.map(toImageProps)
         } catch (e) {
             console.error(`[getStaticPaths] Error fetching ${city.cityId}:`, e)
