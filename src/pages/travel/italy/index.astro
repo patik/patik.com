@@ -1,0 +1,59 @@
+---
+import TravelLinkList from '../../../components/TravelLinkList'
+import countryGallery from '../../../galleries/italy'
+import FlorenceImage from '../../../images/italy-florence-hero.jpg'
+import VeronaImage from '../../../images/italy-verona-hero.jpg'
+import VeniceImage from '../../../images/italy-venice-hero.jpg'
+import Layout from '../../../layouts/Layout.astro'
+---
+
+<Layout title="Italy" keywords={countryGallery.keywords}>
+    <h1>Italy</h1>
+
+    <p>Three beautiful Italian cities packed with Renaissance art, ancient Roman ruins, and some of the country's finest medieval architecture.</p>
+
+    <section>
+        <h2>Photos</h2>
+
+        <TravelLinkList
+            items={[
+                {
+                    title: 'Florence',
+                    className: 'bg-travel-bottom-middle',
+                    url: '/travel/italy/photos/florence/',
+                    imageSrc: FlorenceImage,
+                    imageAlt: 'Florence, Italy',
+                },
+                {
+                    title: 'Verona',
+                    className: 'bg-travel-bottom-middle',
+                    url: '/travel/italy/photos/verona/',
+                    imageSrc: VeronaImage,
+                    imageAlt: 'Verona, Italy',
+                },
+                {
+                    title: 'Venice',
+                    className: 'bg-travel-bottom-middle',
+                    url: '/travel/italy/photos/venice/',
+                    imageSrc: VeniceImage,
+                    imageAlt: 'Venice, Italy',
+                },
+            ]}
+        />
+    </section>
+
+    <section>
+        <h2>Itinerary</h2>
+        <ul>
+            <li>
+                <a href="https://en.wikipedia.org/wiki/Florence">Florence</a> — the cradle of the Renaissance
+            </li>
+            <li>
+                <a href="https://en.wikipedia.org/wiki/Verona">Verona</a> — the setting of Romeo and Juliet
+            </li>
+            <li>
+                <a href="https://en.wikipedia.org/wiki/Venice">Venice</a> — the floating city
+            </li>
+        </ul>
+    </section>
+</Layout>
