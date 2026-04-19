@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 
 type Item = {
     imageSrc: { src: string }
@@ -6,15 +6,16 @@ type Item = {
     url: string
     className: string
     title: ReactNode
+    titleStyle?: CSSProperties
 }
 
 function TravelLinkItem({ item }: { item: Item }) {
-    const { imageSrc, imageAlt, url, className, title } = item
+    const { imageSrc, imageAlt, url, className, title, titleStyle } = item
 
     return (
         <a className={className} href={url}>
             <img alt={imageAlt} src={imageSrc.src} />
-            <span>{title}</span>
+            <span style={titleStyle}>{title}</span>
             <div className="image-cover"></div>
         </a>
     )
