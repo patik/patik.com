@@ -41,7 +41,7 @@ export async function getStaticPaths() {
         }
     }
 
-    const allImages = Object.values(cityImagesMap).flat()
+    const allImages = Object.values(cityImagesMap).flat().map((img, i) => ({ ...img, id: i }))
 
     // Country gallery index: /travel/italy/photos/
     paths.push({
@@ -82,8 +82,6 @@ export async function getStaticPaths() {
 const { images, currentPhoto, cityId } = Astro.props
 const { photos } = Astro.params
 
-console.log(`[Gallery Page] cityId: ${cityId}, image ${currentPhoto?.id} of ${images?.length}. Photos param: `, photos)
-
 const cityGalleries = [florence, verona, venice]
 
 let gallery = countryGallery
@@ -97,7 +95,7 @@ if (cityId) {
     }
 }
 
-const baseUrl = photos?.includes('/') ? `/travel/italy/photos/${cityId}/` : '/travel/italy/photos/'
+const baseUrl = cityId ? `/travel/italy/photos/${cityId}/` : '/travel/italy/photos/'
 ---
 
 <Layout title={pageTitle} keywords={gallery.keywords}>
@@ -136,13 +134,13 @@ const baseUrl = photos?.includes('/') ? `/travel/italy/photos/${cityId}/` : '/tr
     }
 
     .back-link {
-        color: #666;
+        color: rgba(var(--foreground-rgb), 0.6);
         text-decoration: none;
         font-size: 0.9rem;
         transition: color 0.2s;
     }
 
     .back-link:hover {
-        color: #000;
+        color: rgb(var(--foreground-rgb));
     }
 </style>

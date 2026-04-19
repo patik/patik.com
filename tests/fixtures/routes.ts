@@ -13,8 +13,6 @@ export const routes = [
     { path: '/travel/', label: 'travel-index' },
     { path: '/travel/france/', label: 'travel-country' },
     { path: '/travel/italy/', label: 'travel-italy' },
-    { path: '/travel/italy/photos/', label: 'travel-italy-photos-index' },
-    { path: '/travel/italy/photos/florence/', label: 'travel-italy-photos-city' },
     { path: '/travel/uzbekistan/', label: 'travel-uzbekistan' },
     { path: '/travel/uzbekistan/photos/', label: 'travel-photos-index' },
     { path: '/travel/uzbekistan/photos/samarkand/', label: 'travel-photos-city' },

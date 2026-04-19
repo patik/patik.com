@@ -22,12 +22,14 @@ export default async function fetchFolderFromAssetProvider(folderName: string, s
         return JSON.parse(readFileSync(filePath, 'utf8'))
     }
 
-    // Check if Cloudinary credentials are available (import.meta.env for local/Astro, process.env for Netlify/CI)
+    // Check if Cloudinary configuration is available (import.meta.env for local/Astro, process.env for Netlify/CI)
+    const cloudName =
+        import.meta.env?.PUBLIC_CLOUDINARY_CLOUD_NAME ?? process.env.PUBLIC_CLOUDINARY_CLOUD_NAME
     const apiKey = import.meta.env?.CLOUDINARY_API_KEY ?? process.env.CLOUDINARY_API_KEY
     const apiSecret = import.meta.env?.CLOUDINARY_API_SECRET ?? process.env.CLOUDINARY_API_SECRET
-    if (!apiKey || !apiSecret) {
+    if (!cloudName || !apiKey || !apiSecret) {
         console.warn(
-            '[fetchFolderFromAssetProvider] Cloudinary credentials not found, skipping photo gallery generation',
+            '[fetchFolderFromAssetProvider] Cloudinary configuration not found, skipping photo gallery generation',
         )
         return { resources: [] }
     }
