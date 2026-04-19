@@ -82,9 +82,8 @@
         & > div {
             margin-bottom: 2%;
             border-radius: 4px;
-
+        }
     }
-}
 
     /* -----------------------------------
      * Travel main page
@@ -149,7 +148,7 @@
     .bg-travel-paris {
         span {
             top: var(--img-position-offset);
-            right: calc(var(--img-position-offset) * 2px);
+            right: calc(var(--img-position-offset) * 2);
         }
     }
 
