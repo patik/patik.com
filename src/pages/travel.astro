@@ -15,6 +15,7 @@ import PeruImage from '../images/travel-peru-argentina.jpg'
 import SpainImage from '../images/travel-spain.jpg'
 import TurkeyImage from '../images/travel-turkey.jpg'
 import TravelImageUzbekistan from '../images/uzbekistan-khiva-night.jpg'
+import TravelImageVietnam from '../images/vietnam-ho-chi-minh-city-hero.jpg'
 import Layout from '../layouts/Layout.astro'
 
 const currentYear = new Date().getFullYear()
@@ -34,6 +35,13 @@ const items = [
         url: '/travel/uzbekistan/',
         imageSrc: TravelImageUzbekistan,
         imageAlt: 'The façade of a mausoleum in Khiva',
+    },
+    {
+        title: 'Vietnam',
+        className: 'bg-travel-bottom-middle',
+        url: '/travel/vietnam/',
+        imageSrc: TravelImageVietnam,
+        imageAlt: 'Ho Chi Minh City, Vietnam',
     },
     {
         title: 'Italy',

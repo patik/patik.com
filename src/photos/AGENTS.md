@@ -99,3 +99,13 @@ The catch-all segment `[...photos]` covers four route shapes:
 - Folder on Cloudinary: `{Year} {Country}/{City}` using natural spaces (e.g. `2017 Vietnam/Ha Long Bay`)
 - In TypeScript `cloudinaryFolder` strings, escape every space with `\\ ` (double backslash because it's inside a JS string, producing a single `\` at runtime)
 - City IDs (`cityId`) use lowercase kebab-case matching the URL segment (e.g. `ha-long-bay`)
+
+## Test snapshots
+
+When a new country is added to the travel index page, the snapshot for that page will need to be updated:
+
+```sh
+pnpm build && pnpm playwright test visual --update-snapshots --grep "travel-index"
+```
+
+Also run `.github/workflows/update-snapshots.yml` once pushed to regenerate the CI's snapshots.
