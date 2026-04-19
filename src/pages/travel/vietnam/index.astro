@@ -1,0 +1,81 @@
+---
+import TravelLinkList from '../../../components/TravelLinkList'
+import countryGallery from '../../../galleries/vietnam'
+import HaLongBayImage from '../../../images/vietnam-ha-long-bay-hero.jpg'
+import HanoiImage from '../../../images/vietnam-hanoi-hero.jpg'
+import HoChiMinhCityImage from '../../../images/vietnam-ho-chi-minh-city-hero.jpg'
+import HoiAnImage from '../../../images/vietnam-hoi-an-hero.jpg'
+import PhuQuocImage from '../../../images/vietnam-phu-quoc-hero.jpg'
+import Layout from '../../../layouts/Layout.astro'
+---
+
+<Layout title="Vietnam" keywords={countryGallery.keywords}>
+    <h1>Vietnam</h1>
+
+    <p>A country of staggering natural beauty and rich history, from the ancient streets of Hoi An to the karst seascape of Ha Long Bay.</p>
+
+    <section>
+        <h2>Photos</h2>
+
+        <TravelLinkList
+            items={[
+                {
+                    title: 'Hanoi',
+                    className: 'bg-travel-bottom-middle',
+                    url: '/travel/vietnam/photos/hanoi/',
+                    imageSrc: HanoiImage,
+                    imageAlt: 'Hanoi, Vietnam',
+                },
+                {
+                    title: 'Ha Long Bay',
+                    className: 'bg-travel-bottom-middle',
+                    url: '/travel/vietnam/photos/ha-long-bay/',
+                    imageSrc: HaLongBayImage,
+                    imageAlt: 'Ha Long Bay, Vietnam',
+                },
+                {
+                    title: 'Hoi An',
+                    className: 'bg-travel-bottom-middle',
+                    url: '/travel/vietnam/photos/hoi-an/',
+                    imageSrc: HoiAnImage,
+                    imageAlt: 'Hoi An, Vietnam',
+                },
+                {
+                    title: 'Phu Quoc',
+                    className: 'bg-travel-bottom-middle',
+                    url: '/travel/vietnam/photos/phu-quoc/',
+                    imageSrc: PhuQuocImage,
+                    imageAlt: 'Phu Quoc, Vietnam',
+                },
+                {
+                    title: 'Ho Chi Minh City',
+                    className: 'bg-travel-bottom-middle',
+                    url: '/travel/vietnam/photos/ho-chi-minh-city/',
+                    imageSrc: HoChiMinhCityImage,
+                    imageAlt: 'Ho Chi Minh City, Vietnam',
+                },
+            ]}
+        />
+    </section>
+
+    <section>
+        <h2>Itinerary</h2>
+        <ul>
+            <li>
+                <a href="https://en.wikipedia.org/wiki/Hanoi">Hanoi</a> — the ancient capital
+            </li>
+            <li>
+                <a href="https://en.wikipedia.org/wiki/H%E1%BA%A1_Long_Bay">Ha Long Bay</a> — thousands of limestone karsts rising from the sea
+            </li>
+            <li>
+                <a href="https://en.wikipedia.org/wiki/H%E1%BB%99i_An">Hoi An</a> — a UNESCO-listed ancient town
+            </li>
+            <li>
+                <a href="https://en.wikipedia.org/wiki/Ph%C3%BA_Qu%E1%BB%91c">Phu Quoc</a> — a tropical island off the southern coast
+            </li>
+            <li>
+                <a href="https://en.wikipedia.org/wiki/Ho_Chi_Minh_City">Ho Chi Minh City</a> — the bustling southern metropolis, formerly Saigon
+            </li>
+        </ul>
+    </section>
+</Layout>
