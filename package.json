@@ -61,7 +61,7 @@
         "find-unused-sass-variables": "^6.1.1",
         "husky": "^9.1.7",
         "lint-staged": "^16.4.0",
-        "netlify-cli": "^25.0.1",
+        "netlify-cli": "^25.1.1",
         "postcss": "^8.5.10",
         "prettier": "^3.8.3",
         "prettier-plugin-astro": "^0.14.1",
