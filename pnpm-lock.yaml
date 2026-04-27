@@ -106,8 +106,8 @@ importers:
         specifier: ^16.4.0
         version: 16.4.0
       netlify-cli:
-        specifier: ^25.6.0
-        version: 25.6.0(@types/node@24.12.2)(picomatch@4.0.4)(rollup@4.60.2)
+        specifier: ^25.6.1
+        version: 25.6.1(@types/node@24.12.2)(picomatch@4.0.4)(rollup@4.60.2)
       postcss:
         specifier: ^8.5.12
         version: 8.5.12
@@ -371,8 +371,8 @@ packages:
   '@dabh/diagnostics@2.0.8':
     resolution: {integrity: sha512-R4MSXTVnuMzGD7bzHdW2ZhhdPC/igELENcq5IjEverBvq5hn1SXCWcsi6eSsdWP0/Ur+SItRRjAktmdoX/8R/Q==}
 
-  '@dependents/detective-less@5.0.2':
-    resolution: {integrity: sha512-QPKO4ao2+iniYAYnPZwHKK67EgDG2GAdye9OCy11xsmApHGwzpH3AcSdPjGyPO3tC2/K8mF7JjWX3A/FTRnskg==}
+  '@dependents/detective-less@5.0.3':
+    resolution: {integrity: sha512-v6oD9Ukp+N7V4n6p5I/+mM5fIohSfkrDSGlFm5w/pYmchvbk+sMIHsLxrFJ5Lnujewj1BzWL0K84d88lwZAMQA==}
     engines: {node: '>=18'}
 
   '@electric-sql/pglite@0.3.16':
@@ -1055,8 +1055,8 @@ packages:
     engines: {node: '>=18.14.0'}
     hasBin: true
 
-  '@netlify/build@35.13.3':
-    resolution: {integrity: sha512-3AH18AKphyXXlznO/7UNy9r08v41lpFxfro0Q05wTcuW9pnvlqcPqS9cw3/QIXL8i+L03DmjMHJOSJYX2YNddA==}
+  '@netlify/build@35.13.4':
+    resolution: {integrity: sha512-LDzHE7ESLts4IvI9dnmF2WXYhLQhuPmfU4mlLGQUxcN+EBqCuvLAzwqpf2lTK67i9S4JA5W6uQuyprfRaYPZBw==}
     engines: {node: '>=18.14.0'}
     hasBin: true
     peerDependencies:
@@ -2978,8 +2978,8 @@ packages:
     resolution: {integrity: sha512-Btj2BOOO83o3WyH59e8MgXsxEQVcarkUOpEYrubB0urwnN10yQ364rsiByU11nZlqWYZm05i/of7io4mzihBtQ==}
     engines: {node: '>=8'}
 
-  detective-amd@6.0.2:
-    resolution: {integrity: sha512-qX4zkNVcufOoo7pKlRnLHEzUwDcqIY5N9FEuNJN+rDUjct3gikNdVJXRfpI6sG/Y9pfIMjcXeNdHV1oYulxjmw==}
+  detective-amd@6.1.0:
+    resolution: {integrity: sha512-fmI6LGMvotqd49QaA3ZYw+q0aGp2yXmMjzIuY6fH9j9YFIXY/73yDhMwhX9cPbhWd+AH06NH1Di/LKOuCH0Ubg==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -2997,12 +2997,12 @@ packages:
     peerDependencies:
       postcss: ^8.4.47
 
-  detective-sass@6.0.1:
-    resolution: {integrity: sha512-jSGPO8QDy7K7pztUmGC6aiHkexBQT4GIH+mBAL9ZyBmnUIOFbkfZnO8wPRRJFP/QP83irObgsZHCoDHZ173tRw==}
+  detective-sass@6.0.2:
+    resolution: {integrity: sha512-i3xpXHDKS0qI2aFW4asQ7fqlPK00ndOVZELvQapFJCaF0VxYmsNWtd0AmvXbTLMk7bfO5VdIeorhY9KfmHVoVA==}
     engines: {node: '>=18'}
 
-  detective-scss@5.0.1:
-    resolution: {integrity: sha512-MAyPYRgS6DCiS6n6AoSBJXLGVOydsr9huwXORUlJ37K3YLyiN0vYHpzs3AdJOgHobBfispokoqrEon9rbmKacg==}
+  detective-scss@5.0.2:
+    resolution: {integrity: sha512-9JOEMZ8pDh3ShXmftq7hoQqqJsClaGgxo1hghfCeFlmKf5TC/Twtwb0PAaK8dXwpg9Z0uCmEYSrCxO+kel2eEg==}
     engines: {node: '>=18'}
 
   detective-stylus@5.0.1:
@@ -4956,8 +4956,8 @@ packages:
     resolution: {integrity: sha512-Z4SmBUweYa09+o6pG+eASabEpP6QkQ70yHj351pQoEXIs8uHbaU2DWVmzBANKgflPa47A50PtB2+NgRpQvr7vA==}
     engines: {node: '>= 10'}
 
-  netlify-cli@25.6.0:
-    resolution: {integrity: sha512-zWYG6fMhjG2P3mN6kaYQLuGd+bfSfU1KZS957iQLhEfSn6RaFUjNUDEmAHmskcQzCB/3qhtkurdS6e3mA7WBVg==}
+  netlify-cli@25.6.1:
+    resolution: {integrity: sha512-I03sNzEujRVwnhtUpv23+rowA8JgBXFrHbdavnl89Jg9B0GJgvd/5Orbobtj77QzNqJ8vxtk49HsIZlTiMwNLw==}
     engines: {node: '>=20.12.2'}
     hasBin: true
 
@@ -5009,8 +5009,8 @@ packages:
   node-releases@2.0.27:
     resolution: {integrity: sha512-nmh3lCkYZ3grZvqcCH+fjmQ7X+H0OeZgP40OierEaAptX4XofMh5kwNbWh7lBduUzCcV/8kZ+NDLCwm2iorIlA==}
 
-  node-source-walk@7.0.1:
-    resolution: {integrity: sha512-3VW/8JpPqPvnJvseXowjZcirPisssnBuDikk6JIZ8jQzF7KJQX52iPFX4RYYxLycYH7IbMRSPUOga/esVjy5Yg==}
+  node-source-walk@7.0.2:
+    resolution: {integrity: sha512-71kFFjYaSshDTA8/a2HiTYPLdASWjLJxUyJxGE+ffxU+KhxSBtM9kiLUX+R2yooFdSFKMFpi4n3PFtDy6qXv8A==}
     engines: {node: '>=18'}
 
   node-stream-zip@1.15.0:
@@ -6415,10 +6415,6 @@ packages:
     resolution: {integrity: sha512-dPJyqPzx8preQhqq24bBG1YNkvigm87K8kVEHCD+ruZg24t6IFEFv00xMWfxcC4djmFtiTLdFuADn4+DOz6R7Q==}
     hasBin: true
 
-  ulid@3.0.2:
-    resolution: {integrity: sha512-yu26mwteFYzBAot7KVMqFGCVpsF6g8wXfJzQUHvu1no3+rRRSFcSV2nKeYvNPLD2J4b08jYBDhHUjeH0ygIl9w==}
-    hasBin: true
-
   ultrahtml@1.6.0:
     resolution: {integrity: sha512-R9fBn90VTJrqqLDwyMph+HGne8eqY1iPfYhPzZrvKpIfwkWZbcYlfpsb8B9dTvBfpy1/hqAD7Wi8EKfP9e8zdw==}
 
@@ -7245,10 +7241,10 @@ snapshots:
       enabled: 2.0.0
       kuler: 2.0.0
 
-  '@dependents/detective-less@5.0.2':
+  '@dependents/detective-less@5.0.3':
     dependencies:
       gonzales-pe: 4.3.0
-      node-source-walk: 7.0.1
+      node-source-walk: 7.0.2
 
   '@electric-sql/pglite@0.3.16': {}
 
@@ -7797,7 +7793,7 @@ snapshots:
       yaml: 2.8.3
       yargs: 17.7.2
 
-  '@netlify/build@35.13.3(@opentelemetry/api@1.8.0)(@types/node@24.12.2)(picomatch@4.0.4)(rollup@4.60.2)':
+  '@netlify/build@35.13.4(@opentelemetry/api@1.8.0)(@types/node@24.12.2)(picomatch@4.0.4)(rollup@4.60.2)':
     dependencies:
       '@bugsnag/js': 8.9.0
       '@netlify/blobs': 10.7.4(supports-color@10.2.2)
@@ -7960,7 +7956,7 @@ snapshots:
       '@netlify/redirects': 3.1.10
       '@netlify/runtime': 4.1.20
       '@netlify/static': 3.1.7
-      ulid: 3.0.2
+      ulid: 3.0.1
     transitivePeerDependencies:
       - '@azure/app-configuration'
       - '@azure/cosmos'
@@ -10138,21 +10134,21 @@ snapshots:
 
   detect-libc@2.1.2: {}
 
-  detective-amd@6.0.2:
+  detective-amd@6.1.0:
     dependencies:
       ast-module-types: 6.0.1
       escodegen: 2.1.0
       get-amd-module-type: 6.0.2
-      node-source-walk: 7.0.1
+      node-source-walk: 7.0.2
 
   detective-cjs@6.1.1:
     dependencies:
       ast-module-types: 6.0.1
-      node-source-walk: 7.0.1
+      node-source-walk: 7.0.2
 
   detective-es6@5.0.2:
     dependencies:
-      node-source-walk: 7.0.1
+      node-source-walk: 7.0.2
 
   detective-postcss@7.0.1(postcss@8.5.12):
     dependencies:
@@ -10160,15 +10156,15 @@ snapshots:
       postcss: 8.5.12
       postcss-values-parser: 6.0.2(postcss@8.5.12)
 
-  detective-sass@6.0.1:
+  detective-sass@6.0.2:
     dependencies:
       gonzales-pe: 4.3.0
-      node-source-walk: 7.0.1
+      node-source-walk: 7.0.2
 
-  detective-scss@5.0.1:
+  detective-scss@5.0.2:
     dependencies:
       gonzales-pe: 4.3.0
-      node-source-walk: 7.0.1
+      node-source-walk: 7.0.2
 
   detective-stylus@5.0.1: {}
 
@@ -10176,18 +10172,18 @@ snapshots:
     dependencies:
       '@typescript-eslint/typescript-estree': 8.59.1(supports-color@10.2.2)(typescript@5.9.3)
       ast-module-types: 6.0.1
-      node-source-walk: 7.0.1
+      node-source-walk: 7.0.2
       typescript: 5.9.3
     transitivePeerDependencies:
       - supports-color
 
   detective-vue2@2.3.0(supports-color@10.2.2)(typescript@5.9.3):
     dependencies:
-      '@dependents/detective-less': 5.0.2
+      '@dependents/detective-less': 5.0.3
       '@vue/compiler-sfc': 3.5.33
       detective-es6: 5.0.2
-      detective-sass: 6.0.1
-      detective-scss: 5.0.1
+      detective-sass: 6.0.2
+      detective-scss: 5.0.2
       detective-stylus: 5.0.1
       detective-typescript: 14.1.2(supports-color@10.2.2)(typescript@5.9.3)
       typescript: 5.9.3
@@ -11038,7 +11034,7 @@ snapshots:
   get-amd-module-type@6.0.2:
     dependencies:
       ast-module-types: 6.0.1
-      node-source-walk: 7.0.1
+      node-source-walk: 7.0.2
 
   get-caller-file@2.0.5: {}
 
@@ -12711,7 +12707,7 @@ snapshots:
   module-definition@6.0.2:
     dependencies:
       ast-module-types: 6.0.1
-      node-source-walk: 7.0.1
+      node-source-walk: 7.0.2
 
   module-details-from-path@1.0.4: {}
 
@@ -12750,13 +12746,13 @@ snapshots:
 
   neotraverse@0.6.18: {}
 
-  netlify-cli@25.6.0(@types/node@24.12.2)(picomatch@4.0.4)(rollup@4.60.2):
+  netlify-cli@25.6.1(@types/node@24.12.2)(picomatch@4.0.4)(rollup@4.60.2):
     dependencies:
       '@fastify/static': 9.0.0
       '@netlify/ai': 0.4.1
       '@netlify/api': 14.0.18
       '@netlify/blobs': 10.7.0
-      '@netlify/build': 35.13.3(@opentelemetry/api@1.8.0)(@types/node@24.12.2)(picomatch@4.0.4)(rollup@4.60.2)
+      '@netlify/build': 35.13.4(@opentelemetry/api@1.8.0)(@types/node@24.12.2)(picomatch@4.0.4)(rollup@4.60.2)
       '@netlify/build-info': 10.5.1
       '@netlify/config': 24.5.0
       '@netlify/dev': 4.17.3(rollup@4.60.2)
@@ -12922,7 +12918,7 @@ snapshots:
 
   node-releases@2.0.27: {}
 
-  node-source-walk@7.0.1:
+  node-source-walk@7.0.2:
     dependencies:
       '@babel/parser': 7.29.2
 
@@ -13398,19 +13394,19 @@ snapshots:
 
   precinct@12.3.1(supports-color@10.2.2):
     dependencies:
-      '@dependents/detective-less': 5.0.2
+      '@dependents/detective-less': 5.0.3
       commander: 12.1.0
-      detective-amd: 6.0.2
+      detective-amd: 6.1.0
       detective-cjs: 6.1.1
       detective-es6: 5.0.2
       detective-postcss: 7.0.1(postcss@8.5.12)
-      detective-sass: 6.0.1
-      detective-scss: 5.0.1
+      detective-sass: 6.0.2
+      detective-scss: 5.0.2
       detective-stylus: 5.0.1
       detective-typescript: 14.1.2(supports-color@10.2.2)(typescript@5.9.3)
       detective-vue2: 2.3.0(supports-color@10.2.2)(typescript@5.9.3)
       module-definition: 6.0.2
-      node-source-walk: 7.0.1
+      node-source-walk: 7.0.2
       postcss: 8.5.12
       typescript: 5.9.3
     transitivePeerDependencies:
@@ -14627,8 +14623,6 @@ snapshots:
       random-bytes: 1.0.0
 
   ulid@3.0.1: {}
-
-  ulid@3.0.2: {}
 
   ultrahtml@1.6.0: {}
 
