@@ -60,7 +60,7 @@
         "eslint-plugin-react-hooks": "^7.1.1",
         "find-unused-sass-variables": "^6.2.0",
         "husky": "^9.1.7",
-        "lint-staged": "^16.4.0",
+        "lint-staged": "^17.0.3",
         "netlify-cli": "^25.6.1",
         "postcss": "^8.5.14",
         "prettier": "^3.8.3",
