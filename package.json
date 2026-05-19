@@ -69,7 +69,7 @@
         "stylelint": "^17.11.1",
         "tailwindcss": "^4.3.0",
         "typescript": "^6.0.3",
-        "typescript-eslint": "^8.59.3"
+        "typescript-eslint": "^8.59.4"
     },
     "repository": {
         "type": "git",
