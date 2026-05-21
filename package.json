@@ -29,7 +29,7 @@
     "dependencies": {
         "@astrojs/mdx": "^5.0.6",
         "@astrojs/react": "^5.0.5",
-        "astro": "^6.3.6",
+        "astro": "^6.3.7",
         "astro-expressive-code": "^0.42.0",
         "classnames": "^2.5.1",
         "cloudinary": "^2.10.0",
