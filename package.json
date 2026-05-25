@@ -58,7 +58,7 @@
         "eslint-plugin-jsx-a11y": "^6.10.2",
         "eslint-plugin-react": "^7.37.5",
         "eslint-plugin-react-hooks": "^7.1.1",
-        "find-unused-sass-variables": "^6.2.0",
+        "find-unused-sass-variables": "^6.2.1",
         "husky": "^9.1.7",
         "lint-staged": "^16.4.0",
         "netlify-cli": "^25.6.1",
