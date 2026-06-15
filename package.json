@@ -40,7 +40,7 @@
         "react-google-charts": "^5.2.1"
     },
     "devDependencies": {
-        "@astrojs/netlify": "^7.0.10",
+        "@astrojs/netlify": "^7.0.13",
         "@axe-core/playwright": "^4.11.3",
         "@ianvs/prettier-plugin-sort-imports": "^4.7.1",
         "@playwright/test": "^1.60.0",
