@@ -27,7 +27,7 @@
         "src/**/*.css": "stylelint --fix"
     },
     "dependencies": {
-        "@astrojs/mdx": "^5.0.6",
+        "@astrojs/mdx": "^6.0.3",
         "@astrojs/react": "^5.0.7",
         "astro": "^6.4.7",
         "astro-expressive-code": "^0.42.0",
