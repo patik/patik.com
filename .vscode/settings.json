@@ -6,11 +6,12 @@
         "statusBar.background": "#0a8c5ff0"
     },
     "eslint.useFlatConfig": true,
-    "typescript.tsserver.watchOptions": {
+    "js/ts.tsserver.watchOptions": {
         "watchDirectory": "useFsEvents",
         "fallbackPolling": "dynamicPriorityPolling",
         "watchFile": "useFsEventsOnParentDirectory",
         "synchronousWatchDirectory": true
     },
-    "js/ts.implicitProjectConfig.checkJs": true
+    "js/ts.implicitProjectConfig.checkJs": true,
+    "git.addAICoAuthor": "off"
 }
