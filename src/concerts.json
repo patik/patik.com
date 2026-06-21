@@ -131,7 +131,8 @@
                     "name": "Ozomatli",
                     "role": "opener"
                 }
-            ]
+            ],
+            "note": "My first autograph was getting Dexter Holland to sign my ticket stub after this show."
         },
         {
             "id": "woodstock-99",
@@ -264,7 +265,8 @@
                     "name": "Muse",
                     "role": "opener"
                 }
-            ]
+            ],
+            "url": "https://www.setlist.fm/setlist/red-hot-chili-peppers/2000/pepsi-arena-albany-ny-6bd092d6.html"
         },
         {
             "id": "rhcp-2000-07-30-spac",
@@ -288,7 +290,8 @@
                     "name": "Fishbone",
                     "role": "opener"
                 }
-            ]
+            ],
+            "url": "https://www.rhcplivearchive.com/show/jul-30-2000-saratoga-springs-ny-630"
         },
         {
             "id": "dmb-2000-08-29-spac",
@@ -437,6 +440,31 @@
                     "role": "main"
                 }
             ]
+        },
+        {
+            "id": "matchbox-twenty-2001-spac",
+            "date": "2001-08-19",
+            "datePrecision": "day",
+            "venue": "Saratoga Performing Arts Center",
+            "city": "Saratoga Springs",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Matchbox Twenty",
+                    "role": "main"
+                },
+                {
+                    "name": "Train",
+                    "role": "opener"
+                },
+                {
+                    "name": "Seven Mary Three",
+                    "role": "opener"
+                }
+            ],
+            "url": "https://www.concertarchives.org/concerts/matchbox-twenty-train-seven-mary-three-b5e8a204-742c-4bba-8809-9d27ba19ba39"
         },
         {
             "id": "string-cheese-2001-10-27-rpi",

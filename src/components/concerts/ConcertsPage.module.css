@@ -20,13 +20,20 @@
 
 .toolbar {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    align-items: center;
+    flex-direction: column;
+    gap: 0.55rem;
+    align-items: flex-start;
     justify-content: flex-start;
     margin: 0 0 1.25rem;
     padding-block: 0.75rem;
     border-block: 1px solid var(--concert-line);
+}
+
+.toolbarRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
 }
 
 .segmentedControl,
@@ -34,6 +41,29 @@
     display: inline-flex;
     flex-wrap: wrap;
     gap: 0.35rem;
+}
+
+.segmentedControl {
+    flex-wrap: nowrap;
+    gap: 0;
+}
+
+.segmentedControl .controlButton {
+    border-radius: 0;
+}
+
+.segmentedControl .controlButton + .controlButton {
+    margin-inline-start: -1px;
+}
+
+.segmentedControl .controlButton:first-child {
+    border-start-start-radius: 4px;
+    border-end-start-radius: 4px;
+}
+
+.segmentedControl .controlButton:last-child {
+    border-start-end-radius: 4px;
+    border-end-end-radius: 4px;
 }
 
 .toggleControl {
@@ -129,6 +159,7 @@
 }
 
 .controlButton:disabled {
+    display: none;
     color: var(--concert-muted) !important;
     cursor: default;
     opacity: 0.55;
@@ -166,6 +197,7 @@
     display: grid;
     gap: 0.75rem;
     padding: 1rem;
+    scroll-margin-top: 1.5rem;
     background: var(--concert-bg);
     border: 1px solid var(--concert-line);
     border-radius: 4px;
@@ -206,6 +238,21 @@
 .eventTitle {
     margin: 0;
     font-size: 1.15rem;
+}
+
+.artistLink {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+}
+
+.artistLink:hover,
+.artistLink:focus-visible {
+    border-bottom-color: currentColor;
+}
+
+.artistLinkTitle {
+    font: inherit;
 }
 
 .artistMeta,
@@ -352,6 +399,7 @@
         align-items: stretch;
     }
 
+    .toolbarRow,
     .segmentedControl,
     .directionControl,
     .toggleControl {

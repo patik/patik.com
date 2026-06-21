@@ -190,8 +190,8 @@ export function getArtistSummaries(events: ConcertEvent[]): ArtistSummary[] {
     }))
 }
 
-export function getArtistsByName(events: ConcertEvent[]): ArtistSummary[] {
-    return getArtistSummaries(events).sort((firstArtist, secondArtist) =>
+export function getArtistsByName(events: ConcertEvent[], countEvents = events): ArtistSummary[] {
+    return getArtistSummariesWithCounts(events, countEvents).sort((firstArtist, secondArtist) =>
         firstArtist.name.localeCompare(secondArtist.name),
     )
 }
@@ -210,8 +210,8 @@ export function getArtistsByLatestAppearance(events: ConcertEvent[], direction: 
     })
 }
 
-export function getArtistsByAppearanceCount(events: ConcertEvent[]): ArtistSummary[] {
-    return getArtistSummaries(events).sort((firstArtist, secondArtist) => {
+export function getArtistsByAppearanceCount(events: ConcertEvent[], countEvents = events): ArtistSummary[] {
+    return getArtistSummariesWithCounts(events, countEvents).sort((firstArtist, secondArtist) => {
         if (secondArtist.totalAppearances !== firstArtist.totalAppearances) {
             return secondArtist.totalAppearances - firstArtist.totalAppearances
         }
@@ -221,6 +221,27 @@ export function getArtistsByAppearanceCount(events: ConcertEvent[]): ArtistSumma
         }
 
         return firstArtist.name.localeCompare(secondArtist.name)
+    })
+}
+
+function getArtistSummariesWithCounts(events: ConcertEvent[], countEvents: ConcertEvent[]): ArtistSummary[] {
+    const countSummaries = new Map(getArtistSummaries(countEvents).map((summary) => [summary.name, summary]))
+
+    return getArtistSummaries(events).map((summary) => {
+        const countSummary = countSummaries.get(summary.name)
+
+        if (!countSummary) {
+            return summary
+        }
+
+        return {
+            ...summary,
+            totalAppearances: countSummary.totalAppearances,
+            mainAppearances: countSummary.mainAppearances,
+            festivalAppearances: countSummary.festivalAppearances,
+            openerAppearances: countSummary.openerAppearances,
+            spotlightAppearances: countSummary.spotlightAppearances,
+        }
     })
 }
 
@@ -240,6 +261,10 @@ export function formatConcertLocation(event: ConcertEvent): string {
     const region = event.state ?? event.country
 
     return `${event.city}, ${region}`
+}
+
+export function getArtistAnchor(name: string): string {
+    return `artist-${slugify(name)}`
 }
 
 export function getRoleLabel(role: ConcertRole): string {
@@ -307,4 +332,12 @@ function formatPartialDate(value: string, precision: DatePrecision): string {
     const monthIndex = Number(month) - 1
 
     return `${MONTH_NAMES[monthIndex]} ${Number(day)}, ${year}`
+}
+
+function slugify(value: string): string {
+    return value
+        .toLowerCase()
+        .replace(/&/g, 'and')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '')
 }

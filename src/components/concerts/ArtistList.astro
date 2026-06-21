@@ -1,6 +1,12 @@
 ---
 import ConcertDate from './ConcertDate.astro'
-import { formatConcertDate, getArtistLatestAppearance, getRoleLabel, type ArtistSummary } from './concerts'
+import {
+    formatConcertDate,
+    getArtistAnchor,
+    getArtistLatestAppearance,
+    getRoleLabel,
+    type ArtistSummary,
+} from './concerts'
 import css from './ConcertsPage.module.css'
 
 interface Props {
@@ -58,7 +64,11 @@ function getMetaText(artist: ArtistSummary): string {
     {
         artists.map((artist) => (
             <li>
-                <article class:list={[css.artistCard, { [css.artistCardCount]: variant === 'count' }]}>
+                <article
+                    class:list={[css.artistCard, { [css.artistCardCount]: variant === 'count' }]}
+                    data-artist-anchor={getArtistAnchor(artist.name)}
+                    tabindex="-1"
+                >
                     <div class={css.artistHeader}>
                         <div>
                             <h3 class={css.artistName}>{artist.name}</h3>

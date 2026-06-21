@@ -1,13 +1,15 @@
 ---
+import ArtistJumpLink from './ArtistJumpLink.astro'
 import type { ConcertAct, ConcertRole } from './concerts'
 import css from './ConcertsPage.module.css'
 
 interface Props {
     acts: ConcertAct[]
     concertRole: ConcertRole
+    linkArtists?: boolean
 }
 
-const { acts, concertRole } = Astro.props
+const { acts, concertRole, linkArtists = false } = Astro.props
 
 function getRoleTitle(role: ConcertRole, count: number): string {
     switch (role) {
@@ -45,7 +47,7 @@ function getRoleClassName(role: ConcertRole): string {
                                 getRoleClassName(concertRole),
                             ]}
                         >
-                            {act.name}
+                            {linkArtists ? <ArtistJumpLink artistName={act.name} /> : act.name}
                         </span>
                     </li>
                 ))}
