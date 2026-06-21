@@ -38,6 +38,23 @@
             ]
         },
         {
+            "id": "weird-al-1997-starlite",
+            "date": "1997-07-19",
+            "datePrecision": "day",
+            "venue": "Starlite Music Theatre",
+            "city": "Latham",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Weird Al Yankovic",
+                    "role": "main"
+                }
+            ],
+            "url": "https://www.setlist.fm/setlist/weird-al-yankovic/1997/starlite-music-theatre-latham-ny-bce01e2.html"
+        },
+        {
             "id": "horde-1997-spac",
             "date": "1997-08-10",
             "datePrecision": "day",
@@ -802,6 +819,23 @@
                     "role": "main"
                 }
             ]
+        },
+        {
+            "id": "weird-al-2016-schenectady",
+            "date": "2016-09-17",
+            "datePrecision": "day",
+            "venue": "Proctor's Theatre",
+            "city": "Schenectady",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Weird Al Yankovic",
+                    "role": "main"
+                }
+            ],
+            "url": "https://www.setlist.fm/setlist/weird-al-yankovic/2016/proctors-theatre-schenectady-ny-6bfda2f6.html"
         },
         {
             "id": "queen-adam-lambert-2017-munich",
