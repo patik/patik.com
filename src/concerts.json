@@ -1,0 +1,1017 @@
+{
+    "$schema": {
+        "description": "Each entry is one event (show or festival). Sort by `date` for the chronological view (partial-ISO strings sort lexically). For an artist view, flatten `acts` across all events and sort by `acts[].name`.",
+        "fields": {
+            "id": "unique slug",
+            "date": "partial ISO 8601: YYYY, YYYY-MM, or YYYY-MM-DD",
+            "dateEnd": "optional, for multi-day festivals / multi-night runs",
+            "datePrecision": "day | month | year (drives how you render the date)",
+            "venue": "venue name",
+            "city": "city",
+            "state": "US state abbreviation, else null",
+            "country": "country",
+            "festival": "festival name, else null",
+            "acts": "[{ name, role }] where role is main | opener | festival",
+            "note": "optional free-text flag"
+        }
+    },
+    "concerts": [
+        {
+            "id": "smashing-pumpkins-1996-albany",
+            "date": "1996-11-02",
+            "datePrecision": "day",
+            "venue": "Knickerbocker Arena",
+            "city": "Albany",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "The Smashing Pumpkins",
+                    "role": "main"
+                },
+                {
+                    "name": "Garbage",
+                    "role": "opener"
+                }
+            ]
+        },
+        {
+            "id": "horde-1997-spac",
+            "date": "1997-08-10",
+            "datePrecision": "day",
+            "venue": "Saratoga Performing Arts Center",
+            "city": "Saratoga Springs",
+            "state": "NY",
+            "country": "USA",
+            "festival": "H.O.R.D.E. Festival",
+            "acts": [
+                {
+                    "name": "Neil Young & Crazy Horse",
+                    "role": "festival"
+                },
+                {
+                    "name": "Primus",
+                    "role": "festival"
+                },
+                {
+                    "name": "Beck",
+                    "role": "festival"
+                },
+                {
+                    "name": "Soul Coughing",
+                    "role": "festival"
+                },
+                {
+                    "name": "Ween",
+                    "role": "festival"
+                },
+                {
+                    "name": "Ben Folds Five",
+                    "role": "festival"
+                },
+                {
+                    "name": "Toad the Wet Sprocket",
+                    "role": "festival"
+                }
+            ],
+            "note": "H.O.R.D.E. Festival 1997 (Odelay era). Smaller side-stage acts (Cake Like, New Brown Hat) not included - add if you saw them."
+        },
+        {
+            "id": "dmb-1998-07-26-spac",
+            "date": "1998-07-26",
+            "datePrecision": "day",
+            "venue": "Saratoga Performing Arts Center",
+            "city": "Saratoga Springs",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Dave Matthews Band",
+                    "role": "main"
+                }
+            ]
+        },
+        {
+            "id": "dmb-1998-12-05-albany",
+            "date": "1998-12-05",
+            "datePrecision": "day",
+            "venue": "Pepsi Arena",
+            "city": "Albany",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Dave Matthews Band",
+                    "role": "main"
+                }
+            ]
+        },
+        {
+            "id": "the-offspring-1999-rpi",
+            "date": "1999-03-02",
+            "datePrecision": "day",
+            "venue": "RPI Field House",
+            "city": "Troy",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "The Offspring",
+                    "role": "main"
+                },
+                {
+                    "name": "The Living End",
+                    "role": "opener"
+                },
+                {
+                    "name": "Ozomatli",
+                    "role": "opener"
+                }
+            ]
+        },
+        {
+            "id": "woodstock-99",
+            "date": "1999-07-23",
+            "dateEnd": "1999-07-25",
+            "datePrecision": "day",
+            "venue": "Griffiss Air Force Base",
+            "city": "Rome",
+            "state": "NY",
+            "country": "USA",
+            "festival": "Woodstock '99",
+            "acts": [
+                {
+                    "name": "Sugar Ray",
+                    "role": "festival"
+                },
+                {
+                    "name": "Jamiroquai",
+                    "role": "festival"
+                },
+                {
+                    "name": "Sheryl Crow",
+                    "role": "festival"
+                },
+                {
+                    "name": "DMX",
+                    "role": "festival"
+                },
+                {
+                    "name": "The Offspring",
+                    "role": "festival"
+                },
+                {
+                    "name": "Korn",
+                    "role": "festival"
+                },
+                {
+                    "name": "Bush",
+                    "role": "festival"
+                },
+                {
+                    "name": "Kid Rock",
+                    "role": "festival"
+                },
+                {
+                    "name": "Counting Crows",
+                    "role": "festival"
+                },
+                {
+                    "name": "Dave Matthews Band",
+                    "role": "festival"
+                },
+                {
+                    "name": "Alanis Morissette",
+                    "role": "festival"
+                },
+                {
+                    "name": "Limp Bizkit",
+                    "role": "festival"
+                },
+                {
+                    "name": "Rage Against the Machine",
+                    "role": "festival"
+                },
+                {
+                    "name": "Metallica",
+                    "role": "festival"
+                },
+                {
+                    "name": "Creed",
+                    "role": "festival"
+                },
+                {
+                    "name": "Red Hot Chili Peppers",
+                    "role": "festival"
+                },
+                {
+                    "name": "Buckcherry",
+                    "role": "festival"
+                },
+                {
+                    "name": "Insane Clown Posse",
+                    "role": "festival"
+                },
+                {
+                    "name": "Ice Cube",
+                    "role": "festival"
+                },
+                {
+                    "name": "The Chemical Brothers",
+                    "role": "festival"
+                },
+                {
+                    "name": "Everclear",
+                    "role": "festival"
+                },
+                {
+                    "name": "Guster",
+                    "role": "festival"
+                },
+                {
+                    "name": "James Brown",
+                    "role": "festival"
+                },
+                {
+                    "name": "Fatboy Slim",
+                    "role": "festival"
+                }
+            ]
+        },
+        {
+            "id": "rhcp-2000-04-03-albany",
+            "date": "2000-04-03",
+            "datePrecision": "day",
+            "venue": "Pepsi Arena",
+            "city": "Albany",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Red Hot Chili Peppers",
+                    "role": "main"
+                },
+                {
+                    "name": "Foo Fighters",
+                    "role": "opener"
+                },
+                {
+                    "name": "Muse",
+                    "role": "opener"
+                }
+            ]
+        },
+        {
+            "id": "rhcp-2000-07-30-spac",
+            "date": "2000-07-30",
+            "datePrecision": "day",
+            "venue": "Saratoga Performing Arts Center",
+            "city": "Saratoga Springs",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Red Hot Chili Peppers",
+                    "role": "main"
+                },
+                {
+                    "name": "Stone Temple Pilots",
+                    "role": "opener"
+                },
+                {
+                    "name": "Fishbone",
+                    "role": "opener"
+                }
+            ]
+        },
+        {
+            "id": "dmb-2000-08-29-spac",
+            "date": "2000-08-29",
+            "datePrecision": "day",
+            "venue": "Saratoga Performing Arts Center",
+            "city": "Saratoga Springs",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Dave Matthews Band",
+                    "role": "main"
+                }
+            ]
+        },
+        {
+            "id": "phish-2000-09-08-albany",
+            "date": "2000-09-08",
+            "datePrecision": "day",
+            "venue": "Pepsi Arena",
+            "city": "Albany",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Phish",
+                    "role": "main"
+                }
+            ]
+        },
+        {
+            "id": "phish-2000-09-09-albany",
+            "date": "2000-09-09",
+            "datePrecision": "day",
+            "venue": "Pepsi Arena",
+            "city": "Albany",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Phish",
+                    "role": "main"
+                }
+            ]
+        },
+        {
+            "id": "matchbox-twenty-2000-rpi",
+            "date": "2000-09-23",
+            "datePrecision": "day",
+            "venue": "RPI Field House",
+            "city": "Troy",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Matchbox Twenty",
+                    "role": "main"
+                },
+                {
+                    "name": "The Jayhawks",
+                    "role": "opener"
+                }
+            ]
+        },
+        {
+            "id": "moby-2000-siena",
+            "date": "2000-10-27",
+            "datePrecision": "day",
+            "venue": "Siena College",
+            "city": "Loudonville",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Moby",
+                    "role": "main"
+                }
+            ]
+        },
+        {
+            "id": "dmb-2000-12-09-albany",
+            "date": "2000-12-09",
+            "datePrecision": "day",
+            "venue": "Pepsi Arena",
+            "city": "Albany",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Dave Matthews Band",
+                    "role": "main"
+                }
+            ]
+        },
+        {
+            "id": "bela-fleck-flecktones-2001-albany",
+            "date": "2001-03-10",
+            "datePrecision": "day",
+            "venue": "Palace Theatre",
+            "city": "Albany",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Béla Fleck and the Flecktones",
+                    "role": "main"
+                }
+            ],
+            "note": "First of two Palace Theatre shows; second date still to confirm (somewhere 2000-2003)."
+        },
+        {
+            "id": "dmb-2001-07-29-spac",
+            "date": "2001-07-29",
+            "datePrecision": "day",
+            "venue": "Saratoga Performing Arts Center",
+            "city": "Saratoga Springs",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Dave Matthews Band",
+                    "role": "main"
+                }
+            ]
+        },
+        {
+            "id": "dmb-2001-07-30-spac",
+            "date": "2001-07-30",
+            "datePrecision": "day",
+            "venue": "Saratoga Performing Arts Center",
+            "city": "Saratoga Springs",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Dave Matthews Band",
+                    "role": "main"
+                }
+            ]
+        },
+        {
+            "id": "green-day-blink-182-2002-spac",
+            "date": "2002-06-04",
+            "datePrecision": "day",
+            "venue": "Saratoga Performing Arts Center",
+            "city": "Saratoga Springs",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Green Day",
+                    "role": "main"
+                },
+                {
+                    "name": "Blink-182",
+                    "role": "main"
+                },
+                {
+                    "name": "Saves the Day",
+                    "role": "opener"
+                }
+            ],
+            "note": "Pop Disaster Tour, billed as co-headline; Blink-182 closed the show."
+        },
+        {
+            "id": "dmb-2002-07-28-spac",
+            "date": "2002-07-28",
+            "datePrecision": "day",
+            "venue": "Saratoga Performing Arts Center",
+            "city": "Saratoga Springs",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Dave Matthews Band",
+                    "role": "main"
+                }
+            ]
+        },
+        {
+            "id": "dmb-2002-07-29-spac",
+            "date": "2002-07-29",
+            "datePrecision": "day",
+            "venue": "Saratoga Performing Arts Center",
+            "city": "Saratoga Springs",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Dave Matthews Band",
+                    "role": "main"
+                }
+            ]
+        },
+        {
+            "id": "dmb-2002-12-17-albany",
+            "date": "2002-12-17",
+            "datePrecision": "day",
+            "venue": "Pepsi Arena",
+            "city": "Albany",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Dave Matthews Band",
+                    "role": "main"
+                }
+            ]
+        },
+        {
+            "id": "bela-fleck-flecktones-2003-albany",
+            "date": "2003",
+            "datePrecision": "year",
+            "venue": "Palace Theatre",
+            "city": "Albany",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Béla Fleck and the Flecktones",
+                    "role": "main"
+                }
+            ],
+            "note": "Second Palace Theatre show; you recall 2003 - exact date not yet pinned down."
+        },
+        {
+            "id": "dmb-2003-08-27-spac",
+            "date": "2003-08-27",
+            "datePrecision": "day",
+            "venue": "Saratoga Performing Arts Center",
+            "city": "Saratoga Springs",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Dave Matthews Band",
+                    "role": "main"
+                }
+            ]
+        },
+        {
+            "id": "dmb-2003-08-28-spac",
+            "date": "2003-08-28",
+            "datePrecision": "day",
+            "venue": "Saratoga Performing Arts Center",
+            "city": "Saratoga Springs",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Dave Matthews Band",
+                    "role": "main"
+                }
+            ]
+        },
+        {
+            "id": "phish-2003-12-01-albany",
+            "date": "2003-12-01",
+            "datePrecision": "day",
+            "venue": "Pepsi Arena",
+            "city": "Albany",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Phish",
+                    "role": "main"
+                }
+            ]
+        },
+        {
+            "id": "phish-2004-06-19-spac",
+            "date": "2004-06-19",
+            "datePrecision": "day",
+            "venue": "Saratoga Performing Arts Center",
+            "city": "Saratoga Springs",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Phish",
+                    "role": "main"
+                }
+            ]
+        },
+        {
+            "id": "phish-2004-06-20-spac",
+            "date": "2004-06-20",
+            "datePrecision": "day",
+            "venue": "Saratoga Performing Arts Center",
+            "city": "Saratoga Springs",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Phish",
+                    "role": "main"
+                }
+            ]
+        },
+        {
+            "id": "dmb-2004-07-02-spac",
+            "date": "2004-07-02",
+            "datePrecision": "day",
+            "venue": "Saratoga Performing Arts Center",
+            "city": "Saratoga Springs",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Dave Matthews Band",
+                    "role": "main"
+                }
+            ]
+        },
+        {
+            "id": "dmb-2004-07-03-spac",
+            "date": "2004-07-03",
+            "datePrecision": "day",
+            "venue": "Saratoga Performing Arts Center",
+            "city": "Saratoga Springs",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Dave Matthews Band",
+                    "role": "main"
+                }
+            ]
+        },
+        {
+            "id": "dmb-2005-07-01-spac",
+            "date": "2005-07-01",
+            "datePrecision": "day",
+            "venue": "Saratoga Performing Arts Center",
+            "city": "Saratoga Springs",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Dave Matthews Band",
+                    "role": "main"
+                }
+            ]
+        },
+        {
+            "id": "dmb-2005-07-02-spac",
+            "date": "2005-07-02",
+            "datePrecision": "day",
+            "venue": "Saratoga Performing Arts Center",
+            "city": "Saratoga Springs",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Dave Matthews Band",
+                    "role": "main"
+                }
+            ]
+        },
+        {
+            "id": "311-2005-albany",
+            "date": "2005-11-22",
+            "datePrecision": "day",
+            "venue": "Washington Avenue Armory",
+            "city": "Albany",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "311",
+                    "role": "main"
+                },
+                {
+                    "name": "Alien Ant Farm",
+                    "role": "opener"
+                }
+            ]
+        },
+        {
+            "id": "dmb-2006-06-16-spac",
+            "date": "2006-06-16",
+            "datePrecision": "day",
+            "venue": "Saratoga Performing Arts Center",
+            "city": "Saratoga Springs",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Dave Matthews Band",
+                    "role": "main"
+                }
+            ]
+        },
+        {
+            "id": "dmb-2006-06-17-spac",
+            "date": "2006-06-17",
+            "datePrecision": "day",
+            "venue": "Saratoga Performing Arts Center",
+            "city": "Saratoga Springs",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Dave Matthews Band",
+                    "role": "main"
+                }
+            ]
+        },
+        {
+            "id": "dmb-2007-08-14-spac",
+            "date": "2007-08-14",
+            "datePrecision": "day",
+            "venue": "Saratoga Performing Arts Center",
+            "city": "Saratoga Springs",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Dave Matthews Band",
+                    "role": "main"
+                }
+            ]
+        },
+        {
+            "id": "nin-2009-rockncoke",
+            "date": "2009-07-18",
+            "datePrecision": "day",
+            "venue": "Istanbul Park",
+            "city": "Istanbul",
+            "state": null,
+            "country": "Turkey",
+            "festival": "Rock'n Coke 2009",
+            "acts": [
+                {
+                    "name": "Nine Inch Nails",
+                    "role": "festival"
+                },
+                {
+                    "name": "Jane's Addiction",
+                    "role": "festival"
+                },
+                {
+                    "name": "Juliette Lewis",
+                    "role": "festival"
+                }
+            ],
+            "note": "Left before The Prodigy headlined."
+        },
+        {
+            "id": "feq-2012-quebec",
+            "date": "2012-07-12",
+            "dateEnd": "2012-07-14",
+            "datePrecision": "day",
+            "venue": "Plaines d'Abraham",
+            "city": "Quebec City",
+            "state": null,
+            "country": "Canada",
+            "festival": "Festival d'été de Québec",
+            "acts": [
+                {
+                    "name": "Aerosmith",
+                    "role": "festival"
+                },
+                {
+                    "name": "Our Lady Peace",
+                    "role": "festival"
+                },
+                {
+                    "name": "The Offspring",
+                    "role": "festival"
+                }
+            ],
+            "note": "Aerosmith and Our Lady Peace on Jul 12; The Offspring on Jul 14."
+        },
+        {
+            "id": "trey-anastasio-band-2013-albany",
+            "date": "2013-01-26",
+            "datePrecision": "day",
+            "venue": "Palace Theatre",
+            "city": "Albany",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Trey Anastasio Band",
+                    "role": "main"
+                }
+            ]
+        },
+        {
+            "id": "queen-adam-lambert-2017-munich",
+            "date": "2017-11-02",
+            "datePrecision": "day",
+            "venue": "Olympiahalle",
+            "city": "Munich",
+            "state": null,
+            "country": "Germany",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Queen + Adam Lambert",
+                    "role": "main"
+                }
+            ]
+        },
+        {
+            "id": "chemical-brothers-2018-munich",
+            "date": "2018-08-17",
+            "datePrecision": "day",
+            "venue": "Zenith",
+            "city": "Munich",
+            "state": null,
+            "country": "Germany",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "The Chemical Brothers",
+                    "role": "main"
+                }
+            ]
+        },
+        {
+            "id": "franz-ferdinand-2018-edinburgh",
+            "date": "2018-12-31",
+            "datePrecision": "day",
+            "venue": "Princes Street Gardens",
+            "city": "Edinburgh",
+            "state": null,
+            "country": "UK",
+            "festival": "Edinburgh's Hogmanay",
+            "acts": [
+                {
+                    "name": "Franz Ferdinand",
+                    "role": "festival"
+                }
+            ],
+            "note": "Concert in the Gardens; you only saw Franz Ferdinand (Metronomy and Free Love also played)."
+        },
+        {
+            "id": "dmb-2019-munich",
+            "date": "2019-03-06",
+            "datePrecision": "day",
+            "venue": "Zenith",
+            "city": "Munich",
+            "state": null,
+            "country": "Germany",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Dave Matthews Band",
+                    "role": "main"
+                }
+            ]
+        },
+        {
+            "id": "less-than-jake-2023-munich",
+            "date": "2023-05-31",
+            "datePrecision": "day",
+            "venue": "Backstage Werk",
+            "city": "Munich",
+            "state": null,
+            "country": "Germany",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Less Than Jake",
+                    "role": "main"
+                }
+            ]
+        },
+        {
+            "id": "cattle-decapitation-2024-munich",
+            "date": "2024-03-20",
+            "datePrecision": "day",
+            "venue": "Backstage Werk",
+            "city": "Munich",
+            "state": null,
+            "country": "Germany",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Cattle Decapitation",
+                    "role": "main"
+                },
+                {
+                    "name": "Signs of the Swarm",
+                    "role": "opener"
+                },
+                {
+                    "name": "200 Stab Wounds",
+                    "role": "opener"
+                },
+                {
+                    "name": "Vomit Forth",
+                    "role": "opener"
+                }
+            ]
+        },
+        {
+            "id": "nin-2025-cologne",
+            "date": "2025-06-20",
+            "datePrecision": "day",
+            "venue": "Lanxess Arena",
+            "city": "Cologne",
+            "state": null,
+            "country": "Germany",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Nine Inch Nails",
+                    "role": "main"
+                },
+                {
+                    "name": "Boys Noize",
+                    "role": "opener"
+                }
+            ]
+        },
+        {
+            "id": "marc-rebillet-2025-munich",
+            "date": "2025-07-15",
+            "datePrecision": "day",
+            "venue": "Tollwood Musik-Arena",
+            "city": "Munich",
+            "state": null,
+            "country": "Germany",
+            "festival": "Tollwood Sommerfestival",
+            "acts": [
+                {
+                    "name": "Marc Rebillet",
+                    "role": "main"
+                },
+                {
+                    "name": "Valentino Vivace",
+                    "role": "opener"
+                }
+            ]
+        },
+        {
+            "id": "querbeat-2025-munich",
+            "date": "2025-10-18",
+            "datePrecision": "day",
+            "venue": "TonHalle",
+            "city": "Munich",
+            "state": null,
+            "country": "Germany",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Querbeat",
+                    "role": "main"
+                }
+            ]
+        },
+        {
+            "id": "the-offspring-2025-munich",
+            "date": "2025-10-30",
+            "datePrecision": "day",
+            "venue": "Olympiahalle",
+            "city": "Munich",
+            "state": null,
+            "country": "Germany",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "The Offspring",
+                    "role": "main"
+                },
+                {
+                    "name": "Simple Plan",
+                    "role": "opener"
+                }
+            ]
+        },
+        {
+            "id": "foo-fighters-2026-munich",
+            "date": "2026-06-17",
+            "datePrecision": "day",
+            "venue": "Allianz Arena",
+            "city": "Munich",
+            "state": null,
+            "country": "Germany",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Foo Fighters",
+                    "role": "main"
+                },
+                {
+                    "name": "Inhaler",
+                    "role": "opener"
+                }
+            ]
+        }
+    ]
+}
