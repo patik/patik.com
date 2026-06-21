@@ -277,6 +277,18 @@
     line-height: 1.35;
 }
 
+.eventMeta a {
+    color: inherit;
+    text-decoration-line: underline;
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.16em;
+}
+
+.eventMeta a:hover,
+.eventMeta a:focus-visible {
+    color: var(--concert-ink);
+}
+
 .eventNote {
     margin: 0;
     color: var(--concert-muted);
