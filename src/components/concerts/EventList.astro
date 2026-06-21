@@ -1,0 +1,90 @@
+---
+import ActGroup from './ActGroup.astro'
+import ArtistJumpLink from './ArtistJumpLink.astro'
+import ConcertDate from './ConcertDate.astro'
+import { formatConcertLocation, type ConcertAct, type ConcertEvent, type ConcertRole } from './concerts'
+import css from './ConcertsPage.module.css'
+
+interface Props {
+    events: ConcertEvent[]
+}
+
+const { events } = Astro.props
+
+function getActsByRole(event: ConcertEvent): Record<ConcertRole, ConcertAct[]> {
+    return {
+        main: event.acts.filter((act) => act.role === 'main'),
+        festival: event.acts.filter((act) => act.role === 'festival'),
+        opener: event.acts.filter((act) => act.role === 'opener'),
+    }
+}
+
+function getEventTitle(event: ConcertEvent): string {
+    if (event.festival) {
+        return event.festival
+    }
+
+    const mainActs = event.acts.filter((act) => act.role === 'main').map((act) => act.name)
+
+    if (mainActs.length > 0) {
+        return mainActs.join(' / ')
+    }
+
+    return event.acts.map((act) => act.name).join(' / ')
+}
+
+function getTitleActs(event: ConcertEvent, actsByRole: Record<ConcertRole, ConcertAct[]>): ConcertAct[] {
+    if (event.festival || actsByRole.main.length === 0) {
+        return []
+    }
+
+    return actsByRole.main
+}
+---
+
+<ol class={css.eventList}>
+    {
+        events.map((event) => {
+            const actsByRole = getActsByRole(event)
+            const eventTitle = getEventTitle(event)
+            const festivalActs = event.festival ? [...actsByRole.main, ...actsByRole.festival] : actsByRole.festival
+            const showMainActs = !event.festival && actsByRole.opener.length > 0
+            const showPerformerGroups = showMainActs || festivalActs.length > 0 || actsByRole.opener.length > 0
+            const titleActs = getTitleActs(event, actsByRole)
+
+            return (
+                <li>
+                    <article class={css.eventCard}>
+                        <div class={css.eventHeader}>
+                            <div>
+                                <h3 class={css.eventTitle}>
+                                    {titleActs.length > 0
+                                        ? titleActs.map((act, index) => (
+                                              <>
+                                                  {index > 0 ? ' / ' : null}
+                                                  <ArtistJumpLink artistName={act.name} isTitle />
+                                              </>
+                                          ))
+                                        : eventTitle}
+                                </h3>
+                                <p class={css.eventMeta}>
+                                    <ConcertDate event={event} /> • {event.venue}, {formatConcertLocation(event)}
+                                </p>
+                            </div>
+                        </div>
+
+                        {showPerformerGroups ? (
+                            <div class={css.roleGroups} aria-label={`${eventTitle} performers`}>
+                                {showMainActs ? <ActGroup acts={actsByRole.main} concertRole="main" /> : null}
+                                <ActGroup acts={festivalActs} concertRole="festival" linkArtists />
+                                <ActGroup acts={actsByRole.opener} concertRole="opener" linkArtists />
+                            </div>
+                        ) : null}
+
+                        {event.note ? <p class={css.eventNote}>{event.note}</p> : null}
+                    </article>
+                </li>
+            )
+        })
+    }
+</ol>

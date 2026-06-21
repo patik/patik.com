@@ -1,0 +1,57 @@
+---
+import ArtistJumpLink from './ArtistJumpLink.astro'
+import type { ConcertAct, ConcertRole } from './concerts'
+import css from './ConcertsPage.module.css'
+
+interface Props {
+    acts: ConcertAct[]
+    concertRole: ConcertRole
+    linkArtists?: boolean
+}
+
+const { acts, concertRole, linkArtists = false } = Astro.props
+
+function getRoleTitle(role: ConcertRole, count: number): string {
+    switch (role) {
+        case 'main':
+            return count === 1 ? 'Main act' : 'Main acts'
+        case 'festival':
+            return 'Bands I saw'
+        case 'opener':
+            return count === 1 ? 'Opening act' : 'Opening acts'
+    }
+}
+
+function getRoleClassName(role: ConcertRole): string {
+    switch (role) {
+        case 'main':
+            return css.roleMain
+        case 'festival':
+            return css.roleFestival
+        case 'opener':
+            return css.roleOpener
+    }
+}
+---
+
+{
+    acts.length > 0 ? (
+        <div class={css.roleGroup}>
+            <h4 class={css.roleHeading}>{getRoleTitle(concertRole, acts.length)}</h4>
+            <ul class:list={[css.actList, { [css.actTextList]: concertRole !== 'opener' }]}>
+                {acts.map((act) => (
+                    <li>
+                        <span
+                            class:list={[
+                                concertRole === 'opener' ? css.actPill : css.actName,
+                                getRoleClassName(concertRole),
+                            ]}
+                        >
+                            {linkArtists ? <ArtistJumpLink artistName={act.name} /> : act.name}
+                        </span>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    ) : null
+}

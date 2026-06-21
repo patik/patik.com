@@ -1,0 +1,403 @@
+---
+import concertsData from '@src/concerts.json'
+import ArtistList from './ArtistList.astro'
+import { getConcertPageViewData, type ArtistSummary, type ConcertEvent } from './concerts'
+import css from './ConcertsPage.module.css'
+import EventList from './EventList.astro'
+
+interface DatePanel {
+    id: string
+    headingId: string
+    order: 'asc' | 'desc'
+    openers: boolean
+    events: ConcertEvent[]
+    isDefault?: boolean
+}
+
+interface ArtistPanel {
+    id: string
+    headingId: string
+    sort: 'count' | 'name'
+    openers: boolean
+    artists: ArtistSummary[]
+    variant?: 'count' | 'default'
+}
+
+const pageData = getConcertPageViewData(concertsData)
+
+const viewLabels = [
+    {
+        mode: 'date',
+        label: 'By Date',
+        controls:
+            'concerts-panel-date-desc-without-openers concerts-panel-date-asc-without-openers concerts-panel-date-desc-with-openers concerts-panel-date-asc-with-openers',
+    },
+    {
+        mode: 'artist',
+        label: 'By Artist',
+        controls:
+            'concerts-panel-artist-name-without-openers concerts-panel-artist-count-without-openers concerts-panel-artist-name-with-openers concerts-panel-artist-count-with-openers',
+    },
+]
+
+const datePanels: DatePanel[] = [
+    {
+        id: 'concerts-panel-date-desc-without-openers',
+        headingId: 'concerts-view-heading-date-desc-without-openers',
+        order: 'desc',
+        openers: false,
+        events: pageData.events.newestWithoutOpeners,
+        isDefault: true,
+    },
+    {
+        id: 'concerts-panel-date-asc-without-openers',
+        headingId: 'concerts-view-heading-date-asc-without-openers',
+        order: 'asc',
+        openers: false,
+        events: pageData.events.oldestWithoutOpeners,
+    },
+    {
+        id: 'concerts-panel-date-desc-with-openers',
+        headingId: 'concerts-view-heading-date-desc-with-openers',
+        order: 'desc',
+        openers: true,
+        events: pageData.events.newestWithOpeners,
+    },
+    {
+        id: 'concerts-panel-date-asc-with-openers',
+        headingId: 'concerts-view-heading-date-asc-with-openers',
+        order: 'asc',
+        openers: true,
+        events: pageData.events.oldestWithOpeners,
+    },
+]
+
+const artistPanels: ArtistPanel[] = [
+    {
+        id: 'concerts-panel-artist-name-without-openers',
+        headingId: 'concerts-view-heading-artist-name-without-openers',
+        sort: 'name',
+        openers: false,
+        artists: pageData.artists.byNameWithoutOpeners,
+    },
+    {
+        id: 'concerts-panel-artist-count-without-openers',
+        headingId: 'concerts-view-heading-artist-count-without-openers',
+        sort: 'count',
+        openers: false,
+        artists: pageData.artists.byCountWithoutOpeners,
+        variant: 'count',
+    },
+    {
+        id: 'concerts-panel-artist-name-with-openers',
+        headingId: 'concerts-view-heading-artist-name-with-openers',
+        sort: 'name',
+        openers: true,
+        artists: pageData.artists.byNameWithOpeners,
+    },
+    {
+        id: 'concerts-panel-artist-count-with-openers',
+        headingId: 'concerts-view-heading-artist-count-with-openers',
+        sort: 'count',
+        openers: true,
+        artists: pageData.artists.byCountWithOpeners,
+        variant: 'count',
+    },
+]
+---
+
+<div class={css.concerts} data-concerts-root>
+    <h1 id="concerts-heading">Concerts</h1>
+    <div class={css.intro}>
+        <p data-stats-panel="false">
+            {pageData.stats.withoutOpeners.eventCount} concerts, {pageData.stats.withoutOpeners.artistCount} artists.
+        </p>
+        <p data-stats-panel="true" hidden>
+            {pageData.stats.withOpeners.eventCount} concerts, {pageData.stats.withOpeners.artistCount} artists.
+        </p>
+    </div>
+
+    <div class={css.toolbar}>
+        <div class={css.toolbarRow}>
+            <div class={css.segmentedControl} aria-label="Concert view">
+                {
+                    viewLabels.map((view) => (
+                        <button
+                            type="button"
+                            class={css.controlButton}
+                            aria-pressed={view.mode === 'date' ? 'true' : 'false'}
+                            aria-controls={view.controls}
+                            data-view-button
+                            data-view={view.mode}
+                        >
+                            {view.label}
+                        </button>
+                    ))
+                }
+            </div>
+
+            <div class={css.directionControl} aria-label="Date order" data-order-controls>
+                <button
+                    type="button"
+                    class={css.controlButton}
+                    aria-pressed="true"
+                    aria-controls="concerts-panel-date-desc-without-openers concerts-panel-date-desc-with-openers"
+                    data-order-button
+                    data-order="desc"
+                >
+                    Most recent
+                </button>
+                <button
+                    type="button"
+                    class={css.controlButton}
+                    aria-pressed="false"
+                    aria-controls="concerts-panel-date-asc-without-openers concerts-panel-date-asc-with-openers"
+                    data-order-button
+                    data-order="asc"
+                >
+                    Earliest
+                </button>
+            </div>
+
+            <div class={css.directionControl} aria-label="Artist order" data-artist-sort-controls hidden>
+                <button
+                    type="button"
+                    class={css.controlButton}
+                    aria-pressed="true"
+                    data-artist-sort-button
+                    data-artist-sort="name"
+                >
+                    A-Z
+                </button>
+                <button
+                    type="button"
+                    class={css.controlButton}
+                    aria-pressed="false"
+                    data-artist-sort-button
+                    data-artist-sort="count"
+                >
+                    Times seen
+                </button>
+            </div>
+        </div>
+
+        <div class={css.toolbarRow}>
+            <label class={css.toggleControl}>
+                <input type="checkbox" data-opening-acts-toggle />
+                <span class={css.toggleSwitch} aria-hidden="true"></span>
+                <span>Include opening acts</span>
+            </label>
+        </div>
+    </div>
+
+    {
+        datePanels.map((panel) => (
+            <section
+                id={panel.id}
+                aria-labelledby={panel.headingId}
+                data-view-panel="date"
+                data-order-panel={panel.order}
+                data-openers-panel={String(panel.openers)}
+                hidden={!panel.isDefault}
+            >
+                <h2 id={panel.headingId} class={css.viewTitle}>
+                    By date
+                </h2>
+                <EventList events={panel.events} />
+            </section>
+        ))
+    }
+
+    {
+        artistPanels.map((panel) => (
+            <section
+                id={panel.id}
+                aria-labelledby={panel.headingId}
+                data-view-panel="artist"
+                data-artist-sort-panel={panel.sort}
+                data-openers-panel={String(panel.openers)}
+                hidden
+            >
+                <h2 id={panel.headingId} class={css.viewTitle}>
+                    By artist
+                </h2>
+                <ArtistList artists={panel.artists} metaMode="artist" variant={panel.variant} />
+            </section>
+        ))
+    }
+</div>
+
+<script is:inline>
+    const root = document.querySelector('[data-concerts-root]')
+
+    if (root) {
+        const viewButtons = [...root.querySelectorAll('[data-view-button]')]
+        const orderButtons = [...root.querySelectorAll('[data-order-button]')]
+        const artistSortButtons = [...root.querySelectorAll('[data-artist-sort-button]')]
+        const orderControls = root.querySelector('[data-order-controls]')
+        const artistSortControls = root.querySelector('[data-artist-sort-controls]')
+        const viewPanels = [...root.querySelectorAll('[data-view-panel]')]
+        const statsPanels = [...root.querySelectorAll('[data-stats-panel]')]
+        const openingActsToggle = root.querySelector('[data-opening-acts-toggle]')
+        const validViews = new Set(['date', 'artist'])
+        const validOrders = new Set(['asc', 'desc'])
+        const validArtistSorts = new Set(['name', 'count'])
+
+        const getInitialState = () => {
+            const params = new URLSearchParams(window.location.search)
+            const requestedView = params.get('view') ?? 'date'
+            const requestedOrder = params.get('order') ?? 'desc'
+            const requestedArtistSort = params.get('artistSort') ?? 'name'
+            const view = validViews.has(requestedView) ? requestedView : 'date'
+            const order = validOrders.has(requestedOrder) ? requestedOrder : 'desc'
+            const artistSort = validArtistSorts.has(requestedArtistSort) ? requestedArtistSort : 'name'
+            const includeOpeners = params.get('openers') === '1' || params.get('openers') === 'true'
+
+            return { view, order, artistSort, includeOpeners }
+        }
+
+        const replaceCurrentUrl = ({ view, order, artistSort, includeOpeners }, nextHash = '') => {
+            const params = new URLSearchParams(window.location.search)
+            params.set('view', view)
+
+            if (view === 'date') {
+                params.set('order', order)
+                params.delete('artistSort')
+            } else {
+                params.delete('order')
+                params.set('artistSort', artistSort)
+            }
+
+            if (includeOpeners) {
+                params.set('openers', '1')
+            } else {
+                params.delete('openers')
+            }
+
+            const queryString = params.toString()
+            const nextUrl = `${window.location.pathname}${queryString ? `?${queryString}` : ''}${nextHash}`
+            window.history.replaceState(window.history.state, '', nextUrl)
+        }
+
+        const scrollToArtistFromHash = () => {
+            const hash = window.location.hash.replace(/^#/, '')
+
+            if (!hash.startsWith('artist-')) {
+                return
+            }
+
+            const activePanel = viewPanels.find((panel) => !panel.hidden && panel.dataset.viewPanel === 'artist')
+            const target = activePanel?.querySelector(`[data-artist-anchor="${hash}"]`)
+
+            if (!(target instanceof HTMLElement)) {
+                return
+            }
+
+            requestAnimationFrame(() => {
+                target.scrollIntoView({ block: 'start', behavior: 'smooth' })
+                target.focus({ preventScroll: true })
+            })
+        }
+
+        const applyState = ({ view, order, artistSort, includeOpeners }, shouldReplaceUrl = true, nextHash = '') => {
+            viewButtons.forEach((button) => {
+                button.setAttribute('aria-pressed', button.dataset.view === view ? 'true' : 'false')
+            })
+
+            orderButtons.forEach((button) => {
+                button.setAttribute('aria-pressed', button.dataset.order === order ? 'true' : 'false')
+            })
+
+            artistSortButtons.forEach((button) => {
+                button.setAttribute('aria-pressed', button.dataset.artistSort === artistSort ? 'true' : 'false')
+            })
+
+            if (orderControls) {
+                orderControls.hidden = view !== 'date'
+            }
+
+            if (artistSortControls) {
+                artistSortControls.hidden = view !== 'artist'
+            }
+
+            if (openingActsToggle) {
+                openingActsToggle.checked = includeOpeners
+            }
+
+            statsPanels.forEach((panel) => {
+                panel.hidden = panel.dataset.statsPanel !== String(includeOpeners)
+            })
+
+            viewPanels.forEach((panel) => {
+                const matchesView = panel.dataset.viewPanel === view
+                const matchesOrder = !panel.dataset.orderPanel || panel.dataset.orderPanel === order
+                const matchesArtistSort = !panel.dataset.artistSortPanel || panel.dataset.artistSortPanel === artistSort
+                const matchesOpeners = panel.dataset.openersPanel === String(includeOpeners)
+                panel.hidden = !(matchesView && matchesOrder && matchesArtistSort && matchesOpeners)
+            })
+
+            if (shouldReplaceUrl) {
+                replaceCurrentUrl({ view, order, artistSort, includeOpeners }, nextHash)
+            }
+
+            if (view === 'artist' && window.location.hash) {
+                scrollToArtistFromHash()
+            }
+        }
+
+        let currentState = getInitialState()
+        applyState(currentState, window.location.search !== '', window.location.hash)
+
+        viewButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                currentState = { ...currentState, view: button.dataset.view ?? 'date' }
+                applyState(currentState, true)
+            })
+        })
+
+        orderButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                currentState = { ...currentState, view: 'date', order: button.dataset.order ?? 'desc' }
+                applyState(currentState)
+            })
+        })
+
+        artistSortButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                currentState = { ...currentState, view: 'artist', artistSort: button.dataset.artistSort ?? 'name' }
+                applyState(currentState)
+            })
+        })
+
+        openingActsToggle?.addEventListener('change', () => {
+            currentState = { ...currentState, includeOpeners: openingActsToggle.checked }
+            applyState(currentState)
+        })
+
+        root.addEventListener('click', (event) => {
+            const link = event.target instanceof Element ? event.target.closest('[data-artist-link]') : null
+
+            if (!(link instanceof HTMLAnchorElement)) {
+                return
+            }
+
+            event.preventDefault()
+
+            const artistAnchor = link.dataset.artistAnchorTarget
+
+            if (!artistAnchor) {
+                return
+            }
+
+            currentState = { ...currentState, view: 'artist', artistSort: 'count' }
+            replaceCurrentUrl(currentState, `#${artistAnchor}`)
+            applyState(currentState, false)
+        })
+
+        window.addEventListener('hashchange', () => {
+            if (currentState.view === 'artist') {
+                scrollToArtistFromHash()
+            }
+        })
+    }
+</script>

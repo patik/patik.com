@@ -1,5 +1,6 @@
 .main-nav {
     display: flex;
+    flex-wrap: wrap;
     background-color: #333;
     margin: 0 auto;
     max-width: 980px;
@@ -39,6 +40,10 @@
 
             a {
                 color: #fff;
+
+                &.active {
+                    color: #f2b84b;
+                }
             }
         }
     }

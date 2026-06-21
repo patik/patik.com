@@ -1,6 +1,9 @@
+import fs from 'fs'
 import path from 'path'
 import { expect, test } from '@playwright/test'
 import { routes } from './fixtures/routes'
+
+const visualRoutes = routes.filter((route) => route.includeVisual)
 
 // Netlify Image Optimization URLs (/.netlify/images?url=...) only resolve on Netlify
 // infrastructure. Intercept them and serve the original local files from dist/ instead.
@@ -8,16 +11,30 @@ async function mockNetlifyImages(page: import('@playwright/test').Page) {
     await page.route('**/.netlify/images*', async (route) => {
         const url = new URL(route.request().url())
         const imagePath = decodeURIComponent(url.searchParams.get('url') ?? '')
+        const localImagePath = resolveLocalImagePath(imagePath)
 
-        if (imagePath) {
-            await route.fulfill({ path: path.join(process.cwd(), 'dist', imagePath) })
+        if (localImagePath && fs.existsSync(localImagePath)) {
+            await route.fulfill({ path: localImagePath })
         } else {
             await route.continue()
         }
     })
 }
 
-for (const { path: routePath, label } of routes) {
+function resolveLocalImagePath(imagePath: string): string | null {
+    if (!imagePath) {
+        return null
+    }
+
+    const { pathname } = new URL(imagePath, 'http://localhost')
+    const filePath = pathname.startsWith('/@fs/')
+        ? pathname.slice('/@fs'.length)
+        : path.join(process.cwd(), 'dist', pathname.replace(/^\/+/, ''))
+
+    return filePath
+}
+
+for (const { path: routePath, label } of visualRoutes) {
     test(`${label}: matches visual snapshot`, async ({ page }) => {
         // Set media preferences before navigation so they apply from first render
         await page.emulateMedia({ reducedMotion: 'reduce' })

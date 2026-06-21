@@ -79,7 +79,6 @@ body {
     font-style: var(--body-font-style);
     line-height: 1; /* Set to $base-line-height to take on browser default of 150% */
     position: relative;
-    cursor: var(--cursor-pointer-value);
 }
 
 a:hover {

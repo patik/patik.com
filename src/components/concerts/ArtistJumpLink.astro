@@ -1,0 +1,21 @@
+---
+import { getArtistAnchor } from './concerts'
+import css from './ConcertsPage.module.css'
+
+interface Props {
+    artistName: string
+    isTitle?: boolean
+}
+
+const { artistName, isTitle = false } = Astro.props
+const artistAnchor = getArtistAnchor(artistName)
+---
+
+<a
+    href={`?view=artist&artistSort=count#${artistAnchor}`}
+    class:list={[css.artistLink, { [css.artistLinkTitle]: isTitle }]}
+    data-artist-link
+    data-artist-anchor-target={artistAnchor}
+>
+    {artistName}
+</a>
