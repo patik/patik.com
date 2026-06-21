@@ -58,6 +58,10 @@ function getMetaText(artist: ArtistSummary): string {
 
     return formatArtistBreakdown(artist)
 }
+
+function getAppearanceLabel(count: number): string {
+    return `${count} ${count === 1 ? 'appearance' : 'appearances'}`
+}
 ---
 
 <ol class:list={[css.artistList, { [css.artistListCount]: variant === 'count' }]}>
@@ -77,7 +81,7 @@ function getMetaText(artist: ArtistSummary): string {
 
                         <div
                             class:list={[css.countBadge, { [css.countBadgeCount]: variant === 'count' }]}
-                            aria-label={`${artist.totalAppearances} appearances`}
+                            aria-label={getAppearanceLabel(artist.totalAppearances)}
                         >
                             <span class={css.countNumber}>{artist.totalAppearances}</span>
                             <span class={css.countLabel}>{artist.totalAppearances === 1 ? 'time' : 'times'}</span>

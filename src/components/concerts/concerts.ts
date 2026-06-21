@@ -308,7 +308,7 @@ export function formatConcertDate(event: ConcertEvent): string {
 
     const formattedEnd = formatPartialDate(event.dateEnd, event.datePrecision)
 
-    return `${formattedStart}-${formattedEnd}`
+    return `${formattedStart} - ${formattedEnd}`
 }
 
 export function formatConcertLocation(event: ConcertEvent): string {

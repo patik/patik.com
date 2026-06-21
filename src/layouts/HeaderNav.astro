@@ -26,7 +26,11 @@ const isActive = (href: string): boolean => {
         {
             navItems.map((item) => (
                 <li class={item.className}>
-                    <a href={item.href} class:list={[{ active: isActive(item.href) }]}>
+                    <a
+                        href={item.href}
+                        class:list={[{ active: isActive(item.href) }]}
+                        aria-current={isActive(item.href) ? 'page' : undefined}
+                    >
                         {item.label}
                     </a>
                 </li>

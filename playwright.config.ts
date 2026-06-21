@@ -1,5 +1,7 @@
 import { defineConfig, devices } from '@playwright/test'
 
+const webServerCommand = process.env.CI ? 'serve dist -p 4322' : 'pnpm build && serve dist -p 4322'
+
 export default defineConfig({
     testDir: './tests',
     snapshotDir: './tests-snapshots',
@@ -25,7 +27,7 @@ export default defineConfig({
         // astro preview is blocked by the Netlify adapter; use serve instead.
         // -s (SPA mode) serves root index.html for all paths — do NOT use it.
         // Without it, serve correctly handles directory indexes (/about/ → dist/about/index.html).
-        command: 'pnpm build && serve dist -p 4322',
+        command: webServerCommand,
         url: 'http://localhost:4322',
         reuseExistingServer: false,
         timeout: 120_000,

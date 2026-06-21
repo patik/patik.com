@@ -1,5 +1,5 @@
 {
-    "$schema": {
+    "_meta": {
         "description": "Each entry is one event (show or festival). Sort by `date` for the chronological view (partial-ISO strings sort lexically). For an artist view, flatten `acts` across all events and sort by `acts[].name`.",
         "fields": {
             "id": "unique slug",

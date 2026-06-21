@@ -29,7 +29,7 @@ function resolveLocalImagePath(imagePath: string): string | null {
     const { pathname } = new URL(imagePath, 'http://localhost')
     const filePath = pathname.startsWith('/@fs/')
         ? pathname.slice('/@fs'.length)
-        : path.join(process.cwd(), 'dist', pathname)
+        : path.join(process.cwd(), 'dist', pathname.replace(/^\/+/, ''))
 
     return filePath
 }
