@@ -1,0 +1,182 @@
+---
+import concertsData from '@src/concerts.json'
+import ArtistList from './ArtistList.astro'
+import {
+    getArtistsByAppearanceCount,
+    getArtistsByName,
+    getConcertStats,
+    getEventsByDate,
+    normalizeConcertEvents,
+} from './concerts'
+import css from './ConcertsPage.module.css'
+import EventList from './EventList.astro'
+
+const concertEvents = normalizeConcertEvents(concertsData)
+const concertStats = getConcertStats(concertEvents)
+const newestEvents = getEventsByDate(concertEvents, 'desc')
+const oldestEvents = getEventsByDate(concertEvents, 'asc')
+const artistsByName = getArtistsByName(concertEvents)
+const artistsByCount = getArtistsByAppearanceCount(concertEvents)
+
+const viewLabels = [
+    { mode: 'date', label: 'Date', controls: 'concerts-panel-date-desc concerts-panel-date-asc' },
+    { mode: 'artist', label: 'Artist', controls: 'concerts-panel-artist' },
+    { mode: 'count', label: 'Times seen', controls: 'concerts-panel-count' },
+]
+---
+
+<div class={css.concerts} data-concerts-root>
+    <h1 id="concerts-heading">Concerts</h1>
+    <p class={css.intro}>
+        {concertStats.eventCount} concerts, {concertStats.artistCount} artists.
+    </p>
+
+    <div class={css.toolbar}>
+        <div class={css.segmentedControl} aria-label="Concert view">
+            {
+                viewLabels.map((view) => (
+                    <button
+                        type="button"
+                        class={css.controlButton}
+                        aria-pressed={view.mode === 'date' ? 'true' : 'false'}
+                        aria-controls={view.controls}
+                        data-view-button
+                        data-view={view.mode}
+                    >
+                        {view.label}
+                    </button>
+                ))
+            }
+        </div>
+
+        <div class={css.directionControl} aria-label="Date order" data-order-controls>
+            <button
+                type="button"
+                class={css.controlButton}
+                aria-pressed="true"
+                aria-controls="concerts-panel-date-desc"
+                data-order-button
+                data-order="desc"
+            >
+                Newest
+            </button>
+            <button
+                type="button"
+                class={css.controlButton}
+                aria-pressed="false"
+                aria-controls="concerts-panel-date-asc"
+                data-order-button
+                data-order="asc"
+                disabled
+            >
+                Oldest
+            </button>
+        </div>
+    </div>
+
+    <section
+        id="concerts-panel-date-desc"
+        aria-labelledby="concerts-view-heading-date-desc"
+        data-view-panel="date"
+        data-order-panel="desc"
+    >
+        <h2 id="concerts-view-heading-date-desc" class={css.viewTitle}>By date</h2>
+        <EventList events={newestEvents} />
+    </section>
+
+    <section
+        id="concerts-panel-date-asc"
+        aria-labelledby="concerts-view-heading-date-asc"
+        data-view-panel="date"
+        data-order-panel="asc"
+        hidden
+    >
+        <h2 id="concerts-view-heading-date-asc" class={css.viewTitle}>By date</h2>
+        <EventList events={oldestEvents} />
+    </section>
+
+    <section id="concerts-panel-artist" aria-labelledby="concerts-view-heading-artist" data-view-panel="artist" hidden>
+        <h2 id="concerts-view-heading-artist" class={css.viewTitle}>By artist</h2>
+        <ArtistList artists={artistsByName} metaMode="artist" />
+    </section>
+
+    <section id="concerts-panel-count" aria-labelledby="concerts-view-heading-count" data-view-panel="count" hidden>
+        <h2 id="concerts-view-heading-count" class={css.viewTitle}>By times seen</h2>
+        <ArtistList artists={artistsByCount} metaMode="artist" variant="count" />
+    </section>
+</div>
+
+<script is:inline>
+    const root = document.querySelector('[data-concerts-root]')
+
+    if (root) {
+        const viewButtons = [...root.querySelectorAll('[data-view-button]')]
+        const orderButtons = [...root.querySelectorAll('[data-order-button]')]
+        const viewPanels = [...root.querySelectorAll('[data-view-panel]')]
+        const validViews = new Set(['date', 'artist', 'count'])
+        const validOrders = new Set(['asc', 'desc'])
+
+        const getInitialState = () => {
+            const params = new URLSearchParams(window.location.search)
+            const requestedView = params.get('view') ?? 'date'
+            const requestedOrder = params.get('order') ?? 'desc'
+            const view = validViews.has(requestedView) ? requestedView : 'date'
+            const order = validOrders.has(requestedOrder) ? requestedOrder : 'desc'
+
+            return { view, order }
+        }
+
+        const replaceCurrentUrl = ({ view, order }) => {
+            const params = new URLSearchParams(window.location.search)
+            params.set('view', view)
+
+            if (view === 'date') {
+                params.set('order', order)
+            } else {
+                params.delete('order')
+            }
+
+            const queryString = params.toString()
+            const nextUrl = `${window.location.pathname}${queryString ? `?${queryString}` : ''}${window.location.hash}`
+            window.history.replaceState(window.history.state, '', nextUrl)
+        }
+
+        const applyState = ({ view, order }, shouldReplaceUrl = true) => {
+            viewButtons.forEach((button) => {
+                button.setAttribute('aria-pressed', button.dataset.view === view ? 'true' : 'false')
+            })
+
+            orderButtons.forEach((button) => {
+                button.setAttribute('aria-pressed', button.dataset.order === order ? 'true' : 'false')
+                button.disabled = view !== 'date'
+            })
+
+            viewPanels.forEach((panel) => {
+                const matchesView = panel.dataset.viewPanel === view
+                const matchesOrder = !panel.dataset.orderPanel || panel.dataset.orderPanel === order
+                panel.hidden = !(matchesView && matchesOrder)
+            })
+
+            if (shouldReplaceUrl) {
+                replaceCurrentUrl({ view, order })
+            }
+        }
+
+        let currentState = getInitialState()
+        applyState(currentState, window.location.search !== '')
+
+        viewButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                currentState = { ...currentState, view: button.dataset.view ?? 'date' }
+                applyState(currentState)
+            })
+        })
+
+        orderButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                currentState = { ...currentState, view: 'date', order: button.dataset.order ?? 'desc' }
+                applyState(currentState)
+            })
+        })
+    }
+</script>

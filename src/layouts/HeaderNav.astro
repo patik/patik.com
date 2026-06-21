@@ -1,19 +1,36 @@
+---
+const navItems = [
+    { href: '/', label: 'Home', className: 'hide-for-small' },
+    { href: '/travel/', label: 'Travel' },
+    { href: '/concerts/', label: 'Concerts' },
+    { href: '/code/', label: 'Code' },
+    { href: '/about/', label: 'About' },
+]
+
+const currentPath = Astro.url.pathname
+
+const isActive = (href: string): boolean => {
+    if (href === '/') {
+        return currentPath === '/'
+    }
+
+    return currentPath.startsWith(href)
+}
+---
+
 <nav class="main-nav">
     <h1>
         <a href="/">Craig Patik</a>
     </h1>
     <ul>
-        <li class="hide-for-small">
-            <a href="/">Home</a>
-        </li>
-        <li>
-            <a href="/travel/">Travel</a>
-        </li>
-        <li>
-            <a href="/code/" class="active"> Code </a>
-        </li>
-        <li>
-            <a href="/about/">About</a>
-        </li>
+        {
+            navItems.map((item) => (
+                <li class={item.className}>
+                    <a href={item.href} class:list={[{ active: isActive(item.href) }]}>
+                        {item.label}
+                    </a>
+                </li>
+            ))
+        }
     </ul>
 </nav>

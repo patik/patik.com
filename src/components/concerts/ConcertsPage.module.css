@@ -1,0 +1,320 @@
+.concerts {
+    --concert-ink: var(--charcoal);
+    --concert-muted: #666;
+    --concert-line: rgb(0 0 0 / 0.12);
+    --concert-bg: rgb(255 255 255 / 0.55);
+    --concert-pill-bg: rgb(0 0 0 / 0.04);
+    --concert-pill-line: rgb(0 0 0 / 0.14);
+
+    color: var(--concert-ink);
+}
+
+.intro {
+    margin: 0.35rem 0 1rem;
+    color: var(--concert-muted);
+}
+
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0 0 1.25rem;
+    padding-block: 0.75rem;
+    border-block: 1px solid var(--concert-line);
+}
+
+.segmentedControl,
+.directionControl {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+.controlButton {
+    appearance: none;
+    min-height: 2rem;
+    padding: 0.35rem 0.7rem;
+    color: var(--concert-ink) !important;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    line-height: 1.1;
+    cursor: pointer;
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none;
+    border: 1px solid var(--concert-line);
+    border-radius: 4px;
+}
+
+.controlButton:hover,
+.controlButton:focus-visible {
+    background: rgb(0 0 0 / 0.04) !important;
+    background-color: rgb(0 0 0 / 0.04) !important;
+}
+
+.controlButton[aria-pressed='true'] {
+    color: white !important;
+    background: var(--charcoal) !important;
+    background-color: var(--charcoal) !important;
+    border-color: var(--charcoal);
+}
+
+.controlButton:disabled {
+    color: var(--concert-muted) !important;
+    cursor: default;
+    opacity: 0.55;
+}
+
+.controlButton:disabled:hover,
+.controlButton:disabled:focus-visible {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+.viewTitle {
+    margin: 0 0 0.75rem;
+    font-size: 1.25rem;
+}
+
+.eventList,
+.artistList,
+.appearanceList {
+    padding: 0;
+    list-style: none;
+}
+
+.eventList,
+.artistList {
+    display: grid;
+    gap: 0.85rem;
+}
+
+.artistListCount {
+    gap: 1rem;
+}
+
+.artistCard {
+    display: grid;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: var(--concert-bg);
+    border: 1px solid var(--concert-line);
+    border-radius: 4px;
+}
+
+.artistCardCount {
+    background: transparent;
+}
+
+.eventCard {
+    display: grid;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: var(--concert-bg);
+    border: 1px solid var(--concert-line);
+    border-radius: 4px;
+}
+
+.eventHeader {
+    display: flex;
+    gap: 1rem;
+    align-items: start;
+    justify-content: space-between;
+}
+
+.artistHeader {
+    display: flex;
+    gap: 1rem;
+    align-items: start;
+    justify-content: space-between;
+}
+
+.artistName {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.eventTitle {
+    margin: 0;
+    font-size: 1.15rem;
+}
+
+.artistMeta,
+.eventMeta,
+.appearanceMeta,
+.countLabel,
+.roleHeading {
+    font-family: var(--font-sans);
+}
+
+.artistMeta {
+    margin: 0.25rem 0 0;
+    color: var(--concert-muted);
+    font-size: 0.92rem;
+    line-height: 1.35;
+}
+
+.eventMeta {
+    margin: 0.3rem 0 0;
+    color: var(--concert-muted);
+    font-size: 0.92rem;
+    line-height: 1.35;
+}
+
+.eventNote {
+    margin: 0;
+    color: var(--concert-muted);
+    font-size: 0.92rem;
+    line-height: 1.45;
+}
+
+.countBadge {
+    flex-shrink: 0;
+    min-width: 4.2rem;
+    padding: 0.35rem 0.5rem;
+    text-align: center;
+    background: rgb(0 0 0 / 0.03);
+    border: 1px solid var(--concert-line);
+    border-radius: 4px;
+}
+
+.countBadgeCount {
+    min-width: 5rem;
+}
+
+.countNumber {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.countLabel {
+    display: block;
+    margin-top: 0.15rem;
+    color: var(--concert-muted);
+    font-size: 0.74rem;
+    text-transform: uppercase;
+}
+
+.appearanceList {
+    display: grid;
+    gap: 0.45rem;
+}
+
+.roleGroups {
+    display: grid;
+    gap: 0.55rem;
+}
+
+.roleGroup {
+    display: grid;
+    gap: 0.28rem;
+}
+
+.roleHeading {
+    color: var(--concert-muted);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.actList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    padding: 0;
+    list-style: none;
+}
+
+.actPill,
+.appearanceRole {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.1rem 0.45rem;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    line-height: 1.2;
+    border: 1px solid var(--concert-pill-line);
+    border-radius: 999px;
+    background: var(--concert-pill-bg);
+}
+
+.appearanceItem {
+    display: flex;
+    gap: 0.55rem;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+
+.appearanceMeta {
+    color: var(--concert-muted);
+    font-size: 0.92rem;
+    line-height: 1.35;
+}
+
+.roleMain {
+    color: inherit;
+}
+
+.roleFestival {
+    color: inherit;
+}
+
+.roleOpener {
+    color: var(--concert-muted);
+    opacity: 0.82;
+}
+
+@media (max-width: 720px) {
+    .toolbar {
+        align-items: stretch;
+    }
+
+    .segmentedControl,
+    .directionControl {
+        width: 100%;
+    }
+
+    .artistHeader {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .eventHeader {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .countBadge {
+        align-self: start;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .concerts {
+        --concert-ink: #f2f2f2;
+        --concert-muted: #c7c7c7;
+        --concert-line: rgb(255 255 255 / 0.18);
+        --concert-bg: rgb(255 255 255 / 0.04);
+        --concert-pill-bg: rgb(255 255 255 / 0.06);
+        --concert-pill-line: rgb(255 255 255 / 0.16);
+    }
+
+    .controlButton:hover,
+    .controlButton:focus-visible {
+        background: rgb(255 255 255 / 0.08) !important;
+        background-color: rgb(255 255 255 / 0.08) !important;
+    }
+
+    .controlButton[aria-pressed='true'] {
+        color: #222 !important;
+        background: #f2f2f2 !important;
+        background-color: #f2f2f2 !important;
+        border-color: #f2f2f2;
+    }
+}

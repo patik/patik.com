@@ -2,6 +2,8 @@ import path from 'path'
 import { expect, test } from '@playwright/test'
 import { routes } from './fixtures/routes'
 
+const visualRoutes = routes.filter((route) => route.includeVisual)
+
 // Netlify Image Optimization URLs (/.netlify/images?url=...) only resolve on Netlify
 // infrastructure. Intercept them and serve the original local files from dist/ instead.
 async function mockNetlifyImages(page: import('@playwright/test').Page) {
@@ -17,7 +19,7 @@ async function mockNetlifyImages(page: import('@playwright/test').Page) {
     })
 }
 
-for (const { path: routePath, label } of routes) {
+for (const { path: routePath, label } of visualRoutes) {
     test(`${label}: matches visual snapshot`, async ({ page }) => {
         // Set media preferences before navigation so they apply from first render
         await page.emulateMedia({ reducedMotion: 'reduce' })

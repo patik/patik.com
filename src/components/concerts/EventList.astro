@@ -1,0 +1,71 @@
+---
+import ActGroup from './ActGroup.astro'
+import {
+    formatConcertDate,
+    formatConcertLocation,
+    type ConcertAct,
+    type ConcertEvent,
+    type ConcertRole,
+} from './concerts'
+import css from './ConcertsPage.module.css'
+
+interface Props {
+    events: ConcertEvent[]
+}
+
+const { events } = Astro.props
+
+function getActsByRole(event: ConcertEvent): Record<ConcertRole, ConcertAct[]> {
+    return {
+        main: event.acts.filter((act) => act.role === 'main'),
+        festival: event.acts.filter((act) => act.role === 'festival'),
+        opener: event.acts.filter((act) => act.role === 'opener'),
+    }
+}
+
+function getEventTitle(event: ConcertEvent): string {
+    if (event.festival) {
+        return event.festival
+    }
+
+    const mainActs = event.acts.filter((act) => act.role === 'main').map((act) => act.name)
+
+    if (mainActs.length > 0) {
+        return mainActs.join(' / ')
+    }
+
+    return event.acts.map((act) => act.name).join(' / ')
+}
+---
+
+<ol class={css.eventList}>
+    {
+        events.map((event) => {
+            const actsByRole = getActsByRole(event)
+            const eventTitle = getEventTitle(event)
+
+            return (
+                <li>
+                    <article class={css.eventCard}>
+                        <div class={css.eventHeader}>
+                            <div>
+                                <h3 class={css.eventTitle}>{eventTitle}</h3>
+                                <p class={css.eventMeta}>
+                                    {formatConcertDate(event)} • {event.venue}, {formatConcertLocation(event)}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class={css.roleGroups} aria-label={`${eventTitle} performers`}>
+                            <ActGroup title="Main acts" acts={actsByRole.main} concertRole="main" />
+                            <ActGroup title="Festival sets" acts={actsByRole.festival} concertRole="festival" />
+                            <ActGroup title="Opening acts" acts={actsByRole.opener} concertRole="opener" />
+                        </div>
+
+                        {event.note ? <p class={css.eventNote}>{event.note}</p> : null}
+                    </article>
+                </li>
+            )
+        })
+    }
+</ol>
