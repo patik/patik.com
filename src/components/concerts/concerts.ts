@@ -37,6 +37,27 @@ export interface ArtistSummary {
     appearances: ArtistAppearance[]
 }
 
+export interface ConcertPageViewData {
+    stats: {
+        withoutOpeners: ConcertStats
+        withOpeners: ConcertStats
+    }
+    events: {
+        withoutOpeners: ConcertEvent[]
+        withOpeners: ConcertEvent[]
+        newestWithoutOpeners: ConcertEvent[]
+        oldestWithoutOpeners: ConcertEvent[]
+        newestWithOpeners: ConcertEvent[]
+        oldestWithOpeners: ConcertEvent[]
+    }
+    artists: {
+        byNameWithoutOpeners: ArtistSummary[]
+        byNameWithOpeners: ArtistSummary[]
+        byCountWithoutOpeners: ArtistSummary[]
+        byCountWithOpeners: ArtistSummary[]
+    }
+}
+
 interface SourceConcertAct {
     name: string
     role: string
@@ -60,6 +81,8 @@ interface SourceConcertEvent {
 interface SourceConcertData {
     concerts: SourceConcertEvent[]
 }
+
+type ConcertStats = ReturnType<typeof getConcertStats>
 
 const MONTH_NAMES = [
     'January',
@@ -91,6 +114,37 @@ export function normalizeConcertEvents(data: SourceConcertData): ConcertEvent[] 
             role: normalizeConcertRole(act.role),
         })),
     }))
+}
+
+/**
+ * Builds every concerts page collection used by the static Astro template.
+ * The client script then only switches between already-rendered panels.
+ */
+export function getConcertPageViewData(data: SourceConcertData): ConcertPageViewData {
+    const events = normalizeConcertEvents(data)
+    const eventsWithoutOpeners = filterOpeningActs(events, false)
+    const eventsWithOpeners = filterOpeningActs(events, true)
+
+    return {
+        stats: {
+            withoutOpeners: getConcertStats(eventsWithoutOpeners),
+            withOpeners: getConcertStats(eventsWithOpeners),
+        },
+        events: {
+            withoutOpeners: eventsWithoutOpeners,
+            withOpeners: eventsWithOpeners,
+            newestWithoutOpeners: getEventsByDate(eventsWithoutOpeners, 'desc'),
+            oldestWithoutOpeners: getEventsByDate(eventsWithoutOpeners, 'asc'),
+            newestWithOpeners: getEventsByDate(eventsWithOpeners, 'desc'),
+            oldestWithOpeners: getEventsByDate(eventsWithOpeners, 'asc'),
+        },
+        artists: {
+            byNameWithoutOpeners: getArtistsByName(eventsWithoutOpeners, events),
+            byNameWithOpeners: getArtistsByName(eventsWithOpeners),
+            byCountWithoutOpeners: getArtistsByAppearanceCount(eventsWithoutOpeners, events),
+            byCountWithOpeners: getArtistsByAppearanceCount(eventsWithOpeners),
+        },
+    }
 }
 
 export function getConcertStats(events: ConcertEvent[]): {

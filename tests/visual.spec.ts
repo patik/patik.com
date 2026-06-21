@@ -1,3 +1,4 @@
+import fs from 'fs'
 import path from 'path'
 import { expect, test } from '@playwright/test'
 import { routes } from './fixtures/routes'
@@ -10,13 +11,27 @@ async function mockNetlifyImages(page: import('@playwright/test').Page) {
     await page.route('**/.netlify/images*', async (route) => {
         const url = new URL(route.request().url())
         const imagePath = decodeURIComponent(url.searchParams.get('url') ?? '')
+        const localImagePath = resolveLocalImagePath(imagePath)
 
-        if (imagePath) {
-            await route.fulfill({ path: path.join(process.cwd(), 'dist', imagePath) })
+        if (localImagePath && fs.existsSync(localImagePath)) {
+            await route.fulfill({ path: localImagePath })
         } else {
             await route.continue()
         }
     })
+}
+
+function resolveLocalImagePath(imagePath: string): string | null {
+    if (!imagePath) {
+        return null
+    }
+
+    const { pathname } = new URL(imagePath, 'http://localhost')
+    const filePath = pathname.startsWith('/@fs/')
+        ? pathname.slice('/@fs'.length)
+        : path.join(process.cwd(), 'dist', pathname)
+
+    return filePath
 }
 
 for (const { path: routePath, label } of visualRoutes) {

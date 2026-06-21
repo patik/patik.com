@@ -1,30 +1,29 @@
 ---
 import concertsData from '@src/concerts.json'
 import ArtistList from './ArtistList.astro'
-import {
-    filterOpeningActs,
-    getArtistsByAppearanceCount,
-    getArtistsByName,
-    getConcertStats,
-    getEventsByDate,
-    normalizeConcertEvents,
-} from './concerts'
+import { getConcertPageViewData, type ArtistSummary, type ConcertEvent } from './concerts'
 import css from './ConcertsPage.module.css'
 import EventList from './EventList.astro'
 
-const concertEvents = normalizeConcertEvents(concertsData)
-const concertEventsWithoutOpeners = filterOpeningActs(concertEvents, false)
-const concertEventsWithOpeners = filterOpeningActs(concertEvents, true)
-const concertStatsWithoutOpeners = getConcertStats(concertEventsWithoutOpeners)
-const concertStatsWithOpeners = getConcertStats(concertEventsWithOpeners)
-const newestEventsWithoutOpeners = getEventsByDate(concertEventsWithoutOpeners, 'desc')
-const oldestEventsWithoutOpeners = getEventsByDate(concertEventsWithoutOpeners, 'asc')
-const newestEventsWithOpeners = getEventsByDate(concertEventsWithOpeners, 'desc')
-const oldestEventsWithOpeners = getEventsByDate(concertEventsWithOpeners, 'asc')
-const artistsByNameWithoutOpeners = getArtistsByName(concertEventsWithoutOpeners, concertEvents)
-const artistsByNameWithOpeners = getArtistsByName(concertEventsWithOpeners)
-const artistsByCountWithoutOpeners = getArtistsByAppearanceCount(concertEventsWithoutOpeners, concertEvents)
-const artistsByCountWithOpeners = getArtistsByAppearanceCount(concertEventsWithOpeners)
+interface DatePanel {
+    id: string
+    headingId: string
+    order: 'asc' | 'desc'
+    openers: boolean
+    events: ConcertEvent[]
+    isDefault?: boolean
+}
+
+interface ArtistPanel {
+    id: string
+    headingId: string
+    sort: 'count' | 'name'
+    openers: boolean
+    artists: ArtistSummary[]
+    variant?: 'count' | 'default'
+}
+
+const pageData = getConcertPageViewData(concertsData)
 
 const viewLabels = [
     {
@@ -40,16 +39,81 @@ const viewLabels = [
             'concerts-panel-artist-name-without-openers concerts-panel-artist-count-without-openers concerts-panel-artist-name-with-openers concerts-panel-artist-count-with-openers',
     },
 ]
+
+const datePanels: DatePanel[] = [
+    {
+        id: 'concerts-panel-date-desc-without-openers',
+        headingId: 'concerts-view-heading-date-desc-without-openers',
+        order: 'desc',
+        openers: false,
+        events: pageData.events.newestWithoutOpeners,
+        isDefault: true,
+    },
+    {
+        id: 'concerts-panel-date-asc-without-openers',
+        headingId: 'concerts-view-heading-date-asc-without-openers',
+        order: 'asc',
+        openers: false,
+        events: pageData.events.oldestWithoutOpeners,
+    },
+    {
+        id: 'concerts-panel-date-desc-with-openers',
+        headingId: 'concerts-view-heading-date-desc-with-openers',
+        order: 'desc',
+        openers: true,
+        events: pageData.events.newestWithOpeners,
+    },
+    {
+        id: 'concerts-panel-date-asc-with-openers',
+        headingId: 'concerts-view-heading-date-asc-with-openers',
+        order: 'asc',
+        openers: true,
+        events: pageData.events.oldestWithOpeners,
+    },
+]
+
+const artistPanels: ArtistPanel[] = [
+    {
+        id: 'concerts-panel-artist-name-without-openers',
+        headingId: 'concerts-view-heading-artist-name-without-openers',
+        sort: 'name',
+        openers: false,
+        artists: pageData.artists.byNameWithoutOpeners,
+    },
+    {
+        id: 'concerts-panel-artist-count-without-openers',
+        headingId: 'concerts-view-heading-artist-count-without-openers',
+        sort: 'count',
+        openers: false,
+        artists: pageData.artists.byCountWithoutOpeners,
+        variant: 'count',
+    },
+    {
+        id: 'concerts-panel-artist-name-with-openers',
+        headingId: 'concerts-view-heading-artist-name-with-openers',
+        sort: 'name',
+        openers: true,
+        artists: pageData.artists.byNameWithOpeners,
+    },
+    {
+        id: 'concerts-panel-artist-count-with-openers',
+        headingId: 'concerts-view-heading-artist-count-with-openers',
+        sort: 'count',
+        openers: true,
+        artists: pageData.artists.byCountWithOpeners,
+        variant: 'count',
+    },
+]
 ---
 
 <div class={css.concerts} data-concerts-root>
     <h1 id="concerts-heading">Concerts</h1>
     <div class={css.intro}>
         <p data-stats-panel="false">
-            {concertStatsWithoutOpeners.eventCount} concerts, {concertStatsWithoutOpeners.artistCount} artists.
+            {pageData.stats.withoutOpeners.eventCount} concerts, {pageData.stats.withoutOpeners.artistCount} artists.
         </p>
         <p data-stats-panel="true" hidden>
-            {concertStatsWithOpeners.eventCount} concerts, {concertStatsWithOpeners.artistCount} artists.
+            {pageData.stats.withOpeners.eventCount} concerts, {pageData.stats.withOpeners.artistCount} artists.
         </p>
     </div>
 
@@ -81,7 +145,7 @@ const viewLabels = [
                     data-order-button
                     data-order="desc"
                 >
-                    Newest
+                    Most recent
                 </button>
                 <button
                     type="button"
@@ -91,7 +155,7 @@ const viewLabels = [
                     data-order-button
                     data-order="asc"
                 >
-                    Oldest
+                    Earliest
                 </button>
             </div>
 
@@ -126,100 +190,41 @@ const viewLabels = [
         </div>
     </div>
 
-    <section
-        id="concerts-panel-date-desc-without-openers"
-        aria-labelledby="concerts-view-heading-date-desc-without-openers"
-        data-view-panel="date"
-        data-order-panel="desc"
-        data-openers-panel="false"
-    >
-        <h2 id="concerts-view-heading-date-desc-without-openers" class={css.viewTitle}>By date</h2>
-        <EventList events={newestEventsWithoutOpeners} />
-    </section>
+    {
+        datePanels.map((panel) => (
+            <section
+                id={panel.id}
+                aria-labelledby={panel.headingId}
+                data-view-panel="date"
+                data-order-panel={panel.order}
+                data-openers-panel={String(panel.openers)}
+                hidden={!panel.isDefault}
+            >
+                <h2 id={panel.headingId} class={css.viewTitle}>
+                    By date
+                </h2>
+                <EventList events={panel.events} />
+            </section>
+        ))
+    }
 
-    <section
-        id="concerts-panel-date-asc-without-openers"
-        aria-labelledby="concerts-view-heading-date-asc-without-openers"
-        data-view-panel="date"
-        data-order-panel="asc"
-        data-openers-panel="false"
-        hidden
-    >
-        <h2 id="concerts-view-heading-date-asc-without-openers" class={css.viewTitle}>By date</h2>
-        <EventList events={oldestEventsWithoutOpeners} />
-    </section>
-
-    <section
-        id="concerts-panel-date-desc-with-openers"
-        aria-labelledby="concerts-view-heading-date-desc-with-openers"
-        data-view-panel="date"
-        data-order-panel="desc"
-        data-openers-panel="true"
-        hidden
-    >
-        <h2 id="concerts-view-heading-date-desc-with-openers" class={css.viewTitle}>By date</h2>
-        <EventList events={newestEventsWithOpeners} />
-    </section>
-
-    <section
-        id="concerts-panel-date-asc-with-openers"
-        aria-labelledby="concerts-view-heading-date-asc-with-openers"
-        data-view-panel="date"
-        data-order-panel="asc"
-        data-openers-panel="true"
-        hidden
-    >
-        <h2 id="concerts-view-heading-date-asc-with-openers" class={css.viewTitle}>By date</h2>
-        <EventList events={oldestEventsWithOpeners} />
-    </section>
-
-    <section
-        id="concerts-panel-artist-name-without-openers"
-        aria-labelledby="concerts-view-heading-artist-name-without-openers"
-        data-view-panel="artist"
-        data-artist-sort-panel="name"
-        data-openers-panel="false"
-        hidden
-    >
-        <h2 id="concerts-view-heading-artist-name-without-openers" class={css.viewTitle}>By artist</h2>
-        <ArtistList artists={artistsByNameWithoutOpeners} metaMode="artist" />
-    </section>
-
-    <section
-        id="concerts-panel-artist-count-without-openers"
-        aria-labelledby="concerts-view-heading-artist-count-without-openers"
-        data-view-panel="artist"
-        data-artist-sort-panel="count"
-        data-openers-panel="false"
-        hidden
-    >
-        <h2 id="concerts-view-heading-artist-count-without-openers" class={css.viewTitle}>By artist</h2>
-        <ArtistList artists={artistsByCountWithoutOpeners} metaMode="artist" variant="count" />
-    </section>
-
-    <section
-        id="concerts-panel-artist-name-with-openers"
-        aria-labelledby="concerts-view-heading-artist-name-with-openers"
-        data-view-panel="artist"
-        data-artist-sort-panel="name"
-        data-openers-panel="true"
-        hidden
-    >
-        <h2 id="concerts-view-heading-artist-name-with-openers" class={css.viewTitle}>By artist</h2>
-        <ArtistList artists={artistsByNameWithOpeners} metaMode="artist" />
-    </section>
-
-    <section
-        id="concerts-panel-artist-count-with-openers"
-        aria-labelledby="concerts-view-heading-artist-count-with-openers"
-        data-view-panel="artist"
-        data-artist-sort-panel="count"
-        data-openers-panel="true"
-        hidden
-    >
-        <h2 id="concerts-view-heading-artist-count-with-openers" class={css.viewTitle}>By artist</h2>
-        <ArtistList artists={artistsByCountWithOpeners} metaMode="artist" variant="count" />
-    </section>
+    {
+        artistPanels.map((panel) => (
+            <section
+                id={panel.id}
+                aria-labelledby={panel.headingId}
+                data-view-panel="artist"
+                data-artist-sort-panel={panel.sort}
+                data-openers-panel={String(panel.openers)}
+                hidden
+            >
+                <h2 id={panel.headingId} class={css.viewTitle}>
+                    By artist
+                </h2>
+                <ArtistList artists={panel.artists} metaMode="artist" variant={panel.variant} />
+            </section>
+        ))
+    }
 </div>
 
 <script is:inline>
