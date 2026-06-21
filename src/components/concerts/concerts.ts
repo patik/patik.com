@@ -19,6 +19,7 @@ export interface ConcertEvent {
     festival: string | null
     acts: ConcertAct[]
     note?: string
+    url?: string
 }
 
 export interface ArtistAppearance {
@@ -53,6 +54,7 @@ interface SourceConcertEvent {
     festival: string | null
     acts: SourceConcertAct[]
     note?: string
+    url?: string
 }
 
 interface SourceConcertData {
@@ -132,6 +134,19 @@ export function getEventsByDate(events: ConcertEvent[], direction: 'asc' | 'desc
 
         return firstEvent.id.localeCompare(secondEvent.id)
     })
+}
+
+export function filterOpeningActs(events: ConcertEvent[], includeOpeningActs: boolean): ConcertEvent[] {
+    if (includeOpeningActs) {
+        return events
+    }
+
+    return events
+        .map((event) => ({
+            ...event,
+            acts: event.acts.filter((act) => act.role !== 'opener'),
+        }))
+        .filter((event) => event.acts.length > 0)
 }
 
 export function getArtistSummaries(events: ConcertEvent[]): ArtistSummary[] {

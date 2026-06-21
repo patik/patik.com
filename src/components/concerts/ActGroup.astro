@@ -3,12 +3,22 @@ import type { ConcertAct, ConcertRole } from './concerts'
 import css from './ConcertsPage.module.css'
 
 interface Props {
-    title: string
     acts: ConcertAct[]
     concertRole: ConcertRole
 }
 
-const { title, acts, concertRole } = Astro.props
+const { acts, concertRole } = Astro.props
+
+function getRoleTitle(role: ConcertRole, count: number): string {
+    switch (role) {
+        case 'main':
+            return count === 1 ? 'Main act' : 'Main acts'
+        case 'festival':
+            return 'Bands I saw'
+        case 'opener':
+            return count === 1 ? 'Opening act' : 'Opening acts'
+    }
+}
 
 function getRoleClassName(role: ConcertRole): string {
     switch (role) {
@@ -25,11 +35,18 @@ function getRoleClassName(role: ConcertRole): string {
 {
     acts.length > 0 ? (
         <div class={css.roleGroup}>
-            <h4 class={css.roleHeading}>{title}</h4>
-            <ul class={css.actList}>
+            <h4 class={css.roleHeading}>{getRoleTitle(concertRole, acts.length)}</h4>
+            <ul class:list={[css.actList, { [css.actTextList]: concertRole !== 'opener' }]}>
                 {acts.map((act) => (
                     <li>
-                        <span class={`${css.actPill} ${getRoleClassName(concertRole)}`}>{act.name}</span>
+                        <span
+                            class:list={[
+                                concertRole === 'opener' ? css.actPill : css.actName,
+                                getRoleClassName(concertRole),
+                            ]}
+                        >
+                            {act.name}
+                        </span>
                     </li>
                 ))}
             </ul>

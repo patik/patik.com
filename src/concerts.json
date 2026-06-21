@@ -12,7 +12,8 @@
             "country": "country",
             "festival": "festival name, else null",
             "acts": "[{ name, role }] where role is main | opener | festival",
-            "note": "optional free-text flag"
+            "note": "optional free-text flag",
+            "url": "optional URL for more info"
         }
     },
     "concerts": [
@@ -74,8 +75,7 @@
                     "name": "Toad the Wet Sprocket",
                     "role": "festival"
                 }
-            ],
-            "note": "H.O.R.D.E. Festival 1997 (Odelay era). Smaller side-stage acts (Cake Like, New Brown Hat) not included - add if you saw them."
+            ]
         },
         {
             "id": "dmb-1998-07-26-spac",
@@ -404,8 +404,7 @@
                     "name": "Béla Fleck and the Flecktones",
                     "role": "main"
                 }
-            ],
-            "note": "First of two Palace Theatre shows; second date still to confirm (somewhere 2000-2003)."
+            ]
         },
         {
             "id": "dmb-2001-07-29-spac",
@@ -438,6 +437,23 @@
                     "role": "main"
                 }
             ]
+        },
+        {
+            "id": "string-cheese-2001-10-27-rpi",
+            "date": "2001-10-27",
+            "datePrecision": "day",
+            "venue": "RPI Field House",
+            "city": "Troy",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "The String Cheese Incident",
+                    "role": "main"
+                }
+            ],
+            "url": "https://www.concertarchives.org/concerts/the-string-cheese-incident-medeski-martin-wood"
         },
         {
             "id": "green-day-blink-182-2002-spac",
@@ -526,8 +542,7 @@
                     "name": "Béla Fleck and the Flecktones",
                     "role": "main"
                 }
-            ],
-            "note": "Second Palace Theatre show; you recall 2003 - exact date not yet pinned down."
+            ]
         },
         {
             "id": "dmb-2003-08-27-spac",
@@ -694,54 +709,6 @@
             ]
         },
         {
-            "id": "dmb-2006-06-16-spac",
-            "date": "2006-06-16",
-            "datePrecision": "day",
-            "venue": "Saratoga Performing Arts Center",
-            "city": "Saratoga Springs",
-            "state": "NY",
-            "country": "USA",
-            "festival": null,
-            "acts": [
-                {
-                    "name": "Dave Matthews Band",
-                    "role": "main"
-                }
-            ]
-        },
-        {
-            "id": "dmb-2006-06-17-spac",
-            "date": "2006-06-17",
-            "datePrecision": "day",
-            "venue": "Saratoga Performing Arts Center",
-            "city": "Saratoga Springs",
-            "state": "NY",
-            "country": "USA",
-            "festival": null,
-            "acts": [
-                {
-                    "name": "Dave Matthews Band",
-                    "role": "main"
-                }
-            ]
-        },
-        {
-            "id": "dmb-2007-08-14-spac",
-            "date": "2007-08-14",
-            "datePrecision": "day",
-            "venue": "Saratoga Performing Arts Center",
-            "city": "Saratoga Springs",
-            "state": "NY",
-            "country": "USA",
-            "festival": null,
-            "acts": [
-                {
-                    "name": "Dave Matthews Band",
-                    "role": "main"
-                }
-            ]
-        },
-        {
             "id": "nin-2009-rockncoke",
             "date": "2009-07-18",
             "datePrecision": "day",
@@ -764,7 +731,7 @@
                     "role": "festival"
                 }
             ],
-            "note": "Left before The Prodigy headlined."
+            "note": "I've always regretted leaving before The Prodigy played. I had an early flight the next day."
         },
         {
             "id": "feq-2012-quebec",
@@ -855,7 +822,7 @@
                     "role": "festival"
                 }
             ],
-            "note": "Concert in the Gardens; you only saw Franz Ferdinand (Metronomy and Free Love also played)."
+            "note": "Concert in the Gardens; I only saw Franz Ferdinand."
         },
         {
             "id": "dmb-2019-munich",

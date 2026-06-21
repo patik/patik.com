@@ -1,12 +1,7 @@
 ---
 import ActGroup from './ActGroup.astro'
-import {
-    formatConcertDate,
-    formatConcertLocation,
-    type ConcertAct,
-    type ConcertEvent,
-    type ConcertRole,
-} from './concerts'
+import ConcertDate from './ConcertDate.astro'
+import { formatConcertLocation, type ConcertAct, type ConcertEvent, type ConcertRole } from './concerts'
 import css from './ConcertsPage.module.css'
 
 interface Props {
@@ -43,6 +38,9 @@ function getEventTitle(event: ConcertEvent): string {
         events.map((event) => {
             const actsByRole = getActsByRole(event)
             const eventTitle = getEventTitle(event)
+            const festivalActs = event.festival ? [...actsByRole.main, ...actsByRole.festival] : actsByRole.festival
+            const showMainActs = !event.festival && actsByRole.opener.length > 0
+            const showPerformerGroups = showMainActs || festivalActs.length > 0 || actsByRole.opener.length > 0
 
             return (
                 <li>
@@ -51,16 +49,18 @@ function getEventTitle(event: ConcertEvent): string {
                             <div>
                                 <h3 class={css.eventTitle}>{eventTitle}</h3>
                                 <p class={css.eventMeta}>
-                                    {formatConcertDate(event)} • {event.venue}, {formatConcertLocation(event)}
+                                    <ConcertDate event={event} /> • {event.venue}, {formatConcertLocation(event)}
                                 </p>
                             </div>
                         </div>
 
-                        <div class={css.roleGroups} aria-label={`${eventTitle} performers`}>
-                            <ActGroup title="Main acts" acts={actsByRole.main} concertRole="main" />
-                            <ActGroup title="Festival sets" acts={actsByRole.festival} concertRole="festival" />
-                            <ActGroup title="Opening acts" acts={actsByRole.opener} concertRole="opener" />
-                        </div>
+                        {showPerformerGroups ? (
+                            <div class={css.roleGroups} aria-label={`${eventTitle} performers`}>
+                                {showMainActs ? <ActGroup acts={actsByRole.main} concertRole="main" /> : null}
+                                <ActGroup acts={festivalActs} concertRole="festival" />
+                                <ActGroup acts={actsByRole.opener} concertRole="opener" />
+                            </div>
+                        ) : null}
 
                         {event.note ? <p class={css.eventNote}>{event.note}</p> : null}
                     </article>

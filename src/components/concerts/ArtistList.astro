@@ -1,11 +1,6 @@
 ---
-import {
-    formatConcertDate,
-    getArtistLatestAppearance,
-    getRoleLabel,
-    type ArtistSummary,
-    type ConcertRole,
-} from './concerts'
+import ConcertDate from './ConcertDate.astro'
+import { formatConcertDate, getArtistLatestAppearance, getRoleLabel, type ArtistSummary } from './concerts'
 import css from './ConcertsPage.module.css'
 
 interface Props {
@@ -16,33 +11,32 @@ interface Props {
 
 const { artists, variant = 'default', metaMode = 'artist' } = Astro.props
 
-function getRoleClassName(role: ConcertRole): string {
-    switch (role) {
-        case 'main':
-            return css.roleMain
-        case 'festival':
-            return css.roleFestival
-        case 'opener':
-            return css.roleOpener
-    }
-}
-
 function formatArtistBreakdown(artist: ArtistSummary): string {
     const parts = [
-        formatCount(artist.mainAppearances, 'main'),
-        formatCount(artist.festivalAppearances, 'festival'),
-        formatCount(artist.openerAppearances, 'support'),
+        formatRoleAppearance(artist.festivalAppearances, 'at a festival', 'at festivals'),
+        formatRoleAppearance(artist.mainAppearances, 'as the main act', 'as the main act'),
+        formatRoleAppearance(artist.openerAppearances, 'as an opening act', 'as an opening act'),
     ].filter(Boolean)
 
-    return parts.join(' / ')
+    return `Seen ${formatList(parts)}`
 }
 
-function formatCount(count: number, label: string): string {
+function formatRoleAppearance(count: number, singularContext: string, pluralContext: string): string {
     if (count === 0) {
         return ''
     }
 
-    return `${count} ${label}`
+    return `${count} ${count === 1 ? 'time' : 'times'} ${count === 1 ? singularContext : pluralContext}`
+}
+
+function formatList(parts: string[]): string {
+    if (parts.length <= 2) {
+        return parts.join(' and ')
+    }
+
+    const lastPart = parts[parts.length - 1]
+
+    return `${parts.slice(0, -1).join(', ')}, and ${lastPart}`
 }
 
 function getMetaText(artist: ArtistSummary): string {
@@ -83,11 +77,11 @@ function getMetaText(artist: ArtistSummary): string {
                     <ol class={css.appearanceList}>
                         {artist.appearances.map((appearance) => (
                             <li class={css.appearanceItem}>
-                                <span class={`${css.appearanceRole} ${getRoleClassName(appearance.role)}`}>
-                                    {getRoleLabel(appearance.role)}
-                                </span>
                                 <span class={css.appearanceMeta}>
-                                    {formatConcertDate(appearance.event)} at{' '}
+                                    {getRoleLabel(appearance.role)}
+                                    {' • '}
+                                    <ConcertDate event={appearance.event} />
+                                    {' • '}
                                     {appearance.event.festival ?? appearance.event.venue}
                                 </span>
                             </li>
