@@ -133,7 +133,10 @@ const items = [
 ---
 
 <Layout title="Travel" keywords={[...countries.visited.map((country) => country.name), 'Europe', 'Asia', 'travel']}>
-    <h1>Travel</h1>
+    <div class="flex items-center">
+        <h1 class="grow">Travel</h1>
+        <a href="#photos" class="self-center">Jump to photos</a>
+    </div>
 
     <section style={{ marginBottom: '3rem' }}>
         <h2>Countries I’ve been to</h2>
@@ -149,7 +152,7 @@ const items = [
     </section>
 
     <section>
-        <h2>Photos</h2>
+        <h2 id="photos">Photos</h2>
         <p>
             <em>
                 Not shown: many notable trips since 2012, including Southeast Asia, Eastern Europe, and much more of

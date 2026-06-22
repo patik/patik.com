@@ -155,8 +155,8 @@ function compareByVisits(firstCountry: CountrySummary, secondCountry: CountrySum
         return secondCountry.visitCount - firstCountry.visitCount
     }
 
-    if (secondCountry.lastYear !== firstCountry.lastYear) {
-        return secondCountry.lastYear - firstCountry.lastYear
+    if (firstCountry.firstYear !== secondCountry.firstYear) {
+        return firstCountry.firstYear - secondCountry.firstYear
     }
 
     return compareByName(firstCountry, secondCountry)
