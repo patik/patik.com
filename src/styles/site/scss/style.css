@@ -64,7 +64,7 @@ main,
     padding: 0 1rem;
 
     & > section {
-        &:nth-child-of-type(1) {
+        &:first-of-type {
             margin-top: 1rem;
         }
 

@@ -1,3 +1,4 @@
+import { fixupPluginRules } from '@eslint/compat'
 import pluginAstro from 'eslint-plugin-astro'
 import pluginJsxA11y from 'eslint-plugin-jsx-a11y'
 import pluginReact from 'eslint-plugin-react'
@@ -36,9 +37,9 @@ export default tseslint.config(
     {
         files: ['**/*.{js,jsx,ts,tsx}'],
         plugins: {
-            react: pluginReact,
+            react: fixupPluginRules(pluginReact),
             'react-hooks': pluginReactHooks,
-            'jsx-a11y': pluginJsxA11y,
+            'jsx-a11y': fixupPluginRules(pluginJsxA11y),
         },
         settings: {
             react: {
