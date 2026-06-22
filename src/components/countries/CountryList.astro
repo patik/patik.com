@@ -35,7 +35,6 @@ function getYearsTitle(country: CountrySummary): string {
                                 {index > 0 ? <span class={css.yearSeparator}>·</span> : null}
                                 <span
                                     class:list={[
-                                        css.year,
                                         {
                                             [css.latestYear]: emphasizeLatest,
                                             [css.thisYear]: isLatest && country.visitedThisYear,
