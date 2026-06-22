@@ -1,5 +1,6 @@
 ---
 import type { CountrySummary } from './countries'
+import { getCountryFlag } from './countries'
 import css from './VisitedCountries.module.css'
 
 interface Props {
@@ -22,7 +23,12 @@ function getYearsTitle(country: CountrySummary): string {
         countries.map((country) => (
             <li class={css.country} title={getYearsTitle(country)}>
                 <div class={css.countryRow}>
-                    <span class={css.countryName}>{country.name}</span>
+                    <span class={css.countryName}>
+                        {getCountryFlag(country.name) ? (
+                            <span aria-hidden="true" class={css.flag}>{getCountryFlag(country.name)}</span>
+                        ) : null}
+                        {country.name}
+                    </span>
                     <span class={css.visitBadge}>{getVisitLabel(country.visitCount)}</span>
                 </div>
                 <p class={css.years}>

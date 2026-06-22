@@ -1,6 +1,6 @@
 ---
 import countriesData from '@src/countries.json'
-import { getCountriesViewData, type CountrySortMode, type ResidenceFilter } from './countries'
+import { getCountriesViewData, getCountryFlag, type CountrySortMode, type ResidenceFilter } from './countries'
 import CountryList from './CountryList.astro'
 import css from './VisitedCountries.module.css'
 
@@ -50,7 +50,13 @@ function getSortControls(mode: CountrySortMode): string {
                     <strong>{stats.countryCount}</strong> countries · <strong>{stats.visitCount}</strong> visits ·{' '}
                     {stats.yearRange}
                     <span class={css.summaryDetail}>
-                        Most visits: {stats.mostVisited.name} ({stats.mostVisited.visitCount})
+                        Most visits:{' '}
+                        {getCountryFlag(stats.mostVisited.name) ? (
+                            <span aria-hidden="true" class={css.flag}>
+                                {getCountryFlag(stats.mostVisited.name)}
+                            </span>
+                        ) : null}
+                        {stats.mostVisited.name} ({stats.mostVisited.visitCount})
                     </span>
                 </p>
             )
