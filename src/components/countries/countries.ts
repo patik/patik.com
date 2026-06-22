@@ -326,7 +326,7 @@ export function summarizeCountry({
     country: VisitedCountry
     currentYear: number
 }): CountrySummary {
-    const yearsVisited = [...country.yearsVisited].sort((firstYear, secondYear) => firstYear - secondYear)
+    const yearsVisited = [...new Set(country.yearsVisited)].sort((firstYear, secondYear) => firstYear - secondYear)
     const firstYear = yearsVisited[0]
     const lastYear = yearsVisited[yearsVisited.length - 1]
 
@@ -382,6 +382,10 @@ function getStateData(summaries: CountrySummary[]): CountriesStateData {
 }
 
 function getSummaryStats(summaries: CountrySummary[]): CountriesSummaryStats {
+    if (summaries.length === 0) {
+        throw new Error('getSummaryStats requires at least one country summary')
+    }
+
     const totalVisits = summaries.reduce((runningTotal, country) => runningTotal + country.visitCount, 0)
     const firstYear = Math.min(...summaries.map((country) => country.firstYear))
     const lastYear = Math.max(...summaries.map((country) => country.lastYear))

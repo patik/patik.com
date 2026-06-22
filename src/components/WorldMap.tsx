@@ -6,9 +6,11 @@ const currentYear = new Date().getFullYear()
 
 const countryData: Array<[string, string | number]> = [['Country', 'Years since last visit']]
 
-countries.visited.forEach((country) => {
-    countryData.push([country.name, currentYear - Math.max(...country.yearsVisited)])
-})
+countries.visited
+    .filter((country) => !country.lived)
+    .forEach((country) => {
+        countryData.push([country.name, currentYear - Math.max(...country.yearsVisited)])
+    })
 
 // https://developers-dot-devsite-v2-prod.appspot.com/chart/interactive/docs/gallery/geochart
 // These values are duplicated in SCSS
