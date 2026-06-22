@@ -82,7 +82,7 @@ function getSortControls(mode: CountrySortMode): string {
         </label>
     </div>
 
-    <div class={css.scroll}>
+    <div class={css.scroll} tabindex="0" role="region" aria-label="Country list">
         {
             residenceStates.map((state) =>
                 sortOptions.map((option) => (
