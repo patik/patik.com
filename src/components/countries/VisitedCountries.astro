@@ -76,9 +76,9 @@ function getSortControls(mode: CountrySortMode): string {
         </div>
 
         <label class={css.toggleControl}>
-            <input type="checkbox" data-residence-toggle checked />
+            <input type="checkbox" data-residence-toggle />
             <span class={css.toggleSwitch} aria-hidden="true"></span>
-            <span>Exclude countries I’ve lived in</span>
+            <span>Include countries I’ve lived in</span>
         </label>
     </div>
 
@@ -120,7 +120,7 @@ function getSortControls(mode: CountrySortMode): string {
             })
 
             if (residenceToggle) {
-                residenceToggle.checked = state.excludeResidences
+                residenceToggle.checked = !state.excludeResidences
             }
 
             summaries.forEach((summary) => {
@@ -171,7 +171,7 @@ function getSortControls(mode: CountrySortMode): string {
         })
 
         residenceToggle?.addEventListener('change', () => {
-            currentState.excludeResidences = residenceToggle.checked
+            currentState.excludeResidences = !residenceToggle.checked
             applyState(currentState, true)
         })
     }
