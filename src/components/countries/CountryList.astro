@@ -1,0 +1,54 @@
+---
+import type { CountrySummary } from './countries'
+import css from './VisitedCountries.module.css'
+
+interface Props {
+    countries: CountrySummary[]
+}
+
+const { countries } = Astro.props
+
+function getVisitLabel(visitCount: number): string {
+    return `${visitCount} ${visitCount === 1 ? 'visit' : 'visits'}`
+}
+
+function getYearsTitle(country: CountrySummary): string {
+    return `Visited in ${country.yearsVisited.join(', ')}`
+}
+---
+
+<ol class={css.countryList}>
+    {
+        countries.map((country) => (
+            <li class={css.country} title={getYearsTitle(country)}>
+                <div class={css.countryRow}>
+                    <span class={css.countryName}>{country.name}</span>
+                    <span class={css.visitBadge}>{getVisitLabel(country.visitCount)}</span>
+                </div>
+                <p class={css.years}>
+                    {country.yearsVisited.map((year, index) => {
+                        const isLatest = index === country.yearsVisited.length - 1
+                        const emphasizeLatest = isLatest && country.visitCount > 1
+
+                        return (
+                            <>
+                                {index > 0 ? <span class={css.yearSeparator}>·</span> : null}
+                                <span
+                                    class:list={[
+                                        css.year,
+                                        {
+                                            [css.latestYear]: emphasizeLatest,
+                                            [css.thisYear]: isLatest && country.visitedThisYear,
+                                        },
+                                    ]}
+                                >
+                                    {year}
+                                </span>
+                            </>
+                        )
+                    })}
+                </p>
+            </li>
+        ))
+    }
+</ol>

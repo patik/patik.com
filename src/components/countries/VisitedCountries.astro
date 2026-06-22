@@ -1,0 +1,178 @@
+---
+import countriesData from '@src/countries.json'
+import { getCountriesViewData, type CountrySortMode, type ResidenceFilter } from './countries'
+import CountryList from './CountryList.astro'
+import css from './VisitedCountries.module.css'
+
+interface SortOption {
+    mode: CountrySortMode
+    label: string
+    heading: string
+    isDefault?: boolean
+}
+
+interface ResidenceState {
+    filter: ResidenceFilter
+    isDefault?: boolean
+}
+
+const currentYear = new Date().getFullYear()
+const { byResidenceFilter } = getCountriesViewData({ countries: countriesData.visited, currentYear })
+
+const sortOptions: SortOption[] = [
+    { mode: 'recent', label: 'Most recent', heading: 'most recent visit', isDefault: true },
+    { mode: 'visits', label: 'Most visits', heading: 'number of visits' },
+    { mode: 'first', label: 'First visit', heading: 'first visit' },
+    { mode: 'name', label: 'A–Z', heading: 'name' },
+]
+
+// The default (and only build-time-visible) panel excludes lived-in countries.
+const residenceStates: ResidenceState[] = [{ filter: 'excludingResidences', isDefault: true }, { filter: 'all' }]
+
+const defaultSort = sortOptions.find((option) => option.isDefault)?.mode ?? 'recent'
+
+function getPanelId(filter: ResidenceFilter, mode: CountrySortMode): string {
+    return `countries-panel-${filter}-${mode}`
+}
+
+function getSortControls(mode: CountrySortMode): string {
+    return residenceStates.map((state) => getPanelId(state.filter, mode)).join(' ')
+}
+---
+
+<div class={css.countries} data-countries-root data-default-sort={defaultSort}>
+    {
+        residenceStates.map((state) => {
+            const { stats } = byResidenceFilter[state.filter]
+
+            return (
+                <p class={css.summary} data-residence-summary={state.filter} hidden={!state.isDefault}>
+                    <strong>{stats.countryCount}</strong> countries · <strong>{stats.visitCount}</strong> visits ·{' '}
+                    {stats.yearRange}
+                    <span class={css.summaryDetail}>
+                        Most visits: {stats.mostVisited.name} ({stats.mostVisited.visitCount})
+                    </span>
+                </p>
+            )
+        })
+    }
+
+    <div class={css.toolbar}>
+        <div class={css.segmented} role="group" aria-label="Sort countries">
+            {
+                sortOptions.map((option) => (
+                    <button
+                        type="button"
+                        class={css.sortButton}
+                        aria-pressed={option.isDefault ? 'true' : 'false'}
+                        aria-controls={getSortControls(option.mode)}
+                        data-sort-button
+                        data-sort={option.mode}
+                    >
+                        {option.label}
+                    </button>
+                ))
+            }
+        </div>
+
+        <label class={css.toggleControl}>
+            <input type="checkbox" data-residence-toggle checked />
+            <span class={css.toggleSwitch} aria-hidden="true"></span>
+            <span>Exclude countries I’ve lived in</span>
+        </label>
+    </div>
+
+    <div class={css.scroll}>
+        {
+            residenceStates.map((state) =>
+                sortOptions.map((option) => (
+                    <section
+                        id={getPanelId(state.filter, option.mode)}
+                        aria-label={`Countries by ${option.heading}`}
+                        data-sort-panel={option.mode}
+                        data-residence-panel={state.filter}
+                        hidden={!(state.isDefault && option.isDefault)}
+                    >
+                        <CountryList countries={byResidenceFilter[state.filter].countriesBySort[option.mode]} />
+                    </section>
+                )),
+            )
+        }
+    </div>
+</div>
+
+<script is:inline>
+    const root = document.querySelector('[data-countries-root]')
+
+    if (root) {
+        const sortButtons = [...root.querySelectorAll('[data-sort-button]')]
+        const sortPanels = [...root.querySelectorAll('[data-sort-panel]')]
+        const summaries = [...root.querySelectorAll('[data-residence-summary]')]
+        const residenceToggle = root.querySelector('[data-residence-toggle]')
+        const validSorts = new Set(sortPanels.map((panel) => panel.dataset.sortPanel))
+        const defaultSort = root.dataset.defaultSort
+
+        const applyState = (state, shouldUpdateUrl) => {
+            const residenceFilter = state.excludeResidences ? 'excludingResidences' : 'all'
+
+            sortButtons.forEach((button) => {
+                button.setAttribute('aria-pressed', button.dataset.sort === state.sort ? 'true' : 'false')
+            })
+
+            if (residenceToggle) {
+                residenceToggle.checked = state.excludeResidences
+            }
+
+            summaries.forEach((summary) => {
+                summary.hidden = summary.dataset.residenceSummary !== residenceFilter
+            })
+
+            sortPanels.forEach((panel) => {
+                const matchesSort = panel.dataset.sortPanel === state.sort
+                const matchesResidence = panel.dataset.residencePanel === residenceFilter
+                panel.hidden = !(matchesSort && matchesResidence)
+            })
+
+            if (shouldUpdateUrl) {
+                const params = new URLSearchParams(window.location.search)
+
+                if (state.sort === defaultSort) {
+                    params.delete('sort')
+                } else {
+                    params.set('sort', state.sort)
+                }
+
+                if (state.excludeResidences) {
+                    params.delete('lived')
+                } else {
+                    params.set('lived', '1')
+                }
+
+                const queryString = params.toString()
+                const nextUrl = `${window.location.pathname}${queryString ? `?${queryString}` : ''}${window.location.hash}`
+                window.history.replaceState(window.history.state, '', nextUrl)
+            }
+        }
+
+        const params = new URLSearchParams(window.location.search)
+        const requestedSort = params.get('sort')
+        const currentState = {
+            sort: requestedSort && validSorts.has(requestedSort) ? requestedSort : defaultSort,
+            excludeResidences: params.get('lived') !== '1',
+        }
+
+        applyState(currentState, false)
+
+        sortButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                currentState.sort = button.dataset.sort
+                applyState(currentState, true)
+            })
+        })
+
+        residenceToggle?.addEventListener('change', () => {
+            currentState.excludeResidences = residenceToggle.checked
+            applyState(currentState, true)
+        })
+    }
+</script>
