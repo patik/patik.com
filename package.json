@@ -29,7 +29,7 @@
     "dependencies": {
         "@astrojs/mdx": "^6.0.3",
         "@astrojs/react": "^5.0.7",
-        "astro": "^6.4.7",
+        "astro": "^6.4.8",
         "astro-expressive-code": "^0.42.0",
         "classnames": "^2.5.1",
         "cloudinary": "^2.10.0",
@@ -50,9 +50,9 @@
         "@types/node": "^24.12.4",
         "@types/react": "^19.2.17",
         "@types/react-dom": "^19.2.3",
-        "@typescript-eslint/eslint-plugin": "^8.60.0",
-        "@typescript-eslint/parser": "^8.61.1",
-        "eslint": "^9.39.3",
+        "@typescript-eslint/eslint-plugin": "^8.62.0",
+        "@typescript-eslint/parser": "^8.62.0",
+        "eslint": "^9.39.4",
         "eslint-config-prettier": "^10.1.8",
         "eslint-plugin-astro": "^1.7.0",
         "eslint-plugin-jsx-a11y": "^6.10.2",
@@ -60,7 +60,7 @@
         "eslint-plugin-react-hooks": "^7.1.1",
         "find-unused-sass-variables": "^6.2.1",
         "husky": "^9.1.7",
-        "lint-staged": "^17.0.7",
+        "lint-staged": "^17.0.8",
         "netlify-cli": "^26.0.1",
         "postcss": "^8.5.15",
         "prettier": "^3.8.4",
@@ -69,7 +69,7 @@
         "stylelint": "^17.12.0",
         "tailwindcss": "^4.3.1",
         "typescript": "^6.0.3",
-        "typescript-eslint": "^8.61.1"
+        "typescript-eslint": "^8.62.0"
     },
     "repository": {
         "type": "git",
