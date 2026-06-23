@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import 'tailwindcss/index.css';
 
 @theme {
     --color-accent-1: #fafafa;

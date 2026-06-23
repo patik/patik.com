@@ -361,7 +361,7 @@ th {
     }
 }
 
-@media (only screen and (orientation: portrait)) {
+@media only screen and (orientation: portrait) {
     .show-for-portrait,
     .hide-for-landscape {
         display: inherit !important;
