@@ -1,43 +1,48 @@
 // @ts-check
 import { fileURLToPath } from 'url'
-import mdx from '@astrojs/mdx'
-import netlify from '@astrojs/netlify'
+import { unified } from '@astrojs/markdown-remark'
 import react from '@astrojs/react'
-import expressiveCode from 'astro-expressive-code'
 import { defineConfig } from 'astro/config'
+import rehypeExpressiveCode from 'rehype-expressive-code'
 
 // https://astro.build/config
 export default defineConfig({
-    integrations: [
-        expressiveCode({
-            themes: ['github-dark', 'github-light'],
-            frames: {
-                showCopyToClipboardButton: true,
-            },
-            styleOverrides: {
-                borderRadius: '0.25rem',
-                borderWidth: '1px',
-            },
-            plugins: [
-                {
-                    name: 'add-line-numbers',
-                    hooks: {
-                        preprocessMetadata: ({ codeBlock }) => {
-                            // Add showLineNumbers if not already present
-                            // @ts-expect-error - showLineNumbers exists at runtime but not in types
-                            if (!codeBlock.props.showLineNumbers) {
-                                // @ts-expect-error - showLineNumbers exists at runtime but not in types
-                                codeBlock.props.showLineNumbers = true
-                            }
+    integrations: [react()],
+    markdown: {
+        processor: unified({
+            rehypePlugins: [
+                [
+                    rehypeExpressiveCode,
+                    {
+                        themes: ['github-dark', 'github-light'],
+                        frames: {
+                            showCopyToClipboardButton: true,
                         },
+                        styleOverrides: {
+                            borderRadius: '0.25rem',
+                            borderWidth: '1px',
+                        },
+                        plugins: [
+                            {
+                                name: 'add-line-numbers',
+                                hooks: {
+                                    /**
+                                     * @param {{ codeBlock: import('rehype-expressive-code').ExpressiveCodeBlock & { props: { showLineNumbers?: boolean } } }} args
+                                     */
+                                    preprocessMetadata: ({ codeBlock }) => {
+                                        // Add showLineNumbers if not already present.
+                                        if (!codeBlock.props.showLineNumbers) {
+                                            codeBlock.props.showLineNumbers = true
+                                        }
+                                    },
+                                },
+                            },
+                        ],
                     },
-                },
+                ],
             ],
         }),
-        react(),
-        mdx(),
-    ],
-    adapter: netlify(),
+    },
     vite: {
         resolve: {
             alias: {

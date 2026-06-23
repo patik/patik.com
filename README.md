@@ -64,8 +64,8 @@ Photo galleries (e.g., travel photos from Uzbekistan) are managed in `src/galler
 
 - **Framework:** [Astro](https://astro.build/) with React integration
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/) + CSS Modules
-- **Content:** Astro Content Collections with MDX support
+- **Content:** Astro Content Collections with Markdown posts
 - **Code Blocks:** [Expressive Code](https://expressive-code.com/) with syntax highlighting
 - **Images:** Cloudinary for photo galleries
-- **Deployment:** Netlify with `@astrojs/netlify` adapter
+- **Deployment:** Static site on Netlify
 - **Package Manager:** pnpm
