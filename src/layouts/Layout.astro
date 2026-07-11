@@ -25,6 +25,7 @@ const { title = '', keywords = [] } = Astro.props
             name="description"
             content="Craig Patik's homepage — travel logs & photos, and web design & development"
         />
+        <slot name="head" />
     </head>
     <body>
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100%' }}>

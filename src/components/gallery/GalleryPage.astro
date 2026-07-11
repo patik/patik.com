@@ -1,0 +1,67 @@
+---
+import PhotoGrid from '@src/components/gallery/PhotoGrid.astro'
+import PhotoLightbox from '@src/components/gallery/PhotoLightbox.astro'
+import Layout from '@src/layouts/Layout.astro'
+import type { GalleryPageProps } from '@src/photos/utils/getGalleryStaticPaths'
+import type { CityGallery, CountryGallery } from '@src/photos/utils/types'
+
+interface Props extends GalleryPageProps {
+    countryGallery: CountryGallery
+    cityGalleries: CityGallery[]
+}
+
+const { images, currentPhoto, cityId, countryGallery, cityGalleries } = Astro.props
+
+const cityGallery = cityId ? cityGalleries.find((g) => g.cityId === cityId) : undefined
+const gallery = cityGallery ?? countryGallery
+const baseUrl = cityId
+    ? `/travel/${countryGallery.countryId}/photos/${cityId}/`
+    : `/travel/${countryGallery.countryId}/photos/`
+---
+
+<Layout title={gallery.title} keywords={gallery.keywords}>
+    {
+        currentPhoto ? (
+            <PhotoLightbox currentPhoto={currentPhoto} images={images} galleryTitle={gallery.title} baseUrl={baseUrl} />
+        ) : (
+            <main class="gallery-page">
+                <header class="gallery-header">
+                    <h1>{gallery.title}</h1>
+                    <a href={`/travel/${countryGallery.countryId}`} class="back-link">
+                        ← Back to {countryGallery.countryName}
+                    </a>
+                </header>
+
+                <PhotoGrid images={images} baseUrl={baseUrl} />
+            </main>
+        )
+    }
+</Layout>
+
+<style>
+    .gallery-page {
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
+
+    .gallery-header {
+        margin-bottom: 2rem;
+    }
+
+    .gallery-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .back-link {
+        color: rgba(var(--foreground-rgb), 0.6);
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.2s;
+    }
+
+    .back-link:hover {
+        color: rgb(var(--foreground-rgb));
+    }
+</style>

@@ -9,22 +9,6 @@ export interface ImageProps {
     resource_type: CloundinaryResource['resource_type']
 }
 
-export type PageProps = {
-    images: ImageProps[]
-    currentPhoto: ImageProps | null
-}
-
-export interface SharedModalProps {
-    index: number
-    images?: ImageProps[]
-    currentPhoto?: ImageProps
-    changePhotoId: (newVal: number) => void
-    closeModal: () => void
-    navigation: boolean
-    direction?: number
-    gallery: CountryGallery | CityGallery
-}
-
 export type CloundinaryResource = {
     asset_id: string
     public_id: string

@@ -9,17 +9,6 @@ import Layout from '../../components/blog/Layout.astro'
 import Meta from '../../components/blog/Meta'
 import config from '../../config.json'
 
-// 1. Generate a new path for every collection entry
-export async function getStaticPaths() {
-    const posts = await getCollection('blog')
-
-    return posts.map((post) => ({
-        params: { id: post.id },
-        props: { post },
-    }))
-}
-
-// 2. For the template, you can get the entry directly from the prop
 const { blogDescription, blogUrl } = config
 const allPosts = await getCollection('blog', ({ data }) => {
     return import.meta.env.DEV || !data.draft
@@ -30,8 +19,7 @@ const morePosts = sortedPosts.slice(1)
 ---
 
 <Layout>
-    <head>
-        <title>{blogDescription}</title>
+    <Fragment slot="head">
         <Meta
             siteName={blogDescription}
             image={`${blogUrl}/cover.jpg`}
@@ -39,7 +27,7 @@ const morePosts = sortedPosts.slice(1)
             title={blogDescription}
             url={blogUrl}
         />
-    </head>
+    </Fragment>
     <Container>
         <Intro />
         {
@@ -48,7 +36,7 @@ const morePosts = sortedPosts.slice(1)
                     title={heroPost.data.title}
                     coverImage={heroPost.data.coverImage}
                     date={heroPost.data.date.toISOString()}
-                    slug={String(heroPost.data.id)}
+                    slug={heroPost.id}
                     excerpt={heroPost.data.excerpt ?? ''}
                 />
             ) : null

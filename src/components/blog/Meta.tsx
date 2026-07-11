@@ -23,7 +23,7 @@ export default function Meta({
             {/* <link rel="icon" type="image/png" sizes="16x16" href={`${homepage}/favicon/favicon-16x16.png`} /> */}
             {/* <link rel="manifest" href={`${homepage}/favicon/site.webmanifest`} /> */}
             {/* <link rel="mask-icon" href={`${homepage}/favicon/safari-pinned-tab.svg`} color="#000000" /> */}
-            <link rel="shortcut icon" href={`${homepage}"/favicon.png`} />
+            <link rel="shortcut icon" href={`${homepage}/favicon.png`} />
             <meta name="msapplication-TileColor" content="#000000" />
             {/* <meta name="msapplication-config" content={`${homepage}/favicon/browserconfig.xml`} /> */}
             <meta name="theme-color" content="#222" />
