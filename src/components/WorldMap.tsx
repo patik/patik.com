@@ -21,18 +21,15 @@ const MY_MAX_WIDTH = 960
 const getMapHeight = (width: number) => (width * GOOGLE_DEFAULT_HEIGHT) / GOOGLE_DEFAULT_WIDTH
 
 export default function WorldMap({ className = '' }: { className?: string }) {
-    console.log('Rendering WorldMap')
     const [mapWidth, setMapWidth] = useState(GOOGLE_DEFAULT_WIDTH)
-    const [mapHeight, setMapHeight] = useState(GOOGLE_DEFAULT_HEIGHT)
     const [isDarkMode, setIsDarkMode] = useState(true)
+    const mapHeight = getMapHeight(mapWidth)
 
     useEffect(() => {
         setIsDarkMode(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
 
         const checkWidth = () => {
-            const newWidth = Math.min(MY_MAX_WIDTH, window.innerWidth * 0.9)
-            setMapWidth(newWidth)
-            setMapHeight(getMapHeight(newWidth))
+            setMapWidth(Math.min(MY_MAX_WIDTH, window.innerWidth * 0.9))
         }
 
         checkWidth()

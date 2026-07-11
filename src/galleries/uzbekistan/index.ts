@@ -1,4 +1,9 @@
 import type { CountryGallery } from '../../photos/utils/types'
+import bukhara from './bukhara'
+import khiva from './khiva'
+import samarkand from './samarkand'
+
+export const cityGalleries = [khiva, samarkand, bukhara]
 
 const countryGallery: CountryGallery = {
     countryId: 'uzbekistan',
