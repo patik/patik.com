@@ -15,7 +15,7 @@ This is an [Astro](https://astro.build/) project deployed on [Netlify](https://w
 | `pnpm build`              | Build your production site to `./dist/`                 |
 | `pnpm start`              | Preview your build locally, before deploying            |
 | `pnpm start:prod`         | Preview your production build locally, before deploying |
-| `pnpm lint`               | Run ESLint, TypeScript check, and find unused Sass vars |
+| `pnpm lint`               | Run Oxlint, TypeScript check, and find unused Sass vars |
 | `pnpm astro ...`          | Run CLI commands like `astro add`, `astro check`        |
 | `pnpm astro -- --help`    | Get help using the Astro CLI                            |
 | `pnpm clear-fetch-cache`  | Clear the `tmp/` fetch cache directory                  |

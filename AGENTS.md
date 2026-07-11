@@ -16,7 +16,7 @@ This is an Astro-based personal website with blog and photo galleries, deployed 
 
 - `pnpm dev` — Start dev server
 - `pnpm build` — Production build
-- `pnpm lint` — Run ESLint, TypeScript check, and unused Sass variable finder
+- `pnpm lint` — Run Oxlint, TypeScript check, and unused Sass variable finder
 
 ### Path aliases
 
@@ -49,10 +49,6 @@ Use `@src/` for imports from the `src/` directory (configured in `astro.config.m
 - Make use of native CSS nesting.
 - When a CSS module file is imported by a TSX file, import it as `css`.
 
-## Tests
-
-- Tests should be written in the same directory as the component being tested, in a file with the same name but with `.test.tsx` or `.test.ts` extension.
-
 ## React
 
 - Use functional components with hooks instead of class components.
@@ -75,6 +71,7 @@ Use `@src/` for imports from the `src/` directory (configured in `astro.config.m
 
 ## Tests
 
+- Tests should be written in the same directory as the component being tested, in a file with the same name but with `.test.tsx` or `.test.ts` extension.
 - Follow the "arrange, act, assert" pattern. Separate each step with a blank line.
 - Use clear naming to make the test self-documenting.
 - Write a separate test case for each code branch for the sake of cyclomatic complexity.
