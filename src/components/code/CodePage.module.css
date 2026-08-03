@@ -274,7 +274,7 @@ a.mediaLink {
 }
 
 .featuredFacts {
-    & h4 {
+    & .factLabel {
         font-family: var(--font-fixed);
         font-size: 0.72rem;
         letter-spacing: 0.16em;
