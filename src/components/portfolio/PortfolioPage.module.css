@@ -54,7 +54,7 @@
 
 .prose {
     & p {
-        font-size: 1.15rem;
+        font-size: 1.2rem;
         line-height: 1.65;
         margin-bottom: 0.75rem;
 
@@ -178,7 +178,7 @@
 }
 
 .sectionNote {
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     font-style: italic;
     line-height: 1.6;
     color: var(--muted);
@@ -309,8 +309,8 @@ a.mediaLink {
     padding: 0;
 
     & li {
-        font-size: 1.05rem;
-        line-height: 1.55;
+        font-size: 1.2rem;
+        line-height: 1.6;
         padding-left: 1.4rem;
         position: relative;
         margin-bottom: 0.8rem;
@@ -384,11 +384,6 @@ a.mediaLink {
 
     & .prose {
         margin-top: 0.75rem;
-
-        & p {
-            font-size: 1.08rem;
-            line-height: 1.6;
-        }
     }
 }
 
@@ -433,8 +428,6 @@ a.mediaLink {
         margin-top: 0.5rem;
 
         & p {
-            font-size: 1.05rem;
-            line-height: 1.6;
             margin-bottom: 0.5rem;
         }
     }
@@ -485,7 +478,7 @@ a.mediaLink {
 
 .outro {
     margin-top: 3.5rem;
-    font-size: 1.05rem;
+    font-size: 1.2rem;
     line-height: 1.6;
     color: var(--muted);
 
