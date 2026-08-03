@@ -6,7 +6,7 @@ import imgKindjsIcon from '@src/images/icons/kindjs/ios/AppIcon@3x.png'
 import imgWithinViewportIcon from '@src/images/icons/within-viewport/ios/AppIcon@3x.png'
 import imgDofApp from '@src/images/portfolio/dof-app.webp'
 import imgDovetailHero from '@src/images/portfolio/dovetail-hero.webp'
-import css from './CodePage.module.css'
+import css from './PortfolioPage.module.css'
 ---
 
 <div class={css.portfolio}>
@@ -131,9 +131,9 @@ import css from './CodePage.module.css'
                             preload="metadata"
                             width="1200"
                             height="976"
-                            poster="/code/media/git-prune-branches-poster.webp"
+                            poster="/portfolio/media/git-prune-branches-poster.webp"
                             aria-label="Screen recording of git-prune-branches selecting stale branches and previewing the git commands">
-                            <source src="/code/media/git-prune-branches.mp4" type="video/mp4" />
+                            <source src="/portfolio/media/git-prune-branches.mp4" type="video/mp4" />
                         </video>
                     </div>
                 </div>
@@ -174,9 +174,9 @@ import css from './CodePage.module.css'
                             preload="metadata"
                             width="1200"
                             height="1008"
-                            poster="/code/media/inquirer-form-prompt-poster.webp"
+                            poster="/portfolio/media/inquirer-form-prompt-poster.webp"
                             aria-label="Screen recording of inquirer-form-prompt filling text, radio, and checkbox fields in one terminal form">
-                            <source src="/code/media/inquirer-form-prompt.mp4" type="video/mp4" />
+                            <source src="/portfolio/media/inquirer-form-prompt.mp4" type="video/mp4" />
                         </video>
                     </div>
                 </div>
@@ -215,9 +215,9 @@ import css from './CodePage.module.css'
                             preload="metadata"
                             width="1200"
                             height="864"
-                            poster="/code/media/inquirer-grouped-checkbox-poster.webp"
+                            poster="/portfolio/media/inquirer-grouped-checkbox-poster.webp"
                             aria-label="Screen recording of inquirer-grouped-checkbox searching and selecting choices across groups">
-                            <source src="/code/media/inquirer-grouped-checkbox.mp4" type="video/mp4" />
+                            <source src="/portfolio/media/inquirer-grouped-checkbox.mp4" type="video/mp4" />
                         </video>
                     </div>
                 </div>
@@ -255,9 +255,9 @@ import css from './CodePage.module.css'
                             preload="metadata"
                             width="812"
                             height="428"
-                            poster="/code/media/inquirer-select-with-state-poster.webp"
+                            poster="/portfolio/media/inquirer-select-with-state-poster.webp"
                             aria-label="Screen recording of inquirer-select-with-state updating a status banner above a select prompt">
-                            <source src="/code/media/inquirer-select-with-state.mp4" type="video/mp4" />
+                            <source src="/portfolio/media/inquirer-select-with-state.mp4" type="video/mp4" />
                         </video>
                     </div>
                 </div>
@@ -442,6 +442,81 @@ import css from './CodePage.module.css'
         <div class={css.sectionHead}>
             <h2>
                 <span class={css.sectionNumber} aria-hidden="true">05</span>
+                Contributions
+            </h2>
+            <p class={css.sectionNote}>
+                Notable work from my public-sector years, built with the New York State Office of Information Technology
+                Services.
+            </p>
+        </div>
+
+        <ul class={css.listEntries}>
+            <li class={css.listEntry}>
+                <div class:list={[css.listIcon, css.sigil]} aria-hidden="true">NY</div>
+                <div>
+                    <h3>Core UI &amp; the Excelsior Web Framework</h3>
+                    <div class:list={[css.entryMeta, css.mono]}>
+                        <span>New York State ITS</span>
+                    </div>
+                    <div class={css.prose}>
+                        <p>
+                            Core contributor to Excelsior, the framework behind dozens of New York State sites, and to
+                            Core UI, its component-based successor designed for web apps.
+                        </p>
+                    </div>
+                    <div class={css.linkRow}>
+                        <a href="https://github.com/ny/coreui">Core UI <span aria-hidden="true">↗</span></a>
+                        <a href="https://github.com/ny/excelsior">Excelsior <span aria-hidden="true">↗</span></a>
+                    </div>
+                </div>
+            </li>
+
+            <li class={css.listEntry}>
+                <div class:list={[css.listIcon, css.sigil]} aria-hidden="true">NY</div>
+                <div>
+                    <h3>DMV Registration Renewal</h3>
+                    <div class:list={[css.entryMeta, css.mono]}>
+                        <span>New York State DMV</span>
+                    </div>
+                    <div class={css.prose}>
+                        <p>
+                            A responsive redesign of one of the state’s highest-profile transactions on the Department
+                            of Motor Vehicles’ site.
+                        </p>
+                    </div>
+                    <div class={css.linkRow}>
+                        <a href="https://transact.dmv.ny.gov/RegistrationRenew/">Registration Renewal <span aria-hidden="true">↗</span></a>
+                    </div>
+                </div>
+            </li>
+
+            <li class={css.listEntry}>
+                <div class:list={[css.listIcon, css.sigil]} aria-hidden="true">NY</div>
+                <div>
+                    <h3>Talks &amp; code sprints</h3>
+                    <div class:list={[css.entryMeta, css.mono]}>
+                        <span>NYS DevCon 2013</span>
+                    </div>
+                    <div class={css.prose}>
+                        <p>
+                            Go Responsive, a showpiece from a responsive-web-design code sprint, and an Ignite talk at
+                            NYS DevCon 2013.
+                        </p>
+                    </div>
+                    <div class={css.linkRow}>
+                        <a href="https://github.com/ny/go-responsive">Go Responsive <span aria-hidden="true">↗</span></a>
+                        <a href="https://github.com/ny/2013-03-RWD-code-sprint">Code sprint <span aria-hidden="true">↗</span></a>
+                        <a href="https://igniteshow.com/">Ignite <span aria-hidden="true">↗</span></a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </section>
+
+    <section class={css.section}>
+        <div class={css.sectionHead}>
+            <h2>
+                <span class={css.sectionNumber} aria-hidden="true">06</span>
                 From an earlier era
             </h2>
             <p class={css.sectionNote}>
@@ -496,7 +571,8 @@ import css from './CodePage.module.css'
     <p class={css.outro}>
         There’s more — experiments, forks, and abandoned ideas included — at
         <Space />
-        <a href="https://github.com/patik">github.com/patik <span aria-hidden="true">↗</span></a>.
+        <a href="https://github.com/patik">github.com/patik <span aria-hidden="true">↗</span></a>, and occasional
+        writing on <a href="/blog/">the blog</a>.
     </p>
 </div>
 

@@ -12,6 +12,12 @@
     force = false
 
 [[redirects]]
+    from = "/code/"
+    to = "/portfolio/"
+    status = 301
+    force = false
+
+[[redirects]]
     from = "/travel/paris/"
     to = "/travel/france/"
     status = 301

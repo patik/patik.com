@@ -277,6 +277,7 @@ a.mediaLink {
     & .factLabel {
         font-family: var(--font-fixed);
         font-size: 0.72rem;
+        line-height: 1.4;
         letter-spacing: 0.16em;
         text-transform: uppercase;
         color: var(--muted);

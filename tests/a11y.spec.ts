@@ -9,7 +9,6 @@ const knownViolations: Record<string, string[]> = {
     // TODO: Fix link-in-text-block — link color #75bcf9 not distinguishable from white body text
     '/': ['link-in-text-block'],
     '/about/': ['link-in-text-block'],
-    '/portfolio/': ['link-in-text-block'],
     '/travel/italy/': ['link-in-text-block'],
     '/travel/uzbekistan/': ['link-in-text-block'],
     // TODO: Fix color-contrast — <time> element uses #666 which is 2.77:1 on dark #222 bg
