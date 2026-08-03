@@ -1,11 +1,11 @@
 ---
-import { Image } from 'astro:assets'
 import Space from '@src/components/Space'
 import imgConsoleLogIcon from '@src/images/icons/console-log/ios/AppIcon@3x.png'
 import imgKindjsIcon from '@src/images/icons/kindjs/ios/AppIcon@3x.png'
 import imgWithinViewportIcon from '@src/images/icons/within-viewport/ios/AppIcon@3x.png'
 import imgDofApp from '@src/images/portfolio/dof-app.webp'
 import imgDovetailHero from '@src/images/portfolio/dovetail-hero.webp'
+import { Image } from 'astro:assets'
 import css from './PortfolioPage.module.css'
 ---
 
@@ -15,8 +15,8 @@ import css from './PortfolioPage.module.css'
         <h1>Code &amp; Projects</h1>
         <p class={css.deck}>
             I’m a Staff frontend engineer at InterNations, and I’ve been building for the web since 2000. This page
-            collects the personal work: a travel-planning product, command-line tools, and open-source libraries — some
-            of them maintained for well over a decade.
+            collects the personal work: a travel-planning product, command-line tools, and open-source libraries—some of
+            them maintained for well over a decade.
         </p>
         <div class:list={[css.headerStats, css.mono]}>
             <span>50+ repositories</span>
@@ -42,7 +42,7 @@ import css from './PortfolioPage.module.css'
                 </span>
                 <Image
                     src={imgDovetailHero}
-                    alt="The dovetail.travel landing page: “Plan every day of your trip — with the details and control you want.”"
+                    alt="The dovetail.travel landing page: “Plan every day of your trip—with the details and control you want.”"
                     widths={[800, 1200, 1900]}
                     sizes="(max-width: 1020px) 100vw, 950px"
                     loading="eager"
@@ -53,7 +53,7 @@ import css from './PortfolioPage.module.css'
         <div class={css.featuredBody}>
             <div class={css.prose}>
                 <p>
-                    Dovetail is a complete product — design, engineering, and operations — built and run solo. It’s a
+                    Dovetail is a complete product—design, engineering, and operations—built and run solo. It’s a
                     trip-planning calendar for hands-on travellers: day-by-day logistics with rich entry types, a trip
                     map, a wishlist for unscheduled ideas, and print-friendly itineraries. It runs on the web and as
                     native iOS and Android apps, with subscriptions handled across Stripe and the app stores.
@@ -61,26 +61,26 @@ import css from './PortfolioPage.module.css'
                 <p>The source is closed, but the engineering is the interesting part:</p>
                 <ul class={css.featuredList}>
                     <li>
-                        <strong>Offline-first by design.</strong> Trips live in an IndexedDB cache with a sync queue, so
-                        the app stays fully usable without a connection and reconciles with Supabase when it returns.
+                        <strong>Offline-first by design.</strong> Trips live in an IndexedDB cache with a sync queue, so the
+                        app stays fully usable without a connection and reconciles with Supabase when it returns.
                     </li>
                     <li>
-                        <strong>One TypeScript codebase, three platforms.</strong> React 19 on Vite, wrapped in thin
-                        Capacitor shells that provide native auth, networking, and geolocation.
+                        <strong>One TypeScript codebase, three platforms.</strong> React 19 on Vite, wrapped in thin Capacitor
+                        shells that provide native auth, networking, and geolocation.
                     </li>
                     <li>
-                        <strong>Tested like a team built it.</strong> A Playwright end-to-end suite runs against seeded
-                        IndexedDB fixtures with a fake signed-in user, so CI needs no backend credentials.
+                        <strong>Tested like a team built it.</strong> A Playwright end-to-end suite runs against seeded IndexedDB
+                        fixtures with a fake signed-in user, so CI needs no backend credentials.
                     </li>
                     <li>
-                        <strong>Systematic theming.</strong> A design-token colour system keeps light and dark mode
-                        consistent across web and native.
+                        <strong>Systematic theming.</strong> A design-token colour system keeps light and dark mode consistent
+                        across web and native.
                     </li>
                 </ul>
             </div>
             <div class={css.featuredFacts}>
                 <p class={css.factLabel}>Role</p>
-                <p class={css.factText}>Design, engineering, and operations — solo</p>
+                <p class={css.factText}>Design, engineering, and operations—solo</p>
                 <p class={css.factLabel}>Stack</p>
                 <div class={css.tagRow}>
                     <span class={css.tag}>React 19</span>
@@ -109,7 +109,7 @@ import css from './PortfolioPage.module.css'
                 Command-line tools
             </h2>
             <p class={css.sectionNote}>
-                Developer experience is a feature. Small tools that remove daily friction from the terminal — each one
+                Developer experience is a feature. Small tools that remove daily friction from the terminal—each one
                 built because I kept wanting it.
             </p>
         </div>
@@ -119,8 +119,8 @@ import css from './PortfolioPage.module.css'
                 <div class={css.entryMedia}>
                     <div class={css.frame}>
                         <div class={css.frameBar}>
-                            <span class={css.frameDots} aria-hidden="true"><span></span><span></span><span></span
-                                ></span>
+                            <span class={css.frameDots} aria-hidden="true"><span></span><span></span><span></span></span
+                            >
                             <span class={css.frameTitle}>$ git prune-branches</span>
                         </div>
                         <video
@@ -132,7 +132,8 @@ import css from './PortfolioPage.module.css'
                             width="1200"
                             height="976"
                             poster="/portfolio/media/git-prune-branches-poster.webp"
-                            aria-label="Screen recording of git-prune-branches selecting stale branches and previewing the git commands">
+                            aria-label="Screen recording of git-prune-branches selecting stale branches and previewing the git commands"
+                        >
                             <source src="/portfolio/media/git-prune-branches.mp4" type="video/mp4" />
                         </video>
                     </div>
@@ -145,15 +146,19 @@ import css from './PortfolioPage.module.css'
                     <div class={css.prose}>
                         <p>
                             Answers the eternal question of which local branches are safe to delete. It fetches and
-                            prunes, then sorts branches into three groups — merged and safe (pre-selected), unmerged and
-                            requiring a force-delete (deliberately not), and informational — and shows the exact
+                            prunes, then sorts branches into three groups—merged and safe (pre-selected), unmerged and
+                            requiring a force-delete (deliberately not), and informational—and shows the exact
                             <Space />
                             <code>git</code> commands before running them.
                         </p>
                     </div>
                     <div class={css.linkRow}>
-                        <a href="https://github.com/patik/git-prune-branches">GitHub <span aria-hidden="true">↗</span></a>
-                        <a href="https://www.npmjs.com/package/git-prune-branches">npm <span aria-hidden="true">↗</span></a>
+                        <a href="https://github.com/patik/git-prune-branches"
+                            >GitHub <span aria-hidden="true">↗</span></a
+                        >
+                        <a href="https://www.npmjs.com/package/git-prune-branches"
+                            >npm <span aria-hidden="true">↗</span></a
+                        >
                     </div>
                 </div>
             </div>
@@ -162,8 +167,8 @@ import css from './PortfolioPage.module.css'
                 <div class={css.entryMedia}>
                     <div class={css.frame}>
                         <div class={css.frameBar}>
-                            <span class={css.frameDots} aria-hidden="true"><span></span><span></span><span></span
-                                ></span>
+                            <span class={css.frameDots} aria-hidden="true"><span></span><span></span><span></span></span
+                            >
                             <span class={css.frameTitle}>inquirer-form-prompt</span>
                         </div>
                         <video
@@ -175,7 +180,8 @@ import css from './PortfolioPage.module.css'
                             width="1200"
                             height="1008"
                             poster="/portfolio/media/inquirer-form-prompt-poster.webp"
-                            aria-label="Screen recording of inquirer-form-prompt filling text, radio, and checkbox fields in one terminal form">
+                            aria-label="Screen recording of inquirer-form-prompt filling text, radio, and checkbox fields in one terminal form"
+                        >
                             <source src="/portfolio/media/inquirer-form-prompt.mp4" type="video/mp4" />
                         </video>
                     </div>
@@ -188,13 +194,17 @@ import css from './PortfolioPage.module.css'
                     <div class={css.prose}>
                         <p>
                             A form in the terminal: text inputs, radios, and checkboxes laid out on one screen with
-                            sensible keyboard navigation — for CLIs that would otherwise ask a dozen questions one at a
+                            sensible keyboard navigation—for CLIs that would otherwise ask a dozen questions one at a
                             time.
                         </p>
                     </div>
                     <div class={css.linkRow}>
-                        <a href="https://github.com/patik/inquirer-form-prompt">GitHub <span aria-hidden="true">↗</span></a>
-                        <a href="https://www.npmjs.com/package/inquirer-form-prompt">npm <span aria-hidden="true">↗</span></a>
+                        <a href="https://github.com/patik/inquirer-form-prompt"
+                            >GitHub <span aria-hidden="true">↗</span></a
+                        >
+                        <a href="https://www.npmjs.com/package/inquirer-form-prompt"
+                            >npm <span aria-hidden="true">↗</span></a
+                        >
                     </div>
                 </div>
             </div>
@@ -203,8 +213,8 @@ import css from './PortfolioPage.module.css'
                 <div class={css.entryMedia}>
                     <div class={css.frame}>
                         <div class={css.frameBar}>
-                            <span class={css.frameDots} aria-hidden="true"><span></span><span></span><span></span
-                                ></span>
+                            <span class={css.frameDots} aria-hidden="true"><span></span><span></span><span></span></span
+                            >
                             <span class={css.frameTitle}>inquirer-grouped-checkbox</span>
                         </div>
                         <video
@@ -216,7 +226,8 @@ import css from './PortfolioPage.module.css'
                             width="1200"
                             height="864"
                             poster="/portfolio/media/inquirer-grouped-checkbox-poster.webp"
-                            aria-label="Screen recording of inquirer-grouped-checkbox searching and selecting choices across groups">
+                            aria-label="Screen recording of inquirer-grouped-checkbox searching and selecting choices across groups"
+                        >
                             <source src="/portfolio/media/inquirer-grouped-checkbox.mp4" type="video/mp4" />
                         </video>
                     </div>
@@ -233,8 +244,12 @@ import css from './PortfolioPage.module.css'
                         </p>
                     </div>
                     <div class={css.linkRow}>
-                        <a href="https://github.com/patik/inquirer-grouped-checkbox">GitHub <span aria-hidden="true">↗</span></a>
-                        <a href="https://www.npmjs.com/package/inquirer-grouped-checkbox">npm <span aria-hidden="true">↗</span></a>
+                        <a href="https://github.com/patik/inquirer-grouped-checkbox"
+                            >GitHub <span aria-hidden="true">↗</span></a
+                        >
+                        <a href="https://www.npmjs.com/package/inquirer-grouped-checkbox"
+                            >npm <span aria-hidden="true">↗</span></a
+                        >
                     </div>
                 </div>
             </div>
@@ -243,8 +258,8 @@ import css from './PortfolioPage.module.css'
                 <div class={css.entryMedia}>
                     <div class={css.frame}>
                         <div class={css.frameBar}>
-                            <span class={css.frameDots} aria-hidden="true"><span></span><span></span><span></span
-                                ></span>
+                            <span class={css.frameDots} aria-hidden="true"><span></span><span></span><span></span></span
+                            >
                             <span class={css.frameTitle}>inquirer-select-with-state</span>
                         </div>
                         <video
@@ -256,7 +271,8 @@ import css from './PortfolioPage.module.css'
                             width="812"
                             height="428"
                             poster="/portfolio/media/inquirer-select-with-state-poster.webp"
-                            aria-label="Screen recording of inquirer-select-with-state updating a status banner above a select prompt">
+                            aria-label="Screen recording of inquirer-select-with-state updating a status banner above a select prompt"
+                        >
                             <source src="/portfolio/media/inquirer-select-with-state.mp4" type="video/mp4" />
                         </video>
                     </div>
@@ -269,12 +285,16 @@ import css from './PortfolioPage.module.css'
                     <div class={css.prose}>
                         <p>
                             Inquirer’s select prompt with one addition: a live banner above the choices. Kick off async
-                            work — a directory size, an API call — and stream its progress while the user decides.
+                            work—a directory size, an API call—and stream its progress while the user decides.
                         </p>
                     </div>
                     <div class={css.linkRow}>
-                        <a href="https://github.com/patik/inquirer-select-with-state">GitHub <span aria-hidden="true">↗</span></a>
-                        <a href="https://www.npmjs.com/package/inquirer-select-with-state">npm <span aria-hidden="true">↗</span></a>
+                        <a href="https://github.com/patik/inquirer-select-with-state"
+                            >GitHub <span aria-hidden="true">↗</span></a
+                        >
+                        <a href="https://www.npmjs.com/package/inquirer-select-with-state"
+                            >npm <span aria-hidden="true">↗</span></a
+                        >
                     </div>
                 </div>
             </div>
@@ -295,8 +315,9 @@ import css from './PortfolioPage.module.css'
                     <a class={css.mediaLink} href="/dof/">
                         <span class={css.frame}>
                             <span class={css.frameBar}>
-                                <span class={css.frameDots} aria-hidden="true"><span></span><span></span><span></span
-                                    ></span>
+                                <span class={css.frameDots} aria-hidden="true"
+                                    ><span></span><span></span><span></span></span
+                                >
                                 <span class={css.frameTitle}>patik.com/dof</span>
                             </span>
                             <Image
@@ -358,7 +379,7 @@ import css from './PortfolioPage.module.css'
             </h2>
             <p class={css.sectionNote}>
                 Long-term maintenance is the point. These have been carried across several eras of the JavaScript
-                ecosystem — script tags, jQuery, AMD, and now typed ES modules.
+                ecosystem—script tags, jQuery, AMD, and now typed ES modules.
             </p>
         </div>
 
@@ -375,8 +396,8 @@ import css from './PortfolioPage.module.css'
                     </div>
                     <div class={css.prose}>
                         <p>
-                            Determines whether an element is entirely inside the viewport — or any scrollable container
-                            — with configurable thresholds per side. Began as a jQuery plugin, rewritten over the years
+                            Determines whether an element is entirely inside the viewport—or any scrollable container
+                            —with configurable thresholds per side. Began as a jQuery plugin, rewritten over the years
                             into a dependency-free TypeScript package, with the API kept steady the whole way.
                         </p>
                     </div>
@@ -424,9 +445,8 @@ import css from './PortfolioPage.module.css'
                     </div>
                     <div class={css.prose}>
                         <p>
-                            Run a shell command, get its <code>stdout</code> as a string — a tiny promise-based wrapper
-                            around Node’s <code>child_process</code>, with an <code>execFile</code> variant for
-                            untrusted input.
+                            Run a shell command, get its <code>stdout</code> as a string—a tiny promise-based wrapper around
+                            Node’s <code>child_process</code>, with an <code>execFile</code> variant for untrusted input.
                         </p>
                     </div>
                     <div class={css.linkRow}>
@@ -485,7 +505,9 @@ import css from './PortfolioPage.module.css'
                         </p>
                     </div>
                     <div class={css.linkRow}>
-                        <a href="https://transact.dmv.ny.gov/RegistrationRenew/">Registration Renewal <span aria-hidden="true">↗</span></a>
+                        <a href="https://transact.dmv.ny.gov/RegistrationRenew/"
+                            >Registration Renewal <span aria-hidden="true">↗</span></a
+                        >
                     </div>
                 </div>
             </li>
@@ -504,8 +526,11 @@ import css from './PortfolioPage.module.css'
                         </p>
                     </div>
                     <div class={css.linkRow}>
-                        <a href="https://github.com/ny/go-responsive">Go Responsive <span aria-hidden="true">↗</span></a>
-                        <a href="https://github.com/ny/2013-03-RWD-code-sprint">Code sprint <span aria-hidden="true">↗</span></a>
+                        <a href="https://github.com/ny/go-responsive">Go Responsive <span aria-hidden="true">↗</span></a
+                        >
+                        <a href="https://github.com/ny/2013-03-RWD-code-sprint"
+                            >Code sprint <span aria-hidden="true">↗</span></a
+                        >
                         <a href="https://igniteshow.com/">Ignite <span aria-hidden="true">↗</span></a>
                     </div>
                 </div>
@@ -538,14 +563,18 @@ import css from './PortfolioPage.module.css'
                     </div>
                     <div class={css.prose}>
                         <p>
-                            Made <code>console.log</code> safe and consistent across the browsers of the early 2010s —
-                            including the ones where the console only existed while the developer tools were open.
-                            Obsolete in the best way: the platform caught up.
+                            Made <code>console.log</code> safe and consistent across the browsers of the early 2010s — including
+                            the ones where the console only existed while the developer tools were open. Obsolete in the best
+                            way: the platform caught up.
                         </p>
                     </div>
                     <div class={css.linkRow}>
-                        <a href="https://patik.github.io/console.log-wrapper/">Docs &amp; demo <span aria-hidden="true">↗</span></a>
-                        <a href="https://github.com/patik/console.log-wrapper">GitHub <span aria-hidden="true">↗</span></a>
+                        <a href="https://patik.github.io/console.log-wrapper/"
+                            >Docs &amp; demo <span aria-hidden="true">↗</span></a
+                        >
+                        <a href="https://github.com/patik/console.log-wrapper"
+                            >GitHub <span aria-hidden="true">↗</span></a
+                        >
                     </div>
                 </div>
             </li>
@@ -558,7 +587,10 @@ import css from './PortfolioPage.module.css'
                         <span>2008 – 2014</span>
                     </div>
                     <div class={css.prose}>
-                        <p>Greasemonkey scripts and small browser extensions, from the era when you fixed websites yourself.</p>
+                        <p>
+                            Greasemonkey scripts and small browser extensions, from the era when you fixed websites
+                            yourself.
+                        </p>
                     </div>
                     <div class={css.linkRow}>
                         <a href="/code/user-scripts/">Browse the scripts</a>
@@ -569,7 +601,7 @@ import css from './PortfolioPage.module.css'
     </section>
 
     <p class={css.outro}>
-        There’s more — experiments, forks, and abandoned ideas included — at
+        There’s more—experiments, forks, and abandoned ideas included—at
         <Space />
         <a href="https://github.com/patik">github.com/patik <span aria-hidden="true">↗</span></a>, and occasional
         writing on <a href="/blog/">the blog</a>.
