@@ -9,6 +9,7 @@ export default defineConfig({
     // Fail the build in CI if test.only is accidentally left in
     forbidOnly: !!process.env.CI,
     retries: process.env.CI ? 1 : 0,
+    retryStrategy: 'isolated',
     reporter: [['html', { open: 'never' }]],
     use: {
         baseURL: 'http://localhost:4322',
