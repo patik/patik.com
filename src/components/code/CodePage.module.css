@@ -247,6 +247,15 @@ a.mediaLink {
     &:focus {
         transform: translateY(-2px);
     }
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+
+        &:hover,
+        &:focus {
+            transform: none;
+        }
+    }
 }
 
 /* **************************************************************** */
