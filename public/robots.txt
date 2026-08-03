@@ -1,6 +1,5 @@
 User-agent: *
 Disallow: /stuff/
-Disallow: /portfolio/
 Disallow: /n/
 Disallow: /dtf/
 Disallow: /work/

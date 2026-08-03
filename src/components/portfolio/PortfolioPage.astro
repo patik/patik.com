@@ -1,0 +1,649 @@
+---
+import Space from '@src/components/Space'
+import imgConsoleLogIcon from '@src/images/icons/console-log/ios/AppIcon@3x.png'
+import imgKindjsIcon from '@src/images/icons/kindjs/ios/AppIcon@3x.png'
+import imgWithinViewportIcon from '@src/images/icons/within-viewport/ios/AppIcon@3x.png'
+import imgDofApp from '@src/images/portfolio/dof-app.webp'
+import imgDovetailHero from '@src/images/portfolio/dovetail-hero.webp'
+import { Image } from 'astro:assets'
+import css from './PortfolioPage.module.css'
+---
+
+<div class={css.portfolio}>
+    <header class={css.header}>
+        <p class={css.kicker}>Portfolio · 2000 – present</p>
+        <h1>Code &amp; Projects</h1>
+        <p class={css.deck}>
+            I’m a Staff frontend engineer at InterNations, and I’ve been building for the web since 2000. This page
+            collects the personal work: a travel-planning product, command-line tools, and open-source libraries—some of
+            them maintained for well over a decade.
+        </p>
+        <div class:list={[css.headerStats, css.mono]}>
+            <span>50+ repositories</span>
+            <span>~700 stars</span>
+            <span>Arctic Code Vault contributor</span>
+            <a href="https://github.com/patik">github.com/patik <span aria-hidden="true">↗</span></a>
+        </div>
+    </header>
+
+    <section class={css.section}>
+        <div class={css.sectionHead}>
+            <h2>
+                <span class={css.sectionNumber} aria-hidden="true">01 · Featured</span>
+                Dovetail
+            </h2>
+        </div>
+
+        <a class={css.mediaLink} href="https://dovetail.travel">
+            <span class={css.frame}>
+                <span class={css.frameBar}>
+                    <span class={css.frameDots} aria-hidden="true"><span></span><span></span><span></span></span>
+                    <span class={css.frameTitle}>dovetail.travel</span>
+                </span>
+                <Image
+                    src={imgDovetailHero}
+                    alt="The dovetail.travel landing page: “Plan every day of your trip—with the details and control you want.”"
+                    widths={[800, 1200, 1900]}
+                    sizes="(max-width: 1020px) 100vw, 950px"
+                    loading="eager"
+                />
+            </span>
+        </a>
+
+        <div class={css.featuredBody}>
+            <div class={css.prose}>
+                <p>
+                    Dovetail is a complete product—design, engineering, and operations—built and run solo. It’s a
+                    trip-planning calendar for hands-on travellers: day-by-day logistics with rich entry types, a trip
+                    map, a wishlist for unscheduled ideas, and print-friendly itineraries. It runs on the web and as
+                    native iOS and Android apps, with subscriptions handled across Stripe and the app stores.
+                </p>
+                <p>The source is closed, but the engineering is the interesting part:</p>
+                <ul class={css.featuredList}>
+                    <li>
+                        <strong>Offline-first by design.</strong> Trips live in an IndexedDB cache with a sync queue, so the
+                        app stays fully usable without a connection and reconciles with Supabase when it returns.
+                    </li>
+                    <li>
+                        <strong>One TypeScript codebase, three platforms.</strong> React 19 on Vite, wrapped in thin Capacitor
+                        shells that provide native auth, networking, and geolocation.
+                    </li>
+                    <li>
+                        <strong>Tested like a team built it.</strong> A Playwright end-to-end suite runs against seeded IndexedDB
+                        fixtures with a fake signed-in user, so CI needs no backend credentials.
+                    </li>
+                    <li>
+                        <strong>Systematic theming.</strong> A design-token colour system keeps light and dark mode consistent
+                        across web and native.
+                    </li>
+                </ul>
+            </div>
+            <div class={css.featuredFacts}>
+                <p class={css.factLabel}>Role</p>
+                <p class={css.factText}>Design, engineering, and operations—solo</p>
+                <p class={css.factLabel}>Stack</p>
+                <div class={css.tagRow}>
+                    <span class={css.tag}>React 19</span>
+                    <span class={css.tag}>TypeScript</span>
+                    <span class={css.tag}>Vite</span>
+                    <span class={css.tag}>TanStack Query</span>
+                    <span class={css.tag}>Tailwind CSS 4</span>
+                    <span class={css.tag}>Supabase</span>
+                    <span class={css.tag}>IndexedDB</span>
+                    <span class={css.tag}>Mapbox GL</span>
+                    <span class={css.tag}>Capacitor</span>
+                    <span class={css.tag}>Playwright</span>
+                </div>
+                <p class={css.factLabel}>Links</p>
+                <div class={css.linkRow}>
+                    <a href="https://dovetail.travel">dovetail.travel <span aria-hidden="true">↗</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class={css.section}>
+        <div class={css.sectionHead}>
+            <h2>
+                <span class={css.sectionNumber} aria-hidden="true">02</span>
+                Command-line tools
+            </h2>
+            <p class={css.sectionNote}>
+                Developer experience is a feature. Small tools that remove daily friction from the terminal—each one
+                built because I kept wanting it.
+            </p>
+        </div>
+
+        <div class={css.entries}>
+            <div class={css.entry}>
+                <div class={css.entryMedia}>
+                    <div class={css.frame}>
+                        <div class={css.frameBar}>
+                            <span class={css.frameDots} aria-hidden="true"><span></span><span></span><span></span></span
+                            >
+                            <span class={css.frameTitle}>$ git prune-branches</span>
+                        </div>
+                        <video
+                            data-demo
+                            controls
+                            muted
+                            loop
+                            playsinline
+                            preload="metadata"
+                            width="1200"
+                            height="976"
+                            poster="/portfolio/media/git-prune-branches-poster.webp"
+                            aria-label="Screen recording of git-prune-branches selecting stale branches and previewing the git commands"
+                        >
+                            <source src="/portfolio/media/git-prune-branches.mp4" type="video/mp4" />
+                        </video>
+                    </div>
+                </div>
+                <div class={css.entryText}>
+                    <h3>git-prune-branches</h3>
+                    <div class:list={[css.entryMeta, css.mono]}>
+                        <span>2025</span>
+                    </div>
+                    <div class={css.prose}>
+                        <p>
+                            Answers the eternal question of which local branches are safe to delete. It fetches and
+                            prunes, then sorts branches into three groups—merged and safe (pre-selected), unmerged and
+                            requiring a force-delete (deliberately not), and informational—and shows the exact
+                            <Space />
+                            <code>git</code> commands before running them.
+                        </p>
+                    </div>
+                    <div class={css.linkRow}>
+                        <a href="https://github.com/patik/git-prune-branches"
+                            >GitHub <span aria-hidden="true">↗</span></a
+                        >
+                        <a href="https://www.npmjs.com/package/git-prune-branches"
+                            >npm <span aria-hidden="true">↗</span></a
+                        >
+                    </div>
+                </div>
+            </div>
+
+            <div class={css.entry}>
+                <div class={css.entryMedia}>
+                    <div class={css.frame}>
+                        <div class={css.frameBar}>
+                            <span class={css.frameDots} aria-hidden="true"><span></span><span></span><span></span></span
+                            >
+                            <span class={css.frameTitle}>inquirer-form-prompt</span>
+                        </div>
+                        <video
+                            data-demo
+                            controls
+                            muted
+                            loop
+                            playsinline
+                            preload="metadata"
+                            width="1200"
+                            height="1008"
+                            poster="/portfolio/media/inquirer-form-prompt-poster.webp"
+                            aria-label="Screen recording of inquirer-form-prompt filling text, radio, and checkbox fields in one terminal form"
+                        >
+                            <source src="/portfolio/media/inquirer-form-prompt.mp4" type="video/mp4" />
+                        </video>
+                    </div>
+                </div>
+                <div class={css.entryText}>
+                    <h3>inquirer-form-prompt</h3>
+                    <div class:list={[css.entryMeta, css.mono]}>
+                        <span>2025</span>
+                    </div>
+                    <div class={css.prose}>
+                        <p>
+                            A form in the terminal: text inputs, radios, and checkboxes laid out on one screen with
+                            sensible keyboard navigation—for CLIs that would otherwise ask a dozen questions one at a
+                            time.
+                        </p>
+                    </div>
+                    <div class={css.linkRow}>
+                        <a href="https://github.com/patik/inquirer-form-prompt"
+                            >GitHub <span aria-hidden="true">↗</span></a
+                        >
+                        <a href="https://www.npmjs.com/package/inquirer-form-prompt"
+                            >npm <span aria-hidden="true">↗</span></a
+                        >
+                    </div>
+                </div>
+            </div>
+
+            <div class={css.entry}>
+                <div class={css.entryMedia}>
+                    <div class={css.frame}>
+                        <div class={css.frameBar}>
+                            <span class={css.frameDots} aria-hidden="true"><span></span><span></span><span></span></span
+                            >
+                            <span class={css.frameTitle}>inquirer-grouped-checkbox</span>
+                        </div>
+                        <video
+                            data-demo
+                            controls
+                            muted
+                            loop
+                            playsinline
+                            preload="metadata"
+                            width="1200"
+                            height="864"
+                            poster="/portfolio/media/inquirer-grouped-checkbox-poster.webp"
+                            aria-label="Screen recording of inquirer-grouped-checkbox searching and selecting choices across groups"
+                        >
+                            <source src="/portfolio/media/inquirer-grouped-checkbox.mp4" type="video/mp4" />
+                        </video>
+                    </div>
+                </div>
+                <div class={css.entryText}>
+                    <h3>inquirer-grouped-checkbox</h3>
+                    <div class:list={[css.entryMeta, css.mono]}>
+                        <span>2025</span>
+                    </div>
+                    <div class={css.prose}>
+                        <p>
+                            A checkbox prompt for long, structured lists: choices are grouped under selectable headers,
+                            filterable in real time, with per-group counts and select-all / select-none controls.
+                        </p>
+                    </div>
+                    <div class={css.linkRow}>
+                        <a href="https://github.com/patik/inquirer-grouped-checkbox"
+                            >GitHub <span aria-hidden="true">↗</span></a
+                        >
+                        <a href="https://www.npmjs.com/package/inquirer-grouped-checkbox"
+                            >npm <span aria-hidden="true">↗</span></a
+                        >
+                    </div>
+                </div>
+            </div>
+
+            <div class={css.entry}>
+                <div class={css.entryMedia}>
+                    <div class={css.frame}>
+                        <div class={css.frameBar}>
+                            <span class={css.frameDots} aria-hidden="true"><span></span><span></span><span></span></span
+                            >
+                            <span class={css.frameTitle}>inquirer-select-with-state</span>
+                        </div>
+                        <video
+                            data-demo
+                            controls
+                            muted
+                            loop
+                            playsinline
+                            preload="metadata"
+                            width="812"
+                            height="428"
+                            poster="/portfolio/media/inquirer-select-with-state-poster.webp"
+                            aria-label="Screen recording of inquirer-select-with-state updating a status banner above a select prompt"
+                        >
+                            <source src="/portfolio/media/inquirer-select-with-state.mp4" type="video/mp4" />
+                        </video>
+                    </div>
+                </div>
+                <div class={css.entryText}>
+                    <h3>inquirer-select-with-state</h3>
+                    <div class:list={[css.entryMeta, css.mono]}>
+                        <span>2025</span>
+                    </div>
+                    <div class={css.prose}>
+                        <p>
+                            Inquirer’s select prompt with one addition: a live banner above the choices. Kick off async
+                            work—a directory size, an API call—and stream its progress while the user decides.
+                        </p>
+                    </div>
+                    <div class={css.linkRow}>
+                        <a href="https://github.com/patik/inquirer-select-with-state"
+                            >GitHub <span aria-hidden="true">↗</span></a
+                        >
+                        <a href="https://www.npmjs.com/package/inquirer-select-with-state"
+                            >npm <span aria-hidden="true">↗</span></a
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class={css.section}>
+        <div class={css.sectionHead}>
+            <h2>
+                <span class={css.sectionNumber} aria-hidden="true">03</span>
+                Apps &amp; sites
+            </h2>
+        </div>
+
+        <div class={css.entries}>
+            <div class={css.entry}>
+                <div class={css.entryMedia}>
+                    <a class={css.mediaLink} href="/dof/">
+                        <span class={css.frame}>
+                            <span class={css.frameBar}>
+                                <span class={css.frameDots} aria-hidden="true"
+                                    ><span></span><span></span><span></span></span
+                                >
+                                <span class={css.frameTitle}>patik.com/dof</span>
+                            </span>
+                            <Image
+                                src={imgDofApp}
+                                alt="The Depth of Field Calculator comparing two lenses, with a chart of the results"
+                                widths={[700, 1200]}
+                                sizes="(max-width: 800px) 100vw, 530px"
+                            />
+                        </span>
+                    </a>
+                </div>
+                <div class={css.entryText}>
+                    <h3>Depth-of-Field Calculator</h3>
+                    <div class:list={[css.entryMeta, css.mono]}>
+                        <span>2014 – present</span>
+                    </div>
+                    <div class={css.prose}>
+                        <p>
+                            A calculator and comparison tool for photographers. Line up any number of camera-and-lens
+                            configurations, adjust apertures and distances, and compare the results in a chart. The
+                            whole setup is encoded in the URL, so a comparison is easy to share.
+                        </p>
+                    </div>
+                    <div class={css.linkRow}>
+                        <a href="/dof/">Web app</a>
+                        <a href="https://github.com/patik/dof">GitHub <span aria-hidden="true">↗</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <ul class:list={[css.listEntries, css.appendedList]}>
+            <li class={css.listEntry}>
+                <div class:list={[css.listIcon, css.sigil]} aria-hidden="true">&lbrace;&nbsp;&rbrace;</div>
+                <div>
+                    <h3>patik.com</h3>
+                    <div class:list={[css.entryMeta, css.mono]}>
+                        <span>This site</span>
+                    </div>
+                    <div class={css.prose}>
+                        <p>
+                            Astro with React islands, Cloudinary-backed travel galleries, and a CI pipeline that runs
+                            visual-regression and accessibility tests with Playwright. The codebase is public.
+                        </p>
+                    </div>
+                    <div class={css.linkRow}>
+                        <a href="https://github.com/patik/patik.com">GitHub <span aria-hidden="true">↗</span></a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </section>
+
+    <section class={css.section}>
+        <div class={css.sectionHead}>
+            <h2>
+                <span class={css.sectionNumber} aria-hidden="true">04</span>
+                Libraries
+            </h2>
+            <p class={css.sectionNote}>
+                Long-term maintenance is the point. These have been carried across several eras of the JavaScript
+                ecosystem—script tags, jQuery, AMD, and now typed ES modules.
+            </p>
+        </div>
+
+        <ul class={css.listEntries}>
+            <li class={css.listEntry}>
+                <div class={css.listIcon}>
+                    <Image src={imgWithinViewportIcon} width={112} height={112} alt="" />
+                </div>
+                <div>
+                    <h3>within-viewport</h3>
+                    <div class:list={[css.entryMeta, css.mono]}>
+                        <span>2011 – present</span>
+                        <span>254 ★ on GitHub</span>
+                    </div>
+                    <div class={css.prose}>
+                        <p>
+                            Determines whether an element is entirely inside the viewport—or any scrollable container
+                            —with configurable thresholds per side. Began as a jQuery plugin, rewritten over the years
+                            into a dependency-free TypeScript package, with the API kept steady the whole way.
+                        </p>
+                    </div>
+                    <div class={css.linkRow}>
+                        <a href="https://patik.github.io/within-viewport/">Demo <span aria-hidden="true">↗</span></a>
+                        <a href="https://github.com/patik/within-viewport">GitHub <span aria-hidden="true">↗</span></a>
+                        <a href="https://www.npmjs.com/package/withinviewport">npm <span aria-hidden="true">↗</span></a>
+                        <a href="/blog/within-viewport-javascript-and-jquery-plugin/">Blog post</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class={css.listEntry}>
+                <div class={css.listIcon}>
+                    <Image src={imgKindjsIcon} width={112} height={112} alt="" />
+                </div>
+                <div>
+                    <h3>kindjs</h3>
+                    <div class:list={[css.entryMeta, css.mono]}>
+                        <span>2014 – present</span>
+                    </div>
+                    <div class={css.prose}>
+                        <p>
+                            <code>typeof</code>, but precise: <code>kind([1, 2, 3])</code> is
+                            <Space />
+                            <code>'array'</code>, <code>kind(null)</code> is <code>'null'</code>, and
+                            <Space />
+                            <code>kind(new Date())</code> is <code>'date'</code>. Useful names for JavaScript values,
+                            DOM nodes included.
+                        </p>
+                    </div>
+                    <div class={css.linkRow}>
+                        <a href="https://github.com/patik/kind">GitHub <span aria-hidden="true">↗</span></a>
+                        <a href="https://www.npmjs.com/package/kindjs">npm <span aria-hidden="true">↗</span></a>
+                    </div>
+                </div>
+            </li>
+
+            <li class={css.listEntry}>
+                <div class:list={[css.listIcon, css.sigil]} aria-hidden="true">$</div>
+                <div>
+                    <h3>simple-stdout</h3>
+                    <div class:list={[css.entryMeta, css.mono]}>
+                        <span>2025</span>
+                    </div>
+                    <div class={css.prose}>
+                        <p>
+                            Run a shell command, get its <code>stdout</code> as a string—a tiny promise-based wrapper around
+                            Node’s <code>child_process</code>, with an <code>execFile</code> variant for untrusted input.
+                        </p>
+                    </div>
+                    <div class={css.linkRow}>
+                        <a href="https://github.com/patik/simple-stdout">GitHub <span aria-hidden="true">↗</span></a>
+                        <a href="https://www.npmjs.com/package/simple-stdout">npm <span aria-hidden="true">↗</span></a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </section>
+
+    <section class={css.section}>
+        <div class={css.sectionHead}>
+            <h2>
+                <span class={css.sectionNumber} aria-hidden="true">05</span>
+                Contributions
+            </h2>
+            <p class={css.sectionNote}>
+                Notable work from my public-sector years, built with the New York State Office of Information Technology
+                Services.
+            </p>
+        </div>
+
+        <ul class={css.listEntries}>
+            <li class={css.listEntry}>
+                <div class:list={[css.listIcon, css.sigil]} aria-hidden="true">NY</div>
+                <div>
+                    <h3>Core UI &amp; the Excelsior Web Framework</h3>
+                    <div class:list={[css.entryMeta, css.mono]}>
+                        <span>New York State ITS</span>
+                    </div>
+                    <div class={css.prose}>
+                        <p>
+                            Core contributor to Excelsior, the framework behind dozens of New York State sites, and to
+                            Core UI, its component-based successor designed for web apps.
+                        </p>
+                    </div>
+                    <div class={css.linkRow}>
+                        <a href="https://github.com/ny/coreui">Core UI <span aria-hidden="true">↗</span></a>
+                        <a href="https://github.com/ny/excelsior">Excelsior <span aria-hidden="true">↗</span></a>
+                    </div>
+                </div>
+            </li>
+
+            <li class={css.listEntry}>
+                <div class:list={[css.listIcon, css.sigil]} aria-hidden="true">NY</div>
+                <div>
+                    <h3>DMV Registration Renewal</h3>
+                    <div class:list={[css.entryMeta, css.mono]}>
+                        <span>New York State DMV</span>
+                    </div>
+                    <div class={css.prose}>
+                        <p>
+                            A responsive redesign of one of the state’s highest-profile transactions on the Department
+                            of Motor Vehicles’ site.
+                        </p>
+                    </div>
+                    <div class={css.linkRow}>
+                        <a href="https://transact.dmv.ny.gov/RegistrationRenew/"
+                            >Registration Renewal <span aria-hidden="true">↗</span></a
+                        >
+                    </div>
+                </div>
+            </li>
+
+            <li class={css.listEntry}>
+                <div class:list={[css.listIcon, css.sigil]} aria-hidden="true">NY</div>
+                <div>
+                    <h3>Talks &amp; code sprints</h3>
+                    <div class:list={[css.entryMeta, css.mono]}>
+                        <span>NYS DevCon 2013</span>
+                    </div>
+                    <div class={css.prose}>
+                        <p>
+                            Go Responsive, a showpiece from a responsive-web-design code sprint, and an Ignite talk at
+                            NYS DevCon 2013.
+                        </p>
+                    </div>
+                    <div class={css.linkRow}>
+                        <a href="https://github.com/ny/go-responsive">Go Responsive <span aria-hidden="true">↗</span></a
+                        >
+                        <a href="https://github.com/ny/2013-03-RWD-code-sprint"
+                            >Code sprint <span aria-hidden="true">↗</span></a
+                        >
+                        <a href="https://igniteshow.com/">Ignite <span aria-hidden="true">↗</span></a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </section>
+
+    <section class={css.section}>
+        <div class={css.sectionHead}>
+            <h2>
+                <span class={css.sectionNumber} aria-hidden="true">06</span>
+                From an earlier era
+            </h2>
+            <p class={css.sectionNote}>
+                Kept online because old links shouldn’t rot. Interesting today mainly as artifacts of what the web used
+                to require.
+            </p>
+        </div>
+
+        <ul class={css.listEntries}>
+            <li class={css.listEntry}>
+                <div class={css.listIcon}>
+                    <Image src={imgConsoleLogIcon} width={112} height={112} alt="" />
+                </div>
+                <div>
+                    <h3>console.log-wrapper</h3>
+                    <div class:list={[css.entryMeta, css.mono]}>
+                        <span>2011</span>
+                        <span>403 ★ on GitHub</span>
+                    </div>
+                    <div class={css.prose}>
+                        <p>
+                            Made <code>console.log</code> safe and consistent across the browsers of the early 2010s — including
+                            the ones where the console only existed while the developer tools were open. Obsolete in the best
+                            way: the platform caught up.
+                        </p>
+                    </div>
+                    <div class={css.linkRow}>
+                        <a href="https://patik.github.io/console.log-wrapper/"
+                            >Docs &amp; demo <span aria-hidden="true">↗</span></a
+                        >
+                        <a href="https://github.com/patik/console.log-wrapper"
+                            >GitHub <span aria-hidden="true">↗</span></a
+                        >
+                    </div>
+                </div>
+            </li>
+
+            <li class={css.listEntry}>
+                <div class:list={[css.listIcon, css.sigil]} aria-hidden="true">//</div>
+                <div>
+                    <h3>User scripts &amp; extensions</h3>
+                    <div class:list={[css.entryMeta, css.mono]}>
+                        <span>2008 – 2014</span>
+                    </div>
+                    <div class={css.prose}>
+                        <p>
+                            Greasemonkey scripts and small browser extensions, from the era when you fixed websites
+                            yourself.
+                        </p>
+                    </div>
+                    <div class={css.linkRow}>
+                        <a href="/code/user-scripts/">Browse the scripts</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </section>
+
+    <p class={css.outro}>
+        There’s more—experiments, forks, and abandoned ideas included—at
+        <Space />
+        <a href="https://github.com/patik">github.com/patik <span aria-hidden="true">↗</span></a>, and occasional
+        writing on <a href="/blog/">the blog</a>.
+    </p>
+</div>
+
+<script>
+    const videos = document.querySelectorAll<HTMLVideoElement>('video[data-demo]')
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const inView = new WeakSet<Element>()
+
+    function sync(video: HTMLVideoElement): void {
+        if (!reducedMotion.matches && inView.has(video)) {
+            video.play().catch(() => undefined)
+        } else {
+            video.pause()
+        }
+    }
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            for (const entry of entries) {
+                if (!(entry.target instanceof HTMLVideoElement)) {
+                    continue
+                }
+
+                if (entry.isIntersecting) {
+                    inView.add(entry.target)
+                } else {
+                    inView.delete(entry.target)
+                }
+
+                sync(entry.target)
+            }
+        },
+        { rootMargin: '100px' },
+    )
+
+    videos.forEach((video) => observer.observe(video))
+    reducedMotion.addEventListener('change', () => videos.forEach(sync))
+</script>
