@@ -1,182 +1,91 @@
-interface CountryListState {
-    sort: string
-    excludeResidences: boolean
-}
+const SORT_INPUT_SELECTOR = '[data-sort-input]'
+const RESIDENCE_TOGGLE_SELECTOR = '[data-residence-toggle]'
+const FILTERS_SELECTOR = '[data-filters]'
+const EXPAND_TOGGLE_SELECTOR = '[data-list-expand-toggle]'
 
-interface VisitedCountriesElements {
-    root: HTMLElement
-    sortButtons: HTMLButtonElement[]
-    sortPanels: HTMLElement[]
-    summaries: HTMLElement[]
-    residenceToggle: HTMLInputElement
-    expandToggle: HTMLButtonElement
-    scrollRegion: HTMLElement
-    filtersToggle: HTMLButtonElement
-    toolbar: HTMLElement
-    defaultSort: string
-}
-
-function getControlledElement(control: HTMLButtonElement): HTMLElement | null {
+function getControlledElement(root: HTMLElement, control: HTMLButtonElement): HTMLElement | null {
     const controlledId = control.getAttribute('aria-controls')
 
-    return controlledId ? document.getElementById(controlledId) : null
+    return controlledId ? root.querySelector(`#${controlledId}`) : null
 }
 
-function getElements(root: HTMLElement): VisitedCountriesElements | null {
-    const sortButtons = [...root.querySelectorAll<HTMLButtonElement>('[data-sort-button]')]
-    const sortPanels = [...root.querySelectorAll<HTMLElement>('[data-sort-panel]')]
-    const summaries = [...root.querySelectorAll<HTMLElement>('[data-residence-summary]')]
-    const residenceToggle = root.querySelector<HTMLInputElement>('[data-residence-toggle]')
-    const expandToggle = root.querySelector<HTMLButtonElement>('[data-list-expand-toggle]')
-    const filtersToggle = root.querySelector<HTMLButtonElement>('[data-filters-toggle]')
-    const scrollRegion = expandToggle ? getControlledElement(expandToggle) : null
-    const toolbar = filtersToggle ? getControlledElement(filtersToggle) : null
-    const defaultSort = root.dataset.defaultSort
+function updateUrl(sortInputs: HTMLInputElement[], residenceToggle: HTMLInputElement): void {
+    const selectedSort = sortInputs.find((input) => input.checked)?.value
 
-    if (!residenceToggle || !expandToggle || !filtersToggle || !scrollRegion || !toolbar || !defaultSort) {
-        return null
-    }
-
-    return {
-        root,
-        sortButtons,
-        sortPanels,
-        summaries,
-        residenceToggle,
-        expandToggle,
-        scrollRegion,
-        filtersToggle,
-        toolbar,
-        defaultSort,
-    }
-}
-
-/** Connects the pre-rendered country panels to their filter, sort, and expansion controls. */
-export function initializeVisitedCountries(root: HTMLElement): void {
-    const elements = getElements(root)
-
-    if (!elements) {
+    if (!selectedSort) {
         return
     }
 
-    const validSorts = new Set(elements.sortPanels.map((panel) => panel.dataset.sortPanel))
-
-    const getExpandLabel = (isExpanded: boolean, residenceFilter: string): string => {
-        if (isExpanded) {
-            return 'Collapse list'
-        }
-
-        const count =
-            residenceFilter === 'excludingResidences'
-                ? elements.expandToggle.dataset.countExcludingResidences
-                : elements.expandToggle.dataset.countAll
-
-        return `Show all ${count} countries`
-    }
-
-    const getFiltersLabel = (isExpanded: boolean, sort: string): string => {
-        if (isExpanded) {
-            return 'Hide filters'
-        }
-
-        const activeButton = elements.sortButtons.find((button) => button.dataset.sort === sort)
-
-        return `Filters: ${activeButton?.dataset.label ?? elements.filtersToggle.dataset.defaultSortLabel}`
-    }
-
-    const applyState = (state: CountryListState, shouldUpdateUrl: boolean): void => {
-        const residenceFilter = state.excludeResidences ? 'excludingResidences' : 'all'
-
-        elements.sortButtons.forEach((button) => {
-            button.setAttribute('aria-pressed', button.dataset.sort === state.sort ? 'true' : 'false')
-        })
-
-        elements.residenceToggle.checked = !state.excludeResidences
-
-        elements.summaries.forEach((summary) => {
-            summary.hidden = summary.dataset.residenceSummary !== residenceFilter
-        })
-
-        elements.sortPanels.forEach((panel) => {
-            const matchesSort = panel.dataset.sortPanel === state.sort
-            const matchesResidence = panel.dataset.residencePanel === residenceFilter
-            panel.hidden = !(matchesSort && matchesResidence)
-        })
-
-        const isListExpanded = elements.expandToggle.getAttribute('aria-expanded') === 'true'
-        elements.expandToggle.textContent = getExpandLabel(isListExpanded, residenceFilter)
-
-        const areFiltersExpanded = elements.filtersToggle.getAttribute('aria-expanded') === 'true'
-        elements.filtersToggle.textContent = getFiltersLabel(areFiltersExpanded, state.sort)
-
-        if (shouldUpdateUrl) {
-            const params = new URLSearchParams(window.location.search)
-
-            if (state.sort === elements.defaultSort) {
-                params.delete('sort')
-            } else {
-                params.set('sort', state.sort)
-            }
-
-            if (state.excludeResidences) {
-                params.set('lived', '0')
-            } else {
-                params.delete('lived')
-            }
-
-            const queryString = params.toString()
-            const nextUrl = `${window.location.pathname}${queryString ? `?${queryString}` : ''}${window.location.hash}`
-            window.history.replaceState(window.history.state, '', nextUrl)
-        }
-    }
-
     const params = new URLSearchParams(window.location.search)
-    const requestedSort = params.get('sort')
-    const currentState: CountryListState = {
-        sort: requestedSort && validSorts.has(requestedSort) ? requestedSort : elements.defaultSort,
-        excludeResidences: params.get('lived') === '0',
+    const defaultSort = sortInputs.find((input) => input.defaultChecked)?.value
+
+    if (selectedSort === defaultSort) {
+        params.delete('sort')
+    } else {
+        params.set('sort', selectedSort)
     }
 
-    // Start with the filters expanded when the URL requests a non-default sort or
-    // residence filter, so the visible control matches the state it's showing.
-    if (currentState.sort !== elements.defaultSort || currentState.excludeResidences) {
-        elements.toolbar.hidden = false
-        elements.filtersToggle.setAttribute('aria-expanded', 'true')
+    if (residenceToggle.checked) {
+        params.delete('lived')
+    } else {
+        params.set('lived', '0')
     }
 
-    applyState(currentState, false)
+    const queryString = params.toString()
+    const nextUrl = `${window.location.pathname}${queryString ? `?${queryString}` : ''}${window.location.hash}`
+    window.history.replaceState(window.history.state, '', nextUrl)
+}
 
-    elements.sortButtons.forEach((button) => {
-        button.addEventListener('click', () => {
-            const sort = button.dataset.sort
+class VisitedCountriesElement extends HTMLElement {
+    private isInitialized = false
 
-            if (sort) {
-                currentState.sort = sort
-                applyState(currentState, true)
-            }
+    connectedCallback(): void {
+        if (this.isInitialized) {
+            return
+        }
+
+        const sortInputs = [...this.querySelectorAll<HTMLInputElement>(SORT_INPUT_SELECTOR)]
+        const residenceToggle = this.querySelector<HTMLInputElement>(RESIDENCE_TOGGLE_SELECTOR)
+        const filters = this.querySelector<HTMLDetailsElement>(FILTERS_SELECTOR)
+        const expandToggle = this.querySelector<HTMLButtonElement>(EXPAND_TOGGLE_SELECTOR)
+        const scrollRegion = expandToggle ? getControlledElement(this, expandToggle) : null
+
+        if (!residenceToggle || !filters || !expandToggle || !scrollRegion) {
+            return
+        }
+
+        this.isInitialized = true
+
+        const params = new URLSearchParams(window.location.search)
+        const requestedSort = params.get('sort')
+        const requestedSortInput = sortInputs.find((input) => input.value === requestedSort)
+        const defaultSort = this.dataset.defaultSort
+
+        if (requestedSortInput) {
+            requestedSortInput.checked = true
+        }
+
+        residenceToggle.checked = params.get('lived') !== '0'
+
+        if ((requestedSortInput && requestedSortInput.value !== defaultSort) || !residenceToggle.checked) {
+            filters.open = true
+        }
+
+        sortInputs.forEach((input) => {
+            input.addEventListener('change', () => updateUrl(sortInputs, residenceToggle))
         })
-    })
 
-    elements.residenceToggle.addEventListener('change', () => {
-        currentState.excludeResidences = !elements.residenceToggle.checked
-        applyState(currentState, true)
-    })
+        residenceToggle.addEventListener('change', () => updateUrl(sortInputs, residenceToggle))
 
-    elements.filtersToggle.addEventListener('click', () => {
-        const areFiltersExpanded = elements.filtersToggle.getAttribute('aria-expanded') !== 'true'
+        expandToggle.addEventListener('click', () => {
+            const isExpanded = expandToggle.getAttribute('aria-expanded') !== 'true'
 
-        elements.filtersToggle.setAttribute('aria-expanded', String(areFiltersExpanded))
-        elements.toolbar.hidden = !areFiltersExpanded
-        elements.filtersToggle.textContent = getFiltersLabel(areFiltersExpanded, currentState.sort)
-    })
+            expandToggle.setAttribute('aria-expanded', String(isExpanded))
+            scrollRegion.tabIndex = isExpanded ? -1 : 0
+        })
+    }
+}
 
-    elements.expandToggle.addEventListener('click', () => {
-        const isListExpanded = elements.expandToggle.getAttribute('aria-expanded') !== 'true'
-
-        elements.expandToggle.setAttribute('aria-expanded', String(isListExpanded))
-        elements.scrollRegion.tabIndex = isListExpanded ? -1 : 0
-
-        const residenceFilter = currentState.excludeResidences ? 'excludingResidences' : 'all'
-        elements.expandToggle.textContent = getExpandLabel(isListExpanded, residenceFilter)
-    })
+if (!customElements.get('visited-countries')) {
+    customElements.define('visited-countries', VisitedCountriesElement)
 }

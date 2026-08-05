@@ -17,7 +17,7 @@ const { byResidenceFilter } = Astro.props
         const mostVisitedFlag = getCountryFlag(stats.mostVisited.name)
 
         return (
-            <p class={css.summary} data-residence-summary={state.filter} hidden={!state.isDefault}>
+            <p class={css.summary} data-residence-summary={state.filter}>
                 <strong>{stats.countryCount}</strong> countries · <strong>{stats.visitCount}</strong> visits ·{' '}
                 {stats.yearRange}
                 <span class={css.summaryDetail}>

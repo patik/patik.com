@@ -26,10 +26,8 @@ export const RESIDENCE_STATES: ResidenceState[] = [
 ]
 
 export const DEFAULT_SORT = SORT_OPTIONS.find((option) => option.isDefault)?.mode ?? 'recent'
-export const DEFAULT_SORT_LABEL = SORT_OPTIONS.find((option) => option.isDefault)?.label ?? SORT_OPTIONS[0].label
 export const DEFAULT_RESIDENCE_FILTER = RESIDENCE_STATES.find((state) => state.isDefault)?.filter ?? 'all'
 export const SCROLL_REGION_ID = 'countries-scroll'
-export const TOOLBAR_ID = 'countries-toolbar'
 
 export function getPanelId(filter: ResidenceFilter, mode: CountrySortMode): string {
     return `countries-panel-${filter}-${mode}`

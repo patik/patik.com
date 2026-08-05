@@ -11,14 +11,12 @@ const currentYear = new Date().getFullYear()
 const { byResidenceFilter } = getCountriesViewData({ countries: countriesData.visited, currentYear })
 ---
 
-<div class={css.countries} data-countries-root data-default-sort={DEFAULT_SORT}>
+<visited-countries class={css.countries} data-default-sort={DEFAULT_SORT}>
     <VisitedCountriesSummaries byResidenceFilter={byResidenceFilter} />
     <VisitedCountriesToolbar />
     <VisitedCountriesPanels byResidenceFilter={byResidenceFilter} />
-</div>
+</visited-countries>
 
 <script>
-    import { initializeVisitedCountries } from './VisitedCountries.client'
-
-    document.querySelectorAll<HTMLElement>('[data-countries-root]').forEach(initializeVisitedCountries)
+    import './VisitedCountries.client'
 </script>

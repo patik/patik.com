@@ -1,47 +1,47 @@
 ---
-import {
-    DEFAULT_RESIDENCE_FILTER,
-    DEFAULT_SORT_LABEL,
-    getSortControls,
-    SORT_OPTIONS,
-    TOOLBAR_ID,
-} from './visitedCountries'
+import { DEFAULT_RESIDENCE_FILTER, getSortControls, SORT_OPTIONS } from './visitedCountries'
 import css from './VisitedCountries.module.css'
 ---
 
-<button
-    type="button"
-    class={css.filtersToggle}
-    data-filters-toggle
-    aria-expanded="false"
-    aria-controls={TOOLBAR_ID}
-    data-default-sort-label={DEFAULT_SORT_LABEL}
->
-    {`Filters: ${DEFAULT_SORT_LABEL}`}
-</button>
+<details class={css.filters} data-filters>
+    <summary class={css.filtersToggle}>
+        <span class={css.filtersClosedLabel}>
+            Filters:{' '}
+            {
+                SORT_OPTIONS.map((option) => (
+                    <span class={css.sortLabel} data-sort-label={option.mode}>
+                        {option.label}
+                    </span>
+                ))
+            }
+        </span>
+        <span class={css.filtersOpenLabel}>Hide filters</span>
+    </summary>
 
-<div id={TOOLBAR_ID} class={css.toolbar} hidden>
-    <div class={css.segmented} role="group" aria-label="Sort countries">
-        {
-            SORT_OPTIONS.map((option) => (
-                <button
-                    type="button"
-                    class={css.sortButton}
-                    aria-pressed={option.isDefault ? 'true' : 'false'}
-                    aria-controls={getSortControls(option.mode)}
-                    data-sort-button
-                    data-sort={option.mode}
-                    data-label={option.label}
-                >
-                    {option.label}
-                </button>
-            ))
-        }
+    <div class={css.toolbar}>
+        <div class={css.segmented} role="radiogroup" aria-label="Sort countries">
+            {
+                SORT_OPTIONS.map((option) => (
+                    <label class={css.sortOption}>
+                        <input
+                            class={css.sortInput}
+                            type="radio"
+                            name="countries-sort"
+                            value={option.mode}
+                            checked={option.isDefault}
+                            aria-controls={getSortControls(option.mode)}
+                            data-sort-input
+                        />
+                        <span class={css.sortButton}>{option.label}</span>
+                    </label>
+                ))
+            }
+        </div>
+
+        <label class={css.toggleControl}>
+            <input type="checkbox" data-residence-toggle switch checked={DEFAULT_RESIDENCE_FILTER === 'all'} />
+            <span class={css.toggleSwitch} aria-hidden="true"></span>
+            <span>Include countries I’ve lived in</span>
+        </label>
     </div>
-
-    <label class={css.toggleControl}>
-        <input type="checkbox" data-residence-toggle switch checked={DEFAULT_RESIDENCE_FILTER === 'all'} />
-        <span class={css.toggleSwitch} aria-hidden="true"></span>
-        <span>Include countries I’ve lived in</span>
-    </label>
-</div>
+</details>
