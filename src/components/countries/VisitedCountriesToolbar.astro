@@ -1,0 +1,47 @@
+---
+import {
+    DEFAULT_RESIDENCE_FILTER,
+    DEFAULT_SORT_LABEL,
+    getSortControls,
+    SORT_OPTIONS,
+    TOOLBAR_ID,
+} from './visitedCountries'
+import css from './VisitedCountries.module.css'
+---
+
+<button
+    type="button"
+    class={css.filtersToggle}
+    data-filters-toggle
+    aria-expanded="false"
+    aria-controls={TOOLBAR_ID}
+    data-default-sort-label={DEFAULT_SORT_LABEL}
+>
+    {`Filters: ${DEFAULT_SORT_LABEL}`}
+</button>
+
+<div id={TOOLBAR_ID} class={css.toolbar} hidden>
+    <div class={css.segmented} role="group" aria-label="Sort countries">
+        {
+            SORT_OPTIONS.map((option) => (
+                <button
+                    type="button"
+                    class={css.sortButton}
+                    aria-pressed={option.isDefault ? 'true' : 'false'}
+                    aria-controls={getSortControls(option.mode)}
+                    data-sort-button
+                    data-sort={option.mode}
+                    data-label={option.label}
+                >
+                    {option.label}
+                </button>
+            ))
+        }
+    </div>
+
+    <label class={css.toggleControl}>
+        <input type="checkbox" data-residence-toggle switch checked={DEFAULT_RESIDENCE_FILTER === 'all'} />
+        <span class={css.toggleSwitch} aria-hidden="true"></span>
+        <span>Include countries I’ve lived in</span>
+    </label>
+</div>

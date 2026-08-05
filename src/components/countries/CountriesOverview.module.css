@@ -1,0 +1,23 @@
+.overview {
+    display: grid;
+    gap: 2rem;
+    align-items: start;
+}
+
+.map {
+    max-width: 32rem;
+}
+
+@media (min-width: 960px) {
+    .overview {
+        grid-template-columns: 1fr 1fr;
+
+        &:has([data-list-expand-toggle][aria-expanded='true']) {
+            grid-template-columns: 1fr;
+        }
+
+        &:not(:has([data-list-expand-toggle][aria-expanded='true'])) .map [data-map-caption] {
+            display: block;
+        }
+    }
+}

@@ -1,0 +1,52 @@
+---
+import type { CountriesViewData } from './countries'
+import CountryList from './CountryList.astro'
+import {
+    DEFAULT_RESIDENCE_FILTER,
+    getPanelId,
+    RESIDENCE_STATES,
+    SCROLL_REGION_ID,
+    SORT_OPTIONS,
+} from './visitedCountries'
+import css from './VisitedCountries.module.css'
+
+interface Props {
+    byResidenceFilter: CountriesViewData['byResidenceFilter']
+}
+
+const { byResidenceFilter } = Astro.props
+const excludingResidencesCount = byResidenceFilter.excludingResidences.stats.countryCount
+const allCountriesCount = byResidenceFilter.all.stats.countryCount
+const defaultCountryCount = byResidenceFilter[DEFAULT_RESIDENCE_FILTER].stats.countryCount
+---
+
+<div id={SCROLL_REGION_ID} class={css.scroll} tabindex="0" role="region" aria-label="Country list">
+    {
+        RESIDENCE_STATES.map((state) =>
+            SORT_OPTIONS.map((option) => (
+                <section
+                    id={getPanelId(state.filter, option.mode)}
+                    aria-label={`Countries by ${option.heading}`}
+                    data-sort-panel={option.mode}
+                    data-residence-panel={state.filter}
+                    hidden={!(state.isDefault && option.isDefault)}
+                >
+                    <CountryList countries={byResidenceFilter[state.filter].countriesBySort[option.mode]} />
+                </section>
+            )),
+        )
+    }
+    <div class={css.scrollFade} aria-hidden="true"></div>
+</div>
+
+<button
+    type="button"
+    class={css.expandToggle}
+    data-list-expand-toggle
+    aria-expanded="false"
+    aria-controls={SCROLL_REGION_ID}
+    data-count-excluding-residences={excludingResidencesCount}
+    data-count-all={allCountriesCount}
+>
+    {`Show all ${defaultCountryCount} countries`}
+</button>

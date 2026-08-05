@@ -25,6 +25,14 @@
     }
 }
 
+.caption {
+    display: none;
+    margin-top: 0.5rem;
+    color: #666;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+}
+
 .dialog {
     position: fixed;
     inset: 0;
@@ -86,6 +94,10 @@
 }
 
 @media (prefers-color-scheme: dark) {
+    .caption {
+        color: #bbb;
+    }
+
     .expandButton {
         color: #f2f2f2 !important;
         border-color: rgb(255 255 255 / 0.25);

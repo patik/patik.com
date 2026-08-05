@@ -1,7 +1,6 @@
 ---
-import VisitedCountries from '../components/countries/VisitedCountries.astro'
+import CountriesOverview from '@src/components/countries/CountriesOverview.astro'
 import TravelLinkList from '../components/TravelLinkList'
-import WorldMap from '../components/WorldMap'
 import countries from '../countries.json'
 import TravelImageBosnia from '../images/bosnia-sarajevo-hero.jpg'
 import BrugesImage from '../images/britain-benelux-bruges-link.jpg'
@@ -138,12 +137,7 @@ const items = [
     <section style={{ marginBottom: '3rem' }}>
         <h2>Countries I’ve been to</h2>
 
-        <div class="overview-grid">
-            <VisitedCountries />
-            <div class="map-panel">
-                <WorldMap client:load />
-            </div>
-        </div>
+        <CountriesOverview />
     </section>
 
     <section>

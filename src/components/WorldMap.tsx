@@ -144,7 +144,9 @@ export default function WorldMap({ className = '' }: { className?: string }) {
                 Expand map
             </button>
 
-            <p className="map-caption">{MAP_CAPTION}</p>
+            <p className={css.caption} data-map-caption>
+                {MAP_CAPTION}
+            </p>
 
             {/*
                 The click handler below only detects clicks on the ::backdrop (there's no
