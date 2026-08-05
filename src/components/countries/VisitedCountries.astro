@@ -48,7 +48,7 @@ function getSortControls(mode: CountrySortMode): string {
 }
 ---
 
-<div class={css.countries} data-countries-root data-default-sort={defaultSort} data-list-expanded="false">
+<div class={css.countries} data-countries-root data-default-sort={defaultSort}>
     {
         residenceStates.map((state) => {
             const { stats } = byResidenceFilter[state.filter]
@@ -124,7 +124,7 @@ function getSortControls(mode: CountrySortMode): string {
                 )),
             )
         }
-        <div class={css.scrollFade} aria-hidden="true" />
+        <div class={css.scrollFade} aria-hidden="true"></div>
     </div>
 
     <button
@@ -200,8 +200,8 @@ function getSortControls(mode: CountrySortMode): string {
             })
 
             if (expandToggle) {
-                const isExpanded = root.dataset.listExpanded === 'true'
-                expandToggle.textContent = getExpandLabel(isExpanded, residenceFilter)
+                const isListExpanded = expandToggle.getAttribute('aria-expanded') === 'true'
+                expandToggle.textContent = getExpandLabel(isListExpanded, residenceFilter)
             }
 
             if (filtersToggle) {
@@ -271,21 +271,16 @@ function getSortControls(mode: CountrySortMode): string {
         })
 
         expandToggle?.addEventListener('click', () => {
-            const isExpanded = root.dataset.listExpanded !== 'true'
+            const isListExpanded = expandToggle.getAttribute('aria-expanded') !== 'true'
 
-            root.dataset.listExpanded = String(isExpanded)
-            expandToggle.setAttribute('aria-expanded', String(isExpanded))
+            expandToggle.setAttribute('aria-expanded', String(isListExpanded))
 
             if (scrollRegion) {
-                if (isExpanded) {
-                    scrollRegion.removeAttribute('tabindex')
-                } else {
-                    scrollRegion.setAttribute('tabindex', '0')
-                }
+                scrollRegion.tabIndex = isListExpanded ? -1 : 0
             }
 
             const residenceFilter = currentState.excludeResidences ? 'excludingResidences' : 'all'
-            expandToggle.textContent = getExpandLabel(isExpanded, residenceFilter)
+            expandToggle.textContent = getExpandLabel(isListExpanded, residenceFilter)
         })
     }
 </script>

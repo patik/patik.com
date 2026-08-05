@@ -576,7 +576,7 @@
         grid-template-columns: 1fr 1fr;
     }
 
-    .overview-grid:has([data-list-expanded='true']) {
+    .overview-grid:has([data-list-expand-toggle][aria-expanded='true']) {
         grid-template-columns: 1fr;
     }
 }
@@ -604,7 +604,7 @@
 }
 
 @media (min-width: 960px) {
-    .overview-grid:not(:has([data-list-expanded='true'])) .map-caption {
+    .overview-grid:not(:has([data-list-expand-toggle][aria-expanded='true'])) .map-caption {
         display: block;
         margin-top: 0.5rem;
         font-family: var(--font-sans);

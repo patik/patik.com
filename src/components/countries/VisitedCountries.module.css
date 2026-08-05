@@ -189,7 +189,7 @@
     border-block: var(--scroll-border-width) solid var(--countries-line);
 }
 
-.countries[data-list-expanded='true'] .scroll {
+.countries:has(.expandToggle[aria-expanded='true']) .scroll {
     max-height: none;
     overflow: visible;
 }
@@ -222,7 +222,7 @@
     }
 }
 
-.countries[data-list-expanded='true'] .scrollFade {
+.countries:has(.expandToggle[aria-expanded='true']) .scrollFade {
     display: none;
 }
 
