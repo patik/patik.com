@@ -180,10 +180,13 @@
 }
 
 .scroll {
+    --scroll-padding-block: 0.6rem;
+    --scroll-border-width: 1px;
+
     max-height: 15.5rem;
-    padding-block: 0.6rem;
+    padding-block: var(--scroll-padding-block);
     overflow-y: auto;
-    border-block: 1px solid var(--countries-line);
+    border-block: var(--scroll-border-width) solid var(--countries-line);
 }
 
 .countries[data-list-expanded='true'] .scroll {
@@ -196,10 +199,16 @@
  * position:absolute descendants of a scrolling element scroll away with the
  * rest of the content (they're not exempt just because they're out of flow),
  * position:sticky is what actually keeps this glued to the visible edge.
+ *
+ * inset-block-end is negative because sticky's "0" anchors to .scroll's
+ * padding edge, not its border edge — .scroll's own padding-bottom and
+ * border sit between that anchor point and the true visible bottom, so 0
+ * alone leaves a gap the size of both combined. Computed from .scroll's own
+ * custom properties so it can't drift out of sync with them.
  */
 .scrollFade {
     position: sticky;
-    inset-block-end: 0;
+    inset-block-end: calc(-1 * (var(--scroll-padding-block) + var(--scroll-border-width)));
     block-size: 0;
     pointer-events: none;
 
