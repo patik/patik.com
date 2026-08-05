@@ -559,3 +559,55 @@
         }
     }
 }
+
+/* -----------------------------------
+ * Travel index page: countries/map overview
+ * -----------------------------------
+ */
+
+.overview-grid {
+    display: grid;
+    gap: 2rem;
+    align-items: start;
+}
+
+@media (min-width: 960px) {
+    .overview-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .overview-grid:has([data-list-expanded='true']) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.map-panel {
+    max-width: 32rem;
+}
+
+/*
+ * The compact caption only shows once the side-by-side layout is active and
+ * the countries list isn't expanded — that's the only time the map column
+ * has slack height the caption can sit in "for free" without increasing the
+ * section's overall height. The expanded map dialog always shows its own
+ * copy of this caption regardless.
+ */
+.map-caption {
+    display: none;
+    color: #666;
+}
+
+@media (prefers-color-scheme: dark) {
+    .map-caption {
+        color: #bbb;
+    }
+}
+
+@media (min-width: 960px) {
+    .overview-grid:not(:has([data-list-expanded='true'])) .map-caption {
+        display: block;
+        margin-top: 0.5rem;
+        font-family: var(--font-sans);
+        font-size: 0.85rem;
+    }
+}
