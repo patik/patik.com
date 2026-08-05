@@ -4,6 +4,8 @@
     --countries-muted: #777;
     --countries-line: rgb(0 0 0 / 0.12);
     --countries-hover: rgb(0 0 0 / 0.035);
+    --countries-card-bg: rgb(0 0 0 / 0.02);
+    --countries-page-bg: white;
 
     color: var(--countries-ink);
 }
@@ -35,12 +37,36 @@
     }
 }
 
+.filtersToggle {
+    appearance: none;
+    min-height: 1.9rem;
+    margin: 0 0 0.6rem;
+    padding: 0.3rem 0.7rem;
+    color: var(--countries-ink);
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    line-height: 1.1;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid var(--countries-line);
+    border-radius: 4px;
+
+    &:hover,
+    &:focus-visible {
+        background: var(--countries-hover);
+    }
+}
+
 .toolbar {
     display: flex;
     flex-wrap: wrap;
     gap: 0.6rem 1rem;
     align-items: center;
     margin: 0 0 0.85rem;
+
+    &[hidden] {
+        display: none;
+    }
 }
 
 .segmented {
@@ -154,26 +180,99 @@
 }
 
 .scroll {
-    max-height: clamp(13rem, 38vh, 21rem);
+    max-height: 15.5rem;
     padding-block: 0.6rem;
     overflow-y: auto;
     border-block: 1px solid var(--countries-line);
 }
 
+.countries[data-list-expanded='true'] .scroll {
+    max-height: none;
+    overflow: visible;
+}
+
+/*
+ * A zero-height sticky sentinel pinned to the bottom of the scrollport. Since
+ * position:absolute descendants of a scrolling element scroll away with the
+ * rest of the content (they're not exempt just because they're out of flow),
+ * position:sticky is what actually keeps this glued to the visible edge.
+ */
+.scrollFade {
+    position: sticky;
+    inset-block-end: 0;
+    block-size: 0;
+    pointer-events: none;
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset-inline: 0;
+        inset-block-end: 0;
+        block-size: 2.75rem;
+        background: linear-gradient(to bottom, transparent, var(--countries-page-bg));
+    }
+}
+
+.countries[data-list-expanded='true'] .scrollFade {
+    display: none;
+}
+
 .countryList {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
-    gap: 0.15rem 1.25rem;
+    gap: 0.6rem 1rem;
     padding: 0;
     margin: 0;
     list-style: none;
 }
 
 .country {
-    padding: 0.35rem 0.4rem;
+    padding: 0.5rem 0.65rem;
+    background: var(--countries-card-bg);
+    border: 1px solid var(--countries-line);
+    border-radius: 6px;
+
+    &:has(.countryLink:hover),
+    &:has(.countryLink:focus-visible) {
+        background: var(--countries-hover);
+    }
+}
+
+.countryLink {
+    display: block;
+    margin: -0.5rem -0.65rem;
+    padding: 0.5rem 0.65rem;
+    color: inherit;
+    text-decoration: none;
+    border-radius: inherit;
+
+    &:hover .countryName,
+    &:focus-visible .countryName {
+        text-decoration: underline;
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--countries-ink);
+        outline-offset: -2px;
+    }
+}
+
+.expandToggle {
+    appearance: none;
+    min-height: 1.9rem;
+    margin-top: 0.6rem;
+    padding: 0.3rem 0.7rem;
+    color: var(--countries-ink);
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    line-height: 1.1;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid var(--countries-line);
     border-radius: 4px;
 
-    &:hover {
+    &:hover,
+    &:focus-visible {
         background: var(--countries-hover);
     }
 }
@@ -248,6 +347,8 @@
         --countries-muted: #b9b9b9;
         --countries-line: rgb(255 255 255 / 0.18);
         --countries-hover: rgb(255 255 255 / 0.06);
+        --countries-card-bg: rgb(255 255 255 / 0.03);
+        --countries-page-bg: var(--dark-charcoal);
     }
 
     .sortButton[aria-pressed='true'] {

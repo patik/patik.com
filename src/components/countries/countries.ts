@@ -251,6 +251,45 @@ export function getCountryFlag(name: string): string | undefined {
     return COUNTRY_FLAGS[name]
 }
 
+// A few country names don't slugify to their page's actual URL segment.
+const COUNTRY_SLUG_ALIASES: Record<string, string> = {
+    'Bosnia and Herzegovina': 'bosnia',
+    'United Kingdom': 'britain',
+}
+
+// Keys only — every top-level /travel/<slug>/ page, either `<slug>.astro` or `<slug>/index.astro`.
+// Restricted to one path segment so nested routes (e.g. photo galleries) aren't picked up.
+const travelPageFiles = import.meta.glob('/src/pages/travel/*.astro')
+const travelIndexFiles = import.meta.glob('/src/pages/travel/*/index.astro')
+
+function extractSlug(path: string, pattern: RegExp): string | undefined {
+    return path.match(pattern)?.[1]
+}
+
+const travelPageSlugs = new Set(
+    [
+        ...Object.keys(travelPageFiles).map((path) => extractSlug(path, /\/travel\/([^/]+)\.astro$/)),
+        ...Object.keys(travelIndexFiles).map((path) => extractSlug(path, /\/travel\/([^/]+)\/index\.astro$/)),
+    ].filter((slug): slug is string => Boolean(slug)),
+)
+
+function slugifyCountryName(name: string): string {
+    return (
+        COUNTRY_SLUG_ALIASES[name] ??
+        name
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-+|-+$/g, '')
+    )
+}
+
+/** The URL of the country's dedicated travel page, if one exists. */
+export function getCountryPageUrl(name: string): string | undefined {
+    const slug = slugifyCountryName(name)
+
+    return travelPageSlugs.has(slug) ? `/travel/${slug}/` : undefined
+}
+
 /** A country as stored in `countries.json` under `visited`. */
 export interface VisitedCountry {
     name: string

@@ -1,6 +1,5 @@
 ---
 import VisitedCountries from '../components/countries/VisitedCountries.astro'
-import Space from '../components/Space'
 import TravelLinkList from '../components/TravelLinkList'
 import WorldMap from '../components/WorldMap'
 import countries from '../countries.json'
@@ -20,8 +19,6 @@ import TurkeyImage from '../images/travel-turkey.jpg'
 import TravelImageUzbekistan from '../images/uzbekistan-khiva-night.jpg'
 import TravelImageVietnam from '../images/vietnam-ho-chi-minh-city-hero.jpg'
 import Layout from '../layouts/Layout.astro'
-
-const numCountriesVisited = countries.visited.filter((c) => !c.lived).length
 
 const items = [
     {
@@ -141,25 +138,71 @@ const items = [
     <section style={{ marginBottom: '3rem' }}>
         <h2>Countries I’ve been to</h2>
 
-        <VisitedCountries />
-
-        <p style={{ marginTop: '2rem' }}>
-            On the map below, color shows how many years it’s been since I last visited each of these
-            <Space />
-            {numCountriesVisited} countries.
-        </p>
-        <WorldMap client:load />
+        <div class="overview-grid">
+            <VisitedCountries />
+            <div class="map-panel">
+                <WorldMap client:load />
+            </div>
+        </div>
     </section>
 
     <section>
         <h2 id="photos">Photos</h2>
+        <TravelLinkList items={items} />
         <p>
             <em>
                 Not shown: many notable trips since 2012, including Southeast Asia, Eastern Europe, and much more of
                 Europe
             </em>
         </p>
-
-        <TravelLinkList items={items} />
     </section>
 </Layout>
+
+<style>
+    .overview-grid {
+        display: grid;
+        gap: 2rem;
+        align-items: start;
+    }
+
+    @media (min-width: 960px) {
+        .overview-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        :global(.overview-grid:has([data-list-expanded='true'])) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .map-panel {
+        max-width: 32rem;
+    }
+
+    /*
+     * The compact caption only shows once the side-by-side layout is active
+     * and the countries list isn't expanded — that's the only time the map
+     * column has slack height the caption can sit in "for free" without
+     * increasing the section's overall height. The expanded map dialog
+     * always shows its own copy of this caption regardless.
+     */
+    :global(.map-caption) {
+        display: none;
+        color: #666;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :global(.map-caption) {
+            color: #bbb;
+        }
+    }
+
+    @media (min-width: 960px) {
+        :global(.overview-grid:not(:has([data-list-expanded='true'])) .map-caption) {
+            display: block;
+            margin-top: 0.5rem;
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+        }
+    }
+</style>

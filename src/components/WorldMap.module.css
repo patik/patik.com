@@ -1,0 +1,117 @@
+.container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: var(--map-aspect-width) / var(--map-aspect-height);
+}
+
+.expandButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.6rem;
+    padding: 0.3rem 0.7rem;
+    color: var(--dark-charcoal) !important;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    line-height: 1.1;
+    cursor: pointer;
+    background: transparent !important;
+    border: 1px solid rgb(0 0 0 / 0.15);
+    border-radius: 4px;
+
+    &:hover,
+    &:focus-visible {
+        background: rgb(0 0 0 / 0.04);
+    }
+}
+
+.dialog {
+    position: fixed;
+    inset: 0;
+    max-width: 96vw;
+    max-height: 92vh;
+    margin: auto;
+    padding: 1rem;
+    background: white;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgb(0 0 0 / 0.35);
+
+    &::backdrop {
+        background: rgb(0 0 0 / 0.55);
+    }
+}
+
+.dialogHeader {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 0.25rem;
+}
+
+.closeButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: 2rem;
+    block-size: 2rem;
+    padding: 0;
+    color: var(--dark-charcoal) !important;
+    font-size: 1.3rem;
+    line-height: 1;
+    cursor: pointer;
+    background: transparent !important;
+    border: 1px solid rgb(0 0 0 / 0.15);
+    border-radius: 999px;
+
+    &:hover,
+    &:focus-visible {
+        background: rgb(0 0 0 / 0.06);
+    }
+}
+
+.expandedChartWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40vw;
+    min-height: 30vh;
+}
+
+.dialogCaption {
+    margin-top: 0.75rem;
+    color: #666;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+@media (prefers-color-scheme: dark) {
+    .expandButton {
+        color: #f2f2f2 !important;
+        border-color: rgb(255 255 255 / 0.25);
+
+        &:hover,
+        &:focus-visible {
+            background: rgb(255 255 255 / 0.08);
+        }
+    }
+
+    .dialog {
+        background: var(--dark-charcoal);
+        box-shadow: 0 8px 32px rgb(0 0 0 / 0.6);
+    }
+
+    .dialogCaption {
+        color: #bbb;
+    }
+
+    .closeButton {
+        color: #f2f2f2 !important;
+        border-color: rgb(255 255 255 / 0.25);
+
+        &:hover,
+        &:focus-visible {
+            background: rgb(255 255 255 / 0.08);
+        }
+    }
+}

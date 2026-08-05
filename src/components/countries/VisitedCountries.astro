@@ -26,10 +26,18 @@ const sortOptions: SortOption[] = [
     { mode: 'name', label: 'A–Z', heading: 'name' },
 ]
 
-// The default (and only build-time-visible) panel excludes lived-in countries.
-const residenceStates: ResidenceState[] = [{ filter: 'excludingResidences', isDefault: true }, { filter: 'all' }]
+// The default (and only build-time-visible) panel includes lived-in countries.
+const residenceStates: ResidenceState[] = [{ filter: 'excludingResidences' }, { filter: 'all', isDefault: true }]
 
 const defaultSort = sortOptions.find((option) => option.isDefault)?.mode ?? 'recent'
+const defaultResidenceFilter = residenceStates.find((state) => state.isDefault)?.filter ?? 'all'
+const scrollRegionId = 'countries-scroll'
+const toolbarId = 'countries-toolbar'
+const defaultSortLabel = sortOptions.find((option) => option.isDefault)?.label ?? sortOptions[0].label
+
+const countsByFilter = Object.fromEntries(
+    residenceStates.map((state) => [state.filter, byResidenceFilter[state.filter].stats.countryCount]),
+) as Record<ResidenceFilter, number>
 
 function getPanelId(filter: ResidenceFilter, mode: CountrySortMode): string {
     return `countries-panel-${filter}-${mode}`
@@ -40,7 +48,7 @@ function getSortControls(mode: CountrySortMode): string {
 }
 ---
 
-<div class={css.countries} data-countries-root data-default-sort={defaultSort}>
+<div class={css.countries} data-countries-root data-default-sort={defaultSort} data-list-expanded="false">
     {
         residenceStates.map((state) => {
             const { stats } = byResidenceFilter[state.filter]
@@ -63,7 +71,18 @@ function getSortControls(mode: CountrySortMode): string {
         })
     }
 
-    <div class={css.toolbar}>
+    <button
+        type="button"
+        class={css.filtersToggle}
+        data-filters-toggle
+        aria-expanded="false"
+        aria-controls={toolbarId}
+        data-default-sort-label={defaultSortLabel}
+    >
+        {`Filters: ${defaultSortLabel}`}
+    </button>
+
+    <div id={toolbarId} class={css.toolbar} hidden>
         <div class={css.segmented} role="group" aria-label="Sort countries">
             {
                 sortOptions.map((option) => (
@@ -74,6 +93,7 @@ function getSortControls(mode: CountrySortMode): string {
                         aria-controls={getSortControls(option.mode)}
                         data-sort-button
                         data-sort={option.mode}
+                        data-label={option.label}
                     >
                         {option.label}
                     </button>
@@ -82,13 +102,13 @@ function getSortControls(mode: CountrySortMode): string {
         </div>
 
         <label class={css.toggleControl}>
-            <input type="checkbox" data-residence-toggle switch />
+            <input type="checkbox" data-residence-toggle switch checked={defaultResidenceFilter === 'all'} />
             <span class={css.toggleSwitch} aria-hidden="true"></span>
             <span>Include countries I’ve lived in</span>
         </label>
     </div>
 
-    <div class={css.scroll} tabindex="0" role="region" aria-label="Country list">
+    <div id={scrollRegionId} class={css.scroll} tabindex="0" role="region" aria-label="Country list">
         {
             residenceStates.map((state) =>
                 sortOptions.map((option) => (
@@ -104,7 +124,20 @@ function getSortControls(mode: CountrySortMode): string {
                 )),
             )
         }
+        <div class={css.scrollFade} aria-hidden="true" />
     </div>
+
+    <button
+        type="button"
+        class={css.expandToggle}
+        data-list-expand-toggle
+        aria-expanded="false"
+        aria-controls={scrollRegionId}
+        data-count-excluding-residences={countsByFilter.excludingResidences}
+        data-count-all={countsByFilter.all}
+    >
+        {`Show all ${countsByFilter[defaultResidenceFilter]} countries`}
+    </button>
 </div>
 
 <script is:inline>
@@ -115,8 +148,35 @@ function getSortControls(mode: CountrySortMode): string {
         const sortPanels = [...root.querySelectorAll('[data-sort-panel]')]
         const summaries = [...root.querySelectorAll('[data-residence-summary]')]
         const residenceToggle = root.querySelector('[data-residence-toggle]')
+        const expandToggle = root.querySelector('[data-list-expand-toggle]')
+        const scrollRegion = expandToggle ? document.getElementById(expandToggle.getAttribute('aria-controls')) : null
+        const filtersToggle = root.querySelector('[data-filters-toggle]')
+        const toolbar = filtersToggle ? document.getElementById(filtersToggle.getAttribute('aria-controls')) : null
         const validSorts = new Set(sortPanels.map((panel) => panel.dataset.sortPanel))
         const defaultSort = root.dataset.defaultSort
+
+        const getExpandLabel = (isExpanded, residenceFilter) => {
+            if (isExpanded) {
+                return 'Collapse list'
+            }
+
+            const count =
+                residenceFilter === 'excludingResidences'
+                    ? expandToggle.dataset.countExcludingResidences
+                    : expandToggle.dataset.countAll
+
+            return `Show all ${count} countries`
+        }
+
+        const getFiltersLabel = (isFiltersExpanded, sort) => {
+            if (isFiltersExpanded) {
+                return 'Hide filters'
+            }
+
+            const activeButton = sortButtons.find((button) => button.dataset.sort === sort)
+
+            return `Filters: ${activeButton?.dataset.label ?? filtersToggle.dataset.defaultSortLabel}`
+        }
 
         const applyState = (state, shouldUpdateUrl) => {
             const residenceFilter = state.excludeResidences ? 'excludingResidences' : 'all'
@@ -139,6 +199,16 @@ function getSortControls(mode: CountrySortMode): string {
                 panel.hidden = !(matchesSort && matchesResidence)
             })
 
+            if (expandToggle) {
+                const isExpanded = root.dataset.listExpanded === 'true'
+                expandToggle.textContent = getExpandLabel(isExpanded, residenceFilter)
+            }
+
+            if (filtersToggle) {
+                const isFiltersExpanded = filtersToggle.getAttribute('aria-expanded') === 'true'
+                filtersToggle.textContent = getFiltersLabel(isFiltersExpanded, state.sort)
+            }
+
             if (shouldUpdateUrl) {
                 const params = new URLSearchParams(window.location.search)
 
@@ -149,9 +219,9 @@ function getSortControls(mode: CountrySortMode): string {
                 }
 
                 if (state.excludeResidences) {
-                    params.delete('lived')
+                    params.set('lived', '0')
                 } else {
-                    params.set('lived', '1')
+                    params.delete('lived')
                 }
 
                 const queryString = params.toString()
@@ -164,7 +234,14 @@ function getSortControls(mode: CountrySortMode): string {
         const requestedSort = params.get('sort')
         const currentState = {
             sort: requestedSort && validSorts.has(requestedSort) ? requestedSort : defaultSort,
-            excludeResidences: params.get('lived') !== '1',
+            excludeResidences: params.get('lived') === '0',
+        }
+
+        // Start with the filters expanded when the URL requests a non-default sort or
+        // residence filter, so the visible control matches the state it's showing.
+        if (filtersToggle && toolbar && (currentState.sort !== defaultSort || currentState.excludeResidences)) {
+            toolbar.hidden = false
+            filtersToggle.setAttribute('aria-expanded', 'true')
         }
 
         applyState(currentState, false)
@@ -179,6 +256,36 @@ function getSortControls(mode: CountrySortMode): string {
         residenceToggle?.addEventListener('change', () => {
             currentState.excludeResidences = !residenceToggle.checked
             applyState(currentState, true)
+        })
+
+        filtersToggle?.addEventListener('click', () => {
+            const isExpanded = filtersToggle.getAttribute('aria-expanded') !== 'true'
+
+            filtersToggle.setAttribute('aria-expanded', String(isExpanded))
+
+            if (toolbar) {
+                toolbar.hidden = !isExpanded
+            }
+
+            filtersToggle.textContent = getFiltersLabel(isExpanded, currentState.sort)
+        })
+
+        expandToggle?.addEventListener('click', () => {
+            const isExpanded = root.dataset.listExpanded !== 'true'
+
+            root.dataset.listExpanded = String(isExpanded)
+            expandToggle.setAttribute('aria-expanded', String(isExpanded))
+
+            if (scrollRegion) {
+                if (isExpanded) {
+                    scrollRegion.removeAttribute('tabindex')
+                } else {
+                    scrollRegion.setAttribute('tabindex', '0')
+                }
+            }
+
+            const residenceFilter = currentState.excludeResidences ? 'excludingResidences' : 'all'
+            expandToggle.textContent = getExpandLabel(isExpanded, residenceFilter)
         })
     }
 </script>

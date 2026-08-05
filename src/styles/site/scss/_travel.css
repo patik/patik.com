@@ -559,27 +559,3 @@
         }
     }
 }
-
-/* Large world map on the Travel index page */
-
-.world-map-container {
-    --MY_MAX_WIDTH: 960px;
-    --GOOGLE_DEFAULT_WIDTH: 556;
-    --GOOGLE_DEFAULT_HEIGHT: 347;
-
-    width: 90vw;
-    min-width: 90vw;
-    height: calc((90vw * var(--GOOGLE_DEFAULT_HEIGHT)) / var(--GOOGLE_DEFAULT_WIDTH));
-    min-height: calc((90vw * var(--GOOGLE_DEFAULT_HEIGHT)) / var(--GOOGLE_DEFAULT_WIDTH));
-
-    @media (min-width: 960px) {
-        width: var(--MY_MAX_WIDTH);
-        min-width: 0;
-        max-width: var(--MY_MAX_WIDTH);
-
-        height: calc((var(--MY_MAX_WIDTH) * var(--GOOGLE_DEFAULT_HEIGHT)) / var(--GOOGLE_DEFAULT_WIDTH));
-        min-height: 0;
-        max-height: calc((var(--MY_MAX_WIDTH) * var(--GOOGLE_DEFAULT_HEIGHT)) / var(--GOOGLE_DEFAULT_WIDTH));
-        max-height: calc((var(--MY_MAX_WIDTH) * var(--GOOGLE_DEFAULT_HEIGHT)) / var(--GOOGLE_DEFAULT_WIDTH));
-    }
-}
