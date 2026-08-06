@@ -23,7 +23,7 @@ function TravelLinkItem({ item }: { item: Item }): ReactNode {
 
 export default function TravelLinkList({ items }: { items: Item[] }): ReactNode {
     return (
-        <div className={`${css.grid} ${css.largeDesktopGap} travel-link-list`}>
+        <div className={`${css.grid} ${css.largeDesktopGap} ${css.threeColumns} travel-link-list`}>
             {items.map((item) => (
                 <TravelLinkItem item={item} key={item.imageSrc.src} />
             ))}
