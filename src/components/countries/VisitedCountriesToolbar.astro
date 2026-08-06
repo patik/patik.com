@@ -1,47 +1,71 @@
 ---
-import { DEFAULT_RESIDENCE_FILTER, getSortControls, SORT_OPTIONS } from './visitedCountries'
+import { DEFAULT_RESIDENCE_FILTER, getSortControls, SCROLL_REGION_ID, SORT_OPTIONS } from './visitedCountries'
 import css from './VisitedCountries.module.css'
+
+interface Props {
+    allCountriesCount: number
+    excludingResidencesCount: number
+}
+
+const { allCountriesCount, excludingResidencesCount } = Astro.props
 ---
 
-<details class={css.filters} data-filters>
-    <summary class={css.filtersToggle}>
-        <span class={css.filtersClosedLabel}>
-            Filters:{' '}
-            {
-                SORT_OPTIONS.map((option) => (
-                    <span class={css.sortLabel} data-sort-label={option.mode}>
-                        {option.label}
-                    </span>
-                ))
-            }
-        </span>
-        <span class={css.filtersOpenLabel}>Hide filters</span>
-    </summary>
+<div class={css.controlsRow}>
+    <details class={css.filters} data-filters>
+        <summary class={css.filtersToggle}>
+            <span class={css.filtersClosedLabel}>
+                Filters:{' '}
+                {
+                    SORT_OPTIONS.map((option) => (
+                        <span class={css.sortLabel} data-sort-label={option.mode}>
+                            {option.label}
+                        </span>
+                    ))
+                }
+            </span>
+            <span class={css.filtersOpenLabel}>Hide filters</span>
+        </summary>
 
-    <div class={css.toolbar}>
-        <div class={css.segmented} role="radiogroup" aria-label="Sort countries">
-            {
-                SORT_OPTIONS.map((option) => (
-                    <label class={css.sortOption}>
-                        <input
-                            class={css.sortInput}
-                            type="radio"
-                            name="countries-sort"
-                            value={option.mode}
-                            checked={option.isDefault}
-                            aria-controls={getSortControls(option.mode)}
-                            data-sort-input
-                        />
-                        <span class={css.sortButton}>{option.label}</span>
-                    </label>
-                ))
-            }
+        <div class={css.toolbar}>
+            <div class={css.segmented} role="radiogroup" aria-label="Sort countries">
+                {
+                    SORT_OPTIONS.map((option) => (
+                        <label class={css.sortOption}>
+                            <input
+                                class={css.sortInput}
+                                type="radio"
+                                name="countries-sort"
+                                value={option.mode}
+                                checked={option.isDefault}
+                                aria-controls={getSortControls(option.mode)}
+                                data-sort-input
+                            />
+                            <span class={css.sortButton}>{option.label}</span>
+                        </label>
+                    ))
+                }
+            </div>
+
+            <label class={css.toggleControl}>
+                <input type="checkbox" data-residence-toggle switch checked={DEFAULT_RESIDENCE_FILTER === 'all'} />
+                <span class={css.toggleSwitch} aria-hidden="true"></span>
+                <span>Include countries I’ve lived in</span>
+            </label>
         </div>
+    </details>
 
-        <label class={css.toggleControl}>
-            <input type="checkbox" data-residence-toggle switch checked={DEFAULT_RESIDENCE_FILTER === 'all'} />
-            <span class={css.toggleSwitch} aria-hidden="true"></span>
-            <span>Include countries I’ve lived in</span>
-        </label>
-    </div>
-</details>
+    <button
+        type="button"
+        class={css.expandToggle}
+        data-list-expand-toggle
+        aria-expanded="false"
+        aria-controls={SCROLL_REGION_ID}
+    >
+        <span class={css.collapsedExpandLabel}>
+            Show all{' '}
+            <span class={css.allCountriesCount}>{allCountriesCount}</span>
+            <span class={css.excludingResidencesCount}>{excludingResidencesCount}</span> countries
+        </span>
+        <span class={css.expandedLabel}>Collapse list</span>
+    </button>
+</div>

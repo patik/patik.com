@@ -9,11 +9,16 @@ import VisitedCountriesToolbar from './VisitedCountriesToolbar.astro'
 
 const currentYear = new Date().getFullYear()
 const { byResidenceFilter } = getCountriesViewData({ countries: countriesData.visited, currentYear })
+const excludingResidencesCount = byResidenceFilter.excludingResidences.stats.countryCount
+const allCountriesCount = byResidenceFilter.all.stats.countryCount
 ---
 
 <visited-countries class={css.countries} data-default-sort={DEFAULT_SORT}>
     <VisitedCountriesSummaries byResidenceFilter={byResidenceFilter} />
-    <VisitedCountriesToolbar />
+    <VisitedCountriesToolbar
+        allCountriesCount={allCountriesCount}
+        excludingResidencesCount={excludingResidencesCount}
+    />
     <VisitedCountriesPanels byResidenceFilter={byResidenceFilter} />
 </visited-countries>
 

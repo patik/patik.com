@@ -1,25 +1,36 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type MouseEvent as ReactMouseEvent } from 'react'
 import { Chart } from 'react-google-charts'
 import countries from '../countries.json'
 import css from './WorldMap.module.css'
 
 const currentYear = new Date().getFullYear()
 
-const countryData: Array<[string, string | number]> = [['Country', 'Years since last visit']]
+const countryData: Array<[string, string | number | null]> = [['Country', 'Years since last visit']]
 
-countries.visited
-    .filter((country) => !country.lived)
-    .forEach((country) => {
-        countryData.push([country.name, currentYear - Math.max(...country.yearsVisited)])
-    })
+countries.visited.forEach((country) => {
+    const yearsSinceLastVisit = country.lived ? null : currentYear - Math.max(...country.yearsVisited)
+
+    countryData.push([country.name, yearsSinceLastVisit])
+})
 
 // https://developers-dot-devsite-v2-prod.appspot.com/chart/interactive/docs/gallery/geochart
 const GEO_CHART_WIDTH_RATIO = 556
 const GEO_CHART_HEIGHT_RATIO = 347
 
-const MAP_CAPTION = 'Color shows years since my last visit.'
+const LIVED_COUNTRY_COLOR = '#3a7a5f'
+const MAP_CAPTION = 'Red to blue shows years since my last visit; green marks countries I’ve lived in.'
 
 const getMapHeight = (width: number) => (width * GEO_CHART_HEIGHT_RATIO) / GEO_CHART_WIDTH_RATIO
+
+function isBackdropClick(event: ReactMouseEvent<HTMLDialogElement>): boolean {
+    if (event.target !== event.currentTarget) {
+        return false
+    }
+
+    const { left, right, top, bottom } = event.currentTarget.getBoundingClientRect()
+
+    return event.clientX < left || event.clientX > right || event.clientY < top || event.clientY > bottom
+}
 
 function useIsDarkMode(): boolean {
     const [isDarkMode, setIsDarkMode] = useState(true)
@@ -90,7 +101,7 @@ function GeoChart({ width, isDarkMode }: { width: number; isDarkMode: boolean })
                 },
                 backgroundColor: isDarkMode ? '#222222' : '#ffffff',
                 datalessRegionColor: '#666666',
-                defaultColor: '#f5f5f5',
+                defaultColor: LIVED_COUNTRY_COLOR,
                 keepAspectRatio: true,
                 width,
                 height,
@@ -151,26 +162,23 @@ export default function WorldMap({ className = '' }: { className?: string }) {
                 {mapWidth > 0 ? <GeoChart width={mapWidth} isDarkMode={isDarkMode} /> : null}
             </div>
 
-            <button type="button" className={css.expandButton} onClick={openDialog}>
-                Expand map
-            </button>
+            <div className={css.controls}>
+                <button type="button" className={css.expandButton} onClick={openDialog}>
+                    Expand map
+                </button>
 
-            <p className={css.caption} data-map-caption>
-                {MAP_CAPTION}
-            </p>
+                <p className={css.caption}>{MAP_CAPTION}</p>
+            </div>
 
-            {/*
-                The click handler below only detects clicks on the ::backdrop (there's no
-                other way to do that), which is not reachable by keyboard — Escape already
-                closes the dialog natively, independent of this handler.
-            */}
+            {/* The ::backdrop reports the dialog as its target, so coordinates distinguish it from dialog padding. */}
             {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/click-events-have-key-events */}
             <dialog
                 ref={dialogRef}
                 className={css.dialog}
+                aria-label="Visited countries map"
                 onClose={() => setIsExpanded(false)}
                 onClick={(event) => {
-                    if (event.target === dialogRef.current) {
+                    if (isBackdropClick(event)) {
                         closeDialog()
                     }
                 }}
@@ -182,7 +190,9 @@ export default function WorldMap({ className = '' }: { className?: string }) {
                 </div>
 
                 <div className={css.expandedChartWrap} ref={expandedChartWrapRef}>
-                    {isExpanded && expandedWidth > 0 ? <GeoChart width={expandedWidth} isDarkMode={isDarkMode} /> : null}
+                    {isExpanded && expandedWidth > 0 ? (
+                        <GeoChart width={expandedWidth} isDarkMode={isDarkMode} />
+                    ) : null}
                 </div>
 
                 {isExpanded ? <p className={css.dialogCaption}>{MAP_CAPTION}</p> : null}

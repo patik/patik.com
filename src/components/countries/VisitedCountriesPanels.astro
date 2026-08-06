@@ -9,8 +9,6 @@ interface Props {
 }
 
 const { byResidenceFilter } = Astro.props
-const excludingResidencesCount = byResidenceFilter.excludingResidences.stats.countryCount
-const allCountriesCount = byResidenceFilter.all.stats.countryCount
 ---
 
 <div id={SCROLL_REGION_ID} class={css.scroll} tabindex="0" role="region" aria-label="Country list">
@@ -32,18 +30,3 @@ const allCountriesCount = byResidenceFilter.all.stats.countryCount
     }
     <div class={css.scrollFade} aria-hidden="true"></div>
 </div>
-
-<button
-    type="button"
-    class={css.expandToggle}
-    data-list-expand-toggle
-    aria-expanded="false"
-    aria-controls={SCROLL_REGION_ID}
->
-    <span class={css.collapsedExpandLabel}>
-        Show all{' '}
-        <span class={css.allCountriesCount}>{allCountriesCount}</span>
-        <span class={css.excludingResidencesCount}>{excludingResidencesCount}</span> countries
-    </span>
-    <span class={css.expandedLabel}>Collapse list</span>
-</button>
