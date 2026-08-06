@@ -10,10 +10,17 @@
 
 @media (min-width: 960px) {
     .overview {
-        grid-template-columns: 1fr 1fr;
+        /*
+         * minmax(0, 1fr), not a bare 1fr: bare 1fr means minmax(auto, 1fr), whose auto
+         * floor is the item's min-content width. The map is a GeoChart at an explicit
+         * pixel width, so once expanding widens it to its 32rem cap, a bare 1fr would
+         * refuse to shrink back on collapse — squeezing the country list to one column
+         * and sticking there, since the map re-renders only when it observes a resize.
+         */
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 
         &:has([data-list-expand-toggle][aria-expanded='true']) {
-            grid-template-columns: 1fr;
+            grid-template-columns: minmax(0, 1fr);
         }
 
         &:not(:has([data-list-expand-toggle][aria-expanded='true'])) .map [data-map-caption] {

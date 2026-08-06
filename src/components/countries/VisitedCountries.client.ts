@@ -39,22 +39,29 @@ function updateUrl(sortInputs: HTMLInputElement[], residenceToggle: HTMLInputEle
 class VisitedCountriesElement extends HTMLElement {
     private isInitialized = false
 
+    // The two behaviors below are independent, so they get their own guards. A
+    // single combined guard would let one missing element silently disable both.
     connectedCallback(): void {
         if (this.isInitialized) {
             return
         }
 
+        this.isInitialized = true
+
+        this.initFilters()
+        this.initExpandToggle()
+    }
+
+    // Restores the sort/residence selection from the URL, then keeps the URL in
+    // sync as it changes. Which panel is visible is decided by CSS off :checked.
+    private initFilters(): void {
         const sortInputs = [...this.querySelectorAll<HTMLInputElement>(SORT_INPUT_SELECTOR)]
         const residenceToggle = this.querySelector<HTMLInputElement>(RESIDENCE_TOGGLE_SELECTOR)
         const filters = this.querySelector<HTMLDetailsElement>(FILTERS_SELECTOR)
-        const expandToggle = this.querySelector<HTMLButtonElement>(EXPAND_TOGGLE_SELECTOR)
-        const scrollRegion = expandToggle ? getControlledElement(this, expandToggle) : null
 
-        if (!residenceToggle || !filters || !expandToggle || !scrollRegion) {
+        if (!residenceToggle || !filters) {
             return
         }
-
-        this.isInitialized = true
 
         const params = new URLSearchParams(window.location.search)
         const requestedSort = params.get('sort')
@@ -76,6 +83,18 @@ class VisitedCountriesElement extends HTMLElement {
         })
 
         residenceToggle.addEventListener('change', () => updateUrl(sortInputs, residenceToggle))
+    }
+
+    // Only flips aria-expanded — every visual change hangs off that attribute in
+    // CSS. The tabIndex swap is the one part CSS can't express: the region needs
+    // a tab stop while it's a scrollport, but not once it's expanded in full.
+    private initExpandToggle(): void {
+        const expandToggle = this.querySelector<HTMLButtonElement>(EXPAND_TOGGLE_SELECTOR)
+        const scrollRegion = expandToggle ? getControlledElement(this, expandToggle) : null
+
+        if (!expandToggle || !scrollRegion) {
+            return
+        }
 
         expandToggle.addEventListener('click', () => {
             const isExpanded = expandToggle.getAttribute('aria-expanded') !== 'true'
