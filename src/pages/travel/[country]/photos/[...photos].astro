@@ -1,0 +1,53 @@
+---
+import GalleryPage from '@src/components/gallery/GalleryPage.astro'
+import getGalleryStaticPaths, {
+    type GalleryPageProps,
+    type GallerySortDirection,
+} from '@src/photos/utils/getGalleryStaticPaths'
+import type { CityGallery, CountryGallery } from '@src/photos/utils/types'
+
+interface GalleryModule {
+    default: CountryGallery
+    cityGalleries: CityGallery[]
+    sortDirection?: GallerySortDirection
+}
+
+interface Props extends GalleryPageProps {
+    countryGallery: CountryGallery
+    cityGalleries: CityGallery[]
+}
+
+interface CountryGalleryPath {
+    params: {
+        country: string
+        photos: string | undefined
+    }
+    props: Props
+}
+
+export async function getStaticPaths(): Promise<CountryGalleryPath[]> {
+    const galleryModules = import.meta.glob<GalleryModule>('/src/galleries/*/index.ts', { eager: true })
+    const galleryPaths = await Promise.all(
+        Object.values(galleryModules).map(async (galleryModule) => {
+            const { default: countryGallery, cityGalleries, sortDirection } = galleryModule
+            const paths = await getGalleryStaticPaths({ cityGalleries, sortDirection })
+
+            return paths.map(({ params, props }) => ({
+                params: {
+                    country: countryGallery.countryId,
+                    photos: params.photos,
+                },
+                props: {
+                    ...props,
+                    countryGallery,
+                    cityGalleries,
+                },
+            }))
+        }),
+    )
+
+    return galleryPaths.flat()
+}
+---
+
+<GalleryPage {...Astro.props} />
