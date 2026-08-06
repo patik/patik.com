@@ -1,31 +1,16 @@
 ---
+import Space from '@src/components/Space'
+import TravelLinkList from '@src/components/TravelLinkList.astro'
+import countryGallery from '@src/galleries/britain'
+import EdinburghImage from '@src/images/britain-benelux-edinburgh-link.jpg'
+import LiverpoolImage from '@src/images/britain-benelux-liverpool-link.jpg'
+import LondonImage from '@src/images/britain-benelux-london-link.jpg'
+import OverviewMap from '@src/images/britain-benelux-overview-map-small.jpg'
+import Layout from '@src/layouts/Layout.astro'
 import { Image } from 'astro:assets'
-import Space from '../../components/Space'
-import TravelLinkList from '../../components/TravelLinkList.astro'
-import EdinburghImage from '../../images/britain-benelux-edinburgh-link.jpg'
-import LiverpoolImage from '../../images/britain-benelux-liverpool-link.jpg'
-import LondonImage from '../../images/britain-benelux-london-link.jpg'
-import OverviewMap from '../../images/britain-benelux-overview-map-small.jpg'
-import Layout from '../../layouts/Layout.astro'
 ---
 
-<Layout
-    title="Britain & Benelux"
-    keywords={[
-        'Netherlands',
-        'Amsterdam',
-        'Belgium',
-        'Bruges',
-        'United Kingdom',
-        'Scotland',
-        'Edinburgh',
-        'London',
-        'England',
-        'Liverpool',
-        'Europe',
-        'travel',
-    ]}
->
+<Layout title="Britain & Benelux" keywords={countryGallery.keywords}>
     <h1>London, Amsterdam, &amp; Bruges</h1>
 
     <p>August 2012</p>
@@ -38,21 +23,21 @@ import Layout from '../../layouts/Layout.astro'
                 {
                     title: 'Edinburgh',
                     className: 'bg-britain-edinburgh',
-                    url: 'https://photos.app.goo.gl/Fd1k8dL7XwoXqfFk9',
+                    url: '/travel/britain/photos/edinburgh/',
                     imageSrc: EdinburghImage,
                     imageAlt: 'Craig petting a hairy coo while wearing a novelty hairy coo hat',
                 },
                 {
                     title: 'London',
                     className: 'bg-britain-london',
-                    url: 'https://photos.app.goo.gl/8xnnmev6wYAS6Poz5',
+                    url: '/travel/britain/photos/london/',
                     imageSrc: LondonImage,
                     imageAlt: 'View over Westminster from the London Eye',
                 },
                 {
                     title: 'Liverpool',
                     className: 'bg-britain-liverpool',
-                    url: 'https://photos.app.goo.gl/Ua7wXckcX72Myrbu7',
+                    url: '/travel/britain/photos/liverpool/',
                     imageSrc: LiverpoolImage,
                     imageAlt: 'Pitch-level view of the Kop at Anfield',
                 },
