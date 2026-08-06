@@ -1,0 +1,35 @@
+---
+import type { CountriesViewData } from './countries'
+import { getCountryFlag } from './countries'
+import { RESIDENCE_STATES } from './visitedCountries'
+import css from './VisitedCountries.module.css'
+
+interface Props {
+    byResidenceFilter: CountriesViewData['byResidenceFilter']
+}
+
+const { byResidenceFilter } = Astro.props
+---
+
+{
+    RESIDENCE_STATES.map((state) => {
+        const { stats } = byResidenceFilter[state.filter]
+        const mostVisitedFlag = getCountryFlag(stats.mostVisited.name)
+
+        return (
+            <p class={css.summary} data-residence-summary={state.filter}>
+                <strong>{stats.countryCount}</strong> countries · <strong>{stats.visitCount}</strong> visits ·{' '}
+                {stats.yearRange}
+                <span class={css.summaryDetail}>
+                    Most visits:{' '}
+                    {mostVisitedFlag ? (
+                        <span aria-hidden="true" class={css.flag}>
+                            {mostVisitedFlag}
+                        </span>
+                    ) : null}
+                    {stats.mostVisited.name} ({stats.mostVisited.visitCount})
+                </span>
+            </p>
+        )
+    })
+}

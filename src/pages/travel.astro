@@ -1,8 +1,6 @@
 ---
-import VisitedCountries from '../components/countries/VisitedCountries.astro'
-import Space from '../components/Space'
+import CountriesOverview from '@src/components/countries/CountriesOverview.astro'
 import TravelLinkList from '../components/TravelLinkList'
-import WorldMap from '../components/WorldMap'
 import countries from '../countries.json'
 import TravelImageBosnia from '../images/bosnia-sarajevo-hero.jpg'
 import BrugesImage from '../images/britain-benelux-bruges-link.jpg'
@@ -20,8 +18,6 @@ import TurkeyImage from '../images/travel-turkey.jpg'
 import TravelImageUzbekistan from '../images/uzbekistan-khiva-night.jpg'
 import TravelImageVietnam from '../images/vietnam-ho-chi-minh-city-hero.jpg'
 import Layout from '../layouts/Layout.astro'
-
-const numCountriesVisited = countries.visited.filter((c) => !c.lived).length
 
 const items = [
     {
@@ -140,26 +136,17 @@ const items = [
 
     <section style={{ marginBottom: '3rem' }}>
         <h2>Countries I’ve been to</h2>
-
-        <VisitedCountries />
-
-        <p style={{ marginTop: '2rem' }}>
-            On the map below, color shows how many years it’s been since I last visited each of these
-            <Space />
-            {numCountriesVisited} countries.
-        </p>
-        <WorldMap client:load />
+        <CountriesOverview />
     </section>
 
     <section>
         <h2 id="photos">Photos</h2>
+        <TravelLinkList items={items} />
         <p>
             <em>
                 Not shown: many notable trips since 2012, including Southeast Asia, Eastern Europe, and much more of
                 Europe
             </em>
         </p>
-
-        <TravelLinkList items={items} />
     </section>
 </Layout>

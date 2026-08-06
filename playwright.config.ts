@@ -5,6 +5,8 @@ const webServerCommand = process.env.CI ? 'serve dist -p 4322' : 'pnpm build && 
 export default defineConfig({
     testDir: './tests',
     snapshotDir: './tests-snapshots',
+    // No {platform} token — baselines are Linux-only. Run them with `pnpm test:visual`.
+    snapshotPathTemplate: '{snapshotDir}/{testFileName}-snapshots/{arg}{-projectName}{ext}',
     fullyParallel: true,
     // Fail the build in CI if test.only is accidentally left in
     forbidOnly: !!process.env.CI,
@@ -18,7 +20,7 @@ export default defineConfig({
     },
     projects: [
         {
-            name: 'chromium',
+            name: 'chromium-desktop',
             // viewport must come AFTER the device spread — Desktop Chrome includes
             // viewport: { width: 1280, height: 720 } which would otherwise win.
             use: { ...devices['Desktop Chrome'], viewport: { width: 1020, height: 2000 } },

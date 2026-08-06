@@ -9,6 +9,12 @@ jobs:
   update-snapshots:
     runs-on: ubuntu-latest
 
+    # Must match linting-and-unit-tests.yml and scripts/visual.sh.
+    container: mcr.microsoft.com/playwright:v1.62.1-noble
+
+    env:
+      PLAYWRIGHT_IMAGE_VERSION: "1.62.1"
+
     permissions:
       contents: write  # needed to push the updated snapshot commit
 
@@ -38,16 +44,14 @@ jobs:
 
       - run: pnpm install
 
-      - name: Cache Playwright browsers
-        uses: actions/cache@v4
-        id: playwright-cache
-        with:
-          path: ~/.cache/ms-playwright
-          key: ${{ runner.os }}-playwright-${{ hashFiles('**/pnpm-lock.yaml') }}
-
-      - name: Install Playwright browsers
-        if: steps.playwright-cache.outputs.cache-hit != 'true'
-        run: pnpm exec playwright install chromium
+      # See linting-and-unit-tests.yml.
+      - name: Verify the container matches the installed Playwright
+        run: |
+          installed="$(node -p "require('@playwright/test/package.json').version")"
+          if [ "$installed" != "$PLAYWRIGHT_IMAGE_VERSION" ]; then
+            echo "::error::@playwright/test is $installed but this job runs in the v$PLAYWRIGHT_IMAGE_VERSION container. Bump the container tag and PLAYWRIGHT_IMAGE_VERSION in .github/workflows/*.yml — visual baselines are only comparable within one image."
+            exit 1
+          fi
 
       - name: Build
         run: pnpm build

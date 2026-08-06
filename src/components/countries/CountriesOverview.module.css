@@ -1,0 +1,21 @@
+.overview {
+    display: grid;
+    gap: 2rem;
+    align-items: start;
+}
+
+.map {
+    max-width: 32rem;
+}
+
+@media (min-width: 960px) {
+    .overview {
+        /* minmax(0,…), not a bare 1fr: its auto floor is min-content, so the fixed-width
+           map chart would pin the column open and squeeze the list to one column. */
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+
+        &:has([data-list-expand-toggle][aria-expanded='true']) {
+            grid-template-columns: minmax(0, 1fr);
+        }
+    }
+}

@@ -3,6 +3,8 @@ dist/
 
 # dependencies
 node_modules/
+# pnpm falls back to a store beside the project (see scripts/visual.sh)
+.pnpm-store/
 
 # logs
 npm-debug.log*
