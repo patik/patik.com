@@ -1,8 +1,6 @@
 @charset "UTF-8";
-@import '_normalize.css';
 @import 'foundation.css';
 @import '_foundation-overrides.css';
-@import '_mixins.css';
 @import '_variables.css';
 @import '_travel.css';
 @import '_main-nav.css';
