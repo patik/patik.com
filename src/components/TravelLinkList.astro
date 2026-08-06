@@ -1,0 +1,35 @@
+---
+import { Image } from 'astro:assets'
+import css from './LinkGrid.module.css'
+
+type Item = {
+    imageSrc: ImageMetadata
+    imageAlt: string
+    url: string
+    className: string
+    title: string
+}
+
+interface Props {
+    items: Item[]
+}
+
+// `.travel-link-list a` caps a tile at 336px wide, so 2x that covers the densest display.
+// Sources range from 336px to 1709px wide; clamping per image avoids upscaling the small
+// ones while keeping the large ones from shipping at full size.
+const maxRenderedWidth = 672
+
+const { items } = Astro.props
+---
+
+<div class:list={[css.grid, css.largeDesktopGap, css.threeColumns, 'travel-link-list']}>
+    {
+        items.map(({ imageSrc, imageAlt, url, className, title }) => (
+            <a class={className} href={url}>
+                <Image src={imageSrc} alt={imageAlt} width={Math.min(imageSrc.width, maxRenderedWidth)} />
+                <span>{title}</span>
+                <div class="image-cover" />
+            </a>
+        ))
+    }
+</div>

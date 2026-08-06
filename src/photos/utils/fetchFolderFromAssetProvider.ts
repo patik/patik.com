@@ -11,6 +11,28 @@ if (!existsSync(cacheDir)) {
     mkdirSync(cacheDir)
 }
 
+/**
+ * Returns the cached response, or null if it is unusable — empty, corrupt, or the wrong
+ * shape. Any of those should fall through to a fresh fetch rather than fail the build.
+ */
+function readCache(filePath: string): CloudinaryResult | null {
+    let cachedResults: CloudinaryResult
+
+    try {
+        cachedResults = JSON.parse(readFileSync(filePath, 'utf8'))
+    } catch (error) {
+        console.warn('[fetchFolderFromAssetProvider] could not read cached results in ', filePath, error)
+        return null
+    }
+
+    if (!Array.isArray(cachedResults?.resources) || cachedResults.resources.length === 0) {
+        console.log('[fetchFolderFromAssetProvider] ignoring empty cached results in ', filePath)
+        return null
+    }
+
+    return cachedResults
+}
+
 export default async function fetchFolderFromAssetProvider(
     folderName: string,
     sortDirection: 'asc' | 'desc' = 'desc',
@@ -19,14 +41,12 @@ export default async function fetchFolderFromAssetProvider(
     const filePath = path.join(cacheDir, `cloudinary-cache-${cacheKey}`)
 
     if (existsSync(filePath)) {
-        const cachedResults: CloudinaryResult = JSON.parse(readFileSync(filePath, 'utf8'))
+        const cachedResults = readCache(filePath)
 
-        if (cachedResults.resources.length > 0) {
+        if (cachedResults) {
             console.log('[fetchFolderFromAssetProvider] returning cached results in ', filePath)
             return cachedResults
         }
-
-        console.log('[fetchFolderFromAssetProvider] ignoring empty cached results in ', filePath)
     }
 
     const cloudName = getCloudinaryEnv('PUBLIC_CLOUDINARY_CLOUD_NAME')

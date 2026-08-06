@@ -69,9 +69,6 @@ importers:
       '@types/react-dom':
         specifier: ^19.2.4
         version: 19.2.4(@types/react@19.2.18)
-      find-unused-sass-variables:
-        specifier: ^6.2.1
-        version: 6.2.1
       husky:
         specifier: ^9.1.7
         version: 9.1.7
@@ -3345,11 +3342,6 @@ packages:
     resolution: {integrity: sha512-f2JHn75x2JlwUwLenZypgczR7YWMb/uO9BvUXtus+JMgkbIkLADd38cI4EiV+OQqrGo1Zlq6V8wnqMJ8e62wUQ==}
     engines: {node: '>=20'}
 
-  find-unused-sass-variables@6.2.1:
-    resolution: {integrity: sha512-OUqVUadL/MO7H3FxMG7p4LZqbn78e/+MgcRqCKNXJksWe+J6VZ1l8EB76ilBBtVUMiARR3zc8d4soOuX1LLppA==}
-    engines: {node: '>=18'}
-    hasBin: true
-
   find-up-simple@1.0.1:
     resolution: {integrity: sha512-afd4O7zpqHeRyg4PfDQsXmlDe2PfdHtJt6Akt8jOWaApLOZk5JXs6VMR29lz03pRe9mpykrRCYIYxaJYcfpncQ==}
     engines: {node: '>=18'}
@@ -5143,12 +5135,6 @@ packages:
     engines: {node: '>=18.0'}
     peerDependencies:
       postcss: ^8.4.31
-
-  postcss-scss@4.0.9:
-    resolution: {integrity: sha512-AjKOeiwAitL/MXxQW2DliT28EKukvvbEWx3LBmJIRN8KfBGZbRTxNYW0kSqi1COiTZ57nZ9NW06S6ux//N1c9A==}
-    engines: {node: '>=12.0'}
-    peerDependencies:
-      postcss: ^8.4.29
 
   postcss-selector-parser@6.1.4:
     resolution: {integrity: sha512-bIoJLOmjCO1S9XdY/DcnR5hJxvrDir1PbGChrzXG3vw0/FOliy/fA3dmdhQ441kah4gKv+TwckGzex6wNS5cnQ==}
@@ -9921,15 +9907,6 @@ snapshots:
       fast-querystring: 1.1.2
       safe-regex2: 5.1.1
 
-  find-unused-sass-variables@6.2.1:
-    dependencies:
-      commander: 12.1.0
-      escape-string-regexp: 5.0.0
-      picocolors: 1.1.1
-      postcss: 8.5.25
-      postcss-scss: 4.0.9(postcss@8.5.25)
-      tinyglobby: 0.2.17
-
   find-up-simple@1.0.1: {}
 
   find-up@7.0.0:
@@ -12048,10 +12025,6 @@ snapshots:
       postcss-selector-parser: 6.1.4
 
   postcss-safe-parser@7.0.1(postcss@8.5.25):
-    dependencies:
-      postcss: 8.5.25
-
-  postcss-scss@4.0.9(postcss@8.5.25):
     dependencies:
       postcss: 8.5.25
 

@@ -19,7 +19,13 @@ const { title = '', keywords = [] } = Astro.props
         <meta name="generator" content={Astro.generator} />
         <title>{`${title ? `${title} - ` : ''}Craig Patik`}</title>
         {keywords && keywords.length > 0 ? <meta name="keywords" content={keywords.join(',')} /> : null}
+        {
+            /* Site-wide so profile verification never depends on which page a remote service
+            was pointed at — Mastodon accepts `link rel=me` in the head, and moving or
+            removing a visible link in the body can't silently break the checkmark. */
+        }
         <link rel="me" href="https://mastodon.online/@craigpatik" />
+        <link rel="me" href="https://bsky.app/profile/craig.patik.com" />
         <link rel="stylesheet" href="https://use.typekit.net/tfz6xpv.css" />
         <meta name="author" content="Craig Patik" />
         <meta

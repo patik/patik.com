@@ -1,0 +1,16 @@
+# Normalize line endings on commit and check out LF everywhere. Without this, files
+# authored on Windows land as CRLF and every later edit shows a whole-file diff once a
+# formatter touches them.
+* text=auto eol=lf
+
+# Never touch binaries.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.webp binary
+*.woff binary
+*.woff2 binary
+*.mp4 binary
+*.pdf binary

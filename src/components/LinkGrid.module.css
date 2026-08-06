@@ -18,6 +18,8 @@
     }
 }
 
-.threeColumns {
+/* Doubled up with `.grid` so this outranks that rule's breakpoints on specificity
+ * rather than on source order. */
+.grid.threeColumns {
     grid-template-columns: repeat(3, minmax(0, 1fr));
 }

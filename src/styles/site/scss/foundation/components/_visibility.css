@@ -1,40 +1,10 @@
 /* Foundation Visibility HTML Classes */
 
-.hide-for-small {
-    display: none !important;
-}
-
-/* Medium Displays: 768px - 1279px */
-@media (min-width: 768px) and (max-width: 1279px) {
+/* Hide below the medium breakpoint, and leave the element's natural display alone
+ * above it. Foundation's original did the inverse — a blanket `display: none` that
+ * only one breakpoint band restored — so anything wider than 1279px stayed hidden. */
+@media (max-width: 767px) {
     .hide-for-small {
-        display: inherit !important;
-    }
-
-    /* Specific visilbity for tables */
-    table {
-        &.hide-for-small {
-            display: table;
-        }
-    }
-    thead {
-        &.hide-for-small {
-            display: table-header-group !important;
-        }
-    }
-    tbody {
-        &.hide-for-small {
-            display: table-row-group !important;
-        }
-    }
-    tr {
-        &.hide-for-small {
-            display: table-row !important;
-        }
-    }
-    td,
-    th {
-        &.hide-for-small {
-            display: table-cell !important;
-        }
+        display: none !important;
     }
 }
