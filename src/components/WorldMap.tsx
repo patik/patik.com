@@ -38,8 +38,8 @@ function useIsDarkMode(): boolean {
     return isDarkMode
 }
 
-// Fits the chart to the box the dialog leaves for it. Sizing off a viewport fraction
-// instead ignored the header/caption/padding and overflowed the 92vh cap.
+// Must measure the wrap, not take a fraction of the viewport: the dialog's header,
+// caption and padding sit outside that budget, so the chart overflows the 92vh cap.
 function useExpandedMapWidth(isOpen: boolean) {
     const wrapRef = useRef<HTMLDivElement>(null)
     const [width, setWidth] = useState(0)

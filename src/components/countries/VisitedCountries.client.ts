@@ -39,7 +39,7 @@ function updateUrl(sortInputs: HTMLInputElement[], residenceToggle: HTMLInputEle
 class VisitedCountriesElement extends HTMLElement {
     private isInitialized = false
 
-    // Separate guards: one combined guard let a missing element disable both behaviors.
+    // Keep the guards separate: combining them lets one missing element disable both.
     connectedCallback(): void {
         if (this.isInitialized) {
             return
@@ -51,7 +51,7 @@ class VisitedCountriesElement extends HTMLElement {
         this.initExpandToggle()
     }
 
-    // Restores sort/residence from the URL and keeps it in sync; CSS does the showing.
+    // Panel visibility is CSS off :checked — this only restores and syncs the URL.
     private initFilters(): void {
         const sortInputs = [...this.querySelectorAll<HTMLInputElement>(SORT_INPUT_SELECTOR)]
         const residenceToggle = this.querySelector<HTMLInputElement>(RESIDENCE_TOGGLE_SELECTOR)

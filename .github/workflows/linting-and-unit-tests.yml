@@ -9,9 +9,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    # Same image as `pnpm test:visual` locally, so a local pass means a CI pass.
-    # ubuntu-latest resolves `monospace` to a different face — a ~2% diff on a 0.2%
-    # threshold. Keep the tag in step with @playwright/test; the guard step below checks.
+    # Must stay the image scripts/visual.sh uses: bare ubuntu-latest resolves `monospace`
+    # to a different face, a ~2% pixel diff against a 0.2% threshold.
     container: mcr.microsoft.com/playwright:v1.62.1-noble
 
     env:

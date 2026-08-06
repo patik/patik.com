@@ -73,8 +73,7 @@ for (const { path: routePath, label } of visualRoutes) {
     })
 }
 
-// A state rather than a route, so it can't come from `routes`. Worth a baseline because
-// expanding drops the list's max-height and collapses the two-column overview to one.
+// A state rather than a route, so it can't be driven from `routes`.
 test('travel-index-countries-expanded: matches visual snapshot', async ({ page }) => {
     test.skip(!IS_LINUX, 'Linux-only baselines; see the platform guard above.')
 
@@ -110,8 +109,8 @@ test('travel-index-countries-expanded: matches visual snapshot', async ({ page }
 test('travel-index-map-expanded: matches visual snapshot', async ({ page }) => {
     test.skip(!IS_LINUX, 'Linux-only baselines; see the platform guard above.')
 
-    // Shorter than the suite default: the dialog is capped at 92vh, so a 2000px-tall
-    // viewport letterboxes the map and skips the tight fit that used to overflow.
+    // Don't inherit the suite's 2000px height: the dialog caps at 92vh, so a tall viewport
+    // letterboxes the map and never exercises the vertical fit this covers.
     await page.setViewportSize({ width: 1020, height: 760 })
     await page.emulateMedia({ reducedMotion: 'reduce' })
     await mockNetlifyImages(page)

@@ -9,8 +9,6 @@
     --header-font-style: normal;
     --header-font-color: #222;
     --header-line-height: 1.4;
-    --header-top-margin: 0.2em;
-    --header-bottom-margin: 0.5em;
     --header-text-rendering: optimizeLegibility;
 
     /* We use these to control header font sizes */
@@ -188,8 +186,6 @@ h6 {
     font-style: var(--header-font-style);
     color: var(--header-font-color);
     text-rendering: var(--header-text-rendering);
-    margin-top: var(--header-top-margin);
-    margin-bottom: var(--header-bottom-margin);
     line-height: calc(var(--header-line-height) - 0.1875em); /* header-line-height - em-calc(3) = 1.4 - 3/16 */
 
     small {
