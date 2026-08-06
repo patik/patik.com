@@ -134,8 +134,9 @@ figure {
 }
 
 .button-link-list {
-    a {
-        display: block;
+    & > a {
+        display: flex;
+        align-items: center;
         padding: 0.5rem 0.25rem;
         text-align: left;
         text-decoration: none;
@@ -147,16 +148,17 @@ figure {
         }
 
         img {
-            float: left;
+            border-radius: 3px;
             height: calc(var(--buttonLinkImageWidth) / 2);
             width: calc(var(--buttonLinkImageWidth) / 2);
         }
 
         span {
             display: block;
-            margin-left: calc(var(--buttonLinkImageWidth) / 2 + 4px);
+            flex-grow: 1;
+            margin-left: 1rem;
             font-size: 1.75rem;
-            line-height: 1.1rem;
+            line-height: normal;
         }
     }
 }
@@ -199,93 +201,7 @@ figure {
 /* // --------------- */
 @media (min-width: 980px) {
     /* 980px and up */
-    .button-link-list {
-        & > div {
-            margin-bottom: 2%;
-            border-radius: 4px;
-        }
-    }
-
     .row {
         margin-left: 0;
-    }
-}
-
-.cp-row {
-    display: flex;
-    flex-wrap: wrap;
-
-    .cp-item-third {
-        display: block;
-        flex-basis: 33.333%;
-        max-width: 33.333%;
-
-        @media (max-width: 980px) {
-            flex-basis: 50%;
-            max-width: 50%;
-        }
-
-        @media (max-width: 600px) {
-            flex-basis: 100%;
-            max-width: 100%;
-        }
-
-        a {
-            span {
-                line-height: normal;
-            }
-
-            img {
-                border-radius: 3px;
-            }
-        }
-    }
-
-    .cp-item-half {
-        flex-basis: calc(50% - 1rem);
-        max-width: calc(50% - 1rem);
-        margin-right: 2rem;
-        margin-bottom: 2rem;
-
-        &:nth-child(even) {
-            margin-right: 0;
-        }
-
-        img {
-            width: 96px;
-            height: 96px;
-        }
-
-        @media (max-width: 600px) {
-            flex-basis: 100%;
-            max-width: 100%;
-            margin-right: 0;
-        }
-
-        a,
-        a span {
-            line-height: normal;
-        }
-    }
-
-    &.button-link-list {
-        .cp-item-half,
-        .cp-item-third {
-            margin-bottom: 1em;
-
-            a {
-                display: flex;
-                align-items: center;
-
-                img {
-                    border-radius: 3px;
-                }
-
-                span {
-                    flex-grow: 1;
-                    margin-left: 1rem;
-                }
-            }
-        }
     }
 }

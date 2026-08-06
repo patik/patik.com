@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import css from './LinkGrid.module.css'
 
 type Item = {
     imageSrc: { src: string }
@@ -8,7 +9,7 @@ type Item = {
     title: ReactNode
 }
 
-function TravelLinkItem({ item }: { item: Item }) {
+function TravelLinkItem({ item }: { item: Item }): ReactNode {
     const { imageSrc, imageAlt, url, className, title } = item
 
     return (
@@ -20,13 +21,11 @@ function TravelLinkItem({ item }: { item: Item }) {
     )
 }
 
-export default function TravelLinkList({ items }: { items: Item[] }) {
+export default function TravelLinkList({ items }: { items: Item[] }): ReactNode {
     return (
-        <div className="cp-row travel-link-list">
+        <div className={`${css.grid} ${css.largeDesktopGap} travel-link-list`}>
             {items.map((item) => (
-                <div className="cp-item-third" key={item.imageSrc.src}>
-                    <TravelLinkItem item={item} />
-                </div>
+                <TravelLinkItem item={item} key={item.imageSrc.src} />
             ))}
         </div>
     )
