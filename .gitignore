@@ -3,6 +3,10 @@ dist/
 
 # dependencies
 node_modules/
+# pnpm keeps its store beside the project when it can't use the home directory, which is
+# what happens inside the scripts/visual.sh container. That run mounts a Docker volume
+# over this path so it never reaches the host, but ignore it in case the mount is missed.
+.pnpm-store/
 
 # logs
 npm-debug.log*

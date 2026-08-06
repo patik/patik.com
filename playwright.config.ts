@@ -5,6 +5,13 @@ const webServerCommand = process.env.CI ? 'serve dist -p 4322' : 'pnpm build && 
 export default defineConfig({
     testDir: './tests',
     snapshotDir: './tests-snapshots',
+    // No {platform} token: visual baselines are generated on Linux only, and committed
+    // as the single source of truth. Playwright's default template appends the platform,
+    // which produced a parallel macOS set that existed purely so a local run had
+    // something to compare against — and cost three CI runs per UI change to reconcile.
+    // tests/visual.spec.ts refuses to run off Linux so this file can never be clobbered
+    // by a macOS render; use `pnpm test:visual` to check it in the container CI uses.
+    snapshotPathTemplate: '{snapshotDir}/{testFileName}-snapshots/{arg}{-projectName}{ext}',
     fullyParallel: true,
     // Fail the build in CI if test.only is accidentally left in
     forbidOnly: !!process.env.CI,
@@ -18,7 +25,7 @@ export default defineConfig({
     },
     projects: [
         {
-            name: 'chromium',
+            name: 'chromium-desktop',
             // viewport must come AFTER the device spread — Desktop Chrome includes
             // viewport: { width: 1280, height: 720 } which would otherwise win.
             use: { ...devices['Desktop Chrome'], viewport: { width: 1020, height: 2000 } },

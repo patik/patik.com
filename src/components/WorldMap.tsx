@@ -126,7 +126,7 @@ export default function WorldMap({ className = '' }: { className?: string }) {
     }
 
     return (
-        <div className={className}>
+        <div className={className} data-world-map>
             <div
                 className={css.container}
                 ref={containerRef}

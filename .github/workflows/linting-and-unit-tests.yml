@@ -9,6 +9,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    # Visual baselines are compared pixel-for-pixel, and text rasterization depends on the
+    # fonts present at render time — ubuntu-latest and this image resolve generic families
+    # like `monospace` to different faces, which is a ~2% pixel diff against a 0.2%
+    # threshold. Running the job inside the image pins CI to the same environment
+    # `pnpm test:visual` uses locally; that match is the only reason a local run is worth
+    # trusting before pushing. Keep the tag in step with @playwright/test — the guard step
+    # below fails loudly rather than silently producing incomparable screenshots.
+    container: mcr.microsoft.com/playwright:v1.62.1-noble
+
+    env:
+      PLAYWRIGHT_IMAGE_VERSION: "1.62.1"
+
     strategy:
       matrix:
         node-version: [26.3.0]
@@ -38,16 +50,16 @@ jobs:
 
       - run: pnpm install
 
-      - name: Cache Playwright browsers
-        uses: actions/cache@v4
-        id: playwright-cache
-        with:
-          path: ~/.cache/ms-playwright
-          key: ${{ runner.os }}-playwright-${{ hashFiles('**/pnpm-lock.yaml') }}
-
-      - name: Install Playwright browsers
-        if: steps.playwright-cache.outputs.cache-hit != 'true'
-        run: pnpm exec playwright install chromium
+      # Browsers ship preinstalled in the container, so there's nothing to install or
+      # cache — but only the build matching the image tag is present. If the package has
+      # moved on, fail here with the reason rather than downstream with a wall of diffs.
+      - name: Verify the container matches the installed Playwright
+        run: |
+          installed="$(node -p "require('@playwright/test/package.json').version")"
+          if [ "$installed" != "$PLAYWRIGHT_IMAGE_VERSION" ]; then
+            echo "::error::@playwright/test is $installed but this job runs in the v$PLAYWRIGHT_IMAGE_VERSION container. Bump the container tag and PLAYWRIGHT_IMAGE_VERSION in .github/workflows/*.yml — visual baselines are only comparable within one image."
+            exit 1
+          fi
 
       - name: Build
         run: pnpm build

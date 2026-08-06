@@ -20,8 +20,9 @@
         "clear-fetch-cache": "rm -rf tmp",
         "clean": "rm -rf node_modules && pnpm run clear-fetch-cache",
         "test": "playwright test",
-        "test:update-snapshots": "playwright test --update-snapshots",
-        "test:ui": "playwright test --ui"
+        "test:update-snapshots": "scripts/visual.sh --update-snapshots",
+        "test:ui": "playwright test --ui",
+        "test:visual": "scripts/visual.sh"
     },
     "lint-staged": {
         "src/**/*.css": "stylelint --fix"
