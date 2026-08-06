@@ -19,11 +19,14 @@ export default async function fetchFolderFromAssetProvider(
     const filePath = path.join(cacheDir, `cloudinary-cache-${cacheKey}`)
 
     if (existsSync(filePath)) {
-        console.log('[fetchFolderFromAssetProvider] returning cached results in ', filePath)
-
         const cachedResults: CloudinaryResult = JSON.parse(readFileSync(filePath, 'utf8'))
 
-        return cachedResults
+        if (cachedResults.resources.length > 0) {
+            console.log('[fetchFolderFromAssetProvider] returning cached results in ', filePath)
+            return cachedResults
+        }
+
+        console.log('[fetchFolderFromAssetProvider] ignoring empty cached results in ', filePath)
     }
 
     const cloudName = getCloudinaryEnv('PUBLIC_CLOUDINARY_CLOUD_NAME')
@@ -48,7 +51,9 @@ export default async function fetchFolderFromAssetProvider(
         throw new Error('[fetchFolderFromAssetProvider] did not receive any results')
     }
 
-    writeFileSync(filePath, JSON.stringify(fetchedResults), 'utf8')
+    if (fetchedResults.resources.length > 0) {
+        writeFileSync(filePath, JSON.stringify(fetchedResults), 'utf8')
+    }
 
     return fetchedResults
 }
