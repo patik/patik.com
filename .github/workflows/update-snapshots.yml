@@ -9,8 +9,7 @@ jobs:
   update-snapshots:
     runs-on: ubuntu-latest
 
-    # Must match linting-and-unit-tests.yml and scripts/visual.sh — baselines are only
-    # comparable within a single image. See the comment there.
+    # Must match linting-and-unit-tests.yml and scripts/visual.sh.
     container: mcr.microsoft.com/playwright:v1.62.1-noble
 
     env:
@@ -45,8 +44,7 @@ jobs:
 
       - run: pnpm install
 
-      # See linting-and-unit-tests.yml — browsers ship with the image, and the tag has to
-      # stay in step with the package for the baselines it writes to mean anything.
+      # See linting-and-unit-tests.yml.
       - name: Verify the container matches the installed Playwright
         run: |
           installed="$(node -p "require('@playwright/test/package.json').version")"

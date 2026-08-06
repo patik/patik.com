@@ -9,13 +9,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    # Visual baselines are compared pixel-for-pixel, and text rasterization depends on the
-    # fonts present at render time — ubuntu-latest and this image resolve generic families
-    # like `monospace` to different faces, which is a ~2% pixel diff against a 0.2%
-    # threshold. Running the job inside the image pins CI to the same environment
-    # `pnpm test:visual` uses locally; that match is the only reason a local run is worth
-    # trusting before pushing. Keep the tag in step with @playwright/test — the guard step
-    # below fails loudly rather than silently producing incomparable screenshots.
+    # Same image as `pnpm test:visual` locally, so a local pass means a CI pass.
+    # ubuntu-latest resolves `monospace` to a different face — a ~2% diff on a 0.2%
+    # threshold. Keep the tag in step with @playwright/test; the guard step below checks.
     container: mcr.microsoft.com/playwright:v1.62.1-noble
 
     env:
@@ -50,9 +46,8 @@ jobs:
 
       - run: pnpm install
 
-      # Browsers ship preinstalled in the container, so there's nothing to install or
-      # cache — but only the build matching the image tag is present. If the package has
-      # moved on, fail here with the reason rather than downstream with a wall of diffs.
+      # Browsers ship with the image, but only the build matching its tag. Fail here with
+      # the reason rather than downstream with a wall of pixel diffs.
       - name: Verify the container matches the installed Playwright
         run: |
           installed="$(node -p "require('@playwright/test/package.json').version")"

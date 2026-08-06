@@ -38,28 +38,39 @@ function useIsDarkMode(): boolean {
     return isDarkMode
 }
 
-function useExpandedMapWidth(isOpen: boolean): number {
+// Fits the chart to the box the dialog leaves for it. Sizing off a viewport fraction
+// instead ignored the header/caption/padding and overflowed the 92vh cap.
+function useExpandedMapWidth(isOpen: boolean) {
+    const wrapRef = useRef<HTMLDivElement>(null)
     const [width, setWidth] = useState(0)
 
     useEffect(() => {
-        if (!isOpen) {
+        const wrap = wrapRef.current
+
+        if (!isOpen || !wrap) {
             return
         }
 
-        const updateSize = () => {
-            const widthFromViewportWidth = window.innerWidth * 0.92
-            const widthFromViewportHeight = (window.innerHeight * 0.85 * GEO_CHART_WIDTH_RATIO) / GEO_CHART_HEIGHT_RATIO
-            setWidth(Math.min(widthFromViewportWidth, widthFromViewportHeight))
-        }
+        // The chart always fits inside the wrap, so this can't retrigger itself.
+        const observer = new ResizeObserver(([entry]) => {
+            const box = entry?.contentRect
 
-        updateSize()
+            if (!box?.width || !box.height) {
+                return
+            }
 
-        window.addEventListener('resize', updateSize)
+            // Whichever axis runs out first decides, so the aspect ratio is preserved.
+            const widthFromHeight = (box.height * GEO_CHART_WIDTH_RATIO) / GEO_CHART_HEIGHT_RATIO
 
-        return () => window.removeEventListener('resize', updateSize)
+            setWidth(Math.floor(Math.min(box.width, widthFromHeight)))
+        })
+
+        observer.observe(wrap)
+
+        return () => observer.disconnect()
     }, [isOpen])
 
-    return width
+    return { wrapRef, width }
 }
 
 function GeoChart({ width, isDarkMode }: { width: number; isDarkMode: boolean }) {
@@ -94,7 +105,7 @@ export default function WorldMap({ className = '' }: { className?: string }) {
     const [mapWidth, setMapWidth] = useState(0)
     const [isExpanded, setIsExpanded] = useState(false)
     const isDarkMode = useIsDarkMode()
-    const expandedWidth = useExpandedMapWidth(isExpanded)
+    const { wrapRef: expandedChartWrapRef, width: expandedWidth } = useExpandedMapWidth(isExpanded)
 
     useEffect(() => {
         const container = containerRef.current
@@ -170,7 +181,7 @@ export default function WorldMap({ className = '' }: { className?: string }) {
                     </button>
                 </div>
 
-                <div className={css.expandedChartWrap}>
+                <div className={css.expandedChartWrap} ref={expandedChartWrapRef}>
                     {isExpanded && expandedWidth > 0 ? <GeoChart width={expandedWidth} isDarkMode={isDarkMode} /> : null}
                 </div>
 

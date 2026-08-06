@@ -39,8 +39,7 @@ function updateUrl(sortInputs: HTMLInputElement[], residenceToggle: HTMLInputEle
 class VisitedCountriesElement extends HTMLElement {
     private isInitialized = false
 
-    // The two behaviors below are independent, so they get their own guards. A
-    // single combined guard would let one missing element silently disable both.
+    // Separate guards: one combined guard let a missing element disable both behaviors.
     connectedCallback(): void {
         if (this.isInitialized) {
             return
@@ -52,8 +51,7 @@ class VisitedCountriesElement extends HTMLElement {
         this.initExpandToggle()
     }
 
-    // Restores the sort/residence selection from the URL, then keeps the URL in
-    // sync as it changes. Which panel is visible is decided by CSS off :checked.
+    // Restores sort/residence from the URL and keeps it in sync; CSS does the showing.
     private initFilters(): void {
         const sortInputs = [...this.querySelectorAll<HTMLInputElement>(SORT_INPUT_SELECTOR)]
         const residenceToggle = this.querySelector<HTMLInputElement>(RESIDENCE_TOGGLE_SELECTOR)
@@ -85,9 +83,8 @@ class VisitedCountriesElement extends HTMLElement {
         residenceToggle.addEventListener('change', () => updateUrl(sortInputs, residenceToggle))
     }
 
-    // Only flips aria-expanded — every visual change hangs off that attribute in
-    // CSS. The tabIndex swap is the one part CSS can't express: the region needs
-    // a tab stop while it's a scrollport, but not once it's expanded in full.
+    // Only flips aria-expanded; CSS does the rest. tabIndex is the part CSS can't express —
+    // the region needs a tab stop only while it's still a scrollport.
     private initExpandToggle(): void {
         const expandToggle = this.querySelector<HTMLButtonElement>(EXPAND_TOGGLE_SELECTOR)
         const scrollRegion = expandToggle ? getControlledElement(this, expandToggle) : null

@@ -36,10 +36,12 @@
 .dialog {
     position: fixed;
     inset: 0;
-    max-width: 96vw;
-    max-height: 92vh;
+    /* Definite, not max-*: the flex:1 chart wrap needs a resolved height to fit into. */
+    inline-size: 96vw;
+    block-size: 92vh;
     margin: auto;
     padding: 1rem;
+    overflow: hidden;
     background: white;
     border: none;
     border-radius: 8px;
@@ -48,6 +50,12 @@
     &::backdrop {
         background: rgb(0 0 0 / 0.55);
     }
+}
+
+/* Gated on [open]: a bare display:flex would override the UA's display:none. */
+.dialog[open] {
+    display: flex;
+    flex-direction: column;
 }
 
 .dialogHeader {
@@ -63,6 +71,8 @@
     inline-size: 2rem;
     block-size: 2rem;
     padding: 0;
+    /* Global button margin made the header 58px tall for a 32px button. */
+    margin-bottom: 0;
     color: var(--dark-charcoal) !important;
     font-size: 1.3rem;
     line-height: 1;
@@ -79,14 +89,18 @@
 
 .expandedChartWrap {
     display: flex;
+    flex: 1;
     align-items: center;
     justify-content: center;
-    min-width: 40vw;
-    min-height: 30vh;
+    /* Flex items floor at min-content; the fixed-pixel chart would push the wrap open. */
+    min-inline-size: 0;
+    min-block-size: 0;
 }
 
 .dialogCaption {
     margin-top: 0.75rem;
+    /* Global <p> margin; last child, so it was dead space. */
+    margin-bottom: 0;
     color: #666;
     font-family: var(--font-sans);
     font-size: 0.85rem;
