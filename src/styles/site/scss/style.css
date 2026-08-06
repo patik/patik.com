@@ -62,16 +62,6 @@ main,
     margin: 1rem auto;
     max-width: 980px;
     padding: 0 1rem;
-
-    & > section {
-        &:first-of-type {
-            margin-top: 1rem;
-        }
-
-        &:last-child {
-            margin-bottom: 1rem;
-        }
-    }
 }
 
 @media (max-width: 980px) {
@@ -90,7 +80,7 @@ li {
 
 section {
     h2 {
-        margin: 1rem 0 0.5rem 0;
+        margin: 0 0 0.5rem 0;
     }
 }
 
