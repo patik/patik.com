@@ -20,9 +20,8 @@ const { title = '', keywords = [] } = Astro.props
         <title>{`${title ? `${title} - ` : ''}Craig Patik`}</title>
         {keywords && keywords.length > 0 ? <meta name="keywords" content={keywords.join(',')} /> : null}
         {
-            /* Site-wide so profile verification never depends on which page a remote service
-            was pointed at — Mastodon accepts `link rel=me` in the head, and moving or
-            removing a visible link in the body can't silently break the checkmark. */
+            /* Keep here, not only in the body: Mastodon verifies against whichever page its
+            profile field points at. */
         }
         <link rel="me" href="https://mastodon.online/@craigpatik" />
         <link rel="me" href="https://bsky.app/profile/craig.patik.com" />

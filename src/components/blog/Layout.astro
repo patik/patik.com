@@ -15,10 +15,7 @@ const { draft, ...commonLayoutProps } = Astro.props
     <slot name="head" slot="head" />
     <div class="min-h-screen">
         {draft && <UnpublishedAlert />}
-        {
-            /* Deliberately not a `main` element: CommonLayout already provides one, and
-            nesting them duplicates the landmark and double-applies its width/padding. */
-        }
+        {/* Not a `main` — CommonLayout provides one, and nesting them doubles its padding. */}
         <div>
             <slot />
         </div>

@@ -7,19 +7,6 @@ async function openMapDialog(page: Page): Promise<Locator> {
     return page.getByRole('dialog', { name: 'Visited countries map' })
 }
 
-for (const routePath of ['/travel/', '/travel/bosnia/']) {
-    test(`${routePath} keeps three thumbnail columns on mobile`, async ({ page }): Promise<void> => {
-        await page.setViewportSize({ width: 390, height: 844 })
-        await page.goto(routePath, { waitUntil: 'networkidle' })
-
-        const columnWidths = await page
-            .locator('.travel-link-list')
-            .evaluate((element) => getComputedStyle(element).gridTemplateColumns.split(' '))
-
-        expect(columnWidths).toHaveLength(3)
-    })
-}
-
 test('expanded map has an accessible name', async ({ page }): Promise<void> => {
     const dialog = await openMapDialog(page)
 

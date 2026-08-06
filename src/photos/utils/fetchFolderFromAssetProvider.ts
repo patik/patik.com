@@ -11,10 +11,7 @@ if (!existsSync(cacheDir)) {
     mkdirSync(cacheDir)
 }
 
-/**
- * Returns the cached response, or null if it is unusable — empty, corrupt, or the wrong
- * shape. Any of those should fall through to a fresh fetch rather than fail the build.
- */
+/** Null for an unusable cache — empty, corrupt, or wrong shape — so callers re-fetch. */
 function readCache(filePath: string): CloudinaryResult | null {
     let cachedResults: CloudinaryResult
 
@@ -73,6 +70,10 @@ export default async function fetchFolderFromAssetProvider(
 
     if (fetchedResults.resources.length > 0) {
         writeFileSync(filePath, JSON.stringify(fetchedResults), 'utf8')
+    } else {
+        // Don't cache this. Every gallery folder should have photos, so zero means a bad
+        // folder name or a flaky response, and a cached empty never re-fetches.
+        console.warn(`[fetchFolderFromAssetProvider] ${folderName} returned no resources; not caching`)
     }
 
     return fetchedResults

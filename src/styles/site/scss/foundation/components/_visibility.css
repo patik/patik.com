@@ -1,8 +1,7 @@
 /* Foundation Visibility HTML Classes */
 
-/* Hide below the medium breakpoint, and leave the element's natural display alone
- * above it. Foundation's original did the inverse — a blanket `display: none` that
- * only one breakpoint band restored — so anything wider than 1279px stayed hidden. */
+/* Scoped to the media query on purpose: a blanket `display: none` restored per
+ * breakpoint leaves anything past the widest band hidden. */
 @media (max-width: 767px) {
     .hide-for-small {
         display: none !important;
