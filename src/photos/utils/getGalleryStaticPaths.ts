@@ -7,6 +7,8 @@ export interface GalleryPageProps {
     cityId: string | null
 }
 
+export type GallerySortDirection = 'asc' | 'desc'
+
 export interface GalleryPath {
     params: { photos: string | undefined }
     props: GalleryPageProps
@@ -38,7 +40,7 @@ export default async function getGalleryStaticPaths({
     sortDirection = 'asc',
 }: {
     cityGalleries: CityGallery[]
-    sortDirection?: 'asc' | 'desc'
+    sortDirection?: GallerySortDirection
 }): Promise<GalleryPath[]> {
     const paths: GalleryPath[] = []
     const cityImagesMap: Record<string, ImageProps[]> = {}
