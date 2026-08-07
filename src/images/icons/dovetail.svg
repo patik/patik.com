@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" role="img">
+    <title>Dovetail suitcase app icon</title>
+    <desc>A landscape suitcase with a squat U-handle, split by a dovetail joint.</desc>
+    <rect width="180" height="180" fill="#0f6e56" />
+    <path
+        d="M73 60V51Q73 46 78 46H102Q107 46 107 51V60"
+        fill="none"
+        stroke="#9fe1cb"
+        stroke-width="8"
+        stroke-linecap="round"
+    />
+    <path d="M40 68Q40 62 46 62H86V88L62 96L86 104V130H46Q40 130 40 124Z" fill="#e1f5ee" />
+    <path d="M140 68Q140 62 134 62H94V88L118 96L94 104V130H134Q140 130 140 124Z" fill="#9fe1cb" />
+</svg>

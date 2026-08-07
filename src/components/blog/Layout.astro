@@ -15,8 +15,9 @@ const { draft, ...commonLayoutProps } = Astro.props
     <slot name="head" slot="head" />
     <div class="min-h-screen">
         {draft && <UnpublishedAlert />}
-        <main>
+        {/* Not a `main` — CommonLayout provides one, and nesting them doubles its padding. */}
+        <div>
             <slot />
-        </main>
+        </div>
     </div>
 </CommonLayout>

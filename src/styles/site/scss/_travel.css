@@ -1,15 +1,14 @@
-@import url("_foundation-overrides.css");
-@import url("foundation");
-@import url("_mixins.css");
-@import url("_variables.css");
-@import url("_dark-mode.css");
+@import url('_foundation-overrides.css');
+@import url('foundation');
+@import url('_variables.css');
+@import url('_dark-mode.css');
 
- section {
-        /* Commonly used for travel page itineraries */
-        ul {
-            margin-inline-start: 1.5rem;
-        }
+section {
+    /* Commonly used for travel page itineraries */
+    ul {
+        margin-inline-start: 1.5rem;
     }
+}
 
 .travel-link-list {
     --img-position-offset: 5px;
@@ -78,22 +77,15 @@
         }
     }
 
-    @media (min-width: 980px) {
-        & > div {
-            margin-bottom: 2%;
-            border-radius: 4px;
-        }
-    }
-
     /* -----------------------------------
      * Travel main page
      * -----------------------------------
      */
 
-    [href*="/travel/peru"] {
+    [href*='/travel/peru'] {
         span {
             font-size: 1.2rem;
-            bottom: var(--img-position-offset) ;
+            bottom: var(--img-position-offset);
             left: var(--img-position-offset);
 
             @media (min-width: 600px) {
@@ -106,28 +98,28 @@
         }
     }
 
-    [href*="/travel/spain"] {
+    [href*='/travel/spain'] {
         span {
             bottom: var(--img-position-offset);
             left: var(--img-position-offset);
         }
     }
 
-    [href*="/travel/turkey"] {
+    [href*='/travel/turkey'] {
         span {
             top: 70%;
             right: var(--img-position-offset);
         }
     }
 
-    [href*="/travel/germany"] {
+    [href*='/travel/germany'] {
         span {
             top: var(--img-position-offset);
             left: var(--img-position-offset);
         }
     }
 
-    [href*="/travel/greece"] {
+    [href*='/travel/greece'] {
         span {
             bottom: var(--img-position-offset);
             left: 0;
@@ -152,7 +144,7 @@
         }
     }
 
-    [href*="/travel/france"] {
+    [href*='/travel/france'] {
         span {
             font-size: 1.2rem;
             bottom: calc(3 * var(--img-position-offset));
@@ -174,7 +166,7 @@
         }
     }
 
-    [href*="/travel/britain"] {
+    [href*='/travel/britain'] {
         span {
             top: calc(var(--img-position-offset) + 1px);
             left: calc(var(--img-position-offset) + 3px);
@@ -182,7 +174,7 @@
         }
     }
 
-    [href*="/travel/netherlands"] {
+    [href*='/travel/netherlands'] {
         span {
             font-size: 0.8rem;
 
@@ -200,7 +192,7 @@
         }
     }
 
-    [href*="/travel/italy"] {
+    [href*='/travel/italy'] {
         span {
             font-size: 1.2rem;
 
@@ -214,7 +206,7 @@
         }
     }
 
-    [href*="/travel/ireland/photos/countryside"] {
+    [href*='/travel/ireland/photos/countryside'] {
         span {
             font-size: 0.8rem;
 
@@ -320,7 +312,7 @@
         }
     }
 
-    [href*="/travel/uruguay"] {
+    [href*='/travel/uruguay'] {
         span {
             position: absolute;
             bottom: 6px;
@@ -521,12 +513,6 @@
     }
 }
 
-@media (max-width: 980px) {
-    .travel-link-list .small-12 {
-        margin-bottom: 1em;
-    }
-}
-
 .travel-map {
     text-align: center;
 
@@ -536,26 +522,6 @@
 
         &:hover {
             box-shadow: 0 0 4px rgb(0 0 0 / 60%);
-        }
-    }
-}
-
-.cp-row {
-    &.travel-link-list {
-        .cp-item-third {
-            flex-basis: calc(33% - 1.16rem);
-            max-width: calc(33% - 1.16rem);
-            margin-right: 1rem;
-            margin-bottom: 1rem;
-
-            &:nth-child(3n) {
-                margin-right: 0;
-            }
-
-            @media (min-width: 980px) {
-                margin-right: 2rem;
-                margin-bottom: 2rem;
-            }
         }
     }
 }

@@ -1,5 +1,5 @@
-import cloudinary from 'cloudinary'
 import getCloudinaryEnv from '@src/photos/utils/getCloudinaryEnv'
+import cloudinary from 'cloudinary'
 
 cloudinary.v2.config({
     cloud_name: getCloudinaryEnv('PUBLIC_CLOUDINARY_CLOUD_NAME'),

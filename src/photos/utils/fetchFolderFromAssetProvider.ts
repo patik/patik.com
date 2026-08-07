@@ -11,6 +11,25 @@ if (!existsSync(cacheDir)) {
     mkdirSync(cacheDir)
 }
 
+/** Null for an unusable cache — empty, corrupt, or wrong shape — so callers re-fetch. */
+function readCache(filePath: string): CloudinaryResult | null {
+    let cachedResults: CloudinaryResult
+
+    try {
+        cachedResults = JSON.parse(readFileSync(filePath, 'utf8'))
+    } catch (error) {
+        console.warn('[fetchFolderFromAssetProvider] could not read cached results in ', filePath, error)
+        return null
+    }
+
+    if (!Array.isArray(cachedResults?.resources) || cachedResults.resources.length === 0) {
+        console.log('[fetchFolderFromAssetProvider] ignoring empty cached results in ', filePath)
+        return null
+    }
+
+    return cachedResults
+}
+
 export default async function fetchFolderFromAssetProvider(
     folderName: string,
     sortDirection: 'asc' | 'desc' = 'desc',
@@ -19,11 +38,12 @@ export default async function fetchFolderFromAssetProvider(
     const filePath = path.join(cacheDir, `cloudinary-cache-${cacheKey}`)
 
     if (existsSync(filePath)) {
-        console.log('[fetchFolderFromAssetProvider] returning cached results in ', filePath)
+        const cachedResults = readCache(filePath)
 
-        const cachedResults: CloudinaryResult = JSON.parse(readFileSync(filePath, 'utf8'))
-
-        return cachedResults
+        if (cachedResults) {
+            console.log('[fetchFolderFromAssetProvider] returning cached results in ', filePath)
+            return cachedResults
+        }
     }
 
     const cloudName = getCloudinaryEnv('PUBLIC_CLOUDINARY_CLOUD_NAME')
@@ -48,7 +68,13 @@ export default async function fetchFolderFromAssetProvider(
         throw new Error('[fetchFolderFromAssetProvider] did not receive any results')
     }
 
-    writeFileSync(filePath, JSON.stringify(fetchedResults), 'utf8')
+    if (fetchedResults.resources.length > 0) {
+        writeFileSync(filePath, JSON.stringify(fetchedResults), 'utf8')
+    } else {
+        // Don't cache this. Every gallery folder should have photos, so zero means a bad
+        // folder name or a flaky response, and a cached empty never re-fetches.
+        console.warn(`[fetchFolderFromAssetProvider] ${folderName} returned no resources; not caching`)
+    }
 
     return fetchedResults
 }

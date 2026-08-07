@@ -44,18 +44,16 @@ const morePosts = sortedPosts.slice(1)
         {
             morePosts.length > 0 ? (
                 <MoreStories
-                    posts={morePosts.map(
-                        (post): BlogPost => ({
-                            ...post.data,
-                            id: String(post.id),
-                            slug: post.id,
-                            date: post.data.date.toISOString(),
-                            excerpt: post.data.excerpt ?? '',
-                            coverImage: post.data.coverImage ?? '',
-                            ogImage: post.data.ogImage ?? '',
-                            categories: post.data.categories ?? [],
-                        }),
-                    )}
+                    posts={morePosts.map((post): BlogPost => ({
+                        ...post.data,
+                        id: String(post.id),
+                        slug: post.id,
+                        date: post.data.date.toISOString(),
+                        excerpt: post.data.excerpt ?? '',
+                        coverImage: post.data.coverImage ?? '',
+                        ogImage: post.data.ogImage ?? '',
+                        categories: post.data.categories ?? [],
+                    }))}
                 />
             ) : null
         }
