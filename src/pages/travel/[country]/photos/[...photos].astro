@@ -1,16 +1,8 @@
 ---
 import GalleryPage from '@src/components/gallery/GalleryPage.astro'
-import getGalleryStaticPaths, {
-    type GalleryPageProps,
-    type GallerySortDirection,
-} from '@src/photos/utils/getGalleryStaticPaths'
+import assertGalleryModule from '@src/photos/utils/assertGalleryModule'
+import getGalleryStaticPaths, { type GalleryPageProps } from '@src/photos/utils/getGalleryStaticPaths'
 import type { CityGallery, CountryGallery } from '@src/photos/utils/types'
-
-interface GalleryModule {
-    default: CountryGallery
-    cityGalleries: CityGallery[]
-    sortDirection?: GallerySortDirection
-}
 
 interface Props extends GalleryPageProps {
     countryGallery: CountryGallery
@@ -26,9 +18,13 @@ interface CountryGalleryPath {
 }
 
 export async function getStaticPaths(): Promise<CountryGalleryPath[]> {
-    const galleryModules = import.meta.glob<GalleryModule>('/src/galleries/*/index.ts', { eager: true })
+    const galleryModules = import.meta.glob('/src/galleries/*/index.ts', { eager: true })
     const galleryPaths = await Promise.all(
-        Object.values(galleryModules).map(async (galleryModule) => {
+        Object.entries(galleryModules).map(async ([path, galleryModule]) => {
+            // Astro hoists getStaticPaths into its own scope, so this validator has to be imported,
+            // not declared alongside it in the frontmatter.
+            assertGalleryModule(path, galleryModule)
+
             const { default: countryGallery, cityGalleries, sortDirection } = galleryModule
             const paths = await getGalleryStaticPaths({ cityGalleries, sortDirection })
 

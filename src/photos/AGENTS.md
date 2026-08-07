@@ -62,6 +62,7 @@ src/
 | `getImageUrl.ts` | Builds a Cloudinary delivery URL with `c_scale`, `f_auto`, `q_auto:good` transforms |
 | `getImageUrlToBeBlurred.ts` | Returns a tiny low-quality variant for blur-up placeholders |
 | `escapeCloudinaryString.ts` | Escapes special characters in `public_id` strings for use in Cloudinary URLs |
+| `assertGalleryModule.ts` | Validates a `src/galleries/*/index.ts` module's exports so a bad config fails the build by name |
 
 ## UI components
 
@@ -82,7 +83,7 @@ The catch-all segment `[...photos]` covers four route shapes:
 | `/travel/{country}/photos/{city}/` | `"{city}"` | `PhotoGrid` with city images only |
 | `/travel/{country}/photos/{city}/7` | `"{city}/7"` | `PhotoLightbox` for image 7 in that city |
 
-At build time, the shared route discovers every `src/galleries/*/index.ts` module and pre-generates all of its paths. Each module must default-export its `CountryGallery` and named-export its `cityGalleries` array. It may also named-export a `sortDirection` when a legacy gallery needs descending Cloudinary ordering. If Cloudinary credentials are absent, `fetchFolderFromAssetProvider` returns `{ resources: [] }` and the gallery pages build with zero images (safe for local development without credentials).
+At build time, the shared route discovers every `src/galleries/*/index.ts` module and pre-generates all of its paths. Each module must default-export its `CountryGallery` and named-export its `cityGalleries` array. It may also named-export a `sortDirection` when a legacy gallery needs descending Cloudinary ordering. `assertGalleryModule` checks each module against that contract and fails the build with the offending file's path if it doesn't match. If Cloudinary credentials are absent, `fetchFolderFromAssetProvider` returns `{ resources: [] }` and the gallery pages build with zero images (safe for local development without credentials).
 
 ## Adding a new country
 

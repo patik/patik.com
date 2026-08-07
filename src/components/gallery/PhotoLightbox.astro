@@ -66,7 +66,7 @@ const currentImageUrl = getImageUrl(currentPhoto, 1600)
     </div>
 </div>
 
-<script define:vars={{ prevPhoto, nextPhoto, baseUrl }}>
+<script define:vars={{ prevPhoto, nextPhoto, baseUrl }} is:inline>
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft' && prevPhoto) {
