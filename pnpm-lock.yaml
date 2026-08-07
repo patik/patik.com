@@ -79,8 +79,8 @@ importers:
         specifier: ^17.3.0
         version: 17.3.0
       netlify-cli:
-        specifier: ^27.0.2
-        version: 27.0.2(@parcel/watcher@2.5.6)(@types/node@26.1.2)(picomatch@4.0.5)(rollup@4.59.0)(supports-color@10.2.2)
+        specifier: ^27.1.0
+        version: 27.1.0(@parcel/watcher@2.5.6)(@types/node@26.1.2)(picomatch@4.0.5)(rollup@4.59.0)(supports-color@10.2.2)
       oxlint:
         specifier: ^1.77.0
         version: 1.77.0(oxlint-tsgolint@7.0.2001)
@@ -4809,8 +4809,8 @@ packages:
     resolution: {integrity: sha512-WmmLty1YWwJl9yZi77v2dVIV6X2kuYV8YYBI/G3LWGKdGHmHUvL1z7FW0iDvEvGAwNEoc5x1tOOOyDnf5jJw/w==}
     engines: {node: '>= 10'}
 
-  netlify-cli@27.0.2:
-    resolution: {integrity: sha512-crRG7AREiywId/FaDilIG1/2UZO+ySwGQ9wASnIZlqb18Z7dpHFr0jVtb9mvBQFDATGNKlJGE2LGeIHHAUYG8g==}
+  netlify-cli@27.1.0:
+    resolution: {integrity: sha512-o2iu7u0GKLI7FeAIPajKIHbv+Ve0ZVUfbGlt67VEV7DuphrVl9Tu7sZ1VwZwHWi6tgbV/7tWpxaZC+tmGTgGCg==}
     engines: {node: '>=22.13.0'}
     hasBin: true
 
@@ -11842,7 +11842,7 @@ snapshots:
 
   neotraverse@1.0.1: {}
 
-  netlify-cli@27.0.2(@parcel/watcher@2.5.6)(@types/node@26.1.2)(picomatch@4.0.5)(rollup@4.59.0)(supports-color@10.2.2):
+  netlify-cli@27.1.0(@parcel/watcher@2.5.6)(@types/node@26.1.2)(picomatch@4.0.5)(rollup@4.59.0)(supports-color@10.2.2):
     dependencies:
       '@fastify/static': 10.1.2
       '@netlify/ai': 0.4.4
