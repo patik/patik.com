@@ -16,6 +16,28 @@ test('expanded map has an accessible name', async ({ page }): Promise<void> => {
     )
 })
 
+test('map renders without loading the Google Maps API', async ({ page }): Promise<void> => {
+    const unexpectedRequests: string[] = []
+    const unexpectedConsoleMessages: string[] = []
+
+    page.on('request', (request) => {
+        if (request.url().includes('maps.googleapis.com/maps/api/js')) {
+            unexpectedRequests.push(request.url())
+        }
+    })
+    page.on('console', (message) => {
+        if (/Google (Charts|Maps)|Geocoding Service/.test(message.text())) {
+            unexpectedConsoleMessages.push(message.text())
+        }
+    })
+
+    await page.goto('/travel/', { waitUntil: 'networkidle' })
+
+    await expect(page.locator('[data-world-map] svg').first()).toBeVisible()
+    expect(unexpectedRequests).toHaveLength(0)
+    expect(unexpectedConsoleMessages).toHaveLength(0)
+})
+
 test('clicking inside the expanded map does not close it', async ({ page }): Promise<void> => {
     const dialog = await openMapDialog(page)
     const dialogBounds = await dialog.boundingBox()

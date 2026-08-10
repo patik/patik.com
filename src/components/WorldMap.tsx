@@ -5,12 +5,17 @@ import css from './WorldMap.module.css'
 
 const currentYear = new Date().getFullYear()
 
-const countryData: Array<[string, string | number | null]> = [['Country', 'Years since last visit']]
+interface MapLocation {
+    v: string
+    f: string
+}
+
+const countryData: Array<[string | MapLocation, string | number | null]> = [['Country', 'Years since last visit']]
 
 countries.visited.forEach((country) => {
     const yearsSinceLastVisit = country.lived ? null : currentYear - Math.max(...country.yearsVisited)
 
-    countryData.push([country.name, yearsSinceLastVisit])
+    countryData.push([{ v: country.code, f: country.name }, yearsSinceLastVisit])
 })
 
 // https://developers-dot-devsite-v2-prod.appspot.com/chart/interactive/docs/gallery/geochart
@@ -90,6 +95,7 @@ function GeoChart({ width, isDarkMode }: { width: number; isDarkMode: boolean })
     return (
         <Chart
             chartType="GeoChart"
+            chartPackages={['geochart', 'controls']}
             data={countryData}
             legendToggle
             width={width}
@@ -102,6 +108,7 @@ function GeoChart({ width, isDarkMode }: { width: number; isDarkMode: boolean })
                 backgroundColor: isDarkMode ? '#222222' : '#ffffff',
                 datalessRegionColor: '#666666',
                 defaultColor: LIVED_COUNTRY_COLOR,
+                displayMode: 'regions',
                 keepAspectRatio: true,
                 width,
                 height,
