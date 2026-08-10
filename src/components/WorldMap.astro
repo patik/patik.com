@@ -1,0 +1,184 @@
+---
+import { geoGraticule10, geoNaturalEarth1, geoPath } from 'd3-geo'
+import { feature } from 'topojson-client'
+import type { GeometryCollection, Topology } from 'topojson-specification'
+import worldAtlas from 'world-atlas/countries-110m.json'
+import countries from '../countries.json'
+import css from './WorldMap.module.css'
+
+interface Props {
+    className?: string
+}
+
+interface CountryProperties {
+    name: string
+}
+
+const { className = '' } = Astro.props
+const MAP_WIDTH = 1000
+const MAP_HEIGHT = 520
+const MAP_CAPTION = 'Red marks recent visits, fading to ivory over time; gold marks places I’ve called home.'
+const ATLAS_NAMES = new Map([
+    ['Bosnia and Herzegovina', 'Bosnia and Herz.'],
+    ['Czech Republic', 'Czechia'],
+    ['North Macedonia', 'Macedonia'],
+    ['United States', 'United States of America'],
+])
+const MONACO_COORDINATES: [number, number] = [7.4246, 43.7384]
+const currentYear = new Date().getFullYear()
+
+function formatLastVisited(countryName: string, lastVisited: number, lived: boolean): string {
+    const yearsAgo = currentYear - lastVisited
+    const elapsed =
+        yearsAgo === 0 ? 'last visited this year' : `last visited ${yearsAgo} ${yearsAgo === 1 ? 'year' : 'years'} ago`
+
+    return `${countryName} — ${elapsed}${lived ? ' · lived here' : ''}`
+}
+
+const lastVisits = countries.visited.map((country) => currentYear - Math.max(...country.yearsVisited))
+const oldestVisit = Math.max(...lastVisits)
+const visitedByAtlasName = new Map(
+    countries.visited
+        .filter((country) => country.name !== 'Monaco')
+        .map((country) => [ATLAS_NAMES.get(country.name) ?? country.name, country]),
+)
+
+// Imported JSON widens TopoJSON's literal `type` fields to strings, so the package's
+// runtime-validated Natural Earth data needs its published topology shape restored here.
+const topology = worldAtlas as unknown as Topology
+const atlasCountries = feature<CountryProperties>(
+    topology,
+    topology.objects.countries as GeometryCollection<CountryProperties>,
+)
+const projection = geoNaturalEarth1().fitExtent(
+    [
+        [12, 12],
+        [MAP_WIDTH - 12, MAP_HEIGHT - 12],
+    ],
+    { type: 'Sphere' },
+)
+const path = geoPath(projection).digits(2)
+const graticulePath = path(geoGraticule10())
+const matchedCountries = new Set<string>()
+const countryShapes = atlasCountries.features.map((atlasCountry) => {
+    const atlasName = atlasCountry.properties?.name ?? ''
+    const country = visitedByAtlasName.get(atlasName)
+
+    if (country) {
+        matchedCountries.add(country.name)
+    }
+
+    const lastVisited = country ? Math.max(...country.yearsVisited) : null
+    const yearsAgo = lastVisited === null ? null : currentYear - lastVisited
+    const recency = yearsAgo === null ? null : Math.round((1 - yearsAgo / oldestVisit) * 100)
+
+    return {
+        atlasName,
+        country,
+        d: path(atlasCountry),
+        recency,
+        tooltip:
+            country && lastVisited !== null
+                ? formatLastVisited(country.name, lastVisited, country.lived === true)
+                : null,
+    }
+})
+const unmatchedCountries = countries.visited
+    .filter((country) => country.name !== 'Monaco' && !matchedCountries.has(country.name))
+    .map((country) => country.name)
+
+if (unmatchedCountries.length > 0) {
+    throw new Error(`Countries missing from the world map: ${unmatchedCountries.join(', ')}`)
+}
+
+const monaco = countries.visited.find((country) => country.name === 'Monaco')
+const monacoPoint = projection(MONACO_COORDINATES)
+const monacoLastVisited = monaco ? Math.max(...monaco.yearsVisited) : null
+const monacoYearsAgo = monacoLastVisited === null ? null : currentYear - monacoLastVisited
+const monacoRecency = monacoYearsAgo === null ? null : Math.round((1 - monacoYearsAgo / oldestVisit) * 100)
+const monacoTooltip =
+    monaco && monacoLastVisited !== null
+        ? formatLastVisited(monaco.name, monacoLastVisited, monaco.lived === true)
+        : null
+---
+
+<world-map class={className} data-world-map>
+    <div class={css.mapFrame} data-map-frame role="button" tabindex="0" aria-label="Open expanded map">
+        <svg
+            class={css.map}
+            viewBox={`0 0 ${MAP_WIDTH} ${MAP_HEIGHT}`}
+            role="img"
+            aria-labelledby="world-map-title world-map-description"
+            preserveAspectRatio="xMidYMid meet"
+        >
+            <title id="world-map-title">Countries I’ve visited</title>
+            <desc id="world-map-description">
+                A world map colored by how recently I visited each country, with countries I’ve lived in shown in gold.
+            </desc>
+            <rect class={css.ocean} width={MAP_WIDTH} height={MAP_HEIGHT} rx="10"></rect>
+            {graticulePath && <path class={css.graticule} d={graticulePath} />}
+            <g class={css.countries}>
+                {
+                    countryShapes.map(({ atlasName, country, d, recency, tooltip }) =>
+                        d ? (
+                            <path
+                                class:list={[
+                                    css.country,
+                                    country ? css.visited : css.unvisited,
+                                    country?.lived === true && css.lived,
+                                ]}
+                                d={d}
+                                style={recency === null ? undefined : `--visit-recency: ${recency}%`}
+                                data-map-country={country?.name}
+                                data-tooltip={tooltip}
+                                aria-label={tooltip ?? atlasName}
+                            >
+                                {tooltip && <title>{tooltip}</title>}
+                            </path>
+                        ) : null,
+                    )
+                }
+                {
+                    monaco && monacoPoint && monacoTooltip && (
+                        <g
+                            class={css.microstate}
+                            style={`--visit-recency: ${monacoRecency}%`}
+                            data-map-country={monaco.name}
+                            data-tooltip={monacoTooltip}
+                            aria-label={monacoTooltip}
+                        >
+                            <title>{monacoTooltip}</title>
+                            <circle class={css.microstateHitArea} cx={monacoPoint[0]} cy={monacoPoint[1]} r="7" />
+                            <circle class={css.microstateMarker} cx={monacoPoint[0]} cy={monacoPoint[1]} r="1.4" />
+                        </g>
+                    )
+                }
+            </g>
+        </svg>
+    </div>
+
+    <div class={css.controls}>
+        <button type="button" class={css.expandButton} data-map-expand>Expand map</button>
+        <p class={css.caption}>{MAP_CAPTION}</p>
+    </div>
+
+    <div class={css.tooltip} role="tooltip" data-map-tooltip hidden></div>
+
+    <dialog class={css.dialog} aria-label="Visited countries map" data-map-dialog>
+        <div class={css.dialogHeader}>
+            <div class={css.zoomControls} role="group" aria-label="Map zoom controls">
+                <button type="button" class={css.zoomButton} aria-label="Zoom out" data-map-zoom-out>−</button>
+                <output class={css.zoomLevel} aria-live="polite" data-map-zoom-level>100%</output>
+                <button type="button" class={css.zoomButton} aria-label="Zoom in" data-map-zoom-in>+</button>
+                <button type="button" class={css.resetButton} data-map-zoom-reset>Reset</button>
+            </div>
+            <button type="button" class={css.closeButton} aria-label="Close map" data-map-close>×</button>
+        </div>
+        <div class={css.dialogMapSlot} data-map-dialog-slot></div>
+        <p class={css.dialogCaption}>{MAP_CAPTION}</p>
+    </dialog>
+</world-map>
+
+<script>
+    import './WorldMap.client'
+</script>
