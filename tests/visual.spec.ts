@@ -83,10 +83,8 @@ test('travel-index-countries-expanded: matches visual snapshot', { tag: '@visual
         document.body.scrollTop = 0
     })
 
-    // Map masked: it's external and mid-rework, so it would churn this baseline.
     await expect(page).toHaveScreenshot('travel-index-countries-expanded.png', {
         maxDiffPixelRatio: 0.002,
-        mask: [page.locator('[data-world-map]')],
     })
 })
 
@@ -101,13 +99,13 @@ test('travel-index-map-expanded: matches visual snapshot', { tag: '@visual' }, a
 
     await page.goto('/travel/', { waitUntil: 'networkidle' })
 
-    await page.getByRole('button', { name: 'Expand map' }).click()
+    await page.locator('[data-map-expand]').click()
 
     const dialog = page.locator('dialog[open]')
 
     await expect(dialog).toBeVisible()
 
-    // The GeoChart draws asynchronously, after Google's loader resolves.
+    // The build-time SVG should be present as soon as the frame moves into the dialog.
     await expect(dialog.locator('svg').first()).toBeVisible()
 
     // Otherwise the cursor rests on a country and its tooltip lands in the baseline.

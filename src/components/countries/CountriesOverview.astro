@@ -1,10 +1,10 @@
 ---
 import VisitedCountries from '@src/components/countries/VisitedCountries.astro'
-import WorldMap from '@src/components/WorldMap'
+import WorldMap from '@src/components/WorldMap.astro'
 import css from './CountriesOverview.module.css'
 ---
 
 <div class={css.overview}>
     <VisitedCountries />
-    <WorldMap className={css.map} client:load />
+    <WorldMap className={css.map} />
 </div>

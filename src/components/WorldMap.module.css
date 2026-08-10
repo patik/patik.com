@@ -1,21 +1,121 @@
+:global(world-map) {
+    --map-ocean: #f2eee5;
+    --map-grid: #d3cbbd;
+    --map-land: #c9c2b5;
+    --map-border: #f7f3eb;
+    --map-distant: #f4eee4;
+    --map-recent: #d94f40;
+    --map-lived: #e3b341;
+    --map-focus: #9a4d3d;
+
+    display: block;
+}
+
+:global(world-map) > .mapFrame {
+    cursor: zoom-in;
+
+    &:focus-visible {
+        outline: 3px solid var(--map-focus);
+        outline-offset: 3px;
+    }
+
+    & .visited,
+    & .microstateHitArea {
+        cursor: zoom-in;
+    }
+}
+
+.mapFrame {
+    position: relative;
+    inline-size: 100%;
+    overflow: hidden;
+    background: var(--map-ocean);
+    border: 1px solid color-mix(in srgb, var(--map-land) 62%, transparent);
+    border-radius: 10px;
+    box-shadow: 0 8px 28px rgb(43 37 29 / 0.08);
+}
+
+.map {
+    display: block;
+    inline-size: 100%;
+    block-size: auto;
+}
+
+.ocean {
+    fill: var(--map-ocean);
+}
+
+.graticule {
+    fill: none;
+    stroke: var(--map-grid);
+    stroke-width: 0.65;
+    opacity: 0.55;
+    vector-effect: non-scaling-stroke;
+}
+
+.country {
+    stroke: var(--map-border);
+    stroke-width: 0.65;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+    transition:
+        filter 140ms ease,
+        opacity 140ms ease,
+        stroke-width 140ms ease;
+}
+
+.unvisited {
+    fill: var(--map-land);
+}
+
+.visited {
+    fill: color-mix(in oklab, var(--map-recent) var(--visit-recency), var(--map-distant));
+    cursor: help;
+
+    &:hover {
+        filter: saturate(1.2) brightness(1.05);
+        stroke: var(--map-focus);
+        stroke-width: 1.5;
+    }
+}
+
+.lived {
+    fill: var(--map-lived);
+}
+
+.microstate {
+    &:hover .microstateMarker {
+        filter: saturate(1.2) brightness(1.05);
+        stroke: var(--map-focus);
+        stroke-width: 1.5;
+    }
+}
+
+.microstateHitArea {
+    fill: transparent;
+    cursor: help;
+    pointer-events: all;
+}
+
+.microstateMarker {
+    fill: color-mix(in oklab, var(--map-recent) var(--visit-recency), var(--map-distant));
+    stroke: var(--map-border);
+    stroke-width: 0.65;
+    pointer-events: none;
+    vector-effect: non-scaling-stroke;
+}
+
 .controls {
     display: flex;
     gap: 0.75rem;
     align-items: center;
-    margin-top: 0.6rem;
-}
-
-.container {
-    position: relative;
-    width: 100%;
-    aspect-ratio: var(--map-aspect-width) / var(--map-aspect-height);
+    margin-block-start: 0.7rem;
 }
 
 .expandButton {
     display: inline-flex;
     flex-shrink: 0;
     align-items: center;
-    gap: 0.35rem;
     margin: 0;
     padding: 0.3rem 0.7rem;
     color: var(--dark-charcoal) !important;
@@ -29,39 +129,56 @@
 
     &:hover,
     &:focus-visible {
-        background: rgb(0 0 0 / 0.04);
+        background: rgb(0 0 0 / 0.04) !important;
     }
 }
 
 .caption {
     min-inline-size: 0;
     margin: 0;
-    color: #666;
+    color: #69645d;
     font-family: var(--font-sans);
     font-size: 0.85rem;
-    line-height: 1.2;
+    line-height: 1.25;
+}
+
+.tooltip {
+    position: fixed;
+    z-index: 1001;
+    inset: 0 auto auto 0;
+    max-inline-size: min(22rem, calc(100vw - 2rem));
+    padding: 0.45rem 0.65rem;
+    color: #fdfbf7;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    line-height: 1.25;
+    pointer-events: none;
+    background: rgb(40 37 45 / 0.94);
+    border: 1px solid rgb(255 255 255 / 0.14);
+    border-radius: 5px;
+    box-shadow: 0 5px 18px rgb(0 0 0 / 0.2);
 }
 
 .dialog {
     position: fixed;
     inset: 0;
-    /* Definite, not max-*: the flex:1 chart wrap needs a resolved height to fit into. */
     inline-size: 96vw;
     block-size: 92vh;
     margin: auto;
     padding: 1rem;
     overflow: hidden;
-    background: white;
+    color: var(--dark-charcoal);
+    background: #faf8f3;
     border: none;
     border-radius: 8px;
     box-shadow: 0 8px 32px rgb(0 0 0 / 0.35);
 
     &::backdrop {
-        background: rgb(0 0 0 / 0.55);
+        background: rgb(0 0 0 / 0.58);
+        backdrop-filter: blur(2px);
     }
 }
 
-/* Gated on [open]: a bare display:flex would override the UA's display:none. */
 .dialog[open] {
     display: flex;
     flex-direction: column;
@@ -69,8 +186,63 @@
 
 .dialogHeader {
     display: flex;
+    gap: 0.75rem;
+    align-items: center;
     justify-content: flex-end;
-    margin-bottom: 0.25rem;
+    margin-block-end: 0.25rem;
+}
+
+.zoomControls {
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
+    margin-inline-end: auto;
+    font-family: var(--font-sans);
+}
+
+.zoomButton,
+.resetButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    block-size: 2rem;
+    margin: 0;
+    color: var(--dark-charcoal) !important;
+    font-family: var(--font-sans);
+    line-height: 1;
+    cursor: pointer;
+    background: transparent !important;
+    border: 1px solid rgb(0 0 0 / 0.15);
+    border-radius: 4px;
+
+    &:hover:not(:disabled),
+    &:focus-visible {
+        background: rgb(0 0 0 / 0.06) !important;
+    }
+
+    &:disabled {
+        cursor: default;
+        opacity: 0.35;
+    }
+}
+
+.zoomButton {
+    inline-size: 2rem;
+    padding: 0;
+    font-size: 1.2rem;
+}
+
+.resetButton {
+    padding-inline: 0.6rem;
+    font-size: 0.78rem;
+}
+
+.zoomLevel {
+    min-inline-size: 3.5rem;
+    color: #69645d;
+    font-size: 0.78rem;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
 }
 
 .closeButton {
@@ -80,8 +252,7 @@
     inline-size: 2rem;
     block-size: 2rem;
     padding: 0;
-    /* Global button rule adds a bottom margin; without this the header is 58px tall. */
-    margin-bottom: 0;
+    margin-block-end: 0;
     color: var(--dark-charcoal) !important;
     font-size: 1.3rem;
     line-height: 1;
@@ -92,61 +263,96 @@
 
     &:hover,
     &:focus-visible {
-        background: rgb(0 0 0 / 0.06);
+        background: rgb(0 0 0 / 0.06) !important;
     }
 }
 
-.expandedChartWrap {
+.dialogMapSlot {
     display: flex;
     flex: 1;
     align-items: center;
     justify-content: center;
-    /* Flex items floor at min-content; the fixed-pixel chart would push the wrap open. */
     min-inline-size: 0;
     min-block-size: 0;
+
+    & .mapFrame {
+        inline-size: min(100%, calc(78vh * 1000 / 520));
+    }
+
+    & .map {
+        touch-action: none;
+    }
+
+    & .mapFrame[data-map-zoomed='true'] .map {
+        cursor: grab;
+    }
+
+    & .mapFrame[data-map-dragging] .map {
+        cursor: grabbing;
+    }
 }
 
 .dialogCaption {
-    margin-top: 0.75rem;
-    /* Global <p> margin; it's the last child, so it would only shrink the map. */
-    margin-bottom: 0;
-    color: #666;
+    margin-block: 0.75rem 0;
+    color: #69645d;
     font-family: var(--font-sans);
     font-size: 0.85rem;
     text-align: center;
 }
 
 @media (prefers-color-scheme: dark) {
-    .caption {
-        color: #bbb;
+    :global(world-map) {
+        --map-ocean: #24262d;
+        --map-grid: #454957;
+        --map-land: #555a65;
+        --map-border: #2e3139;
+        --map-distant: #f1ece4;
+        --map-recent: #ef5d4e;
+        --map-lived: #f0c75e;
+        --map-focus: #ffd7c9;
     }
 
-    .expandButton {
+    .mapFrame {
+        box-shadow: 0 8px 30px rgb(0 0 0 / 0.22);
+    }
+
+    .caption,
+    .dialogCaption,
+    .zoomLevel {
+        color: #c3c0ba;
+    }
+
+    .expandButton,
+    .closeButton,
+    .zoomButton,
+    .resetButton {
         color: #f2f2f2 !important;
         border-color: rgb(255 255 255 / 0.25);
 
         &:hover,
         &:focus-visible {
-            background: rgb(255 255 255 / 0.08);
+            background: rgb(255 255 255 / 0.08) !important;
         }
     }
 
     .dialog {
+        color: #f2f2f2;
         background: var(--dark-charcoal);
         box-shadow: 0 8px 32px rgb(0 0 0 / 0.6);
     }
+}
 
-    .dialogCaption {
-        color: #bbb;
+@media (max-width: 560px) {
+    .controls {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.5rem;
     }
 
-    .closeButton {
-        color: #f2f2f2 !important;
-        border-color: rgb(255 255 255 / 0.25);
-
-        &:hover,
-        &:focus-visible {
-            background: rgb(255 255 255 / 0.08);
-        }
+    .dialog {
+        inline-size: 100vw;
+        block-size: 100dvh;
+        padding: 0.75rem;
+        border-radius: 0;
     }
 }
