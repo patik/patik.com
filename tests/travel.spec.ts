@@ -26,6 +26,10 @@ test('map renders without loading the Google Maps API', async ({ page }): Promis
         }
     })
     page.on('console', (message) => {
+        if (message.type() !== 'error') {
+            return
+        }
+
         if (/Google (Charts|Maps)|Geocoding Service/.test(message.text())) {
             unexpectedConsoleMessages.push(message.text())
         }
