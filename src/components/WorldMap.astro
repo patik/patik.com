@@ -36,7 +36,7 @@ function formatLastVisited(countryName: string, lastVisited: number, lived: bool
 }
 
 const lastVisits = countries.visited.map((country) => currentYear - Math.max(...country.yearsVisited))
-const oldestVisit = Math.max(...lastVisits)
+const oldestVisit = Math.max(1, ...lastVisits)
 const visitedByAtlasName = new Map(
     countries.visited
         .filter((country) => country.name !== 'Monaco')
