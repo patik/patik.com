@@ -1,0 +1,94 @@
+---
+import { formatList } from '@src/utils/formatList'
+import {
+    formatCompetition,
+    formatMatchDate,
+    formatScoreline,
+    getResultLabel,
+    getTeamAnchor,
+    type TeamSummary,
+} from './football'
+import css from './FootballPage.module.css'
+
+interface Props {
+    teams: TeamSummary[]
+    variant?: 'default' | 'count'
+}
+
+const { teams, variant = 'default' } = Astro.props
+
+function formatTeamRecord(team: TeamSummary): string {
+    const parts = [
+        formatRecordPart(team.wins, 'win', 'wins'),
+        formatRecordPart(team.draws, 'draw', 'draws'),
+        formatRecordPart(team.losses, 'loss', 'losses'),
+    ].filter((part) => part !== '')
+
+    return `Seen ${team.totalAppearances} ${team.totalAppearances === 1 ? 'time' : 'times'}: ${formatList(parts)}`
+}
+
+function formatRecordPart(count: number, singular: string, plural: string): string {
+    if (count === 0) {
+        return ''
+    }
+
+    return `${count} ${count === 1 ? singular : plural}`
+}
+
+function formatGoalRecord(team: TeamSummary): string {
+    return `${team.goalsFor} scored, ${team.goalsAgainst} conceded`
+}
+
+function getAppearanceLabel(count: number): string {
+    return `${count} ${count === 1 ? 'match' : 'matches'} attended`
+}
+---
+
+<ol class:list={[css.teamList, { [css.teamListCount]: variant === 'count' }]}>
+    {
+        teams.map((team) => (
+            <li>
+                <article
+                    class:list={[css.teamCard, { [css.teamCardCount]: variant === 'count' }]}
+                    data-team-anchor={getTeamAnchor(team.name)}
+                    tabindex="-1"
+                >
+                    <div class={css.teamHeader}>
+                        <div>
+                            <h3 class={css.teamName}>{team.name}</h3>
+                            <p class={css.teamMeta}>
+                                {formatTeamRecord(team)}
+                                {' • '}
+                                {formatGoalRecord(team)}
+                            </p>
+                        </div>
+
+                        <div
+                            class:list={[css.countBadge, { [css.countBadgeCount]: variant === 'count' }]}
+                            aria-label={getAppearanceLabel(team.totalAppearances)}
+                        >
+                            <span class={css.countNumber}>{team.totalAppearances}</span>
+                            <span class={css.countLabel}>{team.totalAppearances === 1 ? 'match' : 'matches'}</span>
+                        </div>
+                    </div>
+
+                    <ol class={css.appearanceList}>
+                        {team.appearances.map((appearance) => (
+                            <li class={css.appearanceItem}>
+                                <span class={css.appearanceMeta}>
+                                    {getResultLabel(appearance.result)}
+                                    {' • '}
+                                    {formatScoreline(appearance.match)}
+                                    {' • '}
+                                    {formatMatchDate(appearance.match)}
+                                    {' • '}
+                                    {formatCompetition(appearance.match)}
+                                </span>
+                            </li>
+                        ))}
+                    </ol>
+                </article>
+            </li>
+        ))
+    }
+</ol>

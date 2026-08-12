@@ -1,5 +1,5 @@
 {
-    "$schema": {
+    "_meta": {
         "description": "Each entry is one football match attended. Sort by `date` for the chronological view (partial-ISO strings sort lexically). Mirrors the concerts.json event-centric model.",
         "fields": {
             "id": "unique slug",

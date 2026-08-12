@@ -1,4 +1,5 @@
 ---
+import { formatList } from '@src/utils/formatList'
 import ConcertDate from './ConcertDate.astro'
 import {
     formatConcertDate,
@@ -33,16 +34,6 @@ function formatRoleAppearance(count: number, singularContext: string, pluralCont
     }
 
     return `${count} ${count === 1 ? 'time' : 'times'} ${count === 1 ? singularContext : pluralContext}`
-}
-
-function formatList(parts: string[]): string {
-    if (parts.length <= 2) {
-        return parts.join(' and ')
-    }
-
-    const lastPart = parts[parts.length - 1]
-
-    return `${parts.slice(0, -1).join(', ')}, and ${lastPart}`
 }
 
 function getMetaText(artist: ArtistSummary): string {

@@ -1,0 +1,69 @@
+---
+import {
+    formatAttendance,
+    formatCompetitionDetail,
+    formatMatchDate,
+    formatMatchLocation,
+    formatScore,
+    getOrderedTeams,
+    type FootballMatch,
+} from './football'
+import css from './FootballPage.module.css'
+import ScorerList from './ScorerList.astro'
+import TeamJumpLink from './TeamJumpLink.astro'
+
+interface Props {
+    matches: FootballMatch[]
+}
+
+const { matches } = Astro.props
+
+function getMatchFacts(match: FootballMatch): string[] {
+    const facts: string[] = []
+
+    if (match.attendance !== null) {
+        facts.push(`Attendance ${formatAttendance(match.attendance)}`)
+    }
+
+    if (match.referee) {
+        facts.push(`Referee ${match.referee}`)
+    }
+
+    return facts
+}
+---
+
+<ol class={css.matchList}>
+    {
+        matches.map((match) => {
+            const [firstTeam, secondTeam] = getOrderedTeams(match)
+            const matchFacts = getMatchFacts(match)
+
+            return (
+                <li>
+                    <article class={css.matchCard}>
+                        <div>
+                            <p class={css.matchCompetition}>{formatCompetitionDetail(match)}</p>
+                            <h3 class={css.matchTitle}>
+                                <TeamJumpLink teamName={firstTeam.name} isTitle />
+                                <span class={css.score}>{formatScore(match)}</span>
+                                <TeamJumpLink teamName={secondTeam.name} isTitle />
+                            </h3>
+                            <p class={css.matchMeta}>
+                                {formatMatchDate(match)} • {match.venue}, {formatMatchLocation(match)}
+                            </p>
+                        </div>
+
+                        <ScorerList scorers={match.scorers} />
+
+                        {match.aggregate ? <p class={css.matchAggregate}>{match.aggregate}</p> : null}
+
+                        {matchFacts.length > 0 ? <p class={css.matchFacts}>{matchFacts.join(' • ')}</p> : null}
+
+                        {match.note ? <p class={css.matchNote}>{match.note}</p> : null}
+                    </article>
+                </li>
+            )
+        })
+    }
+</ol>
