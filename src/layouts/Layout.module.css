@@ -22,10 +22,19 @@
     align-self: center;
 }
 
+:root {
+    --main-inline-padding: 0.5rem;
+}
+
 .main {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    padding-inline: var(--main-inline-padding);
+
+    @media (min-width: 980px) {
+        --main-inline-padding: 1rem;
+    }
 
     & > p {
         margin-bottom: 0;
