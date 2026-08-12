@@ -33,13 +33,16 @@ function getMatchFacts(match: FootballMatch): string[] {
     return facts
 }
 
-/** Names only what the disclosure actually contains, so a goalless match doesn't promise goals. */
+/**
+ * Names only what the disclosure actually contains: a goalless match must not promise goals, and
+ * "match facts" stays honest for a match with a referee but no recorded attendance.
+ */
 function getDisclosureLabel(hasGoals: boolean, hasFacts: boolean): string {
     if (hasGoals && hasFacts) {
-        return 'Goals and attendance'
+        return 'Goals and match facts'
     }
 
-    return hasGoals ? 'Goals' : 'Attendance'
+    return hasGoals ? 'Goals' : 'Match facts'
 }
 ---
 

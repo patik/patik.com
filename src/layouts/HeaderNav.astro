@@ -2,12 +2,10 @@
 interface NavItem {
     href: string
     label: string
-    className?: string
     activePathPrefixes?: string[]
 }
 
 const navItems: NavItem[] = [
-    { href: '/', label: 'Home', className: 'hide-for-small' },
     { href: '/travel/', label: 'Travel' },
     { href: '/portfolio/', label: 'Portfolio', activePathPrefixes: ['/code/user-scripts/'] },
     { href: '/football/', label: 'Football' },
@@ -18,10 +16,6 @@ const navItems: NavItem[] = [
 const currentPath = Astro.url.pathname
 
 function isActive({ href, activePathPrefixes = [] }: NavItem): boolean {
-    if (href === '/') {
-        return currentPath === '/'
-    }
-
     return [href, ...activePathPrefixes].some((pathPrefix) => currentPath.startsWith(pathPrefix))
 }
 ---
@@ -33,7 +27,7 @@ function isActive({ href, activePathPrefixes = [] }: NavItem): boolean {
     <ul>
         {
             navItems.map((item) => (
-                <li class={item.className}>
+                <li>
                     <a
                         href={item.href}
                         class:list={[{ active: isActive(item) }]}

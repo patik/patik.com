@@ -26,7 +26,10 @@
 
     ul {
         display: flex;
+        /* Without wrapping, a narrow viewport clips the last link instead of scrolling to it. */
+        flex-wrap: wrap;
         flex-shrink: 1;
+        justify-content: flex-end;
         margin-bottom: 0;
         margin-right: 1rem;
 
@@ -37,6 +40,10 @@
             list-style: none;
             margin-left: 1rem;
             margin-bottom: 0;
+
+            @media (max-width: 400px) {
+                margin-left: 0.75rem;
+            }
 
             a {
                 color: #fff;

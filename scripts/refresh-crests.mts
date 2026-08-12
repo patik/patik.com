@@ -11,6 +11,8 @@
 import { mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
+// Relative, not the @src alias: node runs this file directly and won't resolve tsconfig paths.
+import { slugify } from '../src/utils/slugify.ts'
 
 interface SportsDbTeam {
     strTeam: string
@@ -51,13 +53,29 @@ const SEARCH_OVERRIDES: Record<string, string> = {
 /** 200x200 source for a crest rendered at 24px — Astro downscales it at build time. */
 const BADGE_VARIANT = '/small'
 
-/** The free key allows roughly 30 requests a minute, and answers 429 past that. */
-const REQUEST_INTERVAL_MS = 1200
+/**
+ * The free key allows 30 requests a minute. Every API call goes through `searchApi`, which
+ * spaces them centrally — a per-team delay would undercount, since one team can cost several
+ * requests when the first name candidates miss.
+ */
+const REQUEST_INTERVAL_MS = 2_100
 const RATE_LIMIT_RETRIES = 3
 const RATE_LIMIT_BACKOFF_MS = 15_000
 
+let nextRequestAllowedAt = 0
+
 function wait(milliseconds: number): Promise<void> {
     return new Promise((resolve) => setTimeout(resolve, milliseconds))
+}
+
+async function throttleApiRequest(): Promise<void> {
+    const waitFor = nextRequestAllowedAt - Date.now()
+
+    if (waitFor > 0) {
+        await wait(waitFor)
+    }
+
+    nextRequestAllowedAt = Date.now() + REQUEST_INTERVAL_MS
 }
 
 /** Retries only on 429 — any other failure is a real error worth surfacing immediately. */
@@ -76,14 +94,6 @@ async function fetchWithRateLimitRetry(url: string): Promise<Response> {
     }
 
     throw new Error(`Rate limited by TheSportsDB after ${RATE_LIMIT_RETRIES} retries: ${url}`)
-}
-
-function slugify(value: string): string {
-    return value
-        .toLowerCase()
-        .replace(/&/g, 'and')
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/^-+|-+$/g, '')
 }
 
 function getTeamNames(): string[] {
@@ -122,6 +132,8 @@ function isSeniorMensTeam(team: SportsDbTeam): boolean {
 }
 
 async function search(query: string): Promise<SportsDbTeam[]> {
+    await throttleApiRequest()
+
     const response = await fetchWithRateLimitRetry(`${searchUrl}?t=${encodeURIComponent(query)}`)
 
     if (!response.ok) {
@@ -134,11 +146,7 @@ async function search(query: string): Promise<SportsDbTeam[]> {
 }
 
 async function findBadge(teamName: string): Promise<TeamBadge | null> {
-    for (const [index, candidate] of getSearchCandidates(teamName).entries()) {
-        if (index > 0) {
-            await wait(REQUEST_INTERVAL_MS)
-        }
-
+    for (const candidate of getSearchCandidates(teamName)) {
         const match = (await search(candidate)).find(isSeniorMensTeam)
 
         if (match?.strBadge) {
@@ -178,11 +186,7 @@ async function refreshCrests(): Promise<void> {
 
     mkdirSync(crestsDir, { recursive: true })
 
-    for (const [index, teamName] of teamNames.entries()) {
-        if (index > 0) {
-            await wait(REQUEST_INTERVAL_MS)
-        }
-
+    for (const teamName of teamNames) {
         const badge = await findBadge(teamName)
 
         if (!badge) {
