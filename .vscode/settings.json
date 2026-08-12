@@ -29,7 +29,6 @@
         "window.activeBorder": "#0A8C5F",
         "window.inactiveBorder": "#054A32"
     },
-    // "workbench.experimental.modernUI": false,
     "eslint.useFlatConfig": true,
     "js/ts.tsserver.watchOptions": {
         "watchDirectory": "useFsEvents",
