@@ -202,7 +202,6 @@
 .matchAggregate,
 .appearanceMeta,
 .countLabel,
-.detailHeading,
 .scorerItem {
     font-family: var(--font-sans);
 }
@@ -264,17 +263,49 @@
     text-transform: uppercase;
 }
 
-.detailGroup {
-    display: grid;
-    gap: 0.28rem;
-}
-
-.detailHeading {
+.matchSummary {
+    display: inline-flex;
+    gap: 0.35rem;
+    align-items: center;
+    width: fit-content;
     color: var(--football-muted);
+    font-family: var(--font-sans);
     font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+    cursor: pointer;
+    list-style: none;
+}
+
+/* Safari still paints its own triangle without this, on top of the custom one. */
+.matchSummary::-webkit-details-marker {
+    display: none;
+}
+
+.matchSummary::before {
+    content: '';
+    inline-size: 0;
+    block-size: 0;
+    border-block-start: 0.3rem solid transparent;
+    border-block-end: 0.3rem solid transparent;
+    border-inline-start: 0.42rem solid currentColor;
+    transition: transform 120ms ease;
+}
+
+.matchDetails[open] .matchSummary::before {
+    transform: rotate(90deg);
+}
+
+.matchSummary:hover,
+.matchSummary:focus-visible {
+    color: var(--football-ink);
+}
+
+.matchDetailsBody {
+    display: grid;
+    gap: 0.45rem;
+    margin-block-start: 0.5rem;
 }
 
 .scorerList {

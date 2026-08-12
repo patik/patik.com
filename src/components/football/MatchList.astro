@@ -31,6 +31,15 @@ function getMatchFacts(match: FootballMatch): string[] {
 
     return facts
 }
+
+/** Names only what the disclosure actually contains, so a goalless match doesn't promise goals. */
+function getDisclosureLabel(hasGoals: boolean, hasFacts: boolean): string {
+    if (hasGoals && hasFacts) {
+        return 'Goals and attendance'
+    }
+
+    return hasGoals ? 'Goals' : 'Attendance'
+}
 ---
 
 <ol class={css.matchList}>
@@ -38,6 +47,7 @@ function getMatchFacts(match: FootballMatch): string[] {
         matches.map((match) => {
             const [firstTeam, secondTeam] = getOrderedTeams(match)
             const matchFacts = getMatchFacts(match)
+            const hasGoals = match.scorers.length > 0
 
             return (
                 <li>
@@ -54,13 +64,23 @@ function getMatchFacts(match: FootballMatch): string[] {
                             </p>
                         </div>
 
-                        <ScorerList scorers={match.scorers} />
-
                         {match.aggregate ? <p class={css.matchAggregate}>{match.aggregate}</p> : null}
 
-                        {matchFacts.length > 0 ? <p class={css.matchFacts}>{matchFacts.join(' • ')}</p> : null}
-
                         {match.note ? <p class={css.matchNote}>{match.note}</p> : null}
+
+                        {hasGoals || matchFacts.length > 0 ? (
+                            <details class={css.matchDetails}>
+                                <summary class={css.matchSummary}>
+                                    {getDisclosureLabel(hasGoals, matchFacts.length > 0)}
+                                </summary>
+                                <div class={css.matchDetailsBody}>
+                                    <ScorerList scorers={match.scorers} />
+                                    {matchFacts.length > 0 ? (
+                                        <p class={css.matchFacts}>{matchFacts.join(' • ')}</p>
+                                    ) : null}
+                                </div>
+                            </details>
+                        ) : null}
                     </article>
                 </li>
             )
