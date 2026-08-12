@@ -374,6 +374,10 @@ blockquote p {
     }
 }
 
+h1 {
+    font-size: var(--h1-font-size);
+}
+
 @media only screen and (min-width: 48em) {
     /* $small breakpoint */
     /* Adding this tag just to give it specificity over Tailwind's style reset */

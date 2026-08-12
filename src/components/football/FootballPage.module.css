@@ -7,6 +7,10 @@
     --football-pill-line: rgb(0 0 0 / 0.14);
 
     color: var(--football-ink);
+
+    h1 {
+        line-height: 1.2;
+    }
 }
 
 .intro {
