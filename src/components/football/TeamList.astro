@@ -9,6 +9,7 @@ import {
     type TeamSummary,
 } from './football'
 import css from './FootballPage.module.css'
+import TeamCrest from './TeamCrest.astro'
 
 interface Props {
     teams: TeamSummary[]
@@ -55,7 +56,10 @@ function getAppearanceLabel(count: number): string {
                 >
                     <div class={css.teamHeader}>
                         <div>
-                            <h3 class={css.teamName}>{team.name}</h3>
+                            <h3 class={css.teamName}>
+                                <TeamCrest teamName={team.name} />
+                                {team.name}
+                            </h3>
                             <p class={css.teamMeta}>
                                 {formatTeamRecord(team)}
                                 {' • '}

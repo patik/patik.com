@@ -158,9 +158,22 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    align-items: baseline;
+    align-items: center;
     margin: 0;
     font-size: 1.15rem;
+}
+
+.matchTeam {
+    display: inline-flex;
+    gap: 0.4rem;
+    align-items: center;
+}
+
+.crest {
+    flex-shrink: 0;
+    inline-size: 1.5rem;
+    block-size: auto;
+    object-fit: contain;
 }
 
 .score {
@@ -177,6 +190,9 @@
 }
 
 .teamName {
+    display: flex;
+    gap: 0.45rem;
+    align-items: center;
     margin: 0;
     font-size: 1.2rem;
 }
@@ -351,6 +367,15 @@
     color: var(--football-muted);
     font-size: 0.92rem;
     line-height: 1.35;
+}
+
+.credit {
+    margin: 1.5rem 0 0;
+    padding-block-start: 0.75rem;
+    color: var(--football-muted);
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    border-block-start: 1px solid var(--football-line);
 }
 
 @media (max-width: 720px) {

@@ -1,0 +1,23 @@
+---
+import { slugify } from '@src/utils/slugify'
+import { Image } from 'astro:assets'
+import css from './FootballPage.module.css'
+
+interface Props {
+    teamName: string
+}
+
+// Crests are committed by `pnpm crests:refresh`; a team without one simply renders no crest.
+const crestModules = import.meta.glob<{ default: ImageMetadata }>('/src/images/crests/*.png', { eager: true })
+
+// 2x the 24px render, so the downscale stays sharp on retina.
+const RENDERED_WIDTH = 48
+
+const { teamName } = Astro.props
+const crest = crestModules[`/src/images/crests/${slugify(teamName)}.png`]?.default
+---
+
+{
+    /* Decorative: every crest sits next to the team name it belongs to. */
+    crest ? <Image class={css.crest} src={crest} alt="" width={RENDERED_WIDTH} loading="lazy" /> : null
+}

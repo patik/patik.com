@@ -34,12 +34,12 @@
             "stage": "CONCACAF semifinal round, Group 1",
             "teams": [
                 {
-                    "name": "United States",
+                    "name": "United States Men's National Team",
                     "role": "home",
                     "score": 2
                 },
                 {
-                    "name": "El Salvador",
+                    "name": "El Salvador Men's National Team",
                     "role": "away",
                     "score": 0
                 }
@@ -47,12 +47,12 @@
             "scorers": [
                 {
                     "name": "Brian Ching",
-                    "team": "United States",
+                    "team": "United States Men's National Team",
                     "minute": "5"
                 },
                 {
                     "name": "Landon Donovan",
-                    "team": "United States",
+                    "team": "United States Men's National Team",
                     "minute": "69"
                 }
             ],
@@ -73,12 +73,12 @@
             "stage": "Final",
             "teams": [
                 {
-                    "name": "Uruguay",
+                    "name": "Uruguay Men's National Team",
                     "role": "neutral",
                     "score": 3
                 },
                 {
-                    "name": "Paraguay",
+                    "name": "Paraguay Men's National Team",
                     "role": "neutral",
                     "score": 0
                 }
@@ -86,17 +86,17 @@
             "scorers": [
                 {
                     "name": "Luis Suárez",
-                    "team": "Uruguay",
+                    "team": "Uruguay Men's National Team",
                     "minute": "12"
                 },
                 {
                     "name": "Diego Forlán",
-                    "team": "Uruguay",
+                    "team": "Uruguay Men's National Team",
                     "minute": "41"
                 },
                 {
                     "name": "Diego Forlán",
-                    "team": "Uruguay",
+                    "team": "Uruguay Men's National Team",
                     "minute": "89"
                 }
             ],
@@ -130,7 +130,7 @@
             "scorers": [],
             "attendance": 60078,
             "referee": "Chris Foy",
-            "note": "Opening day of the season, and the Arsenal debuts of Lukas Podolski and Santi Cazorla. Goalless."
+            "note": "Opening day of the season, and the Arsenal debuts of Lukas Podolski and Santi Cazorla."
         },
         {
             "id": "liverpool-man-city-2012-08-26",
@@ -145,7 +145,7 @@
             "stage": "Matchday 2",
             "teams": [
                 {
-                    "name": "Liverpool",
+                    "name": "Liverpool FC",
                     "role": "home",
                     "score": 2
                 },
@@ -158,7 +158,7 @@
             "scorers": [
                 {
                     "name": "Martin Škrtel",
-                    "team": "Liverpool",
+                    "team": "Liverpool FC",
                     "minute": "34"
                 },
                 {
@@ -168,7 +168,7 @@
                 },
                 {
                     "name": "Luis Suárez",
-                    "team": "Liverpool",
+                    "team": "Liverpool FC",
                     "minute": "66"
                 },
                 {
@@ -194,7 +194,7 @@
             "stage": "Matchday 3",
             "teams": [
                 {
-                    "name": "Bayern Munich",
+                    "name": "FC Bayern Munich",
                     "role": "home",
                     "score": 2
                 },
@@ -207,12 +207,12 @@
             "scorers": [
                 {
                     "name": "Mario Götze",
-                    "team": "Bayern Munich",
+                    "team": "FC Bayern Munich",
                     "minute": "27"
                 },
                 {
                     "name": "Franck Ribéry",
-                    "team": "Bayern Munich",
+                    "team": "FC Bayern Munich",
                     "minute": "85"
                 }
             ],
@@ -233,7 +233,7 @@
             "stage": "Bastian Schweinsteiger testimonial",
             "teams": [
                 {
-                    "name": "Bayern Munich",
+                    "name": "FC Bayern Munich",
                     "role": "home",
                     "score": 4
                 },
@@ -246,22 +246,22 @@
             "scorers": [
                 {
                     "name": "Serge Gnabry",
-                    "team": "Bayern Munich",
+                    "team": "FC Bayern Munich",
                     "minute": "7"
                 },
                 {
                     "name": "Sandro Wagner",
-                    "team": "Bayern Munich",
+                    "team": "FC Bayern Munich",
                     "minute": "38"
                 },
                 {
                     "name": "Arjen Robben",
-                    "team": "Bayern Munich",
+                    "team": "FC Bayern Munich",
                     "minute": "63"
                 },
                 {
                     "name": "Bastian Schweinsteiger",
-                    "team": "Bayern Munich",
+                    "team": "FC Bayern Munich",
                     "minute": "84"
                 }
             ],
@@ -287,7 +287,7 @@
                     "score": 1
                 },
                 {
-                    "name": "Liverpool",
+                    "name": "Liverpool FC",
                     "role": "away",
                     "score": 1
                 }
@@ -295,7 +295,7 @@
             "scorers": [
                 {
                     "name": "James Milner",
-                    "team": "Liverpool",
+                    "team": "Liverpool FC",
                     "minute": "61"
                 },
                 {
@@ -321,7 +321,7 @@
             "stage": "Quarterfinal, second leg",
             "teams": [
                 {
-                    "name": "Bayern Munich",
+                    "name": "FC Bayern Munich",
                     "role": "home",
                     "score": 1
                 },
@@ -335,7 +335,7 @@
             "scorers": [
                 {
                     "name": "Joshua Kimmich",
-                    "team": "Bayern Munich",
+                    "team": "FC Bayern Munich",
                     "minute": "63"
                 }
             ],
@@ -356,12 +356,12 @@
             "stage": "Group C, matchday 2",
             "teams": [
                 {
-                    "name": "Slovenia",
+                    "name": "Slovenia Men's National Team",
                     "role": "home",
                     "score": 1
                 },
                 {
-                    "name": "Serbia",
+                    "name": "Serbia Men's National Team",
                     "role": "away",
                     "score": 1
                 }
@@ -369,12 +369,12 @@
             "scorers": [
                 {
                     "name": "Žan Karničnik",
-                    "team": "Slovenia",
+                    "team": "Slovenia Men's National Team",
                     "minute": "69"
                 },
                 {
                     "name": "Luka Jović",
-                    "team": "Serbia",
+                    "team": "Serbia Men's National Team",
                     "minute": "90+5"
                 }
             ],
@@ -395,12 +395,12 @@
             "stage": "Round of 16",
             "teams": [
                 {
-                    "name": "Romania",
+                    "name": "Romania Men's National Team",
                     "role": "home",
                     "score": 0
                 },
                 {
-                    "name": "Netherlands",
+                    "name": "Netherlands Men's National Team",
                     "role": "away",
                     "score": 3
                 }
@@ -408,17 +408,17 @@
             "scorers": [
                 {
                     "name": "Cody Gakpo",
-                    "team": "Netherlands",
+                    "team": "Netherlands Men's National Team",
                     "minute": "20"
                 },
                 {
                     "name": "Donyell Malen",
-                    "team": "Netherlands",
+                    "team": "Netherlands Men's National Team",
                     "minute": "83"
                 },
                 {
                     "name": "Donyell Malen",
-                    "team": "Netherlands",
+                    "team": "Netherlands Men's National Team",
                     "minute": "90+3"
                 }
             ],

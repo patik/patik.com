@@ -10,6 +10,7 @@ import {
 } from './football'
 import css from './FootballPage.module.css'
 import ScorerList from './ScorerList.astro'
+import TeamCrest from './TeamCrest.astro'
 import TeamJumpLink from './TeamJumpLink.astro'
 
 interface Props {
@@ -55,9 +56,15 @@ function getDisclosureLabel(hasGoals: boolean, hasFacts: boolean): string {
                         <div>
                             <p class={css.matchCompetition}>{formatCompetitionDetail(match)}</p>
                             <h3 class={css.matchTitle}>
-                                <TeamJumpLink teamName={firstTeam.name} isTitle />
+                                <span class={css.matchTeam}>
+                                    <TeamCrest teamName={firstTeam.name} />
+                                    <TeamJumpLink teamName={firstTeam.name} isTitle />
+                                </span>
                                 <span class={css.score}>{formatScore(match)}</span>
-                                <TeamJumpLink teamName={secondTeam.name} isTitle />
+                                <span class={css.matchTeam}>
+                                    <TeamCrest teamName={secondTeam.name} />
+                                    <TeamJumpLink teamName={secondTeam.name} isTitle />
+                                </span>
                             </h3>
                             <p class={css.matchMeta}>
                                 {formatMatchDate(match)} • {match.venue}, {formatMatchLocation(match)}
