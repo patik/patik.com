@@ -10,6 +10,26 @@ section {
     }
 }
 
+header {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    @media (min-width: 980px) {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    h1 {
+        flex-grow: 1;
+    }
+
+    p {
+        /* justify-self: flex-end; */
+        margin: 0;
+    }
+}
+
 .travel-link-list {
     --img-position-offset: 5px;
 

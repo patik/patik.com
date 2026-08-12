@@ -6,7 +6,7 @@
     gap: 0.5rem;
     background-color: #333;
     padding-block: 0.5rem;
-    padding-inline: 0.5rem;
+    padding-inline: 1rem;
     -webkit-font-smoothing: antialiased;
 
     @media (min-width: 400px) {
@@ -54,10 +54,6 @@
             list-style: none;
             margin-bottom: 0;
             font-size: 1.25rem;
-
-            @media (min-width: 980px) {
-                /* font-size: inherit; */
-            }
 
             a {
                 color: #fff;
