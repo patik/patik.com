@@ -28,6 +28,9 @@ NODE_MODULES_VOLUME="patikcom-linux-node-modules"
 # Without --store-dir, pnpm drops ~550MB beside the project, i.e. into the bind mount.
 PNPM_STORE_VOLUME="patikcom-linux-pnpm-store"
 
+# Corepack re-downloads pnpm on every run otherwise, since the container itself is throwaway.
+COREPACK_CACHE_VOLUME="patikcom-linux-corepack-cache"
+
 if ! docker info >/dev/null 2>&1; then
     echo "error: Docker isn't running. Start Docker Desktop and try again." >&2
     exit 1
@@ -41,8 +44,10 @@ exec docker run --rm \
     --volume "$PWD":/work \
     --volume "${NODE_MODULES_VOLUME}":/work/node_modules \
     --volume "${PNPM_STORE_VOLUME}":/pnpm-store \
+    --volume "${COREPACK_CACHE_VOLUME}":/root/.cache/node/corepack \
     --workdir /work \
     --env CI=1 \
+    --env COREPACK_ENABLE_DOWNLOAD_PROMPT=0 \
     "$IMAGE" \
     bash -c 'corepack enable pnpm \
         && pnpm install --frozen-lockfile --prefer-offline --store-dir /pnpm-store \
