@@ -1,0 +1,430 @@
+{
+    "$schema": {
+        "description": "Each entry is one football match attended. Sort by `date` for the chronological view (partial-ISO strings sort lexically). Mirrors the concerts.json event-centric model.",
+        "fields": {
+            "id": "unique slug",
+            "date": "partial ISO 8601: YYYY, YYYY-MM, or YYYY-MM-DD",
+            "datePrecision": "day | month | year (drives how you render the date)",
+            "venue": "venue name",
+            "city": "city",
+            "state": "US state abbreviation, else null",
+            "country": "country",
+            "competition": "league, tournament, or match type",
+            "season": "season string for club competitions, else null",
+            "stage": "round, matchday, or leg, else null",
+            "teams": "[{ name, role, score }] where role is home | away | neutral",
+            "aggregate": "optional, for two-legged ties",
+            "scorers": "[{ name, team, minute }] in chronological order; minute is a string to allow stoppage time",
+            "attendance": "official attendance, else null",
+            "referee": "referee name, else null",
+            "note": "optional free-text"
+        }
+    },
+    "matches": [
+        {
+            "id": "usa-el-salvador-2004-foxborough",
+            "date": "2004-09-04",
+            "datePrecision": "day",
+            "venue": "Gillette Stadium",
+            "city": "Foxborough",
+            "state": "MA",
+            "country": "USA",
+            "competition": "2006 FIFA World Cup qualifying",
+            "season": null,
+            "stage": "CONCACAF semifinal round, Group 1",
+            "teams": [
+                {
+                    "name": "United States",
+                    "role": "home",
+                    "score": 2
+                },
+                {
+                    "name": "El Salvador",
+                    "role": "away",
+                    "score": 0
+                }
+            ],
+            "scorers": [
+                {
+                    "name": "Brian Ching",
+                    "team": "United States",
+                    "minute": "5"
+                },
+                {
+                    "name": "Landon Donovan",
+                    "team": "United States",
+                    "minute": "69"
+                }
+            ],
+            "attendance": 25266,
+            "referee": null,
+            "note": "Bruce Arena's side went top of the qualifying group. The US outshot El Salvador 19-1 in a bad-tempered game that included a sending off and a brawl."
+        },
+        {
+            "id": "copa-america-2011-final",
+            "date": "2011-07-24",
+            "datePrecision": "day",
+            "venue": "Estadio Monumental Antonio Vespucio Liberti",
+            "city": "Buenos Aires",
+            "state": null,
+            "country": "Argentina",
+            "competition": "Copa América 2011",
+            "season": null,
+            "stage": "Final",
+            "teams": [
+                {
+                    "name": "Uruguay",
+                    "role": "neutral",
+                    "score": 3
+                },
+                {
+                    "name": "Paraguay",
+                    "role": "neutral",
+                    "score": 0
+                }
+            ],
+            "scorers": [
+                {
+                    "name": "Luis Suárez",
+                    "team": "Uruguay",
+                    "minute": "12"
+                },
+                {
+                    "name": "Diego Forlán",
+                    "team": "Uruguay",
+                    "minute": "41"
+                },
+                {
+                    "name": "Diego Forlán",
+                    "team": "Uruguay",
+                    "minute": "89"
+                }
+            ],
+            "attendance": 65921,
+            "referee": "Sálvio Fagundes Spínola",
+            "note": "Uruguay's record 15th Copa América title, and their first since 1995. Luis Suárez was named player of the tournament. Paraguay reached the final without winning a single match."
+        },
+        {
+            "id": "arsenal-sunderland-2012-08-18",
+            "date": "2012-08-18",
+            "datePrecision": "day",
+            "venue": "Emirates Stadium",
+            "city": "London",
+            "state": null,
+            "country": "England",
+            "competition": "Premier League",
+            "season": "2012-13",
+            "stage": "Matchday 1",
+            "teams": [
+                {
+                    "name": "Arsenal",
+                    "role": "home",
+                    "score": 0
+                },
+                {
+                    "name": "Sunderland",
+                    "role": "away",
+                    "score": 0
+                }
+            ],
+            "scorers": [],
+            "attendance": 60078,
+            "referee": "Chris Foy",
+            "note": "Opening day of the season, and the Arsenal debuts of Lukas Podolski and Santi Cazorla. Goalless."
+        },
+        {
+            "id": "liverpool-man-city-2012-08-26",
+            "date": "2012-08-26",
+            "datePrecision": "day",
+            "venue": "Anfield",
+            "city": "Liverpool",
+            "state": null,
+            "country": "England",
+            "competition": "Premier League",
+            "season": "2012-13",
+            "stage": "Matchday 2",
+            "teams": [
+                {
+                    "name": "Liverpool",
+                    "role": "home",
+                    "score": 2
+                },
+                {
+                    "name": "Manchester City",
+                    "role": "away",
+                    "score": 2
+                }
+            ],
+            "scorers": [
+                {
+                    "name": "Martin Škrtel",
+                    "team": "Liverpool",
+                    "minute": "34"
+                },
+                {
+                    "name": "Yaya Touré",
+                    "team": "Manchester City",
+                    "minute": "63"
+                },
+                {
+                    "name": "Luis Suárez",
+                    "team": "Liverpool",
+                    "minute": "66"
+                },
+                {
+                    "name": "Carlos Tévez",
+                    "team": "Manchester City",
+                    "minute": "80"
+                }
+            ],
+            "attendance": 44942,
+            "referee": null,
+            "note": "A 17-year-old Raheem Sterling started for Liverpool. Manchester City were the defending champions."
+        },
+        {
+            "id": "bayern-stuttgart-2014-09-13",
+            "date": "2014-09-13",
+            "datePrecision": "day",
+            "venue": "Allianz Arena",
+            "city": "Munich",
+            "state": null,
+            "country": "Germany",
+            "competition": "Bundesliga",
+            "season": "2014-15",
+            "stage": "Matchday 3",
+            "teams": [
+                {
+                    "name": "Bayern Munich",
+                    "role": "home",
+                    "score": 2
+                },
+                {
+                    "name": "VfB Stuttgart",
+                    "role": "away",
+                    "score": 0
+                }
+            ],
+            "scorers": [
+                {
+                    "name": "Mario Götze",
+                    "team": "Bayern Munich",
+                    "minute": "27"
+                },
+                {
+                    "name": "Franck Ribéry",
+                    "team": "Bayern Munich",
+                    "minute": "85"
+                }
+            ],
+            "attendance": 71000,
+            "referee": null,
+            "note": "Pep Guardiola's second season. Stuttgart managed zero shots on target."
+        },
+        {
+            "id": "schweinsteiger-testimonial-2018",
+            "date": "2018-08-28",
+            "datePrecision": "day",
+            "venue": "Allianz Arena",
+            "city": "Munich",
+            "state": null,
+            "country": "Germany",
+            "competition": "Testimonial match",
+            "season": null,
+            "stage": "Bastian Schweinsteiger testimonial",
+            "teams": [
+                {
+                    "name": "Bayern Munich",
+                    "role": "home",
+                    "score": 4
+                },
+                {
+                    "name": "Chicago Fire",
+                    "role": "away",
+                    "score": 0
+                }
+            ],
+            "scorers": [
+                {
+                    "name": "Serge Gnabry",
+                    "team": "Bayern Munich",
+                    "minute": "7"
+                },
+                {
+                    "name": "Sandro Wagner",
+                    "team": "Bayern Munich",
+                    "minute": "38"
+                },
+                {
+                    "name": "Arjen Robben",
+                    "team": "Bayern Munich",
+                    "minute": "63"
+                },
+                {
+                    "name": "Bastian Schweinsteiger",
+                    "team": "Bayern Munich",
+                    "minute": "84"
+                }
+            ],
+            "attendance": 75000,
+            "referee": null,
+            "note": "Schweinsteiger played the first half for Chicago Fire, then switched sides at the break and scored a volley for Bayern. Every Bayern player came out for the second half wearing his number 31. His first appearance at the Allianz Arena since leaving for Manchester United in 2015."
+        },
+        {
+            "id": "arsenal-liverpool-2018-11-03",
+            "date": "2018-11-03",
+            "datePrecision": "day",
+            "venue": "Emirates Stadium",
+            "city": "London",
+            "state": null,
+            "country": "England",
+            "competition": "Premier League",
+            "season": "2018-19",
+            "stage": null,
+            "teams": [
+                {
+                    "name": "Arsenal",
+                    "role": "home",
+                    "score": 1
+                },
+                {
+                    "name": "Liverpool",
+                    "role": "away",
+                    "score": 1
+                }
+            ],
+            "scorers": [
+                {
+                    "name": "James Milner",
+                    "team": "Liverpool",
+                    "minute": "61"
+                },
+                {
+                    "name": "Alexandre Lacazette",
+                    "team": "Arsenal",
+                    "minute": "82"
+                }
+            ],
+            "attendance": 59993,
+            "referee": "André Marriner",
+            "note": "Lacazette equalized eight minutes from time to rescue a point against a Liverpool side that was unbeaten at that point in the season."
+        },
+        {
+            "id": "bayern-arsenal-2024-ucl-qf",
+            "date": "2024-04-17",
+            "datePrecision": "day",
+            "venue": "Allianz Arena",
+            "city": "Munich",
+            "state": null,
+            "country": "Germany",
+            "competition": "UEFA Champions League",
+            "season": "2023-24",
+            "stage": "Quarterfinal, second leg",
+            "teams": [
+                {
+                    "name": "Bayern Munich",
+                    "role": "home",
+                    "score": 1
+                },
+                {
+                    "name": "Arsenal",
+                    "role": "away",
+                    "score": 0
+                }
+            ],
+            "aggregate": "Bayern Munich won 3-2 on aggregate after a 2-2 draw in the first leg at the Emirates",
+            "scorers": [
+                {
+                    "name": "Joshua Kimmich",
+                    "team": "Bayern Munich",
+                    "minute": "63"
+                }
+            ],
+            "attendance": 75000,
+            "referee": "Danny Makkelie",
+            "note": "Kimmich headed in Raphaël Guerreiro's cross to knock Arsenal out. Bayern went on to face Real Madrid in the semifinals. Arsenal have not reached a Champions League semifinal since 2009."
+        },
+        {
+            "id": "euro-2024-slovenia-serbia",
+            "date": "2024-06-20",
+            "datePrecision": "day",
+            "venue": "Munich Football Arena",
+            "city": "Munich",
+            "state": null,
+            "country": "Germany",
+            "competition": "UEFA Euro 2024",
+            "season": null,
+            "stage": "Group C, matchday 2",
+            "teams": [
+                {
+                    "name": "Slovenia",
+                    "role": "home",
+                    "score": 1
+                },
+                {
+                    "name": "Serbia",
+                    "role": "away",
+                    "score": 1
+                }
+            ],
+            "scorers": [
+                {
+                    "name": "Žan Karničnik",
+                    "team": "Slovenia",
+                    "minute": "69"
+                },
+                {
+                    "name": "Luka Jović",
+                    "team": "Serbia",
+                    "minute": "90+5"
+                }
+            ],
+            "attendance": 63028,
+            "referee": "István Kovács",
+            "note": "Jović's stoppage-time header denied Slovenia their first ever win at a European Championship. The venue is the Allianz Arena, renamed for the tournament."
+        },
+        {
+            "id": "euro-2024-romania-netherlands",
+            "date": "2024-07-02",
+            "datePrecision": "day",
+            "venue": "Munich Football Arena",
+            "city": "Munich",
+            "state": null,
+            "country": "Germany",
+            "competition": "UEFA Euro 2024",
+            "season": null,
+            "stage": "Round of 16",
+            "teams": [
+                {
+                    "name": "Romania",
+                    "role": "home",
+                    "score": 0
+                },
+                {
+                    "name": "Netherlands",
+                    "role": "away",
+                    "score": 3
+                }
+            ],
+            "scorers": [
+                {
+                    "name": "Cody Gakpo",
+                    "team": "Netherlands",
+                    "minute": "20"
+                },
+                {
+                    "name": "Donyell Malen",
+                    "team": "Netherlands",
+                    "minute": "83"
+                },
+                {
+                    "name": "Donyell Malen",
+                    "team": "Netherlands",
+                    "minute": "90+3"
+                }
+            ],
+            "attendance": 65012,
+            "referee": "Felix Zwayer",
+            "note": "Romania topped Group E and the Netherlands finished third in Group D, but the Dutch were never troubled. The venue is the Allianz Arena, renamed for the tournament."
+        }
+    ]
+}
