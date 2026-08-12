@@ -24,7 +24,7 @@ const baseUrl = cityId
         currentPhoto ? (
             <PhotoLightbox currentPhoto={currentPhoto} images={images} galleryTitle={gallery.title} baseUrl={baseUrl} />
         ) : (
-            <div class="gallery-page">
+            <>
                 <header class="gallery-header">
                     <h1>{gallery.title}</h1>
                     <a href={`/travel/${countryGallery.countryId}`} class="back-link">
@@ -33,26 +33,19 @@ const baseUrl = cityId
                 </header>
 
                 <PhotoGrid images={images} baseUrl={baseUrl} />
-            </div>
+            </>
         )
     }
 </Layout>
 
 <style>
-    .gallery-page {
-        width: 100%;
-        max-width: 1600px;
-        margin: 0 auto;
-        padding: 2rem 1rem;
-    }
-
     .gallery-header {
-        margin-bottom: 2rem;
+        /* margin-bottom: 2rem; */
     }
 
     .gallery-header h1 {
         font-size: 2.5rem;
-        margin-bottom: 0.5rem;
+        /* margin-bottom: 0.5rem; */
     }
 
     .back-link {
