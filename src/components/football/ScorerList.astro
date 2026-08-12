@@ -1,0 +1,24 @@
+---
+import { formatMinute, type MatchScorer } from './football'
+import css from './FootballPage.module.css'
+
+interface Props {
+    scorers: MatchScorer[]
+}
+
+const { scorers } = Astro.props
+---
+
+{
+    scorers.length > 0 ? (
+        <ul class={css.scorerList}>
+            {scorers.map((scorer) => (
+                <li class={css.scorerItem}>
+                    <span class={css.scorerMinute}>{formatMinute(scorer.minute)}</span>
+                    <span class={css.scorerName}>{scorer.name}</span>
+                    <span class={css.scorerTeam}>{scorer.team}</span>
+                </li>
+            ))}
+        </ul>
+    ) : null
+}

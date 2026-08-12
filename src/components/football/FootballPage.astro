@@ -1,0 +1,340 @@
+---
+import footballData from '@src/football.json'
+import { getFootballPageViewData, type FootballMatch, type TeamSummary } from './football'
+import css from './FootballPage.module.css'
+import MatchList from './MatchList.astro'
+import TeamList from './TeamList.astro'
+
+interface DatePanel {
+    id: string
+    headingId: string
+    order: 'asc' | 'desc'
+    matches: FootballMatch[]
+    isDefault?: boolean
+}
+
+interface TeamPanel {
+    id: string
+    headingId: string
+    sort: 'count' | 'name'
+    teams: TeamSummary[]
+    variant?: 'count' | 'default'
+}
+
+const pageData = getFootballPageViewData(footballData)
+
+const viewLabels = [
+    {
+        mode: 'date',
+        label: 'By Date',
+        controls: 'football-panel-date-desc football-panel-date-asc',
+    },
+    {
+        mode: 'team',
+        label: 'By Team',
+        controls: 'football-panel-team-name football-panel-team-count',
+    },
+]
+
+const datePanels: DatePanel[] = [
+    {
+        id: 'football-panel-date-desc',
+        headingId: 'football-view-heading-date-desc',
+        order: 'desc',
+        matches: pageData.matches.newest,
+        isDefault: true,
+    },
+    {
+        id: 'football-panel-date-asc',
+        headingId: 'football-view-heading-date-asc',
+        order: 'asc',
+        matches: pageData.matches.oldest,
+    },
+]
+
+const teamPanels: TeamPanel[] = [
+    {
+        id: 'football-panel-team-name',
+        headingId: 'football-view-heading-team-name',
+        sort: 'name',
+        teams: pageData.teams.byName,
+    },
+    {
+        id: 'football-panel-team-count',
+        headingId: 'football-view-heading-team-count',
+        sort: 'count',
+        teams: pageData.teams.byCount,
+        variant: 'count',
+    },
+]
+---
+
+<div class={css.football} data-football-root>
+    <h1 id="football-heading">Football Matches Attended</h1>
+    <div class={css.intro}>
+        <p>
+            {pageData.stats.matchCount} matches, {pageData.stats.teamCount} teams, {pageData.stats.goalCount} goals.
+        </p>
+        <p>
+            {pageData.stats.competitionCount} competitions in {pageData.stats.countryCount} countries, {
+                pageData.stats.yearRange
+            }.
+        </p>
+    </div>
+
+    <div class={css.toolbar}>
+        <div class={css.toolbarRow}>
+            <div class={css.segmentedControl} aria-label="Match view">
+                {
+                    viewLabels.map((view) => (
+                        <button
+                            type="button"
+                            class={css.controlButton}
+                            aria-pressed={view.mode === 'date' ? 'true' : 'false'}
+                            aria-controls={view.controls}
+                            data-view-button
+                            data-view={view.mode}
+                        >
+                            {view.label}
+                        </button>
+                    ))
+                }
+            </div>
+
+            <div class={css.directionControl} aria-label="Date order" data-order-controls>
+                <button
+                    type="button"
+                    class={css.controlButton}
+                    aria-pressed="true"
+                    aria-controls="football-panel-date-desc"
+                    data-order-button
+                    data-order="desc"
+                >
+                    Most recent
+                </button>
+                <button
+                    type="button"
+                    class={css.controlButton}
+                    aria-pressed="false"
+                    aria-controls="football-panel-date-asc"
+                    data-order-button
+                    data-order="asc"
+                >
+                    Earliest
+                </button>
+            </div>
+
+            <div class={css.directionControl} aria-label="Team order" data-team-sort-controls hidden>
+                <button
+                    type="button"
+                    class={css.controlButton}
+                    aria-pressed="true"
+                    data-team-sort-button
+                    data-team-sort="name"
+                >
+                    A-Z
+                </button>
+                <button
+                    type="button"
+                    class={css.controlButton}
+                    aria-pressed="false"
+                    data-team-sort-button
+                    data-team-sort="count"
+                >
+                    Times seen
+                </button>
+            </div>
+        </div>
+    </div>
+
+    {
+        datePanels.map((panel) => (
+            <section
+                id={panel.id}
+                aria-labelledby={panel.headingId}
+                data-view-panel="date"
+                data-order-panel={panel.order}
+                hidden={!panel.isDefault}
+            >
+                <h2 id={panel.headingId} class={css.viewTitle}>
+                    By date
+                </h2>
+                <MatchList matches={panel.matches} />
+            </section>
+        ))
+    }
+
+    {
+        teamPanels.map((panel) => (
+            <section
+                id={panel.id}
+                aria-labelledby={panel.headingId}
+                data-view-panel="team"
+                data-team-sort-panel={panel.sort}
+                hidden
+            >
+                <h2 id={panel.headingId} class={css.viewTitle}>
+                    By team
+                </h2>
+                <TeamList teams={panel.teams} variant={panel.variant} />
+            </section>
+        ))
+    }
+
+    <p class={css.credit}>
+        Crests via <a href="https://www.thesportsdb.com/">TheSportsDB</a>. Each crest is the trademark of its club or
+        federation.
+    </p>
+</div>
+
+<script is:inline>
+    const root = document.querySelector('[data-football-root]')
+
+    if (root) {
+        const viewButtons = [...root.querySelectorAll('[data-view-button]')]
+        const orderButtons = [...root.querySelectorAll('[data-order-button]')]
+        const teamSortButtons = [...root.querySelectorAll('[data-team-sort-button]')]
+        const orderControls = root.querySelector('[data-order-controls]')
+        const teamSortControls = root.querySelector('[data-team-sort-controls]')
+        const viewPanels = [...root.querySelectorAll('[data-view-panel]')]
+        const validViews = new Set(['date', 'team'])
+        const validOrders = new Set(['asc', 'desc'])
+        const validTeamSorts = new Set(['name', 'count'])
+
+        const getInitialState = () => {
+            const params = new URLSearchParams(window.location.search)
+            const requestedView = params.get('view') ?? 'date'
+            const requestedOrder = params.get('order') ?? 'desc'
+            const requestedTeamSort = params.get('teamSort') ?? 'name'
+            const view = validViews.has(requestedView) ? requestedView : 'date'
+            const order = validOrders.has(requestedOrder) ? requestedOrder : 'desc'
+            const teamSort = validTeamSorts.has(requestedTeamSort) ? requestedTeamSort : 'name'
+
+            return { view, order, teamSort }
+        }
+
+        const replaceCurrentUrl = ({ view, order, teamSort }, nextHash = '') => {
+            const params = new URLSearchParams(window.location.search)
+            params.set('view', view)
+
+            if (view === 'date') {
+                params.set('order', order)
+                params.delete('teamSort')
+            } else {
+                params.delete('order')
+                params.set('teamSort', teamSort)
+            }
+
+            const queryString = params.toString()
+            const nextUrl = `${window.location.pathname}${queryString ? `?${queryString}` : ''}${nextHash}`
+            window.history.replaceState(window.history.state, '', nextUrl)
+        }
+
+        const scrollToTeamFromHash = () => {
+            const hash = window.location.hash.replace(/^#/, '')
+
+            if (!hash.startsWith('team-')) {
+                return
+            }
+
+            const activePanel = viewPanels.find((panel) => !panel.hidden && panel.dataset.viewPanel === 'team')
+            const target = activePanel?.querySelector(`[data-team-anchor="${hash}"]`)
+
+            if (!(target instanceof HTMLElement)) {
+                return
+            }
+
+            requestAnimationFrame(() => {
+                target.scrollIntoView({ block: 'start', behavior: 'smooth' })
+                target.focus({ preventScroll: true })
+            })
+        }
+
+        const applyState = ({ view, order, teamSort }, shouldReplaceUrl = true, nextHash = '') => {
+            viewButtons.forEach((button) => {
+                button.setAttribute('aria-pressed', button.dataset.view === view ? 'true' : 'false')
+            })
+
+            orderButtons.forEach((button) => {
+                button.setAttribute('aria-pressed', button.dataset.order === order ? 'true' : 'false')
+            })
+
+            teamSortButtons.forEach((button) => {
+                button.setAttribute('aria-pressed', button.dataset.teamSort === teamSort ? 'true' : 'false')
+            })
+
+            if (orderControls) {
+                orderControls.hidden = view !== 'date'
+            }
+
+            if (teamSortControls) {
+                teamSortControls.hidden = view !== 'team'
+            }
+
+            viewPanels.forEach((panel) => {
+                const matchesView = panel.dataset.viewPanel === view
+                const matchesOrder = !panel.dataset.orderPanel || panel.dataset.orderPanel === order
+                const matchesTeamSort = !panel.dataset.teamSortPanel || panel.dataset.teamSortPanel === teamSort
+                panel.hidden = !(matchesView && matchesOrder && matchesTeamSort)
+            })
+
+            if (shouldReplaceUrl) {
+                replaceCurrentUrl({ view, order, teamSort }, nextHash)
+            }
+
+            if (view === 'team' && window.location.hash) {
+                scrollToTeamFromHash()
+            }
+        }
+
+        let currentState = getInitialState()
+        applyState(currentState, window.location.search !== '', window.location.hash)
+
+        viewButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                currentState = { ...currentState, view: button.dataset.view ?? 'date' }
+                applyState(currentState, true)
+            })
+        })
+
+        orderButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                currentState = { ...currentState, view: 'date', order: button.dataset.order ?? 'desc' }
+                applyState(currentState)
+            })
+        })
+
+        teamSortButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                currentState = { ...currentState, view: 'team', teamSort: button.dataset.teamSort ?? 'name' }
+                applyState(currentState)
+            })
+        })
+
+        root.addEventListener('click', (event) => {
+            const link = event.target instanceof Element ? event.target.closest('[data-team-link]') : null
+
+            if (!(link instanceof HTMLAnchorElement)) {
+                return
+            }
+
+            event.preventDefault()
+
+            const teamAnchor = link.dataset.teamAnchorTarget
+
+            if (!teamAnchor) {
+                return
+            }
+
+            currentState = { ...currentState, view: 'team', teamSort: 'count' }
+            replaceCurrentUrl(currentState, `#${teamAnchor}`)
+            applyState(currentState, false)
+        })
+
+        window.addEventListener('hashchange', () => {
+            if (currentState.view === 'team') {
+                scrollToTeamFromHash()
+            }
+        })
+    }
+</script>

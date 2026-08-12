@@ -1,0 +1,21 @@
+---
+import { getTeamAnchor } from './football'
+import css from './FootballPage.module.css'
+
+interface Props {
+    teamName: string
+    isTitle?: boolean
+}
+
+const { teamName, isTitle = false } = Astro.props
+const teamAnchor = getTeamAnchor(teamName)
+---
+
+<a
+    href={`?view=team&teamSort=count#${teamAnchor}`}
+    class:list={[css.teamLink, { [css.teamLinkTitle]: isTitle }]}
+    data-team-link
+    data-team-anchor-target={teamAnchor}
+>
+    {teamName}
+</a>

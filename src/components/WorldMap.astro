@@ -73,7 +73,6 @@ const countryShapes = atlasCountries.features.map((atlasCountry) => {
     const recency = yearsAgo === null ? null : Math.round((1 - yearsAgo / oldestVisit) * 100)
 
     return {
-        atlasName,
         country,
         d: path(atlasCountry),
         recency,
@@ -119,7 +118,7 @@ const monacoTooltip =
             {graticulePath && <path class={css.graticule} d={graticulePath} />}
             <g class={css.countries}>
                 {
-                    countryShapes.map(({ atlasName, country, d, recency, tooltip }) =>
+                    countryShapes.map(({ country, d, recency, tooltip }) =>
                         d ? (
                             <path
                                 class:list={[
@@ -131,8 +130,9 @@ const monacoTooltip =
                                 style={recency === null ? undefined : `--visit-recency: ${recency}%`}
                                 data-map-country={country?.name}
                                 data-tooltip={tooltip}
-                                aria-label={tooltip ?? atlasName}
                             >
+                                {/* Not aria-label: ARIA prohibits it on a roleless element, and the
+                                    role="img" svg hides its children from assistive tech regardless. */}
                                 {tooltip && <title>{tooltip}</title>}
                             </path>
                         ) : null,
@@ -145,7 +145,6 @@ const monacoTooltip =
                             style={`--visit-recency: ${monacoRecency}%`}
                             data-map-country={monaco.name}
                             data-tooltip={monacoTooltip}
-                            aria-label={monacoTooltip}
                         >
                             <title>{monacoTooltip}</title>
                             <circle class={css.microstateHitArea} cx={monacoPoint[0]} cy={monacoPoint[1]} r="7" />

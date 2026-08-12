@@ -1,0 +1,99 @@
+---
+import {
+    formatAttendance,
+    formatCompetitionDetail,
+    formatMatchDate,
+    formatMatchLocation,
+    formatScore,
+    getOrderedTeams,
+    type FootballMatch,
+} from './football'
+import css from './FootballPage.module.css'
+import ScorerList from './ScorerList.astro'
+import TeamCrest from './TeamCrest.astro'
+import TeamJumpLink from './TeamJumpLink.astro'
+
+interface Props {
+    matches: FootballMatch[]
+}
+
+const { matches } = Astro.props
+
+function getMatchFacts(match: FootballMatch): string[] {
+    const facts: string[] = []
+
+    if (match.attendance !== null) {
+        facts.push(`Attendance ${formatAttendance(match.attendance)}`)
+    }
+
+    if (match.referee) {
+        facts.push(`Referee ${match.referee}`)
+    }
+
+    return facts
+}
+
+/**
+ * Names only what the disclosure actually contains: a goalless match must not promise goals, and
+ * "match facts" stays honest for a match with a referee but no recorded attendance.
+ */
+function getDisclosureLabel(hasGoals: boolean, hasFacts: boolean): string {
+    if (hasGoals && hasFacts) {
+        return 'Goals and match facts'
+    }
+
+    return hasGoals ? 'Goals' : 'Match facts'
+}
+---
+
+<ol class={css.matchList}>
+    {
+        matches.map((match) => {
+            const [firstTeam, secondTeam] = getOrderedTeams(match)
+            const matchFacts = getMatchFacts(match)
+            const hasGoals = match.scorers.length > 0
+
+            return (
+                <li>
+                    <article class={css.matchCard}>
+                        <div>
+                            <p class={css.matchCompetition}>{formatCompetitionDetail(match)}</p>
+                            <h3 class={css.matchTitle}>
+                                <span class={css.matchTeam}>
+                                    <TeamCrest teamName={firstTeam.name} />
+                                    <TeamJumpLink teamName={firstTeam.name} isTitle />
+                                </span>
+                                <span class={css.score}>{formatScore(match)}</span>
+                                <span class={css.matchTeam}>
+                                    <TeamCrest teamName={secondTeam.name} />
+                                    <TeamJumpLink teamName={secondTeam.name} isTitle />
+                                </span>
+                            </h3>
+                            <p class={css.matchMeta}>
+                                {formatMatchDate(match)} • {match.venue}, {formatMatchLocation(match)}
+                            </p>
+                        </div>
+
+                        {match.aggregate ? <p class={css.matchAggregate}>{match.aggregate}</p> : null}
+
+                        {match.note ? <p class={css.matchNote}>{match.note}</p> : null}
+
+                        {hasGoals || matchFacts.length > 0 ? (
+                            <details class={css.matchDetails}>
+                                <summary class={css.matchSummary}>
+                                    {getDisclosureLabel(hasGoals, matchFacts.length > 0)}
+                                </summary>
+                                <div class={css.matchDetailsBody}>
+                                    <ScorerList scorers={match.scorers} />
+                                    {matchFacts.length > 0 ? (
+                                        <p class={css.matchFacts}>{matchFacts.join(' • ')}</p>
+                                    ) : null}
+                                </div>
+                            </details>
+                        ) : null}
+                    </article>
+                </li>
+            )
+        })
+    }
+</ol>

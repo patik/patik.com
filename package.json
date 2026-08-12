@@ -19,6 +19,7 @@
         "lint:css:fix": "stylelint \"src/**/*.css\" --fix",
         "prepare": "husky",
         "clear-fetch-cache": "rm -rf tmp",
+        "crests:refresh": "node scripts/refresh-crests.mts",
         "clean": "rm -rf node_modules && pnpm run clear-fetch-cache",
         "test": "playwright test --grep-invert @visual && scripts/visual.sh",
         "test:update-snapshots": "scripts/visual.sh --update-snapshots",

@@ -1,6 +1,9 @@
+import { formatPartialDate, normalizeDatePrecision, type DatePrecision } from '@src/utils/formatPartialDate'
+import { slugify } from '@src/utils/slugify'
+
 export type ConcertRole = 'main' | 'opener' | 'festival'
 
-export type DatePrecision = 'day' | 'month' | 'year'
+export type { DatePrecision }
 
 export interface ConcertAct {
     name: string
@@ -83,21 +86,6 @@ interface SourceConcertData {
 }
 
 type ConcertStats = ReturnType<typeof getConcertStats>
-
-const MONTH_NAMES = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-]
 
 const ROLE_SORT_ORDER: Record<ConcertRole, number> = {
     main: 0,
@@ -357,41 +345,4 @@ function normalizeConcertRole(role: string): ConcertRole {
         default:
             throw new Error(`Unknown concert role: ${role}`)
     }
-}
-
-function normalizeDatePrecision(datePrecision: string): DatePrecision {
-    switch (datePrecision) {
-        case 'day':
-        case 'month':
-        case 'year':
-            return datePrecision
-        default:
-            throw new Error(`Unknown date precision: ${datePrecision}`)
-    }
-}
-
-function formatPartialDate(value: string, precision: DatePrecision): string {
-    const [year, month, day] = value.split('-')
-
-    if (precision === 'year') {
-        return year
-    }
-
-    if (precision === 'month') {
-        const monthIndex = Number(month) - 1
-
-        return `${MONTH_NAMES[monthIndex]} ${year}`
-    }
-
-    const monthIndex = Number(month) - 1
-
-    return `${MONTH_NAMES[monthIndex]} ${Number(day)}, ${year}`
-}
-
-function slugify(value: string): string {
-    return value
-        .toLowerCase()
-        .replace(/&/g, 'and')
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/^-+|-+$/g, '')
 }

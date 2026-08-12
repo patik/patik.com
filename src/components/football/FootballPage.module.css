@@ -1,0 +1,424 @@
+.football {
+    --football-ink: var(--charcoal);
+    --football-muted: #666;
+    --football-line: rgb(0 0 0 / 0.12);
+    --football-bg: rgb(255 255 255 / 0.55);
+    --football-pill-bg: rgb(0 0 0 / 0.04);
+    --football-pill-line: rgb(0 0 0 / 0.14);
+
+    color: var(--football-ink);
+}
+
+.intro {
+    margin: 0.35rem 0 1rem;
+    color: var(--football-muted);
+
+    p {
+        margin: 0;
+    }
+}
+
+.toolbar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 0 0 1.25rem;
+    padding-block: 0.75rem;
+    border-block: 1px solid var(--football-line);
+}
+
+.toolbarRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.segmentedControl,
+.directionControl {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+.segmentedControl {
+    flex-wrap: nowrap;
+    gap: 0;
+}
+
+.segmentedControl .controlButton {
+    border-radius: 0;
+}
+
+.segmentedControl .controlButton + .controlButton {
+    margin-inline-start: -1px;
+}
+
+.segmentedControl .controlButton:first-child {
+    border-start-start-radius: 4px;
+    border-end-start-radius: 4px;
+}
+
+.segmentedControl .controlButton:last-child {
+    border-start-end-radius: 4px;
+    border-end-end-radius: 4px;
+}
+
+.controlButton {
+    appearance: none;
+    min-height: 2rem;
+    padding: 0.35rem 0.7rem;
+    color: var(--football-ink) !important;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    line-height: 1.1;
+    cursor: pointer;
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none;
+    border: 1px solid var(--football-line);
+    border-radius: 4px;
+}
+
+.controlButton:hover,
+.controlButton:focus-visible {
+    background: rgb(0 0 0 / 0.04) !important;
+    background-color: rgb(0 0 0 / 0.04) !important;
+}
+
+.controlButton[aria-pressed='true'] {
+    color: white !important;
+    background: var(--charcoal) !important;
+    background-color: var(--charcoal) !important;
+    border-color: var(--charcoal);
+}
+
+.viewTitle {
+    margin: 0 0 0.75rem;
+    font-size: 1.25rem;
+}
+
+.matchList,
+.teamList,
+.appearanceList,
+.scorerList {
+    padding: 0;
+    list-style: none;
+}
+
+.matchList,
+.teamList {
+    display: grid;
+    gap: 0.85rem;
+}
+
+.teamListCount {
+    gap: 1rem;
+}
+
+.matchCard,
+.teamCard {
+    display: grid;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: var(--football-bg);
+    border: 1px solid var(--football-line);
+    border-radius: 4px;
+}
+
+.teamCard {
+    scroll-margin-top: 1.5rem;
+}
+
+.teamCardCount {
+    background: transparent;
+}
+
+.teamHeader {
+    display: flex;
+    gap: 1rem;
+    align-items: start;
+    justify-content: space-between;
+}
+
+.matchCompetition {
+    margin: 0 0 0.3rem;
+    color: var(--football-muted);
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    line-height: 1.3;
+    text-transform: uppercase;
+}
+
+.matchTitle {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    margin: 0;
+    font-size: 1.15rem;
+}
+
+.matchTeam {
+    display: inline-flex;
+    gap: 0.4rem;
+    align-items: center;
+}
+
+.crest {
+    flex-shrink: 0;
+    inline-size: 1.5rem;
+    block-size: auto;
+    object-fit: contain;
+}
+
+.score {
+    padding: 0.05rem 0.45rem;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    border: 1px solid var(--football-pill-line);
+    border-radius: 4px;
+    background: var(--football-pill-bg);
+}
+
+.teamName {
+    display: flex;
+    gap: 0.45rem;
+    align-items: center;
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.teamLink {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+}
+
+.teamLink:hover,
+.teamLink:focus-visible {
+    border-bottom-color: currentColor;
+}
+
+.teamLinkTitle {
+    font: inherit;
+}
+
+.teamMeta,
+.matchMeta,
+.matchFacts,
+.matchAggregate,
+.appearanceMeta,
+.countLabel,
+.scorerItem {
+    font-family: var(--font-sans);
+}
+
+.teamMeta,
+.matchMeta {
+    margin: 0.3rem 0 0;
+    color: var(--football-muted);
+    font-size: 0.92rem;
+    line-height: 1.35;
+}
+
+.matchAggregate,
+.matchFacts {
+    margin: 0;
+    color: var(--football-muted);
+    font-size: 0.85rem;
+    line-height: 1.35;
+}
+
+.matchAggregate {
+    font-style: italic;
+}
+
+.matchNote {
+    margin: 0;
+    color: var(--football-muted);
+    font-size: 0.92rem;
+    line-height: 1.45;
+}
+
+.countBadge {
+    flex-shrink: 0;
+    min-width: 4.6rem;
+    padding: 0.35rem 0.5rem;
+    text-align: center;
+    background: rgb(0 0 0 / 0.03);
+    border: 1px solid var(--football-line);
+    border-radius: 4px;
+}
+
+.countBadgeCount {
+    min-width: 5rem;
+}
+
+.countNumber {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.countLabel {
+    display: block;
+    margin-top: 0.15rem;
+    color: var(--football-muted);
+    font-size: 0.74rem;
+    text-transform: uppercase;
+}
+
+.matchSummary {
+    display: inline-flex;
+    gap: 0.35rem;
+    align-items: center;
+    width: fit-content;
+    color: var(--football-muted);
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    list-style: none;
+}
+
+/* Safari still paints its own triangle without this, on top of the custom one. */
+.matchSummary::-webkit-details-marker {
+    display: none;
+}
+
+.matchSummary::before {
+    content: '';
+    inline-size: 0;
+    block-size: 0;
+    border-block-start: 0.3rem solid transparent;
+    border-block-end: 0.3rem solid transparent;
+    border-inline-start: 0.42rem solid currentColor;
+    transition: transform 120ms ease;
+}
+
+.matchDetails[open] .matchSummary::before {
+    transform: rotate(90deg);
+}
+
+.matchSummary:hover,
+.matchSummary:focus-visible {
+    color: var(--football-ink);
+}
+
+.matchDetailsBody {
+    display: grid;
+    gap: 0.45rem;
+    margin-block-start: 0.5rem;
+}
+
+.scorerList {
+    display: grid;
+    gap: 0.25rem;
+}
+
+.scorerItem {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    align-items: baseline;
+    font-size: 0.95rem;
+    line-height: 1.35;
+}
+
+.scorerMinute {
+    min-width: 2.6rem;
+    color: var(--football-muted);
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+}
+
+.scorerTeam {
+    color: var(--football-muted);
+    font-size: 0.85rem;
+}
+
+.appearanceList {
+    display: grid;
+    gap: 0.45rem;
+    margin-inline-start: 0;
+}
+
+.appearanceItem {
+    display: flex;
+    gap: 0.55rem;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+
+.appearanceMeta {
+    color: var(--football-muted);
+    font-size: 0.92rem;
+    line-height: 1.35;
+}
+
+.credit {
+    margin: 1.5rem 0 0;
+    padding-block-start: 0.75rem;
+    color: var(--football-muted);
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    border-block-start: 1px solid var(--football-line);
+}
+
+@media (max-width: 720px) {
+    .toolbar {
+        align-items: stretch;
+    }
+
+    .toolbarRow,
+    .segmentedControl,
+    .directionControl {
+        width: 100%;
+    }
+
+    .teamHeader {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .countBadge {
+        align-self: start;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .football {
+        --football-ink: #f2f2f2;
+        --football-muted: #c7c7c7;
+        --football-line: rgb(255 255 255 / 0.18);
+        --football-bg: rgb(255 255 255 / 0.04);
+        --football-pill-bg: rgb(255 255 255 / 0.06);
+        --football-pill-line: rgb(255 255 255 / 0.16);
+    }
+
+    .controlButton:hover,
+    .controlButton:focus-visible {
+        background: rgb(255 255 255 / 0.08) !important;
+        background-color: rgb(255 255 255 / 0.08) !important;
+    }
+
+    .controlButton[aria-pressed='true'] {
+        color: #222 !important;
+        background: #f2f2f2 !important;
+        background-color: #f2f2f2 !important;
+        border-color: #f2f2f2;
+    }
+}
