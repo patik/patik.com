@@ -57,8 +57,8 @@ code {
 
 main,
 [role='main'] {
-    margin: 1rem auto;
-    max-width: 980px;
+    margin: 0 auto;
+    /* max-width: 980px; */
     padding: 0 1rem;
 }
 
