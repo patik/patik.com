@@ -60,10 +60,13 @@ main,
     padding: 0 1rem;
 }
 
-@media (max-width: 980px) {
+[role='main'] {
+    padding-inline: 0.5rem;
+}
+
+@media (min-width: 980px) {
     [role='main'] {
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
+        padding-inline: 1rem;
     }
 }
 
