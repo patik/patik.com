@@ -268,7 +268,9 @@ a.mediaLink {
     gap: 1rem 3rem;
     margin-top: 1.75rem;
 
-    @media (min-width: 800px) {
+    /* 801px, not 800: the mobile styles used to be `max-width: 800px`, which also
+       matches 800px itself — bump by 1px so the two bands don't overlap. */
+    @media (min-width: 801px) {
         grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
     }
 }
@@ -354,7 +356,7 @@ a.mediaLink {
         }
     }
 
-    @media (min-width: 800px) {
+    @media (min-width: 801px) {
         grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
 
         &:nth-child(even) {
@@ -436,7 +438,9 @@ a.mediaLink {
         margin-top: 0.6rem;
     }
 
-    @media (min-width: 560px) {
+    /* 561px, not 560: the mobile styles used to be `max-width: 560px`, which also
+       matches 560px itself — bump by 1px so the two bands don't overlap. */
+    @media (min-width: 561px) {
         grid-template-columns: 56px minmax(0, 1fr);
         gap: 1.5rem;
     }
@@ -454,7 +458,7 @@ a.mediaLink {
         height: 100%;
     }
 
-    @media (min-width: 560px) {
+    @media (min-width: 561px) {
         width: 56px;
         height: 56px;
         border-radius: 12px;

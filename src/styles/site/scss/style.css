@@ -56,7 +56,9 @@ code {
 }
 
 main {
-    padding: 0 1rem;
+    /* Inline padding comes from .main's padding-inline (Layout.module.css); this
+       element selector would always lose to that class, so it's block-only. */
+    padding-block: 0;
 }
 
 p,

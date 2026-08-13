@@ -193,7 +193,9 @@ const currentImageUrl = getImageUrl(currentPhoto, 1600)
         border-width: 0;
     }
 
-    @media (min-width: 640px) {
+    /* 641px, not 640: the mobile styles above used to be `max-width: 640px`, which
+       also matches 640px itself — bump by 1px so the two bands don't overlap. */
+    @media (min-width: 641px) {
         .lightbox-controls {
             gap: 2rem;
         }

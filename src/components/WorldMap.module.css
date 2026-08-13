@@ -343,7 +343,9 @@
     }
 }
 
-@media (min-width: 560px) {
+/* 561px, not 560: the mobile styles above used to be `max-width: 560px`, which
+   also matches 560px itself — bump by 1px so the two bands don't overlap. */
+@media (min-width: 561px) {
     .controls {
         flex-direction: row;
         gap: 0.75rem;

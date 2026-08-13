@@ -7,7 +7,13 @@ const visualRoutes = routes.filter((route) => route.includeVisual)
 
 const lightModeVisualCases = [
     { path: '/', label: 'home-light', width: 1020, height: 2000, target: 'page' },
-    { path: '/travel/uzbekistan/photos/0', label: 'travel-lightbox-light', width: 1020, height: 760, target: 'lightbox' },
+    {
+        path: '/travel/uzbekistan/photos/0',
+        label: 'travel-lightbox-light',
+        width: 1020,
+        height: 760,
+        target: 'lightbox',
+    },
     { path: '/', label: 'home-light-mobile', width: 390, height: 844, target: 'page' },
     {
         path: '/travel/uzbekistan/photos/0',
@@ -40,6 +46,16 @@ async function mockNetlifyImages(page: import('@playwright/test').Page): Promise
 
 async function mockLightboxImage(page: import('@playwright/test').Page): Promise<void> {
     await page.route('https://res.cloudinary.com/**', async (route) => {
+        const url = route.request().url()
+
+        // The stand-in image doesn't need to match the requested photo — these tests only
+        // cover lightbox chrome — but an aborted request still catches a routing bug that
+        // points the lightbox at a non-image (or empty) URL instead of a real photo.
+        if (!url.includes('/image/upload/')) {
+            await route.abort()
+            return
+        }
+
         await route.fulfill({ path: path.join(process.cwd(), 'src/images/uzbekistan-khiva-night.jpg') })
     })
 }
@@ -98,6 +114,24 @@ for (const { path: routePath, label, width, height, target } of lightModeVisualC
         }
     })
 }
+
+// Not in `routes` — it's a photo detail page, not a page template — and dark mode is the
+// suite default (playwright.config.ts), so this is the only baseline covering the lightbox's
+// default (non-light-mode) chrome, e.g. the `--lightbox-ui-color` swap.
+test('travel-lightbox: matches visual snapshot', { tag: '@visual' }, async ({ page }) => {
+    test.skip(!IS_LINUX, 'Run Linux-only baselines with `pnpm test:visual`.')
+
+    await page.setViewportSize({ width: 1020, height: 760 })
+    await page.emulateMedia({ reducedMotion: 'reduce' })
+    await mockNetlifyImages(page)
+    await mockLightboxImage(page)
+
+    await page.goto('/travel/uzbekistan/photos/0', { waitUntil: 'networkidle' })
+
+    await expect(page.locator('.lightbox-page')).toHaveScreenshot('travel-lightbox.png', {
+        maxDiffPixelRatio: 0.002,
+    })
+})
 
 // A state rather than a route, so it can't be driven from `routes`.
 test('travel-index-countries-expanded: matches visual snapshot', { tag: '@visual' }, async ({ page }) => {

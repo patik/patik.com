@@ -28,4 +28,14 @@
     --small-screen: 600px;
     --medium-screen: 980px;
     --large-screen: 1280px;
+
+    /* **************************************************************** */
+    /* Layout */
+    /* **************************************************************** */
+
+    --main-inline-padding: 0.5rem;
+
+    @media (min-width: 980px) {
+        --main-inline-padding: 1rem;
+    }
 }
