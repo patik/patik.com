@@ -5,13 +5,26 @@ import { routes } from './fixtures/routes'
 
 const visualRoutes = routes.filter((route) => route.includeVisual)
 
+const lightModeVisualCases = [
+    { path: '/', label: 'home-light', width: 1020, height: 2000, target: 'page' },
+    { path: '/travel/uzbekistan/photos/0', label: 'travel-lightbox-light', width: 1020, height: 760, target: 'lightbox' },
+    { path: '/', label: 'home-light-mobile', width: 390, height: 844, target: 'page' },
+    {
+        path: '/travel/uzbekistan/photos/0',
+        label: 'travel-lightbox-light-mobile',
+        width: 390,
+        height: 844,
+        target: 'lightbox',
+    },
+] as const
+
 // Baselines are Linux-only. `pnpm test` runs these separately through scripts/visual.sh
 // so non-Linux hosts still compare against the same browser and fonts as CI.
 const IS_LINUX = process.platform === 'linux'
 
 // Netlify Image Optimization URLs (/.netlify/images?url=...) only resolve on Netlify
 // infrastructure. Intercept them and serve the original local files from dist/ instead.
-async function mockNetlifyImages(page: import('@playwright/test').Page) {
+async function mockNetlifyImages(page: import('@playwright/test').Page): Promise<void> {
     await page.route('**/.netlify/images*', async (route) => {
         const url = new URL(route.request().url())
         const imagePath = decodeURIComponent(url.searchParams.get('url') ?? '')
@@ -22,6 +35,12 @@ async function mockNetlifyImages(page: import('@playwright/test').Page) {
         } else {
             await route.continue()
         }
+    })
+}
+
+async function mockLightboxImage(page: import('@playwright/test').Page): Promise<void> {
+    await page.route('https://res.cloudinary.com/**', async (route) => {
+        await route.fulfill({ path: path.join(process.cwd(), 'src/images/uzbekistan-khiva-night.jpg') })
     })
 }
 
@@ -54,6 +73,29 @@ for (const { path: routePath, label } of visualRoutes) {
         await expect(page).toHaveScreenshot(`${label}.png`, {
             maxDiffPixelRatio: 0.002,
         })
+    })
+}
+
+for (const { path: routePath, label, width, height, target } of lightModeVisualCases) {
+    test(`${label}: matches visual snapshot`, { tag: '@visual' }, async ({ page }) => {
+        test.skip(!IS_LINUX, 'Run Linux-only baselines with `pnpm test:visual`.')
+
+        await page.setViewportSize({ width, height })
+        await page.emulateMedia({ colorScheme: 'light', reducedMotion: 'reduce' })
+        await mockNetlifyImages(page)
+        await mockLightboxImage(page)
+
+        await page.goto(routePath, { waitUntil: 'networkidle' })
+
+        if (target === 'lightbox') {
+            await expect(page.locator('.lightbox-page')).toHaveScreenshot(`${label}.png`, {
+                maxDiffPixelRatio: 0.002,
+            })
+        } else {
+            await expect(page).toHaveScreenshot(`${label}.png`, {
+                maxDiffPixelRatio: 0.002,
+            })
+        }
     })
 }
 

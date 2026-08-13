@@ -1,13 +1,23 @@
 .main-nav {
+    --main-nav-background-color: #e6e6e6;
+    --main-nav-text-color: var(--dark-charcoal);
+    --main-nav-active-color: #8a5700;
+
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
-    background-color: #333;
+    background-color: var(--main-nav-background-color);
     padding-block: 0.5rem;
     padding-inline: var(--main-inline-padding);
     -webkit-font-smoothing: antialiased;
+
+    @media (prefers-color-scheme: dark) {
+        --main-nav-background-color: #333;
+        --main-nav-text-color: #fff;
+        --main-nav-active-color: #f2b84b;
+    }
 
     @media (min-width: 400px) {
         flex-direction: row;
@@ -26,7 +36,7 @@
         }
 
         a {
-            color: #fff;
+            color: var(--main-nav-text-color);
             font-size: 1em;
         }
     }
@@ -55,10 +65,10 @@
             font-size: 1.25rem;
 
             a {
-                color: #fff;
+                color: var(--main-nav-text-color);
 
                 &.active {
-                    color: #f2b84b;
+                    color: var(--main-nav-active-color);
                 }
             }
         }
