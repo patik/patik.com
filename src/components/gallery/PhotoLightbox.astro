@@ -86,10 +86,12 @@ const currentImageUrl = getImageUrl(currentPhoto, 1600)
         display: flex;
         flex-direction: column;
         margin-inline: calc(-1 * var(--main-inline-padding));
+        background: #000;
     }
 
     .lightbox-nav {
         padding: 1rem;
+        background: rgba(0, 0, 0, 0.8);
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
@@ -142,12 +144,12 @@ const currentImageUrl = getImageUrl(currentPhoto, 1600)
 
     .nav-button,
     .nav-button-placeholder {
-        width: 48px;
-        height: 48px;
+        width: 40px;
+        height: 40px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 24px;
+        font-size: 20px;
         background: rgba(255, 255, 255, 0.1);
         border: 1px solid rgba(255, 255, 255, 0.2);
         border-radius: 50%;
@@ -155,12 +157,6 @@ const currentImageUrl = getImageUrl(currentPhoto, 1600)
         text-decoration: none;
         transition: all 0.2s;
         cursor: pointer;
-    }
-
-    .nav-button {
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
     }
 
     .nav-button-placeholder {
@@ -198,7 +194,8 @@ const currentImageUrl = getImageUrl(currentPhoto, 1600)
             gap: 2rem;
         }
 
-        .nav-button {
+        .nav-button,
+        .nav-button-placeholder {
             width: 48px;
             height: 48px;
             font-size: 24px;

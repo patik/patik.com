@@ -55,20 +55,8 @@ code {
     font-size: 90%;
 }
 
-main,
-[role='main'] {
+main {
     padding: 0 1rem;
-}
-
-[role='main'] {
-    --main-inline-padding: 0.5rem;
-    padding-inline: var(--main-inline-padding);
-}
-
-@media (min-width: 980px) {
-    [role='main'] {
-        --main-inline-padding: 1rem;
-    }
 }
 
 p,
