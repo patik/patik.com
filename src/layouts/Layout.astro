@@ -35,12 +35,10 @@ const { title = '', keywords = [] } = Astro.props
     </head>
     <body>
         <div class={css.page}>
-            <div class={css.content}>
-                <HeaderNav />
-                <main class={css.main}>
-                    <slot />
-                </main>
-            </div>
+            <HeaderNav />
+            <main class={css.main}>
+                <slot />
+            </main>
         </div>
     </body>
 </html>
