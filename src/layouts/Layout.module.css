@@ -8,21 +8,18 @@
 .page {
     display: flex;
     flex-direction: column;
+    gap: 1rem;
     min-height: 100%;
-}
-
-.content {
     width: 100%;
     max-width: 1020px;
-    margin-bottom: 2rem;
-    align-self: center;
-    flex-grow: 1;
+    margin: 0 auto 2rem;
 }
 
 .main {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    padding-inline: var(--main-inline-padding);
 
     & > p {
         margin-bottom: 0;

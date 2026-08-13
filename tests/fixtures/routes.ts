@@ -8,7 +8,7 @@ export const routes = [
     { path: '/blog/', label: 'blog-index', includeVisual: true },
     { path: '/blog/clogging-twitter-with-spam/', label: 'blog-post', includeVisual: true },
     { path: '/code/user-scripts/', label: 'code-user-scripts', includeVisual: true },
-    { path: '/concerts/', label: 'concerts', includeVisual: false },
+    { path: '/concerts/', label: 'concerts', includeVisual: true },
     { path: '/football/', label: 'football', includeVisual: true },
     { path: '/portfolio/', label: 'portfolio', includeVisual: true },
     { path: '/travel/', label: 'travel-index', includeVisual: true },

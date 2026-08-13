@@ -55,18 +55,10 @@ code {
     font-size: 90%;
 }
 
-main,
-[role='main'] {
-    margin: 1rem auto;
-    max-width: 980px;
-    padding: 0 1rem;
-}
-
-@media (max-width: 980px) {
-    [role='main'] {
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
-    }
+main {
+    /* Inline padding comes from .main's padding-inline (Layout.module.css); this
+       element selector would always lose to that class, so it's block-only. */
+    padding-block: 0;
 }
 
 p,

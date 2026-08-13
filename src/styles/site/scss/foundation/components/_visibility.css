@@ -1,9 +1,0 @@
-/* Foundation Visibility HTML Classes */
-
-/* Scoped to the media query on purpose: a blanket `display: none` restored per
- * breakpoint leaves anything past the widest band hidden. */
-@media (max-width: 767px) {
-    .hide-for-small {
-        display: none !important;
-    }
-}

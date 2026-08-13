@@ -107,8 +107,9 @@
 
 .controls {
     display: flex;
-    gap: 0.75rem;
-    align-items: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
     margin-block-start: 0.7rem;
 }
 
@@ -162,15 +163,15 @@
 .dialog {
     position: fixed;
     inset: 0;
-    inline-size: 96vw;
-    block-size: 92vh;
+    inline-size: 100vw;
+    block-size: 100dvh;
     margin: auto;
-    padding: 1rem;
+    padding: 0.75rem;
     overflow: hidden;
     color: var(--dark-charcoal);
     background: #faf8f3;
     border: none;
-    border-radius: 8px;
+    border-radius: 0;
     box-shadow: 0 8px 32px rgb(0 0 0 / 0.35);
 
     &::backdrop {
@@ -342,17 +343,19 @@
     }
 }
 
-@media (max-width: 560px) {
+/* 561px, not 560: the mobile styles above used to be `max-width: 560px`, which
+   also matches 560px itself — bump by 1px so the two bands don't overlap. */
+@media (min-width: 561px) {
     .controls {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 0.5rem;
+        flex-direction: row;
+        gap: 0.75rem;
+        align-items: center;
     }
 
     .dialog {
-        inline-size: 100vw;
-        block-size: 100dvh;
-        padding: 0.75rem;
-        border-radius: 0;
+        inline-size: 96vw;
+        block-size: 92vh;
+        padding: 1rem;
+        border-radius: 8px;
     }
 }
