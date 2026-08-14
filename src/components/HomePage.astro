@@ -54,6 +54,7 @@ const contactLinks = [
                         featuredTravelLinks.map((travelLink) => (
                             <a class={css.tripCard} href={travelLink.url}>
                                 <Image
+                                    {...travelLink.imageAttributes}
                                     src={travelLink.imageSrc}
                                     alt={travelLink.imageAlt}
                                     width={320}

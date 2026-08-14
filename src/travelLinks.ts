@@ -13,6 +13,7 @@ import SpainImage from '@src/images/travel-spain.jpg'
 import TurkeyImage from '@src/images/travel-turkey.jpg'
 import TravelImageUzbekistan from '@src/images/uzbekistan-khiva-night.jpg'
 import TravelImageVietnam from '@src/images/vietnam-ho-chi-minh-city-hero.jpg'
+import type { HTMLAttributes } from 'astro/types'
 
 export interface TravelLink {
     title: string
@@ -20,6 +21,7 @@ export interface TravelLink {
     url: string
     imageSrc: ImageMetadata
     imageAlt: string
+    imageAttributes?: Omit<HTMLAttributes<'img'>, 'height' | 'src' | 'width'>
 }
 
 export const travelLinks: TravelLink[] = [
@@ -78,6 +80,7 @@ export const travelLinks: TravelLink[] = [
         url: '/travel/peru/',
         imageSrc: PeruImage,
         imageAlt: 'Kim holding a lamb and posing with two women in traditional Andean clothes',
+        imageAttributes: { 'data-focal-point': 'top' },
     },
     {
         title: 'Spain, Portugal, & Morocco',

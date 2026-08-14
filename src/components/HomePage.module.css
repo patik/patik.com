@@ -187,6 +187,10 @@
     inline-size: 100%;
     block-size: 100%;
     object-fit: cover;
+
+    &[data-focal-point='top'] {
+        object-position: center top;
+    }
 }
 
 .tripCaption {

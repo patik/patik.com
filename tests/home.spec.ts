@@ -44,5 +44,6 @@ test.describe('homepage layout', () => {
             'Netherlands',
             'Peru',
         ])
+        await expect(page.locator('a[href="/travel/peru/"] img')).toHaveCSS('object-position', '50% 0%')
     })
 })
