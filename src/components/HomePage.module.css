@@ -239,6 +239,10 @@
     background: var(--frame-bg);
     box-shadow: var(--media-shadow);
     overflow: hidden;
+
+    & picture {
+        display: block;
+    }
 }
 
 .frameBar {
@@ -374,7 +378,11 @@
 
     & img {
         display: block;
+        flex: 0 0 18px;
+        inline-size: 18px;
+        block-size: 18px;
         border-radius: 4px;
+        object-fit: contain;
     }
 
     &:hover,

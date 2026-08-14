@@ -4,7 +4,8 @@ import imgConsoleLogIcon from '@src/images/icons/console-log/ios/AppIcon@3x.png'
 import imgKindjsIcon from '@src/images/icons/kindjs/ios/AppIcon@3x.png'
 import imgWithinViewportIcon from '@src/images/icons/within-viewport/ios/AppIcon@3x.png'
 import imgDofApp from '@src/images/portfolio/dof-app.webp'
-import imgDovetailHero from '@src/images/portfolio/dovetail-hero.webp'
+import imgDovetailHeroDark from '@src/images/portfolio/dovetail-hero-dark.webp'
+import imgDovetailHeroLight from '@src/images/portfolio/dovetail-hero-light.webp'
 import { Image } from 'astro:assets'
 import css from './PortfolioPage.module.css'
 ---
@@ -40,13 +41,16 @@ import css from './PortfolioPage.module.css'
                     <span class={css.frameDots} aria-hidden="true"><span></span><span></span><span></span></span>
                     <span class={css.frameTitle}>dovetail.travel</span>
                 </span>
-                <Image
-                    src={imgDovetailHero}
-                    alt="The dovetail.travel landing page: “Plan every day of your trip—with the details and control you want.”"
-                    widths={[800, 1200, 1900]}
-                    sizes="(max-width: 1020px) 100vw, 950px"
-                    loading="eager"
-                />
+                <picture>
+                    <source srcset={imgDovetailHeroDark.src} media="(prefers-color-scheme: dark)" type="image/webp" />
+                    <Image
+                        src={imgDovetailHeroLight}
+                        alt="The dovetail.travel landing page: “Plan every day of your trip—with the details and control you want.”"
+                        widths={[800, 1200, 1900]}
+                        sizes="(max-width: 1020px) 100vw, 950px"
+                        loading="eager"
+                    />
+                </picture>
             </span>
         </a>
 

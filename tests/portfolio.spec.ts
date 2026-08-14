@@ -1,5 +1,7 @@
 import { expect, test } from '@playwright/test'
 
+const DOVETAIL_SCREENSHOT_ALT = /Dovetail.*landing page/i
+
 test('portfolio demo videos provide playback controls', async ({ page }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' })
 
@@ -31,3 +33,19 @@ test('robots.txt allows crawlers to access the portfolio', async ({ request }) =
     expect(response.ok()).toBe(true)
     expect(robotsText).not.toMatch(/^Disallow:\s*\/portfolio\/\s*$/m)
 })
+
+for (const path of ['/', '/portfolio/']) {
+    test(`${path} uses a Dovetail screenshot that matches the color scheme`, async ({ page }) => {
+        await page.emulateMedia({ colorScheme: 'light' })
+        await page.goto(path)
+
+        const screenshot = page.getByRole('img', { name: DOVETAIL_SCREENSHOT_ALT })
+
+        await expect(screenshot).toHaveAttribute('src', /dovetail-hero-light/)
+
+        await page.emulateMedia({ colorScheme: 'dark' })
+        await expect
+            .poll(() => screenshot.evaluate((image) => (image instanceof HTMLImageElement ? image.currentSrc : '')))
+            .toContain('dovetail-hero-dark')
+    })
+}

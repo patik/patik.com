@@ -7,6 +7,7 @@ const visualRoutes = routes.filter((route) => route.includeVisual)
 
 const lightModeVisualCases = [
     { path: '/', label: 'home-light', width: 1020, height: 2000, target: 'page' },
+    { path: '/portfolio/', label: 'portfolio-light', width: 1020, height: 2000, target: 'page' },
     {
         path: '/travel/uzbekistan/photos/0',
         label: 'travel-lightbox-light',

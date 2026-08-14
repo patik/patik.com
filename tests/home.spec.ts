@@ -46,4 +46,24 @@ test.describe('homepage layout', () => {
         ])
         await expect(page.locator('a[href="/travel/peru/"] img')).toHaveCSS('object-position', '50% 0%')
     })
+
+    test('shows icons for every contact link', async ({ page }) => {
+        await page.goto('/')
+
+        const contactSection = page.getByRole('heading', { name: 'Say hi' }).locator('..')
+
+        for (const label of ['Email', 'GitHub', 'LinkedIn', 'Bluesky', 'Mastodon']) {
+            const icon = contactSection.getByRole('link', { name: label }).locator('img')
+
+            await expect(icon).toHaveCount(1)
+            await expect
+                .poll(() => icon.evaluate((image) => image instanceof HTMLImageElement && image.complete))
+                .toBe(true)
+            await expect
+                .poll(() => icon.evaluate((image) => (image instanceof HTMLImageElement ? image.naturalWidth : 0)))
+                .toBeGreaterThan(0)
+            await expect(icon).toHaveCSS('width', '18px')
+            await expect(icon).toHaveCSS('height', '18px')
+        }
+    })
 })
