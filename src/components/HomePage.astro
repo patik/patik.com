@@ -1,0 +1,150 @@
+---
+import Space from '@src/components/Space'
+import WorldMap from '@src/components/WorldMap.astro'
+import countries from '@src/countries.json'
+import imgBosnia from '@src/images/bosnia-sarajevo-hero.jpg'
+import GithubLogo from '@src/images/home-github-logo.png'
+import LinkedInLogo from '@src/images/home-linkedin-logo.png'
+import imgIreland from '@src/images/ireland-dublin-hero.jpg'
+import imgItaly from '@src/images/italy-venice-hero.jpg'
+import imgDovetailHero from '@src/images/portfolio/dovetail-hero.webp'
+import imgBritain from '@src/images/travel-britain-benelux.jpg'
+import imgGreece from '@src/images/travel-greece.jpg'
+import imgParis from '@src/images/travel-paris.jpg'
+import imgSpain from '@src/images/travel-spain.jpg'
+import imgUzbekistan from '@src/images/uzbekistan-khiva-night.jpg'
+import { Image } from 'astro:assets'
+import css from './HomePage.module.css'
+
+interface Trip {
+    country: string
+    url: string
+    image: ImageMetadata
+    alt: string
+}
+
+const TRIPS: Trip[] = [
+    {
+        country: 'United Kingdom',
+        url: '/travel/britain/',
+        image: imgBritain,
+        alt: 'Big Ben and Parliament Square, London',
+    },
+    {
+        country: 'Bosnia and Herzegovina',
+        url: '/travel/bosnia/',
+        image: imgBosnia,
+        alt: 'Sarajevo, Bosnia and Herzegovina',
+    },
+    { country: 'Greece', url: '/travel/greece/', image: imgGreece, alt: 'Serifios, Greece' },
+    { country: 'Uzbekistan', url: '/travel/uzbekistan/', image: imgUzbekistan, alt: 'A mausoleum at night in Khiva' },
+    { country: 'Ireland', url: '/travel/ireland/', image: imgIreland, alt: 'Dublin, Ireland' },
+    { country: 'Spain', url: '/travel/spain/', image: imgSpain, alt: 'Madrid, Spain' },
+    { country: 'Italy', url: '/travel/italy/', image: imgItaly, alt: 'Venice, Italy' },
+    { country: 'France', url: '/travel/france/', image: imgParis, alt: 'Kim and I in front of the Eiffel Tower' },
+]
+
+function lastVisited(name: string): number {
+    const found = countries.visited.find((country) => country.name === name)
+    return found ? Math.max(...found.yearsVisited) : 0
+}
+
+const trips = TRIPS.map((trip) => ({ ...trip, year: lastVisited(trip.country) })).sort((a, b) => b.year - a.year)
+
+const contactLinks = [
+    { label: 'Email', href: 'mailto:craig@patik.com', icon: null },
+    { label: 'GitHub', href: 'https://github.com/patik', icon: GithubLogo },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/craigpatik', icon: LinkedInLogo },
+    { label: 'Bluesky', href: 'https://bsky.app/profile/craig.patik.com', icon: null },
+    { label: 'Mastodon', href: 'https://mastodon.online/@craigpatik', icon: null },
+]
+---
+
+<div class={css.home}>
+    <section class={css.travelSection}>
+        <div class={css.travelRow}>
+            <div class={css.leftCol}>
+                <header class={css.header}>
+                    <h1>Craig Patik</h1>
+                    <p class={css.intro}>
+                        Staff Frontend Engineer at
+                        <Space />
+                        <a href="https://www.internations.org/">InterNations</a>, based in Munich, Germany. I’ve visited
+                        <Space />{countries.visited.length} countries and counting.
+                    </p>
+                </header>
+
+                <div class={css.mapColumn}>
+                    <h2 class={css.mapHead}>
+                        <a href="/travel/">Where I’ve been <span aria-hidden="true">→</span></a>
+                    </h2>
+                    <a class={css.mapCard} href="/travel/" aria-label="See the full travel page">
+                        <WorldMap className={css.map} />
+                    </a>
+                </div>
+            </div>
+
+            <div class={css.tripsPanel}>
+                <div class={css.tripsHead}>
+                    <h2>Recent trips</h2>
+                    <a href="/travel/">All {countries.visited.length} <span aria-hidden="true">→</span></a>
+                </div>
+                <div class={css.tripsGrid}>
+                    {
+                        trips.map((trip) => (
+                            <a class={css.tripCard} href={trip.url}>
+                                <Image src={trip.image} alt={trip.alt} width={320} class={css.tripImage} />
+                                <span class={css.tripCaption}>
+                                    <span class={css.tripCountry}>{trip.country}</span>
+                                    <span class={css.tripYear}>{trip.year}</span>
+                                </span>
+                            </a>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class={css.spotlight}>
+        <div class={css.spotlightMedia}>
+            <span class={css.frame}>
+                <span class={css.frameBar}>
+                    <span class={css.frameDots} aria-hidden="true"><span></span><span></span><span></span></span>
+                    <span class={css.frameTitle}>dovetail.travel</span>
+                </span>
+                <Image
+                    src={imgDovetailHero}
+                    alt="The Dovetail Travel Planner landing page"
+                    widths={[800, 1200]}
+                    sizes="(max-width: 900px) 100vw, 560px"
+                />
+            </span>
+        </div>
+        <div class={css.spotlightText}>
+            <p class={css.spotlightKicker}>Code &amp; projects</p>
+            <h2>I build for the web</h2>
+            <p class={css.spotlightPitch}>
+                A trip-planning app built and run solo, developer tools carried across a decade of the JavaScript
+                ecosystem, and open-source libraries with a few hundred stars between them.
+            </p>
+            <a class={css.spotlightButton} href="/portfolio/">
+                View the portfolio <span aria-hidden="true">→</span>
+            </a>
+        </div>
+    </section>
+
+    <section class={css.contactSection}>
+        <h2>Say hi</h2>
+        <div class={css.pillRow}>
+            {
+                contactLinks.map((link) => (
+                    <a class={css.pill} href={link.href} rel={link.href.startsWith('http') ? 'me' : undefined}>
+                        {link.icon && <Image src={link.icon} alt="" width={18} height={18} />}
+                        {link.label}
+                    </a>
+                ))
+            }
+        </div>
+    </section>
+</div>
