@@ -7,7 +7,7 @@ test.describe('homepage layout', () => {
         await page.goto('/')
 
         const mapBox = await page.getByLabel('See the full travel page').boundingBox()
-        const finalTripBox = await page.locator('a[href="/travel/france/"]').boundingBox()
+        const finalTripBox = await page.locator('a[href="/travel/peru/"]').boundingBox()
 
         if (!mapBox || !finalTripBox) {
             throw new Error('The homepage travel content was not rendered')
@@ -20,12 +20,29 @@ test.describe('homepage layout', () => {
         await page.goto('/')
 
         const mapBox = await page.getByLabel('See the full travel page').boundingBox()
-        const firstTripBox = await page.locator('a[href="/travel/britain/"]').boundingBox()
+        const firstTripBox = await page.locator('a[href="/travel/bosnia/"]').boundingBox()
 
         if (!mapBox || !firstTripBox) {
             throw new Error('The homepage travel content was not rendered')
         }
 
         expect(mapBox.x + mapBox.width).toBeLessThan(firstTripBox.x)
+    })
+
+    test('shows the first eight travel galleries without years', async ({ page }) => {
+        await page.goto('/')
+
+        const galleryCards = page.locator('a[href^="/travel/"]:has(img)')
+
+        await expect(galleryCards).toHaveText([
+            'Bosnia',
+            'Uzbekistan',
+            'Ireland',
+            'Italy',
+            'Vietnam',
+            'Britain',
+            'Netherlands',
+            'Peru',
+        ])
     })
 })

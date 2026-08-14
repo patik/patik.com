@@ -192,24 +192,15 @@
 .tripCaption {
     position: absolute;
     inset: auto 0 0 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.1rem;
     padding: 0.55rem 0.6rem 0.5rem;
     background: linear-gradient(to top, rgb(0 0 0 / 0.78), rgb(0 0 0 / 0));
 }
 
 .tripCountry {
     color: white;
-    font-size: 0.9rem;
+    font-size: 1.5rem;
     font-weight: 600;
     line-height: 1.2;
-}
-
-.tripYear {
-    color: rgb(255 255 255 / 0.82);
-    font-family: var(--font-fixed);
-    font-size: 0.72rem;
 }
 
 /* Spotlight (same pattern as concept B) */

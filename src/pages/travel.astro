@@ -1,131 +1,9 @@
 ---
 import CountriesOverview from '@src/components/countries/CountriesOverview.astro'
+import { travelLinks } from '@src/travelLinks'
 import TravelLinkList from '../components/TravelLinkList.astro'
 import countries from '../countries.json'
-import TravelImageBosnia from '../images/bosnia-sarajevo-hero.jpg'
-import BrugesImage from '../images/britain-benelux-bruges-link.jpg'
-import NetherlandsImage from '../images/britain-benelux-netherlands-link.jpg'
-import TravelImageIreland from '../images/ireland-dublin-hero.jpg'
-import TravelImageItaly from '../images/italy-venice-hero.jpg'
-import UruguayImage from '../images/peru-argentina-link-colonia.jpg'
-import BritainbeneluxImage from '../images/travel-britain-benelux.jpg'
-import FranceImage from '../images/travel-france.jpg'
-import GermanyImage from '../images/travel-germany.jpg'
-import GreeceImage from '../images/travel-greece.jpg'
-import PeruImage from '../images/travel-peru-argentina.jpg'
-import SpainImage from '../images/travel-spain.jpg'
-import TurkeyImage from '../images/travel-turkey.jpg'
-import TravelImageUzbekistan from '../images/uzbekistan-khiva-night.jpg'
-import TravelImageVietnam from '../images/vietnam-ho-chi-minh-city-hero.jpg'
 import Layout from '../layouts/Layout.astro'
-
-const items = [
-    {
-        title: 'Bosnia',
-        className: 'bg-travel-bottom-middle',
-        url: '/travel/bosnia/',
-        imageSrc: TravelImageBosnia,
-        imageAlt: 'Sarajevo, Bosnia and Herzegovina',
-    },
-    {
-        title: 'Uzbekistan',
-        className: 'bg-travel-bottom-middle',
-        url: '/travel/uzbekistan/',
-        imageSrc: TravelImageUzbekistan,
-        imageAlt: 'The façade of a mausoleum in Khiva',
-    },
-    {
-        title: 'Ireland',
-        className: 'bg-travel-bottom-middle',
-        url: '/travel/ireland/',
-        imageSrc: TravelImageIreland,
-        imageAlt: 'Dublin, Ireland',
-    },
-    {
-        title: 'Italy',
-        className: 'bg-travel-bottom-middle bg-travel-italy',
-        url: '/travel/italy/',
-        imageSrc: TravelImageItaly,
-        imageAlt: 'Venice, Italy',
-    },
-    {
-        title: 'Vietnam',
-        className: 'bg-travel-bottom-middle',
-        url: '/travel/vietnam/',
-        imageSrc: TravelImageVietnam,
-        imageAlt: 'Ho Chi Minh City, Vietnam',
-    },
-    {
-        title: 'Britain',
-        className: 'bg-travel-britain',
-        url: '/travel/britain/',
-        imageSrc: BritainbeneluxImage,
-        imageAlt: 'Big Ben, a black cab, and a red double-decker bus in Parliament Square',
-    },
-    {
-        title: 'Netherlands',
-        className: 'bg-travel-bottom-middle bg-travel-netherlands',
-        url: '/travel/netherlands/',
-        imageSrc: NetherlandsImage,
-        imageAlt: 'Westerkerk, overlooking an Amsterdam canal',
-    },
-    {
-        title: 'Peru',
-        className: 'bg-travel-peru',
-        url: '/travel/peru/',
-        imageSrc: PeruImage,
-        imageAlt: 'Kim holding a lamb and posing with two women in traditional Andean clothes',
-    },
-    {
-        title: 'Spain, Portugal, & Morocco',
-        className: 'bg-travel-spain',
-        url: '/travel/spain/',
-        imageSrc: SpainImage,
-        imageAlt: "Celebrating Spain's World Cup victory in Madrid",
-    },
-    {
-        title: 'Turkey',
-        className: 'bg-travel-turkey',
-        url: '/travel/turkey/',
-        imageSrc: TurkeyImage,
-        imageAlt: 'The Blue Mosque (Sultanahmet Camii), Istanbul, Turkey',
-    },
-    {
-        title: 'Belgium',
-        className: 'bg-belgium-bruges',
-        url: '/travel/belgium/',
-        imageSrc: BrugesImage,
-        imageAlt: 'Windmill in the Belgian countryside',
-    },
-    {
-        title: 'Germany & Austria',
-        className: 'bg-travel-germany',
-        url: '/travel/germany/',
-        imageSrc: GermanyImage,
-        imageAlt: 'Spanish fans in Vienna for Euro 2008',
-    },
-    {
-        title: 'Greece',
-        className: 'bg-travel-greece',
-        url: '/travel/greece/',
-        imageSrc: GreeceImage,
-        imageAlt: 'Serifios, Greece',
-    },
-    {
-        title: 'France',
-        className: 'bg-travel-france',
-        url: '/travel/france/',
-        imageSrc: FranceImage,
-        imageAlt: 'The Seine River',
-    },
-    {
-        title: 'Uruguay',
-        className: '',
-        url: '/travel/uruguay/',
-        imageSrc: UruguayImage,
-        imageAlt: 'Old train in Colonia del Sacramento, Uruguay',
-    },
-]
 ---
 
 <Layout title="Travel" keywords={[...countries.visited.map((country) => country.name), 'Europe', 'Asia', 'travel']}>
@@ -141,7 +19,7 @@ const items = [
 
     <section class="flex flex-col gap-3">
         <h2 id="photos">Photos</h2>
-        <TravelLinkList items={items} />
+        <TravelLinkList items={travelLinks} />
         <p>
             <em>Not shown: many notable trips since 2012, including Southeast Asia and much more of Europe</em>
         </p>
