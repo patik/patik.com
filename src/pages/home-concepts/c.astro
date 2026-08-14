@@ -1,0 +1,129 @@
+---
+import Space from '@src/components/Space'
+import WorldMap from '@src/components/WorldMap.astro'
+import { Image } from 'astro:assets'
+import countries from '../../countries.json'
+import imgDovetailHero from '../../images/portfolio/dovetail-hero.webp'
+import imgBosnia from '../../images/bosnia-sarajevo-hero.jpg'
+import imgBritain from '../../images/travel-britain-benelux.jpg'
+import imgGreece from '../../images/travel-greece.jpg'
+import imgIreland from '../../images/ireland-dublin-hero.jpg'
+import imgUzbekistan from '../../images/uzbekistan-khiva-night.jpg'
+import GithubLogo from '../../images/home-github-logo.png'
+import LinkedInLogo from '../../images/home-linkedin-logo.png'
+import BlueskyLogo from '../../images/home-bluesky-avatar.png'
+import Layout from '../../layouts/LayoutV2.astro'
+import css from './c.module.css'
+
+interface Trip {
+    country: string
+    url: string
+    image: ImageMetadata
+    alt: string
+}
+
+const TRIPS: Trip[] = [
+    { country: 'United Kingdom', url: '/travel/britain/', image: imgBritain, alt: 'Big Ben and Parliament Square, London' },
+    { country: 'Bosnia and Herzegovina', url: '/travel/bosnia/', image: imgBosnia, alt: 'Sarajevo, Bosnia and Herzegovina' },
+    { country: 'Greece', url: '/travel/greece/', image: imgGreece, alt: 'Serifios, Greece' },
+    { country: 'Uzbekistan', url: '/travel/uzbekistan/', image: imgUzbekistan, alt: 'A mausoleum at night in Khiva' },
+    { country: 'Ireland', url: '/travel/ireland/', image: imgIreland, alt: 'Dublin, Ireland' },
+]
+
+function lastVisited(name: string): number {
+    const found = countries.visited.find((c) => c.name === name)
+    return found ? Math.max(...found.yearsVisited) : 0
+}
+
+const trips = TRIPS.map((trip) => ({ ...trip, year: lastVisited(trip.country) })).sort((a, b) => b.year - a.year)
+
+const contactLinks = [
+    { label: 'Email', sub: 'craig@patik.com', href: 'mailto:craig@patik.com', icon: null },
+    { label: 'GitHub', sub: 'github.com/patik', href: 'https://github.com/patik', icon: GithubLogo },
+    { label: 'LinkedIn', sub: 'craigpatik', href: 'https://www.linkedin.com/in/craigpatik', icon: LinkedInLogo },
+    { label: 'Bluesky', sub: 'craig.patik.com', href: 'https://bsky.app/profile/craig.patik.com', icon: BlueskyLogo },
+]
+---
+
+<Layout title="Home — Concept C">
+    <div class={css.home}>
+        <div class={css.card}>
+            <p class={css.kicker}>Munich, Germany · Web dev since 2000</p>
+            <h1>Craig Patik</h1>
+            <p class={css.bio}>
+                Traveler, web developer, and Arsenal fan. Staff Frontend Engineer at
+                <Space />
+                <a href="https://www.internations.org/">InterNations</a>.
+                <a class={css.bioLink} href="/about/">More about me <span aria-hidden="true">→</span></a>
+            </p>
+        </div>
+
+        <div class={css.row}>
+            <a class:list={[css.card, css.mapCard]} href="/travel/" aria-label="See the full travel page">
+                <p class={css.cardLabel}>Travel — {countries.visited.length} countries</p>
+                <WorldMap className={css.map} />
+            </a>
+
+            <div class:list={[css.card, css.tripsCard]}>
+                <p class={css.cardLabel}>Recent trips</p>
+                <ul class={css.tripsList}>
+                    {
+                        trips.map((trip) => (
+                            <li>
+                                <a href={trip.url}>
+                                    <Image src={trip.image} alt={trip.alt} width={112} class={css.tripThumb} />
+                                    <span class={css.tripInfo}>
+                                        <span class={css.tripCountry}>{trip.country}</span>
+                                        <span class={css.tripYear}>{trip.year}</span>
+                                    </span>
+                                </a>
+                            </li>
+                        ))
+                    }
+                </ul>
+                <a class={css.cardFooterLink} href="/travel/">See all {countries.visited.length} <span aria-hidden="true">→</span></a>
+            </div>
+        </div>
+
+        <div class={css.row}>
+            <a class:list={[css.card, css.portfolioCard]} href="/portfolio/">
+                <p class={css.cardLabel}>Code &amp; projects</p>
+                <span class={css.frame}>
+                    <span class={css.frameBar}>
+                        <span class={css.frameDots} aria-hidden="true"><span></span><span></span><span></span></span>
+                        <span class={css.frameTitle}>dovetail.travel</span>
+                    </span>
+                    <Image src={imgDovetailHero} alt="The Dovetail Travel Planner landing page" widths={[700, 1100]} sizes="(max-width: 900px) 100vw, 520px" />
+                </span>
+                <p class={css.portfolioPitch}>
+                    A solo-built trip planner, developer tools, and open-source libraries — 50+ repositories, ~700
+                    stars.
+                </p>
+                <span class={css.cardFooterLink}>See the full portfolio <span aria-hidden="true">→</span></span>
+            </a>
+
+            <div class:list={[css.card, css.contactCard]}>
+                <p class={css.cardLabel}>Get in touch</p>
+                <ul class={css.contactList}>
+                    {
+                        contactLinks.map((link) => (
+                            <li>
+                                <a href={link.href} rel={link.href.startsWith('http') ? 'me' : undefined}>
+                                    {link.icon ? (
+                                        <Image src={link.icon} alt="" width={28} height={28} class={css.contactIcon} />
+                                    ) : (
+                                        <span class={css.contactSigil} aria-hidden="true">@</span>
+                                    )}
+                                    <span class={css.contactText}>
+                                        <span class={css.contactLabel}>{link.label}</span>
+                                        <span class={css.contactSub}>{link.sub}</span>
+                                    </span>
+                                </a>
+                            </li>
+                        ))
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</Layout>

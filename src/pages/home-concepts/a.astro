@@ -1,0 +1,135 @@
+---
+import Space from '@src/components/Space'
+import WorldMap from '@src/components/WorldMap.astro'
+import { Image } from 'astro:assets'
+import countries from '../../countries.json'
+import imgDovetailHero from '../../images/portfolio/dovetail-hero.webp'
+import imgBosnia from '../../images/bosnia-sarajevo-hero.jpg'
+import imgBritain from '../../images/travel-britain-benelux.jpg'
+import imgGreece from '../../images/travel-greece.jpg'
+import imgIreland from '../../images/ireland-dublin-hero.jpg'
+import imgSpain from '../../images/travel-spain.jpg'
+import imgUzbekistan from '../../images/uzbekistan-khiva-night.jpg'
+import Layout from '../../layouts/LayoutV2.astro'
+import css from './a.module.css'
+
+interface Trip {
+    country: string
+    url: string
+    image: ImageMetadata
+    alt: string
+}
+
+const TRIPS: Trip[] = [
+    { country: 'United Kingdom', url: '/travel/britain/', image: imgBritain, alt: 'Big Ben and Parliament Square, London' },
+    { country: 'Bosnia and Herzegovina', url: '/travel/bosnia/', image: imgBosnia, alt: 'Sarajevo, Bosnia and Herzegovina' },
+    { country: 'Greece', url: '/travel/greece/', image: imgGreece, alt: 'Serifios, Greece' },
+    { country: 'Uzbekistan', url: '/travel/uzbekistan/', image: imgUzbekistan, alt: 'A mausoleum at night in Khiva' },
+    { country: 'Ireland', url: '/travel/ireland/', image: imgIreland, alt: 'Dublin, Ireland' },
+    { country: 'Spain', url: '/travel/spain/', image: imgSpain, alt: 'Madrid, Spain' },
+]
+
+function lastVisited(name: string): number {
+    const found = countries.visited.find((c) => c.name === name)
+    return found ? Math.max(...found.yearsVisited) : 0
+}
+
+const trips = TRIPS.map((trip) => ({ ...trip, year: lastVisited(trip.country) })).sort((a, b) => b.year - a.year)
+
+const contactLinks = [
+    { label: 'Email', href: 'mailto:craig@patik.com' },
+    { label: 'GitHub', href: 'https://github.com/patik' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/craigpatik' },
+    { label: 'Bluesky', href: 'https://bsky.app/profile/craig.patik.com' },
+    { label: 'Mastodon', href: 'https://mastodon.online/@craigpatik' },
+    { label: 'Twitter', href: 'https://twitter.com/craigpatik' },
+]
+---
+
+<Layout title="Home — Concept A">
+    <div class={css.home}>
+        <header class={css.header}>
+            <p class={css.kicker}>Munich, Germany · Web dev since 2000</p>
+            <h1>Craig Patik</h1>
+            <p class={css.deck}>
+                I’m a traveler, web developer, and Arsenal fan. These days I’m a Staff Frontend Engineer at
+                <Space />
+                <a href="https://www.internations.org/">InterNations</a>, and I write occasionally on
+                <Space />
+                <a href="/blog/">the blog</a>.
+            </p>
+            <div class={css.headerStats}>
+                <span>{countries.visited.length} countries visited</span>
+                <span>Staff FE @ InterNations</span>
+                <a href="/about/">More about me <span aria-hidden="true">→</span></a>
+            </div>
+        </header>
+
+        <section class={css.section}>
+            <div class={css.sectionHead}>
+                <h2><span class={css.sectionNumber} aria-hidden="true">01 · Travel</span>Where I’ve been</h2>
+            </div>
+
+            <a class={css.mapLink} href="/travel/" aria-label="See the full travel page">
+                <WorldMap className={css.map} />
+            </a>
+
+            <div class={css.tripsRow}>
+                {
+                    trips.map((trip) => (
+                        <a class={css.tripCard} href={trip.url}>
+                            <Image src={trip.image} alt={trip.alt} width={480} class={css.tripImage} />
+                            <span class={css.tripCaption}>
+                                <span class={css.tripCountry}>{trip.country}</span>
+                                <span class={css.tripYear}>{trip.year}</span>
+                            </span>
+                        </a>
+                    ))
+                }
+            </div>
+
+            <p class={css.sectionLink}><a href="/travel/">See the full map &amp; all {countries.visited.length} countries <span aria-hidden="true">→</span></a></p>
+        </section>
+
+        <section class={css.section}>
+            <div class={css.sectionHead}>
+                <h2><span class={css.sectionNumber} aria-hidden="true">02 · Code &amp; Projects</span>What I build</h2>
+            </div>
+
+            <a class={css.mediaLink} href="/portfolio/">
+                <span class={css.frame}>
+                    <span class={css.frameBar}>
+                        <span class={css.frameDots} aria-hidden="true"><span></span><span></span><span></span></span>
+                        <span class={css.frameTitle}>dovetail.travel</span>
+                    </span>
+                    <Image src={imgDovetailHero} alt="The Dovetail Travel Planner landing page" widths={[800, 1200]} sizes="(max-width: 1020px) 100vw, 950px" />
+                </span>
+            </a>
+
+            <p class={css.portfolioPitch}>
+                A trip-planning app built and run solo, command-line tools carried across a decade of the JavaScript
+                ecosystem, and open-source libraries with a few hundred stars between them.
+            </p>
+            <div class={css.headerStats}>
+                <span>50+ repositories</span>
+                <span>~700 stars</span>
+                <a href="/portfolio/">See the full portfolio <span aria-hidden="true">→</span></a>
+            </div>
+        </section>
+
+        <section class={css.section}>
+            <div class={css.sectionHead}>
+                <h2><span class={css.sectionNumber} aria-hidden="true">03 · Elsewhere</span>Get in touch</h2>
+            </div>
+            <div class={css.contactRow}>
+                {
+                    contactLinks.map((link) => (
+                        <a href={link.href} rel={link.href.startsWith('http') ? 'me' : undefined}>
+                            {link.label} <span aria-hidden="true">↗</span>
+                        </a>
+                    ))
+                }
+            </div>
+        </section>
+    </div>
+</Layout>
