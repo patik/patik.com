@@ -1,4 +1,6 @@
 ---
+import css from './HeaderNav.module.css'
+
 interface NavItem {
     href: string
     label: string
@@ -20,17 +22,15 @@ function isActive({ href, activePathPrefixes = [] }: NavItem): boolean {
 }
 ---
 
-<nav class="main-nav">
-    <h1>
-        <a href="/">Craig Patik</a>
-    </h1>
-    <ul>
+<nav class={css.nav}>
+    <a class={css.brand} href="/">Craig Patik</a>
+    <ul class={css.links}>
         {
             navItems.map((item) => (
                 <li>
                     <a
                         href={item.href}
-                        class:list={[{ active: isActive(item) }]}
+                        class:list={[css.link, { [css.active]: isActive(item) }]}
                         aria-current={isActive(item) ? 'page' : undefined}
                     >
                         {item.label}

@@ -1,17 +1,10 @@
 ---
+import type { TravelLink } from '@src/travelLinks'
 import { Image } from 'astro:assets'
 import css from './LinkGrid.module.css'
 
-type Item = {
-    imageSrc: ImageMetadata
-    imageAlt: string
-    url: string
-    className: string
-    title: string
-}
-
 interface Props {
-    items: Item[]
+    items: TravelLink[]
 }
 
 // 2x the 336px tile cap in `.travel-link-list a`. Clamped per image because some sources

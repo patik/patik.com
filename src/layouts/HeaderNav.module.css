@@ -1,0 +1,100 @@
+.nav {
+    --nav-bg: rgb(255 255 255 / 0.82);
+    --nav-border: rgb(0 0 0 / 0.08);
+    --nav-hover: rgb(0 0 0 / 0.06);
+    --nav-active-bg: rgb(0 0 0 / 0.08);
+    --nav-muted: #5f5c57;
+
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem 0.5rem;
+    padding: 0.75rem var(--main-inline-padding);
+    background: var(--nav-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--nav-border);
+    -webkit-font-smoothing: antialiased;
+
+    @media (min-width: 640px) {
+        flex-wrap: nowrap;
+        padding-block: 0.55rem;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        --nav-bg: rgb(24 24 24 / 0.82);
+        --nav-border: rgb(255 255 255 / 0.08);
+        --nav-hover: rgb(255 255 255 / 0.08);
+        --nav-active-bg: rgb(255 255 255 / 0.12);
+        --nav-muted: #a8a8a8;
+    }
+}
+
+.brand {
+    flex-shrink: 0;
+    color: inherit !important;
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+.links {
+    display: flex;
+    flex: 0 0 100%;
+    flex-wrap: wrap;
+    gap: 0.1rem 0.05rem;
+    min-inline-size: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    & > li {
+        margin: 0;
+    }
+
+    @media (min-width: 640px) {
+        flex: 0 0 auto;
+        flex-wrap: nowrap;
+        margin-inline-start: auto;
+        gap: 0.2rem;
+    }
+}
+
+.link {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 0.5rem;
+    color: var(--nav-muted) !important;
+    font-family: var(--font-fixed);
+    font-size: 0.68rem;
+    line-height: 1.375rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-decoration: none;
+    border-radius: 999px;
+    transition:
+        background 150ms ease,
+        color 150ms ease;
+
+    &:hover,
+    &:focus-visible {
+        color: inherit !important;
+        background: var(--nav-hover);
+    }
+
+    @media (min-width: 640px) {
+        padding: 0.4rem 0.7rem;
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+    }
+}
+
+.active {
+    color: inherit !important;
+    font-weight: 600;
+    background: var(--nav-active-bg);
+}

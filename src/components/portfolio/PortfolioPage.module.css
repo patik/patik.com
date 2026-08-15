@@ -197,6 +197,10 @@
     background: var(--frame-bg);
     box-shadow: var(--media-shadow);
     overflow: hidden;
+
+    & picture {
+        display: block;
+    }
 }
 
 .frameBar {
