@@ -109,12 +109,6 @@
     &:focus-visible {
         text-decoration: none;
     }
-
-    /* The home teaser links out to /travel/ already, so the map's own expand/zoom
-       controls (meant for standalone use) would be redundant and nested-interactive. */
-    & :global([data-world-map] > div:nth-child(2)) {
-        display: none;
-    }
 }
 
 .map {

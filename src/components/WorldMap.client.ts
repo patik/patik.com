@@ -24,30 +24,10 @@ class WorldMapElement extends HTMLElement {
         this.isInitialized = true
 
         const frame = this.querySelector<HTMLElement>('[data-map-frame]')
-        const dialog = this.querySelector<HTMLDialogElement>('[data-map-dialog]')
-        const dialogSlot = this.querySelector<HTMLElement>('[data-map-dialog-slot]')
-        const expandButton = this.querySelector<HTMLButtonElement>('[data-map-expand]')
-        const closeButton = this.querySelector<HTMLButtonElement>('[data-map-close]')
         const tooltip = this.querySelector<HTMLElement>('[data-map-tooltip]')
         const svg = frame?.querySelector<SVGSVGElement>('svg')
-        const zoomInButton = this.querySelector<HTMLButtonElement>('[data-map-zoom-in]')
-        const zoomOutButton = this.querySelector<HTMLButtonElement>('[data-map-zoom-out]')
-        const resetButton = this.querySelector<HTMLButtonElement>('[data-map-zoom-reset]')
-        const zoomLevel = this.querySelector<HTMLOutputElement>('[data-map-zoom-level]')
 
-        if (
-            !frame ||
-            !dialog ||
-            !dialogSlot ||
-            !expandButton ||
-            !closeButton ||
-            !tooltip ||
-            !svg ||
-            !zoomInButton ||
-            !zoomOutButton ||
-            !resetButton ||
-            !zoomLevel
-        ) {
+        if (!frame || !tooltip || !svg) {
             return
         }
 
@@ -55,53 +35,76 @@ class WorldMapElement extends HTMLElement {
             this.activeCountry = null
             tooltip.hidden = true
         }
-        const zoom = new WorldMapZoom({
-            dialog,
-            frame,
-            svg,
-            zoomInButton,
-            zoomOutButton,
-            resetButton,
-            zoomLevel,
-            onInteractionStart: hideTooltip,
-        })
-        const openDialog = (): void => {
-            zoom.reset()
-            frame.removeAttribute('role')
-            frame.removeAttribute('tabindex')
-            frame.removeAttribute('aria-label')
-            dialogSlot.append(frame)
-            dialog.append(tooltip)
-            dialog.showModal()
-        }
 
-        expandButton.addEventListener('click', openDialog)
-        frame.addEventListener('click', () => {
-            if (!dialog.open) {
-                openDialog()
+        // These are only rendered when WorldMap is used interactively (not as a non-interactive
+        // teaser nested inside another link), so the expand/zoom/dialog behavior is opt-in below.
+        const dialog = this.querySelector<HTMLDialogElement>('[data-map-dialog]')
+        const dialogSlot = this.querySelector<HTMLElement>('[data-map-dialog-slot]')
+        const expandButton = this.querySelector<HTMLButtonElement>('[data-map-expand]')
+        const closeButton = this.querySelector<HTMLButtonElement>('[data-map-close]')
+        const zoomInButton = this.querySelector<HTMLButtonElement>('[data-map-zoom-in]')
+        const zoomOutButton = this.querySelector<HTMLButtonElement>('[data-map-zoom-out]')
+        const resetButton = this.querySelector<HTMLButtonElement>('[data-map-zoom-reset]')
+        const zoomLevel = this.querySelector<HTMLOutputElement>('[data-map-zoom-level]')
+
+        if (
+            dialog &&
+            dialogSlot &&
+            expandButton &&
+            closeButton &&
+            zoomInButton &&
+            zoomOutButton &&
+            resetButton &&
+            zoomLevel
+        ) {
+            const zoom = new WorldMapZoom({
+                dialog,
+                frame,
+                svg,
+                zoomInButton,
+                zoomOutButton,
+                resetButton,
+                zoomLevel,
+                onInteractionStart: hideTooltip,
+            })
+            const openDialog = (): void => {
+                zoom.reset()
+                frame.removeAttribute('role')
+                frame.removeAttribute('tabindex')
+                frame.removeAttribute('aria-label')
+                dialogSlot.append(frame)
+                dialog.append(tooltip)
+                dialog.showModal()
             }
-        })
-        frame.addEventListener('keydown', (event) => {
-            if (!dialog.open && (event.key === 'Enter' || event.key === ' ')) {
-                event.preventDefault()
-                openDialog()
-            }
-        })
-        closeButton.addEventListener('click', () => dialog.close())
-        dialog.addEventListener('close', () => {
-            this.prepend(frame)
-            frame.setAttribute('role', 'button')
-            frame.setAttribute('tabindex', '0')
-            frame.setAttribute('aria-label', 'Open expanded map')
-            this.append(tooltip)
-            zoom.reset()
-            hideTooltip()
-        })
-        dialog.addEventListener('click', (event) => {
-            if (isBackdropClick(dialog, event)) {
-                dialog.close()
-            }
-        })
+
+            expandButton.addEventListener('click', openDialog)
+            frame.addEventListener('click', () => {
+                if (!dialog.open) {
+                    openDialog()
+                }
+            })
+            frame.addEventListener('keydown', (event) => {
+                if (!dialog.open && (event.key === 'Enter' || event.key === ' ')) {
+                    event.preventDefault()
+                    openDialog()
+                }
+            })
+            closeButton.addEventListener('click', () => dialog.close())
+            dialog.addEventListener('close', () => {
+                this.prepend(frame)
+                frame.setAttribute('role', 'button')
+                frame.setAttribute('tabindex', '0')
+                frame.setAttribute('aria-label', 'Open expanded map')
+                this.append(tooltip)
+                zoom.reset()
+                hideTooltip()
+            })
+            dialog.addEventListener('click', (event) => {
+                if (isBackdropClick(dialog, event)) {
+                    dialog.close()
+                }
+            })
+        }
 
         this.addEventListener('pointerover', (event) => this.showTooltip(event, tooltip))
         this.addEventListener('pointermove', (event) => this.positionTooltip(event, tooltip))

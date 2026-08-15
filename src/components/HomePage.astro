@@ -15,7 +15,13 @@ import css from './HomePage.module.css'
 
 const featuredTravelLinks = travelLinks.slice(0, 8)
 
-const contactLinks = [
+interface ContactLink {
+    label: string
+    href: string
+    icon: ImageMetadata
+}
+
+const contactLinks: ContactLink[] = [
     { label: 'Email', href: 'mailto:craig@patik.com', icon: MailIcon },
     { label: 'GitHub', href: 'https://github.com/patik', icon: GithubLogo },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/craigpatik', icon: LinkedInLogo },
@@ -43,7 +49,7 @@ const contactLinks = [
                         <a href="/travel/">Where I’ve been <span aria-hidden="true">→</span></a>
                     </h2>
                     <a class={css.mapCard} href="/travel/" aria-label="See the full travel page">
-                        <WorldMap className={css.map} />
+                        <WorldMap className={css.map} interactive={false} />
                     </a>
                 </div>
             </div>

@@ -8,13 +8,16 @@ import css from './WorldMap.module.css'
 
 interface Props {
     className?: string
+    /** Set to false when the map is nested inside another link (e.g. a home page teaser) so it
+     * doesn't render its own focusable/clickable expand control and dialog as nested interactive content. */
+    interactive?: boolean
 }
 
 interface CountryProperties {
     name: string
 }
 
-const { className = '' } = Astro.props
+const { className = '', interactive = true } = Astro.props
 const MAP_WIDTH = 1000
 const MAP_HEIGHT = 520
 const MAP_CAPTION = 'Red marks recent visits, fading to ivory over time; gold marks places I’ve called home.'
@@ -102,7 +105,13 @@ const monacoTooltip =
 ---
 
 <world-map class={className} data-world-map>
-    <div class={css.mapFrame} data-map-frame role="button" tabindex="0" aria-label="Open expanded map">
+    <div
+        class={css.mapFrame}
+        data-map-frame
+        role={interactive ? 'button' : undefined}
+        tabindex={interactive ? 0 : undefined}
+        aria-label={interactive ? 'Open expanded map' : undefined}
+    >
         <svg
             class={css.map}
             viewBox={`0 0 ${MAP_WIDTH} ${MAP_HEIGHT}`}
@@ -156,26 +165,46 @@ const monacoTooltip =
         </svg>
     </div>
 
-    <div class={css.controls}>
-        <button type="button" class={css.expandButton} data-map-expand>Expand map</button>
-        <p class={css.caption}>{MAP_CAPTION}</p>
-    </div>
+    {
+        interactive && (
+            <div class={css.controls}>
+                <button type="button" class={css.expandButton} data-map-expand>
+                    Expand map
+                </button>
+                <p class={css.caption}>{MAP_CAPTION}</p>
+            </div>
+        )
+    }
 
     <div class={css.tooltip} role="tooltip" data-map-tooltip hidden></div>
 
-    <dialog class={css.dialog} aria-label="Visited countries map" data-map-dialog>
-        <div class={css.dialogHeader}>
-            <div class={css.zoomControls} role="group" aria-label="Map zoom controls">
-                <button type="button" class={css.zoomButton} aria-label="Zoom out" data-map-zoom-out>−</button>
-                <output class={css.zoomLevel} aria-live="polite" data-map-zoom-level>100%</output>
-                <button type="button" class={css.zoomButton} aria-label="Zoom in" data-map-zoom-in>+</button>
-                <button type="button" class={css.resetButton} data-map-zoom-reset>Reset</button>
-            </div>
-            <button type="button" class={css.closeButton} aria-label="Close map" data-map-close>×</button>
-        </div>
-        <div class={css.dialogMapSlot} data-map-dialog-slot></div>
-        <p class={css.dialogCaption}>{MAP_CAPTION}</p>
-    </dialog>
+    {
+        interactive && (
+            <dialog class={css.dialog} aria-label="Visited countries map" data-map-dialog>
+                <div class={css.dialogHeader}>
+                    <div class={css.zoomControls} role="group" aria-label="Map zoom controls">
+                        <button type="button" class={css.zoomButton} aria-label="Zoom out" data-map-zoom-out>
+                            −
+                        </button>
+                        <output class={css.zoomLevel} aria-live="polite" data-map-zoom-level>
+                            100%
+                        </output>
+                        <button type="button" class={css.zoomButton} aria-label="Zoom in" data-map-zoom-in>
+                            +
+                        </button>
+                        <button type="button" class={css.resetButton} data-map-zoom-reset>
+                            Reset
+                        </button>
+                    </div>
+                    <button type="button" class={css.closeButton} aria-label="Close map" data-map-close>
+                        ×
+                    </button>
+                </div>
+                <div class={css.dialogMapSlot} data-map-dialog-slot></div>
+                <p class={css.dialogCaption}>{MAP_CAPTION}</p>
+            </dialog>
+        )
+    }
 </world-map>
 
 <script>
