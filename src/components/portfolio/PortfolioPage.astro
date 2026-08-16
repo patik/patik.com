@@ -8,6 +8,17 @@ import imgDovetailHeroDark from '@src/images/portfolio/dovetail-hero-dark.webp'
 import imgDovetailHeroLight from '@src/images/portfolio/dovetail-hero-light.webp'
 import { Image } from 'astro:assets'
 import css from './PortfolioPage.module.css'
+
+/** Mirrors the section headings below; update both together. */
+const sections = [
+    { id: 'dovetail', number: '01', label: 'Dovetail' },
+    { id: 'command-line-tools', number: '02', label: 'Command-line tools' },
+    { id: 'apps-and-sites', number: '03', label: 'Apps & sites' },
+    { id: 'libraries', number: '04', label: 'Libraries' },
+    { id: 'writing', number: '05', label: 'Writing' },
+    { id: 'contributions', number: '06', label: 'Contributions' },
+    { id: 'earlier-era', number: '07', label: 'From an earlier era' },
+]
 ---
 
 <div class={css.portfolio}>
@@ -26,7 +37,20 @@ import css from './PortfolioPage.module.css'
         </div>
     </header>
 
-    <section class={css.section}>
+    <nav class={css.toc} aria-label="Sections of this page">
+        {
+            sections.map(({ id, number, label }) => (
+                <a class={css.tocLink} href={`#${id}`}>
+                    <span class={css.tocNumber} aria-hidden="true">
+                        {number}
+                    </span>
+                    {label}
+                </a>
+            ))
+        }
+    </nav>
+
+    <section id="dovetail" class={css.section}>
         <div class={css.sectionHead}>
             <h2>
                 <span class={css.sectionNumber} aria-hidden="true">01 · Featured</span>
@@ -105,7 +129,7 @@ import css from './PortfolioPage.module.css'
         </div>
     </section>
 
-    <section class={css.section}>
+    <section id="command-line-tools" class={css.section}>
         <div class={css.sectionHead}>
             <h2>
                 <span class={css.sectionNumber} aria-hidden="true">02</span>
@@ -308,7 +332,7 @@ import css from './PortfolioPage.module.css'
         </div>
     </section>
 
-    <section class={css.section}>
+    <section id="apps-and-sites" class={css.section}>
         <div class={css.sectionHead}>
             <h2>
                 <span class={css.sectionNumber} aria-hidden="true">03</span>
@@ -378,7 +402,7 @@ import css from './PortfolioPage.module.css'
         </ul>
     </section>
 
-    <section class={css.section}>
+    <section id="libraries" class={css.section}>
         <div class={css.sectionHead}>
             <h2>
                 <span class={css.sectionNumber} aria-hidden="true">04</span>
@@ -465,7 +489,7 @@ import css from './PortfolioPage.module.css'
         </ul>
     </section>
 
-    <section class={css.section}>
+    <section id="writing" class={css.section}>
         <div class={css.sectionHead}>
             <h2>
                 <span class={css.sectionNumber} aria-hidden="true">05</span>
@@ -502,7 +526,7 @@ import css from './PortfolioPage.module.css'
         </ul>
     </section>
 
-    <section class={css.section}>
+    <section id="contributions" class={css.section}>
         <div class={css.sectionHead}>
             <h2>
                 <span class={css.sectionNumber} aria-hidden="true">06</span>
@@ -582,7 +606,7 @@ import css from './PortfolioPage.module.css'
         </ul>
     </section>
 
-    <section class={css.section}>
+    <section id="earlier-era" class={css.section}>
         <div class={css.sectionHead}>
             <h2>
                 <span class={css.sectionNumber} aria-hidden="true">07</span>

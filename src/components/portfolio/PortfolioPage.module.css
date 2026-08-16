@@ -148,6 +148,37 @@
 }
 
 /* **************************************************************** */
+/* Contents */
+/* **************************************************************** */
+
+.toc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.4rem;
+    margin-top: 1.5rem;
+}
+
+.tocLink {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.45em;
+    font-family: var(--font-fixed);
+    font-size: 0.78rem;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+        text-decoration: underline;
+        text-underline-offset: 0.25em;
+    }
+}
+
+/* --rule-strong is a border tone: 2.13:1 as text on the dark background */
+.tocNumber {
+    color: var(--muted);
+}
+
+/* **************************************************************** */
 /* Sections */
 /* **************************************************************** */
 
@@ -155,6 +186,9 @@
     margin-top: 4rem;
     border-top: 1px solid var(--rule-strong);
     padding-top: 1.75rem;
+
+    /* Clear the sticky site header when jumped to from the contents */
+    scroll-margin-top: 5rem;
 }
 
 .sectionHead {
