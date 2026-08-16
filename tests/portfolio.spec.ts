@@ -11,8 +11,21 @@ test('portfolio demo videos provide playback controls', async ({ page }) => {
         videos.map((video): boolean => video instanceof HTMLVideoElement && video.controls),
     )
 
-    await expect(demoVideos).toHaveCount(4)
-    expect(controlsEnabled).toEqual([true, true, true, true])
+    await expect(demoVideos).toHaveCount(5)
+    expect(controlsEnabled).toEqual([true, true, true, true, true])
+})
+
+test('portfolio includes both internal tools and their media', async ({ page }) => {
+    await page.goto('/portfolio/')
+
+    await expect(page.getByRole('heading', { name: 'Inc', exact: true })).toBeVisible()
+    await expect(page.getByRole('heading', { name: 'Gin', exact: true })).toBeVisible()
+    await expect(page.getByRole('img', { name: /Inc showing a generated event form/i })).toBeVisible()
+    await expect(page.getByRole('img', { name: /Gin showing the next and upcoming deployments/i })).toBeVisible()
+    await expect(page.getByRole('link', { name: 'Original completion GIF' })).toHaveAttribute(
+        'href',
+        '/portfolio/media/inc-tab-completion.gif',
+    )
 })
 
 test('legacy user scripts route keeps Portfolio marked as current', async ({ page }) => {
