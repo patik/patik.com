@@ -1,7 +1,8 @@
-// @ts-check
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
+import type { Element, Root } from 'hast'
 import sharp from 'sharp'
+import type { Transformer } from 'unified'
 import { visit } from 'unist-util-visit'
 
 /**
@@ -18,22 +19,33 @@ const SRC_ATTRIBUTE = /\bsrc="([^"]*)"/
 const WIDTH_ATTRIBUTE = /\bwidth="(\d+)"/
 const MANAGED_ATTRIBUTES = /\s+(?:height|loading|decoding)="[^"]*"/g
 
-/** @type {Map<string, {width: number, height: number} | null>} */
-const dimensionCache = new Map()
+interface Dimensions {
+    width: number
+    height: number
+}
 
-/**
- * @param {string} src Root-relative URL, e.g. `/portfolio/pull-requests/foo/01.webp`
- * @param {string} publicDir
- */
-async function readDimensions(src, publicDir) {
+/** `raw` isn't one of hast's node types: this pipeline leaves markdown's inline HTML unparsed, so
+ * those images only ever exist as strings. */
+interface RawNode {
+    type: 'raw'
+    value: string
+}
+
+function isRawNode(node: { type: string }): node is RawNode {
+    return node.type === 'raw'
+}
+
+const dimensionCache = new Map<string, Dimensions | null>()
+
+/** @param src Root-relative URL, e.g. `/portfolio/pull-requests/foo/01.webp` */
+async function readDimensions(src: string, publicDir: string): Promise<Dimensions | null> {
     const cached = dimensionCache.get(src)
 
     if (cached !== undefined) {
         return cached
     }
 
-    /** @type {{width: number, height: number} | null} */
-    let dimensions = null
+    let dimensions: Dimensions | null = null
 
     try {
         const { width, height } = await sharp(await readFile(path.join(publicDir, src))).metadata()
@@ -54,38 +66,25 @@ async function readDimensions(src, publicDir) {
  * An authored `width` is a deliberate display size, so keep it and derive the height from it. Any
  * authored height is dropped — CSS sets `height: auto`, so a value that disagrees with the aspect
  * ratio only reserves the wrong amount of space.
- *
- * @param {{width: number, height: number}} intrinsic
- * @param {number | undefined} authoredWidth
  */
-function displaySize(intrinsic, authoredWidth) {
+function displaySize(intrinsic: Dimensions, authoredWidth?: number): Dimensions {
     const width = authoredWidth || intrinsic.width
 
     return { width, height: Math.round(width * (intrinsic.height / intrinsic.width)) }
 }
 
-/**
- * @param {{ publicDir?: string }} [options]
- * @returns {import('unified').Transformer<import('hast').Root>}
- */
-export default function rehypePullRequestImages(options = {}) {
+export default function rehypePullRequestImages(options: { publicDir?: string } = {}): Transformer<Root> {
     const publicDir = options.publicDir ?? path.join(process.cwd(), 'public')
 
     return async (tree) => {
-        /** @type {import('hast').Element[]} */
-        const elements = []
-        /** @type {{ value: string }[]} */
-        const rawNodes = []
+        const elements: Element[] = []
+        const rawNodes: RawNode[] = []
 
         visit(tree, (node) => {
-            // `raw` isn't in hast's node types: this pipeline leaves markdown's inline HTML
-            // unparsed, so those images only ever exist as strings.
-            const type = /** @type {string} */ (node.type)
-
-            if (type === 'element' && /** @type {import('hast').Element} */ (node).tagName === 'img') {
-                elements.push(/** @type {import('hast').Element} */ (node))
-            } else if (type === 'raw') {
-                rawNodes.push(/** @type {{ value: string }} */ (/** @type {unknown} */ (node)))
+            if (node.type === 'element' && node.tagName === 'img') {
+                elements.push(node)
+            } else if (isRawNode(node)) {
+                rawNodes.push(node)
             }
         })
 

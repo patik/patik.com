@@ -21,14 +21,7 @@ const { entry, previous, next } = Astro.props
 
 <Layout
     title={entry.data.title}
-    keywords={[
-        'pull request',
-        'code review',
-        'technical writing',
-        entry.data.kind,
-        'frontend',
-        'Craig Patik',
-    ]}
+    keywords={['pull request', 'code review', 'technical writing', entry.data.kind, 'frontend', 'Craig Patik']}
 >
     <PullRequestArticle entry={entry} previous={previous} next={next} />
 </Layout>

@@ -4,7 +4,7 @@ import { unified } from '@astrojs/markdown-remark'
 import react from '@astrojs/react'
 import { defineConfig } from 'astro/config'
 import rehypeExpressiveCode from 'rehype-expressive-code'
-import rehypePullRequestImages from './scripts/rehype-pull-request-images.mjs'
+import rehypePullRequestImages from './scripts/rehype-pull-request-images.mts'
 
 // https://astro.build/config
 export default defineConfig({

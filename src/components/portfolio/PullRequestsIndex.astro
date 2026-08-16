@@ -6,7 +6,7 @@ const entries = await getPullRequests()
 
 // Dates are UTC midnight, so read them back in UTC too — see PullRequestArticle.astro.
 const years = entries.map((entry) => entry.data.date.getUTCFullYear())
-const span = `${Math.min(...years)} – ${Math.max(...years)}`
+const timeSpan = `${Math.min(...years)} – ${Math.max(...years)}`
 ---
 
 <div class={css.collection}>
@@ -29,15 +29,15 @@ const span = `${Math.min(...years)} – ${Math.max(...years)}`
         </p>
         <div class:list={[css.headerStats, css.mono]}>
             <span>{entries.length} selected</span>
-            <span>{span}</span>
+            <span>{timeSpan}</span>
             <span>InterNations</span>
         </div>
     </header>
 
     <div class={css.intro}>
         <p>
-            These are from the frontend platform work at <a href="https://www.internations.org/">InterNations</a>—a
-            large single-page app carried through a long run of migrations: a global store, a router, a strict
+            These are from the frontend platform work at <a href="https://www.internations.org/">InterNations</a>. It's
+            a large single-page app carried through a long run of migrations: a global store, a router, a strict
             TypeScript flag, two major framework versions. Most of them were changes nobody had asked for and everybody
             would have to live with, which is a particular kind of writing problem: you have to earn the reviewer’s
             attention before you can spend it.
