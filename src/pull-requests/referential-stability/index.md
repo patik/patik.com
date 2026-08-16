@@ -24,18 +24,19 @@ reviewCount: 3
 3. Navigation PR #6930
 4. Global files PR #6929
 5. PXT-specific
-    * Tetris: PR #6935
-    * Pokemon: PR #6936
-    * Rings: PR #6937
+    - Tetris: PR #6935
+    - Pokemon: PR #6936
+    - Rings: PR #6937
+
 </details>
 
 ---
 
 ## Overview of changes
 
-* Improves memoization within `useExperiment` and makes its return value referentially stable
-* `useDiff`: new debugging tool for testing changes between renders
-* `useStableReference`: new convenience wrapper for `useRef`
+- Improves memoization within `useExperiment` and makes its return value referentially stable
+- `useDiff`: new debugging tool for testing changes between renders
+- `useStableReference`: new convenience wrapper for `useRef`
 
 ## Crash course in "referential stability"
 
@@ -91,19 +92,19 @@ This hook is used a _lot_ in our app. And most of the time, the actual values—
 
 I had these goals in mind while working on it:
 
-* Ensure that dependency arrays for `useMemo`, `useEffect`, etc only contain primitive values and referentially stable objects/arrays
-* Ensure the final return value is referentially stable
-* Consolidate the logic around the `options` object into one place
+- Ensure that dependency arrays for `useMemo`, `useEffect`, etc only contain primitive values and referentially stable objects/arrays
+- Ensure the final return value is referentially stable
+- Consolidate the logic around the `options` object into one place
 
 ## `useDiff`
 
 `useDiff` is a hook that can be used during development to check if a value is referentially stable. You can pass it a value and it will log to the console on each render to tell you if the value is stable. If it's not, the hook will tell you what changed.
 
 ```tsx
-useDiff("display name", myValue)
+useDiff('display name', myValue)
 ```
 
-![CleanShot 2024-03-24 at 17 53 13](/portfolio/pull-requests/referential-stability/02.webp)
+![Console output from useDiff showing when the experiment object stays stable and when its properties change](/portfolio/pull-requests/referential-stability/02.webp)
 
 ## `useStableReference`
 
@@ -120,9 +121,9 @@ I made a demo page to test this out. Specifically, it shows that the return valu
 
 Click on a video to zoom in, pause, etc
 
-| Before | After |
-|--------|--------|
-| [![output](/portfolio/pull-requests/referential-stability/03.webp)](an internal link | [![output](/portfolio/pull-requests/referential-stability/04.webp)](an internal link |
+| Before                                                                                                                     | After                                                                                                                     |
+| -------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| ![Animated demo before stabilizing the useExperiment return value](/portfolio/pull-requests/referential-stability/03.webp) | ![Animated demo after stabilizing the useExperiment return value](/portfolio/pull-requests/referential-stability/04.webp) |
 
 # What's next
 

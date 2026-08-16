@@ -63,7 +63,7 @@ Multiple segments can be listed.
 
 Previously, when setting up a new experiment, devs also had to modify `useIsSpaAllowedAccordingToExperiment` and `isUrlAllowedByExperiment` to apply the logic for their experiment. This is no longer necessary. The experiment logic will take effect just by updating the route definition as shown above.
 
-![CleanShot 2024-01-22 at 21 33 40](/portfolio/pull-requests/experiments-in-route-definitions/01.webp)
+![The deprecated useIsSpaAllowedAccordingToExperiment hook with four experiment checks marked as no longer needed](/portfolio/pull-requests/experiments-in-route-definitions/01.webp)
 
 Additionally, tests are now automated. The old file `frontend/routes/utils/isUrlAllowedByExperiment.test.ts`, which required manual updates, is no longer necessary. Now, `frontend/routes/catalog/experiments.test.tsx` will run tests across all route definitions and segments. There is also no need to cleanup the tests when the experiment ends.
 

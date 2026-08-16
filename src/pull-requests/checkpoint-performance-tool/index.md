@@ -17,7 +17,7 @@ reviewCount: 1
 
 ## Description
 
-🛃 Checkpoint 🛃 a development tool that performs routine tasks in a headless browser. 
+🛃 Checkpoint 🛃 a development tool that performs routine tasks in a headless browser.
 
 Checkpoint handles the creation of a browser instance using [Playwright](https://playwright.dev/), running the task multiple times, gathering user options, and tracking results. Tasks are free to do anything they'd like with the browser and to report their results in any format.
 
@@ -49,15 +49,15 @@ Tasks can perform any operation at all. Anything we want to do repetitively in a
 
 Running a sample task 5 times:
 
-<img src="/portfolio/pull-requests/checkpoint-performance-tool/01.webp" alt="" width="360" style="margin-bottom: 1em;">
+<img src="/portfolio/pull-requests/checkpoint-performance-tool/01.webp" alt="Terminal running the Checkpoint example task five times and reporting the duration of each run" width="360" style="margin-bottom: 1em;">
 
 Example output from the `lighthouse` task:
 
-<img src="/portfolio/pull-requests/checkpoint-performance-tool/02.webp" alt="" width="640">
+<img src="/portfolio/pull-requests/checkpoint-performance-tool/02.webp" alt="Terminal output from the Lighthouse task with performance scores and a report path" width="640">
 
 Example output from the `click-through` task:
 
-<img src="/portfolio/pull-requests/checkpoint-performance-tool/03.webp" alt="" width="420">
+<img src="/portfolio/pull-requests/checkpoint-performance-tool/03.webp" alt="Terminal output from three click-through task runs with percentile, median, and average timings" width="420">
 
 ---
 
@@ -67,12 +67,12 @@ _This is a copy of the README_
 
 ### Examples of how it can be used
 
--   run Lighthouse and report the scores
--   click through certain pages in the site, e.g. to determine how long it takes for those pages to load
--   run any task multiple times, e.g. to get more accurate Lighthouse readings
--   compare how the app behaves when changes are made to the frontend or backend
--   take screenshots
--   throttle the CPU
+- run Lighthouse and report the scores
+- click through certain pages in the site, e.g. to determine how long it takes for those pages to load
+- run any task multiple times, e.g. to get more accurate Lighthouse readings
+- compare how the app behaves when changes are made to the frontend or backend
+- take screenshots
+- throttle the CPU
 
 ## Usage
 
@@ -90,17 +90,17 @@ Run `checkpoint --help` to see all available options.
 
 These apply to all tasks:
 
--   `name-of-task` is the name of the task you want to run, which should be a path relative to `checkpoint/tasks/`
--   `--runs <number>` is how many times it executes the task (default to `1`)
--   `--gui` launches the browser so you can see it (i.e. this disables headless mode)
--   `--cpu-throttle <number>` means how much you want to slow the browser down, i.e. `4` means it should run at 25% the normal speed (defaults to `1`, i.e. no slowing down)
+- `name-of-task` is the name of the task you want to run, which should be a path relative to `checkpoint/tasks/`
+- `--runs <number>` is how many times it executes the task (default to `1`)
+- `--gui` launches the browser so you can see it (i.e. this disables headless mode)
+- `--cpu-throttle <number>` means how much you want to slow the browser down, i.e. `4` means it should run at 25% the normal speed (defaults to `1`, i.e. no slowing down)
 
 #### Task-specific options
 
 These apply to tasks that support each feature:
 
--   `--verbose` displays some extra console logs
--   `--screenshots` will save screenshots of the page while the task runs; they will be saved in a subfolder of the task called 'screenshots'
+- `--verbose` displays some extra console logs
+- `--screenshots` will save screenshots of the page while the task runs; they will be saved in a subfolder of the task called 'screenshots'
 
 Additionally, the standard `DEBUG` environment variable is supported.
 
@@ -141,8 +141,8 @@ The task function will be run as many times as specified by the `--runs` flag. I
 
 Create a file in `checkpoint/tasks/` with two exports:
 
--   default export: `task: (options: TaskConfig) => Promise<unknown> | unknown` is the function that performs the task. It will receive a fresh browser context It should return something truthy if it succeeds, or something falsy if it fails.
--   named export: `report: (results: TestResults, metadata: ReportMetadata) => void | Promise<void>` is an optional function that will be called after the test completes so it can output a report.
+- default export: `task: (options: TaskConfig) => Promise<unknown> | unknown` is the function that performs the task. It will receive a fresh browser context It should return something truthy if it succeeds, or something falsy if it fails.
+- named export: `report: (results: TestResults, metadata: ReportMetadata) => void | Promise<void>` is an optional function that will be called after the test completes so it can output a report.
 
 Run the task by passing the file's name or relative path to the `checkpoint/tasks/` folder:
 
@@ -212,7 +212,3 @@ To use this feature, export a function called `report` from the task's main file
 ```
 
 Report functions will be called once, after all runs have taken place.
-
----
-
-INGIANA-190

@@ -29,7 +29,7 @@ We had stopped using [MUI's `useMediaQuery` hook](https://mui.com/material-ui/re
 
 In the world of React 18 and [SSR/SSG](https://prismic.io/blog/nextjs-ssr-vs-ssg#refresh), it's **not** possible to determine the screen size of the client with JavaScript for two reasons:
 
-1. With *server*-side rendering, _there is no client_ and no viewport
+1. With _server_-side rendering, _there is no client_ and no viewport
 2. Within a browser, we cannot read from `window` except with a `useEffect` hook, and those don't run until after the first render
 
 Additionally, React 18's strict mode renders every functional component twice to ensure it outputs the same thing both times.
@@ -39,11 +39,7 @@ This means that **using booleans** like `isMobile` and `isDesktop` _**will alway
 This also means that we **cannot** use this pattern to avoid rendering content:
 
 ```tsx
-return (
-    <>
-        {isMobile ? <TinyThumbnails /> : <LargeThumbnails />}
-    </>
-)
+return <>{isMobile ? <TinyThumbnails /> : <LargeThumbnails />}</>
 ```
 
 In this case, `<LargeThumbnails>` _will always be rendered_ the first time, even in a mobile browser. This can result in visual glitches as well as wasted CPU cycles and possibly unwanted side effects (e.g. mutations).
@@ -118,11 +114,7 @@ if (!isReady) {
     return <Skeleton />
 }
 
-return (
-    <div>
-        {isMobile ? <TinyThumbnails /> : <LargeThumbnails />}
-    </div>
-)
+return <div>{isMobile ? <TinyThumbnails /> : <LargeThumbnails />}</div>
 ```
 
 A slightly more semantic alternative is to move the contents to another component and only render when the relevant boolean is `true`:
@@ -145,15 +137,15 @@ But keep in mind that in the future when we move to SSR this will produce HTML c
 
 # Solution
 
-* Reinstated [MUI's `useMediaQuery` hook](https://mui.com/material-ui/react-use-media-query/)
-* Added additional return values to our `useMediaQueries` hook: `isReady`, `whenDesktop`, `whenMobile`
-* Created a new component to replace [the deprecated `<Hidden>`](https://mui.com/material-ui/migration/v5-component-changes/#hidden) but make its shortcomings clear. (Coming with #3961.)
+- Reinstated [MUI's `useMediaQuery` hook](https://mui.com/material-ui/react-use-media-query/)
+- Added additional return values to our `useMediaQueries` hook: `isReady`, `whenDesktop`, `whenMobile`
+- Created a new component to replace [the deprecated `<Hidden>`](https://mui.com/material-ui/migration/v5-component-changes/#hidden) but make its shortcomings clear. (Coming with #3961.)
 
 ## What will change with this PR
 
 Up until now, `useMediaQueries` would return `isMobile = true` from the very first render on a mobile device. With this PR, the first render will always produce `isMobile = false`, but later re-renders will get `isMobile = true`.
 
-This means that components that follow the pattern "if mobile, display `foo`, otherwise display `bar`" will now show `bar` briefly before switching to `foo`. This is not desirable, so a subsequent PR in this series will implement `whenMobile()` and `whenDesktop()` throughout the repo to ensure this doesn't happen. 
+This means that components that follow the pattern "if mobile, display `foo`, otherwise display `bar`" will now show `bar` briefly before switching to `foo`. This is not desirable, so a subsequent PR in this series will implement `whenMobile()` and `whenDesktop()` throughout the repo to ensure this doesn't happen.
 
 One side effect of this is that some components will now show nothing for the first render. This is likely imperceptible to the user, and only affects the very first page visited by the user.
 
@@ -172,22 +164,22 @@ Under the old system, this would always render `Alpha` and `Bravo` on a mobile d
 
 ---
 
-Requirements for this PR series, from INTETRIS-1881 and INTETRIS-1882:
+Requirements for this PR series, from JIRA-1881 and JIRA-1882:
 
 - ✔︎ ~~The values never change. If it says `isMobile` is `false`, then it will continue to be `false` on every single render (assuming you don't resize the browser).~~
-    * Turns out this is simply impossible in the modern React world because client rendering and server rendering will always be different
+    - Turns out this is simply impossible in the modern React world because client rendering and server rendering will always be different
 - ✔︎ Always boolean values, no more `undefined`
 - ✔︎ Values are defined from the very first render
-    * ...**BUT** they are still `false` at first, which is unavoidable
+    - ...**BUT** they are still `false` at first, which is unavoidable
 - ✔︎ ~~`isMobile` and `isDesktop` always have opposite values (e.g. they can never be `false` at the same time)~~
-    * Not possible, see above
+    - Not possible, see above
 - ✔︎ No more React hydration errors
-    * This is resolved in #3965 because the errors are coming from the navigation. (You'll still see the errors on this branch.)
-- ✔︎ ~~Tests~~ 
-    * It does not appear to be possible to test components against different media queries with Jest because of shortcomings with jsdom. Instead, we'll have to rely on Percy visual regression tests, snapshots, and acceptance tests.
-    * Existing tests are fixed in #3965
+    - This is resolved in #3965 because the errors are coming from the navigation. (You'll still see the errors on this branch.)
+- ✔︎ ~~Tests~~
+    - It does not appear to be possible to test components against different media queries with Jest because of shortcomings with jsdom. Instead, we'll have to rely on Percy visual regression tests, snapshots, and acceptance tests.
+    - Existing tests are fixed in #3965
 - ✔︎ Navigation should not jump around (i.e. number of items should be consistent between every render)
-    * Resolved in #3965
+    - Resolved in #3965
 - ✔︎ Messenger should not have problems (e.g. should not auto-select a conversation on mobile)
 
 ---

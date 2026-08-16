@@ -18,17 +18,18 @@ reviewCount: 4
 _The description below is the same for every PR in this series. Please read it when reviewing your first PR, then use it as a reference whenever you need it._
 
 ---
+
 ## Description
 
 The TypeScript option `noUncheckedIndexedAccess` will be enabled in a future PR. If we were to enable it today, it would complain about the many existing errors in our code. Therefore, we're fixing the code before enabling the option.
 
-This PR prepares some **Tetris**-related files so that they will not have errors after we enable the option. All other SPA files are being addressed in related PRs. 
+This PR prepares some **Tetris**-related files so that they will not have errors after we enable the option. All other SPA files are being addressed in related PRs.
 
 # Background
 
 [The `noUncheckedIndexedAccess` option](https://www.typescriptlang.org/tsconfig/#noUncheckedIndexedAccess) in TypeScript prevents developers from accessing array elements until it has been proven that the element actually exists. Generally, we need to be careful not to access `foo[0]` until we've proven it's defined (e.g. `if (foo.length > 0 && foo[0]) { ... }`).
 
-<img src="/portfolio/pull-requests/no-unchecked-indexed-access/01.webp" alt="Example code from the playground link below" width="320">
+<img src="/portfolio/pull-requests/no-unchecked-indexed-access/01.webp" alt="TypeScript Playground showing that an indexed array access can be undefined" width="320">
 
 [Playground Link](https://www.typescriptlang.org/play/?noUncheckedIndexedAccess=true&allowUnreachableCode=true#code/MYewdgzgLgBAhgJwQLhgQSXAngHmggSzAHMA+GAXhgG0BdAKHsQWoAZaA6KEAGRAHcApggDCcCIIAUASiA)
 
@@ -78,7 +79,7 @@ if (foo?.bar === 1) {
 
 It can be very tempting to use this operator a lot, but it comes with many gotchas.
 
-![8s77yg](/portfolio/pull-requests/no-unchecked-indexed-access/02.webp)
+![Confused JavaScript developers meme illustrating the pitfalls of optional chaining](/portfolio/pull-requests/no-unchecked-indexed-access/02.webp)
 
 ## Truthy/falsy conditions
 
@@ -105,7 +106,7 @@ Adding a `?` will satisfy the compiler:
 if (!entries[0]?.isIntersecting) {
 ```
 
-_but **we've introduced a bug!**_ Now, the condition will also be met if `entries[0]` is undefined. That's not what we want—we only want the condition to be met if `entries[0]` exists **and** it's not intersecting. 
+_but **we've introduced a bug!**_ Now, the condition will also be met if `entries[0]` is undefined. That's not what we want—we only want the condition to be met if `entries[0]` exists **and** it's not intersecting.
 
 So instead of `?` we must first check that `entries[0]` is defined:
 
@@ -140,13 +141,13 @@ You can appease the TypeScript compiler with optional chaining:
 expect(foo[0]?.alpha).toBe(bar[0]?.alpha)
 ```
 
-What's wrong with this? Suppose that both `foo` and `bar` are indeed undefined. You end up with this assertion: 
+What's wrong with this? Suppose that both `foo` and `bar` are indeed undefined. You end up with this assertion:
 
 ```tsx
 expect(undefined).toBe(undefined)
 ```
 
-The test will pass, but this is not what we want. The goal of the test is to compare the `alpha` values. 
+The test will pass, but this is not what we want. The goal of the test is to compare the `alpha` values.
 
 To protect against this, we can add an additional assertion to ensure that at least one of the values is not `undefined`:
 
@@ -222,7 +223,9 @@ At worst, it could be executed as `undefined && undefined === undefined` which r
 Instead, do something like this:
 
 ```tsx
-{member?.fullName ? <p>{`${member.fullName}`}</p> : null}
+{
+    member?.fullName ? <p>{`${member.fullName}`}</p> : null
+}
 ```
 
 > **Tip**
@@ -236,12 +239,12 @@ Instead, do something like this:
 ```tsx
 // This code...
 const divStyle = {
-    backgroundColor: memberRoleColors[role]?.backgroundColor
+    backgroundColor: memberRoleColors[role]?.backgroundColor,
 }
 
 // ...may become this at runtime:
 const divStyle = {
-    backgroundColor: undefined
+    backgroundColor: undefined,
 }
 ```
 
@@ -254,7 +257,7 @@ Do one of these instead:
 ```tsx
 // ✅ Option 1
 const divStyle = {
-    backgroundColor: memberRoleColors[role]?.backgroundColor ?? fallbackColor
+    backgroundColor: memberRoleColors[role]?.backgroundColor ?? fallbackColor,
 }
 ```
 
@@ -266,7 +269,7 @@ if (!memberRoleColors[role]?.backgroundColor) {
 }
 
 const divStyle = {
-    backgroundColor: memberRoleColors[role]?.backgroundColor 
+    backgroundColor: memberRoleColors[role]?.backgroundColor,
 }
 ```
 
@@ -323,14 +326,14 @@ That's because right now we're only _defining_ the function. Later, when we call
 > Check for the value within the function that uses it:
 
 ```tsx
-const onClick = () => foo[0] && foo[0].toLowerCase() 
+const onClick = () => foo[0] && foo[0].toLowerCase()
 ```
 
 ---
 
 # How to avoid all these additional checks
 
-All these extra checks kinda suck, don't they? But in order to avoid situations where data may be undefined, we need to use a different holistic approach: 
+All these extra checks kinda suck, don't they? But in order to avoid situations where data may be undefined, we need to use a different holistic approach:
 
 > **Tip**
 >
@@ -338,4 +341,4 @@ All these extra checks kinda suck, don't they? But in order to avoid situations 
 
 Get all of your data first. Make sure you have everything you need. Then, and only then, pass the data to you display components.
 
-Unfortunately this is much easier said than done 😉  I'm bringing up here _not_ because I'm asking all of you to refactor our code, but because I think it's best if we keep "data first, display second" in our minds when we begin writing new features.
+Unfortunately this is much easier said than done 😉 I'm bringing up here _not_ because I'm asking all of you to refactor our code, but because I think it's best if we keep "data first, display second" in our minds when we begin writing new features.

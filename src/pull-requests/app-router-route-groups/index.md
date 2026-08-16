@@ -20,25 +20,25 @@ reviewCount: 3
 <details>
 <summary>Pull requests in this series</summary>
 
-* PR #8761
-* PR #8762
-* PR #8786
-* PR #8763
-* PR #8764
-* PR #8765
-* PR #8767
-* PR #8775
-* PR #8778
-* PR #8800
-* PR #8922
-* PR #8923
-* PR #8929
-* PR #8934
-* PR #8893
-* PR #8930
-* PR #8639
+- PR #8761
+- PR #8762
+- PR #8786
+- PR #8763
+- PR #8764
+- PR #8765
+- PR #8767
+- PR #8775
+- PR #8778
+- PR #8800
+- PR #8922
+- PR #8923
+- PR #8929
+- PR #8934
+- PR #8893
+- PR #8930
+- PR #8639
 
-INGIANA-194
+JIRA-194
 
 </details>
 
@@ -50,9 +50,9 @@ While we are in a transitional state between the Pages Router (NPR) and App Rout
 
 ## Purposes of this PR
 
-* to allow subsequent PRs to show what is being changed as we migrate to App Router
-    * If I copy a 100-line file and change just one line of it, you'll never notice that. By putting the 'copy' and the 'edit' into separate PRs, you can see the change to that line.
-* to open a discussion the new folder structure
+- to allow subsequent PRs to show what is being changed as we migrate to App Router
+    - If I copy a 100-line file and change just one line of it, you'll never notice that. By putting the 'copy' and the 'edit' into separate PRs, you can see the change to that line.
+- to open a discussion the new folder structure
 
 There are no actual code changes; the files are just copied in place.
 
@@ -60,10 +60,10 @@ There are no actual code changes; the files are just copied in place.
 
 Thankfully, our current realms are pretty cleanly split across URL segments
 
-* `MandatoryRegistration` -> `/registration/*`
-* `Checkout` -> `/subscription/checkout/*`
-* `GuestlistManager` -> `/glm/*`
-* `LoggedInUser` -> everything else (including all other `/subscription/*` routes)
+- `MandatoryRegistration` -> `/registration/*`
+- `Checkout` -> `/subscription/checkout/*`
+- `GuestlistManager` -> `/glm/*`
+- `LoggedInUser` -> everything else (including all other `/subscription/*` routes)
 
 I've highlighted the top level URL segments by color:
 
@@ -72,18 +72,18 @@ I've highlighted the top level URL segments by color:
 🟨 `GuestlistManager`
 🟥 `MandatoryRegistration`
 
-<img src="/portfolio/pull-requests/app-router-route-groups/01.webp" alt="" width="50" height="150">
+<img src="/portfolio/pull-requests/app-router-route-groups/01.webp" alt="Pages Router file tree grouped by the LoggedInUser, Checkout, GuestlistManager, and MandatoryRegistration realms" width="50" height="150">
 
 Click to expand. I accidentally cut off some more pages at the bottom (`/downgrade`, `/start`, etc), but they're all in 🟩 `LoggedInUser`.
 
 # How it works
 
-NAR route groups are replacing realms. We are taking advantage of two Next features: 
+NAR route groups are replacing realms. We are taking advantage of two Next features:
 
 1. [route groups](https://nextjs.org/docs/app/building-your-application/routing/route-groups)
-    * folders whose names are wrapped in parentheses
-3. [private folders](https://nextjs.org/docs/app/getting-started/project-structure#private-folders)
-    * folders whose names begin with `_`
+    - folders whose names are wrapped in parentheses
+2. [private folders](https://nextjs.org/docs/app/getting-started/project-structure#private-folders)
+    - folders whose names begin with `_`
 
 Within `@app,` Next allows us to create organizational folders using (rounded parentheses), called route groups. These folders do not become part of the URL. They are meant to be used the same way we've been using realms.
 
@@ -107,9 +107,9 @@ Within `@app,` Next allows us to create organizational folders using (rounded pa
 
 This PR establishes some of the core files for pages that were part of the `LoggedInUser` realm, which will now be called `main` for brevity (I think the shorter name will be less cumbersome.)
 
-The folder `@app/(main)` will house all of the pages that used to be in the `LoggedInUser` realm. When we create a `layout.tsx` file in this folder, it will be used for all pages in the folder (in addition to the root `@app/layout.tsx`). 
+The folder `@app/(main)` will house all of the pages that used to be in the `LoggedInUser` realm. When we create a `layout.tsx` file in this folder, it will be used for all pages in the folder (in addition to the root `@app/layout.tsx`).
 
-<img src="/portfolio/pull-requests/app-router-route-groups/02.webp" alt="" width="420">
+<img src="/portfolio/pull-requests/app-router-route-groups/02.webp" alt="App Router file tree showing nested main and root layouts around a Say Hi page" width="420">
 
 This file `@app/(main)/layout.tsx` is analogous to the `<RealmWrapper>` (_not_ the `<Layout>`). It will render things like the navigation, footer, and global hooks/components that don't need to re-mount on every route change.
 
@@ -153,7 +153,7 @@ See above. We will use parts of `<Layout>` to return the bottom portion of the p
 
 # Git history
 
-These files were copied using a [special method](https://devblogs.microsoft.com/oldnewthing/20190919-00/?p=102904) that preserves their history in git. Even when we delete the original files in `@realms`, these "new" files will retain their change history 🎉 
+These files were copied using a [special method](https://devblogs.microsoft.com/oldnewthing/20190919-00/?p=102904) that preserves their history in git. Even when we delete the original files in `@realms`, these "new" files will retain their change history 🎉
 
 See for yourself:
 

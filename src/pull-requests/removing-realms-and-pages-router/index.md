@@ -23,7 +23,7 @@ reviewCount: 3
 
 Pour one out for realms 🪦
 
-And no more Pages Router—all of our screens are now in App Router 🎉 
+And no more Pages Router—all of our screens are now in App Router 🎉
 
 > **Tip**
 >
@@ -37,7 +37,7 @@ See next section about what to use instead.
 
 ### 1.2 When to use `useINAppRouter` vs Next's `usePathname` and `useSearchParams`
 
-`useINAppRouter` combines the return values of `useRouter`, `usePathname`, and `useSearchParams` with our own `go()` function. It also served as  
+`useINAppRouter` combines the return values of `useRouter`, `usePathname`, and `useSearchParams` with our own `go()` function. It also served as
 
 However, if _any_ of the Next hooks have an internal change, `useINAppRouter` will trigger a re-render of the component. In many cases this is not be necessary or desirable.
 
@@ -61,9 +61,9 @@ const searchParams = useSearchParams()
 > What if we need `pathname` and `go` (or `push` or `replace`)?
 >
 >     const { go, pathname } = useINAppRouter()
-> 
+>
 > In this case you might as well leave it like that. `useINAppRouter` will trigger a re-render for changes to `pathname` anyway, even if you are getting `pathname` from `usePathname`. So calling one hook is probably better than calling two.
-> 
+>
 > I'm considering removing `pathname` and `searchParams` from `useINAppRouter`. **What do you think?**
 
 ### ~~1.3 Return type changes~~
@@ -86,8 +86,8 @@ const thing2 = searchParams?.get('foo')
 
 Although this information is true, we sadly cannot make use of it yet. When you run `yarn build`, Next adds the CompatRouter types to its generated type file. This makes the IDE linter complain that the values may be `null`. Even though [the docs](https://nextjs.org/docs/app/api-reference/functions/use-pathname) say this shouldn't happen without Pages Router in the picture, better safe than sorry.
 
-## 3. Tests 
-    
+## 3. Tests
+
 ### 3.1. Deprecated `appRouter: true`
 
 Now, all tests are wrapped in the App Router root layout and providers.
@@ -96,13 +96,13 @@ Now, all tests are wrapped in the App Router root layout and providers.
 >
 > Most changes in this PR are just removing this option.
 >
-> ![CleanShot 2025-05-26 at 07 19 02@2x](/portfolio/pull-requests/removing-realms-and-pages-router/01.webp)
+> ![GitHub diff removing the obsolete appRouter option from three navigation tests](/portfolio/pull-requests/removing-realms-and-pages-router/01.webp)
 
 ### 3.2. `render()` no longer supports the `realm` option
 
 `render(..., { realm: '...' })` is no longer possible
 
-If you're testing a component that can be run anywhere, this option can be safely dropped. 
+If you're testing a component that can be run anywhere, this option can be safely dropped.
 
 If the test only runs within one route group, either pass the route group's layout using the `wrapper` option, or use `usePathnameMock.mockReturnValue()` if you need to set the URL.
 
@@ -124,7 +124,7 @@ e.g. dialog and paywall providers, many others. We named them with `*Legacy` to 
 
 e.g. `isCheckout()`. We shouldn't need this anymore for 99% of cases because our code should be structured in a way that we can avoid it.
 
-<img alt="" width="420" src="/portfolio/pull-requests/removing-realms-and-pages-router/02.webp">
+<img alt="The useIsQueryEnabled hook with a redundant isCheckout condition highlighted as having no effect" width="420" src="/portfolio/pull-requests/removing-realms-and-pages-router/02.webp">
 
 > **Note**
 >
@@ -143,7 +143,5 @@ Continue using `<RouteTabs>` instead
 They were only used for `<NavTabs>`. Now, just use tabs the MUI way: https://mui.com/material-ui/react-tabs/#experimental-api
 
 ---
-
-INGIANA-252
 
 Blocks #10057

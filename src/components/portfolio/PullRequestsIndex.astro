@@ -13,9 +13,18 @@ const span = `${Math.min(...years)} – ${Math.max(...years)}`
         <p class={css.kicker}>Portfolio · Writing</p>
         <h1>Pull Request Descriptions</h1>
         <p class={css.deck}>
-            A pull request is usually a formality—a title, a ticket number, and a diff. I spent four years treating it
-            as the place where the actual teaching happens: what changed, why it changed, how to review it, and what the
-            team should do differently from now on.
+            For me, a pull request is not just a formality. It's the place where actual teaching can happen: what
+            changed, why it changed, how to review it, and what the team should do differently from now on.
+        </p>
+        <p class={css.deck}>
+            I believe that each pull request deserves its own narrative, its own approach. Some require background and
+            context, some require a detailed walkthrough of the code, some require a careful explanation of the
+            trade-offs. I try to write each one in a way that will make it easy for the reviewer to understand and learn
+            from.
+        </p>
+        <p class={css.deck}>
+            Every pull request description shown here was completely hand-written by me, before AI assistance was
+            available.
         </p>
         <div class:list={[css.headerStats, css.mono]}>
             <span>{entries.length} selected</span>
