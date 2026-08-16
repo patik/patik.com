@@ -6,8 +6,8 @@ import imgWithinViewportIcon from '@src/images/icons/within-viewport/ios/AppIcon
 import imgDofApp from '@src/images/portfolio/dof-app.webp'
 import imgDovetailHeroDark from '@src/images/portfolio/dovetail-hero-dark.webp'
 import imgDovetailHeroLight from '@src/images/portfolio/dovetail-hero-light.webp'
-import imgGinMain from '@src/images/portfolio/gin-main.png'
-import imgIncMain from '@src/images/portfolio/inc-main.png'
+import imgGinMain from '@src/images/portfolio/gin-main.webp'
+import imgIncMain from '@src/images/portfolio/inc-main.webp'
 import { Image } from 'astro:assets'
 import css from './PortfolioPage.module.css'
 ---
@@ -18,7 +18,7 @@ import css from './PortfolioPage.module.css'
         <h1>Code &amp; Projects</h1>
         <p class={css.deck}>
             I’m a Staff Frontend Engineer at <a href="https://www.internations.org/">InterNations</a> and I’ve been building
-            for the web since 2000. This page collects selected work: internal developer tools, a travel-planning product,
+            for the web since 2000. This page collects selected work: a travel-planning product, internal developer tools,
             command-line tools, and open-source libraries—some of them maintained for well over a decade.
         </p>
         <div class:list={[css.headerStats, css.mono]}>
@@ -32,7 +32,7 @@ import css from './PortfolioPage.module.css'
     <section class={css.section}>
         <div class={css.sectionHead}>
             <h2>
-                <span class={css.sectionNumber} aria-hidden="true">01 · Featured</span>
+                <span class={css.sectionNumber} aria-hidden="true">{' · Featured'}</span>
                 Dovetail
             </h2>
         </div>
@@ -111,7 +111,7 @@ import css from './PortfolioPage.module.css'
     <section class={css.section}>
         <div class={css.sectionHead}>
             <h2>
-                <span class={css.sectionNumber} aria-hidden="true">02</span>
+                <span class={css.sectionNumber} aria-hidden="true"></span>
                 Internal developer tools
             </h2>
             <p class={css.sectionNote}>
@@ -123,19 +123,22 @@ import css from './PortfolioPage.module.css'
         <div class={css.entries}>
             <div class={css.entry}>
                 <div class:list={[css.entryMedia, css.mediaStack]}>
-                    <div class={css.frame}>
-                        <div class={css.frameBar}>
-                            <span class={css.frameDots} aria-hidden="true"><span></span><span></span><span></span></span
-                            >
-                            <span class={css.frameTitle}>$ inc · command form and execution log</span>
-                        </div>
-                        <Image
-                            src={imgIncMain}
-                            alt="Inc showing a generated event form beside a searchable log of completed and failed development commands"
-                            widths={[700, 1200, 1800]}
-                            sizes="(max-width: 800px) 100vw, 530px"
-                        />
-                    </div>
+                    <a class={css.mediaLink} href={imgIncMain.src}>
+                        <span class={css.frame}>
+                            <span class={css.frameBar}>
+                                <span class={css.frameDots} aria-hidden="true"
+                                    ><span></span><span></span><span></span></span
+                                >
+                                <span class={css.frameTitle}>$ inc · command form and execution log</span>
+                            </span>
+                            <Image
+                                src={imgIncMain}
+                                alt="Inc showing a generated event form beside a searchable log of completed and failed development commands"
+                                widths={[700, 1200, 1800]}
+                                sizes="(max-width: 800px) 100vw, 530px"
+                            />
+                        </span>
+                    </a>
 
                     <div class={css.frame}>
                         <div class={css.frameBar}>
@@ -190,12 +193,6 @@ import css from './PortfolioPage.module.css'
                         <span class={css.tag}>Commander</span>
                         <span class={css.tag}>Vitest</span>
                     </div>
-                    <div class={css.linkRow}>
-                        <a href="https://github.com/InterNations/inc"
-                            >GitHub (private) <span aria-hidden="true">↗</span></a
-                        >
-                        <a href="/portfolio/media/inc-tab-completion.gif">Original completion GIF</a>
-                    </div>
                 </div>
             </div>
 
@@ -247,11 +244,6 @@ import css from './PortfolioPage.module.css'
                         <span class={css.tag}>date-fns</span>
                         <span class={css.tag}>Vitest</span>
                     </div>
-                    <div class={css.linkRow}>
-                        <a href="https://github.com/InterNations/gin"
-                            >GitHub (private) <span aria-hidden="true">↗</span></a
-                        >
-                    </div>
                 </div>
             </div>
         </div>
@@ -260,7 +252,7 @@ import css from './PortfolioPage.module.css'
     <section class={css.section}>
         <div class={css.sectionHead}>
             <h2>
-                <span class={css.sectionNumber} aria-hidden="true">03</span>
+                <span class={css.sectionNumber} aria-hidden="true"></span>
                 Command-line tools
             </h2>
             <p class={css.sectionNote}>
@@ -463,7 +455,7 @@ import css from './PortfolioPage.module.css'
     <section class={css.section}>
         <div class={css.sectionHead}>
             <h2>
-                <span class={css.sectionNumber} aria-hidden="true">04</span>
+                <span class={css.sectionNumber} aria-hidden="true"></span>
                 Apps &amp; sites
             </h2>
         </div>
@@ -533,7 +525,7 @@ import css from './PortfolioPage.module.css'
     <section class={css.section}>
         <div class={css.sectionHead}>
             <h2>
-                <span class={css.sectionNumber} aria-hidden="true">05</span>
+                <span class={css.sectionNumber} aria-hidden="true"></span>
                 Libraries
             </h2>
             <p class={css.sectionNote}>
@@ -620,7 +612,7 @@ import css from './PortfolioPage.module.css'
     <section class={css.section}>
         <div class={css.sectionHead}>
             <h2>
-                <span class={css.sectionNumber} aria-hidden="true">06</span>
+                <span class={css.sectionNumber} aria-hidden="true"></span>
                 Contributions
             </h2>
             <p class={css.sectionNote}>
@@ -700,7 +692,7 @@ import css from './PortfolioPage.module.css'
     <section class={css.section}>
         <div class={css.sectionHead}>
             <h2>
-                <span class={css.sectionNumber} aria-hidden="true">07</span>
+                <span class={css.sectionNumber} aria-hidden="true"></span>
                 From an earlier era
             </h2>
             <p class={css.sectionNote}>
