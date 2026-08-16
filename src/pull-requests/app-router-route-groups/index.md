@@ -1,5 +1,5 @@
 ---
-title: 'App Router Prep 11/x: Create structure for main route group in @app folder'
+title: 'App Router migration prep: Create structure for main route group in @app folder'
 prNumber: 8923
 date: '2024-12-09'
 kind: 'How to review it'
