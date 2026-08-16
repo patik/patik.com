@@ -116,6 +116,27 @@ for (const { path: routePath, label, width, height, target } of lightModeVisualC
     })
 }
 
+// Code blocks sit below every viewport captured above, so Expressive Code's rendering — the
+// frame, the theme, the copy button — had no baseline at all. Shot as an element rather than a
+// page so it stays put as the prose around it changes. Both schemes: the two themes are what
+// makes this worth covering.
+for (const scheme of ['dark', 'light'] as const) {
+    test(`pull-request-code-block-${scheme}: matches visual snapshot`, { tag: '@visual' }, async ({ page }) => {
+        test.skip(!IS_LINUX, 'Run Linux-only baselines with `pnpm test:visual`.')
+
+        await page.emulateMedia({ colorScheme: scheme, reducedMotion: 'reduce' })
+
+        await page.goto('/portfolio/pull-requests/react-query-v5-upgrade/', { waitUntil: 'networkidle' })
+
+        const codeBlock = page.locator('.expressive-code').first()
+
+        await expect(codeBlock).toBeVisible()
+        await expect(codeBlock).toHaveScreenshot(`pull-request-code-block-${scheme}.png`, {
+            maxDiffPixelRatio: 0.002,
+        })
+    })
+}
+
 // Not in `routes` — it's a photo detail page, not a page template — and dark mode is the
 // suite default (playwright.config.ts), so this is the only baseline covering the lightbox's
 // default (non-light-mode) chrome, e.g. the `--lightbox-ui-color` swap.

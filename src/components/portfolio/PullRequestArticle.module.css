@@ -564,14 +564,6 @@
     }
 }
 
-/* Shiki's github-dark theme colours comments #6A737D, which is only 3.04:1
-   against the block background and fails WCAG AA. Lift it to a passing grey
-   (5.8:1). Shiki writes the colour inline, hence the attribute match and
-   !important. */
-.ghBody pre :global([style*='#6a737d' i]) {
-    color: #9aa4ae !important;
-}
-
 .ghBody :global(.expressive-code) {
     margin-block: 0 16px;
 }

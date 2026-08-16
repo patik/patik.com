@@ -11,6 +11,9 @@ type LineNumberedBlock = ExpressiveCodeBlock & { props: { showLineNumbers?: bool
 export default defineConfig({
     integrations: [react()],
     markdown: {
+        // Astro's built-in Shiki would highlight code blocks before the rehype plugin below
+        // sees them, leaving Expressive Code — themes, frames, copy button — a no-op.
+        syntaxHighlight: false,
         processor: unified({
             rehypePlugins: [
                 rehypePullRequestImages,
