@@ -1,10 +1,10 @@
 ---
 import PullRequestArticle from '@src/components/portfolio/PullRequestArticle.astro'
 import Layout from '@src/layouts/Layout.astro'
-import { getCollection } from 'astro:content'
+import { getPullRequests } from '@src/utils/getPullRequests'
 
 export async function getStaticPaths() {
-    const entries = (await getCollection('pullRequests')).sort((a, b) => a.data.order - b.data.order)
+    const entries = await getPullRequests()
 
     return entries.map((entry, index) => ({
         params: { slug: entry.id },

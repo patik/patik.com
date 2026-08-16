@@ -19,31 +19,31 @@ Uses [Zustand](https://github.com/pmndrs/zustand) for a lightweight global store
 
 # Motivation & Goals
 
--   Would allow us to read and update some global data and preloaded data
-    -   Not a replacement for react-query
--   We could stop using `UNSAFE_*` functions and data
--   We can make `currentUser` more accessible, e.g. outside of React contexts
--   Use cases:
-    -   Impersonation status (can easily become stale)
-        -   Messenger needs it to avoid bugs around marking messages as read
-        -   Navigation menu items
-        -   Avoid overwriting push notification token or assigning the token to the wrong user in our backend
-    -   Things that live outside our API
-        -   Flash messages
-        -   Third party scripts (New Relic, Tag Manager, ads, etc)
-    -   Registration Community Explorer doesn't need to use unsafe current user from HTML
-    -   When data is needed outside the React scope; reading it from the HTML-extracted data means it could be stale
-        -   Container app
-            -   needs current user for some logging (e.g. when the app writes pending transactions to local storage it calls an SPA function directly)
-        -   Correlation ID
-        -   Browsing time zone
-            -   Use in API headers; also for calendar entry and group activities API calls
+- Would allow us to read and update some global data and preloaded data
+    - Not a replacement for react-query
+- We could stop using `UNSAFE_*` functions and data
+- We can make `currentUser` more accessible, e.g. outside of React contexts
+- Use cases:
+    - Impersonation status (can easily become stale)
+        - Messenger needs it to avoid bugs around marking messages as read
+        - Navigation menu items
+        - Avoid overwriting push notification token or assigning the token to the wrong user in our backend
+    - Things that live outside our API
+        - Flash messages
+        - Third party scripts (New Relic, Tag Manager, ads, etc)
+    - Registration Community Explorer doesn't need to use unsafe current user from HTML
+    - When data is needed outside the React scope; reading it from the HTML-extracted data means it could be stale
+        - Container app
+            - needs current user for some logging (e.g. when the app writes pending transactions to local storage it calls an SPA function directly)
+        - Correlation ID
+        - Browsing time zone
+            - Use in API headers; also for calendar entry and group activities API calls
 
 # General info on Zustand
 
--   [Intro/docs](https://github.com/pmndrs/zustand/tree/main#readme)
--   [Blog post: best practices](https://tkdodo.eu/blog/working-with-zustand)
--   [Blog post: dos and don'ts](https://medium.com/@nfailla93/zustand-in-react-dos-and-donts-5a608c26c68)
+- [Intro/docs](https://github.com/pmndrs/zustand/tree/main#readme)
+- [Blog post: best practices](https://tkdodo.eu/blog/working-with-zustand)
+- [Blog post: dos and don'ts](https://medium.com/@nfailla93/zustand-in-react-dos-and-donts-5a608c26c68)
 
 # How it works in the SPA
 
@@ -57,8 +57,8 @@ After this PR: The one big blob is spit up into two [slices](https://github.com/
 
 The slices I'm proposing we use:
 
--   `currentUser`
--   `unsyncedData` (i.e. everything else)
+- `currentUser`
+- `unsyncedData` (i.e. everything else)
 
 None of these slices needs to know anything about the others. In the end, all of the slices are **merged into one big store** that is used by the outside world.
 
@@ -118,9 +118,9 @@ const { data: currentUser } = useCurrentUser()
 
 ##### Benefits
 
--   react-query will automatically keep the data fresh (usually once every 5 minutes)
--   access to other query hook return values (`isLoading`, etc)
--   you component will automatically re-render when the data is updated
+- react-query will automatically keep the data fresh (usually once every 5 minutes)
+- access to other query hook return values (`isLoading`, etc)
+- you component will automatically re-render when the data is updated
 
 #### React component without `<QueryClientProvider>`
 
@@ -134,12 +134,12 @@ const currentUser = useStoredCurrentUserData()
 
 ##### Benefits
 
--   you component will automatically re-render when the data is updated
+- you component will automatically re-render when the data is updated
 
 ##### Drawbacks
 
--   react-query will **not** automatically keep the data fresh. You'll have to rely on some other component in the app to occasionally call `useCurrentUser`.
--   no access to other query hook return values (`isLoading`, etc)
+- react-query will **not** automatically keep the data fresh. You'll have to rely on some other component in the app to occasionally call `useCurrentUser`.
+- no access to other query hook return values (`isLoading`, etc)
 
 #### Non-React code
 
@@ -153,9 +153,9 @@ const currentUser = getCurrentUser()
 
 ##### Drawbacks
 
--   you code will **not** automatically get fresh values when the data is updated
--   react-query will **not** automatically keep the data fresh. You'll have to rely on some other component in the app to occasionally call `useCurrentUser`.
--   no access to other query hook return values (`isLoading`, etc)
+- you code will **not** automatically get fresh values when the data is updated
+- react-query will **not** automatically keep the data fresh. You'll have to rely on some other component in the app to occasionally call `useCurrentUser`.
+- no access to other query hook return values (`isLoading`, etc)
 
 ### Returned data
 
@@ -209,12 +209,12 @@ That said, in `localhost` and `dev` environments, there is no Symfony injection,
 
 ## Net changes in capability
 
-| Store slice     	| Capability                 	| Status quo 	| After this PR 	|
-|-----------------	|---------------------------	|------------	|---------------	|
-| 'Unsynced' data 	| Readable outside of React 	| ✅          	| ✅             	|
-|                 	| Writeable                 	| 🚫          	| ✅             	|
-|                 	| Synced with API           	| n/a        	| n/a           	|
-|                 	|                           	|            	|               	|
-| Current user    	| Readable outside of React 	| 🚫          	| ✅             	|
-|                 	| Writeable                 	| ✅          	| ✅             	|
-|                 	| Synced with API           	| 🚫          	| ✅             	|
+| Store slice     | Capability                | Status quo | After this PR |
+| --------------- | ------------------------- | ---------- | ------------- |
+| 'Unsynced' data | Readable outside of React | ✅         | ✅            |
+|                 | Writeable                 | 🚫         | ✅            |
+|                 | Synced with API           | n/a        | n/a           |
+|                 |                           |            |               |
+| Current user    | Readable outside of React | 🚫         | ✅            |
+|                 | Writeable                 | ✅         | ✅            |
+|                 | Synced with API           | 🚫         | ✅            |

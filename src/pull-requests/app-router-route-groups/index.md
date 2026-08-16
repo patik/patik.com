@@ -72,7 +72,7 @@ I've highlighted the top level URL segments by color:
 🟨 `GuestlistManager`
 🟥 `MandatoryRegistration`
 
-<img src="/portfolio/pull-requests/app-router-route-groups/01.webp" alt="Pages Router file tree grouped by the LoggedInUser, Checkout, GuestlistManager, and MandatoryRegistration realms" width="50" height="150">
+<a href="/portfolio/pull-requests/app-router-route-groups/01.webp"><img src="/portfolio/pull-requests/app-router-route-groups/01.webp" alt="Pages Router file tree grouped by the LoggedInUser, Checkout, GuestlistManager, and MandatoryRegistration realms" width="50"></a>
 
 Click to expand. I accidentally cut off some more pages at the bottom (`/downgrade`, `/start`, etc), but they're all in 🟩 `LoggedInUser`.
 

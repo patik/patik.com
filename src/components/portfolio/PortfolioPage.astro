@@ -6,19 +6,35 @@ import imgWithinViewportIcon from '@src/images/icons/within-viewport/ios/AppIcon
 import imgDofApp from '@src/images/portfolio/dof-app.webp'
 import imgDovetailHeroDark from '@src/images/portfolio/dovetail-hero-dark.webp'
 import imgDovetailHeroLight from '@src/images/portfolio/dovetail-hero-light.webp'
+import { getPullRequests } from '@src/utils/getPullRequests'
 import { Image } from 'astro:assets'
 import css from './PortfolioPage.module.css'
 
-/** Mirrors the section headings below; update both together. */
+/** The contents list and the headings below both read from this, so they can't drift apart. */
 const sections = [
-    { id: 'dovetail', number: '01', label: 'Dovetail' },
+    { id: 'dovetail', number: '01', label: 'Dovetail Travel Planner' },
     { id: 'command-line-tools', number: '02', label: 'Command-line tools' },
     { id: 'apps-and-sites', number: '03', label: 'Apps & sites' },
     { id: 'libraries', number: '04', label: 'Libraries' },
     { id: 'writing', number: '05', label: 'Writing' },
     { id: 'contributions', number: '06', label: 'Contributions' },
     { id: 'earlier-era', number: '07', label: 'From an earlier era' },
-]
+] as const
+
+function section(id: (typeof sections)[number]['id']) {
+    const match = sections.find((entry) => entry.id === id)
+
+    if (!match) {
+        throw new Error(`Unknown portfolio section: ${id}`)
+    }
+
+    return match
+}
+
+// Counted rather than written down, so this can't contradict the page it links to.
+const pullRequests = await getPullRequests()
+const pullRequestYears = pullRequests.map((entry) => entry.data.date.getUTCFullYear())
+const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pullRequestYears)}`
 ---
 
 <div class={css.portfolio}>
@@ -53,8 +69,8 @@ const sections = [
     <section id="dovetail" class={css.section}>
         <div class={css.sectionHead}>
             <h2>
-                <span class={css.sectionNumber} aria-hidden="true">01 · Featured</span>
-                Dovetail Travel Planner
+                <span class={css.sectionNumber} aria-hidden="true">{section('dovetail').number} · Featured</span>
+                {section('dovetail').label}
             </h2>
         </div>
 
@@ -132,8 +148,8 @@ const sections = [
     <section id="command-line-tools" class={css.section}>
         <div class={css.sectionHead}>
             <h2>
-                <span class={css.sectionNumber} aria-hidden="true">02</span>
-                Command-line tools
+                <span class={css.sectionNumber} aria-hidden="true">{section('command-line-tools').number}</span>
+                {section('command-line-tools').label}
             </h2>
             <p class={css.sectionNote}>
                 Developer experience is a feature. Small tools that remove daily friction from the terminal—each one
@@ -335,8 +351,8 @@ const sections = [
     <section id="apps-and-sites" class={css.section}>
         <div class={css.sectionHead}>
             <h2>
-                <span class={css.sectionNumber} aria-hidden="true">03</span>
-                Apps &amp; sites
+                <span class={css.sectionNumber} aria-hidden="true">{section('apps-and-sites').number}</span>
+                {section('apps-and-sites').label}
             </h2>
         </div>
 
@@ -405,8 +421,8 @@ const sections = [
     <section id="libraries" class={css.section}>
         <div class={css.sectionHead}>
             <h2>
-                <span class={css.sectionNumber} aria-hidden="true">04</span>
-                Libraries
+                <span class={css.sectionNumber} aria-hidden="true">{section('libraries').number}</span>
+                {section('libraries').label}
             </h2>
             <p class={css.sectionNote}>
                 Long-term maintenance is the point. These have been carried across several eras of the JavaScript
@@ -492,8 +508,8 @@ const sections = [
     <section id="writing" class={css.section}>
         <div class={css.sectionHead}>
             <h2>
-                <span class={css.sectionNumber} aria-hidden="true">05</span>
-                Writing
+                <span class={css.sectionNumber} aria-hidden="true">{section('writing').number}</span>
+                {section('writing').label}
             </h2>
             <p class={css.sectionNote}>
                 The other half of engineering is explaining it. A pull request is the moment a team decides whether to
@@ -507,14 +523,15 @@ const sections = [
                 <div>
                     <h3>Pull request descriptions</h3>
                     <div class:list={[css.entryMeta, css.mono]}>
-                        <span>2022 – 2026</span>
+                        <span>{pullRequests.length} selected</span>
+                        <span>{pullRequestSpan}</span>
                         <span>InterNations</span>
                     </div>
                     <div class={css.prose}>
                         <p>
-                            Fourteen pull requests from a long run of frontend platform migrations, selected for the
-                            writing rather than the code. Each one sets out what changed and why, how to review it, and
-                            what the team should do differently afterwards—a strict TypeScript flag, two major framework
+                            Pull requests from a long run of frontend platform migrations, selected for the writing
+                            rather than the code. Each one sets out what changed and why, how to review it, and what the
+                            team should do differently afterwards—a strict TypeScript flag, two major framework
                             versions, a global store, a router.
                         </p>
                     </div>
@@ -529,8 +546,8 @@ const sections = [
     <section id="contributions" class={css.section}>
         <div class={css.sectionHead}>
             <h2>
-                <span class={css.sectionNumber} aria-hidden="true">06</span>
-                Contributions
+                <span class={css.sectionNumber} aria-hidden="true">{section('contributions').number}</span>
+                {section('contributions').label}
             </h2>
             <p class={css.sectionNote}>
                 Notable work from my public-sector years, built with the New York State Office of Information Technology
@@ -609,8 +626,8 @@ const sections = [
     <section id="earlier-era" class={css.section}>
         <div class={css.sectionHead}>
             <h2>
-                <span class={css.sectionNumber} aria-hidden="true">07</span>
-                From an earlier era
+                <span class={css.sectionNumber} aria-hidden="true">{section('earlier-era').number}</span>
+                {section('earlier-era').label}
             </h2>
             <p class={css.sectionNote}>
                 Kept online because old links shouldn’t rot. Interesting today mainly as artifacts of what the web used

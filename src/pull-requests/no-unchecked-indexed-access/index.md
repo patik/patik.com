@@ -29,7 +29,7 @@ This PR prepares some **Tetris**-related files so that they will not have errors
 
 [The `noUncheckedIndexedAccess` option](https://www.typescriptlang.org/tsconfig/#noUncheckedIndexedAccess) in TypeScript prevents developers from accessing array elements until it has been proven that the element actually exists. Generally, we need to be careful not to access `foo[0]` until we've proven it's defined (e.g. `if (foo.length > 0 && foo[0]) { ... }`).
 
-<img src="/portfolio/pull-requests/no-unchecked-indexed-access/01.webp" alt="TypeScript Playground showing that an indexed array access can be undefined" width="320">
+<img src="/portfolio/pull-requests/shared/no-unchecked-indexed-access/01.webp" alt="TypeScript Playground showing that an indexed array access can be undefined" width="320">
 
 [Playground Link](https://www.typescriptlang.org/play/?noUncheckedIndexedAccess=true&allowUnreachableCode=true#code/MYewdgzgLgBAhgJwQLhgQSXAngHmggSzAHMA+GAXhgG0BdAKHsQWoAZaA6KEAGRAHcApggDCcCIIAUASiA)
 
@@ -79,7 +79,7 @@ if (foo?.bar === 1) {
 
 It can be very tempting to use this operator a lot, but it comes with many gotchas.
 
-![Confused JavaScript developers meme illustrating the pitfalls of optional chaining](/portfolio/pull-requests/no-unchecked-indexed-access/02.webp)
+![Confused JavaScript developers meme illustrating the pitfalls of optional chaining](/portfolio/pull-requests/shared/no-unchecked-indexed-access/02.webp)
 
 ## Truthy/falsy conditions
 

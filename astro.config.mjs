@@ -4,6 +4,7 @@ import { unified } from '@astrojs/markdown-remark'
 import react from '@astrojs/react'
 import { defineConfig } from 'astro/config'
 import rehypeExpressiveCode from 'rehype-expressive-code'
+import rehypePullRequestImages from './scripts/rehype-pull-request-images.mjs'
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,6 +12,7 @@ export default defineConfig({
     markdown: {
         processor: unified({
             rehypePlugins: [
+                rehypePullRequestImages,
                 [
                     rehypeExpressiveCode,
                     {

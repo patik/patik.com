@@ -1,10 +1,11 @@
 ---
-import { getCollection } from 'astro:content'
+import { getPullRequests } from '@src/utils/getPullRequests'
 import css from './PullRequestsIndex.module.css'
 
-const entries = (await getCollection('pullRequests')).sort((a, b) => a.data.order - b.data.order)
+const entries = await getPullRequests()
 
-const years = entries.map((entry) => entry.data.date.getFullYear())
+// Dates are UTC midnight, so read them back in UTC too — see PullRequestArticle.astro.
+const years = entries.map((entry) => entry.data.date.getUTCFullYear())
 const span = `${Math.min(...years)} – ${Math.max(...years)}`
 ---
 
@@ -60,6 +61,7 @@ const span = `${Math.min(...years)} – ${Math.max(...years)}`
                                 {entry.data.date.toLocaleDateString('en-GB', {
                                     year: 'numeric',
                                     month: 'long',
+                                    timeZone: 'UTC',
                                 })}
                             </time>
                         </p>

@@ -12,17 +12,23 @@ const { entry, previous, next } = Astro.props
 const { Content } = await render(entry)
 
 // `baseBranch`/`headBranch` stay in the frontmatter as a record, but aren't shown.
-const { author, state, additions, deletions, changedFiles } = entry.data
+const { author, state, additions, deletions, changedFiles, reviewCount } = entry.data
 
 const stateLabel = state === 'merged' ? 'Merged' : state === 'closed' ? 'Closed' : 'Open'
-const mergeVerb = state === 'merged' ? 'merged' : 'wanted to merge'
+const mergeVerb = state === 'merged' ? 'merged' : state === 'closed' ? 'wanted to merge' : 'wants to merge'
 
 const numberFormatter = new Intl.NumberFormat('en-GB')
+// Dates are authored as plain `YYYY-MM-DD`, which parses to UTC midnight. Without a timeZone the
+// build machine's offset decides the day, so a build west of UTC renders the day before.
 const openedOn = entry.data.date.toLocaleDateString('en-GB', {
     year: 'numeric',
     month: 'short',
     day: 'numeric',
+    timeZone: 'UTC',
 })
+
+const reviewSummary =
+    reviewCount > 0 ? ` after ${numberFormatter.format(reviewCount)} review${reviewCount === 1 ? '' : 's'}` : ''
 ---
 
 <article class={css.page}>
@@ -68,7 +74,7 @@ const openedOn = entry.data.date.toLocaleDateString('en-GB', {
                     {stateLabel}
                 </span>
                 <span class={css.ghSubtext}>
-                    <strong>{author}</strong>{' '}{mergeVerb} this pull request
+                    <strong>{author}</strong>{' '}{mergeVerb} this pull request{reviewSummary}
                 </span>
             </div>
         </div>
@@ -92,7 +98,6 @@ const openedOn = entry.data.date.toLocaleDateString('en-GB', {
                 alt=""
                 width="40"
                 height="40"
-                loading="lazy"
             />
             <div class={css.ghComment}>
                 <div class={css.ghCommentHeader}>
