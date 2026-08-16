@@ -15,10 +15,10 @@ changedFiles: 20
 reviewCount: 3
 ---
 
-<details>
-<summary>
 <em>This PR series prepares us for adopting <a href="https://nextjs.org/docs/app">Next's App Router</a> (NAR). For those who prefer videos, <a href="https://www.youtube.com/watch?v=YQMSietiFm0">this one's</a> quite a good explanation of the migration.</em>
-</summary>
+
+<details>
+<summary>Pull requests in this series</summary>
 
 * PR #8761
 * PR #8762

@@ -65,7 +65,7 @@ useEffect(() => {
 
 In this case `useEffect` will re-run every single time, even though `foo` is always assigned the "same" value. This is because the expression `const foo` creates a new variable in memory. The `foo` from the first render is located in a different part of memory than the `foo` from the second render. When React evaluates the dependencies of `useEffect`, it considers `foo` to have changed if it's pointed to a **different place in memory**.
 
-[<img src="/portfolio/pull-requests/referential-stability/01.webp" alt="" width="400"/>](https://dev.to/vicnovais/understanding-referential-equality-in-reacts-useeffect-2m7o)
+[<img src="/portfolio/pull-requests/referential-stability/01.webp" alt="Two renders each building their own array in memory: the contents are equal but the references are not" width="400"/>](https://dev.to/vicnovais/understanding-referential-equality-in-reacts-useeffect-2m7o)
 
 To get around this, we can take care to ensure that our objects and arrays are always stored in the same part of memory.
 

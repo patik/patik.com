@@ -174,21 +174,21 @@ Under the old system, this would always render `Alpha` and `Bravo` on a mobile d
 
 Requirements for this PR series, from INTETRIS-1881 and INTETRIS-1882:
 
-- [x] ~~The values never change. If it says `isMobile` is `false`, then it will continue to be `false` on every single render (assuming you don't resize the browser).~~
+- ✔︎ ~~The values never change. If it says `isMobile` is `false`, then it will continue to be `false` on every single render (assuming you don't resize the browser).~~
     * Turns out this is simply impossible in the modern React world because client rendering and server rendering will always be different
-- [x] Always boolean values, no more `undefined`
-- [x] Values are defined from the very first render
+- ✔︎ Always boolean values, no more `undefined`
+- ✔︎ Values are defined from the very first render
     * ...**BUT** they are still `false` at first, which is unavoidable
-- [x] ~~`isMobile` and `isDesktop` always have opposite values (e.g. they can never be `false` at the same time)~~
+- ✔︎ ~~`isMobile` and `isDesktop` always have opposite values (e.g. they can never be `false` at the same time)~~
     * Not possible, see above
-- [x] No more React hydration errors
+- ✔︎ No more React hydration errors
     * This is resolved in #3965 because the errors are coming from the navigation. (You'll still see the errors on this branch.)
-- [x] ~~Tests~~ 
+- ✔︎ ~~Tests~~ 
     * It does not appear to be possible to test components against different media queries with Jest because of shortcomings with jsdom. Instead, we'll have to rely on Percy visual regression tests, snapshots, and acceptance tests.
     * Existing tests are fixed in #3965
-- [x] Navigation should not jump around (i.e. number of items should be consistent between every render)
+- ✔︎ Navigation should not jump around (i.e. number of items should be consistent between every render)
     * Resolved in #3965
-- [x] Messenger should not have problems (e.g. should not auto-select a conversation on mobile)
+- ✔︎ Messenger should not have problems (e.g. should not auto-select a conversation on mobile)
 
 ---
 

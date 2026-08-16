@@ -115,8 +115,8 @@
 
 .gh {
     --gh-font:
-        -apple-system, blinkmacsystemfont, 'Segoe UI', 'Noto Sans', helvetica, arial, sans-serif,
-        'Apple Color Emoji', 'Segoe UI Emoji';
+        -apple-system, blinkmacsystemfont, 'Segoe UI', 'Noto Sans', helvetica, arial, sans-serif, 'Apple Color Emoji',
+        'Segoe UI Emoji';
     --gh-mono: ui-monospace, sfmono-regular, 'SF Mono', menlo, consolas, monospace;
 
     /* GitHub Primer, light */
@@ -481,6 +481,12 @@
         padding: 0 1em;
         color: var(--gh-fg-muted);
         border-left: 0.25em solid var(--gh-border);
+
+        /* Foundation sets `blockquote p { color: #6f6f6f }` on the paragraph
+           itself, so the colour above never reaches it — 3.76:1 in dark mode. */
+        & :is(p, li) {
+            color: inherit;
+        }
 
         & > *:first-child {
             margin-top: 0;
