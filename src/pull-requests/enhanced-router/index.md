@@ -31,6 +31,7 @@ The tests may not pass in most PRs, but they will pass in the last one (because 
 6. Remove useRouteNavigation PR #7075
 7. Remove useRouteNavigation PR #7076
 8. Remove useRouteNavigation PR #7077
+
 </details>
 
 ---
@@ -47,14 +48,14 @@ Lastly, we have several different hooks related to routing—`useRouter`, `useRo
 
 All the route related stuff is now rolled into one hook:
 
-* All `NextRouter` values and functions 
-* `currentRoute`
-* `go()` for navigating to routes
+- All `NextRouter` values and functions
+- `currentRoute`
+- `go()` for navigating to routes
 
 ```tsx
 const { go, currentRoute, asPath, pathname, query, isReady, push, replace, ... } = useINRouter()
         ^^  ^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        |        |                    |  
+        |        |                    |
         |        |                    ⌞ all values/functions from Next's `useRouter` are passed through
         |        |
         |        ⌞ the `TRoute` for the current page
@@ -66,21 +67,21 @@ const { go, currentRoute, asPath, pathname, query, isReady, push, replace, ... }
 
 These changes are **mandatory** and must be used from now on:
 
-* Instead of `route.go()`, use `go(route)`
-* No more `routeNav` or `useRouteNavigation`
+- Instead of `route.go()`, use `go(route)`
+- No more `routeNav` or `useRouteNavigation`
 
 These changes are **optional**:
 
-* Instead of `useRouter()`, call `useINRouter()`
-    * `useINRouter()` is preferred, but there are some places where we cannot use it (e.g. outside of some providers)
-* Instead of `useCurrentRoute()`, get the same value from `useINRouter()`
-    * This depends on whether you need the other values returned by `useINRouter` in the same component. If you do need them, then you might as well get everything from one hook call: `const { currentRoute, asPath, query } = useINRouter()`. But if all you need is `currentRoute`, then it's fine to just call `useCurrentRoute`.
+- Instead of `useRouter()`, call `useINRouter()`
+    - `useINRouter()` is preferred, but there are some places where we cannot use it (e.g. outside of some providers)
+- Instead of `useCurrentRoute()`, get the same value from `useINRouter()`
+    - This depends on whether you need the other values returned by `useINRouter` in the same component. If you do need them, then you might as well get everything from one hook call: `const { currentRoute, asPath, query } = useINRouter()`. But if all you need is `currentRoute`, then it's fine to just call `useCurrentRoute`.
 
 ### Before
 
 ```tsx
-import { myRoute } from '@routes/catalog'
 import { useCurrentRoute } from '@data/store/slices/route/getters'
+import { myRoute } from '@routes/catalog'
 import { useRouteNavigation } from '@routes/utils/useRouteNavigation'
 import { useRouter } from 'next/router'
 
@@ -113,13 +114,13 @@ function Component() {
 
 _tl;dr: Times have changed, we no longer need it_
 
-`useRouteNavigation` was created as a way to provide routes with some information that was only available in a React scope. For example, `route.go()` needs access to `NextRouter` and the `QueryClient` to make decisions about how it will navigate. 
+`useRouteNavigation` was created as a way to provide routes with some information that was only available in a React scope. For example, `route.go()` needs access to `NextRouter` and the `QueryClient` to make decisions about how it will navigate.
 
 Back when it was created, we didn't have a way to share this information with `TRoute` objects. Nowadays we have a global store that can do this. Also, at that time, importing `NextRouter` into the `Route.ts` class file seemed to break Jest, but now it seems to work fine. Perhaps something changed with either Next or Jest in the last couple of years.
 
 Most importantly, there are drawbacks to `useRouteNavigation`:
 
-* It can cause components to re-render even when the component itself has nothing new to display
-* Sometimes we need to call `.go` outside of a React scope, which means we need to prop-drill or pass `routeNav` around a lot
+- It can cause components to re-render even when the component itself has nothing new to display
+- Sometimes we need to call `.go` outside of a React scope, which means we need to prop-drill or pass `routeNav` around a lot
 
 After these PRs, you can navigate to a route just by calling `route.go()` with no arguments.

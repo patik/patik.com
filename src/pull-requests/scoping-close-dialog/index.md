@@ -22,32 +22,32 @@ reviewCount: 4
 1. PR #8082
 1. PR #8058
 1. Removing prop-drilling and improving prop-passing in components that use dialogs:
-    * PR #8084
-    * PR #8108
-    * PR #8107
-    * PR #8085
-    * PR #8087
-    * PR #8088
-    * PR #8089
-    * PR #8090
-    * PR #8091
-    * PR #8092
-    * PR #8093
-    * PR #8094
-    * PR #8095
-    * PR #8096
-    * PR #8097
-    * PR #8098
-    * PR #8099
-    * PR #8100
-    * PR #8101
-    * PR #8102
-    * PR #8103
-    * PR #8104
-    * PR #8105
-    * PR #8106
-    * PR #8129
-    * PR #8130
+    - PR #8084
+    - PR #8108
+    - PR #8107
+    - PR #8085
+    - PR #8087
+    - PR #8088
+    - PR #8089
+    - PR #8090
+    - PR #8091
+    - PR #8092
+    - PR #8093
+    - PR #8094
+    - PR #8095
+    - PR #8096
+    - PR #8097
+    - PR #8098
+    - PR #8099
+    - PR #8100
+    - PR #8101
+    - PR #8102
+    - PR #8103
+    - PR #8104
+    - PR #8105
+    - PR #8106
+    - PR #8129
+    - PR #8130
 
 </details>
 
@@ -56,7 +56,7 @@ reviewCount: 4
 ## TL;DR
 
 1. if you have `const { closeDialog } = useDialog('foo')` and you call `closeDialog()`, it will only close the dialog `foo` (instead of closing any dialog that happens to be open at the moment)
-3. let's stop passing `closeDialog` as a prop and instead pass the dialog tracking label (`'foo' in the previous example)
+2. let's stop passing `closeDialog` as a prop and instead pass the dialog tracking label (`'foo' in the previous example)
 
 ---
 
@@ -83,15 +83,15 @@ But often we want to close only _one specific dialog_, without affecting any oth
 There are two issues I want to address with this PR series:
 
 1. Avoid prop-drilling with `closeDialog`
-      * If you're not familiar, the general problems with prop-drilling are outlined here: https://dev.to/codeofrelevancy/what-is-prop-drilling-in-react-3kol#the-problems-with-prop-drilling
-      * additionally, since this is a function (and not a primitive value), using it as a prop causes additional re-renders. We can use memoization to avoid this, but that adds some other overhead that we may not want in many cases.
+    - If you're not familiar, the general problems with prop-drilling are outlined here: https://dev.to/codeofrelevancy/what-is-prop-drilling-in-react-3kol#the-problems-with-prop-drilling
+    - additionally, since this is a function (and not a primitive value), using it as a prop causes additional re-renders. We can use memoization to avoid this, but that adds some other overhead that we may not want in many cases.
 1. Make it possible to close a dialog when it's not practical to pass `closeDialog`
-    * In the container app, after the user purchases a new subscription, we want to close the paywall dialog. However, this process takes several seconds, and user may have already closed the paywall on their own. So we want to call `closeDialog()` and have it close _only_ the paywall. Because this process involves multiple asynchronous steps, passing the original `closeDialog()` as parameter would be a huge mess.
+    - In the container app, after the user purchases a new subscription, we want to close the paywall dialog. However, this process takes several seconds, and user may have already closed the paywall on their own. So we want to call `closeDialog()` and have it close _only_ the paywall. Because this process involves multiple asynchronous steps, passing the original `closeDialog()` as parameter would be a huge mess.
 
 ## Coding changes
 
-1. Internally, the `DIALOG_CLOSE` action will always include the dialog ID in the payload. The reducer will check that this ID matches the currently opened dialog before closing the dialog. 
-4. I added a type alias `DialogId` for the string that we pass to `useDialog`, which matches the type `DialogTrackingEventLabel`. In addition to being shorter and easier to remember, I think this reinforces the idea that we need to treat each dialog as a unique instance. This type will be used later in this PR series.
+1. Internally, the `DIALOG_CLOSE` action will always include the dialog ID in the payload. The reducer will check that this ID matches the currently opened dialog before closing the dialog.
+2. I added a type alias `DialogId` for the string that we pass to `useDialog`, which matches the type `DialogTrackingEventLabel`. In addition to being shorter and easier to remember, I think this reinforces the idea that we need to treat each dialog as a unique instance. This type will be used later in this PR series.
 
 To be clear, devs don't _need_ to do anything different when using `useDialog` or `closeDialog`. That said, I think there are some changes we _should_ make across our codebase, as described below.
 
@@ -101,7 +101,7 @@ Because of the very "loose" nature of `closeDialog()` up until now, we may have 
 
 Therefore, we need to go through each place where we call `closeDialog()`, trace it back to the `useDialog()` where it came from, and make sure the behavior won't be affected by this PR.
 
-I've already done this research, and fortunately, we didn't make any mistakes, so we can all pat ourselves on the back for being such fastidious developers 🤓 👏 
+I've already done this research, and fortunately, we didn't make any mistakes, so we can all pat ourselves on the back for being such fastidious developers 🤓 👏
 
 Even so, since I'm going through all of these use cases anyway, I think it's worthwhile to replace our `closeDialog` props with dialog IDs (strings) because of the issue described next.
 
@@ -188,7 +188,7 @@ When the hooks `useDialog` and `useQuery` are re-rendered, this table shows whet
 </tbody>
 </table>
 
-It's a small difference, admittedly. But when `closeDialog` is passed through multiple children, the number of avoided re-renders begins to grow. 
+It's a small difference, admittedly. But when `closeDialog` is passed through multiple children, the number of avoided re-renders begins to grow.
 
 In most cases we can take this a step further and move the dialog ID to a shared (or exported) `const`. Then we don't need to pass any props at all. The number of re-renders stays the same, but the code becomes a bit cleaner:
 
