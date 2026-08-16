@@ -20,7 +20,7 @@ This is an Astro-based personal website with blog and photo galleries, deployed 
 
 ### Path aliases
 
-Use `@src/` for imports from the `src/` directory (configured in `astro.config.mjs` and `tsconfig.json`).
+Use `@src/` for imports from the `src/` directory (configured in `astro.config.ts` and `tsconfig.json`).
 
 ## Frontend conventions
 

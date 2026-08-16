@@ -1,10 +1,11 @@
-// @ts-check
 import { fileURLToPath } from 'url'
 import { unified } from '@astrojs/markdown-remark'
 import react from '@astrojs/react'
 import { defineConfig } from 'astro/config'
-import rehypeExpressiveCode from 'rehype-expressive-code'
+import rehypeExpressiveCode, { type ExpressiveCodeBlock } from 'rehype-expressive-code'
 import rehypePullRequestImages from './scripts/rehype-pull-request-images.mts'
+
+type LineNumberedBlock = ExpressiveCodeBlock & { props: { showLineNumbers?: boolean } }
 
 // https://astro.build/config
 export default defineConfig({
@@ -28,10 +29,7 @@ export default defineConfig({
                             {
                                 name: 'add-line-numbers',
                                 hooks: {
-                                    /**
-                                     * @param {{ codeBlock: import('rehype-expressive-code').ExpressiveCodeBlock & { props: { showLineNumbers?: boolean } } }} args
-                                     */
-                                    preprocessMetadata: ({ codeBlock }) => {
+                                    preprocessMetadata: ({ codeBlock }: { codeBlock: LineNumberedBlock }) => {
                                         // Add showLineNumbers if not already present.
                                         if (!codeBlock.props.showLineNumbers) {
                                             codeBlock.props.showLineNumbers = true
