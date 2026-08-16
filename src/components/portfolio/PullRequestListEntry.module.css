@@ -1,0 +1,79 @@
+/* Colour tokens and the `pr` counter both come from the list this sits in
+   (PullRequestsIndex.module.css). Custom properties and CSS counters cascade
+   through the DOM, so they cross the module boundary. */
+
+.entry {
+    counter-increment: pr;
+    border-top: 1px solid var(--rule);
+
+    &:last-child {
+        border-bottom: 1px solid var(--rule);
+    }
+}
+
+.entryLink {
+    display: block;
+    padding: 1.75rem 1rem 1.75rem 0;
+    text-decoration: none;
+    color: inherit !important;
+    transition: background-color 120ms ease;
+
+    &:hover,
+    &:focus-visible {
+        background: var(--hover-bg);
+
+        & .entryTitle {
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 0.2em;
+        }
+    }
+
+    @media (min-width: 561px) {
+        padding-inline-start: 3.25rem;
+        position: relative;
+
+        &::before {
+            content: counter(pr, decimal-leading-zero);
+            position: absolute;
+            left: 0;
+            top: 1.95rem;
+            font-family: var(--font-fixed);
+            font-size: 0.75rem;
+            letter-spacing: 0.12em;
+            color: var(--muted);
+        }
+    }
+}
+
+.entryKind {
+    font-family: var(--font-fixed);
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+}
+
+.entryTitle {
+    font-size: 1.35rem;
+    line-height: 1.25;
+    margin: 0 0 0.35rem;
+}
+
+.entryStandfirst {
+    font-size: 1.1rem;
+    line-height: 1.55;
+    color: var(--muted);
+    max-width: 42em;
+    margin-bottom: 0.5rem;
+}
+
+.entryMeta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.1rem;
+    font-family: var(--font-fixed);
+    font-size: 0.78rem;
+    color: var(--muted);
+}

@@ -5,6 +5,7 @@ date: '2024-02-27'
 kind: 'Migration guide'
 standfirst: 'A library major-version bump with every trap mapped in advance.'
 order: 4
+featured: true
 author: 'patik'
 state: 'merged'
 baseBranch: 'deploy/2024-03-21'

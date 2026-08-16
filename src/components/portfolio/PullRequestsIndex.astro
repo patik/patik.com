@@ -1,12 +1,18 @@
 ---
 import { getPullRequests } from '@src/utils/getPullRequests'
+import Entry from './PullRequestListEntry.astro'
 import css from './PullRequestsIndex.module.css'
 
 const entries = await getPullRequests()
 
+const featured = entries.filter((entry) => entry.data.featured)
+const rest = entries.filter((entry) => !entry.data.featured)
+
 // Dates are UTC midnight, so read them back in UTC too — see PullRequestArticle.astro.
 const years = entries.map((entry) => entry.data.date.getUTCFullYear())
 const timeSpan = `${Math.min(...years)} – ${Math.max(...years)}`
+
+const wordedCount = new Intl.NumberFormat('en-GB').format(rest.length)
 ---
 
 <div class={css.collection}>
@@ -23,10 +29,7 @@ const timeSpan = `${Math.min(...years)} – ${Math.max(...years)}`
             trade-offs. I try to write each one in a way that will make it easy for the reviewer to understand and learn
             from.
         </p>
-        <p class={css.deck}>
-            Every pull request description shown here was completely hand-written by me, before AI assistance was
-            available.
-        </p>
+        <p class={css.deck}>Every pull request shown here was completely hand-written by me, without AI assistance.</p>
         <div class:list={[css.headerStats, css.mono]}>
             <span>{entries.length} selected</span>
             <span>{timeSpan}</span>
@@ -49,27 +52,28 @@ const timeSpan = `${Math.min(...years)} – ${Math.max(...years)}`
     </div>
 
     <ol class={css.entries}>
-        {
-            entries.map((entry) => (
-                <li class={css.entry}>
-                    <a class={css.entryLink} href={`/portfolio/pull-requests/${entry.id}/`}>
-                        <p class={css.entryKind}>{entry.data.kind}</p>
-                        <h2 class={css.entryTitle}>{entry.data.title}</h2>
-                        <p class={css.entryStandfirst}>{entry.data.standfirst}</p>
-                        <p class:list={[css.entryMeta, css.mono]}>
-                            <time datetime={entry.data.date.toISOString()}>
-                                {entry.data.date.toLocaleDateString('en-GB', {
-                                    year: 'numeric',
-                                    month: 'long',
-                                    timeZone: 'UTC',
-                                })}
-                            </time>
-                        </p>
-                    </a>
-                </li>
-            ))
-        }
+        {featured.map((entry) => <Entry entry={entry} />)}
     </ol>
+
+    {
+        rest.length > 0 && (
+            <details class={css.more}>
+                <summary class={css.moreSummary}>
+                    {wordedCount} more
+                    <span class={css.moreHint} aria-hidden="true">
+                        {' '}
+                        ↓
+                    </span>
+                </summary>
+                {/* The counter keeps running so the two lists read as one collection */}
+                <ol class={css.entries} style={`counter-reset: pr ${featured.length}`}>
+                    {rest.map((entry) => (
+                        <Entry entry={entry} />
+                    ))}
+                </ol>
+            </details>
+        )
+    }
 
     <p class={css.outro}>
         Back to <a href="/portfolio/">the rest of the portfolio</a>.

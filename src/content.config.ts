@@ -28,6 +28,8 @@ const pullRequests = defineCollection({
         standfirst: z.string(),
         /** Position in the curated running order */
         order: z.number(),
+        /** Shown up front on the index; the rest sit behind a disclosure */
+        featured: z.boolean().optional(),
         /** Fields below reproduce the original pull request's header */
         author: z.string(),
         state: z.enum(['merged', 'closed', 'open']),

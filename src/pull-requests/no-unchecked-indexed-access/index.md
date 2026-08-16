@@ -5,6 +5,7 @@ date: '2024-05-29'
 kind: 'Teaching document'
 standfirst: 'One reference document, written once and amortized across a 28-pull-request series.'
 order: 2
+featured: true
 author: 'patik'
 state: 'merged'
 baseBranch: 'deploy/2024-06-11'

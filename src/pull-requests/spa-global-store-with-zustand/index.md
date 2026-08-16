@@ -5,6 +5,7 @@ date: '2022-11-30'
 kind: 'Architecture proposal'
 standfirst: 'Introducing a global store to a large single-page app, argued from first principles.'
 order: 1
+featured: true
 author: 'patik'
 state: 'merged'
 baseBranch: 'deploy/2023-10-05'

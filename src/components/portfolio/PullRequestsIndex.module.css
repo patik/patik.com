@@ -101,77 +101,46 @@
     counter-reset: pr;
 }
 
-.entry {
-    counter-increment: pr;
-    border-top: 1px solid var(--rule);
+/* **************************************************************** */
+/* "N more" disclosure                                              */
+/* **************************************************************** */
 
-    &:last-child {
-        border-bottom: 1px solid var(--rule);
-    }
+.more {
+    margin-top: 2rem;
 }
 
-.entryLink {
-    display: block;
-    padding: 1.75rem 1rem 1.75rem 0;
-    text-decoration: none;
-    color: inherit !important;
-    transition: background-color 120ms ease;
+.moreSummary {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.4em;
+    cursor: pointer;
+    font-family: var(--font-fixed);
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    padding-block: 0.4rem;
 
     &:hover,
     &:focus-visible {
-        background: var(--hover-bg);
-
-        & .entryTitle {
-            text-decoration: underline;
-            text-decoration-thickness: 1px;
-            text-underline-offset: 0.2em;
-        }
-    }
-
-    @media (min-width: 561px) {
-        padding-inline-start: 3.25rem;
-        position: relative;
-
-        &::before {
-            content: counter(pr, decimal-leading-zero);
-            position: absolute;
-            left: 0;
-            top: 1.95rem;
-            font-family: var(--font-fixed);
-            font-size: 0.75rem;
-            letter-spacing: 0.12em;
-            color: var(--rule-strong);
-        }
+        text-decoration: underline;
+        text-underline-offset: 0.25em;
     }
 }
 
-.entryKind {
-    font-family: var(--font-fixed);
-    font-size: 0.72rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 0.4rem;
+.moreHint {
+    transition: transform 120ms ease;
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
 }
 
-.entryTitle {
-    font-size: 1.35rem;
-    line-height: 1.25;
-    margin: 0 0 0.35rem;
+.more[open] .moreHint {
+    transform: rotate(180deg);
 }
 
-.entryStandfirst {
-    font-size: 1.1rem;
-    line-height: 1.55;
-    color: var(--muted);
-    max-width: 42em;
+.more[open] .moreSummary {
     margin-bottom: 0.5rem;
-}
-
-.entryMeta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.25rem 1.1rem;
 }
 
 /* **************************************************************** */
