@@ -1,0 +1,42 @@
+/**
+ * The rounded accent button, shared between the home page's "View the
+ * portfolio" link and the pull-request index's disclosure toggle.
+ *
+ * Compose it rather than copying it:
+ *
+ *     .myButton {
+ *         composes: pillButton from '../../styles/pill-button.module.css';
+ *         margin-top: 1.5rem;
+ *     }
+ *
+ * `--accent` and `--accent-contrast` come from whichever component this sits
+ * inside, so each one keeps control of its own palette.
+ */
+
+.pillButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.7rem 1.3rem;
+    color: var(--accent-contrast) !important;
+    font-family: var(--font-fixed);
+    font-size: 0.9rem;
+    text-decoration: none;
+    background: var(--accent);
+    border-radius: 999px;
+    transition: transform 150ms ease;
+
+    &:hover,
+    &:focus-visible {
+        transform: translateY(-2px);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+
+        &:hover,
+        &:focus-visible {
+            transform: none;
+        }
+    }
+}

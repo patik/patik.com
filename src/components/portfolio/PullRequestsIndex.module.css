@@ -3,6 +3,7 @@
     --rule-strong: #c9c4b9;
     --muted: #5f5c57;
     --accent: #17638e;
+    --accent-contrast: #ffffff;
     --hover-bg: #f7f5f0;
 
     margin-top: 2.5rem;
@@ -13,6 +14,7 @@
         --rule-strong: #555555;
         --muted: #a8a8a8;
         --accent: #75bcf9;
+        --accent-contrast: #14181c;
         --hover-bg: #232323;
     }
 
@@ -110,25 +112,21 @@
 }
 
 .moreSummary {
-    display: inline-flex;
-    align-items: baseline;
-    gap: 0.4em;
-    cursor: pointer;
-    font-family: var(--font-fixed);
-    font-size: 0.8rem;
-    letter-spacing: 0.06em;
-    color: var(--accent);
-    padding-block: 0.4rem;
+    composes: pillButton from '../../styles/pill-button.module.css';
 
-    &:hover,
-    &:focus-visible {
-        text-decoration: underline;
-        text-underline-offset: 0.25em;
+    cursor: pointer;
+
+    /* A summary keeps its disclosure triangle in some engines even when the
+       display type changes */
+    list-style: none;
+
+    &::-webkit-details-marker {
+        display: none;
     }
 }
 
 .moreHint {
-    transition: transform 120ms ease;
+    transition: transform 150ms ease;
 
     @media (prefers-reduced-motion: reduce) {
         transition: none;
@@ -140,7 +138,7 @@
 }
 
 .more[open] .moreSummary {
-    margin-bottom: 0.5rem;
+    margin-bottom: 1.25rem;
 }
 
 /* **************************************************************** */
