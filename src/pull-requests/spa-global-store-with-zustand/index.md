@@ -1,10 +1,18 @@
 ---
-title: 'INTETRIS-1727 SPA global store with Zustand'
+title: 'SPA global store with Zustand'
 prNumber: 2569
 date: '2022-11-30'
 kind: 'Architecture proposal'
 standfirst: 'Introducing a global store to a large single-page app, argued from first principles.'
 order: 1
+author: 'patik'
+state: 'merged'
+baseBranch: 'deploy/2023-10-05'
+headBranch: 'dev/INTETRIS-1727--zustand'
+additions: 1389
+deletions: 560
+changedFiles: 64
+reviewCount: 13
 ---
 
 Uses [Zustand](https://github.com/pmndrs/zustand) for a lightweight global store

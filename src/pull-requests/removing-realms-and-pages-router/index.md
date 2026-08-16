@@ -1,10 +1,18 @@
 ---
-title: 'INGIANA-252 Remove Realms and Pages Router'
+title: 'Remove Realms and Pages Router'
 prNumber: 10001
 date: '2025-05-19'
 kind: 'Adoption guide'
 standfirst: 'Deleting a home-grown abstraction, and documenting what replaces it.'
 order: 10
+author: 'patik'
+state: 'merged'
+baseBranch: 'deploy/2025-06-12'
+headBranch: 'dev/INGIANA-252--pages-router-realms-cleanup'
+additions: 15035
+deletions: 32189
+changedFiles: 517
+reviewCount: 3
 ---
 
 **_ℹ️ This PR is huge. Too big, even. We can review it together on Tuesday 2 June in the Dojo._** Until then, you can check out the description.

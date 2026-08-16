@@ -5,6 +5,14 @@ date: '2024-04-12'
 kind: 'Deprecation guidance'
 standfirst: 'Introducing a routing hook across an eight-pull-request series.'
 order: 11
+author: 'patik'
+state: 'merged'
+baseBranch: 'deploy/2024-04-23'
+headBranch: 'dev/enhanced-router--1--new-hook'
+additions: 666
+deletions: 747
+changedFiles: 94
+reviewCount: 4
 ---
 
 This is the first PR in a series. All changes in this series go together conceptually, but the changes have been separated into smaller chunks to make them easier to review.

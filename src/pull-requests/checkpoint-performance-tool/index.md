@@ -1,10 +1,18 @@
 ---
-title: 'INGIANA-190 Checkpoint end-user performance testing tool and task runner'
+title: 'Checkpoint end-user performance testing tool and task runner'
 prNumber: 8463
 date: '2024-10-09'
 kind: 'Tool introduction'
 standfirst: 'Shipping an internal performance-testing harness, and inviting contributions.'
 order: 12
+author: 'patik'
+state: 'merged'
+baseBranch: 'deploy/2024-10-29'
+headBranch: 'dev/INGIANA-164--e2e-puppeteer'
+additions: 2367
+deletions: 49
+changedFiles: 44
+reviewCount: 1
 ---
 
 ## Description

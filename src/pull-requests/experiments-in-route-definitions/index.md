@@ -5,6 +5,14 @@ date: '2024-01-22'
 kind: 'Problem and solution'
 standfirst: 'Consolidating scattered experiment logic into a single source of truth.'
 order: 9
+author: 'patik'
+state: 'merged'
+baseBranch: 'deploy/2024-02-06'
+headBranch: 'dev/route-experiment-definition'
+additions: 550
+deletions: 389
+changedFiles: 28
+reviewCount: 7
 ---
 
 For routes that are controlled by an experiment, the experiment can be configured within the route definition.

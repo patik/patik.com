@@ -5,6 +5,14 @@ date: '2024-05-29'
 kind: 'Teaching document'
 standfirst: 'One reference document, written once and amortized across a 28-pull-request series.'
 order: 2
+author: 'patik'
+state: 'merged'
+baseBranch: 'deploy/2024-06-11'
+headBranch: 'dev/typescript-noUncheckedIndexedAccess--rings--3'
+additions: 79
+deletions: 17
+changedFiles: 6
+reviewCount: 4
 ---
 
 _The description below is the same for every PR in this series. Please read it when reviewing your first PR, then use it as a reference whenever you need it._

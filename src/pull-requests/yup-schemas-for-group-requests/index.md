@@ -5,6 +5,14 @@ date: '2026-07-14'
 kind: 'Forensic analysis'
 standfirst: 'Tracing a silent failure through the type system to its origin.'
 order: 14
+author: 'patik'
+state: 'closed'
+baseBranch: 'deploy/2026-07-21'
+headBranch: 'dev/cleanup-schema--group-request'
+additions: 198
+deletions: 14
+changedFiles: 10
+reviewCount: 0
 ---
 
 ## Summary

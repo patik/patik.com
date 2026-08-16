@@ -1,10 +1,18 @@
 ---
-title: 'INTETRIS-1881 Overhaul the useMediaQueries hook'
+title: 'Overhaul the useMediaQueries hook'
 prNumber: 3949
 date: '2023-04-27'
 kind: 'Findings and solution'
 standfirst: 'Why detecting screen size in JavaScript stopped being reliable.'
 order: 8
+author: 'patik'
+state: 'merged'
+baseBranch: 'deploy/2023-05-09'
+headBranch: 'dev/INTETRIS-1881--defeat-the-media-query-hydra'
+additions: 165
+deletions: 81
+changedFiles: 3
+reviewCount: 6
 ---
 
 Our handling of media queries to render content (things like "show this for mobile" and "hide this one desktop") needs a big overhaul.

@@ -5,6 +5,14 @@ date: '2024-02-27'
 kind: 'Migration guide'
 standfirst: 'A library major-version bump with every trap mapped in advance.'
 order: 4
+author: 'patik'
+state: 'merged'
+baseBranch: 'deploy/2024-03-21'
+headBranch: 'dev/react-query-5'
+additions: 3328
+deletions: 2567
+changedFiles: 386
+reviewCount: 0
 ---
 
 # React Query v5 Upgrade

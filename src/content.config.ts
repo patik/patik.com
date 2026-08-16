@@ -28,6 +28,15 @@ const pullRequests = defineCollection({
         standfirst: z.string(),
         /** Position in the curated running order */
         order: z.number(),
+        /** Fields below reproduce the original pull request's header */
+        author: z.string(),
+        state: z.enum(['merged', 'closed', 'open']),
+        baseBranch: z.string(),
+        headBranch: z.string(),
+        additions: z.number(),
+        deletions: z.number(),
+        changedFiles: z.number(),
+        reviewCount: z.number(),
     }),
 })
 

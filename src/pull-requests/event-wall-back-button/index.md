@@ -1,10 +1,18 @@
 ---
-title: 'INZELDA-4968 Fix Event Wall back button edge case'
+title: 'Fix Event Wall back button edge case'
 prNumber: 12341
 date: '2026-06-10'
 kind: 'Architectural argument'
 standfirst: 'A bug fix that turns into the case for structural change.'
 order: 13
+author: 'patik'
+state: 'merged'
+baseBranch: 'deploy/2026-06-16'
+headBranch: 'dev/INZELDA-4968--back'
+additions: 324
+deletions: 52
+changedFiles: 8
+reviewCount: 2
 ---
 
 ## Description

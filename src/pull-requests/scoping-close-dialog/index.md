@@ -5,6 +5,14 @@ date: '2024-08-16'
 kind: 'Convention change'
 standfirst: 'Fixing a too-permissive API, then making the case for a new house style.'
 order: 5
+author: 'patik'
+state: 'merged'
+baseBranch: 'deploy/2024-09-24'
+headBranch: 'dev/close-dialog'
+additions: 108
+deletions: 10
+changedFiles: 8
+reviewCount: 4
 ---
 
 <details>

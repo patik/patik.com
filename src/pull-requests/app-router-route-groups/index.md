@@ -5,6 +5,14 @@ date: '2024-12-09'
 kind: 'How to review it'
 standfirst: 'Splitting a framework migration so that humans can actually review the diff.'
 order: 6
+author: 'patik'
+state: 'merged'
+baseBranch: 'deploy/2025-01-09'
+headBranch: 'dev/app-router-prep--095--copy-layout-files'
+additions: 27262
+deletions: 0
+changedFiles: 20
+reviewCount: 3
 ---
 
 <details>

@@ -5,6 +5,14 @@ date: '2024-03-24'
 kind: 'Concept primer'
 standfirst: 'Teaching a subtle React concept before asking anyone to apply it.'
 order: 7
+author: 'patik'
+state: 'merged'
+baseBranch: 'deploy/2024-04-23'
+headBranch: 'dev/referential-stability--10--useExperiment'
+additions: 510
+deletions: 270
+changedFiles: 8
+reviewCount: 3
 ---
 
 <details>
