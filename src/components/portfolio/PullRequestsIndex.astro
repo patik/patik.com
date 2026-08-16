@@ -1,0 +1,66 @@
+---
+import { getCollection } from 'astro:content'
+import css from './PullRequestsIndex.module.css'
+
+const entries = (await getCollection('pullRequests')).sort((a, b) => a.data.order - b.data.order)
+
+const years = entries.map((entry) => entry.data.date.getFullYear())
+const span = `${Math.min(...years)} – ${Math.max(...years)}`
+---
+
+<div class={css.collection}>
+    <header class={css.header}>
+        <p class={css.kicker}>Portfolio · Writing</p>
+        <h1>Pull Request Descriptions</h1>
+        <p class={css.deck}>
+            A pull request is usually a formality—a title, a ticket number, and a diff. I spent four years treating it
+            as the place where the actual teaching happens: what changed, why it changed, how to review it, and what the
+            team should do differently from now on.
+        </p>
+        <div class:list={[css.headerStats, css.mono]}>
+            <span>{entries.length} selected</span>
+            <span>{span}</span>
+            <span>InterNations</span>
+        </div>
+    </header>
+
+    <div class={css.intro}>
+        <p>
+            These are from the frontend platform work at <a href="https://www.internations.org/">InterNations</a>—a
+            large single-page app carried through a long run of migrations: a global store, a router, a strict
+            TypeScript flag, two major framework versions. Most of them were changes nobody had asked for and everybody
+            would have to live with, which is a particular kind of writing problem: you have to earn the reviewer’s
+            attention before you can spend it.
+        </p>
+        <p>
+            The code is private and stays that way. What follows is the writing only, reproduced as it was published to
+            the team, with internal links rendered as plain text.
+        </p>
+    </div>
+
+    <ol class={css.entries}>
+        {
+            entries.map((entry) => (
+                <li class={css.entry}>
+                    <a class={css.entryLink} href={`/portfolio/pull-requests/${entry.id}/`}>
+                        <p class={css.entryKind}>{entry.data.kind}</p>
+                        <h2 class={css.entryTitle}>{entry.data.title}</h2>
+                        <p class={css.entryStandfirst}>{entry.data.standfirst}</p>
+                        <p class:list={[css.entryMeta, css.mono]}>
+                            <time datetime={entry.data.date.toISOString()}>
+                                {entry.data.date.toLocaleDateString('en-GB', {
+                                    year: 'numeric',
+                                    month: 'long',
+                                })}
+                            </time>
+                        </p>
+                    </a>
+                </li>
+            ))
+        }
+    </ol>
+
+    <p class={css.outro}>
+        Back to <a href="/portfolio/">the rest of the portfolio</a>.
+    </p>
+</div>

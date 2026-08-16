@@ -1,0 +1,375 @@
+.pr {
+    --rule: #e2ded6;
+    --rule-strong: #c9c4b9;
+    --muted: #5f5c57;
+    --accent: #17638e;
+    --pill-bg: #f4f2ec;
+    --quote-bg: #f7f5f0;
+    --frame-border: #d9d5cb;
+    --media-shadow: 0 1px 2px rgb(0 0 0 / 6%), 0 24px 48px -32px rgb(0 0 0 / 35%);
+
+    margin-top: 2.5rem;
+    margin-bottom: 4rem;
+
+    @media (prefers-color-scheme: dark) {
+        --rule: #3c3c3c;
+        --rule-strong: #555555;
+        --muted: #a8a8a8;
+        --accent: #75bcf9;
+        --pill-bg: #2e2e2e;
+        --quote-bg: #232323;
+        --frame-border: #404040;
+        --media-shadow: 0 1px 2px rgb(0 0 0 / 40%), 0 24px 48px -32px rgb(0 0 0 / 80%);
+    }
+
+    & a {
+        color: var(--accent);
+    }
+}
+
+.kicker {
+    font-family: var(--font-fixed);
+    font-size: 0.72rem;
+    font-weight: normal !important;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.mono {
+    font-family: var(--font-fixed);
+    font-size: 0.78rem;
+    color: var(--muted);
+}
+
+/* **************************************************************** */
+/* Breadcrumb + header */
+/* **************************************************************** */
+
+.breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    padding-top: 1.5rem;
+    font-family: var(--font-fixed);
+    font-size: 0.75rem;
+    color: var(--muted);
+
+    & span {
+        color: var(--rule-strong);
+    }
+
+    & a {
+        text-decoration: none;
+
+        &:hover,
+        &:focus {
+            text-decoration: underline;
+            text-underline-offset: 0.25em;
+        }
+    }
+}
+
+.header {
+    padding-top: 1.25rem;
+
+    & h1 {
+        font-size: clamp(2.1rem, 5vw, 3rem);
+        line-height: 1.08;
+        margin: 0.5rem 0 1rem;
+    }
+}
+
+.deck {
+    font-size: clamp(1.15rem, 2.4vw, 1.4rem);
+    line-height: 1.55;
+    color: var(--muted);
+    max-width: 36em;
+}
+
+.meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.4rem;
+    margin-top: 1.5rem;
+    padding-bottom: 1.75rem;
+    border-bottom: 1px solid var(--rule);
+}
+
+/* **************************************************************** */
+/* Rendered markdown body */
+/* **************************************************************** */
+
+.body {
+    max-width: 44em;
+    margin-top: 2.5rem;
+    font-size: 1.15rem;
+    line-height: 1.7;
+
+    & h1,
+    & h2,
+    & h3,
+    & h4,
+    & h5,
+    & h6 {
+        line-height: 1.2;
+        margin-block: 2.75rem 0.85rem;
+    }
+
+    & h1 {
+        font-size: clamp(1.7rem, 4vw, 2.1rem);
+        padding-bottom: 0.45rem;
+        border-bottom: 1px solid var(--rule-strong);
+    }
+
+    & h2 {
+        font-size: clamp(1.45rem, 3.2vw, 1.7rem);
+        padding-bottom: 0.4rem;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    & h3 {
+        font-size: 1.3rem;
+    }
+
+    & h4,
+    & h5,
+    & h6 {
+        font-size: 1.12rem;
+    }
+
+    & > *:first-child {
+        margin-top: 0;
+    }
+
+    & p {
+        margin-bottom: 1.1rem;
+    }
+
+    & ul,
+    & ol {
+        margin-block: 0 1.2rem;
+        padding-inline-start: 1.5rem;
+    }
+
+    & li {
+        margin-bottom: 0.45rem;
+    }
+
+    & li > ul,
+    & li > ol {
+        margin-top: 0.45rem;
+    }
+
+    & a {
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.2em;
+    }
+
+    & strong {
+        font-weight: 600;
+    }
+
+    & hr {
+        border: 0;
+        border-top: 1px solid var(--rule);
+        margin-block: 2.5rem;
+    }
+
+    /* Inline code. Fenced blocks are handled by Expressive Code. */
+    & :not(pre) > code {
+        font-family: var(--font-fixed);
+        font-size: 0.85em;
+        background: var(--pill-bg);
+        border-radius: 4px;
+        padding: 0.15em 0.35em;
+    }
+
+    & blockquote {
+        margin: 1.4rem 0;
+        padding: 0.9rem 1.2rem;
+        background: var(--quote-bg);
+        border-left: 3px solid var(--rule-strong);
+        border-radius: 0 6px 6px 0;
+
+        & > *:first-child {
+            margin-top: 0;
+        }
+
+        & > *:last-child {
+            margin-bottom: 0;
+        }
+
+        /* The bolded first line is a converted GitHub alert label */
+        & > p:first-child > strong:only-child {
+            display: block;
+            font-family: var(--font-fixed);
+            font-size: 0.75rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+    }
+
+    & img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        border: 1px solid var(--frame-border);
+        box-shadow: var(--media-shadow);
+        margin-block: 1.5rem;
+    }
+
+    & details {
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        padding: 0.85rem 1.15rem;
+        margin-block: 1.4rem;
+        background: var(--quote-bg);
+        font-size: 1rem;
+
+        & summary {
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        &[open] summary {
+            margin-bottom: 0.7rem;
+            padding-bottom: 0.7rem;
+            border-bottom: 1px solid var(--rule);
+        }
+    }
+
+    & table {
+        border-collapse: collapse;
+        font-size: 0.95rem;
+        margin: 0;
+    }
+
+    & th,
+    & td {
+        border: 1px solid var(--rule);
+        padding: 0.45rem 0.75rem;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    & th {
+        background: var(--pill-bg);
+        font-weight: 600;
+    }
+
+    /* Wide tables scroll rather than widening the page */
+    & :is(markdown-accessiblity-table, .table-wrap) {
+        display: block;
+        overflow-x: auto;
+        margin-block: 1.4rem;
+    }
+}
+
+/* Fenced code blocks. Shiki sets background and colour inline, so only the box
+   is styled here. The second rule keeps the spacing correct if the site's
+   Expressive Code configuration is ever activated. */
+.body pre {
+    margin-block: 1.5rem;
+    padding: 1rem 1.15rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.body :global(.expressive-code) {
+    margin-block: 1.5rem;
+}
+
+/* Shiki's github-dark theme colours comments #6A737D, which is only 3.04:1
+   against the block background and fails WCAG AA. Lift it to a passing grey
+   (5.8:1). Shiki writes the colour inline, hence the attribute match and
+   !important. */
+.body pre :global([style*='#6a737d' i]) {
+    color: #9aa4ae !important;
+}
+
+/* **************************************************************** */
+/* Footer */
+/* **************************************************************** */
+
+.footer {
+    max-width: 44em;
+    margin-top: 3.5rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--rule-strong);
+}
+
+.note {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    font-style: italic;
+    color: var(--muted);
+}
+
+.pager {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+
+    @media (min-width: 561px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.pagerLink {
+    display: block;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 0.9rem 1.1rem;
+    text-decoration: none;
+    color: inherit !important;
+    transition: border-color 120ms ease;
+
+    &:hover,
+    &:focus-visible {
+        border-color: var(--accent);
+
+        & .pagerTitle {
+            text-decoration: underline;
+            text-underline-offset: 0.2em;
+        }
+    }
+}
+
+.pagerNext {
+    text-align: right;
+}
+
+.pagerLabel {
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.pagerTitle {
+    display: block;
+    font-size: 1rem;
+    line-height: 1.35;
+}
+
+.backLink {
+    margin-top: 2rem;
+    font-family: var(--font-fixed);
+    font-size: 0.8rem;
+
+    & a {
+        text-decoration: none;
+
+        &:hover,
+        &:focus {
+            text-decoration: underline;
+            text-underline-offset: 0.25em;
+        }
+    }
+}

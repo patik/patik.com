@@ -17,7 +17,7 @@ import css from './PortfolioPage.module.css'
         <p class={css.deck}>
             I’m a Staff Frontend Engineer at <a href="https://www.internations.org/">InterNations</a> and I’ve been building
             for the web since 2000. This page collects the personal work: a travel-planning product, command-line tools, and
-            open-source libraries—some of them maintained for well over a decade.
+            open-source libraries—some of them maintained for well over a decade—plus a selection of the writing.
         </p>
         <div class:list={[css.headerStats, css.mono]}>
             <span>50+ repositories</span>
@@ -470,6 +470,43 @@ import css from './PortfolioPage.module.css'
         <div class={css.sectionHead}>
             <h2>
                 <span class={css.sectionNumber} aria-hidden="true">05</span>
+                Writing
+            </h2>
+            <p class={css.sectionNote}>
+                The other half of engineering is explaining it. A pull request is the moment a team decides whether to
+                adopt an idea, so it is worth writing properly.
+            </p>
+        </div>
+
+        <ul class={css.listEntries}>
+            <li class={css.listEntry}>
+                <div class:list={[css.listIcon, css.sigil]} aria-hidden="true">¶</div>
+                <div>
+                    <h3>Pull request descriptions</h3>
+                    <div class:list={[css.entryMeta, css.mono]}>
+                        <span>2022 – 2026</span>
+                        <span>InterNations</span>
+                    </div>
+                    <div class={css.prose}>
+                        <p>
+                            Fourteen pull requests from a long run of frontend platform migrations, selected for the
+                            writing rather than the code. Each one sets out what changed and why, how to review it, and
+                            what the team should do differently afterwards—a strict TypeScript flag, two major framework
+                            versions, a global store, a router.
+                        </p>
+                    </div>
+                    <div class={css.linkRow}>
+                        <a href="/portfolio/pull-requests/">Read the collection</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </section>
+
+    <section class={css.section}>
+        <div class={css.sectionHead}>
+            <h2>
+                <span class={css.sectionNumber} aria-hidden="true">06</span>
                 Contributions
             </h2>
             <p class={css.sectionNote}>
@@ -549,7 +586,7 @@ import css from './PortfolioPage.module.css'
     <section class={css.section}>
         <div class={css.sectionHead}>
             <h2>
-                <span class={css.sectionNumber} aria-hidden="true">06</span>
+                <span class={css.sectionNumber} aria-hidden="true">07</span>
                 From an earlier era
             </h2>
             <p class={css.sectionNote}>

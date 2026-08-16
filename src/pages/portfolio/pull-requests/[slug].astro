@@ -1,0 +1,34 @@
+---
+import PullRequestArticle from '@src/components/portfolio/PullRequestArticle.astro'
+import Layout from '@src/layouts/Layout.astro'
+import { getCollection } from 'astro:content'
+
+export async function getStaticPaths() {
+    const entries = (await getCollection('pullRequests')).sort((a, b) => a.data.order - b.data.order)
+
+    return entries.map((entry, index) => ({
+        params: { slug: entry.id },
+        props: {
+            entry,
+            previous: entries[index - 1],
+            next: entries[index + 1],
+        },
+    }))
+}
+
+const { entry, previous, next } = Astro.props
+---
+
+<Layout
+    title={entry.data.title}
+    keywords={[
+        'pull request',
+        'code review',
+        'technical writing',
+        entry.data.kind,
+        'frontend',
+        'Craig Patik',
+    ]}
+>
+    <PullRequestArticle entry={entry} previous={previous} next={next} />
+</Layout>

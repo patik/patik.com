@@ -16,4 +16,19 @@ const blog = defineCollection({
     }),
 })
 
-export const collections = { blog }
+const pullRequests = defineCollection({
+    loader: glob({ pattern: '**/index.md', base: './src/pull-requests' }),
+    schema: z.object({
+        title: z.string(),
+        prNumber: z.number(),
+        date: z.coerce.date(),
+        /** Short label shown above the title, e.g. “Migration guide” */
+        kind: z.string(),
+        /** One-sentence summary shown on the index and beneath the title */
+        standfirst: z.string(),
+        /** Position in the curated running order */
+        order: z.number(),
+    }),
+})
+
+export const collections = { blog, pullRequests }

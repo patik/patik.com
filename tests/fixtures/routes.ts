@@ -11,6 +11,12 @@ export const routes = [
     { path: '/concerts/', label: 'concerts', includeVisual: true },
     { path: '/football/', label: 'football', includeVisual: true },
     { path: '/portfolio/', label: 'portfolio', includeVisual: true },
+    { path: '/portfolio/pull-requests/', label: 'pull-requests-index', includeVisual: true },
+    {
+        path: '/portfolio/pull-requests/spa-global-store-with-zustand/',
+        label: 'pull-request',
+        includeVisual: true,
+    },
     { path: '/travel/', label: 'travel-index', includeVisual: true },
     { path: '/travel/france/', label: 'travel-country', includeVisual: true },
     { path: '/travel/italy/', label: 'travel-italy', includeVisual: true },

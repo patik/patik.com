@@ -1,0 +1,77 @@
+---
+import { render, type CollectionEntry } from 'astro:content'
+import css from './PullRequestArticle.module.css'
+
+interface Props {
+    entry: CollectionEntry<'pullRequests'>
+    previous?: CollectionEntry<'pullRequests'>
+    next?: CollectionEntry<'pullRequests'>
+}
+
+const { entry, previous, next } = Astro.props
+const { Content } = await render(entry)
+---
+
+<article class={css.pr}>
+    <nav class={css.breadcrumb} aria-label="Breadcrumb">
+        <a href="/portfolio/">Portfolio</a>
+        <span aria-hidden="true">/</span>
+        <a href="/portfolio/pull-requests/">Pull Request Descriptions</a>
+    </nav>
+
+    <header class={css.header}>
+        <p class={css.kicker}>{entry.data.kind}</p>
+        <h1>{entry.data.title}</h1>
+        <p class={css.deck}>{entry.data.standfirst}</p>
+        <div class:list={[css.meta, css.mono]}>
+            <time datetime={entry.data.date.toISOString()}>
+                {
+                    entry.data.date.toLocaleDateString('en-GB', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                    })
+                }
+            </time>
+            <span>InterNations</span>
+        </div>
+    </header>
+
+    <div class={css.body}>
+        <Content />
+    </div>
+
+    <footer class={css.footer}>
+        <p class={css.note}>
+            Reproduced from the original pull request. Links to the private repository, its issue tracker, and internal
+            tooling are rendered as plain text.
+        </p>
+
+        {
+            (previous || next) && (
+                <nav class={css.pager} aria-label="Other pull requests">
+                    {previous ? (
+                        <a class={css.pagerLink} href={`/portfolio/pull-requests/${previous.id}/`} rel="prev">
+                            <span class:list={[css.pagerLabel, css.mono]}>← Previous</span>
+                            <span class={css.pagerTitle}>{previous.data.title}</span>
+                        </a>
+                    ) : (
+                        <span />
+                    )}
+                    {next ? (
+                        <a class:list={[css.pagerLink, css.pagerNext]} href={`/portfolio/pull-requests/${next.id}/`} rel="next">
+                            <span class:list={[css.pagerLabel, css.mono]}>Next →</span>
+                            <span class={css.pagerTitle}>{next.data.title}</span>
+                        </a>
+                    ) : (
+                        <span />
+                    )}
+                </nav>
+            )
+        }
+
+        <p class={css.backLink}>
+            <a href="/portfolio/pull-requests/">All pull request descriptions</a>
+        </p>
+    </footer>
+</article>
