@@ -64,6 +64,10 @@ jobs:
 
       - name: Commit updated snapshots
         run: |
+          # The job runs in a container, so the checkout is owned by a different user than
+          # the one git runs as. Without this, git refuses to see a repository here at all
+          # and every command below fails with "not in a git directory".
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add tests-snapshots/
