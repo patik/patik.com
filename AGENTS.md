@@ -168,11 +168,19 @@ Uses Playwright and snapshots for visual regression testing.
 
 ### For intentional UI changes
 
-1. Make your change, rebuild, run pnpm test:update-snapshots locally to update the darwin PNGs
-2. Commit your code change + the updated darwin snapshots
-3. Go to Actions → "Update visual snapshots" → Run workflow (pick your branch)
-4. The workflow builds on Linux, runs --update-snapshots, and commits the updated linux PNGs back to your branch automatically
-5. Pull locally to get the commit → done
+Baselines are Linux-only — there are no darwin PNGs.
+
+1. Make your change and rebuild
+2. Run `pnpm test:update-snapshots` locally to check the new renders in the HTML report
+3. Commit your code change + the updated snapshots
+4. Go to Actions → "Update visual snapshots" → Run workflow (pick your branch)
+5. The workflow builds on Linux, runs --update-snapshots, and commits the updated PNGs back to
+   your branch automatically
+6. Pull locally to get the commit → done
+
+The suite loads fonts from the Typekit kit at run time, so changing the kit invalidates the
+baselines on every branch at once — including branches whose CSS never moved. See the note at
+the top of `scripts/visual.sh`.
 
 ### Unintentional regressions
 

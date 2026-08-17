@@ -64,6 +64,12 @@ jobs:
 
       - name: Commit updated snapshots
         run: |
+          # actions/checkout does mark the workspace safe, but it does so under a throwaway
+          # HOME that lasts only for its own step. This job runs in a container, as root,
+          # against a workspace bind-mounted from the host and owned by the host user, so by
+          # the time we get here git disowns the repository again and reports every command
+          # below as "not in a git directory".
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add tests-snapshots/

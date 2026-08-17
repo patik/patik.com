@@ -17,7 +17,7 @@ import type { HTMLAttributes } from 'astro/types'
 
 export interface TravelLink {
     title: string
-    className: string
+    className?: string
     url: string
     imageSrc: ImageMetadata
     imageAlt: string
@@ -48,7 +48,7 @@ export const travelLinks: TravelLink[] = [
     },
     {
         title: 'Italy',
-        className: 'bg-travel-bottom-middle bg-travel-italy',
+        className: 'bg-travel-bottom-middle',
         url: '/travel/italy/',
         imageSrc: TravelImageItaly,
         imageAlt: 'Venice, Italy',
@@ -62,21 +62,19 @@ export const travelLinks: TravelLink[] = [
     },
     {
         title: 'Britain',
-        className: 'bg-travel-britain',
         url: '/travel/britain/',
         imageSrc: BritainbeneluxImage,
         imageAlt: 'Big Ben, a black cab, and a red double-decker bus in Parliament Square',
     },
     {
         title: 'Netherlands',
-        className: 'bg-travel-bottom-middle bg-travel-netherlands',
+        className: 'bg-travel-bottom-middle',
         url: '/travel/netherlands/',
         imageSrc: NetherlandsImage,
         imageAlt: 'Westerkerk, overlooking an Amsterdam canal',
     },
     {
         title: 'Peru',
-        className: 'bg-travel-peru',
         url: '/travel/peru/',
         imageSrc: PeruImage,
         imageAlt: 'Kim holding a lamb and posing with two women in traditional Andean clothes',
@@ -84,14 +82,12 @@ export const travelLinks: TravelLink[] = [
     },
     {
         title: 'Spain, Portugal, & Morocco',
-        className: 'bg-travel-spain',
         url: '/travel/spain/',
         imageSrc: SpainImage,
         imageAlt: "Celebrating Spain's World Cup victory in Madrid",
     },
     {
         title: 'Turkey',
-        className: 'bg-travel-turkey',
         url: '/travel/turkey/',
         imageSrc: TurkeyImage,
         imageAlt: 'The Blue Mosque (Sultanahmet Camii), Istanbul, Turkey',
@@ -105,28 +101,24 @@ export const travelLinks: TravelLink[] = [
     },
     {
         title: 'Germany & Austria',
-        className: 'bg-travel-germany',
         url: '/travel/germany/',
         imageSrc: GermanyImage,
         imageAlt: 'Spanish fans in Vienna for Euro 2008',
     },
     {
         title: 'Greece',
-        className: 'bg-travel-greece',
         url: '/travel/greece/',
         imageSrc: GreeceImage,
         imageAlt: 'Serifios, Greece',
     },
     {
         title: 'France',
-        className: 'bg-travel-france',
         url: '/travel/france/',
         imageSrc: FranceImage,
         imageAlt: 'The Seine River',
     },
     {
         title: 'Uruguay',
-        className: '',
         url: '/travel/uruguay/',
         imageSrc: UruguayImage,
         imageAlt: 'Old train in Colonia del Sacramento, Uruguay',

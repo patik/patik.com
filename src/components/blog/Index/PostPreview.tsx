@@ -1,6 +1,6 @@
 import config from '../../../config.json'
-import DateFormatter from '../DateFormatter'
 import css from '../BlogIndex.module.css'
+import DateFormatter from '../DateFormatter'
 import Excerpt from './Excerpt'
 
 const { blogPath } = config
@@ -24,7 +24,7 @@ export default function PostPreview({ title, date, excerpt, slug }: Props) {
             <div className={css.postDate}>
                 <DateFormatter dateString={date} />
             </div>
-            <Excerpt excerpt={excerpt} /* slug={slug} */ className={css.postExcerpt} />
+            <Excerpt excerpt={excerpt} />
         </div>
     )
 }
