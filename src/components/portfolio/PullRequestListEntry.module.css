@@ -39,41 +39,39 @@
             left: 0;
             top: 1.95rem;
             font-family: var(--font-fixed);
-            font-size: 0.75rem;
+            font-size: var(--step--2);
             letter-spacing: 0.12em;
+            font-variant-numeric: tabular-nums;
             color: var(--muted);
         }
     }
 }
 
 .entryKind {
-    font-family: var(--font-fixed);
-    font-size: 0.72rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
+    composes: eyebrow from '../../styles/type.module.css';
+
     color: var(--accent);
     margin-bottom: 0.4rem;
 }
 
 .entryTitle {
-    font-size: 1.35rem;
-    line-height: 1.25;
+    font-size: var(--step-3);
     margin: 0 0 0.35rem;
 }
 
 .entryStandfirst {
-    font-size: 1.1rem;
-    line-height: 1.55;
+    font-size: var(--step-0);
+    line-height: var(--leading-normal);
     color: var(--muted);
-    max-width: 42em;
+    max-width: var(--measure);
     margin-bottom: 0.5rem;
 }
 
 .entryMeta {
+    composes: meta from '../../styles/type.module.css';
+
     display: flex;
     flex-wrap: wrap;
     gap: 0.25rem 1.1rem;
-    font-family: var(--font-fixed);
-    font-size: 0.78rem;
     color: var(--muted);
 }

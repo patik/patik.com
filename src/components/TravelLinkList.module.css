@@ -1,4 +1,3 @@
-
 .travelPageHeader {
     display: flex;
     flex-direction: column;
@@ -11,11 +10,19 @@
 
     h1 {
         flex-grow: 1;
-        line-height: 1.2;
     }
 
     p {
         margin: 0;
+    }
+
+    /* Outside any paragraph, so the prose-link underline in global.css
+       doesn't reach it. */
+    > a {
+        font-family: var(--font-fixed);
+        font-size: var(--step--2);
+        text-decoration: underline;
+        text-underline-offset: 0.16em;
     }
 }
 

@@ -37,21 +37,18 @@
     order: 1;
 
     & h1 {
-        font-size: clamp(2.3rem, 5vw, 3rem);
-        line-height: 1.05;
+        font-size: var(--step-6);
         margin: 0 0 1rem;
     }
 }
 
 .intro {
-    font-size: clamp(1.1rem, 2.2vw, 1.3rem);
-    line-height: 1.55;
+    composes: deck from '../styles/type.module.css';
 
-    & a {
-        text-decoration: underline;
-        text-decoration-thickness: 1px;
-        text-underline-offset: 0.2em;
-    }
+    /* The half-width column is already the measure; capping it again would
+       only worsen the rag. */
+    max-width: none;
+    text-wrap: pretty;
 }
 
 /* Travel row: (intro + map) | trips */
@@ -88,7 +85,7 @@
 }
 
 .mapHead {
-    font-size: 1.3rem;
+    font-size: var(--step-2);
     margin: 0 0 0.9rem;
 
     & a {
@@ -128,14 +125,14 @@
     margin-bottom: 0.9rem;
 
     & h2 {
-        font-size: 1.3rem;
+        font-size: var(--step-2);
         margin: 0;
     }
 
     & a {
         flex-shrink: 0;
         font-family: var(--font-fixed);
-        font-size: 0.78rem;
+        font-size: var(--step--2);
         text-decoration: none;
         white-space: nowrap;
 
@@ -196,9 +193,10 @@
 
 .tripCountry {
     color: white;
-    font-size: 1.5rem;
-    font-weight: 600;
-    line-height: 1.2;
+    font-size: var(--step-2);
+    font-weight: 700;
+    letter-spacing: var(--tracking-snug);
+    line-height: var(--leading-snug);
 }
 
 /* Spotlight (same pattern as concept B) */
@@ -263,7 +261,7 @@
 .frameTitle {
     display: block;
     font-family: var(--font-fixed);
-    font-size: 0.7rem;
+    font-size: var(--step--2);
     color: var(--muted);
     margin-inline: auto;
     padding-right: 44px;
@@ -283,25 +281,22 @@
     min-inline-size: 0;
 
     & h2 {
-        font-size: clamp(2rem, 4.5vw, 2.6rem);
-        line-height: 1.1;
+        font-size: var(--step-5);
         margin: 0.3rem 0 1rem;
     }
 }
 
 .spotlightKicker {
-    font-family: var(--font-fixed);
-    font-size: 0.75rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
+    composes: eyebrow from '../styles/type.module.css';
+
     color: var(--muted);
     margin: 0;
 }
 
 .spotlightPitch {
-    font-size: clamp(1.05rem, 2vw, 1.2rem);
-    line-height: 1.6;
-    max-width: 34em;
+    font-size: var(--step-0);
+    line-height: var(--leading-prose);
+    max-width: var(--measure);
 }
 
 .spotlightButton {
@@ -319,7 +314,7 @@
     text-align: center;
 
     & h2 {
-        font-size: clamp(1.6rem, 3.5vw, 2rem);
+        font-size: var(--step-4);
         margin: 0 0 1.5rem;
     }
 }
@@ -338,7 +333,7 @@
     padding: 0.6rem 1.1rem;
     color: inherit !important;
     font-family: var(--font-fixed);
-    font-size: 0.88rem;
+    font-size: var(--step--1);
     text-decoration: none;
     background: var(--pill-bg);
     border: 1px solid var(--pill-border);

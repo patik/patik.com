@@ -1,26 +1,32 @@
+/**
+ * Long-form reading: the one place that gets the loose leading and the larger
+ * body step. Everywhere else on the site is being skimmed.
+ */
+
 .postBody {
-    font-size: 1.125rem;
-    line-height: 1.8;
+    font-size: var(--step-1);
+    line-height: var(--leading-loose);
+    max-width: var(--measure);
 
     p,
     ul,
     ol,
     blockquote {
-        margin: 0 0 1.875rem;
+        margin: 0 0 1.5em;
     }
 
+    /* More space above than below, so the heading binds to the section it
+       opens rather than floating between two. */
     h2 {
-        margin-top: 3rem;
-        margin-bottom: 1rem;
-        font-size: 1.875rem;
-        line-height: 1.375;
+        margin-top: 2.25em;
+        margin-bottom: 0.5em;
+        font-size: var(--step-4);
     }
 
     h3 {
-        margin-top: 2rem;
-        margin-bottom: 1rem;
-        font-size: 1.5rem;
-        line-height: 1.375;
+        margin-top: 1.75em;
+        margin-bottom: 0.5em;
+        font-size: var(--step-3);
     }
 
     object,
@@ -37,26 +43,27 @@
 
     a {
         text-decoration: underline;
-    }
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.16em;
 
-    @media (min-width: 768px) {
-        p,
-        li {
-            font-size: 1.5rem;
-            line-height: 1.5;
+        &:hover,
+        &:focus-visible {
+            text-decoration-thickness: 2px;
         }
     }
 
+    /* Mono runs large beside a serif at the same px; a step back keeps the
+       line from looking spliced. */
     code {
-        font-family: Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace;
-        font-size: 1rem;
-        color: #666;
-        background-color: rgba(0, 0, 0, 0.1);
-        padding: 3px;
+        font-family: var(--font-fixed);
+        font-size: 0.82em;
+        color: #444;
+        background-color: rgb(0 0 0 / 7%);
+        padding: 0.15em 0.35em;
         border-radius: 3px;
 
         @media (prefers-color-scheme: dark) {
-            background-color: rgba(255, 255, 255, 0.05);
+            background-color: rgb(255 255 255 / 8%);
             color: #ccc;
         }
     }

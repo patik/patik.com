@@ -26,7 +26,7 @@ export default function HeroPost({ title, date, excerpt, slug }: Props) {
                         <DateFormatter dateString={date} />
                     </div>
                 </div>
-                <div>{excerpt}</div>
+                <div className={css.heroExcerpt}>{excerpt}</div>
             </div>
         </section>
     )

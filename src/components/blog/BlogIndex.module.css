@@ -12,18 +12,19 @@
     transition: box-shadow 200ms ease;
 
     &:hover {
-        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -4px rgb(0 0 0 / 10%);
+        box-shadow:
+            0 10px 15px -3px rgb(0 0 0 / 10%),
+            0 4px 6px -4px rgb(0 0 0 / 10%);
     }
 }
 
 .heroGrid {
-    margin-bottom: 0;
+    margin-bottom: 4rem;
 
     @media (min-width: 768px) {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         column-gap: 4rem;
-        margin-bottom: 0;
     }
 
     @media (min-width: 1024px) {
@@ -32,20 +33,20 @@
 }
 
 .heroTitle {
-    margin: 0;
-    font-size: 24px;
-    line-height: 1.625;
+    margin: 0 0 0.4rem;
+    font-size: var(--step-4);
+}
 
-    @media (min-width: 1024px) {
-        font-size: 30.375px;
-        line-height: 1.4;
-    }
+.heroExcerpt {
+    font-size: var(--step-0);
+    line-height: var(--leading-prose);
+    max-width: var(--measure);
 }
 
 .heroDate {
+    composes: meta from '../../styles/type.module.css';
+
     margin-bottom: 1rem;
-    font-size: 1.125rem;
-    line-height: 28px;
 
     @media (min-width: 768px) {
         margin-bottom: 0;
@@ -60,37 +61,29 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0;
+    margin: 0 0 3rem;
 
     @media (min-width: 768px) {
         flex-direction: row;
         justify-content: space-between;
-        margin-bottom: 0;
     }
 }
 
 .introTitle,
 .moreTitle {
-    font-size: 30px;
-    font-weight: normal;
-    letter-spacing: -0.04em;
-    line-height: 1.625;
-
-    @media (min-width: 768px) {
-        font-size: 41.625px;
-        line-height: 1.4;
-    }
+    font-size: var(--step-5);
 }
 
 .introTitle {
+    font-size: var(--step-6);
+
     @media (min-width: 768px) {
-        font-size: 49.5px;
         padding-right: 2rem;
     }
 }
 
 .moreTitle {
-    margin-bottom: 0.5rem;
+    margin-bottom: 2rem;
 }
 
 .storiesGrid {
@@ -111,27 +104,21 @@
 }
 
 .postTitle {
-    margin-bottom: 0;
-    font-size: 24px;
-    line-height: 1.625;
-
-    @media (min-width: 768px) {
-        font-size: 30.375px;
-        line-height: 1.4;
-    }
+    margin-bottom: 0.4rem;
+    font-size: var(--step-3);
 }
 
 .postDate {
-    margin-bottom: 0;
-    font-size: 1.125rem;
-    font-weight: 700;
-    line-height: 28px;
+    composes: meta from '../../styles/type.module.css';
+
+    margin-bottom: 0.6rem;
 }
 
 .postExcerpt {
     margin-bottom: 0;
-    font-size: 1.125rem;
-    line-height: 1.625;
+    font-size: var(--step-0);
+    line-height: var(--leading-prose);
+    max-width: var(--measure);
 }
 
 .unpublished {
@@ -143,5 +130,6 @@
 .unpublishedContent {
     padding-block: 0.5rem;
     text-align: center;
-    font-size: 0.875rem;
+    font-family: var(--font-fixed);
+    font-size: var(--step--2);
 }
