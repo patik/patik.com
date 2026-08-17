@@ -1,10 +1,18 @@
 #!/usr/bin/env bash
 #
-# Runs the visual suite on Linux so it matches the committed baselines byte-for-byte.
+# Runs the visual suite on Linux, the platform the committed baselines come from.
 #
 #   pnpm test:visual                    compare against the baselines
 #   pnpm test:update-snapshots          accept intentional UI changes
 #   scripts/visual.sh --grep countries  other playwright flags pass through
+#
+# The baselines bake in whatever the Typekit kit (use.typekit.net/tfz6xpv.css) served when
+# they were generated, so editing the kit — adding a family, widening a character set —
+# re-rasterises every page carrying body text and invalidates the baselines on every branch
+# at once, retroactively. The tell is a site-wide failure of 0.3-2% of pixels where the
+# layout is identical, with only the element-scoped shots (code block, map) still passing:
+# those are monospace and SVG, the two things the kit doesn't touch. That is the kit moving,
+# not the CSS. Regenerate via Actions → "Update visual snapshots".
 #
 # Linux runs Playwright directly; elsewhere goes through the container. The build stays
 # on the host (it needs .env and tmp/); CI=1 tells the config to just serve dist/.

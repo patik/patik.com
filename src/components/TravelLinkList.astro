@@ -14,18 +14,33 @@ const maxRenderedWidth = 672
 
 const { items } = Astro.props
 
-function getItemClassNames(className: string): string[] {
+// Card classes name rules in TravelLinkList.module.css. Falling back to the raw name
+// would emit a class that matches nothing, so a rename or typo fails the build instead.
+function getItemClassNames(className: string | undefined): string | undefined {
+    if (!className) {
+        return undefined
+    }
+
     return className
         .split(' ')
         .filter(Boolean)
-        .map((name) => cardCss[name] ?? name)
+        .map((name) => {
+            const moduleClass = cardCss[name]
+
+            if (!moduleClass) {
+                throw new Error(`TravelLinkList: no rule named "${name}" in TravelLinkList.module.css`)
+            }
+
+            return moduleClass
+        })
+        .join(' ')
 }
 ---
 
 <div class:list={[gridCss.grid, gridCss.largeDesktopGap, gridCss.threeColumns, cardCss.travelLinkList]}>
     {
         items.map(({ imageSrc, imageAlt, url, className, title }) => (
-            <a class={getItemClassNames(className).join(' ')} href={url}>
+            <a class={getItemClassNames(className)} href={url}>
                 <Image src={imageSrc} alt={imageAlt} width={Math.min(imageSrc.width, maxRenderedWidth)} />
                 <span>{title}</span>
                 <div class={cardCss.imageCover} />

@@ -14,7 +14,7 @@ export default function CoverImage({ title, src, slug }: Props) {
         <img
             src={`${blogUrl}/${src}`}
             alt={title}
-            className={[css.coverImage, slug ? css.coverImageInteractive : ''].filter(Boolean).join(' ')}
+            className={`${css.coverImage}${slug ? ` ${css.coverImageInteractive}` : ''}`}
             width={1300}
             height={630}
         />

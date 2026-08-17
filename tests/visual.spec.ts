@@ -116,6 +116,24 @@ for (const { path: routePath, label, width, height, target } of lightModeVisualC
     })
 }
 
+// A post's nested lists sit thousands of pixels below the captured viewport, so their
+// indentation had no baseline. Shot as an element: the page-level snapshot would drown a
+// 25px indent shift in two thousand pixels of prose and pass under maxDiffPixelRatio.
+test('blog-post-nested-list: matches visual snapshot', { tag: '@visual' }, async ({ page }) => {
+    test.skip(!IS_LINUX, 'Run Linux-only baselines with `pnpm test:visual`.')
+
+    await page.emulateMedia({ reducedMotion: 'reduce' })
+
+    await page.goto('/blog/how-to-use-your-iphone-overseas/', { waitUntil: 'networkidle' })
+
+    const nestedList = page.locator('article ul:has(ul)').first()
+
+    await expect(nestedList).toBeVisible()
+    await expect(nestedList).toHaveScreenshot('blog-post-nested-list.png', {
+        maxDiffPixelRatio: 0.002,
+    })
+})
+
 // Code blocks sit below every viewport captured above, so Expressive Code's rendering — the
 // frame, the theme, the copy button — had no baseline at all. Shot as an element rather than a
 // page so it stays put as the prose around it changes. Both schemes: the two themes are what

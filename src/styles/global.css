@@ -98,6 +98,25 @@
         text-rendering: optimizeLegibility;
     }
 
+    /* Small-screen scale. The old stylesheet only sized headings from 768px up and
+       left everything below it to a reset that flattened h1 to body size; these are
+       the sizes it did define, with h1 and h4 filled in around them. */
+    h1 {
+        font-size: 2.25rem;
+    }
+
+    h2 {
+        font-size: 1.875rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    h4 {
+        font-size: 1.25rem;
+    }
+
     p,
     li {
         font-size: 18px;
@@ -117,6 +136,9 @@
 
     code {
         font-size: 90%;
+        /* Colour is deliberately inherited: the old shared rule hard-coded #ccc,
+           which measured 1.42:1 against the dark background. */
+        font-weight: bold;
     }
 
     a {
@@ -126,6 +148,27 @@
 
         &:hover {
             cursor: pointer;
+        }
+    }
+
+    /* Replaces the shared button rule the old vendor stylesheet provided. Colour,
+       background and border stay out of it — every button here paints its own. */
+    button {
+        appearance: none;
+        position: relative;
+        display: inline-block;
+        margin: 0 0 1.25em;
+        padding-block: calc(0.75rem + 0.0625em) 0.75rem;
+        padding-inline: 1.5rem;
+        font-weight: bold;
+        line-height: normal;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        box-shadow: 0 1px 0 rgb(255 255 255 / 50%) inset;
+
+        &:disabled {
+            box-shadow: none;
         }
     }
 
@@ -146,6 +189,11 @@
         list-style-position: outside;
     }
 
+    /* Nested bullets stay discs rather than dropping to the browser's circle. */
+    ul {
+        list-style-type: disc;
+    }
+
     ul li > ul,
     ul li > ol,
     ol li > ul,
@@ -160,6 +208,7 @@
         margin-block: 1.25em 1.1875em;
         border: 0;
         border-top: 1px solid #ddd;
+        color: inherit;
     }
 
     figure {
