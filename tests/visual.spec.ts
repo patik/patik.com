@@ -61,6 +61,30 @@ async function mockLightboxImage(page: import('@playwright/test').Page): Promise
     })
 }
 
+/**
+ * Blocks until every kit face the page can use has actually arrived.
+ *
+ * `networkidle` isn't enough: the kit only fetches a face once text needing it is laid
+ * out, so the bold used by every heading can still be in flight. Chrome renders synthetic
+ * bold from the roman in the meantime, which is close enough to pass a glance and far
+ * enough to fail a pixel diff.
+ */
+async function waitForWebFonts(page: import('@playwright/test').Page): Promise<void> {
+    await page.evaluate(async () => {
+        const faces = ['chaparral-pro', 'source-sans-3']
+        const specs = ['400 1em', '600 1em', '700 1em', 'italic 400 1em']
+
+        await Promise.all(
+            faces.flatMap((family) =>
+                // A face the kit doesn't carry rejects rather than resolving; that's a
+                // missing weight to fix in the kit, not a reason to fail the screenshot.
+                specs.map((spec) => document.fonts.load(`${spec} ${family}`).catch(() => undefined)),
+            ),
+        )
+        await document.fonts.ready
+    })
+}
+
 function resolveLocalImagePath(imagePath: string): string | null {
     if (!imagePath) {
         return null
@@ -83,6 +107,7 @@ for (const { path: routePath, label } of visualRoutes) {
         await mockNetlifyImages(page)
 
         await page.goto(routePath, { waitUntil: 'networkidle' })
+        await waitForWebFonts(page)
 
         // Viewport-only (no fullPage) — fullPage captures the entire DOM height including
         // space reserved for lazy-loaded images that never fetch, producing enormous blank
@@ -103,6 +128,7 @@ for (const { path: routePath, label, width, height, target } of lightModeVisualC
         await mockLightboxImage(page)
 
         await page.goto(routePath, { waitUntil: 'networkidle' })
+        await waitForWebFonts(page)
 
         if (target === 'lightbox') {
             await expect(page.locator('.lightbox-page')).toHaveScreenshot(`${label}.png`, {
@@ -126,7 +152,7 @@ test('blog-post-nested-list: matches visual snapshot', { tag: '@visual' }, async
 
     await page.goto('/blog/how-to-use-your-iphone-overseas/', { waitUntil: 'networkidle' })
 
-    const nestedList = page.locator('article ul:has(ul)').first()
+    const nestedList = page.locator('article ul ul').first()
 
     await expect(nestedList).toBeVisible()
     await expect(nestedList).toHaveScreenshot('blog-post-nested-list.png', {
@@ -145,6 +171,7 @@ for (const scheme of ['dark', 'light'] as const) {
         await page.emulateMedia({ colorScheme: scheme, reducedMotion: 'reduce' })
 
         await page.goto('/portfolio/pull-requests/react-query-v5-upgrade/', { waitUntil: 'networkidle' })
+        await waitForWebFonts(page)
 
         const codeBlock = page.locator('.expressive-code').first()
 
@@ -167,6 +194,7 @@ test('travel-lightbox: matches visual snapshot', { tag: '@visual' }, async ({ pa
     await mockLightboxImage(page)
 
     await page.goto('/travel/uzbekistan/photos/0', { waitUntil: 'networkidle' })
+    await waitForWebFonts(page)
 
     await expect(page.locator('.lightbox-page')).toHaveScreenshot('travel-lightbox.png', {
         maxDiffPixelRatio: 0.002,
@@ -181,6 +209,7 @@ test('travel-index-countries-expanded: matches visual snapshot', { tag: '@visual
     await mockNetlifyImages(page)
 
     await page.goto('/travel/', { waitUntil: 'networkidle' })
+    await waitForWebFonts(page)
 
     // Clicking before the element upgrades lands on inert markup and does nothing.
     await page.waitForFunction(() => customElements.get('visited-countries') !== undefined)
@@ -214,6 +243,7 @@ test('travel-index-map-expanded: matches visual snapshot', { tag: '@visual' }, a
     await mockNetlifyImages(page)
 
     await page.goto('/travel/', { waitUntil: 'networkidle' })
+    await waitForWebFonts(page)
 
     await page.locator('[data-map-expand]').click()
 

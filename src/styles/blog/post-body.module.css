@@ -1,13 +1,26 @@
-.postBody {
-    font-size: 1.125rem;
-    line-height: 1.8;
+/**
+ * Long-form reading: the one place that keeps Chaparral for body copy, at the
+ * larger step and the loose leading. Everywhere else on the site is skimmed,
+ * and reads in the sans.
+ */
 
-    /* em, not rem: body text steps up at 480px and this gap steps up with it. */
+.postBody {
+    font-family: var(--font-serif);
+    font-size-adjust: none;
+    font-size: var(--step-1);
+    line-height: var(--leading-loose);
+    max-width: var(--measure);
+
+    /* Text figures sit on the baseline with the lowercase rather than standing
+       at cap height, so a year stops interrupting the line it's set in. */
+    font-variant-numeric: oldstyle-nums;
+
+    /* em, not rem: the gap follows the fluid body size. */
     p,
     ul,
     ol,
     blockquote {
-        margin: 0 0 1.25em;
+        margin: 0 0 1.5em;
     }
 
     /* A nested list belongs to the item above it: no gap, and indented far enough
@@ -18,30 +31,18 @@
         margin-inline-start: 1.25em;
     }
 
-    /* Sizes are em-based above the breakpoint so a heading inside a list item scales
-       with the item, the way the site's headings do everywhere else. */
+    /* More space above than below, so the heading binds to the section it
+       opens rather than floating between two. */
     h2 {
-        margin-top: 3rem;
-        margin-bottom: 1rem;
-        font-size: 1.875rem;
-        line-height: 1.375;
-
-        @media (min-width: 768px) {
-            font-size: 2.3125em;
-            line-height: 1.4;
-        }
+        margin-top: 2.25em;
+        margin-bottom: 0.5em;
+        font-size: var(--step-4);
     }
 
     h3 {
-        margin-top: 2rem;
-        margin-bottom: 1rem;
-        font-size: 1.5rem;
-        line-height: 1.375;
-
-        @media (min-width: 768px) {
-            font-size: 1.6875em;
-            line-height: 1.4;
-        }
+        margin-top: 1.75em;
+        margin-bottom: 0.5em;
+        font-size: var(--step-3);
     }
 
     object,
@@ -58,26 +59,34 @@
 
     a {
         text-decoration: underline;
-    }
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.16em;
 
-    @media (min-width: 768px) {
-        p,
-        li {
-            font-size: 1.5rem;
-            line-height: 1.5;
+        &:hover,
+        &:focus-visible {
+            text-decoration-thickness: 2px;
         }
     }
 
+    /* Digits in code are data — they stay lining and tabular whatever the
+       surrounding prose is set to. */
+    :is(code, pre, kbd, samp) {
+        font-variant-numeric: lining-nums tabular-nums;
+    }
+
+    /* Mono runs large beside a serif at the same px; a step back keeps the
+       line from looking spliced. */
     code {
-        font-family: Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace;
-        font-size: 1rem;
-        color: #666;
-        background-color: rgba(0, 0, 0, 0.1);
-        padding: 3px;
+        font-family: var(--font-fixed);
+        font-size-adjust: none;
+        font-size: 0.82em;
+        color: #444;
+        background-color: rgb(0 0 0 / 7%);
+        padding: 0.15em 0.35em;
         border-radius: 3px;
 
         @media (prefers-color-scheme: dark) {
-            background-color: rgba(255, 255, 255, 0.05);
+            background-color: rgb(255 255 255 / 8%);
             color: #ccc;
         }
     }

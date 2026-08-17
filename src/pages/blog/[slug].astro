@@ -30,7 +30,14 @@ const { Content } = await render(post)
             {
                 post.data.date && (
                     <time datetime={post.data.date.toISOString()}>
-                        {post.data.date.toLocaleDateString('de-DE', { year: 'numeric', month: 'long', day: 'numeric' })}
+                        {/* `timeZone: 'UTC'` because post dates are plain YYYY-MM-DD, which parse to UTC
+                            midnight — a build west of UTC would otherwise render the day before. */}
+                        {post.data.date.toLocaleDateString('en-GB', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric',
+                            timeZone: 'UTC',
+                        })}
                     </time>
                 )
             }

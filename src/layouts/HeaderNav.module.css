@@ -37,7 +37,10 @@
     flex-shrink: 0;
     color: inherit !important;
     font-family: var(--font-serif);
-    font-size: 1.2rem;
+    font-size-adjust: none;
+    font-size: var(--step-1);
+    font-weight: 700;
+    letter-spacing: var(--tracking-snug);
     text-decoration: none;
 }
 
@@ -47,7 +50,11 @@
     flex-wrap: wrap;
     gap: 0.1rem 0.05rem;
     min-inline-size: 0;
-    margin: 0;
+
+    /* Each link's pill padding sits inside its box, so the first label would
+       start inboard of the wordmark. Pull the row out by that padding to put
+       the text itself on the column edge. */
+    margin: 0 0 0 -0.5rem;
     padding: 0;
     list-style: none;
 
@@ -58,7 +65,9 @@
     @media (min-width: 640px) {
         flex: 0 0 auto;
         flex-wrap: nowrap;
-        margin-inline-start: auto;
+
+        /* Right-aligned here, so it's the trailing padding that needs cancelling. */
+        margin-inline: auto -0.7rem;
         gap: 0.2rem;
     }
 }
@@ -69,9 +78,13 @@
     padding: 0.35rem 0.5rem;
     color: var(--nav-muted) !important;
     font-family: var(--font-fixed);
-    font-size: 0.68rem;
+    font-size-adjust: none;
+
+    /* Tracking stays modest — uppercase mono opens up on its own, and the
+       nav has to hold one line. */
+    font-size: var(--step--2);
     line-height: 1.375rem;
-    letter-spacing: 0.07em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     white-space: nowrap;
     text-decoration: none;
@@ -88,13 +101,12 @@
 
     @media (min-width: 640px) {
         padding: 0.4rem 0.7rem;
-        font-size: 0.72rem;
-        letter-spacing: 0.08em;
+        letter-spacing: 0.07em;
     }
 }
 
 .active {
     color: inherit !important;
-    font-weight: 600;
+    font-weight: 700;
     background: var(--nav-active-bg);
 }

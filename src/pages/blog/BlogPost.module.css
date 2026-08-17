@@ -4,16 +4,27 @@
     padding: 2rem 1rem;
 
     & > header {
-        margin-bottom: 2rem;
+        margin-bottom: 2.5rem;
     }
 
     & > header h1 {
-        margin-bottom: 0.5rem;
-        font-size: 2.5rem;
+        margin-bottom: 0.6rem;
+        font-size: var(--step-5);
     }
 
+    /* Mono separates the date from the headline without needing a rule or
+       extra space. */
     & > header time {
+        display: block;
+        font-family: var(--font-fixed);
+        font-size-adjust: none;
+        font-size: var(--step--2);
+        line-height: var(--leading-normal);
+        font-variant-numeric: tabular-nums;
         color: #666;
-        font-size: 0.9rem;
+
+        @media (prefers-color-scheme: dark) {
+            color: #a8a8a8;
+        }
     }
 }

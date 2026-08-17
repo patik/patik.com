@@ -21,6 +21,12 @@ const { title = '', keywords = [] } = Astro.props
         }
         <link rel="me" href="https://mastodon.online/@craigpatik" />
         <link rel="me" href="https://bsky.app/profile/craig.patik.com" />
+        {
+            /* The kit stylesheet is render-blocking and its font files live on a second
+            origin, so both connections are worth opening before the parser asks. */
+        }
+        <link rel="preconnect" href="https://use.typekit.net" crossorigin />
+        <link rel="preconnect" href="https://p.typekit.net" crossorigin />
         <link rel="stylesheet" href="https://use.typekit.net/tfz6xpv.css" />
         <meta name="author" content="Craig Patik" />
         <meta
