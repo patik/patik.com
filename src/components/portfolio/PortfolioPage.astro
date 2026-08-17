@@ -6,6 +6,8 @@ import imgWithinViewportIcon from '@src/images/icons/within-viewport/ios/AppIcon
 import imgDofApp from '@src/images/portfolio/dof-app.webp'
 import imgDovetailHeroDark from '@src/images/portfolio/dovetail-hero-dark.webp'
 import imgDovetailHeroLight from '@src/images/portfolio/dovetail-hero-light.webp'
+import imgGinMain from '@src/images/portfolio/gin-main.webp'
+import imgIncMain from '@src/images/portfolio/inc-main.webp'
 import { getPullRequests } from '@src/utils/getPullRequests'
 import { Image } from 'astro:assets'
 import css from './PortfolioPage.module.css'
@@ -13,12 +15,13 @@ import css from './PortfolioPage.module.css'
 /** The contents list and the headings below both read from this, so they can't drift apart. */
 const sections = [
     { id: 'dovetail', number: '01', label: 'Dovetail Travel Planner' },
-    { id: 'command-line-tools', number: '02', label: 'Command-line tools' },
-    { id: 'apps-and-sites', number: '03', label: 'Apps & sites' },
-    { id: 'libraries', number: '04', label: 'Libraries' },
-    { id: 'writing', number: '05', label: 'Writing' },
-    { id: 'contributions', number: '06', label: 'Contributions' },
-    { id: 'earlier-era', number: '07', label: 'From an earlier era' },
+    { id: 'internal-developer-tools', number: '02', label: 'Internal developer tools' },
+    { id: 'command-line-tools', number: '03', label: 'Command-line tools' },
+    { id: 'apps-and-sites', number: '04', label: 'Apps & sites' },
+    { id: 'libraries', number: '05', label: 'Libraries' },
+    { id: 'writing', number: '06', label: 'Writing' },
+    { id: 'contributions', number: '07', label: 'Contributions' },
+    { id: 'earlier-era', number: '08', label: 'From an earlier era' },
 ] as const
 
 function section(id: (typeof sections)[number]['id']) {
@@ -43,8 +46,9 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
         <h1>Code &amp; Projects</h1>
         <p class={css.deck}>
             I’m a Staff Frontend Engineer at <a href="https://www.internations.org/">InterNations</a> and I’ve been building
-            for the web since 2000. This page collects the personal work: a travel-planning product, command-line tools, and
-            open-source libraries—some of them maintained for well over a decade—plus a selection of the writing.
+            for the web since 2000. This page collects selected work: a travel-planning product, internal developer tools,
+            command-line tools, and open-source libraries—some of them maintained for well over a decade—plus a selection
+            of the writing.
         </p>
         <div class:list={[css.headerStats, css.mono]}>
             <span>50+ repositories</span>
@@ -140,6 +144,147 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                 <p class={css.factLabel}>Links</p>
                 <div class={css.linkRow}>
                     <a href="https://dovetail.travel">dovetail.travel <span aria-hidden="true">↗</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="internal-developer-tools" class={css.section}>
+        <div class={css.sectionHead}>
+            <h2>
+                <span class={css.sectionNumber} aria-hidden="true">{section('internal-developer-tools').number}</span>
+                {section('internal-developer-tools').label}
+            </h2>
+            <p class={css.sectionNote}>
+                Two tools I conceived, designed, and built end to end for InterNations. The source is private; the
+                product work shown here is shared with permission.
+            </p>
+        </div>
+
+        <div class={css.entries}>
+            <div class={css.entry}>
+                <div class:list={[css.entryMedia, css.mediaStack]}>
+                    <a class={css.mediaLink} href={imgIncMain.src}>
+                        <span class={css.frame}>
+                            <span class={css.frameBar}>
+                                <span class={css.frameDots} aria-hidden="true"
+                                    ><span></span><span></span><span></span></span
+                                >
+                                <span class={css.frameTitle}>$ inc · command form and execution log</span>
+                            </span>
+                            <Image
+                                src={imgIncMain}
+                                alt="Inc showing a generated event form beside a searchable log of completed and failed development commands"
+                                widths={[700, 1200, 1800]}
+                                sizes="(max-width: 800px) 100vw, 530px"
+                            />
+                        </span>
+                    </a>
+
+                    <div class={css.frame}>
+                        <div class={css.frameBar}>
+                            <span class={css.frameDots} aria-hidden="true"><span></span><span></span><span></span></span
+                            >
+                            <span class={css.frameTitle}>$ inc completion install</span>
+                        </div>
+                        <video
+                            data-demo
+                            controls
+                            muted
+                            loop
+                            playsinline
+                            preload="metadata"
+                            width="1200"
+                            height="1092"
+                            poster="/portfolio/media/inc-tab-completion-poster.webp"
+                            aria-label="Screen recording of Inc tab-completing Symfony console command names"
+                        >
+                            <source src="/portfolio/media/inc-tab-completion.mp4" type="video/mp4" />
+                        </video>
+                    </div>
+                </div>
+                <div class={css.entryText}>
+                    <h3>Inc</h3>
+                    <div class:list={[css.entryMeta, css.mono]}>
+                        <span>InterNations</span>
+                        <span>2025 – present</span>
+                        <span>Private source</span>
+                    </div>
+                    <div class={css.prose}>
+                        <p>
+                            InterNations’ Symfony console contains a large, powerful set of development and test-data
+                            commands. Inc makes that surface discoverable: it reads each command’s live definition and
+                            turns its arguments and options into a searchable terminal form, with contextual help and a
+                            preview of the exact command before anything runs.
+                        </p>
+                        <p>
+                            I built the complete tool in TypeScript on Bun, using React, OpenTUI, and Zustand for a
+                            responsive two-pane interface. It remembers recent commands, keeps searchable execution
+                            logs, switches environments, passes commands straight through when a form is not needed,
+                            installs shell completion, and ships as self-updating native binaries through GitHub
+                            Releases.
+                        </p>
+                    </div>
+                    <div class={css.tagRow}>
+                        <span class={css.tag}>TypeScript</span>
+                        <span class={css.tag}>Bun</span>
+                        <span class={css.tag}>React</span>
+                        <span class={css.tag}>OpenTUI</span>
+                        <span class={css.tag}>Zustand</span>
+                        <span class={css.tag}>Commander</span>
+                        <span class={css.tag}>Vitest</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class={css.entry}>
+                <div class={css.entryMedia}>
+                    <div class:list={[css.frame, css.portraitFrame]}>
+                        <div class={css.frameBar}>
+                            <span class={css.frameDots} aria-hidden="true"><span></span><span></span><span></span></span
+                            >
+                            <span class={css.frameTitle}>$ gin</span>
+                        </div>
+                        <Image
+                            src={imgGinMain}
+                            alt="Gin showing the next and upcoming deployments, commit and pull-request counts, past releases, and Git shortcuts"
+                            widths={[420, 700, 1076]}
+                            sizes="(max-width: 800px) min(100vw, 420px), 420px"
+                        />
+                    </div>
+                </div>
+                <div class={css.entryText}>
+                    <h3>Gin</h3>
+                    <div class:list={[css.entryMeta, css.mono]}>
+                        <span>InterNations</span>
+                        <span>2025 – present</span>
+                        <span>Private source</span>
+                    </div>
+                    <div class={css.prose}>
+                        <p>
+                            InterNations ships from date-named release branches, which makes everyday questions
+                            needlessly expensive: Which branch is next? Is it available locally and remotely? What
+                            changed, which commits are mine, and which of my pull requests target it? Gin puts the
+                            release calendar and those answers in one interactive terminal view.
+                        </p>
+                        <p>
+                            I built Gin as a compiled TypeScript and Bun application with a React and Ink interface
+                            backed by Zustand. It derives the correct release branches from the schedule, fetches and
+                            compares them, queries pull requests through the GitHub CLI, and links directly to
+                            comparisons. It also acts as a transparent Git wrapper: commands it does not own go to Git
+                            unchanged, while shortcuts such as
+                            <code>deploy</code> and <code>upcoming</code> expand safely inside branches, ranges, and refspecs.
+                        </p>
+                    </div>
+                    <div class={css.tagRow}>
+                        <span class={css.tag}>TypeScript</span>
+                        <span class={css.tag}>Bun</span>
+                        <span class={css.tag}>React</span>
+                        <span class={css.tag}>Ink</span>
+                        <span class={css.tag}>Zustand</span>
+                        <span class={css.tag}>date-fns</span>
+                        <span class={css.tag}>Vitest</span>
+                    </div>
                 </div>
             </div>
         </div>

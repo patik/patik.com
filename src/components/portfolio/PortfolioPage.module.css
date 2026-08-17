@@ -413,6 +413,17 @@ a.mediaLink {
     min-width: 0;
 }
 
+.mediaStack {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.portraitFrame {
+    max-width: 26.25rem;
+    margin-inline: auto;
+}
+
 .entryText {
     min-width: 0;
 
