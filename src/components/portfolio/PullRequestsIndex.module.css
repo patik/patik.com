@@ -1,0 +1,159 @@
+.collection {
+    --rule: #e2ded6;
+    --rule-strong: #c9c4b9;
+    --muted: #5f5c57;
+    --accent: #17638e;
+    --accent-contrast: #ffffff;
+    --hover-bg: #f7f5f0;
+
+    margin-top: 2.5rem;
+    margin-bottom: 4rem;
+
+    @media (prefers-color-scheme: dark) {
+        --rule: #3c3c3c;
+        --rule-strong: #555555;
+        --muted: #a8a8a8;
+        --accent: #75bcf9;
+        --accent-contrast: #14181c;
+        --hover-bg: #232323;
+    }
+
+    & a {
+        color: var(--accent);
+    }
+}
+
+/* **************************************************************** */
+/* Small typographic atoms */
+/* **************************************************************** */
+
+.kicker {
+    font-family: var(--font-fixed);
+    font-size: 0.72rem;
+    font-weight: normal !important;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.mono {
+    font-family: var(--font-fixed);
+    font-size: 0.78rem;
+    color: var(--muted);
+}
+
+/* **************************************************************** */
+/* Page header */
+/* **************************************************************** */
+
+.header {
+    padding-top: 1.5rem;
+
+    & h1 {
+        font-size: clamp(2.6rem, 6vw, 3.6rem);
+        line-height: 1.05;
+        margin: 0.5rem 0 1.25rem;
+    }
+}
+
+.deck {
+    font-size: clamp(1.2rem, 2.6vw, 1.45rem);
+    line-height: 1.55;
+    max-width: 36em;
+}
+
+.headerStats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.4rem;
+    margin-top: 1.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--rule);
+}
+
+.intro {
+    max-width: 40em;
+    margin-top: 2rem;
+
+    & p {
+        font-size: 1.2rem;
+        line-height: 1.65;
+        margin-bottom: 0.9rem;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    & a {
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.2em;
+    }
+}
+
+/* **************************************************************** */
+/* The list */
+/* **************************************************************** */
+
+.entries {
+    list-style: none;
+    margin: 3rem 0 0;
+    padding: 0;
+    counter-reset: pr;
+}
+
+/* **************************************************************** */
+/* "N more" disclosure                                              */
+/* **************************************************************** */
+
+.more {
+    margin-top: 2rem;
+}
+
+.moreSummary {
+    composes: pillButton from '../../styles/pill-button.module.css';
+
+    cursor: pointer;
+
+    /* A summary keeps its disclosure triangle in some engines even when the
+       display type changes */
+    list-style: none;
+
+    &::-webkit-details-marker {
+        display: none;
+    }
+}
+
+.moreHint {
+    transition: transform 150ms ease;
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
+}
+
+.more[open] .moreHint {
+    transform: rotate(180deg);
+}
+
+.more[open] .moreSummary {
+    margin-bottom: 1.25rem;
+}
+
+/* **************************************************************** */
+/* Footer note */
+/* **************************************************************** */
+
+.outro {
+    margin-top: 3rem;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--muted);
+
+    & a {
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.2em;
+    }
+}

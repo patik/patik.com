@@ -1,0 +1,145 @@
+---
+import { render, type CollectionEntry } from 'astro:content'
+import css from './PullRequestArticle.module.css'
+
+interface Props {
+    entry: CollectionEntry<'pullRequests'>
+    previous?: CollectionEntry<'pullRequests'>
+    next?: CollectionEntry<'pullRequests'>
+}
+
+const { entry, previous, next } = Astro.props
+const { Content } = await render(entry)
+
+// `baseBranch`/`headBranch` stay in the frontmatter as a record, but aren't shown.
+const { author, state, additions, deletions, changedFiles, reviewCount } = entry.data
+
+const stateLabel = state === 'merged' ? 'Merged' : state === 'closed' ? 'Closed' : 'Open'
+const mergeVerb = state === 'merged' ? 'merged' : state === 'closed' ? 'wanted to merge' : 'wants to merge'
+
+const numberFormatter = new Intl.NumberFormat('en-GB')
+// Dates are authored as plain `YYYY-MM-DD`, which parses to UTC midnight. Without a timeZone the
+// build machine's offset decides the day, so a build west of UTC renders the day before.
+const openedOn = entry.data.date.toLocaleDateString('en-GB', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    timeZone: 'UTC',
+})
+
+const reviewSummary =
+    reviewCount > 0 ? ` after ${numberFormatter.format(reviewCount)} review${reviewCount === 1 ? '' : 's'}` : ''
+---
+
+<article class={css.page}>
+    <nav class={css.breadcrumb} aria-label="Breadcrumb">
+        <a href="/portfolio/">Portfolio</a>
+        <span aria-hidden="true">/</span>
+        <a href="/portfolio/pull-requests/">Pull Request Descriptions</a>
+    </nav>
+
+    <header class={css.intro}>
+        <p class={css.kicker}>{entry.data.kind}</p>
+        <h1>{entry.data.title}</h1>
+        <p class={css.deck}>{entry.data.standfirst}</p>
+        <div class={css.note}>
+            <p>
+                This is a pull request I opened at <a href="https://www.internations.org/">InterNations</a>, shown here
+                as an example of my work. It is reproduced below in the shape my colleagues met it in—a review page,
+                at the moment they had to decide whether to take the change on.
+            </p>
+            <p>
+                The description is the thing on display; the diff it accompanied is private. Links to the repository
+                and to internal tooling are rendered as plain text, so nothing below is clickable that shouldn’t be.
+            </p>
+        </div>
+    </header>
+
+    <div class={css.gh}>
+        <div class={css.ghHeader}>
+            <h2 class={css.ghTitle}>
+                {entry.data.title}
+                <span class={css.ghNumber}>#{entry.data.prNumber}</span>
+            </h2>
+            <div class={css.ghSubhead}>
+                <span class:list={[css.ghState, css[state]]}>
+                    <svg class={css.ghStateIcon} viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+                        <circle cx="4" cy="12" r="2"></circle>
+                        <circle cx="4" cy="4" r="2"></circle>
+                        <circle cx="12" cy="8" r="2"></circle>
+                        <path d="M4 6v4" stroke="currentColor" stroke-width="1.6" fill="none"></path>
+                        <path d="M5.6 4.8c1.6 2.2 2.9 3.2 4.6 3.2" stroke="currentColor" stroke-width="1.6" fill="none"
+                        ></path>
+                    </svg>
+                    {stateLabel}
+                </span>
+                <span class={css.ghSubtext}>
+                    <strong>{author}</strong>{' '}{mergeVerb} this pull request{reviewSummary}
+                </span>
+            </div>
+        </div>
+
+        <div class={css.ghTabs}>
+            <span class:list={[css.ghTab, css.ghTabCurrent]}>Conversation</span>
+            <span class={css.ghTab}>Commits</span>
+            <span class={css.ghTab}>
+                Files changed <span class={css.ghCounter}>{numberFormatter.format(changedFiles)}</span>
+            </span>
+            <span class={css.ghDiffstat}>
+                <span class={css.ghAdd}>+{numberFormatter.format(additions)}</span>
+                <span class={css.ghDel}>&minus;{numberFormatter.format(deletions)}</span>
+            </span>
+        </div>
+
+        <div class={css.ghThread}>
+            <img
+                class={css.ghAvatar}
+                src="/portfolio/pull-requests/avatar.webp"
+                alt=""
+                width="40"
+                height="40"
+            />
+            <div class={css.ghComment}>
+                <div class={css.ghCommentHeader}>
+                    <strong>{author}</strong> commented on {openedOn}
+                </div>
+                <div class={css.ghBody}>
+                    <Content />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class={css.footer}>
+        {
+            (previous || next) && (
+                <nav class={css.pager} aria-label="Other pull requests">
+                    {previous ? (
+                        <a class={css.pagerLink} href={`/portfolio/pull-requests/${previous.id}/`} rel="prev">
+                            <span class:list={[css.pagerLabel, css.mono]}>← Previous</span>
+                            <span class={css.pagerTitle}>{previous.data.title}</span>
+                        </a>
+                    ) : (
+                        <span />
+                    )}
+                    {next ? (
+                        <a
+                            class:list={[css.pagerLink, css.pagerNext]}
+                            href={`/portfolio/pull-requests/${next.id}/`}
+                            rel="next"
+                        >
+                            <span class:list={[css.pagerLabel, css.mono]}>Next →</span>
+                            <span class={css.pagerTitle}>{next.data.title}</span>
+                        </a>
+                    ) : (
+                        <span />
+                    )}
+                </nav>
+            )
+        }
+
+        <p class={css.backLink}>
+            <a href="/portfolio/pull-requests/">All pull request descriptions</a>
+        </p>
+    </footer>
+</article>

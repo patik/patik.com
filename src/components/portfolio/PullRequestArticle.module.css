@@ -1,0 +1,641 @@
+.page {
+    --rule: #e2ded6;
+    --rule-strong: #c9c4b9;
+    --muted: #5f5c57;
+    --accent: #17638e;
+    --note-bg: #f7f5f0;
+
+    margin-top: 2.5rem;
+    margin-bottom: 4rem;
+
+    @media (prefers-color-scheme: dark) {
+        --rule: #3c3c3c;
+        --rule-strong: #555555;
+        --muted: #a8a8a8;
+        --accent: #75bcf9;
+        --note-bg: #232323;
+    }
+
+    & a {
+        color: var(--accent);
+    }
+}
+
+.mono {
+    font-family: var(--font-fixed);
+    font-size: 0.78rem;
+    color: var(--muted);
+}
+
+/* **************************************************************** */
+/* Site-styled framing: breadcrumb, title, author's note */
+/* **************************************************************** */
+
+.breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    padding-top: 1.5rem;
+    font-family: var(--font-fixed);
+    font-size: 0.75rem;
+    color: var(--muted);
+
+    & span {
+        color: var(--rule-strong);
+    }
+
+    & a {
+        text-decoration: none;
+
+        &:hover,
+        &:focus {
+            text-decoration: underline;
+            text-underline-offset: 0.25em;
+        }
+    }
+}
+
+.kicker {
+    font-family: var(--font-fixed);
+    font-size: 0.72rem;
+    font-weight: normal !important;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.intro {
+    padding-top: 1.25rem;
+
+    & h1 {
+        font-size: clamp(2.1rem, 5vw, 3rem);
+        line-height: 1.08;
+        margin: 0.5rem 0 1rem;
+    }
+}
+
+.deck {
+    font-size: clamp(1.15rem, 2.4vw, 1.4rem);
+    line-height: 1.55;
+    color: var(--muted);
+    max-width: 36em;
+}
+
+.note {
+    max-width: 40em;
+    margin-top: 1.75rem;
+    padding: 1.1rem 1.35rem;
+    background: var(--note-bg);
+    border-left: 3px solid var(--rule-strong);
+    border-radius: 0 6px 6px 0;
+
+    & p {
+        font-size: 1.02rem;
+        line-height: 1.6;
+        color: var(--muted);
+        margin-bottom: 0.7rem;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    & a {
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.2em;
+    }
+}
+
+/* **************************************************************** */
+/* The reproduction. Styled after a code-review site rather than     */
+/* after this site, so it reads as a quoted artefact.                */
+/* **************************************************************** */
+
+.gh {
+    --gh-font:
+        -apple-system, blinkmacsystemfont, 'Segoe UI', 'Noto Sans', helvetica, arial, sans-serif, 'Apple Color Emoji',
+        'Segoe UI Emoji';
+    --gh-mono: ui-monospace, sfmono-regular, 'SF Mono', menlo, consolas, monospace;
+
+    /* GitHub Primer, light */
+    --gh-canvas: #ffffff;
+    --gh-subtle: #f6f8fa;
+    --gh-border: #d1d9e0;
+    --gh-fg: #1f2328;
+    --gh-fg-muted: #59636e;
+    --gh-accent: #0969da;
+    --gh-success: #1a7f37;
+    --gh-danger: #cf222e;
+    --gh-done: #8250df;
+    --gh-neutral: #6a7480;
+    --gh-code-bg: rgb(129 139 152 / 12%);
+
+    margin-top: 3rem;
+    border: 1px solid var(--gh-border);
+    border-radius: 8px;
+    background: var(--gh-canvas);
+    color: var(--gh-fg);
+    font-family: var(--gh-font);
+    font-size: 16px;
+    line-height: 1.5;
+    overflow: hidden;
+
+    @media (prefers-color-scheme: dark) {
+        --gh-canvas: #0d1117;
+        --gh-subtle: #151b23;
+        --gh-border: #3d444d;
+        --gh-fg: #e6edf3;
+        --gh-fg-muted: #9198a1;
+        --gh-accent: #4493f8;
+        --gh-success: #3fb950;
+        --gh-danger: #f85149;
+        --gh-done: #ab7df8;
+        --gh-neutral: #8b949e;
+        --gh-code-bg: rgb(101 108 118 / 20%);
+    }
+}
+
+/* The site sets `p, li { font-family: serif; font-size: 18px }` and
+   `h1-h6 { font-weight: normal !important }` as bare element rules. Inheriting
+   from .gh loses to those, so the review styling is asserted per element —
+   including matching !important to reach past the global one. */
+.gh,
+.gh * {
+    font-family: var(--gh-font);
+}
+
+.gh :is(pre, code, kbd, samp),
+.gh pre * {
+    font-family: var(--gh-mono);
+}
+
+.gh :is(p, li) {
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.gh :is(h1, h2, h3, h4, h5, h6) {
+    font-weight: 600 !important;
+}
+
+.ghHeader {
+    padding: 1rem 1.15rem 0.85rem;
+}
+
+.ghTitle {
+    font-size: 1.6rem;
+    line-height: 1.25;
+    margin: 0 0 0.6rem;
+    color: var(--gh-fg);
+}
+
+.ghNumber {
+    margin-inline-start: 0.3em;
+    color: var(--gh-fg-muted);
+    font-weight: 300 !important;
+}
+
+.ghSubhead {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.65rem;
+    font-size: 0.875rem;
+    color: var(--gh-fg-muted);
+}
+
+.ghState {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+    padding: 0.3em 0.75em;
+    border-radius: 999px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: #ffffff;
+    background: var(--gh-neutral);
+    white-space: nowrap;
+}
+
+.ghStateIcon {
+    fill: currentcolor;
+}
+
+/* Badge fills stay at their light-theme values in both schemes. The lighter
+   dark-theme equivalents drop white text to 2.99:1, below WCAG AA. */
+.merged {
+    background: #8250df;
+}
+
+.closed {
+    background: #cf222e;
+}
+
+.open {
+    background: #1a7f37;
+}
+
+.ghSubtext {
+    & strong {
+        color: var(--gh-fg);
+        font-weight: 600;
+    }
+}
+
+/* Presentational only: these reproduce the review page's tab strip.
+   They are deliberately not links or tabs, so nothing announces as
+   interactive to assistive technology. */
+.ghTabs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem 1.25rem;
+    padding: 0 1.15rem;
+    border-bottom: 1px solid var(--gh-border);
+    font-size: 0.875rem;
+    color: var(--gh-fg-muted);
+}
+
+.ghTab {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    padding: 0.6rem 0;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+}
+
+.ghTabCurrent {
+    color: var(--gh-fg);
+    font-weight: 600;
+    border-bottom-color: #fd8c73;
+}
+
+.ghCounter {
+    padding: 0.1em 0.55em;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    background: var(--gh-code-bg);
+    color: var(--gh-fg-muted);
+}
+
+.ghDiffstat {
+    display: inline-flex;
+    gap: 0.5rem;
+    margin-inline-start: auto;
+    font-family: var(--font-fixed), ui-monospace, monospace;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.ghAdd {
+    color: var(--gh-success);
+}
+
+.ghDel {
+    color: var(--gh-danger);
+}
+
+/* ---- the comment ---- */
+
+.ghThread {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.75rem;
+    padding: 1.15rem;
+    background: var(--gh-subtle);
+
+    @media (min-width: 641px) {
+        grid-template-columns: 40px minmax(0, 1fr);
+        gap: 1rem;
+    }
+}
+
+.ghAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--gh-border);
+    background: var(--gh-canvas);
+}
+
+.ghComment {
+    min-width: 0;
+    border: 1px solid var(--gh-border);
+    border-radius: 6px;
+    background: var(--gh-canvas);
+    position: relative;
+
+    /* The little arrow pointing back at the avatar */
+    @media (min-width: 641px) {
+        &::before {
+            content: '';
+            position: absolute;
+            top: 11px;
+            left: -8px;
+            width: 8px;
+            height: 16px;
+            background: var(--gh-subtle);
+            clip-path: polygon(100% 0, 0 50%, 100% 100%);
+            border-left: 1px solid var(--gh-border);
+        }
+    }
+}
+
+.ghCommentHeader {
+    padding: 0.6rem 1rem;
+    border-bottom: 1px solid var(--gh-border);
+    background: var(--gh-subtle);
+    border-radius: 6px 6px 0 0;
+    font-size: 0.875rem;
+    color: var(--gh-fg-muted);
+
+    & strong {
+        color: var(--gh-fg);
+        font-weight: 600;
+    }
+}
+
+/* **************************************************************** */
+/* Rendered markdown, following GitHub's markdown-body              */
+/* **************************************************************** */
+
+.ghBody {
+    padding: 1rem;
+    overflow-wrap: break-word;
+
+    & > *:first-child {
+        margin-top: 0 !important;
+    }
+
+    & > *:last-child {
+        margin-bottom: 0 !important;
+    }
+
+    & :is(h1, h2, h3, h4, h5, h6) {
+        margin-block: 24px 16px;
+        font-weight: 600;
+        line-height: 1.25;
+        color: var(--gh-fg);
+    }
+
+    & h1 {
+        font-size: 2em;
+        padding-bottom: 0.3em;
+        border-bottom: 1px solid var(--gh-border);
+    }
+
+    & h2 {
+        font-size: 1.5em;
+        padding-bottom: 0.3em;
+        border-bottom: 1px solid var(--gh-border);
+    }
+
+    & h3 {
+        font-size: 1.25em;
+    }
+
+    & h4 {
+        font-size: 1em;
+    }
+
+    & h5 {
+        font-size: 0.875em;
+    }
+
+    & h6 {
+        font-size: 0.85em;
+        color: var(--gh-fg-muted);
+    }
+
+    & p {
+        margin-block: 0 16px;
+    }
+
+    /* A review site leaves in-text links unadorned, but at this palette the link
+       colour is only 2.62:1 against the body text, so colour alone can't carry
+       the distinction. Underlined instead. */
+    & a {
+        color: var(--gh-accent);
+        text-decoration: underline;
+        text-underline-offset: 0.15em;
+
+        &:hover,
+        &:focus {
+            text-decoration-thickness: 2px;
+        }
+    }
+
+    & strong {
+        font-weight: 600;
+    }
+
+    & :is(ul, ol) {
+        margin-block: 0 16px;
+        padding-inline-start: 2em;
+    }
+
+    & li + li {
+        margin-top: 0.25em;
+    }
+
+    & li > :is(ul, ol) {
+        margin-block: 0.25em 0;
+    }
+
+    & hr {
+        height: 0.25em;
+        padding: 0;
+        margin: 24px 0;
+        background: var(--gh-border);
+        border: 0;
+    }
+
+    /* Inline code */
+    & :not(pre) > code {
+        padding: 0.2em 0.4em;
+        margin: 0;
+        font-family: var(--gh-mono);
+        font-size: 85%;
+        white-space: break-spaces;
+        /* The site colours inline code #ccc, which is 1.42:1 on this chip */
+        color: var(--gh-fg);
+        background: var(--gh-code-bg);
+        border-radius: 6px;
+    }
+
+    /* Fenced blocks. Shiki writes background and token colours inline. */
+    & pre {
+        margin-block: 0 16px;
+        padding: 16px;
+        border-radius: 6px;
+        overflow: auto;
+        font-size: 85%;
+        line-height: 1.45;
+    }
+
+    & blockquote {
+        margin-block: 0 16px;
+        padding: 0 1em;
+        color: var(--gh-fg-muted);
+        border-left: 0.25em solid var(--gh-border);
+
+        /* Foundation sets `blockquote p { color: #6f6f6f }` on the paragraph
+           itself, so the colour above never reaches it — 3.76:1 in dark mode. */
+        & :is(p, li) {
+            color: inherit;
+        }
+
+        & > *:first-child {
+            margin-top: 0;
+        }
+
+        & > *:last-child {
+            margin-bottom: 0;
+        }
+
+        /* A bolded lone first line is a converted alert label */
+        & > p:first-child > strong:only-child {
+            display: block;
+            margin-bottom: 0.35em;
+            font-size: 0.9em;
+            letter-spacing: 0.02em;
+            color: var(--gh-fg);
+        }
+    }
+
+    & table {
+        display: block;
+        width: max-content;
+        max-width: 100%;
+        overflow: auto;
+        margin-block: 0 16px;
+        border-spacing: 0;
+        border-collapse: collapse;
+        font-size: 0.9em;
+    }
+
+    & :is(th, td) {
+        padding: 6px 13px;
+        border: 1px solid var(--gh-border);
+        text-align: left;
+        vertical-align: top;
+    }
+
+    & th {
+        font-weight: 600;
+    }
+
+    & tr:nth-child(2n) {
+        background: var(--gh-subtle);
+    }
+
+    & img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin-block: 16px;
+        border-radius: 6px;
+        border: 1px solid var(--gh-border);
+        background: var(--gh-canvas);
+    }
+
+    & details {
+        margin-block: 0 16px;
+        padding: 0.75rem 1rem;
+        border: 1px solid var(--gh-border);
+        border-radius: 6px;
+        background: var(--gh-subtle);
+        font-size: 0.95em;
+
+        & summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--gh-fg);
+        }
+
+        &[open] summary {
+            margin-bottom: 0.65rem;
+            padding-bottom: 0.65rem;
+            border-bottom: 1px solid var(--gh-border);
+        }
+    }
+}
+
+.ghBody :global(.expressive-code) {
+    margin-block: 0 16px;
+}
+
+/* **************************************************************** */
+/* Footer */
+/* **************************************************************** */
+
+.footer {
+    max-width: 44em;
+    margin-top: 3rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--rule-strong);
+}
+
+.pager {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+
+    @media (min-width: 561px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.pagerLink {
+    display: block;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 0.9rem 1.1rem;
+    text-decoration: none;
+    color: inherit !important;
+    transition: border-color 120ms ease;
+
+    &:hover,
+    &:focus-visible {
+        border-color: var(--accent);
+
+        & .pagerTitle {
+            text-decoration: underline;
+            text-underline-offset: 0.2em;
+        }
+    }
+}
+
+.pagerNext {
+    text-align: right;
+}
+
+.pagerLabel {
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.pagerTitle {
+    display: block;
+    font-size: 1rem;
+    line-height: 1.35;
+}
+
+.backLink {
+    margin-top: 2rem;
+    font-family: var(--font-fixed);
+    font-size: 0.8rem;
+
+    & a {
+        text-decoration: none;
+
+        &:hover,
+        &:focus {
+            text-decoration: underline;
+            text-underline-offset: 0.25em;
+        }
+    }
+}

@@ -1,0 +1,28 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import css from './PullRequestListEntry.module.css'
+
+interface Props {
+    entry: CollectionEntry<'pullRequests'>
+}
+
+const { entry } = Astro.props
+
+// Dates are UTC midnight, so read them back in UTC too — see PullRequestArticle.astro.
+const published = entry.data.date.toLocaleDateString('en-GB', {
+    year: 'numeric',
+    month: 'long',
+    timeZone: 'UTC',
+})
+---
+
+<li class={css.entry}>
+    <a class={css.entryLink} href={`/portfolio/pull-requests/${entry.id}/`}>
+        <p class={css.entryKind}>{entry.data.kind}</p>
+        <h2 class={css.entryTitle}>{entry.data.title}</h2>
+        <p class={css.entryStandfirst}>{entry.data.standfirst}</p>
+        <p class={css.entryMeta}>
+            <time datetime={entry.data.date.toISOString()}>{published}</time>
+        </p>
+    </a>
+</li>

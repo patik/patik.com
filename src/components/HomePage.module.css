@@ -305,32 +305,9 @@
 }
 
 .spotlightButton {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
+    composes: pillButton from '../styles/pill-button.module.css';
+
     margin-top: 1.5rem;
-    padding: 0.7rem 1.3rem;
-    color: var(--accent-contrast) !important;
-    font-family: var(--font-fixed);
-    font-size: 0.9rem;
-    text-decoration: none;
-    background: var(--accent);
-    border-radius: 999px;
-    transition: transform 150ms ease;
-
-    &:hover,
-    &:focus-visible {
-        transform: translateY(-2px);
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-        transition: none;
-
-        &:hover,
-        &:focus-visible {
-            transform: none;
-        }
-    }
 }
 
 /* Contact */

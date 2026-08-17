@@ -8,8 +8,36 @@ import imgDovetailHeroDark from '@src/images/portfolio/dovetail-hero-dark.webp'
 import imgDovetailHeroLight from '@src/images/portfolio/dovetail-hero-light.webp'
 import imgGinMain from '@src/images/portfolio/gin-main.webp'
 import imgIncMain from '@src/images/portfolio/inc-main.webp'
+import { getPullRequests } from '@src/utils/getPullRequests'
 import { Image } from 'astro:assets'
 import css from './PortfolioPage.module.css'
+
+/** The contents list and the headings below both read from this, so they can't drift apart. */
+const sections = [
+    { id: 'dovetail', number: '01', label: 'Dovetail Travel Planner' },
+    { id: 'internal-developer-tools', number: '02', label: 'Internal developer tools' },
+    { id: 'command-line-tools', number: '03', label: 'Command-line tools' },
+    { id: 'apps-and-sites', number: '04', label: 'Apps & sites' },
+    { id: 'libraries', number: '05', label: 'Libraries' },
+    { id: 'writing', number: '06', label: 'Writing' },
+    { id: 'contributions', number: '07', label: 'Contributions' },
+    { id: 'earlier-era', number: '08', label: 'From an earlier era' },
+] as const
+
+function section(id: (typeof sections)[number]['id']) {
+    const match = sections.find((entry) => entry.id === id)
+
+    if (!match) {
+        throw new Error(`Unknown portfolio section: ${id}`)
+    }
+
+    return match
+}
+
+// Counted rather than written down, so this can't contradict the page it links to.
+const pullRequests = await getPullRequests()
+const pullRequestYears = pullRequests.map((entry) => entry.data.date.getUTCFullYear())
+const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pullRequestYears)}`
 ---
 
 <div class={css.portfolio}>
@@ -19,21 +47,34 @@ import css from './PortfolioPage.module.css'
         <p class={css.deck}>
             I’m a Staff Frontend Engineer at <a href="https://www.internations.org/">InterNations</a> and I’ve been building
             for the web since 2000. This page collects selected work: a travel-planning product, internal developer tools,
-            command-line tools, and open-source libraries—some of them maintained for well over a decade.
+            command-line tools, and open-source libraries—some of them maintained for well over a decade—plus a selection
+            of the writing.
         </p>
         <div class:list={[css.headerStats, css.mono]}>
             <span>50+ repositories</span>
             <span>~700 stars</span>
-            <span>Arctic Code Vault contributor</span>
             <a href="https://github.com/patik">github.com/patik <span aria-hidden="true">↗</span></a>
         </div>
     </header>
 
-    <section class={css.section}>
+    <nav class={css.toc} aria-label="Sections of this page">
+        {
+            sections.map(({ id, number, label }) => (
+                <a class={css.tocLink} href={`#${id}`}>
+                    <span class={css.tocNumber} aria-hidden="true">
+                        {number}
+                    </span>
+                    {label}
+                </a>
+            ))
+        }
+    </nav>
+
+    <section id="dovetail" class={css.section}>
         <div class={css.sectionHead}>
             <h2>
-                <span class={css.sectionNumber} aria-hidden="true">{' · Featured'}</span>
-                Dovetail
+                <span class={css.sectionNumber} aria-hidden="true">{section('dovetail').number} · Featured</span>
+                {section('dovetail').label}
             </h2>
         </div>
 
@@ -108,11 +149,11 @@ import css from './PortfolioPage.module.css'
         </div>
     </section>
 
-    <section class={css.section}>
+    <section id="internal-developer-tools" class={css.section}>
         <div class={css.sectionHead}>
             <h2>
-                <span class={css.sectionNumber} aria-hidden="true"></span>
-                Internal developer tools
+                <span class={css.sectionNumber} aria-hidden="true">{section('internal-developer-tools').number}</span>
+                {section('internal-developer-tools').label}
             </h2>
             <p class={css.sectionNote}>
                 Two tools I conceived, designed, and built end to end for InterNations. The source is private; the
@@ -249,11 +290,11 @@ import css from './PortfolioPage.module.css'
         </div>
     </section>
 
-    <section class={css.section}>
+    <section id="command-line-tools" class={css.section}>
         <div class={css.sectionHead}>
             <h2>
-                <span class={css.sectionNumber} aria-hidden="true"></span>
-                Command-line tools
+                <span class={css.sectionNumber} aria-hidden="true">{section('command-line-tools').number}</span>
+                {section('command-line-tools').label}
             </h2>
             <p class={css.sectionNote}>
                 Developer experience is a feature. Small tools that remove daily friction from the terminal—each one
@@ -452,11 +493,11 @@ import css from './PortfolioPage.module.css'
         </div>
     </section>
 
-    <section class={css.section}>
+    <section id="apps-and-sites" class={css.section}>
         <div class={css.sectionHead}>
             <h2>
-                <span class={css.sectionNumber} aria-hidden="true"></span>
-                Apps &amp; sites
+                <span class={css.sectionNumber} aria-hidden="true">{section('apps-and-sites').number}</span>
+                {section('apps-and-sites').label}
             </h2>
         </div>
 
@@ -522,11 +563,11 @@ import css from './PortfolioPage.module.css'
         </ul>
     </section>
 
-    <section class={css.section}>
+    <section id="libraries" class={css.section}>
         <div class={css.sectionHead}>
             <h2>
-                <span class={css.sectionNumber} aria-hidden="true"></span>
-                Libraries
+                <span class={css.sectionNumber} aria-hidden="true">{section('libraries').number}</span>
+                {section('libraries').label}
             </h2>
             <p class={css.sectionNote}>
                 Long-term maintenance is the point. These have been carried across several eras of the JavaScript
@@ -609,11 +650,49 @@ import css from './PortfolioPage.module.css'
         </ul>
     </section>
 
-    <section class={css.section}>
+    <section id="writing" class={css.section}>
         <div class={css.sectionHead}>
             <h2>
-                <span class={css.sectionNumber} aria-hidden="true"></span>
-                Contributions
+                <span class={css.sectionNumber} aria-hidden="true">{section('writing').number}</span>
+                {section('writing').label}
+            </h2>
+            <p class={css.sectionNote}>
+                The other half of engineering is explaining it. A pull request is the moment a team decides whether to
+                adopt an idea, so it is worth writing properly.
+            </p>
+        </div>
+
+        <ul class={css.listEntries}>
+            <li class={css.listEntry}>
+                <div class:list={[css.listIcon, css.sigil]} aria-hidden="true">¶</div>
+                <div>
+                    <h3>Pull request descriptions</h3>
+                    <div class:list={[css.entryMeta, css.mono]}>
+                        <span>{pullRequests.length} selected</span>
+                        <span>{pullRequestSpan}</span>
+                        <span>InterNations</span>
+                    </div>
+                    <div class={css.prose}>
+                        <p>
+                            Pull requests from a long run of frontend platform migrations, selected for the writing
+                            rather than the code. Each one sets out what changed and why, how to review it, and what the
+                            team should do differently afterwards—a strict TypeScript flag, two major framework
+                            versions, a global store, a router.
+                        </p>
+                    </div>
+                    <div class={css.linkRow}>
+                        <a href="/portfolio/pull-requests/">Read the collection</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </section>
+
+    <section id="contributions" class={css.section}>
+        <div class={css.sectionHead}>
+            <h2>
+                <span class={css.sectionNumber} aria-hidden="true">{section('contributions').number}</span>
+                {section('contributions').label}
             </h2>
             <p class={css.sectionNote}>
                 Notable work from my public-sector years, built with the New York State Office of Information Technology
@@ -689,11 +768,11 @@ import css from './PortfolioPage.module.css'
         </ul>
     </section>
 
-    <section class={css.section}>
+    <section id="earlier-era" class={css.section}>
         <div class={css.sectionHead}>
             <h2>
-                <span class={css.sectionNumber} aria-hidden="true"></span>
-                From an earlier era
+                <span class={css.sectionNumber} aria-hidden="true">{section('earlier-era').number}</span>
+                {section('earlier-era').label}
             </h2>
             <p class={css.sectionNote}>
                 Kept online because old links shouldn’t rot. Interesting today mainly as artifacts of what the web used
