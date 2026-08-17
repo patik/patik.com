@@ -2,11 +2,12 @@
     font-size: 1.125rem;
     line-height: 1.8;
 
+    /* em, not rem: body text steps up at 480px and this gap steps up with it. */
     p,
     ul,
     ol,
     blockquote {
-        margin: 0 0 1.875rem;
+        margin: 0 0 1.25em;
     }
 
     /* A nested list belongs to the item above it: no gap, and indented far enough
