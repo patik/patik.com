@@ -1,0 +1,147 @@
+.container {
+    max-width: 960px;
+    margin: 0;
+}
+
+.coverImage {
+    width: 100%;
+    box-shadow: 0 5px 10px rgb(0 0 0 / 12%);
+}
+
+.coverImageInteractive {
+    transition: box-shadow 200ms ease;
+
+    &:hover {
+        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -4px rgb(0 0 0 / 10%);
+    }
+}
+
+.heroGrid {
+    margin-bottom: 0;
+
+    @media (min-width: 768px) {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 4rem;
+        margin-bottom: 0;
+    }
+
+    @media (min-width: 1024px) {
+        column-gap: 2rem;
+    }
+}
+
+.heroTitle {
+    margin: 0;
+    font-size: 24px;
+    line-height: 1.625;
+
+    @media (min-width: 1024px) {
+        font-size: 30.375px;
+        line-height: 1.4;
+    }
+}
+
+.heroDate {
+    margin-bottom: 1rem;
+    font-size: 1.125rem;
+    line-height: 28px;
+
+    @media (min-width: 768px) {
+        margin-bottom: 0;
+    }
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 0;
+    }
+}
+
+.introTitle,
+.moreTitle {
+    font-size: 30px;
+    font-weight: normal;
+    letter-spacing: -0.04em;
+    line-height: 1.625;
+
+    @media (min-width: 768px) {
+        font-size: 41.625px;
+        line-height: 1.4;
+    }
+}
+
+.introTitle {
+    @media (min-width: 768px) {
+        font-size: 49.5px;
+        padding-right: 2rem;
+    }
+}
+
+.moreTitle {
+    margin-bottom: 0.5rem;
+}
+
+.storiesGrid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 5rem;
+    margin-bottom: 8rem;
+
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 4rem;
+        row-gap: 8rem;
+    }
+
+    @media (min-width: 1024px) {
+        column-gap: 8rem;
+    }
+}
+
+.postTitle {
+    margin-bottom: 0;
+    font-size: 24px;
+    line-height: 1.625;
+
+    @media (min-width: 768px) {
+        font-size: 30.375px;
+        line-height: 1.4;
+    }
+}
+
+.postDate {
+    margin-bottom: 0;
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 28px;
+}
+
+.postExcerpt {
+    margin-bottom: 0;
+    font-size: 1.125rem;
+    line-height: 1.625;
+}
+
+.unpublished {
+    border-bottom: 1px solid #262626;
+    background: #262626;
+    color: white;
+}
+
+.unpublishedContent {
+    padding-block: 0.5rem;
+    text-align: center;
+    font-size: 0.875rem;
+}

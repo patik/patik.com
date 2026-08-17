@@ -7,6 +7,8 @@
 
     margin-top: 2.5rem;
     margin-bottom: 4rem;
+    font-size: 18px;
+    line-height: 1.625;
 
     @media (prefers-color-scheme: dark) {
         --rule: #3c3c3c;
@@ -482,7 +484,7 @@
         color: var(--gh-fg-muted);
         border-left: 0.25em solid var(--gh-border);
 
-        /* Foundation sets `blockquote p { color: #6f6f6f }` on the paragraph
+        /* The shared base sets blockquote paragraphs to the quote color
            itself, so the colour above never reaches it — 3.76:1 in dark mode. */
         & :is(p, li) {
             color: inherit;

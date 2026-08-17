@@ -2,6 +2,7 @@
 import PhotoGrid from '@src/components/gallery/PhotoGrid.astro'
 import PhotoLightbox from '@src/components/gallery/PhotoLightbox.astro'
 import Layout from '@src/layouts/Layout.astro'
+import css from './GalleryPage.module.css'
 import type { GalleryPageProps } from '@src/photos/utils/getGalleryStaticPaths'
 import type { CityGallery, CountryGallery } from '@src/photos/utils/types'
 
@@ -25,9 +26,9 @@ const baseUrl = cityId
             <PhotoLightbox currentPhoto={currentPhoto} images={images} galleryTitle={gallery.title} baseUrl={baseUrl} />
         ) : (
             <>
-                <header class="gallery-header">
+                <header class={css.header}>
                     <h1>{gallery.title}</h1>
-                    <a href={`/travel/${countryGallery.countryId}`} class="back-link">
+                    <a href={`/travel/${countryGallery.countryId}`} class={css.backLink}>
                         ← Back to {countryGallery.countryName}
                     </a>
                 </header>
@@ -37,22 +38,3 @@ const baseUrl = cityId
         )
     }
 </Layout>
-
-<style>
-    .gallery-header {
-        h1 {
-            font-size: 2.5rem;
-        }
-    }
-
-    .back-link {
-        color: rgba(var(--foreground-rgb), 0.6);
-        text-decoration: none;
-        font-size: 0.9rem;
-        transition: color 0.2s;
-    }
-
-    .back-link:hover {
-        color: rgb(var(--foreground-rgb));
-    }
-</style>

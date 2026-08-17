@@ -1,10 +1,11 @@
 import Container from './Container'
+import css from './BlogIndex.module.css'
 
 export default function UnpublishedAlert() {
     return (
-        <div className="border-b bg-neutral-800 border-neutral-800 text-white">
+        <div className={css.unpublished}>
             <Container>
-                <div className="py-2 text-center text-sm">
+                <div className={css.unpublishedContent}>
                     This post is not published. It will not be included in production builds.
                 </div>
             </Container>

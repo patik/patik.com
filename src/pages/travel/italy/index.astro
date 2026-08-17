@@ -1,5 +1,6 @@
 ---
 import TravelLinkList from '../../../components/TravelLinkList.astro'
+import travelCss from '@src/components/TravelLinkList.module.css'
 import countryGallery from '../../../galleries/italy'
 import FlorenceImage from '../../../images/italy-florence-hero.jpg'
 import VeniceImage from '../../../images/italy-venice-hero.jpg'
@@ -8,7 +9,7 @@ import Layout from '../../../layouts/Layout.astro'
 ---
 
 <Layout title="Italy" keywords={countryGallery.keywords}>
-    <header class="travel-page-header">
+    <header class={travelCss.travelPageHeader}>
         <h1>Italy</h1>
         <p>April 2018</p>
     </header>

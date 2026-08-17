@@ -1,6 +1,7 @@
 ---
 import getImageUrl from '@src/photos/utils/getImageUrl'
 import type { ImageProps } from '@src/photos/utils/types'
+import css from './PhotoLightbox.module.css'
 
 interface Props {
     currentPhoto: ImageProps
@@ -18,48 +19,48 @@ const nextPhoto = currentIndex < images.length - 1 ? images[currentIndex + 1] : 
 const currentImageUrl = getImageUrl(currentPhoto, 1600)
 ---
 
-<div class="lightbox-page">
-    <nav class="lightbox-nav">
-        <a href={baseUrl.replace(/\/$/, '')} class="back-link">
+<div class:list={[css.page, 'lightbox-page']}>
+    <nav class={css.nav}>
+        <a href={baseUrl.replace(/\/$/, '')} class={css.backLink}>
             ← Back to {galleryTitle}
         </a>
     </nav>
 
-    <div class="lightbox-container">
-        <div class="lightbox-main">
+    <div class={css.container}>
+        <div class={css.main}>
             <img
                 src={currentImageUrl}
                 alt={`Photo ${currentPhoto.id + 1}`}
                 width={currentPhoto.width}
                 height={currentPhoto.height}
-                class="main-image"
+                class={css.mainImage}
             />
         </div>
 
-        <div class="lightbox-controls">
+        <div class={css.controls}>
             {
                 prevPhoto ? (
-                    <a href={`${baseUrl}${prevPhoto.id}`} class="nav-button prev-button" data-direction="prev">
+                    <a href={`${baseUrl}${prevPhoto.id}`} class={css.navButton} data-direction="prev">
                         <span aria-hidden="true">←</span>
-                        <span class="sr-only">Previous photo</span>
+                        <span class={css.srOnly}>Previous photo</span>
                     </a>
                 ) : (
-                    <div class="nav-button-placeholder" />
+                    <div class={css.navButtonPlaceholder} />
                 )
             }
 
-            <div class="photo-counter">
+            <div class={css.counter}>
                 {currentIndex + 1} / {images.length}
             </div>
 
             {
                 nextPhoto ? (
-                    <a href={`${baseUrl}${nextPhoto.id}`} class="nav-button next-button" data-direction="next">
+                    <a href={`${baseUrl}${nextPhoto.id}`} class={css.navButton} data-direction="next">
                         <span aria-hidden="true">→</span>
-                        <span class="sr-only">Next photo</span>
+                        <span class={css.srOnly}>Next photo</span>
                     </a>
                 ) : (
-                    <div class="nav-button-placeholder" />
+                    <div class={css.navButtonPlaceholder} />
                 )
             }
         </div>
@@ -78,133 +79,3 @@ const currentImageUrl = getImageUrl(currentPhoto, 1600)
         }
     })
 </script>
-
-<style>
-    .lightbox-page {
-        --lightbox-ui-color: 0, 0, 0;
-
-        min-height: 100vh;
-        color: rgb(var(--lightbox-ui-color));
-        display: flex;
-        flex-direction: column;
-        margin-inline: calc(-1 * var(--main-inline-padding));
-
-        @media (prefers-color-scheme: dark) {
-            --lightbox-ui-color: 255, 255, 255;
-        }
-    }
-
-    .lightbox-nav {
-        padding: 1rem;
-        border-bottom: 1px solid rgba(var(--lightbox-ui-color), 0.1);
-    }
-
-    .back-link {
-        color: rgb(var(--lightbox-ui-color));
-        text-decoration: none;
-        font-size: 0.9rem;
-        opacity: 0.8;
-        transition: opacity 0.2s;
-    }
-
-    .back-link:hover {
-        opacity: 1;
-    }
-
-    .lightbox-container {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .lightbox-main {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        max-width: 1600px;
-    }
-
-    .main-image {
-        max-width: 100%;
-        max-height: calc(100vh - 150px);
-        width: auto;
-        height: auto;
-        object-fit: contain;
-    }
-
-    .lightbox-controls {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-        padding: 2rem 1rem;
-        width: 100%;
-        max-width: 600px;
-    }
-
-    .nav-button,
-    .nav-button-placeholder {
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 20px;
-        background: rgba(var(--lightbox-ui-color), 0.1);
-        border: 1px solid rgba(var(--lightbox-ui-color), 0.2);
-        border-radius: 50%;
-        color: rgb(var(--lightbox-ui-color));
-        text-decoration: none;
-        transition: all 0.2s;
-        cursor: pointer;
-    }
-
-    .nav-button-placeholder {
-        opacity: 0;
-        cursor: default;
-    }
-
-    .nav-button:hover {
-        background: rgba(var(--lightbox-ui-color), 0.2);
-        border-color: rgba(var(--lightbox-ui-color), 0.4);
-        transform: scale(1.1);
-    }
-
-    .photo-counter {
-        font-size: 0.9rem;
-        opacity: 0.7;
-        min-width: 80px;
-        text-align: center;
-    }
-
-    .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border-width: 0;
-    }
-
-    /* 641px, not 640: the mobile styles above used to be `max-width: 640px`, which
-       also matches 640px itself — bump by 1px so the two bands don't overlap. */
-    @media (min-width: 641px) {
-        .lightbox-controls {
-            gap: 2rem;
-        }
-
-        .nav-button,
-        .nav-button-placeholder {
-            width: 48px;
-            height: 48px;
-            font-size: 24px;
-        }
-    }
-</style>

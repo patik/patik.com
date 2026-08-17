@@ -1,9 +1,0 @@
-:root {
-    --body-bg: #fff;
-    --body-font-color: #222;
-
-    @media (prefers-color-scheme: dark) {
-        --body-bg: #222;
-        --body-font-color: white;
-    }
-}

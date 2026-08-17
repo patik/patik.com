@@ -1,5 +1,6 @@
 ---
 import Space from '../../components/Space'
+import travelCss from '@src/components/TravelLinkList.module.css'
 import TravelLinkList from '../../components/TravelLinkList.astro'
 import imgGermanyAustriaLink from '../../images/germany-austria-link.jpg'
 import imgGermanyBavariaLink from '../../images/germany-bavaria-link.jpg'
@@ -28,7 +29,7 @@ import Layout from '../../layouts/Layout.astro'
         'travel',
     ]}
 >
-    <header class="travel-page-header">
+    <header class={travelCss.travelPageHeader}>
         <h1>Germany &amp; Austria</h1>
     </header>
 
@@ -73,7 +74,6 @@ import Layout from '../../layouts/Layout.astro'
                     imageAlt: 'Brandenberg Gate, Berlin',
                 },
             ]}
-            client:load
         />
     </section>
 </Layout>

@@ -33,7 +33,6 @@
         "@astrojs/markdown-remark": "7.2.2",
         "@astrojs/react": "^6.0.2",
         "astro": "^7.1.6",
-        "classnames": "^2.5.1",
         "cloudinary": "^2.10.0",
         "d3-geo": "3.1.1",
         "date-fns": "^4.4.0",
@@ -50,7 +49,6 @@
         "@expressive-code/plugin-line-numbers": "^0.44.1",
         "@ianvs/prettier-plugin-sort-imports": "^4.7.1",
         "@playwright/test": "^1.62.1",
-        "@tailwindcss/postcss": "^4.3.3",
         "@types/d3-geo": "3.1.1",
         "@types/lodash": "^4.17.25",
         "@types/node": "^26.1.2",
@@ -62,12 +60,10 @@
         "netlify-cli": "^27.1.0",
         "oxlint": "^1.77.0",
         "oxlint-tsgolint": "^7.0.2001",
-        "postcss": "^8.5.25",
         "prettier": "^3.9.6",
         "prettier-plugin-astro": "^0.14.1",
         "serve": "^14.2.6",
         "stylelint": "^17.14.1",
-        "tailwindcss": "^4.3.3",
         "typescript": "npm:@typescript/typescript6@^6.0.2"
     },
     "repository": {

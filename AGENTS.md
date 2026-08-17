@@ -7,7 +7,7 @@ Don't ask for permission before continuing. Just do it. Keep going until you sol
 This is an Astro-based personal website with blog and photo galleries, deployed on Netlify. Key technologies:
 
 - **Astro 5** with React integration for interactive components
-- **Tailwind CSS** + CSS Modules for styling
+- **CSS Modules** with layered global styles
 - **Astro Content Collections** for blog posts (stored in `src/posts/`)
 - **Cloudinary** for photo gallery image hosting
 - **pnpm** as package manager

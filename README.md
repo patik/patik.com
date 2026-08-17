@@ -63,7 +63,7 @@ Photo galleries (e.g., travel photos from Uzbekistan) are managed in `src/galler
 ## Tech Stack
 
 - **Framework:** [Astro](https://astro.build/) with React integration
-- **Styling:** [Tailwind CSS](https://tailwindcss.com/) + CSS Modules
+- **Styling:** CSS Modules with layered global CSS
 - **Content:** Astro Content Collections with Markdown posts
 - **Code Blocks:** [Expressive Code](https://expressive-code.com/) with syntax highlighting
 - **Images:** Cloudinary for photo galleries

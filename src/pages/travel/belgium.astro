@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets'
+import travelCss from '@src/components/TravelLinkList.module.css'
 import TravelLinkList from '../../components/TravelLinkList.astro'
 import BrugesImage from '../../images/britain-benelux-bruges-link.jpg'
 import OverviewMap from '../../images/britain-benelux-overview-map-small.jpg'
@@ -7,7 +8,7 @@ import Layout from '../../layouts/Layout.astro'
 ---
 
 <Layout title="Belgium" keywords={['Belgium', 'Bruges', 'Europe', 'travel']}>
-    <header class="travel-page-header">
+    <header class={travelCss.travelPageHeader}>
         <h1>Belgium</h1>
         <p>August 2012</p>
     </header>
@@ -48,7 +49,7 @@ import Layout from '../../layouts/Layout.astro'
                 <a href="/travel/britain/">Liverpool</a>
             </li>
         </ul>
-        <div class="travel-map">
+        <div class={travelCss.travelMap}>
             <a href="/images/britain-benelux-overview-map.png">
                 <Image src={OverviewMap} alt="Map of trip locations" title="Click for a larger version" />
             </a>

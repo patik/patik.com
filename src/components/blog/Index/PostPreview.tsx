@@ -1,5 +1,6 @@
 import config from '../../../config.json'
 import DateFormatter from '../DateFormatter'
+import css from '../BlogIndex.module.css'
 import Excerpt from './Excerpt'
 
 const { blogPath } = config
@@ -15,15 +16,15 @@ type Props = {
 export default function PostPreview({ title, date, excerpt, slug }: Props) {
     return (
         <div>
-            <h3 className="text-3xl mb-3 leading-snug">
-                <a href={`${blogPath}/${slug}`} className="hover:underline">
+            <h3 className={css.postTitle}>
+                <a href={`${blogPath}/${slug}`} className={css.link}>
                     {title}
                 </a>
             </h3>
-            <div className="text-lg mb-4 font-bold">
+            <div className={css.postDate}>
                 <DateFormatter dateString={date} />
             </div>
-            <Excerpt excerpt={excerpt} /* slug={slug} */ className="text-lg leading-relaxed mb-4" />
+            <Excerpt excerpt={excerpt} /* slug={slug} */ className={css.postExcerpt} />
         </div>
     )
 }

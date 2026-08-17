@@ -1,5 +1,5 @@
-import cn from 'classnames'
 import config from '../../config.json'
+import css from './BlogIndex.module.css'
 
 const { blogUrl } = config
 
@@ -14,16 +14,14 @@ export default function CoverImage({ title, src, slug }: Props) {
         <img
             src={`${blogUrl}/${src}`}
             alt={title}
-            className={cn('shadow-sm w-full', {
-                'hover:shadow-lg transition-shadow duration-200': slug,
-            })}
+            className={[css.coverImage, slug ? css.coverImageInteractive : ''].filter(Boolean).join(' ')}
             width={1300}
             height={630}
         />
     )
 
     return (
-        <div className="sm:mx-0">
+        <div>
             {slug ? (
                 <a href={`${slug}`} aria-label={title}>
                     {image}

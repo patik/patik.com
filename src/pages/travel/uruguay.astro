@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets'
+import travelCss from '@src/components/TravelLinkList.module.css'
 import Space from '../../components/Space'
 import TravelLinkList from '../../components/TravelLinkList.astro'
 import ColoniaImage from '../../images/peru-argentina-link-colonia.jpg'
@@ -8,7 +9,7 @@ import Layout from '../../layouts/Layout.astro'
 ---
 
 <Layout title="Uruguay" keywords={['uruguay', 'colonia del sacramento', 'south america', 'travel']}>
-    <header class="travel-page-header">
+    <header class={travelCss.travelPageHeader}>
         <h1>Uruguay</h1>
     </header>
 
@@ -79,7 +80,7 @@ import Layout from '../../layouts/Layout.astro'
             </li>
         </ul>
 
-        <div class="travel-map">
+        <div class={travelCss.travelMap}>
             <a href="/images/peru-argentina-map.png">
                 <Image
                     src={MapSmall}

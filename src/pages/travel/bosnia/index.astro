@@ -1,5 +1,6 @@
 ---
 import TravelLinkList from '../../../components/TravelLinkList.astro'
+import travelCss from '@src/components/TravelLinkList.module.css'
 import countryGallery from '../../../galleries/bosnia'
 import MostarImage from '../../../images/bosnia-mostar-hero.jpg'
 import SarajevoImage from '../../../images/bosnia-sarajevo-hero.jpg'
@@ -7,7 +8,7 @@ import Layout from '../../../layouts/Layout.astro'
 ---
 
 <Layout title="Bosnia" keywords={countryGallery.keywords}>
-    <header class="travel-page-header">
+    <header class={travelCss.travelPageHeader}>
         <h1>Bosnia and Herzegovina</h1>
         <p>May 2024</p>
     </header>

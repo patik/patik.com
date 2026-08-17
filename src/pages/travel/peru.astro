@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets'
+import travelCss from '@src/components/TravelLinkList.module.css'
 import Space from '../../components/Space'
 import TravelLinkList from '../../components/TravelLinkList.astro'
 import AmazonImage from '../../images/peru-argentina-link-amazon.jpg'
@@ -12,7 +13,7 @@ import Layout from '../../layouts/Layout.astro'
     title="Peru & Argentina"
     keywords={['peru', 'cusco', 'machu picchu', 'amazon rainforest', 'lake titicaca', 'south america', 'travel']}
 >
-    <header class="travel-page-header">
+    <header class={travelCss.travelPageHeader}>
         <h1>Peru</h1>
     </header>
 
@@ -41,7 +42,6 @@ import Layout from '../../layouts/Layout.astro'
                     imageAlt: 'Kim holding a lamb and posing with women in traditional Andean clothes',
                 },
             ]}
-            client:load
         />
     </section>
 
@@ -85,7 +85,7 @@ import Layout from '../../layouts/Layout.astro'
             </li>
         </ul>
 
-        <div class="travel-map">
+        <div class={travelCss.travelMap}>
             <a href="/images/peru-argentina-map.png">
                 <Image
                     src={MapSmall}

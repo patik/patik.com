@@ -7,6 +7,10 @@
     --concert-pill-line: rgb(0 0 0 / 0.14);
 
     color: var(--concert-ink);
+
+    & > h1 {
+        line-height: 1.4;
+    }
 }
 
 .intro {
@@ -134,11 +138,13 @@
 
 .controlButton {
     appearance: none;
+    margin: 0 0 1.25em;
     min-height: 2rem;
     padding: 0.35rem 0.7rem;
     color: var(--concert-ink) !important;
     font-family: var(--font-sans);
     font-size: 0.95rem;
+    font-weight: 700;
     line-height: 1.1;
     cursor: pointer;
     background: transparent !important;
@@ -177,11 +183,13 @@
 .viewTitle {
     margin: 0 0 0.75rem;
     font-size: 1.25rem;
+    line-height: 1.4;
 }
 
 .eventList,
 .artistList,
 .appearanceList {
+    margin: 0;
     padding: 0;
     list-style: none;
 }
@@ -238,11 +246,13 @@
 .artistName {
     margin: 0;
     font-size: 1.2rem;
+    line-height: 1.4;
 }
 
 .eventTitle {
     margin: 0;
     font-size: 1.15rem;
+    line-height: 1.4;
 }
 
 .artistLink {
@@ -351,8 +361,9 @@
 .roleHeading {
     color: var(--concert-muted);
     font-size: 0.72rem;
-    font-weight: 700;
+    font-weight: 400;
     letter-spacing: 0.08em;
+    line-height: 1.4;
     text-transform: uppercase;
 }
 
@@ -360,6 +371,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.35rem;
+    margin: 0;
     padding: 0;
     list-style: none;
 }

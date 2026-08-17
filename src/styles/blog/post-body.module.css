@@ -1,4 +1,28 @@
-.post-body {
+.postBody {
+    font-size: 1.125rem;
+    line-height: 1.8;
+
+    p,
+    ul,
+    ol,
+    blockquote {
+        margin: 0 0 1.875rem;
+    }
+
+    h2 {
+        margin-top: 3rem;
+        margin-bottom: 1rem;
+        font-size: 1.875rem;
+        line-height: 1.375;
+    }
+
+    h3 {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+        line-height: 1.375;
+    }
+
     object,
     figure,
     img {
@@ -22,19 +46,19 @@
             line-height: 1.5;
         }
     }
-}
 
-code {
-    font-family: Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace;
-    font-size: 1rem;
-    color: #666;
-    background-color: rgba(0, 0, 0, 0.1);
-    padding: 3px;
-    border-radius: 3px;
+    code {
+        font-family: Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace;
+        font-size: 1rem;
+        color: #666;
+        background-color: rgba(0, 0, 0, 0.1);
+        padding: 3px;
+        border-radius: 3px;
 
-    @media (prefers-color-scheme: dark) {
-        background-color: rgba(255, 255, 255, 0.05);
-        color: #ccc;
+        @media (prefers-color-scheme: dark) {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: #ccc;
+        }
     }
 }
 

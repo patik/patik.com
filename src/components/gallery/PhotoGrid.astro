@@ -1,6 +1,7 @@
 ---
 import getImageUrl from '@src/photos/utils/getImageUrl'
 import type { ImageProps } from '@src/photos/utils/types'
+import css from './PhotoGrid.module.css'
 
 interface Props {
     images: ImageProps[]
@@ -10,14 +11,14 @@ interface Props {
 const { images, baseUrl } = Astro.props
 ---
 
-<div class="photo-grid">
+<div class={css.grid}>
     {
         images.map((image) => {
             // const url = getImageUrl(image, 800)
             const thumbUrl = getImageUrl(image, 400)
 
             return (
-                <a href={`${baseUrl}${image.id}`} class="photo-grid-item" data-photo-id={image.id}>
+                <a href={`${baseUrl}${image.id}`} class={css.item} data-photo-id={image.id}>
                     <img
                         src={thumbUrl}
                         alt={`Photo ${image.id + 1}`}
@@ -31,45 +32,3 @@ const { images, baseUrl } = Astro.props
         })
     }
 </div>
-
-<style>
-    .photo-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 1rem;
-    }
-
-    .photo-grid-item {
-        position: relative;
-        overflow: hidden;
-        border-radius: 8px;
-        transition:
-            transform 0.2s ease,
-            box-shadow 0.2s ease;
-        display: block;
-    }
-
-    .photo-grid-item:hover {
-        transform: scale(1.02);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    }
-
-    .photo-grid-item img {
-        width: 100%;
-        height: auto;
-        display: block;
-        object-fit: cover;
-    }
-
-    @media (min-width: 640px) {
-        .photo-grid {
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        }
-    }
-
-    @media (min-width: 1024px) {
-        .photo-grid {
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-        }
-    }
-</style>

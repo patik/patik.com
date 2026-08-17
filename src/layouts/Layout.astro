@@ -1,17 +1,13 @@
 ---
 import HeaderNav from './HeaderNav.astro'
 import css from './Layout.module.css'
-// Side effects
-import '../styles/blog/index.css'
-import '../styles/photos.css'
-import '../styles/site/globals.css'
-import '../styles/site/scss/style.css'
+import '../styles/global.css'
 
 const { title = '', keywords = [] } = Astro.props
 ---
 
 <!doctype html>
-<html lang="en" class="antialiased">
+<html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />

@@ -1,0 +1,19 @@
+.blogPost {
+    max-width: 800px;
+    margin-inline: auto;
+    padding: 2rem 1rem;
+
+    & > header {
+        margin-bottom: 2rem;
+    }
+
+    & > header h1 {
+        margin-bottom: 0.5rem;
+        font-size: 2.5rem;
+    }
+
+    & > header time {
+        color: #666;
+        font-size: 0.9rem;
+    }
+}

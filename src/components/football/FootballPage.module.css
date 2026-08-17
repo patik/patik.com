@@ -86,6 +86,8 @@
     box-shadow: none;
     border: 1px solid var(--football-line);
     border-radius: 4px;
+    margin: 0 0 1.25em;
+    font-weight: 700;
 }
 
 .controlButton:hover,

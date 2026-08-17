@@ -5,6 +5,7 @@ import appNetPng from '../../images/app-net-twitter-char-count.png'
 import magnetPng from '../../images/magnet-links-preview.png'
 import twitterAvatarPng from '../../images/twitter-avatar-in-menu.png'
 import Layout from '../../layouts/Layout.astro'
+import css from './UserScripts.module.css'
 
 function getUserScriptUrl(fileName: string) {
     return `/code/user-scripts/${fileName}`
@@ -24,7 +25,7 @@ function getUserScriptUrl(fileName: string) {
         'add-on',
     ]}
 >
-    <h1>User Scripts</h1>
+    <h1 class={css.pageTitle}>User Scripts</h1>
 
     <p>
         Install these in Chrome, Safari, or Firefox with
@@ -33,21 +34,21 @@ function getUserScriptUrl(fileName: string) {
     </p>
 
     <section>
-        <h2>Twitter avatar in menu</h2>
+        <h2 class={css.sectionTitle}>Twitter avatar in menu</h2>
         <p>See which account you’re logged in under at a quick glance</p>
         <figure>
             <Image src={twitterAvatarPng} alt="" />
         </figure>
         <p>
-            <a href={getUserScriptUrl('twitter-avatar-in-menu.user.js')} download class="button button-primary"
+            <a href={getUserScriptUrl('twitter-avatar-in-menu.user.js')} download class={css.button}
                 >Install</a
             >
-            <a href="https://gist.github.com/patik/2029861" class="button"> Gist </a>
+            <a href="https://gist.github.com/patik/2029861" class={css.button}> Gist </a>
         </p>
     </section>
 
     <section>
-        <h2>Magnet Link Display</h2>
+        <h2 class={css.sectionTitle}>Magnet Link Display</h2>
         <p>
             Displays <code>magnet://</code> links and other P2P URLs prominently. Great for sites that hide the real links
             between obnoxious “download” ad banners or open pop ups when you click on them.
@@ -58,14 +59,14 @@ function getUserScriptUrl(fileName: string) {
             </a>
         </figure>
         <p>
-            <a href={getUserScriptUrl('magent-links.user.js')} download class="button button-primary">Install</a>
+            <a href={getUserScriptUrl('magent-links.user.js')} download class={css.button}>Install</a>
 
-            <a href="https://gist.github.com/patik/8388768" class="button"> Gist </a>
+            <a href="https://gist.github.com/patik/8388768" class={css.button}> Gist </a>
         </p>
     </section>
 
     <section>
-        <h2>Alpha.App.Net Enhanced</h2>
+        <h2 class={css.sectionTitle}>Alpha.App.Net Enhanced</h2>
         <p>Enhance App.net by adding useful features to the Alpha web app.</p>
         <ul>
             <li>Repost &mdash; Easily repost/share another user’s post</li>
@@ -81,16 +82,16 @@ function getUserScriptUrl(fileName: string) {
         <p>
             <a
                 href="https://chrome.google.com/webstore/detail/agplbnminilmhgkkdngdodiallpempch"
-                class="button button-primary"
+                class={css.button}
             >
                 Chrome Extension
             </a>
             <Space />
-            <a href={getUserScriptUrl('alpha-app-net-enhanced.user.js')} download class="button button-primary"
+            <a href={getUserScriptUrl('alpha-app-net-enhanced.user.js')} download class={css.button}
                 >Install</a
             >
             <Space />
-            <a href="https://gist.github.com/3542903" class="button"> Gist </a>
+            <a href="https://gist.github.com/3542903" class={css.button}> Gist </a>
         </p>
         <figure>
             <Image src={appNetPng} alt="" />
@@ -98,24 +99,24 @@ function getUserScriptUrl(fileName: string) {
     </section>
 
     <section>
-        <h2>Readable Reader</h2>
+        <h2 class={css.sectionTitle}>Readable Reader</h2>
         <p>Compact styles for Google Reader</p>
         <p>
-            <a href={getUserScriptUrl('readable-reader.user.js')} download class="button button-primary">Install</a>
+            <a href={getUserScriptUrl('readable-reader.user.js')} download class={css.button}>Install</a>
         </p>
     </section>
 
     <section>
-        <h2>Readable Google+</h2>
+        <h2 class={css.sectionTitle}>Readable Google+</h2>
         <p>Cleans up Google+ Post pages. Currently only eliminates the gigantic avatar in the sidebar.</p>
         <p>
-            <a href={getUserScriptUrl('readable-google-plus.user.js')} download class="button button-primary">Install</a
+            <a href={getUserScriptUrl('readable-google-plus.user.js')} download class={css.button}>Install</a
             >
         </p>
     </section>
 
     <section>
-        <h2>Redirect from WikiTravel to WikiVoyage</h2>
+        <h2 class={css.sectionTitle}>Redirect from WikiTravel to WikiVoyage</h2>
         <p>
             When landing on a WikiTravel.org article, this script automatically redirects to the corresponding article
             on WikiVoyage.org.
@@ -127,30 +128,30 @@ function getUserScriptUrl(fileName: string) {
             this script is still necessary because links to WikiTravel often show up in search results, blogs, etc.
         </p>
         <p>
-            <a href={getUserScriptUrl('wiki-travel-voyage-redirect.user.js')} download class="button button-primary"
+            <a href={getUserScriptUrl('wiki-travel-voyage-redirect.user.js')} download class={css.button}
                 >Install</a
             >
 
-            <a href="https://gist.github.com/patik/4979331" class="button"> Gist </a>
+            <a href="https://gist.github.com/patik/4979331" class={css.button}> Gist </a>
         </p>
     </section>
 
     <section>
-        <h2>Readable Flickr</h2>
+        <h2 class={css.sectionTitle}>Readable Flickr</h2>
         <p>Legible (large-font) styles for Flickr</p>
         <p>
-            <a href={getUserScriptUrl('readable-flickr.user.js')} download class="button button-primary">Install</a>
+            <a href={getUserScriptUrl('readable-flickr.user.js')} download class={css.button}>Install</a>
         </p>
     </section>
 
     <section>
-        <h2>Auto Login</h2>
+        <h2 class={css.sectionTitle}>Auto Login</h2>
         <p>
             Probably not useful for anyone else, this script will determine whether I’m logged in on certain sites. It
             then automatically navigates to the login page and, once my browser has auto-filled the fields, signs me in.
         </p>
         <p>
-            <a href={getUserScriptUrl('auto-login.user.js')} download class="button button-primary">Install</a>
+            <a href={getUserScriptUrl('auto-login.user.js')} download class={css.button}>Install</a>
         </p>
     </section>
 </Layout>

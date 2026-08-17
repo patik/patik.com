@@ -1,12 +1,13 @@
 ---
 import TravelLinkList from '../../components/TravelLinkList.astro'
+import travelCss from '@src/components/TravelLinkList.module.css'
 import franceImage from '../../images/france-photos-link.jpg'
 import parisImage from '../../images/paris-photos-link.jpg'
 import Layout from '../../layouts/Layout.astro'
 ---
 
 <Layout title="France" keywords={['France', 'Paris', 'Nice', 'Avignon', 'Arles', 'Monaco', 'Europe', 'travel']}>
-    <header class="travel-page-header">
+    <header class={travelCss.travelPageHeader}>
         <h1>France</h1>
     </header>
 

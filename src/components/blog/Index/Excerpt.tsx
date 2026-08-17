@@ -1,3 +1,5 @@
+import css from '../BlogIndex.module.css'
+
 type Props = {
     excerpt: string
     // slug: string
@@ -5,5 +7,5 @@ type Props = {
 }
 
 export default function Excerpt({ /* slug, */ excerpt, className }: Props) {
-    return <div className={className}>{excerpt}</div>
+    return <div className={className ?? css.postExcerpt}>{excerpt}</div>
 }
