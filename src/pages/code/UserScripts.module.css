@@ -9,7 +9,7 @@
     border: 1px solid transparent;
     border-radius: 4px;
     margin: 0 0 1.25em;
-    background: #428bca;
+    background: #337ab7;
     color: white;
     font-family: var(--font-sans);
     font-size: 14px;
@@ -22,9 +22,10 @@
     user-select: none;
     box-shadow: none;
 
-    &:hover {
-        background: #3276b1;
-        border-color: #285e8e;
+    &:hover,
+    &:focus-visible {
+        background: #286090;
+        border-color: #204d74;
         color: white;
     }
 }
