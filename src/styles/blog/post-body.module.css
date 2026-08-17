@@ -1,9 +1,11 @@
 /**
- * Long-form reading: the one place that gets the loose leading and the larger
- * body step. Everywhere else on the site is being skimmed.
+ * Long-form reading: the one place that keeps Chaparral for body copy, at the
+ * larger step and the loose leading. Everywhere else on the site is skimmed,
+ * and reads in the sans.
  */
 
 .postBody {
+    font-family: var(--font-serif);
     font-size: var(--step-1);
     line-height: var(--leading-loose);
     max-width: var(--measure);

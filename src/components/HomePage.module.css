@@ -191,8 +191,11 @@
     background: linear-gradient(to top, rgb(0 0 0 / 0.78), rgb(0 0 0 / 0));
 }
 
+/* A card title rather than running text, so it takes the display face even
+   though it isn't a heading element. */
 .tripCountry {
     color: white;
+    font-family: var(--font-serif);
     font-size: var(--step-2);
     font-weight: 700;
     letter-spacing: var(--tracking-snug);

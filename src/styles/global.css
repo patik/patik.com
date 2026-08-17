@@ -47,11 +47,12 @@
         /* Three type roles, each with one job                              */
         /* **************************************************************** */
 
-        /* The voice: anything you sit and read. The Typekit subset carries no
-           OpenType features — no small caps, no oldstyle figures — and no 600. */
+        /* Display: headings, the wordmark, and blog post bodies — the one
+           place on the site that gets read rather than skimmed. The Typekit
+           subset carries no OpenType features and no weight between 400 and 700. */
         --font-serif: 'chaparral-pro', Palatino, 'Palatino Linotype', Georgia, serif;
 
-        /* The machinery: dense technical UI where scanning beats reading. */
+        /* Body: everything else. No webfont, so it paints on first frame. */
         --font-sans:
             -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif,
             'Apple Color Emoji', 'Segoe UI Emoji';
@@ -67,7 +68,7 @@
            own font-size setting — a pure vw scale would ignore it. */
         --step--2: clamp(0.72rem, 0.7rem + 0.1vw, 0.78rem);
         --step--1: clamp(0.875rem, 0.85rem + 0.125vw, 0.95rem);
-        --step-0: clamp(1.125rem, 1.104rem + 0.104vw, 1.1875rem);
+        --step-0: clamp(1.0625rem, 1.042rem + 0.104vw, 1.125rem);
         --step-1: clamp(1.2rem, 1.15rem + 0.25vw, 1.35rem);
         --step-2: clamp(1.25rem, 1.2rem + 0.25vw, 1.4rem);
         --step-3: clamp(1.45rem, 1.35rem + 0.5vw, 1.75rem);
@@ -112,14 +113,9 @@
     body {
         color: var(--text-color);
         background-color: var(--background-color);
-        font-family: var(--font-serif);
         font-size: var(--step-0);
         line-height: var(--leading-prose);
         position: relative;
-
-        /* Chaparral's x-height is small, so the fallbacks render larger at the
-           same px. Matching the ratio keeps the font swap from reflowing. */
-        font-size-adjust: ex-height from-font;
     }
 
     body,
@@ -127,7 +123,7 @@
     input,
     select,
     textarea {
-        font-family: var(--font-serif);
+        font-family: var(--font-sans);
     }
 
     /* **************************************************************** */

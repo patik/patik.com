@@ -56,8 +56,11 @@
             }
         }
 
+        /* Card titles rather than running text, so they take the display face
+           even though they aren't heading elements. */
         span {
             color: white;
+            font-family: var(--font-serif);
             font-size: 1rem;
             font-weight: bold;
             line-height: 1em;
