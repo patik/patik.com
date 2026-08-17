@@ -10,6 +10,10 @@
     line-height: var(--leading-loose);
     max-width: var(--measure);
 
+    /* Text figures sit on the baseline with the lowercase rather than standing
+       at cap height, so a year stops interrupting the line it's set in. */
+    font-variant-numeric: oldstyle-nums;
+
     p,
     ul,
     ol,
@@ -52,6 +56,12 @@
         &:focus-visible {
             text-decoration-thickness: 2px;
         }
+    }
+
+    /* Digits in code are data — they stay lining and tabular whatever the
+       surrounding prose is set to. */
+    :is(code, pre, kbd, samp) {
+        font-variant-numeric: lining-nums tabular-nums;
     }
 
     /* Mono runs large beside a serif at the same px; a step back keeps the
