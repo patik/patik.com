@@ -1,5 +1,6 @@
 ---
 import TravelLinkList from '../../../components/TravelLinkList.astro'
+import travelCss from '@src/components/TravelLinkList.module.css'
 import countryGallery from '../../../galleries/vietnam'
 import HaLongBayImage from '../../../images/vietnam-ha-long-bay-hero.jpg'
 import HanoiImage from '../../../images/vietnam-hanoi-hero.jpg'
@@ -10,7 +11,7 @@ import Layout from '../../../layouts/Layout.astro'
 ---
 
 <Layout title="Vietnam" keywords={countryGallery.keywords}>
-    <header class="travel-page-header">
+    <header class={travelCss.travelPageHeader}>
         <h1>Vietnam</h1>
         <p>February 2017</p>
     </header>

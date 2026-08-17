@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets'
+import travelCss from '@src/components/TravelLinkList.module.css'
 import Space from '../../components/Space'
 import TravelLinkList from '../../components/TravelLinkList.astro'
 import itineraryMapSmall from '../../images/spain-itinerary-map-small.jpg'
@@ -22,7 +23,7 @@ import Layout from '../../layouts/Layout.astro'
         'travel',
     ]}
 >
-    <header class="travel-page-header">
+    <header class={travelCss.travelPageHeader}>
         <h1>Spain</h1>
     </header>
 
@@ -46,7 +47,6 @@ import Layout from '../../layouts/Layout.astro'
                     imageAlt: "Celebrating Spain's victory in Madrid",
                 },
             ]}
-            client:load
         />
     </section>
 
@@ -94,7 +94,7 @@ import Layout from '../../layouts/Layout.astro'
             </li>
         </ul>
 
-        <div class="travel-map">
+        <div class={travelCss.travelMap}>
             <a href="/images/spain-itinerary-map.jpg">
                 <Image
                     src={itineraryMapSmall}

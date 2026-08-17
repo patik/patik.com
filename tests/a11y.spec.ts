@@ -11,8 +11,9 @@ const knownViolations: Record<string, string[]> = {
     '/about/': ['link-in-text-block'],
     '/travel/italy/': ['link-in-text-block'],
     '/travel/uzbekistan/': ['link-in-text-block'],
-    // TODO: Fix color-contrast — <time> element uses #666 which is 2.77:1 on dark #222 bg
-    '/blog/clogging-twitter-with-spam/': ['color-contrast'],
+    // TODO: Fix color-contrast — <time> element uses #666 which is 2.77:1 on dark #222 bg.
+    // Applies to every post; the key just has to name whichever one `routes` samples.
+    '/blog/how-to-use-your-iphone-overseas/': ['color-contrast'],
     // TODO: Fix color-contrast — #428bca buttons are 3.63:1 (needs 4.5:1)
     // TODO: Fix link-name — some <a> elements have no discernible text
     // TODO: Fix link-in-text-block — link color not distinguishable from surrounding text

@@ -1,5 +1,6 @@
 import config from '../../config.json'
 import DateFormatter from './DateFormatter'
+import css from './BlogIndex.module.css'
 
 const { blogPath } = config
 
@@ -14,14 +15,14 @@ type Props = {
 export default function HeroPost({ title, date, excerpt, slug }: Props) {
     return (
         <section>
-            <div className="md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8 mb-20 md:mb-28">
+            <div className={css.heroGrid}>
                 <div>
-                    <h3 className="mb-4 text-4xl lg:text-5xl leading-tight">
-                        <a href={`${blogPath}/${slug}`} className="hover:underline">
+                    <h3 className={css.heroTitle}>
+                        <a href={`${blogPath}/${slug}`} className={css.link}>
                             {title}
                         </a>
                     </h3>
-                    <div className="mb-4 md:mb-0 text-lg">
+                    <div className={css.heroDate}>
                         <DateFormatter dateString={date} />
                     </div>
                 </div>

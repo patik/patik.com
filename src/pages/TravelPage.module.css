@@ -1,0 +1,9 @@
+.countriesSection {
+    margin-bottom: 3rem;
+}
+
+.photosSection {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}

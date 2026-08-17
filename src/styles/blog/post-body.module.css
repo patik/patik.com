@@ -1,4 +1,49 @@
-.post-body {
+.postBody {
+    font-size: 1.125rem;
+    line-height: 1.8;
+
+    /* em, not rem: body text steps up at 480px and this gap steps up with it. */
+    p,
+    ul,
+    ol,
+    blockquote {
+        margin: 0 0 1.25em;
+    }
+
+    /* A nested list belongs to the item above it: no gap, and indented far enough
+       for its markers to clear the parent's text. */
+    li > ul,
+    li > ol {
+        margin-block: 0;
+        margin-inline-start: 1.25em;
+    }
+
+    /* Sizes are em-based above the breakpoint so a heading inside a list item scales
+       with the item, the way the site's headings do everywhere else. */
+    h2 {
+        margin-top: 3rem;
+        margin-bottom: 1rem;
+        font-size: 1.875rem;
+        line-height: 1.375;
+
+        @media (min-width: 768px) {
+            font-size: 2.3125em;
+            line-height: 1.4;
+        }
+    }
+
+    h3 {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+        line-height: 1.375;
+
+        @media (min-width: 768px) {
+            font-size: 1.6875em;
+            line-height: 1.4;
+        }
+    }
+
     object,
     figure,
     img {
@@ -22,19 +67,19 @@
             line-height: 1.5;
         }
     }
-}
 
-code {
-    font-family: Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace;
-    font-size: 1rem;
-    color: #666;
-    background-color: rgba(0, 0, 0, 0.1);
-    padding: 3px;
-    border-radius: 3px;
+    code {
+        font-family: Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace;
+        font-size: 1rem;
+        color: #666;
+        background-color: rgba(0, 0, 0, 0.1);
+        padding: 3px;
+        border-radius: 3px;
 
-    @media (prefers-color-scheme: dark) {
-        background-color: rgba(255, 255, 255, 0.05);
-        color: #ccc;
+        @media (prefers-color-scheme: dark) {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: #ccc;
+        }
     }
 }
 

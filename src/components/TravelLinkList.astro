@@ -1,26 +1,49 @@
 ---
 import type { TravelLink } from '@src/travelLinks'
 import { Image } from 'astro:assets'
-import css from './LinkGrid.module.css'
+import cardCss from './TravelLinkList.module.css'
+import gridCss from './LinkGrid.module.css'
 
 interface Props {
     items: TravelLink[]
 }
 
-// 2x the 336px tile cap in `.travel-link-list a`. Clamped per image because some sources
+// 2x the 336px tile cap in the travel card stylesheet. Clamped per image because some sources
 // are only 336px wide and Astro would happily upscale them.
 const maxRenderedWidth = 672
 
 const { items } = Astro.props
+
+// Card classes name rules in TravelLinkList.module.css. Falling back to the raw name
+// would emit a class that matches nothing, so a rename or typo fails the build instead.
+function getItemClassNames(className: string | undefined): string | undefined {
+    if (!className) {
+        return undefined
+    }
+
+    return className
+        .split(' ')
+        .filter(Boolean)
+        .map((name) => {
+            const moduleClass = cardCss[name]
+
+            if (!moduleClass) {
+                throw new Error(`TravelLinkList: no rule named "${name}" in TravelLinkList.module.css`)
+            }
+
+            return moduleClass
+        })
+        .join(' ')
+}
 ---
 
-<div class:list={[css.grid, css.largeDesktopGap, css.threeColumns, 'travel-link-list']}>
+<div class:list={[gridCss.grid, gridCss.largeDesktopGap, gridCss.threeColumns, cardCss.travelLinkList]}>
     {
         items.map(({ imageSrc, imageAlt, url, className, title }) => (
-            <a class={className} href={url}>
+            <a class={getItemClassNames(className)} href={url}>
                 <Image src={imageSrc} alt={imageAlt} width={Math.min(imageSrc.width, maxRenderedWidth)} />
                 <span>{title}</span>
-                <div class="image-cover" />
+                <div class={cardCss.imageCover} />
             </a>
         ))
     }

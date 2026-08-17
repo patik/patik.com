@@ -1,5 +1,6 @@
 ---
 import TravelLinkList from '../../components/TravelLinkList.astro'
+import travelCss from '@src/components/TravelLinkList.module.css'
 import athensLink from '../../images/greece-athens-link.jpg'
 import santoriniLink from '../../images/greece-santorini-link.jpg'
 import sifnosLink from '../../images/greece-sifnos-link.jpg'
@@ -7,7 +8,7 @@ import Layout from '../../layouts/Layout.astro'
 ---
 
 <Layout title="Greece" keywords={['Greece, Athens, Santorini, Sifnos, Europe, Travel']}>
-    <header class="travel-page-header">
+    <header class={travelCss.travelPageHeader}>
         <h1>Greece</h1>
     </header>
 

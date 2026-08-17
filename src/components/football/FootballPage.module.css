@@ -114,6 +114,19 @@
     list-style: none;
 }
 
+.scorerList {
+    /* Always sits inside a match card: no bottom gap, and indented under the match
+       heading — the only thing marking the nesting once the markers are gone. */
+    margin-block: 0;
+    margin-inline-start: 1.25em;
+}
+
+/* The appearance list runs at section level, where it keeps the usual bottom gap,
+   and inside a team card, where it should not. */
+li .appearanceList {
+    margin-block: 0;
+}
+
 .matchList,
 .teamList {
     display: grid;

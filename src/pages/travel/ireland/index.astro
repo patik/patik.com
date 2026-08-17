@@ -1,5 +1,6 @@
 ---
 import TravelLinkList from '../../../components/TravelLinkList.astro'
+import travelCss from '@src/components/TravelLinkList.module.css'
 import countryGallery from '../../../galleries/ireland'
 import BelfastImage from '../../../images/ireland-belfast-hero.jpg'
 import CountrysideImage from '../../../images/ireland-countryside-hero.jpg'
@@ -9,7 +10,7 @@ import Layout from '../../../layouts/Layout.astro'
 ---
 
 <Layout title="Ireland" keywords={countryGallery.keywords}>
-    <header class="travel-page-header">
+    <header class={travelCss.travelPageHeader}>
         <h1>Ireland</h1>
         <p>June 2022</p>
     </header>

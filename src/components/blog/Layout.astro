@@ -1,5 +1,6 @@
 ---
 import CommonLayout from '../../layouts/Layout.astro'
+import css from './BlogLayout.module.css'
 import UnpublishedAlert from './UnpublishedAlert'
 
 interface Props {
@@ -13,7 +14,7 @@ const { draft, ...commonLayoutProps } = Astro.props
 
 <CommonLayout {...commonLayoutProps}>
     <slot name="head" slot="head" />
-    <div class="min-h-screen">
+    <div class={css.layout}>
         {draft && <UnpublishedAlert />}
         {/* Not a `main` — CommonLayout provides one, and nesting them doubles its padding. */}
         <div>

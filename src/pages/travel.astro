@@ -1,23 +1,25 @@
 ---
 import CountriesOverview from '@src/components/countries/CountriesOverview.astro'
+import travelCss from '@src/components/TravelLinkList.module.css'
 import { travelLinks } from '@src/travelLinks'
 import TravelLinkList from '../components/TravelLinkList.astro'
 import countries from '../countries.json'
 import Layout from '../layouts/Layout.astro'
+import css from './TravelPage.module.css'
 ---
 
 <Layout title="Travel" keywords={[...countries.visited.map((country) => country.name), 'Europe', 'Asia', 'travel']}>
-    <header class="travel-page-header">
+    <header class={travelCss.travelPageHeader}>
         <h1>Travel</h1>
         <a href="#photos">Jump to photos</a>
     </header>
 
-    <section style={{ marginBottom: '3rem' }}>
+    <section class={css.countriesSection}>
         <h2>Countries I’ve been to</h2>
         <CountriesOverview />
     </section>
 
-    <section class="flex flex-col gap-3">
+    <section class={css.photosSection}>
         <h2 id="photos">Photos</h2>
         <TravelLinkList items={travelLinks} />
         <p>

@@ -1,16 +1,5 @@
-@import url('_foundation-overrides.css');
-@import url('foundation');
-@import url('_variables.css');
-@import url('_dark-mode.css');
 
-section {
-    /* Commonly used for travel page itineraries */
-    ul {
-        margin-inline-start: 1.5rem;
-    }
-}
-
-.travel-page-header {
+.travelPageHeader {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -30,7 +19,7 @@ section {
     }
 }
 
-.travel-link-list {
+.travelLinkList {
     --img-position-offset: 5px;
 
     a {
@@ -55,7 +44,7 @@ section {
                 0 1px 4px rgb(0 0 0 / 10%),
                 0 0 40px rgb(0 0 0 / 5%) inset;
 
-            .image-cover {
+            .imageCover {
                 background-color: rgb(0 0 0 / 0%);
             }
         }
@@ -81,7 +70,7 @@ section {
             }
         }
 
-        .image-cover {
+        .imageCover {
             position: absolute;
             top: 0;
             left: 0;
@@ -515,10 +504,10 @@ section {
     }
 }
 
-/* Invert the image-cover action for touch devices */
-.touch .travel-link-list {
+/* Invert the card-overlay action for touch devices */
+:global(.touch) .travelLinkList {
     a {
-        .image-cover {
+        .imageCover {
             background-color: rgb(0 0 0 / 0%);
             transition: background-color 0.2s ease-in;
         }
@@ -526,14 +515,14 @@ section {
         &:active,
         &:hover,
         &:focus {
-            .image-cover {
+            .imageCover {
                 background-color: rgb(0 0 0 / 25%);
             }
         }
     }
 }
 
-.travel-map {
+.travelMap {
     text-align: center;
 
     img {

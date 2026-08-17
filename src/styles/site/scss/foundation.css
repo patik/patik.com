@@ -1,8 +1,0 @@
-/* This includes all of the foundation global elements that are needed to work with any of the other files. */
-@import 'foundation/_variables.css';
-@import '_foundation-overrides.css';
-
-/* Foundation Components */
-@import 'foundation/components/_global.css';
-@import 'foundation/components/_type.css';
-@import 'foundation/components/_buttons.css';

@@ -6,7 +6,9 @@ export const routes = [
     { path: '/', label: 'home', includeVisual: true },
     { path: '/about/', label: 'about', includeVisual: true },
     { path: '/blog/', label: 'blog-index', includeVisual: true },
-    { path: '/blog/clogging-twitter-with-spam/', label: 'blog-post', includeVisual: true },
+    // Representative because it exercises the post-body styles the shorter posts don't:
+    // h2s, h3s, nested lists, and inline code.
+    { path: '/blog/how-to-use-your-iphone-overseas/', label: 'blog-post', includeVisual: true },
     { path: '/code/user-scripts/', label: 'code-user-scripts', includeVisual: true },
     { path: '/concerts/', label: 'concerts', includeVisual: true },
     { path: '/football/', label: 'football', includeVisual: true },
