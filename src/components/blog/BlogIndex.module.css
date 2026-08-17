@@ -131,5 +131,6 @@
     padding-block: 0.5rem;
     text-align: center;
     font-family: var(--font-fixed);
+    font-size-adjust: none;
     font-size: var(--step--2);
 }

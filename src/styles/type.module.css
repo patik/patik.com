@@ -17,6 +17,7 @@
 /** Mono, uppercase, tracked out. The label above a headline. */
 .eyebrow {
     font-family: var(--font-fixed);
+    font-size-adjust: none;
     font-size: var(--step--2);
     font-weight: 400;
     line-height: var(--leading-normal);
@@ -27,6 +28,7 @@
 /** Mono, mixed case. Dates, counts, breadcrumbs, file paths. */
 .meta {
     font-family: var(--font-fixed);
+    font-size-adjust: none;
     font-size: var(--step--2);
     line-height: var(--leading-normal);
     font-variant-numeric: tabular-nums;

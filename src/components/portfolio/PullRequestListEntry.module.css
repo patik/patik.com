@@ -39,6 +39,7 @@
             left: 0;
             top: 1.95rem;
             font-family: var(--font-fixed);
+            font-size-adjust: none;
             font-size: var(--step--2);
             letter-spacing: 0.12em;
             font-variant-numeric: tabular-nums;

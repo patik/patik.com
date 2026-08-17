@@ -20,6 +20,7 @@
     padding: 0.7rem 1.3rem;
     color: var(--accent-contrast) !important;
     font-family: var(--font-fixed);
+    font-size-adjust: none;
     font-size: 0.9rem;
     text-decoration: none;
     background: var(--accent);

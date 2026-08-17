@@ -132,6 +132,7 @@
     & a {
         flex-shrink: 0;
         font-family: var(--font-fixed);
+        font-size-adjust: none;
         font-size: var(--step--2);
         text-decoration: none;
         white-space: nowrap;
@@ -196,6 +197,7 @@
 .tripCountry {
     color: white;
     font-family: var(--font-serif);
+    font-size-adjust: none;
     font-size: var(--step-2);
     font-weight: 700;
     letter-spacing: var(--tracking-snug);
@@ -264,6 +266,7 @@
 .frameTitle {
     display: block;
     font-family: var(--font-fixed);
+    font-size-adjust: none;
     font-size: var(--step--2);
     color: var(--muted);
     margin-inline: auto;
@@ -336,6 +339,7 @@
     padding: 0.6rem 1.1rem;
     color: inherit !important;
     font-family: var(--font-fixed);
+    font-size-adjust: none;
     font-size: var(--step--1);
     text-decoration: none;
     background: var(--pill-bg);

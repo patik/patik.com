@@ -40,6 +40,7 @@
     gap: 0.5rem;
     padding-top: 1.5rem;
     font-family: var(--font-fixed);
+    font-size-adjust: none;
     font-size: var(--step--2);
     color: var(--muted);
 
@@ -153,16 +154,28 @@
 .gh,
 .gh :is(h1, h2, h3, h4, h5, h6) {
     font-family: var(--gh-font);
+    font-size-adjust: var(--font-sans-size-adjust);
 }
 
 .gh :is(pre, code, kbd, samp),
 .gh pre * {
     font-family: var(--gh-mono);
+    font-size-adjust: none;
 }
 
 .gh :is(h1, h2, h3, h4, h5, h6) {
     font-weight: 600;
     letter-spacing: normal;
+    overflow-wrap: normal;
+    text-wrap: wrap;
+}
+
+.gh p {
+    text-wrap: wrap;
+}
+
+.gh table {
+    font-variant-numeric: normal;
 }
 
 .ghHeader {
@@ -271,6 +284,7 @@
     gap: 0.5rem;
     margin-inline-start: auto;
     font-family: var(--gh-mono);
+    font-size-adjust: none;
     font-size: 0.8rem;
     font-weight: 600;
     font-variant-numeric: tabular-nums;
@@ -613,6 +627,7 @@
 .backLink {
     margin-top: 2rem;
     font-family: var(--font-fixed);
+    font-size-adjust: none;
     font-size: var(--step--2);
 
     & a {

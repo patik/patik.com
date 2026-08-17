@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets'
 import Space from '../../components/Space'
 import appNetPng from '../../images/app-net-twitter-char-count.png'
+import magnetFullPng from '../../images/magnet-links.png'
 import magnetPng from '../../images/magnet-links-preview.png'
 import twitterAvatarPng from '../../images/twitter-avatar-in-menu.png'
 import Layout from '../../layouts/Layout.astro'
@@ -54,7 +55,7 @@ function getUserScriptUrl(fileName: string) {
             between obnoxious “download” ad banners or open pop ups when you click on them.
         </p>
         <figure>
-            <a href="images/magnet-links.png">
+            <a href={magnetFullPng.src}>
                 <Image src={magnetPng} alt="Magnet Link Display screenshot" />
             </a>
         </figure>

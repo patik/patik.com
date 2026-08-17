@@ -85,6 +85,18 @@ test('legacy user scripts route keeps Portfolio marked as current', async ({ pag
     await expect(portfolioLink).toHaveClass(/active/)
 })
 
+test('legacy user scripts screenshot links to its full-size image', async ({ page }) => {
+    await page.goto('/code/user-scripts/')
+
+    const screenshotLink = page.getByRole('link', { name: 'Magnet Link Display screenshot' })
+
+    await expect(screenshotLink).toHaveAttribute('href', /magnet-links[\w.]*\.png$/)
+
+    const response = await page.request.get((await screenshotLink.getAttribute('href')) ?? '')
+
+    expect(response.ok()).toBe(true)
+})
+
 test('robots.txt allows crawlers to access the portfolio', async ({ request }) => {
     const response = await request.get('/robots.txt')
 

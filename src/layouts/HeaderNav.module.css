@@ -37,6 +37,7 @@
     flex-shrink: 0;
     color: inherit !important;
     font-family: var(--font-serif);
+    font-size-adjust: none;
     font-size: var(--step-1);
     font-weight: 700;
     letter-spacing: var(--tracking-snug);
@@ -77,6 +78,7 @@
     padding: 0.35rem 0.5rem;
     color: var(--nav-muted) !important;
     font-family: var(--font-fixed);
+    font-size-adjust: none;
 
     /* Tracking stays modest — uppercase mono opens up on its own, and the
        nav has to hold one line. */

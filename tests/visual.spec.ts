@@ -152,7 +152,7 @@ test('blog-post-nested-list: matches visual snapshot', { tag: '@visual' }, async
 
     await page.goto('/blog/how-to-use-your-iphone-overseas/', { waitUntil: 'networkidle' })
 
-    const nestedList = page.locator('article ul:has(ul)').first()
+    const nestedList = page.locator('article ul ul').first()
 
     await expect(nestedList).toBeVisible()
     await expect(nestedList).toHaveScreenshot('blog-post-nested-list.png', {
