@@ -54,8 +54,8 @@
 
         /* Body: everything else. No webfont, so it paints on first frame. */
         --font-sans:
-            -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif,
-            'Apple Color Emoji', 'Segoe UI Emoji';
+            -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji',
+            'Segoe UI Emoji';
 
         /* The signposts: eyebrows, breadcrumbs, dates, counts, code. */
         --font-fixed: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
