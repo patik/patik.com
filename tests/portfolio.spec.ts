@@ -147,7 +147,9 @@ test('portfolio shows the desktop Dovetail demo at desktop sizes', async ({ page
     const mobileDemo = page.getByLabel(DOVETAIL_MOBILE_DEMO_LABEL)
 
     await expect(mobileDemo).toBeHidden()
-    expect(await mobileDemo.evaluate((video) => (video instanceof HTMLVideoElement ? video.currentSrc : ''))).toBe('')
+    await expect
+        .poll(() => mobileDemo.evaluate((video) => (video instanceof HTMLVideoElement ? video.currentSrc : '')))
+        .toContain('/portfolio/media/dovetail-demo-mobile.mp4')
     await expect(page.getByRole('img', { name: DOVETAIL_SCREENSHOT_ALT })).toBeHidden()
     await expect(page.getByRole('link', { name: 'Watch the desktop demo' })).toBeHidden()
 
@@ -170,7 +172,9 @@ test('portfolio shows the mobile Dovetail demo and links to the desktop version'
     const desktopDemo = page.getByLabel(DOVETAIL_DESKTOP_DEMO_LABEL)
 
     await expect(desktopDemo).toBeHidden()
-    expect(await desktopDemo.evaluate((video) => (video instanceof HTMLVideoElement ? video.currentSrc : ''))).toBe('')
+    await expect
+        .poll(() => desktopDemo.evaluate((video) => (video instanceof HTMLVideoElement ? video.currentSrc : '')))
+        .toContain('/portfolio/media/dovetail-demo-desktop.mp4')
 
     const mobileDemo = page.getByLabel(DOVETAIL_MOBILE_DEMO_LABEL)
 
@@ -206,7 +210,7 @@ test('portfolio shows the mobile Dovetail demo and links to the desktop version'
     await expect(page.getByRole('link', { name: 'Watch the mobile demo' })).toBeHidden()
 })
 
-test('portfolio reloads the matching Dovetail demo after crossing the viewport breakpoint', async ({ page }) => {
+test('portfolio switches the visible Dovetail demo and alternate link with CSS after resizing', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 })
     await page.emulateMedia({ reducedMotion: 'reduce' })
 
@@ -214,33 +218,30 @@ test('portfolio reloads the matching Dovetail demo after crossing the viewport b
 
     const desktopDemo = page.getByLabel(DOVETAIL_DESKTOP_DEMO_LABEL)
     const mobileDemo = page.getByLabel(DOVETAIL_MOBILE_DEMO_LABEL)
+    const desktopDemoLink = page.getByRole('link', { name: 'Watch the desktop demo' })
+    const mobileDemoLink = page.getByRole('link', { name: 'Watch the mobile demo' })
 
-    await expect
-        .poll(() => mobileDemo.evaluate((video) => (video instanceof HTMLVideoElement ? video.currentSrc : '')))
-        .toContain('/portfolio/media/dovetail-demo-mobile.mp4')
-    expect(await desktopDemo.evaluate((video) => (video instanceof HTMLVideoElement ? video.currentSrc : ''))).toBe('')
+    await expect(mobileDemo).toBeVisible()
+    await expect(desktopDemo).toBeHidden()
+    await expect(desktopDemoLink).toBeVisible()
+    await expect(mobileDemoLink).toBeHidden()
 
     await page.setViewportSize({ width: 1020, height: 1000 })
 
-    await expect
-        .poll(() => desktopDemo.evaluate((video) => (video instanceof HTMLVideoElement ? video.currentSrc : '')))
-        .toContain('/portfolio/media/dovetail-demo-desktop.mp4')
+    await expect(desktopDemo).toBeVisible()
+    await expect(mobileDemo).toBeHidden()
+    await expect(mobileDemoLink).toBeVisible()
+    await expect(desktopDemoLink).toBeHidden()
     await expect
         .poll(() => desktopDemo.evaluate((video) => (video instanceof HTMLVideoElement ? video.readyState : 0)))
         .toBeGreaterThan(0)
 
-    await page.reload()
-
-    await expect
-        .poll(() => desktopDemo.evaluate((video) => (video instanceof HTMLVideoElement ? video.currentSrc : '')))
-        .toContain('/portfolio/media/dovetail-demo-desktop.mp4')
-    expect(await mobileDemo.evaluate((video) => (video instanceof HTMLVideoElement ? video.currentSrc : ''))).toBe('')
-
     await page.setViewportSize({ width: 390, height: 844 })
 
-    await expect
-        .poll(() => mobileDemo.evaluate((video) => (video instanceof HTMLVideoElement ? video.currentSrc : '')))
-        .toContain('/portfolio/media/dovetail-demo-mobile.mp4')
+    await expect(mobileDemo).toBeVisible()
+    await expect(desktopDemo).toBeHidden()
+    await expect(desktopDemoLink).toBeVisible()
+    await expect(mobileDemoLink).toBeHidden()
     await expect
         .poll(() => mobileDemo.evaluate((video) => (video instanceof HTMLVideoElement ? video.readyState : 0)))
         .toBeGreaterThan(0)

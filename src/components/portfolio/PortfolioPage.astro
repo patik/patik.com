@@ -95,11 +95,7 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                     poster="/portfolio/media/dovetail-demo-desktop-poster.webp"
                     aria-label="Screen recording of planning a trip in Dovetail on a desktop computer"
                 >
-                    <source
-                        src="/portfolio/media/dovetail-demo-desktop.mp4"
-                        type="video/mp4"
-                        media="(min-width: 801px)"
-                    />
+                    <source src="/portfolio/media/dovetail-demo-desktop.mp4" type="video/mp4" />
                 </video>
             </div>
 
@@ -121,11 +117,7 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                     poster="/portfolio/media/dovetail-demo-mobile-poster.webp"
                     aria-label="Screen recording of planning a trip in Dovetail on a mobile phone"
                 >
-                    <source
-                        src="/portfolio/media/dovetail-demo-mobile.mp4"
-                        type="video/mp4"
-                        media="(max-width: 800px)"
-                    />
+                    <source src="/portfolio/media/dovetail-demo-mobile.mp4" type="video/mp4" />
                 </video>
             </div>
 
@@ -882,10 +874,6 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
 
 <script>
     const videos = document.querySelectorAll<HTMLVideoElement>('video[data-demo]')
-    const dovetailVideos = document.querySelectorAll<HTMLVideoElement>(
-        'video[data-dovetail-desktop-demo], video[data-dovetail-mobile-demo]',
-    )
-    const dovetailDesktopViewport = window.matchMedia('(min-width: 801px)')
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
     const inView = new WeakSet<Element>()
 
@@ -916,16 +904,6 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
         { rootMargin: '100px' },
     )
 
-    function reloadDovetailVideos(): void {
-        dovetailVideos.forEach((video) => {
-            video.pause()
-            // Browsers don't automatically re-run <source media> selection when its
-            // media query changes, so force it after crossing the layout breakpoint.
-            video.load()
-        })
-    }
-
     videos.forEach((video) => observer.observe(video))
-    dovetailDesktopViewport.addEventListener('change', reloadDovetailVideos)
     reducedMotion.addEventListener('change', () => videos.forEach(sync))
 </script>
