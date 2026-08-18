@@ -295,7 +295,16 @@ a.mediaLink {
     }
 }
 
-a.dovetailMobileFallback {
+.dovetailMobileDemo {
+    margin-inline: 0.25rem;
+
+    & video {
+        width: auto;
+        max-width: 100%;
+        max-height: 90dvh;
+        margin-inline: auto;
+    }
+
     @media (min-width: 801px) {
         display: none;
     }
@@ -304,7 +313,17 @@ a.dovetailMobileFallback {
 .dovetailAlternateLink {
     justify-content: flex-end;
     margin-top: 0.7rem;
+}
 
+.dovetailDesktopAlternateLink {
+    display: none;
+
+    @media (min-width: 801px) {
+        display: inline;
+    }
+}
+
+.dovetailMobileAlternateLink {
     @media (min-width: 801px) {
         display: none;
     }

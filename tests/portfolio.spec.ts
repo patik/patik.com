@@ -2,6 +2,7 @@ import { expect, test } from '@playwright/test'
 
 const DOVETAIL_SCREENSHOT_ALT = /Dovetail.*landing page/i
 const DOVETAIL_DESKTOP_DEMO_LABEL = 'Screen recording of planning a trip in Dovetail on a desktop computer'
+const DOVETAIL_MOBILE_DEMO_LABEL = 'Screen recording of planning a trip in Dovetail on a mobile phone'
 
 test('portfolio demo videos provide playback controls', async ({ page }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' })
@@ -10,7 +11,7 @@ test('portfolio demo videos provide playback controls', async ({ page }) => {
     const demoVideos = page.locator('video[data-demo]')
 
     // Asserted before `every`, which is vacuously true on an empty list.
-    await expect(demoVideos).toHaveCount(6)
+    await expect(demoVideos).toHaveCount(7)
 
     const controlsEnabled = await demoVideos.evaluateAll((videos): boolean[] =>
         videos.map((video): boolean => video instanceof HTMLVideoElement && video.controls),
@@ -22,38 +23,48 @@ test('portfolio demo videos provide playback controls', async ({ page }) => {
 // Reduced-motion visitors never get the scroll-to-play behaviour, so the poster is the entry
 // for them until they press play. A poster whose ratio differs from the video's is letterboxed
 // inside the frame rather than filling it.
-test('portfolio demo posters match their video dimensions', async ({ page }) => {
-    await page.emulateMedia({ reducedMotion: 'reduce' })
+for (const { viewport, variant } of [
+    { viewport: { width: 1020, height: 1000 }, variant: 'desktop' },
+    { viewport: { width: 390, height: 844 }, variant: 'mobile' },
+] as const) {
+    test(`portfolio ${variant} demo posters match their video dimensions`, async ({ page }) => {
+        await page.setViewportSize(viewport)
+        await page.emulateMedia({ reducedMotion: 'reduce' })
 
-    await page.goto('/portfolio/')
+        await page.goto('/portfolio/')
 
-    const sizes = await page.locator('video[data-demo]').evaluateAll((elements) =>
-        Promise.all(
-            elements
-                .filter((element): element is HTMLVideoElement => element instanceof HTMLVideoElement)
-                .map(async (video) => {
-                    if (video.readyState < HTMLMediaElement.HAVE_METADATA) {
-                        await new Promise((resolve) =>
-                            video.addEventListener('loadedmetadata', resolve, { once: true }),
-                        )
-                    }
+        const visibleDemoVideos = page.locator('video[data-demo]:visible')
 
-                    const poster = new Image()
+        await expect(visibleDemoVideos).toHaveCount(6)
 
-                    poster.src = video.poster
-                    await poster.decode()
+        const sizes = await visibleDemoVideos.evaluateAll((elements) =>
+            Promise.all(
+                elements
+                    .filter((element): element is HTMLVideoElement => element instanceof HTMLVideoElement)
+                    .map(async (video) => {
+                        if (video.readyState < HTMLMediaElement.HAVE_METADATA) {
+                            await new Promise((resolve) =>
+                                video.addEventListener('loadedmetadata', resolve, { once: true }),
+                            )
+                        }
 
-                    return {
-                        name: video.poster.split('/').pop() ?? '',
-                        video: `${video.videoWidth}x${video.videoHeight}`,
-                        poster: `${poster.naturalWidth}x${poster.naturalHeight}`,
-                    }
-                }),
-        ),
-    )
+                        const poster = new Image()
 
-    expect(sizes.filter(({ video, poster }) => video !== poster)).toEqual([])
-})
+                        poster.src = video.poster
+                        await poster.decode()
+
+                        return {
+                            name: video.poster.split('/').pop() ?? '',
+                            video: `${video.videoWidth}x${video.videoHeight}`,
+                            poster: `${poster.naturalWidth}x${poster.naturalHeight}`,
+                        }
+                    }),
+            ),
+        )
+
+        expect(sizes.filter(({ video, poster }) => video !== poster)).toEqual([])
+    })
+}
 
 test('portfolio includes both internal tools and their media', async ({ page }) => {
     await page.goto('/portfolio/')
@@ -133,11 +144,24 @@ test('portfolio shows the desktop Dovetail demo at desktop sizes', async ({ page
     await expect
         .poll(() => desktopDemo.evaluate((video) => (video instanceof HTMLVideoElement ? video.currentSrc : '')))
         .toContain('/portfolio/media/dovetail-demo-desktop.mp4')
+    const mobileDemo = page.getByLabel(DOVETAIL_MOBILE_DEMO_LABEL)
+
+    await expect(mobileDemo).toBeHidden()
+    expect(await mobileDemo.evaluate((video) => (video instanceof HTMLVideoElement ? video.currentSrc : ''))).toBe('')
     await expect(page.getByRole('img', { name: DOVETAIL_SCREENSHOT_ALT })).toBeHidden()
     await expect(page.getByRole('link', { name: 'Watch the desktop demo' })).toBeHidden()
+
+    const mobileDemoLink = page.getByRole('link', { name: 'Watch the mobile demo' })
+
+    await expect(mobileDemoLink).toBeVisible()
+    await expect(mobileDemoLink).toHaveAttribute('href', '/portfolio/media/dovetail-demo-mobile.mp4')
+
+    const response = await page.request.get((await mobileDemoLink.getAttribute('href')) ?? '')
+
+    expect(response.ok()).toBe(true)
 })
 
-test('portfolio keeps a mobile fallback and links to the desktop Dovetail demo', async ({ page }) => {
+test('portfolio shows the mobile Dovetail demo and links to the desktop version', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 })
     await page.emulateMedia({ colorScheme: 'light' })
 
@@ -147,7 +171,29 @@ test('portfolio keeps a mobile fallback and links to the desktop Dovetail demo',
 
     await expect(desktopDemo).toBeHidden()
     expect(await desktopDemo.evaluate((video) => (video instanceof HTMLVideoElement ? video.currentSrc : ''))).toBe('')
-    await expect(page.getByRole('img', { name: DOVETAIL_SCREENSHOT_ALT })).toBeVisible()
+
+    const mobileDemo = page.getByLabel(DOVETAIL_MOBILE_DEMO_LABEL)
+
+    await expect(mobileDemo).toBeVisible()
+    await expect
+        .poll(() => mobileDemo.evaluate((video) => (video instanceof HTMLVideoElement ? video.currentSrc : '')))
+        .toContain('/portfolio/media/dovetail-demo-mobile.mp4')
+
+    const mobileDemoLayout = await mobileDemo.evaluate((video) => {
+        const frame = video.parentElement
+        const frameStyles = frame ? getComputedStyle(frame) : null
+
+        return {
+            frameMarginInlineEnd: frameStyles?.marginInlineEnd,
+            frameMarginInlineStart: frameStyles?.marginInlineStart,
+            videoHeight: video.getBoundingClientRect().height,
+            viewportHeight: window.innerHeight,
+        }
+    })
+
+    expect(mobileDemoLayout.videoHeight).toBeLessThanOrEqual(mobileDemoLayout.viewportHeight * 0.9 + 1)
+    expect(mobileDemoLayout.frameMarginInlineStart).toBe('4px')
+    expect(mobileDemoLayout.frameMarginInlineEnd).toBe('4px')
 
     const desktopDemoLink = page.getByRole('link', { name: 'Watch the desktop demo' })
 
@@ -157,4 +203,5 @@ test('portfolio keeps a mobile fallback and links to the desktop Dovetail demo',
     const response = await page.request.get((await desktopDemoLink.getAttribute('href')) ?? '')
 
     expect(response.ok()).toBe(true)
+    await expect(page.getByRole('link', { name: 'Watch the mobile demo' })).toBeHidden()
 })

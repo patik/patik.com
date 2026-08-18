@@ -4,8 +4,6 @@ import imgConsoleLogIcon from '@src/images/icons/console-log/ios/AppIcon@3x.png'
 import imgKindjsIcon from '@src/images/icons/kindjs/ios/AppIcon@3x.png'
 import imgWithinViewportIcon from '@src/images/icons/within-viewport/ios/AppIcon@3x.png'
 import imgDofApp from '@src/images/portfolio/dof-app.webp'
-import imgDovetailHeroDark from '@src/images/portfolio/dovetail-hero-dark.webp'
-import imgDovetailHeroLight from '@src/images/portfolio/dovetail-hero-light.webp'
 import imgGinMain from '@src/images/portfolio/gin-main.webp'
 import imgIncMain from '@src/images/portfolio/inc-main.webp'
 import { getPullRequests } from '@src/utils/getPullRequests'
@@ -105,31 +103,39 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                 </video>
             </div>
 
-            <a class:list={[css.mediaLink, css.dovetailMobileFallback]} href="https://dovetail.travel">
-                <span class={css.frame}>
-                    <span class={css.frameBar}>
-                        <span class={css.frameDots} aria-hidden="true"><span></span><span></span><span></span></span>
-                        <span class={css.frameTitle}>dovetail.travel</span>
-                    </span>
-                    <picture>
-                        <source
-                            srcset={imgDovetailHeroDark.src}
-                            media="(prefers-color-scheme: dark)"
-                            type="image/webp"
-                        />
-                        <Image
-                            src={imgDovetailHeroLight}
-                            alt="The dovetail.travel landing page: “Plan every day of your trip—with the details and control you want.”"
-                            widths={[800, 1200, 1900]}
-                            sizes="100vw"
-                            loading="eager"
-                        />
-                    </picture>
+            <div class:list={[css.frame, css.dovetailMobileDemo]}>
+                <span class={css.frameBar}>
+                    <span class={css.frameDots} aria-hidden="true"><span></span><span></span><span></span></span>
+                    <span class={css.frameTitle}>dovetail.travel · mobile demo</span>
                 </span>
-            </a>
+                <video
+                    data-demo
+                    data-dovetail-mobile-demo
+                    controls
+                    muted
+                    loop
+                    playsinline
+                    preload="metadata"
+                    width="780"
+                    height="1688"
+                    poster="/portfolio/media/dovetail-demo-mobile-poster.webp"
+                    aria-label="Screen recording of planning a trip in Dovetail on a mobile phone"
+                >
+                    <source
+                        src="/portfolio/media/dovetail-demo-mobile.mp4"
+                        type="video/mp4"
+                        media="(max-width: 800px)"
+                    />
+                </video>
+            </div>
 
             <div class:list={[css.linkRow, css.dovetailAlternateLink]}>
-                <a href="/portfolio/media/dovetail-demo-desktop.mp4">Watch the desktop demo</a>
+                <a class={css.dovetailMobileAlternateLink} href="/portfolio/media/dovetail-demo-desktop.mp4"
+                    >Watch the desktop demo</a
+                >
+                <a class={css.dovetailDesktopAlternateLink} href="/portfolio/media/dovetail-demo-mobile.mp4"
+                    >Watch the mobile demo</a
+                >
             </div>
         </div>
 
