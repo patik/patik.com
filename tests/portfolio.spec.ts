@@ -205,3 +205,43 @@ test('portfolio shows the mobile Dovetail demo and links to the desktop version'
     expect(response.ok()).toBe(true)
     await expect(page.getByRole('link', { name: 'Watch the mobile demo' })).toBeHidden()
 })
+
+test('portfolio reloads the matching Dovetail demo after crossing the viewport breakpoint', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 })
+    await page.emulateMedia({ reducedMotion: 'reduce' })
+
+    await page.goto('/portfolio/')
+
+    const desktopDemo = page.getByLabel(DOVETAIL_DESKTOP_DEMO_LABEL)
+    const mobileDemo = page.getByLabel(DOVETAIL_MOBILE_DEMO_LABEL)
+
+    await expect
+        .poll(() => mobileDemo.evaluate((video) => (video instanceof HTMLVideoElement ? video.currentSrc : '')))
+        .toContain('/portfolio/media/dovetail-demo-mobile.mp4')
+    expect(await desktopDemo.evaluate((video) => (video instanceof HTMLVideoElement ? video.currentSrc : ''))).toBe('')
+
+    await page.setViewportSize({ width: 1020, height: 1000 })
+
+    await expect
+        .poll(() => desktopDemo.evaluate((video) => (video instanceof HTMLVideoElement ? video.currentSrc : '')))
+        .toContain('/portfolio/media/dovetail-demo-desktop.mp4')
+    await expect
+        .poll(() => desktopDemo.evaluate((video) => (video instanceof HTMLVideoElement ? video.readyState : 0)))
+        .toBeGreaterThan(0)
+
+    await page.reload()
+
+    await expect
+        .poll(() => desktopDemo.evaluate((video) => (video instanceof HTMLVideoElement ? video.currentSrc : '')))
+        .toContain('/portfolio/media/dovetail-demo-desktop.mp4')
+    expect(await mobileDemo.evaluate((video) => (video instanceof HTMLVideoElement ? video.currentSrc : ''))).toBe('')
+
+    await page.setViewportSize({ width: 390, height: 844 })
+
+    await expect
+        .poll(() => mobileDemo.evaluate((video) => (video instanceof HTMLVideoElement ? video.currentSrc : '')))
+        .toContain('/portfolio/media/dovetail-demo-mobile.mp4')
+    await expect
+        .poll(() => mobileDemo.evaluate((video) => (video instanceof HTMLVideoElement ? video.readyState : 0)))
+        .toBeGreaterThan(0)
+})
