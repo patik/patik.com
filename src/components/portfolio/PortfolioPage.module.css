@@ -287,6 +287,29 @@ a.mediaLink {
 /* Featured entry (Dovetail) */
 /* **************************************************************** */
 
+.dovetailDesktopDemo {
+    display: none;
+
+    @media (min-width: 801px) {
+        display: block;
+    }
+}
+
+a.dovetailMobileFallback {
+    @media (min-width: 801px) {
+        display: none;
+    }
+}
+
+.dovetailAlternateLink {
+    justify-content: flex-end;
+    margin-top: 0.7rem;
+
+    @media (min-width: 801px) {
+        display: none;
+    }
+}
+
 .featuredBody {
     display: grid;
     grid-template-columns: minmax(0, 1fr);

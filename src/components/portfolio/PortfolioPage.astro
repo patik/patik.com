@@ -78,24 +78,60 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
             </h2>
         </div>
 
-        <a class={css.mediaLink} href="https://dovetail.travel">
-            <span class={css.frame}>
+        <div>
+            <div class:list={[css.frame, css.dovetailDesktopDemo]}>
                 <span class={css.frameBar}>
                     <span class={css.frameDots} aria-hidden="true"><span></span><span></span><span></span></span>
-                    <span class={css.frameTitle}>dovetail.travel</span>
+                    <span class={css.frameTitle}>dovetail.travel · desktop demo</span>
                 </span>
-                <picture>
-                    <source srcset={imgDovetailHeroDark.src} media="(prefers-color-scheme: dark)" type="image/webp" />
-                    <Image
-                        src={imgDovetailHeroLight}
-                        alt="The dovetail.travel landing page: “Plan every day of your trip—with the details and control you want.”"
-                        widths={[800, 1200, 1900]}
-                        sizes="(max-width: 1020px) 100vw, 950px"
-                        loading="eager"
+                <video
+                    data-demo
+                    data-dovetail-desktop-demo
+                    controls
+                    muted
+                    loop
+                    playsinline
+                    preload="metadata"
+                    width="1920"
+                    height="1080"
+                    poster="/portfolio/media/dovetail-demo-desktop-poster.webp"
+                    aria-label="Screen recording of planning a trip in Dovetail on a desktop computer"
+                >
+                    <source
+                        src="/portfolio/media/dovetail-demo-desktop.mp4"
+                        type="video/mp4"
+                        media="(min-width: 801px)"
                     />
-                </picture>
-            </span>
-        </a>
+                </video>
+            </div>
+
+            <a class:list={[css.mediaLink, css.dovetailMobileFallback]} href="https://dovetail.travel">
+                <span class={css.frame}>
+                    <span class={css.frameBar}>
+                        <span class={css.frameDots} aria-hidden="true"><span></span><span></span><span></span></span>
+                        <span class={css.frameTitle}>dovetail.travel</span>
+                    </span>
+                    <picture>
+                        <source
+                            srcset={imgDovetailHeroDark.src}
+                            media="(prefers-color-scheme: dark)"
+                            type="image/webp"
+                        />
+                        <Image
+                            src={imgDovetailHeroLight}
+                            alt="The dovetail.travel landing page: “Plan every day of your trip—with the details and control you want.”"
+                            widths={[800, 1200, 1900]}
+                            sizes="100vw"
+                            loading="eager"
+                        />
+                    </picture>
+                </span>
+            </a>
+
+            <div class:list={[css.linkRow, css.dovetailAlternateLink]}>
+                <a href="/portfolio/media/dovetail-demo-desktop.mp4">Watch the desktop demo</a>
+            </div>
+        </div>
 
         <div class={css.featuredBody}>
             <div class={css.prose}>
