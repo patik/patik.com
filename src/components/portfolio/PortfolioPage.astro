@@ -32,6 +32,23 @@ function section(id: (typeof sections)[number]['id']) {
     return match
 }
 
+/**
+ * The two Dovetail recordings. `media` drives which file the browser downloads, so the bands must
+ * not overlap — 801px matches the CSS breakpoint below, which explains the off-by-one.
+ */
+const dovetailDemos = {
+    desktop: {
+        src: '/portfolio/media/dovetail-demo-desktop.mp4',
+        poster: '/portfolio/media/dovetail-demo-desktop-poster.webp',
+        media: '(min-width: 801px)',
+    },
+    mobile: {
+        src: '/portfolio/media/dovetail-demo-mobile.mp4',
+        poster: '/portfolio/media/dovetail-demo-mobile-poster.webp',
+        media: '(max-width: 800px)',
+    },
+} as const
+
 // Counted rather than written down, so this can't contradict the page it links to.
 const pullRequests = await getPullRequests()
 const pullRequestYears = pullRequests.map((entry) => entry.data.date.getUTCFullYear())
@@ -77,57 +94,36 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
         </div>
 
         <div>
-            <div class:list={[css.frame, css.dovetailDesktopDemo]}>
+            <div class={css.frame}>
                 <span class={css.frameBar}>
                     <span class={css.frameDots} aria-hidden="true"><span></span><span></span><span></span></span>
-                    <span class={css.frameTitle}>dovetail.travel · desktop demo</span>
+                    <span class={css.frameTitle}>dovetail.travel</span>
                 </span>
+                {/* Two recordings of the same trip, one per form factor. The `media` attributes mean the
+                    browser only ever downloads the matching one; the script at the foot of this file
+                    re-runs that choice on resize, which `media` alone does not do. */}
                 <video
                     data-demo
-                    data-dovetail-desktop-demo
+                    class={css.dovetailDemo}
                     controls
                     muted
                     loop
                     playsinline
                     preload="metadata"
-                    width="1920"
-                    height="1080"
-                    poster="/portfolio/media/dovetail-demo-desktop-poster.webp"
-                    aria-label="Screen recording of planning a trip in Dovetail on a desktop computer"
+                    poster={dovetailDemos.desktop.poster}
+                    aria-label="Screen recording of planning a trip in Dovetail"
                 >
-                    <source src="/portfolio/media/dovetail-demo-desktop.mp4" type="video/mp4" />
+                    {
+                        Object.values(dovetailDemos).map(({ src, media, poster }) => (
+                            <source src={src} type="video/mp4" media={media} data-poster={poster} />
+                        ))
+                    }
                 </video>
             </div>
 
-            <div class:list={[css.frame, css.dovetailMobileDemo]}>
-                <span class={css.frameBar}>
-                    <span class={css.frameDots} aria-hidden="true"><span></span><span></span><span></span></span>
-                    <span class={css.frameTitle}>dovetail.travel · mobile demo</span>
-                </span>
-                <video
-                    data-demo
-                    data-dovetail-mobile-demo
-                    controls
-                    muted
-                    loop
-                    playsinline
-                    preload="metadata"
-                    width="780"
-                    height="1688"
-                    poster="/portfolio/media/dovetail-demo-mobile-poster.webp"
-                    aria-label="Screen recording of planning a trip in Dovetail on a mobile phone"
-                >
-                    <source src="/portfolio/media/dovetail-demo-mobile.mp4" type="video/mp4" />
-                </video>
-            </div>
-
-            <div class:list={[css.linkRow, css.dovetailAlternateLink]}>
-                <a class={css.dovetailMobileAlternateLink} href="/portfolio/media/dovetail-demo-desktop.mp4"
-                    >Watch the desktop demo</a
-                >
-                <a class={css.dovetailDesktopAlternateLink} href="/portfolio/media/dovetail-demo-mobile.mp4"
-                    >Watch the mobile demo</a
-                >
+            <div class:list={[css.linkRow, css.dovetailAlternateLinks]}>
+                <a class={css.shownBelowDemoBreakpoint} href={dovetailDemos.desktop.src}>Watch the desktop demo</a>
+                <a class={css.shownAboveDemoBreakpoint} href={dovetailDemos.mobile.src}>Watch the mobile demo</a>
             </div>
         </div>
 
@@ -906,4 +902,55 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
 
     videos.forEach((video) => observer.observe(video))
     reducedMotion.addEventListener('change', () => videos.forEach(sync))
+
+    // Never read, only held: WebKit collects a MediaQueryList that nothing references and takes its
+    // listener with it, and the phones the mobile recording exists for are the ones running WebKit.
+    const heldQueries: MediaQueryList[] = []
+
+    // A <source media> is consulted once, while the browser picks a file, and never again — so a
+    // visitor who crosses the breakpoint (rotating a tablet, dragging a window) keeps the file
+    // chosen at load. `load()` re-runs that pick; the poster has to be moved by hand because it
+    // lives on the <video>, not the <source>.
+    videos.forEach((video) => {
+        const variants = [...video.querySelectorAll<HTMLSourceElement>('source[media]')].map((source) => ({
+            source,
+            query: window.matchMedia(source.media),
+        }))
+
+        if (variants.length === 0) {
+            return
+        }
+
+        heldQueries.push(...variants.map(({ query }) => query))
+
+        function selectSource(): void {
+            const match = variants.find(({ query }) => query.matches)?.source
+
+            if (!match) {
+                return
+            }
+
+            // Unconditional: the markup ships one poster, so the other breakpoint arrives here
+            // already showing the right file behind the wrong still.
+            if (match.dataset.poster) {
+                video.poster = match.dataset.poster
+            }
+
+            // `source.src` reflects as an absolute URL, so this compares like with like.
+            if (video.currentSrc === match.src) {
+                return
+            }
+
+            const wasPlaying = !video.paused
+
+            video.load()
+
+            if (wasPlaying) {
+                sync(video)
+            }
+        }
+
+        selectSource()
+        variants.forEach(({ query }) => query.addEventListener('change', selectSource))
+    })
 </script>
