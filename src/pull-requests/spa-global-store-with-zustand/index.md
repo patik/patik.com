@@ -3,7 +3,7 @@ title: 'SPA global store with Zustand'
 prNumber: 2569
 date: '2022-11-30'
 kind: 'Architecture proposal'
-standfirst: 'Introducing a global store to a large single-page app, argued from first principles.'
+standfirst: 'Making the case for a global store in an app that had gotten by without one.'
 order: 1
 featured: true
 author: 'patik'

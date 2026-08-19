@@ -20,16 +20,17 @@ const wordedCount = new Intl.NumberFormat('en-GB').format(rest.length)
         <p class={css.kicker}>Portfolio · Writing</p>
         <h1>Pull Request Descriptions</h1>
         <p class={css.deck}>
-            For me, a pull request is not just a formality. It's the place where actual teaching can happen: what
-            changed, why it changed, how to review it, and what the team should do differently from now on.
+            A pull request isn't a formality. It's usually the one moment when everybody who will have to live with a
+            change is actually looking at it, so it's a good place to teach something: what changed, why it changed, how
+            to review it, and what we would all need to do differently afterward.
         </p>
         <p class={css.deck}>
-            I believe that each pull request deserves its own narrative, its own approach. Some require background and
-            context, some require a detailed walkthrough of the code, some require a careful explanation of the
-            trade-offs. I try to write each one in a way that will make it easy for the reviewer to understand and learn
-            from.
+            Each one needs a different shape. Sometimes the reviewer needs a page of background before the diff will
+            make any sense at all. Other times what helps most is a walk through the files in a particular order, or an
+            honest account of a trade-off I wasn't sure about. I try to work out which of those a change needs before I
+            start writing.
         </p>
-        <p class={css.deck}>Every pull request shown here was completely hand-written by me, without AI assistance.</p>
+        <p class={css.deck}>Every description here was written by hand, with no AI assistance.</p>
         <div class:list={[css.headerStats, css.mono]}>
             <span>{entries.length} selected</span>
             <span>{timeSpan}</span>
@@ -39,15 +40,18 @@ const wordedCount = new Intl.NumberFormat('en-GB').format(rest.length)
 
     <div class={css.intro}>
         <p>
-            These are from the frontend platform work at <a href="https://www.internations.org/">InterNations</a>. It's
-            a large single-page app carried through a long run of migrations: a global store, a router, a strict
-            TypeScript flag, two major framework versions. Most of them were changes nobody had asked for and everybody
-            would have to live with, which is a particular kind of writing problem: you have to earn the reviewer’s
-            attention before you can spend it.
+            These come from the frontend platform work at <a href="https://www.internations.org/">InterNations</a>. It's
+            a large single-page app, and we carried it through a long series of migrations: a global store, a router, a
+            strict TypeScript flag, and two major framework versions.
         </p>
         <p>
-            The code is private and stays that way. What follows is the writing only, reproduced as it was published to
-            the team, with internal links rendered as plain text.
+            Most of them were changes that nobody had asked for and that everybody would then have to live with. That
+            turns out to be a particular kind of writing problem. Before you can ask somebody to accept a change, you
+            have to convince them that the problem was worth solving in the first place.
+        </p>
+        <p>
+            The code is private and will stay that way. What's below is the writing on its own, reproduced as the team
+            saw it, with internal links flattened to plain text.
         </p>
     </div>
 

@@ -3,7 +3,7 @@ title: 'Overhaul the useMediaQueries hook'
 prNumber: 3949
 date: '2023-04-27'
 kind: 'Findings and solution'
-standfirst: 'Why detecting screen size in JavaScript stopped being reliable.'
+standfirst: 'Why you can no longer detect the screen size in JavaScript, and what to do instead.'
 order: 8
 author: 'patik'
 state: 'merged'

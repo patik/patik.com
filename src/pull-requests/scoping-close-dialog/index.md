@@ -3,7 +3,7 @@ title: 'closeDialog() only closes one specific dialog'
 prNumber: 8058
 date: '2024-08-16'
 kind: 'Convention change'
-standfirst: 'Fixing a too-permissive API, then making the case for a new house style.'
+standfirst: 'A dialog API that closed the wrong dialog, and the house style that came out of fixing it.'
 order: 5
 author: 'patik'
 state: 'merged'

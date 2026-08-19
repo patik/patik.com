@@ -60,10 +60,12 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
         <p class={css.kicker}>Portfolio · 2000 – present</p>
         <h1>Code &amp; Projects</h1>
         <p class={css.deck}>
-            I’m a Staff Frontend Engineer at <a href="https://www.internations.org/">InterNations</a> and I’ve been building
-            for the web since 2000. This page collects selected work: a travel-planning product, internal developer tools,
-            command-line tools, and open-source libraries—some of them maintained for well over a decade—plus a selection
-            of the writing.
+            I’m a Staff Frontend Engineer at <a href="https://www.internations.org/">InterNations</a>, and I’ve been
+            building things for the web since 2000. This page collects the work I’d actually want to talk about: a travel
+            planning product that I run on my own, a couple of internal developer tools, some small command-line tools,
+            and a handful of open-source libraries. A few of those libraries are old enough that I’ve now rewritten them
+            for three different eras of JavaScript. There’s a section on writing too, because I think that’s a major part of the
+            job.
         </p>
         <div class:list={[css.headerStats, css.mono]}>
             <span>50+ repositories</span>
@@ -130,34 +132,39 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
         <div class={css.featuredBody}>
             <div class={css.prose}>
                 <p>
-                    Dovetail is a complete product—design, engineering, and operations—built and run solo. It’s a
-                    trip-planning calendar for hands-on travellers: day-by-day logistics with rich entry types, a trip
-                    map, a wishlist for unscheduled ideas, and print-friendly itineraries. It runs on the web and as
-                    native iOS and Android apps, with subscriptions handled across Stripe and the app stores.
+                    Dovetail is a trip planning calendar for people who like to work out their own logistics. You lay a
+                    trip out day by day, drop the ideas you haven’t placed yet into a wishlist until you know where they
+                    fit, see the whole thing on a map, and print an itinerary that is actually readable on paper. It runs
+                    on the web and as native iOS and Android apps, and it takes subscriptions through both Stripe and the
+                    app stores.
                 </p>
-                <p>The source is closed, but the engineering is the interesting part:</p>
+                <p>
+                    I do all of it myself: the design, the code, the support email, and the app store paperwork. The
+                    source is closed, so here is what I think is interesting about how it’s built.
+                </p>
                 <ul class={css.featuredList}>
                     <li>
-                        <strong>Offline-first by design.</strong> Trips live in an IndexedDB cache with a sync queue, so the
-                        app stays fully usable without a connection and reconciles with Supabase when it returns.
+                        <strong>Offline first.</strong> Trips live in an IndexedDB cache with a sync queue behind it. You
+                        can plan a whole day on a plane, and the app reconciles with Supabase once the connection comes
+                        back.
                     </li>
                     <li>
-                        <strong>One TypeScript codebase, three platforms.</strong> React 19 on Vite, wrapped in thin Capacitor
-                        shells that provide native auth, networking, and geolocation.
+                        <strong>One codebase, three platforms.</strong> React 19 on Vite, wrapped in thin Capacitor shells
+                        that hand over native auth, networking, and geolocation.
                     </li>
                     <li>
-                        <strong>Tested like a team built it.</strong> A Playwright end-to-end suite runs against seeded IndexedDB
-                        fixtures with a fake signed-in user, so CI needs no backend credentials.
+                        <strong>The end-to-end tests don’t need a backend.</strong> The Playwright suite runs against
+                        seeded IndexedDB fixtures and a fake signed-in user, so CI never needs real credentials.
                     </li>
                     <li>
-                        <strong>Systematic theming.</strong> A design-token colour system keeps light and dark mode consistent
-                        across web and native.
+                        <strong>One color system for everything.</strong> Design tokens keep light and dark mode looking
+                        the same on the web and in both native apps.
                     </li>
                 </ul>
             </div>
             <div class={css.featuredFacts}>
                 <p class={css.factLabel}>Role</p>
-                <p class={css.factText}>Design, engineering, and operations—solo</p>
+                <p class={css.factText}>Everything, on my own</p>
                 <p class={css.factLabel}>Stack</p>
                 <div class={css.tagRow}>
                     <span class={css.tag}>React 19</span>
@@ -186,8 +193,9 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                 {section('internal-developer-tools').label}
             </h2>
             <p class={css.sectionNote}>
-                Two tools I conceived, designed, and built end to end for InterNations. The source is private; the
-                product work shown here is shared with permission.
+                Two tools I built for InterNations. Both of them started as something I wanted for myself, and then it
+                turned out other people wanted it too. The source is private. The screenshots and descriptions here are
+                shared with permission.
             </p>
         </div>
 
@@ -242,17 +250,19 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                     </div>
                     <div class={css.prose}>
                         <p>
-                            InterNations’ Symfony console contains a large, powerful set of development and test-data
-                            commands. Inc makes that surface discoverable: it reads each command’s live definition and
-                            turns its arguments and options into a searchable terminal form, with contextual help and a
-                            preview of the exact command before anything runs.
+                            InterNations has a Symfony console with a few hundred development and test-data commands in
+                            it. They are genuinely useful. But finding the one you want means grepping a list, then
+                            reading its <code>--help</code> output, then guessing at the argument order. Inc reads each
+                            command’s live definition instead and builds a form out of its arguments and options. You
+                            search for the command, fill in the fields, and see the exact string that is about to run
+                            before it runs.
                         </p>
                         <p>
-                            I built the complete tool in TypeScript on Bun, using React, OpenTUI, and Zustand for a
-                            responsive two-pane interface. It remembers recent commands, keeps searchable execution
-                            logs, switches environments, passes commands straight through when a form is not needed,
-                            installs shell completion, and ships as self-updating native binaries through GitHub
-                            Releases.
+                            I wrote it in TypeScript on Bun, with React and OpenTUI for the interface and Zustand holding
+                            the state. It keeps a searchable log of what you have run, remembers recent commands,
+                            switches environments, and installs its own shell completion. If you already know the command
+                            you want, it passes straight through and doesn’t show you a form at all. It ships as a
+                            self-updating binary through GitHub Releases.
                         </p>
                     </div>
                     <div class={css.tagRow}>
@@ -292,18 +302,21 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                     </div>
                     <div class={css.prose}>
                         <p>
-                            InterNations ships from date-named release branches, which makes everyday questions
-                            needlessly expensive: Which branch is next? Is it available locally and remotely? What
-                            changed, which commits are mine, and which of my pull requests target it? Gin puts the
-                            release calendar and those answers in one interactive terminal view.
+                            InterNations ships from release branches named after dates, like
+                            <Space />
+                            <code>deploy/2026-01-22</code>. That is fine until you need to answer the ordinary questions.
+                            Which branch is next? Have I fetched it yet? What is in it, which of those commits are mine,
+                            and do I have any pull requests pointing at it? Every answer is a separate command, and the
+                            branch name changes twice a week. Gin puts all of it in one terminal view.
                         </p>
                         <p>
-                            I built Gin as a compiled TypeScript and Bun application with a React and Ink interface
-                            backed by Zustand. It derives the correct release branches from the schedule, fetches and
-                            compares them, queries pull requests through the GitHub CLI, and links directly to
-                            comparisons. It also acts as a transparent Git wrapper: commands it does not own go to Git
-                            unchanged, while shortcuts such as
-                            <code>deploy</code> and <code>upcoming</code> expand safely inside branches, ranges, and refspecs.
+                            I wrote Gin in TypeScript on Bun, with React and Ink for the interface and Zustand holding the
+                            state. It works out the right branch names from the release schedule, fetches and compares
+                            them, and asks the GitHub CLI about your pull requests. It also works as a transparent Git
+                            wrapper. Any command it doesn’t recognize goes through to Git untouched, and keywords like
+                            <Space />
+                            <code>deploy</code> and <code>upcoming</code> expand wherever a branch name is valid, including
+                            inside ranges and refspecs.
                         </p>
                     </div>
                     <div class={css.tagRow}>
@@ -327,8 +340,8 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                 {section('command-line-tools').label}
             </h2>
             <p class={css.sectionNote}>
-                Developer experience is a feature. Small tools that remove daily friction from the terminal—each one
-                built because I kept wanting it.
+                Small tools that take some of the annoyance out of the terminal. I wrote each of these because I kept
+                wishing it existed, which is not quite the same thing as claiming anyone else needs it.
             </p>
         </div>
 
@@ -364,11 +377,19 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                     </div>
                     <div class={css.prose}>
                         <p>
-                            Answers the eternal question of which local branches are safe to delete. It fetches and
-                            prunes, then sorts branches into three groups—merged and safe (pre-selected), unmerged and
-                            requiring a force-delete (deliberately not), and informational—and shows the exact
-                            <Space />
-                            <code>git</code> commands before running them.
+                            This answers the question of which local branches are safe to delete. It fetches and prunes
+                            first, then sorts whatever is left into groups:
+                        </p>
+                        <ul>
+                            <li>merged, and safe to delete — these come pre-selected</li>
+                            <li>
+                                unmerged, so deleting them needs <code>-D</code> — these are deliberately not
+                                pre-selected
+                            </li>
+                            <li>everything else, listed so you can see it</li>
+                        </ul>
+                        <p>
+                            Then it shows you the exact <code>git</code> commands before it runs any of them.
                         </p>
                     </div>
                     <div class={css.linkRow}>
@@ -413,9 +434,9 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                     </div>
                     <div class={css.prose}>
                         <p>
-                            A form in the terminal: text inputs, radios, and checkboxes laid out on one screen with
-                            sensible keyboard navigation—for CLIs that would otherwise ask a dozen questions one at a
-                            time.
+                            A form in the terminal. Text inputs, radio buttons, and checkboxes all on one screen, with
+                            keyboard navigation that works the way you would expect it to. It’s for the kind of CLI that
+                            would otherwise walk you through a dozen questions one at a time.
                         </p>
                     </div>
                     <div class={css.linkRow}>
@@ -460,8 +481,9 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                     </div>
                     <div class={css.prose}>
                         <p>
-                            A checkbox prompt for long, structured lists: choices are grouped under selectable headers,
-                            filterable in real time, with per-group counts and select-all / select-none controls.
+                            A checkbox prompt for lists that are too long to scroll through comfortably. Choices sit
+                            under group headers that are themselves selectable, the list filters as you type, and each
+                            group shows how many of its items you have picked so far.
                         </p>
                     </div>
                     <div class={css.linkRow}>
@@ -506,8 +528,9 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                     </div>
                     <div class={css.prose}>
                         <p>
-                            Inquirer’s select prompt with one addition: a live banner above the choices. Kick off async
-                            work—a directory size, an API call—and stream its progress while the user decides.
+                            Inquirer’s select prompt with one thing added: a banner above the choices that you can keep
+                            updating while the prompt is open. Start some async work, such as measuring a directory or
+                            calling an API, and report on it while the user is still making up their mind.
                         </p>
                     </div>
                     <div class={css.linkRow}>
@@ -558,9 +581,10 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                     </div>
                     <div class={css.prose}>
                         <p>
-                            A calculator and comparison tool for photographers. Line up any number of camera-and-lens
-                            configurations, adjust apertures and distances, and compare the results in a chart. The
-                            whole setup is encoded in the URL, so a comparison is easy to share.
+                            A depth-of-field calculator for photographers. You line up as many camera and lens
+                            combinations as you like, adjust the apertures and the distances, and compare the results on
+                            a chart. The entire setup is encoded in the URL, so you can send someone a link to exactly
+                            what you are looking at.
                         </p>
                     </div>
                     <div class={css.linkRow}>
@@ -581,8 +605,9 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                     </div>
                     <div class={css.prose}>
                         <p>
-                            Astro with React islands, Cloudinary-backed travel galleries, and a CI pipeline that runs
-                            visual-regression and accessibility tests with Playwright. The codebase is public.
+                            Astro with React islands, travel galleries served out of Cloudinary, and a CI pipeline that
+                            runs visual regression and accessibility tests in Playwright. The whole codebase is public,
+                            including the parts of it I am not especially proud of.
                         </p>
                     </div>
                     <div class={css.linkRow}>
@@ -600,8 +625,9 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                 {section('libraries').label}
             </h2>
             <p class={css.sectionNote}>
-                Long-term maintenance is the point. These have been carried across several eras of the JavaScript
-                ecosystem—script tags, jQuery, AMD, and now typed ES modules.
+                The interesting part of these is how long they have been around. Each one has been rewritten to survive
+                a change in how JavaScript gets written and shipped: script tags, then jQuery, then AMD modules, and now
+                typed ES modules.
             </p>
         </div>
 
@@ -618,9 +644,11 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                     </div>
                     <div class={css.prose}>
                         <p>
-                            Determines whether an element is entirely inside the viewport—or any scrollable container
-                            —with configurable thresholds per side. Began as a jQuery plugin, rewritten over the years
-                            into a dependency-free TypeScript package, with the API kept steady the whole way.
+                            Tells you whether an element is entirely inside the viewport, or inside any scrollable
+                            container, with a threshold you can configure for each side. It started out as a jQuery
+                            plugin in 2011 and it is now a dependency-free TypeScript package. I have kept the API steady
+                            through every rewrite, because people are still running the version they installed years
+                            ago.
                         </p>
                     </div>
                     <div class={css.linkRow}>
@@ -647,8 +675,8 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                             <Space />
                             <code>'array'</code>, <code>kind(null)</code> is <code>'null'</code>, and
                             <Space />
-                            <code>kind(new Date())</code> is <code>'date'</code>. Useful names for JavaScript values,
-                            DOM nodes included.
+                            <code>kind(new Date())</code> is <code>'date'</code>. It gives useful names to JavaScript
+                            values, DOM nodes included.
                         </p>
                     </div>
                     <div class={css.linkRow}>
@@ -667,8 +695,9 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                     </div>
                     <div class={css.prose}>
                         <p>
-                            Run a shell command, get its <code>stdout</code> as a string—a tiny promise-based wrapper around
-                            Node’s <code>child_process</code>, with an <code>execFile</code> variant for untrusted input.
+                            Run a shell command and get its <code>stdout</code> back as a string. It is a very small
+                            promise-based wrapper around Node’s <code>child_process</code>, with an <code>execFile</code>
+                            variant for when the input isn’t yours to trust.
                         </p>
                     </div>
                     <div class={css.linkRow}>
@@ -687,8 +716,8 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                 {section('writing').label}
             </h2>
             <p class={css.sectionNote}>
-                The other half of engineering is explaining it. A pull request is the moment a team decides whether to
-                adopt an idea, so it is worth writing properly.
+                A pull request is usually the one moment when everybody who will have to live with a change is actually
+                looking at it. That seems worth writing well, so I put real effort into these.
             </p>
         </div>
 
@@ -704,10 +733,9 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                     </div>
                     <div class={css.prose}>
                         <p>
-                            Pull requests from a long run of frontend platform migrations, selected for the writing
-                            rather than the code. Each one sets out what changed and why, how to review it, and what the
-                            team should do differently afterwards—a strict TypeScript flag, two major framework
-                            versions, a global store, a router.
+                            A selection of pull requests from a long run of frontend platform migrations. They are here
+                            for the writing rather than for the code. Each one explains what changed, why it changed, how
+                            to review it, and what the team would need to do differently afterward.
                         </p>
                     </div>
                     <div class={css.linkRow}>
@@ -725,7 +753,7 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                 {section('contributions').label}
             </h2>
             <p class={css.sectionNote}>
-                Notable work from my public-sector years, built with the New York State Office of Information Technology
+                Work from my years in the public sector, built with the New York State Office of Information Technology
                 Services.
             </p>
         </div>
@@ -740,8 +768,8 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                     </div>
                     <div class={css.prose}>
                         <p>
-                            Core contributor to Excelsior, the framework behind dozens of New York State sites, and to
-                            Core UI, its component-based successor designed for web apps.
+                            I was a core contributor to Excelsior, the framework behind dozens of New York State sites,
+                            and to Core UI, the component-based successor we built for web apps.
                         </p>
                     </div>
                     <div class={css.linkRow}>
@@ -760,8 +788,8 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                     </div>
                     <div class={css.prose}>
                         <p>
-                            A responsive redesign of one of the state’s highest-profile transactions on the Department
-                            of Motor Vehicles’ site.
+                            A responsive redesign of registration renewal, which is one of the busiest transactions the
+                            state runs.
                         </p>
                     </div>
                     <div class={css.linkRow}>
@@ -781,8 +809,9 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                     </div>
                     <div class={css.prose}>
                         <p>
-                            Go Responsive, a showpiece from a responsive-web-design code sprint, and an Ignite talk at
-                            NYS DevCon 2013.
+                            Go Responsive came out of a code sprint on responsive web design. I also gave an Ignite talk
+                            at NYS DevCon in 2013, which is the format where your slides advance every fifteen seconds
+                            whether you are ready or not.
                         </p>
                     </div>
                     <div class={css.linkRow}>
@@ -805,8 +834,8 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                 {section('earlier-era').label}
             </h2>
             <p class={css.sectionNote}>
-                Kept online because old links shouldn’t rot. Interesting today mainly as artifacts of what the web used
-                to require.
+                These are still online because old links shouldn’t rot. They’re mostly interesting now as a record of
+                what the web used to make you do.
             </p>
         </div>
 
@@ -823,9 +852,9 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                     </div>
                     <div class={css.prose}>
                         <p>
-                            Made <code>console.log</code> safe and consistent across the browsers of the early 2010s — including
-                            the ones where the console only existed while the developer tools were open. Obsolete in the best
-                            way: the platform caught up.
+                            This made <code>console.log</code> safe to call across the browsers of the early 2010s,
+                            including the ones where the console only existed while the developer tools happened to be
+                            open. It is completely obsolete now, which is the right outcome. The platform caught up.
                         </p>
                     </div>
                     <div class={css.linkRow}>
@@ -848,8 +877,8 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                     </div>
                     <div class={css.prose}>
                         <p>
-                            Greasemonkey scripts and small browser extensions, from the era when you fixed websites
-                            yourself.
+                            Greasemonkey scripts and small browser extensions, from the era when fixing a website
+                            yourself was a normal thing to do.
                         </p>
                     </div>
                     <div class={css.linkRow}>
@@ -861,10 +890,10 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
     </section>
 
     <p class={css.outro}>
-        There’s more—experiments, forks, and abandoned ideas included—at
+        There is more at <a href="https://github.com/patik">github.com/patik <span aria-hidden="true">↗</span></a>,
+        including the experiments and the abandoned ideas, and there is occasional writing on
         <Space />
-        <a href="https://github.com/patik">github.com/patik <span aria-hidden="true">↗</span></a>, and occasional
-        writing on <a href="/blog/">the blog</a>.
+        <a href="/blog/">the blog</a>.
     </p>
 </div>
 

@@ -3,7 +3,7 @@ title: 'Satisfy the noUncheckedIndexedAccess option'
 prNumber: 7405
 date: '2024-05-29'
 kind: 'Teaching document'
-standfirst: 'One reference document, written once and amortized across a 28-pull-request series.'
+standfirst: 'One reference document, written once and reused across 28 pull requests.'
 order: 2
 featured: true
 author: 'patik'

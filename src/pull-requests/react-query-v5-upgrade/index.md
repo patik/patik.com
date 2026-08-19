@@ -3,7 +3,7 @@ title: 'Upgrade react-query to v5'
 prNumber: 6663
 date: '2024-02-27'
 kind: 'Migration guide'
-standfirst: 'A library major-version bump with every trap mapped in advance.'
+standfirst: 'Upgrading react-query a major version, with the traps mapped out first.'
 order: 4
 featured: true
 author: 'patik'

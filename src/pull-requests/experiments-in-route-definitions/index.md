@@ -3,7 +3,7 @@ title: 'Defining experiments in Route definitions, part 1/2'
 prNumber: 6263
 date: '2024-01-22'
 kind: 'Problem and solution'
-standfirst: 'Consolidating scattered experiment logic into a single source of truth.'
+standfirst: 'Pulling experiment logic out of several files and into the route definitions.'
 order: 9
 author: 'patik'
 state: 'merged'
