@@ -61,11 +61,11 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
         <h1>Code &amp; Projects</h1>
         <p class={css.deck}>
             I’m a Staff Frontend Engineer at <a href="https://www.internations.org/">InterNations</a>, and I’ve been
-            building things for the web since 2000. This page collects the work I’d actually want to talk about: a travel
-            planning product that I run on my own, a couple of internal developer tools, some small command-line tools,
-            and a handful of open-source libraries. A few of those libraries are old enough that I’ve now rewritten them
-            for three different eras of JavaScript. There’s a section on writing too, because I think that’s a major part of the
-            job.
+            building things for the web since 2000. This page collects the work I’d actually want to talk about: a
+            travel planning product that I run on my own, a couple of internal developer tools, some small command-line
+            tools, and a handful of open-source libraries. A few of those libraries are old enough that I’ve now
+            rewritten them for three different eras of JavaScript. There’s a section on writing too, because I think
+            that’s a major part of the job.
         </p>
         <div class:list={[css.headerStats, css.mono]}>
             <span>50+ repositories</span>
@@ -101,9 +101,11 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                     <span class={css.frameDots} aria-hidden="true"><span></span><span></span><span></span></span>
                     <span class={css.frameTitle}>dovetail.travel</span>
                 </span>
-                {/* Two recordings of the same trip, one per form factor. The `media` attributes mean the
+                {
+                    /* Two recordings of the same trip, one per form factor. The `media` attributes mean the
                     browser only ever downloads the matching one; the script at the foot of this file
-                    re-runs that choice on resize, which `media` alone does not do. */}
+                    re-runs that choice on resize, which `media` alone does not do. */
+                }
                 <video
                     data-demo
                     class={css.dovetailDemo}
@@ -134,9 +136,9 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                 <p>
                     Dovetail is a trip planning calendar for people who like to work out their own logistics. You lay a
                     trip out day by day, drop the ideas you haven’t placed yet into a wishlist until you know where they
-                    fit, see the whole thing on a map, and print an itinerary that is actually readable on paper. It runs
-                    on the web and as native iOS and Android apps, and it takes subscriptions through both Stripe and the
-                    app stores.
+                    fit, see the whole thing on a map, and print an itinerary that is actually readable on paper. It
+                    runs on the web and as native iOS and Android apps, and it takes subscriptions through both Stripe
+                    and the app stores.
                 </p>
                 <p>
                     I do all of it myself: the design, the code, the support email, and the app store paperwork. The
@@ -145,20 +147,19 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                 <ul class={css.featuredList}>
                     <li>
                         <strong>Offline first.</strong> Trips live in an IndexedDB cache with a sync queue behind it. You
-                        can plan a whole day on a plane, and the app reconciles with Supabase once the connection comes
-                        back.
+                        can plan a whole day on a plane, and the app reconciles with Supabase once the connection comes back.
                     </li>
                     <li>
                         <strong>One codebase, three platforms.</strong> React 19 on Vite, wrapped in thin Capacitor shells
                         that hand over native auth, networking, and geolocation.
                     </li>
                     <li>
-                        <strong>The end-to-end tests don’t need a backend.</strong> The Playwright suite runs against
-                        seeded IndexedDB fixtures and a fake signed-in user, so CI never needs real credentials.
+                        <strong>The end-to-end tests don’t need a backend.</strong> The Playwright suite runs against seeded
+                        IndexedDB fixtures and a fake signed-in user, so CI never needs real credentials.
                     </li>
                     <li>
-                        <strong>One color system for everything.</strong> Design tokens keep light and dark mode looking
-                        the same on the web and in both native apps.
+                        <strong>One color system for everything.</strong> Design tokens keep light and dark mode looking the
+                        same on the web and in both native apps.
                     </li>
                 </ul>
             </div>
@@ -251,18 +252,17 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                     <div class={css.prose}>
                         <p>
                             InterNations has a Symfony console with a few hundred development and test-data commands in
-                            it. They are genuinely useful. But finding the one you want means grepping a list, then
-                            reading its <code>--help</code> output, then guessing at the argument order. Inc reads each
-                            command’s live definition instead and builds a form out of its arguments and options. You
-                            search for the command, fill in the fields, and see the exact string that is about to run
-                            before it runs.
+                            it. They are genuinely useful. But finding the one you want means grepping a list, reading
+                            its <code>--help</code> output, and guessing at the argument order. Inc reads each command’s live
+                            definition instead and builds a form out of its arguments and options. You search for the command,
+                            fill in the fields, and see the exact string that is about to run before it runs.
                         </p>
                         <p>
-                            I wrote it in TypeScript on Bun, with React and OpenTUI for the interface and Zustand holding
-                            the state. It keeps a searchable log of what you have run, remembers recent commands,
-                            switches environments, and installs its own shell completion. If you already know the command
-                            you want, it passes straight through and doesn’t show you a form at all. It ships as a
-                            self-updating binary through GitHub Releases.
+                            I wrote it in TypeScript on Bun, with React and OpenTUI for the interface and Zustand
+                            holding the state. It keeps a searchable log of what you have run, remembers recent
+                            commands, switches environments, and installs its own shell completion. If you already know
+                            the command you want, it passes straight through and doesn’t show you a form at all. It
+                            ships as a self-updating binary through GitHub Releases.
                         </p>
                     </div>
                     <div class={css.tagRow}>
@@ -304,16 +304,17 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                         <p>
                             InterNations ships from release branches named after dates, like
                             <Space />
-                            <code>deploy/2026-01-22</code>. That is fine until you need to answer the ordinary questions.
-                            Which branch is next? Have I fetched it yet? What is in it, which of those commits are mine,
-                            and do I have any pull requests pointing at it? Every answer is a separate command, and the
-                            branch name changes twice a week. Gin puts all of it in one terminal view.
+                            <code>deploy/2026-01-22</code>. That is fine until you need to answer the ordinary
+                            questions. Which branch is next? Have I fetched it yet? What is in it, which of those
+                            commits are mine, and do I have any pull requests pointing at it? Every answer is a separate
+                            command, and the branch name changes twice a week. Gin puts all of it in one terminal view.
                         </p>
                         <p>
-                            I wrote Gin in TypeScript on Bun, with React and Ink for the interface and Zustand holding the
-                            state. It works out the right branch names from the release schedule, fetches and compares
-                            them, and asks the GitHub CLI about your pull requests. It also works as a transparent Git
-                            wrapper. Any command it doesn’t recognize goes through to Git untouched, and keywords like
+                            I wrote Gin in TypeScript on Bun, with React and Ink for the interface and Zustand holding
+                            the state. It works out the right branch names from the release schedule, fetches and
+                            compares them, and asks the GitHub CLI about your pull requests. It also works as a
+                            transparent Git wrapper. Any command it doesn’t recognize goes through to Git untouched, and
+                            keywords like
                             <Space />
                             <code>deploy</code> and <code>upcoming</code> expand wherever a branch name is valid, including
                             inside ranges and refspecs.
@@ -383,8 +384,7 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                         <ul>
                             <li>merged, and safe to delete — these come pre-selected</li>
                             <li>
-                                unmerged, so deleting them needs <code>-D</code> — these are deliberately not
-                                pre-selected
+                                unmerged, so deleting them needs <code>-D</code> — these are deliberately not pre-selected
                             </li>
                             <li>everything else, listed so you can see it</li>
                         </ul>
@@ -625,9 +625,9 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                 {section('libraries').label}
             </h2>
             <p class={css.sectionNote}>
-                The interesting part of these is how long they have been around. Each one has been rewritten to survive
-                a change in how JavaScript gets written and shipped: script tags, then jQuery, then AMD modules, and now
-                typed ES modules.
+                The interesting part of these is how long they have been around. They have been rewritten to survive a
+                change in how JavaScript gets written and shipped: <code>&lt;script&gt;</code> tags, then jQuery, then AMD
+                modules, and now typed ES modules.
             </p>
         </div>
 
@@ -646,9 +646,9 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                         <p>
                             Tells you whether an element is entirely inside the viewport, or inside any scrollable
                             container, with a threshold you can configure for each side. It started out as a jQuery
-                            plugin in 2011 and it is now a dependency-free TypeScript package. I have kept the API steady
-                            through every rewrite, because people are still running the version they installed years
-                            ago.
+                            plugin in 2011 and it is now a dependency-free TypeScript package. I have kept the API
+                            steady through every rewrite, because people are still running the version they installed
+                            years ago.
                         </p>
                     </div>
                     <div class={css.linkRow}>
@@ -695,8 +695,8 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                     </div>
                     <div class={css.prose}>
                         <p>
-                            Run a shell command and get its <code>stdout</code> back as a string. It is a very small
-                            promise-based wrapper around Node’s <code>child_process</code>, with an <code>execFile</code>
+                            Run a shell command and get its <code>stdout</code> back as a string. It is a very small promise-based
+                            wrapper around Node’s <code>child_process</code>, with an <code>execFile</code>
                             variant for when the input isn’t yours to trust.
                         </p>
                     </div>
@@ -734,8 +734,8 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                     <div class={css.prose}>
                         <p>
                             A selection of pull requests from a long run of frontend platform migrations. They are here
-                            for the writing rather than for the code. Each one explains what changed, why it changed, how
-                            to review it, and what the team would need to do differently afterward.
+                            for the writing rather than for the code. Each one explains what changed, why it changed,
+                            how to review it, and what the team would need to do differently afterward.
                         </p>
                     </div>
                     <div class={css.linkRow}>
@@ -852,9 +852,9 @@ const pullRequestSpan = `${Math.min(...pullRequestYears)} – ${Math.max(...pull
                     </div>
                     <div class={css.prose}>
                         <p>
-                            This made <code>console.log</code> safe to call across the browsers of the early 2010s,
-                            including the ones where the console only existed while the developer tools happened to be
-                            open. It is completely obsolete now, which is the right outcome. The platform caught up.
+                            This made <code>console.log</code> safe to call across the browsers of the early 2010s, including
+                            the ones where the console only existed while the developer tools happened to be open. It is completely
+                            obsolete now, which is the right outcome. The platform caught up.
                         </p>
                     </div>
                     <div class={css.linkRow}>
