@@ -3,7 +3,7 @@ title: 'App Router migration prep: Create structure for main route group in @app
 prNumber: 8923
 date: '2024-12-09'
 kind: 'How to review it'
-standfirst: 'Splitting a framework migration so that humans can actually review the diff.'
+standfirst: 'Splitting a framework migration into pieces a person can actually review.'
 order: 6
 author: 'patik'
 state: 'merged'

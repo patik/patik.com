@@ -3,7 +3,7 @@ title: 'Checkpoint end-user performance testing tool and task runner'
 prNumber: 8463
 date: '2024-10-09'
 kind: 'Tool introduction'
-standfirst: 'Shipping an internal performance-testing harness, and inviting contributions.'
+standfirst: 'A performance testing tool for the team, plus an invitation to add to it.'
 order: 12
 author: 'patik'
 state: 'merged'

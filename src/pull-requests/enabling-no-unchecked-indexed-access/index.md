@@ -3,7 +3,7 @@ title: 'Enable TypeScript option noUncheckedIndexedAccess'
 prNumber: 6843
 date: '2024-03-15'
 kind: 'Teaching document'
-standfirst: 'Turning on a strict TypeScript flag once the groundwork was laid.'
+standfirst: 'Turning on a strict TypeScript flag after months of clearing the way for it.'
 order: 3
 author: 'patik'
 state: 'merged'

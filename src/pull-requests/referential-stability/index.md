@@ -3,7 +3,7 @@ title: 'Referential stability 1/5: useExperiment'
 prNumber: 6927
 date: '2024-03-24'
 kind: 'Concept primer'
-standfirst: 'Teaching a subtle React concept before asking anyone to apply it.'
+standfirst: 'Explaining a subtle React concept before asking anybody to go and apply it.'
 order: 7
 author: 'patik'
 state: 'merged'

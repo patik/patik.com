@@ -3,7 +3,7 @@ title: 'Enhanced router (1/8) New hook useINRouter()'
 prNumber: 7070
 date: '2024-04-12'
 kind: 'Deprecation guidance'
-standfirst: 'Introducing a routing hook across an eight-pull-request series.'
+standfirst: 'One routing hook to replace three, delivered across eight pull requests.'
 order: 11
 author: 'patik'
 state: 'merged'

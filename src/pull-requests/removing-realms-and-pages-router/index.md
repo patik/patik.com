@@ -3,7 +3,7 @@ title: 'Remove Realms and Pages Router'
 prNumber: 10001
 date: '2025-05-19'
 kind: 'Adoption guide'
-standfirst: 'Deleting a home-grown abstraction, and documenting what replaces it.'
+standfirst: 'Deleting an abstraction we built ourselves, and writing down what replaces it.'
 order: 10
 author: 'patik'
 state: 'merged'
