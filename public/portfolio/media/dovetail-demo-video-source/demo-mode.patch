@@ -1,0 +1,39 @@
+diff --git a/src/components/map/PinOverrideDialog.tsx b/src/components/map/PinOverrideDialog.tsx
+index 8872b5b..eb5b226 100644
+--- a/src/components/map/PinOverrideDialog.tsx
++++ b/src/components/map/PinOverrideDialog.tsx
+@@ -48,7 +48,7 @@ function PinOverrideDialogContent({
+     // update cannot reset a manual pin adjustment before the user saves it.
+     const [openingCoords] = useState<{ lat: number; lng: number } | null>(initialCoords)
+     const [pinCoords, setPinCoords] = useState<{ lat: number; lng: number } | null>(openingCoords)
+-    const useE2ETestMap = !import.meta.env.PROD && import.meta.env.VITE_E2E === 'true'
++    const useE2ETestMap = !import.meta.env.PROD && import.meta.env.VITE_E2E_TEST_MAP === 'true'
+ 
+     const initialViewState = useMemo(
+         () =>
+diff --git a/src/components/map/TripMapView.tsx b/src/components/map/TripMapView.tsx
+index 1d5761d..d69da4c 100644
+--- a/src/components/map/TripMapView.tsx
++++ b/src/components/map/TripMapView.tsx
+@@ -192,7 +192,7 @@ export function TripMapView({
+     onStateChange,
+     onViewDay,
+ }: TripMapViewProps): ReactElement {
+-    const useE2ETestMap = !import.meta.env.PROD && import.meta.env.VITE_E2E === 'true'
++    const useE2ETestMap = !import.meta.env.PROD && import.meta.env.VITE_E2E_TEST_MAP === 'true'
+     const mapboxToken = getMapboxToken()
+     const themePreference = useUserPreferencesStore((preferencesState) => preferencesState.themePreference)
+     const isDarkMode = resolveThemePreference(themePreference) === 'dark'
+diff --git a/src/lib/e2e.ts b/src/lib/e2e.ts
+index 351b787..426d098 100644
+--- a/src/lib/e2e.ts
++++ b/src/lib/e2e.ts
+@@ -61,7 +61,7 @@ declare global {
+ }
+ 
+ export function isE2EMode(): boolean {
+-    return !import.meta.env.PROD && import.meta.env.VITE_E2E === 'true'
++    return import.meta.env.VITE_E2E === 'true'
+ }
+ 
+ export function createE2EUser(overrides: Partial<User> = {}): User {
