@@ -45,7 +45,7 @@
     },
     "devDependencies": {
         "@astrojs/check": "^0.9.10",
-        "@axe-core/playwright": "^4.12.1",
+        "@axe-core/playwright": "^4.13.0",
         "@expressive-code/plugin-line-numbers": "^0.44.1",
         "@ianvs/prettier-plugin-sort-imports": "^4.7.1",
         "@playwright/test": "^1.62.1",
