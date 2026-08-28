@@ -58,7 +58,7 @@
         "husky": "^9.1.7",
         "lint-staged": "^17.3.0",
         "netlify-cli": "^27.1.2",
-        "oxlint": "^1.77.0",
+        "oxlint": "^1.80.0",
         "oxlint-tsgolint": "^7.0.2001",
         "prettier": "^3.9.6",
         "prettier-plugin-astro": "^0.14.1",
