@@ -19,7 +19,7 @@ jobs:
       contents: write  # needed to push the updated snapshot commit
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           # Check out the branch the workflow was triggered from
           ref: ${{ github.ref }}
