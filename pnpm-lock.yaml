@@ -89,8 +89,8 @@ importers:
         specifier: ^17.5.0
         version: 17.5.0
       netlify-cli:
-        specifier: ^27.4.3
-        version: 27.4.3(@parcel/watcher@2.5.6)(@types/node@26.4.1)(picomatch@4.0.7)(rollup@4.59.0)(supports-color@11.0.0)
+        specifier: ^27.5.0
+        version: 27.5.0(@parcel/watcher@2.5.6)(@types/node@26.4.1)(picomatch@4.0.7)(rollup@4.59.0)(supports-color@11.0.0)
       oxlint:
         specifier: ^1.81.0
         version: 1.81.0(oxlint-tsgolint@7.0.2001)
@@ -839,8 +839,8 @@ packages:
   '@fastify/ajv-compiler@4.0.6':
     resolution: {integrity: sha512-NtuzM0SfaMJbGlnjr9LWQUN5LzgSrbB8tf/wRZNas+4E1O/Nmzl53e7ruT61HDZyRCJGC6FxIogmNZO1c5ETBA==}
 
-  '@fastify/busboy@3.2.0':
-    resolution: {integrity: sha512-m9FVDXU3GT2ITSe0UaMA5rU3QkfC/UXtCU8y0gSN/GugTqtVldOBWIB5V6V3sbmenVZUIpU6f+mPEO2+m5iTaA==}
+  '@fastify/busboy@3.2.2':
+    resolution: {integrity: sha512-yXSS27qPExaXeuLvMRMXOLtpipzfQYNjG3FkunDWKGfMYjKuhFXko9CVzqxm8jcF+lmtS9Fd89QNdh9XDjnbNg==}
 
   '@fastify/error@4.2.0':
     resolution: {integrity: sha512-RSo3sVDXfHskiBZKBPRgnQTtIqpi/7zhJOEmAxCiBcM7d0uwdGdxLlsCaLzGs8v8NnxIRlfG0N51p5yFaOentQ==}
@@ -2853,6 +2853,10 @@ packages:
     resolution: {integrity: sha512-7NzBL0rN6fMUW+f7A6Io4h40qQlG+xGmtMxfbnH/K7TAtt8JQWVQK+6g0UXKMeVJoyV5EkkNsErQ8pVD3bLHbA==}
     engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
 
+  chalk@6.0.0:
+    resolution: {integrity: sha512-2uNTXIuTTxk7ciZgAU1BQcgnchcG0xXnrs6jzkQfj9SsRa9M2s5zE8WT96hS6KmG4MzWHSrvH43DF1m4XRkrFg==}
+    engines: {node: '>=22'}
+
   character-entities-html4@2.1.0:
     resolution: {integrity: sha512-1v7fgQRj6hnSwFpq1Eu0ynr/CDEw0rXo2B61qXrLNdHZmPKgb7fqS1a2JwF0rISo9q77jDI8VMEHoApn8qDoZA==}
 
@@ -2992,8 +2996,8 @@ packages:
   commander@2.20.3:
     resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
 
-  comment-json@4.6.2:
-    resolution: {integrity: sha512-R2rze/hDX30uul4NZoIZ76ImSJLFxn/1/ZxtKC1L77y2X1k+yYu1joKbAtMA2Fg3hZrTOiw0I5mwVMo0cf250w==}
+  comment-json@5.0.0:
+    resolution: {integrity: sha512-uiqLcOiVDJtBP8WGkZHEP+FZIhTzP1dxvn59EfoYUi9gqupjrBWVQkO2atDrbnKPwLeotFYDsuNb26uBMqB+hw==}
     engines: {node: '>= 6'}
 
   common-ancestor-path@2.0.0:
@@ -5039,8 +5043,8 @@ packages:
     resolution: {integrity: sha512-WmmLty1YWwJl9yZi77v2dVIV6X2kuYV8YYBI/G3LWGKdGHmHUvL1z7FW0iDvEvGAwNEoc5x1tOOOyDnf5jJw/w==}
     engines: {node: '>= 10'}
 
-  netlify-cli@27.4.3:
-    resolution: {integrity: sha512-ezSdsUC/dfGzxQ/3sc/SKzGyL3/3sWN7YiHLTAQ26D2Ct7VJTfUI/folo0j1wiAePyqTbKhcCv9Ln8IhBnRNWw==}
+  netlify-cli@27.5.0:
+    resolution: {integrity: sha512-qPeB07/0HTAbnpeD/RhA80hcX8YSjmjIGXn9s2ctSTULg26OXn9T6bG0Pmu0//makdP3yatxVm2w03Voz2/WUQ==}
     engines: {node: '>=22.13.0'}
     hasBin: true
 
@@ -7669,7 +7673,7 @@ snapshots:
       ajv-formats: 3.0.1(ajv@8.20.0)
       fast-uri: 4.1.4
 
-  '@fastify/busboy@3.2.0': {}
+  '@fastify/busboy@3.2.2': {}
 
   '@fastify/error@4.2.0': {}
 
@@ -9276,7 +9280,7 @@ snapshots:
 
   '@whatwg-node/node-fetch@0.8.6':
     dependencies:
-      '@fastify/busboy': 3.2.0
+      '@fastify/busboy': 3.2.2
       '@whatwg-node/disposablestack': 0.0.6
       '@whatwg-node/promise-helpers': 1.3.2
       tslib: 2.8.1
@@ -9776,6 +9780,8 @@ snapshots:
 
   chalk@5.6.2: {}
 
+  chalk@6.0.0: {}
+
   character-entities-html4@2.1.0: {}
 
   character-entities-legacy@3.0.0: {}
@@ -9889,7 +9895,7 @@ snapshots:
 
   commander@2.20.3: {}
 
-  comment-json@4.6.2:
+  comment-json@5.0.0:
     dependencies:
       array-timsort: 1.0.3
       esprima: 4.0.1
@@ -12386,7 +12392,7 @@ snapshots:
 
   neotraverse@1.0.1: {}
 
-  netlify-cli@27.4.3(@parcel/watcher@2.5.6)(@types/node@26.4.1)(picomatch@4.0.7)(rollup@4.59.0)(supports-color@11.0.0):
+  netlify-cli@27.5.0(@parcel/watcher@2.5.6)(@types/node@26.4.1)(picomatch@4.0.7)(rollup@4.59.0)(supports-color@11.0.0):
     dependencies:
       '@fastify/static': 10.1.3
       '@netlify/ai': 1.0.1
@@ -12413,12 +12419,12 @@ snapshots:
       ascii-table: 0.0.9
       backoff: 2.5.0
       boxen: 8.0.1
-      chalk: 5.6.2
+      chalk: 6.0.0
       chokidar: 5.0.0
       ci-info: 4.4.0
       clean-deep: 3.4.0
       commander: 12.1.0
-      comment-json: 4.6.2
+      comment-json: 5.0.0
       content-type: 1.0.5
       cookie: 2.0.1
       cron-parser: 4.9.0
