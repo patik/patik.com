@@ -63,7 +63,7 @@
         "prettier": "^3.9.6",
         "prettier-plugin-astro": "^0.14.1",
         "serve": "^14.2.6",
-        "stylelint": "^17.14.1",
+        "stylelint": "^17.15.0",
         "typescript": "npm:@typescript/typescript6@^6.0.2"
     },
     "repository": {
