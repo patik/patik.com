@@ -60,7 +60,7 @@
         "netlify-cli": "^27.7.0",
         "oxlint": "^1.83.0",
         "oxlint-tsgolint": "^7.0.2001",
-        "prettier": "^3.9.6",
+        "prettier": "^3.9.8",
         "prettier-plugin-astro": "^0.14.1",
         "serve": "^14.2.6",
         "stylelint": "^17.15.0",
