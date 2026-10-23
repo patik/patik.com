@@ -91,6 +91,46 @@
                 {
                     "name": "Toad the Wet Sprocket",
                     "role": "festival"
+                },
+                {
+                    "name": "Kula Shaker",
+                    "role": "festival"
+                }
+            ]
+        },
+        {
+            "id": "green-day-1998-schenectady",
+            "date": "1998-05-10",
+            "datePrecision": "day",
+            "venue": "Achilles Rink",
+            "city": "Schenectady",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Green Day",
+                    "role": "main"
+                }
+            ]
+        },
+        {
+            "id": "beck-ben-folds-five-1998-spac",
+            "date": "1998-06-06",
+            "datePrecision": "day",
+            "venue": "Saratoga Performing Arts Center",
+            "city": "Saratoga Springs",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Beck",
+                    "role": "main"
+                },
+                {
+                    "name": "Ben Folds Five",
+                    "role": "main"
                 }
             ]
         },
@@ -257,6 +297,10 @@
                 {
                     "name": "Fatboy Slim",
                     "role": "festival"
+                },
+                {
+                    "name": "Live",
+                    "role": "festival"
                 }
             ]
         },
@@ -382,7 +426,7 @@
             "id": "moby-2000-siena",
             "date": "2000-10-27",
             "datePrecision": "day",
-            "venue": "Siena College",
+            "venue": "Siena College A.R.C.",
             "city": "Loudonville",
             "state": "NY",
             "country": "USA",
@@ -391,6 +435,10 @@
                 {
                     "name": "Moby",
                     "role": "main"
+                },
+                {
+                    "name": "Hybrid",
+                    "role": "opener"
                 }
             ]
         },
@@ -407,6 +455,10 @@
                 {
                     "name": "Dave Matthews Band",
                     "role": "main"
+                },
+                {
+                    "name": "Funky Meters",
+                    "role": "opener"
                 }
             ]
         },
@@ -425,6 +477,23 @@
                     "role": "main"
                 }
             ]
+        },
+        {
+            "id": "blues-traveler-2001-clifton-park",
+            "date": "2001-07-28",
+            "datePrecision": "day",
+            "venue": "Northern Lights",
+            "city": "Clifton Park",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Blues Traveler",
+                    "role": "main"
+                }
+            ],
+            "url": "https://www.concertarchives.org/concerts/blues-traveler-97df7296-bfcd-434e-9f7a-eba38b21e6f3"
         },
         {
             "id": "dmb-2001-07-29-spac",
@@ -454,6 +523,22 @@
             "acts": [
                 {
                     "name": "Dave Matthews Band",
+                    "role": "main"
+                }
+            ]
+        },
+        {
+            "id": "trey-anastasio-band-2001-spac",
+            "date": "2001-08-05",
+            "datePrecision": "day",
+            "venue": "Saratoga Performing Arts Center",
+            "city": "Saratoga Springs",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Trey Anastasio Band",
                     "role": "main"
                 }
             ]
@@ -496,9 +581,29 @@
                 {
                     "name": "The String Cheese Incident",
                     "role": "main"
+                },
+                {
+                    "name": "Medeski Martin & Wood",
+                    "role": "opener"
                 }
             ],
             "url": "https://www.concertarchives.org/concerts/the-string-cheese-incident-medeski-martin-wood"
+        },
+        {
+            "id": "bela-fleck-flecktones-2002-albany",
+            "date": "2002-03-01",
+            "datePrecision": "day",
+            "venue": "Palace Theatre",
+            "city": "Albany",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Béla Fleck and the Flecktones",
+                    "role": "main"
+                }
+            ]
         },
         {
             "id": "green-day-blink-182-2002-spac",
@@ -508,7 +613,7 @@
             "city": "Saratoga Springs",
             "state": "NY",
             "country": "USA",
-            "festival": null,
+            "festival": "WQBK Big Day Out 2",
             "acts": [
                 {
                     "name": "Green Day",
@@ -524,6 +629,22 @@
                 }
             ],
             "note": "Pop Disaster Tour, billed as co-headline; Blink-182 closed the show."
+        },
+        {
+            "id": "trey-anastasio-band-2002-albany",
+            "date": "2002-06-13",
+            "datePrecision": "day",
+            "venue": "Palace Theatre",
+            "city": "Albany",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Trey Anastasio Band",
+                    "role": "main"
+                }
+            ]
         },
         {
             "id": "dmb-2002-07-28-spac",
@@ -697,6 +818,22 @@
             "acts": [
                 {
                     "name": "Dave Matthews Band",
+                    "role": "main"
+                }
+            ]
+        },
+        {
+            "id": "philadelphia-orchestra-2004-spac",
+            "date": "2004-08-11",
+            "datePrecision": "day",
+            "venue": "Saratoga Performing Arts Center",
+            "city": "Saratoga Springs",
+            "state": "NY",
+            "country": "USA",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "The Philadelphia Orchestra",
                     "role": "main"
                 }
             ]
@@ -1041,6 +1178,31 @@
                     "role": "opener"
                 }
             ]
+        },
+        {
+            "id": "korn-2026-munich",
+            "date": "2026-10-19",
+            "datePrecision": "day",
+            "venue": "Olympiahalle",
+            "city": "Munich",
+            "state": null,
+            "country": "Germany",
+            "festival": null,
+            "acts": [
+                {
+                    "name": "Korn",
+                    "role": "main"
+                },
+                {
+                    "name": "Architects",
+                    "role": "opener"
+                },
+                {
+                    "name": "Youth Code",
+                    "role": "opener"
+                }
+            ],
+            "url": "https://www.olympiapark.de/en/events/korn-n5616"
         }
     ]
 }
