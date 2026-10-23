@@ -239,6 +239,12 @@
     justify-content: space-between;
 }
 
+.eventDetails {
+    display: grid;
+    gap: 0.75rem;
+    min-width: 0;
+}
+
 .artistHeader {
     display: flex;
     flex-direction: column;
@@ -418,6 +424,18 @@
     line-height: 1.35;
 }
 
+.appearanceWithTicket {
+    --ticket-width: 10rem;
+
+    display: grid;
+    gap: 0.6rem;
+    padding-block: 0.65rem;
+
+    & + .appearanceItem {
+        border-top: 1px solid var(--concert-line);
+    }
+}
+
 .roleMain {
     color: inherit;
 }
@@ -432,6 +450,17 @@
 }
 
 @media (min-width: 720px) {
+    .eventCardWithTicket {
+        grid-template-columns: minmax(0, 1fr) 14rem;
+        align-items: start;
+        gap: 1.5rem;
+    }
+
+    .appearanceWithTicket {
+        grid-template-columns: minmax(0, 1fr) 10rem;
+        align-items: start;
+    }
+
     .toolbar {
         align-items: flex-start;
     }

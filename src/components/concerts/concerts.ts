@@ -23,6 +23,7 @@ export interface ConcertEvent {
     acts: ConcertAct[]
     note?: string
     url?: string
+    ticketStub?: string
 }
 
 export interface ArtistAppearance {
@@ -79,6 +80,7 @@ interface SourceConcertEvent {
     acts: SourceConcertAct[]
     note?: string
     url?: string
+    ticketStub?: string
 }
 
 interface SourceConcertData {

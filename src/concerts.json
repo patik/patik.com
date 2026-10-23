@@ -13,7 +13,8 @@
             "festival": "festival name, else null",
             "acts": "[{ name, role }] where role is main | opener | festival",
             "note": "optional free-text flag",
-            "url": "optional URL for more info"
+            "url": "optional URL for more info",
+            "ticketStub": "optional filename of a scanned ticket in src/images/tickets/"
         }
     },
     "concerts": [
@@ -35,7 +36,8 @@
                     "name": "Garbage",
                     "role": "opener"
                 }
-            ]
+            ],
+            "ticketStub": "1996-11-02_sp.jpg"
         },
         {
             "id": "weird-al-1997-starlite",
@@ -52,7 +54,8 @@
                     "role": "main"
                 }
             ],
-            "url": "https://www.setlist.fm/setlist/weird-al-yankovic/1997/starlite-music-theatre-latham-ny-bce01e2.html"
+            "url": "https://www.setlist.fm/setlist/weird-al-yankovic/1997/starlite-music-theatre-latham-ny-bce01e2.html",
+            "ticketStub": "1997-07-19_weirdal.jpg"
         },
         {
             "id": "horde-1997-spac",
@@ -96,7 +99,8 @@
                     "name": "Kula Shaker",
                     "role": "festival"
                 }
-            ]
+            ],
+            "ticketStub": "1997-08-10_horde.jpg"
         },
         {
             "id": "green-day-1998-schenectady",
@@ -132,7 +136,8 @@
                     "name": "Ben Folds Five",
                     "role": "main"
                 }
-            ]
+            ],
+            "ticketStub": "1998-06-06_beck_bff.jpg"
         },
         {
             "id": "dmb-1998-07-26-spac",
@@ -148,7 +153,8 @@
                     "name": "Dave Matthews Band",
                     "role": "main"
                 }
-            ]
+            ],
+            "ticketStub": "1998-07-26_dmb.jpg"
         },
         {
             "id": "dmb-1998-12-05-albany",
@@ -164,7 +170,8 @@
                     "name": "Dave Matthews Band",
                     "role": "main"
                 }
-            ]
+            ],
+            "ticketStub": "1998-12-05_dmb.jpg"
         },
         {
             "id": "the-offspring-1999-rpi",
@@ -189,7 +196,8 @@
                     "role": "opener"
                 }
             ],
-            "note": "My first autograph was getting Dexter Holland to sign my ticket stub after this show."
+            "note": "My first autograph was getting Dexter Holland to sign my ticket stub after this show.",
+            "ticketStub": "1999-03-02_offspring.jpg"
         },
         {
             "id": "woodstock-99",
@@ -302,7 +310,8 @@
                     "name": "Live",
                     "role": "festival"
                 }
-            ]
+            ],
+            "ticketStub": "1999-07-23_woodstock.jpg"
         },
         {
             "id": "rhcp-2000-04-03-albany",
@@ -327,7 +336,8 @@
                     "role": "opener"
                 }
             ],
-            "url": "https://www.setlist.fm/setlist/red-hot-chili-peppers/2000/pepsi-arena-albany-ny-6bd092d6.html"
+            "url": "https://www.setlist.fm/setlist/red-hot-chili-peppers/2000/pepsi-arena-albany-ny-6bd092d6.html",
+            "ticketStub": "2000-04-03_rhcp.jpg"
         },
         {
             "id": "rhcp-2000-07-30-spac",
@@ -352,7 +362,8 @@
                     "role": "opener"
                 }
             ],
-            "url": "https://www.rhcplivearchive.com/show/jul-30-2000-saratoga-springs-ny-630"
+            "url": "https://www.rhcplivearchive.com/show/jul-30-2000-saratoga-springs-ny-630",
+            "ticketStub": "2000-07-30_rhcp.jpg"
         },
         {
             "id": "dmb-2000-08-29-spac",
@@ -368,7 +379,8 @@
                     "name": "Dave Matthews Band",
                     "role": "main"
                 }
-            ]
+            ],
+            "ticketStub": "2000-08-29_dmb.jpg"
         },
         {
             "id": "phish-2000-09-08-albany",
@@ -384,7 +396,8 @@
                     "name": "Phish",
                     "role": "main"
                 }
-            ]
+            ],
+            "ticketStub": "2000-09-08_phish.jpg"
         },
         {
             "id": "phish-2000-09-09-albany",
@@ -400,7 +413,8 @@
                     "name": "Phish",
                     "role": "main"
                 }
-            ]
+            ],
+            "ticketStub": "2000-09-09_phish.jpg"
         },
         {
             "id": "matchbox-twenty-2000-rpi",
@@ -420,7 +434,8 @@
                     "name": "The Jayhawks",
                     "role": "opener"
                 }
-            ]
+            ],
+            "ticketStub": "2000-09-23_matchbox20.jpg"
         },
         {
             "id": "moby-2000-siena",
@@ -440,7 +455,8 @@
                     "name": "Hybrid",
                     "role": "opener"
                 }
-            ]
+            ],
+            "ticketStub": "2000-10-27_moby.jpg"
         },
         {
             "id": "dmb-2000-12-09-albany",
@@ -460,7 +476,8 @@
                     "name": "Funky Meters",
                     "role": "opener"
                 }
-            ]
+            ],
+            "ticketStub": "2000-12-09_dmb.jpg"
         },
         {
             "id": "bela-fleck-flecktones-2001-albany",
@@ -476,7 +493,8 @@
                     "name": "Béla Fleck and the Flecktones",
                     "role": "main"
                 }
-            ]
+            ],
+            "ticketStub": "2001-03-10_flecktones.jpg"
         },
         {
             "id": "blues-traveler-2001-clifton-park",
@@ -509,7 +527,8 @@
                     "name": "Dave Matthews Band",
                     "role": "main"
                 }
-            ]
+            ],
+            "ticketStub": "2001-07-29_dmb.jpg"
         },
         {
             "id": "dmb-2001-07-30-spac",
@@ -525,7 +544,8 @@
                     "name": "Dave Matthews Band",
                     "role": "main"
                 }
-            ]
+            ],
+            "ticketStub": "2001-07-30_dmb.jpg"
         },
         {
             "id": "trey-anastasio-band-2001-spac",
@@ -541,7 +561,8 @@
                     "name": "Trey Anastasio Band",
                     "role": "main"
                 }
-            ]
+            ],
+            "ticketStub": "2001-08-05_trey.jpg"
         },
         {
             "id": "matchbox-twenty-2001-spac",
@@ -566,7 +587,8 @@
                     "role": "opener"
                 }
             ],
-            "url": "https://www.concertarchives.org/concerts/matchbox-twenty-train-seven-mary-three-b5e8a204-742c-4bba-8809-9d27ba19ba39"
+            "url": "https://www.concertarchives.org/concerts/matchbox-twenty-train-seven-mary-three-b5e8a204-742c-4bba-8809-9d27ba19ba39",
+            "ticketStub": "2001-08-19_matchbox20.jpg"
         },
         {
             "id": "string-cheese-2001-10-27-rpi",
@@ -587,7 +609,8 @@
                     "role": "opener"
                 }
             ],
-            "url": "https://www.concertarchives.org/concerts/the-string-cheese-incident-medeski-martin-wood"
+            "url": "https://www.concertarchives.org/concerts/the-string-cheese-incident-medeski-martin-wood",
+            "ticketStub": "2001-10-27_sci.jpg"
         },
         {
             "id": "bela-fleck-flecktones-2002-albany",
@@ -603,7 +626,8 @@
                     "name": "Béla Fleck and the Flecktones",
                     "role": "main"
                 }
-            ]
+            ],
+            "ticketStub": "2002-03-01_flecktones.jpg"
         },
         {
             "id": "green-day-blink-182-2002-spac",
@@ -628,7 +652,8 @@
                     "role": "opener"
                 }
             ],
-            "note": "Pop Disaster Tour, billed as co-headline; Blink-182 closed the show."
+            "note": "Pop Disaster Tour, billed as co-headline; Blink-182 closed the show.",
+            "ticketStub": "2002-06-04_blink-green.jpg"
         },
         {
             "id": "trey-anastasio-band-2002-albany",
@@ -644,7 +669,8 @@
                     "name": "Trey Anastasio Band",
                     "role": "main"
                 }
-            ]
+            ],
+            "ticketStub": "2002-06-13_trey.jpg"
         },
         {
             "id": "dmb-2002-07-28-spac",
@@ -660,7 +686,8 @@
                     "name": "Dave Matthews Band",
                     "role": "main"
                 }
-            ]
+            ],
+            "ticketStub": "2002-07-28_dmb.jpg"
         },
         {
             "id": "dmb-2002-07-29-spac",
@@ -676,7 +703,8 @@
                     "name": "Dave Matthews Band",
                     "role": "main"
                 }
-            ]
+            ],
+            "ticketStub": "2002-07-29_dmb.jpg"
         },
         {
             "id": "dmb-2002-12-17-albany",
@@ -740,7 +768,8 @@
                     "name": "Dave Matthews Band",
                     "role": "main"
                 }
-            ]
+            ],
+            "ticketStub": "2003-08-28_dmb.jpg"
         },
         {
             "id": "phish-2003-12-01-albany",
@@ -772,7 +801,8 @@
                     "name": "Phish",
                     "role": "main"
                 }
-            ]
+            ],
+            "ticketStub": "2004-06-19_phish.jpg"
         },
         {
             "id": "phish-2004-06-20-spac",
@@ -788,7 +818,8 @@
                     "name": "Phish",
                     "role": "main"
                 }
-            ]
+            ],
+            "ticketStub": "2004-06-20_phish.jpg"
         },
         {
             "id": "dmb-2004-07-02-spac",
@@ -804,7 +835,8 @@
                     "name": "Dave Matthews Band",
                     "role": "main"
                 }
-            ]
+            ],
+            "ticketStub": "2004-07-02_dmb.jpg"
         },
         {
             "id": "dmb-2004-07-03-spac",
@@ -820,7 +852,8 @@
                     "name": "Dave Matthews Band",
                     "role": "main"
                 }
-            ]
+            ],
+            "ticketStub": "2004-07-03_dmb.jpg"
         },
         {
             "id": "philadelphia-orchestra-2004-spac",
@@ -836,7 +869,8 @@
                     "name": "The Philadelphia Orchestra",
                     "role": "main"
                 }
-            ]
+            ],
+            "ticketStub": "2004-08-11_phil_orch.jpg"
         },
         {
             "id": "dmb-2005-07-01-spac",

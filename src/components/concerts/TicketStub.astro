@@ -1,0 +1,22 @@
+---
+import { Image } from 'astro:assets'
+import css from './TicketStub.module.css'
+
+interface Props {
+    filename: string
+    label: string
+}
+
+const { filename, label } = Astro.props
+const tickets = import.meta.glob<{ default: ImageMetadata }>('/src/images/tickets/*.jpg', { eager: true })
+const ticket = tickets[`/src/images/tickets/${filename}`]?.default
+
+if (!ticket) {
+    throw new Error(`Missing concert ticket scan: ${filename}`)
+}
+---
+
+<a class={css.ticket} href={ticket.src}>
+    <Image src={ticket} alt={`Ticket stub for ${label}`} width={Math.min(448, ticket.width)} loading="lazy" />
+    <span>View ticket stub</span>
+</a>
