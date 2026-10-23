@@ -11,10 +11,10 @@ jobs:
 
     # Must stay the image scripts/visual.sh uses: bare ubuntu-latest resolves `monospace`
     # to a different face, a ~2% pixel diff against a 0.2% threshold.
-    container: mcr.microsoft.com/playwright:v1.62.1-noble
+    container: mcr.microsoft.com/playwright:v1.63.0-noble
 
     env:
-      PLAYWRIGHT_IMAGE_VERSION: "1.62.1"
+      PLAYWRIGHT_IMAGE_VERSION: "1.63.0"
 
     strategy:
       matrix:
