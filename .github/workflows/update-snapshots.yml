@@ -24,7 +24,7 @@ jobs:
           # Check out the branch the workflow was triggered from
           ref: ${{ github.ref }}
 
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
 
       - uses: actions/setup-node@v4
         with:
