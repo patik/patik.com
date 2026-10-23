@@ -118,6 +118,29 @@ for (const { path: routePath, label } of visualRoutes) {
     })
 }
 
+// The default concerts viewport contains recent shows without paper tickets. These states
+// cover the scans beside older events, including their layout on narrow screens.
+for (const { label, query, width, height } of [
+    { label: 'concerts-tickets', query: '?order=asc', width: 1020, height: 2000 },
+    { label: 'concerts-tickets-mobile', query: '?order=asc', width: 390, height: 844 },
+    { label: 'concerts-tickets-by-artist', query: '?view=artist&artistSort=count', width: 1020, height: 2000 },
+]) {
+    test(`${label}: matches visual snapshot`, { tag: '@visual' }, async ({ page }) => {
+        test.skip(!IS_LINUX, 'Run Linux-only baselines with `pnpm test:visual`.')
+
+        await page.setViewportSize({ width, height })
+        await page.emulateMedia({ reducedMotion: 'reduce' })
+
+        await page.goto(`/concerts/${query}`, { waitUntil: 'networkidle' })
+        await waitForWebFonts(page)
+
+        await expect(page.locator('[data-view-panel]:not([hidden]) img').first()).toBeVisible()
+        await expect(page).toHaveScreenshot(`${label}.png`, {
+            maxDiffPixelRatio: 0.002,
+        })
+    })
+}
+
 for (const { path: routePath, label, width, height, target } of lightModeVisualCases) {
     test(`${label}: matches visual snapshot`, { tag: '@visual' }, async ({ page }) => {
         test.skip(!IS_LINUX, 'Run Linux-only baselines with `pnpm test:visual`.')

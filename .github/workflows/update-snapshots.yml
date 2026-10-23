@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     # Must match linting-and-unit-tests.yml and scripts/visual.sh.
-    container: mcr.microsoft.com/playwright:v1.62.1-noble
+    container: mcr.microsoft.com/playwright:v1.63.0-noble
 
     env:
-      PLAYWRIGHT_IMAGE_VERSION: "1.62.1"
+      PLAYWRIGHT_IMAGE_VERSION: "1.63.0"
 
     permissions:
       contents: write  # needed to push the updated snapshot commit

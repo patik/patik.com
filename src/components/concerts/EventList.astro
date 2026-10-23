@@ -2,8 +2,15 @@
 import ActGroup from './ActGroup.astro'
 import ArtistJumpLink from './ArtistJumpLink.astro'
 import ConcertDate from './ConcertDate.astro'
-import { formatConcertLocation, type ConcertAct, type ConcertEvent, type ConcertRole } from './concerts'
+import {
+    formatConcertDate,
+    formatConcertLocation,
+    type ConcertAct,
+    type ConcertEvent,
+    type ConcertRole,
+} from './concerts'
 import css from './ConcertsPage.module.css'
+import TicketStub from './TicketStub.astro'
 
 interface Props {
     events: ConcertEvent[]
@@ -54,34 +61,42 @@ function getTitleActs(event: ConcertEvent, actsByRole: Record<ConcertRole, Conce
 
             return (
                 <li>
-                    <article class={css.eventCard}>
-                        <div class={css.eventHeader}>
-                            <div>
-                                <h3 class={css.eventTitle}>
-                                    {titleActs.length > 0
-                                        ? titleActs.map((act, index) => (
-                                              <>
-                                                  {index > 0 ? ' / ' : null}
-                                                  <ArtistJumpLink artistName={act.name} isTitle />
-                                              </>
-                                          ))
-                                        : eventTitle}
-                                </h3>
-                                <p class={css.eventMeta}>
-                                    <ConcertDate event={event} /> • {event.venue}, {formatConcertLocation(event)}
-                                </p>
+                    <article class:list={[css.eventCard, { [css.eventCardWithTicket]: event.ticketStub }]}>
+                        <div class={css.eventDetails}>
+                            <div class={css.eventHeader}>
+                                <div>
+                                    <h3 class={css.eventTitle}>
+                                        {titleActs.length > 0
+                                            ? titleActs.map((act, index) => (
+                                                  <>
+                                                      {index > 0 ? ' / ' : null}
+                                                      <ArtistJumpLink artistName={act.name} isTitle />
+                                                  </>
+                                              ))
+                                            : eventTitle}
+                                    </h3>
+                                    <p class={css.eventMeta}>
+                                        <ConcertDate event={event} /> • {event.venue}, {formatConcertLocation(event)}
+                                    </p>
+                                </div>
                             </div>
+
+                            {showPerformerGroups ? (
+                                <div class={css.roleGroups} aria-label={`${eventTitle} performers`}>
+                                    {showMainActs ? <ActGroup acts={actsByRole.main} concertRole="main" /> : null}
+                                    <ActGroup acts={festivalActs} concertRole="festival" linkArtists />
+                                    <ActGroup acts={actsByRole.opener} concertRole="opener" linkArtists />
+                                </div>
+                            ) : null}
+
+                            {event.note ? <p class={css.eventNote}>{event.note}</p> : null}
                         </div>
-
-                        {showPerformerGroups ? (
-                            <div class={css.roleGroups} aria-label={`${eventTitle} performers`}>
-                                {showMainActs ? <ActGroup acts={actsByRole.main} concertRole="main" /> : null}
-                                <ActGroup acts={festivalActs} concertRole="festival" linkArtists />
-                                <ActGroup acts={actsByRole.opener} concertRole="opener" linkArtists />
-                            </div>
+                        {event.ticketStub ? (
+                            <TicketStub
+                                filename={event.ticketStub}
+                                label={`${eventTitle} on ${formatConcertDate(event)}`}
+                            />
                         ) : null}
-
-                        {event.note ? <p class={css.eventNote}>{event.note}</p> : null}
                     </article>
                 </li>
             )

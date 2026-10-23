@@ -9,6 +9,7 @@ import {
     type ArtistSummary,
 } from './concerts'
 import css from './ConcertsPage.module.css'
+import TicketStub from './TicketStub.astro'
 
 interface Props {
     artists: ArtistSummary[]
@@ -81,7 +82,12 @@ function getAppearanceLabel(count: number): string {
 
                     <ol class={css.appearanceList}>
                         {artist.appearances.map((appearance) => (
-                            <li class={css.appearanceItem}>
+                            <li
+                                class:list={[
+                                    css.appearanceItem,
+                                    { [css.appearanceWithTicket]: appearance.event.ticketStub },
+                                ]}
+                            >
                                 <span class={css.appearanceMeta}>
                                     {getRoleLabel(appearance.role)}
                                     {' • '}
@@ -89,6 +95,12 @@ function getAppearanceLabel(count: number): string {
                                     {' • '}
                                     {appearance.event.festival ?? appearance.event.venue}
                                 </span>
+                                {appearance.event.ticketStub ? (
+                                    <TicketStub
+                                        filename={appearance.event.ticketStub}
+                                        label={`${artist.name} on ${formatConcertDate(appearance.event)}`}
+                                    />
+                                ) : null}
                             </li>
                         ))}
                     </ol>
